@@ -1,6 +1,7 @@
 
 #ifndef CDT_LIB
 #define CDT_LIB
+#define STB_IMAGE_IMPLEMENTATION
 
 #include <iostream>
 #include <glad/glad.h>

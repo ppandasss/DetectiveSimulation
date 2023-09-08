@@ -1,6 +1,7 @@
 
 #include "CDT.h"
 
+
 // -------------------------------------------
 // CDT global variables
 // -------------------------------------------
@@ -132,26 +133,23 @@ CDTTex TextureLoad(const char* filename)
 {
 	CDTTex aTex;
 
-	int texWidth, texHeight, numChannels;
-	unsigned char* imageData = stbi_load(filename, &texWidth, &texHeight, &numChannels, 0);
+	GLubyte* pData;
+	int	texWidth, texHeight, channels;
 
-	if (imageData)
-	{
-		glGenTextures(1, &aTex);
-		glBindTexture(GL_TEXTURE_2D, aTex);
+	pData = stbi_load(filename, &texWidth, &texHeight, &channels, 0);
 
-		// Set texture parameters here (e.g., GL_TEXTURE_WRAP_S, GL_TEXTURE_WRAP_T, GL_TEXTURE_MAG_FILTER, GL_TEXTURE_MIN_FILTER).
+	glGenTextures(1, &aTex);
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, aTex);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	GLint format = (channels == 4) ? GL_RGBA : GL_RGB;
 
-		GLenum format = (numChannels == 4) ? GL_RGBA : GL_RGB;
-		glTexImage2D(GL_TEXTURE_2D, 0, format, texWidth, texHeight, 0, format, GL_UNSIGNED_BYTE, imageData);
-		glGenerateMipmap(GL_TEXTURE_2D);
+	glTexImage2D(GL_TEXTURE_2D, 0, format, texWidth, texHeight, 0, format, GL_UNSIGNED_BYTE, pData);
 
-		stbi_image_free(imageData);
-	}
-	else
-	{
-		// Handle image loading failure.
-	}
+	stbi_image_free(pData);
 
 	return aTex;
 }
