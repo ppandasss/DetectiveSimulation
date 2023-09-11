@@ -1,3 +1,4 @@
+//engine main.cpp
 #include <iostream>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -31,7 +32,7 @@ int main()
 	while (!glfwWindowShouldClose(window))
 	{
 
-		glClearColor(1.0f, 0.3f, 0.3f, 1.0f);
+		glClearColor(0.324f, 0.444f, 0.59f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
