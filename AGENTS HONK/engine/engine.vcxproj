@@ -43,7 +43,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -138,13 +138,11 @@
     <ClInclude Include="External\Include\GLFW\glfw3native.h" />
     <ClInclude Include="External\Include\KHR\khrplatform.h" />
     <ClInclude Include="External\Include\stb_image.h" />
-    <ClInclude Include="GameObject.h" />
     <ClInclude Include="shader.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CDT.cpp" />
     <ClCompile Include="External\Include\glad\glad.c" />
-    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="shader.cpp" />
   </ItemGroup>

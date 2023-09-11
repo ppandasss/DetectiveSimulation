@@ -1,35 +1,31 @@
+// GameObject.cpp
 #include "GameObject.h"
 #include <iostream>
 
-// Constructor to initialize the object with a texture and position.
-GameObject::GameObject(const std::string& texturePath, const glm::vec2& position) {
-
+// Constructor to initialize the object with a texture, position, and mesh.
+GameObject::GameObject(const std::string& texturePath, const glm::vec2& position, CDTMesh* mesh) {
     this->position = position;
     this->size = glm::vec2(100.0f, 100.0f); // Set a default size for the object.
 
-    // Load the texture using your CDT function.
     textureID = TextureLoad(texturePath.c_str());
-    // Initialize other member variables as needed.
+    this->mesh = mesh;
 }
 
-// Update function to handle movement logic.
-void GameObject::Update(float deltaTime) {
-    // Example: Move the object left and right.
-    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
-        position.x -= 100.0f * deltaTime;
-    }
-    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
-        position.x += 100.0f * deltaTime;
-    }
+GameObject::GameObject(const std::string& texturePath, const glm::vec2& position, int spriteSheetWidth, int spriteSheetHeight) {
+    this->position = position;
+    this->size = glm::vec2(100.0f, 100.0f); // Set a default size for the object.
 
-    // Add more update logic as needed.
+    // Create the mesh using the sprite sheet dimensions.
+    *mesh = CreateMesh(spriteSheetWidth, spriteSheetHeight);
+
+    textureID = TextureLoad(texturePath.c_str());
 }
 
 // Render function to draw the object.
 void GameObject::Render() {
     // Set up rendering with your CDT functions.
-    SetRenderMode(CDT_TEXTURE,1.0f);
-    SetTexture(textureID, /* specify texture coordinates if needed */);
+    SetRenderMode(CDT_TEXTURE, 1.0f);
+    SetTexture(textureID, 0.0f, 0.0f);
 
     // Define the model matrix (position and size).
     glm::mat4 modelMatrix = glm::mat4(1.0f);
@@ -39,9 +35,10 @@ void GameObject::Render() {
     // Set the transformation matrix for rendering.
     SetTransform(modelMatrix);
 
-    // Render the object with your CDT functions.
-    DrawMesh(/* specify the mesh you want to render */);
+    // Render the object with the provided mesh.
+    DrawMesh(*mesh);
 }
+
 
 // Getters and setters for position, size, etc.
 glm::vec2 GameObject::GetPosition() const {
