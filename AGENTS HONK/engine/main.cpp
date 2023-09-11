@@ -35,16 +35,7 @@ int main()
 		glClearColor(0.324f, 0.444f, 0.59f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
-
-			std::cout << "Left" << std::endl;
-			
-		}
-		if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
-
-			std::cout << "Right" << std::endl;
-
-		}
+		
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();

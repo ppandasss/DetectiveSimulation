@@ -16,14 +16,19 @@ public:
     void SetModelMatrix(const glm::mat4& modelMatrix);
     glm::vec2 GetPosition() const;
     void SetPosition(const glm::vec2& position);
-    glm::vec2 GetSize() const;
-    void SetSize(const glm::vec2& size);
+    glm::vec2 GetScale() const;
+    void SetScale(const glm::vec2& size);
 
 private:
     glm::vec2 position;
-    glm::vec2 size;
-    GLuint textureID;
-    CDTMesh* mesh; // Added member for the mesh.
+    glm::vec2 scale;
+    float orientation;
+    glm::mat4 modelMatrix;
+    CDTMesh* mesh;
+    CDTTex* tex;
+    std::string type;
+    int	layer;
+    
 };
 
 #endif
