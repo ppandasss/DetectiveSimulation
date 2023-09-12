@@ -1,11 +1,12 @@
 //Player.h
 #pragma once
 #include<Object/GameObject.h>
+#include<ResourceManager.h>
 
 class Player : public  GameObject {
 
 public:
-    Player(Properties* props);
+    Player(Properties* props, GLFWwindow* mainWindow);
 
     // Override the GameObject's virtual functions
     void Draw() override;

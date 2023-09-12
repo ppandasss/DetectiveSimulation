@@ -6,6 +6,8 @@
 #include <Object/GameObject.h>
 #include "Player.h"
 
+GLFWwindow* window;
+
 int main()
 {
 	glfwInit();
@@ -17,7 +19,7 @@ int main()
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
 
-	GLFWwindow* window = glfwCreateWindow(1280, 720, "HONK!", NULL, NULL);
+	window = glfwCreateWindow(1280, 720, "HONK!", NULL, NULL);
 	if (window == NULL)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -32,9 +34,23 @@ int main()
 		return -1;
 	}
 
-	Player player();
+	double lastFrameTime = glfwGetTime();
+	double frameRateUpdateInterval = 1.0; // Update frame rate every 1 second
+	double frameRateTimer = 0.0;
+	int frameCount = 0;
+
+	int spriteSheetWidth = 1;
+	int spriteSheetHeight = 1;
+	CDTMesh* playerMesh = ResourceManager::GetInstance().CreateMeshVertices(spriteSheetWidth, spriteSheetHeight);
+	CDTTex* playerTexture = ResourceManager::GetInstance().SetTexture("waiter_texture.png");
+	Properties playerProps(playerMesh, playerTexture, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f));
+	Player player(&playerProps,window);
 	while (!glfwWindowShouldClose(window))
 	{
+		double currentTime = glfwGetTime();
+		double dt = currentTime - lastFrameTime;
+		lastFrameTime = currentTime;
+
 		player.Update(dt);
 		glClearColor(0.324f, 0.444f, 0.59f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
@@ -45,6 +61,14 @@ int main()
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
+
+		if (frameRateTimer >= frameRateUpdateInterval)
+		{
+			double frameRate = frameCount / frameRateTimer;
+			std::cout << "Frame Rate: " << frameRate << " FPS" << std::endl;
+			frameRateTimer = 0.0;
+			frameCount = 0;
+		}
 	}
 	player.Clean();
 	glfwTerminate();

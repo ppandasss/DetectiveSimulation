@@ -1,12 +1,10 @@
 
-#ifndef CDT_LIB
-#define CDT_LIB
-#define STB_IMAGE_IMPLEMENTATION
+#pragma once
+
 
 #include <iostream>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <stb_image.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <vector>
@@ -99,7 +97,3 @@ void ResetCam();
 void SetRenderMode(int mode, float alpha);
 void SetTexture(CDTTex tex, float offsetX, float offsetY);
 void SetTransform(const glm::mat4 &modelMat);
-
-
-
-#endif 

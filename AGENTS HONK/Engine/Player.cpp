@@ -1,8 +1,11 @@
 // Player.cpp
 #include "Player.h"
+#include <GLFW/glfw3.h>
 
-Player::Player(Properties* props) : GameObject(props) {
-    // Initialize any player-specific properties here
+extern GLFWwindow* window;
+
+Player::Player(Properties* props, GLFWwindow* mainWindow) : GameObject(props) {
+    window = mainWindow;
 }
 
 void Player::Draw() {

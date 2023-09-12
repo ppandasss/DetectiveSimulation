@@ -8,11 +8,11 @@
 struct Properties
 {
 	public:
-	Properties(CDTMesh mesh, CDTTex tex, glm::vec3 position, glm::vec3 scale)
+	Properties(CDTMesh* mesh, CDTTex* tex, glm::vec3 position, glm::vec3 scale)
 	{
 		this->pos = position;
-		this->mesh = mesh;
-		this->tex = tex;
+		this->mesh = *mesh;
+		this->tex = *tex;
 		this->scale = scale;
 	}
 

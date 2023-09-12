@@ -1,4 +1,6 @@
-C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\AGENTS HONK\Engine\CDT.cpp;C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\AGENTS HONK\Engine\x64\Debug\CDT.obj
-C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\AGENTS HONK\Engine\External\Include\glad\glad.c;C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\AGENTS HONK\Engine\x64\Debug\glad.obj
-C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\AGENTS HONK\Engine\main.cpp;C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\AGENTS HONK\Engine\x64\Debug\main.obj
-C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\AGENTS HONK\Engine\shader.cpp;C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\AGENTS HONK\Engine\x64\Debug\shader.obj
+C:\DetectiveSimulation\AGENTS HONK\Engine\CDT.cpp;C:\DetectiveSimulation\AGENTS HONK\Engine\x64\Debug\CDT.obj
+C:\DetectiveSimulation\AGENTS HONK\Engine\External\Include\glad\glad.c;C:\DetectiveSimulation\AGENTS HONK\Engine\x64\Debug\glad.obj
+C:\DetectiveSimulation\AGENTS HONK\Engine\main.cpp;C:\DetectiveSimulation\AGENTS HONK\Engine\x64\Debug\main.obj
+C:\DetectiveSimulation\AGENTS HONK\Engine\Player.cpp;C:\DetectiveSimulation\AGENTS HONK\Engine\x64\Debug\Player.obj
+C:\DetectiveSimulation\AGENTS HONK\Engine\ResourceManager.cpp;C:\DetectiveSimulation\AGENTS HONK\Engine\x64\Debug\ResourceManager.obj
+C:\DetectiveSimulation\AGENTS HONK\Engine\shader.cpp;C:\DetectiveSimulation\AGENTS HONK\Engine\x64\Debug\shader.obj

@@ -65,8 +65,23 @@
     <ClCompile Include="Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Library Include="External\Library\glfw3.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\Texture\waiter_test.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Texture\blank.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Shader\color_tex_transparency.vert" />
+    <None Include="Assets\Shader\color_tex_transparency.frag" />
   </ItemGroup>
 </Project>
