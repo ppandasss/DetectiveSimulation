@@ -1,7 +1,10 @@
 //engine main.cpp
+#pragma once
 #include <iostream>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <Object/GameObject.h>
+#include "Player.h"
 
 int main()
 {
@@ -29,18 +32,21 @@ int main()
 		return -1;
 	}
 
+	Player player();
 	while (!glfwWindowShouldClose(window))
 	{
-
+		player.Update(dt);
 		glClearColor(0.324f, 0.444f, 0.59f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
+	
+		player.Draw();
 		
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
-
+	player.Clean();
 	glfwTerminate();
 
 	return 0;
