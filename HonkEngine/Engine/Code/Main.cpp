@@ -26,9 +26,6 @@ int main()
 {
     Application game;
 
-
-
-
     game.AddScene("start", new LevelScene());
     game.SetScene("start");
     game.AddScene("room1", new Room1());

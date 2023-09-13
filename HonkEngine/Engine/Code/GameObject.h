@@ -6,33 +6,17 @@ class GameObject
 {
 public:
 	GameObject(const std::string& name = "")
-		: m_name(name)
-	{
+		: m_name(name){}
 
-	}
+	virtual void Update(float dt){}
 
-	virtual void Update(float dt)
-	{
-	}
+	virtual void Render(){}
 
-	virtual void Render()
-	{
-	}
+	void SetPosition(glm::vec3 newPos){ m_position = newPos; }
 
-	void SetPosition(glm::vec3 newPos)
-	{
-		m_position = newPos;
-	}
+	void SetScale(const glm::vec3& scale){m_scale = scale;}
 
-	void SetScale(const glm::vec3& scale)
-	{
-		m_scale = scale;
-	}
-
-	void SetOrientation(float orientation)
-	{
-		m_orientation = orientation;
-	}
+	void SetOrientation(float orientation){m_orientation = orientation;}
 
 protected:
 	std::string m_name;

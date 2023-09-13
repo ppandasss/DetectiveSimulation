@@ -104,12 +104,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\orangeduck\Documents\Capt\CapTusEngine\Engine\External\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Engine\External\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\orangeduck\Documents\Capt\CapTusEngine\Engine\External\Library;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\Engine\External\Library;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -147,6 +147,9 @@
     <ClInclude Include="Code\RenderGameObject.h" />
     <ClInclude Include="Code\Scene.h" />
     <ClInclude Include="Code\Shader.h" />
+    <ClInclude Include="External\Include\GLFW\glfw3.h" />
+    <ClInclude Include="External\Include\GLFW\glfw3native.h" />
+    <ClInclude Include="External\Include\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\transform.fs" />

@@ -35,10 +35,6 @@ public:
 
 	void DrawTexture(unsigned int textureId, const glm::mat4& transform);
 
-	bool IsKeyPressed(int keyCode)
-	{
-		return glfwGetKey(m_window, keyCode) == GLFW_PRESS;
-	}
 
 	glm::vec2  CursorPos()
 	{

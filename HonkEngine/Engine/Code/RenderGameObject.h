@@ -16,7 +16,6 @@ public:
 
 	virtual void Render() override
 	{
-		std::cout << "";
 
 		glm::mat4 model {1};
 

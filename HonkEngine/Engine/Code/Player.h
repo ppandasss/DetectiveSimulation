@@ -17,21 +17,22 @@ public:
 	
 	virtual void Update(float dt)
 	{
-		if (Input::Get().GetKey(GLFW_KEY_A))
+		if (Input::Get().GetKeyDown(GLFW_KEY_A))
 		{
 			m_position.x -= 5.0f * dt;
 
 		}
-		if (Application::Get().IsKeyPressed(GLFW_KEY_D))
+		if (Input::Get().GetKeyDown(GLFW_KEY_D))
 		{
 			m_position.x += 5.0f * dt;
 
 		}
-		if (Application::Get().IsMouseClick(0))
+		if (Input::Get().GetKey(GLFW_MOUSE_BUTTON_1))
 		{
 			mousePos = Application::Get().CursorPos();
 
 			Application::Get().GetCurrentScene()->AddGameObject(new RenderGameObject("Konrai", "Assets/Images/konrai.jpg"));
+			//GameObjects numbers will print out for debuging .It should be only 3 when click
 
 
 			std::cout << "x: " << mousePos.x << " y: " << mousePos.y << std::endl;
