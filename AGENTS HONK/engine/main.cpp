@@ -10,6 +10,7 @@ GLFWwindow* window;
 
 int main()
 {
+
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -20,6 +21,7 @@ int main()
 #endif
 
 	window = glfwCreateWindow(1280, 720, "HONK!", NULL, NULL);
+	
 	if (window == NULL)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -43,10 +45,18 @@ int main()
 	int spriteSheetHeight = 1;
 	CDTMesh* playerMesh = ResourceManager::GetInstance().CreateMeshVertices(spriteSheetWidth, spriteSheetHeight);
 	CDTTex* playerTexture = ResourceManager::GetInstance().SetTexture("waiter_texture.png");
-	Properties playerProps(playerMesh, playerTexture, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f));
+
+	if (playerTexture == nullptr) {
+		// Texture loading failed
+		std::cout << "Failed to load texture: waiter_texture.png" << std::endl;
+		// Add additional error handling here if needed
+	}
+	
+	Properties playerProps(playerMesh, playerTexture, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f),0.0f);
 	Player player(&playerProps,window);
 	while (!glfwWindowShouldClose(window))
 	{
+		
 		double currentTime = glfwGetTime();
 		double dt = currentTime - lastFrameTime;
 		lastFrameTime = currentTime;

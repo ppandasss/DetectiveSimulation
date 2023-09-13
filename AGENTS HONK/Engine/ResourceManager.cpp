@@ -34,6 +34,7 @@ CDTTex* ResourceManager::SetTexture(const std::string& fileName)
 
     CDTTex* pTex = new CDTTex();
     *pTex = TextureLoad(fileName.c_str());
+    std::cout << "Texture Loaded" << std::endl;
 
     TexturesVector[fileName] = pTex;
 
@@ -62,7 +63,10 @@ CDTMesh* ResourceManager::CreateMeshVertices(int spriteSheetWidth, int spriteShe
     vertices.push_back(v4);
 
     *pMesh = CreateMesh(vertices);
+    std::cout << "Mesh Created" << std::endl;
     MeshesVector.push_back(pMesh);
+
+    
 
     return pMesh;
 }
