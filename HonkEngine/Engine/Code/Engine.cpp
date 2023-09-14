@@ -13,7 +13,10 @@ Engine::Engine()
 Engine::~Engine()
 {
 }
-
+float Engine::CreateMesh(float vertices[])
+{
+    return 0;
+}
 int Engine::LoadTexture(std::string path)
 {
     // load and create a texture 

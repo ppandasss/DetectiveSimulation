@@ -1,28 +1,28 @@
 #pragma once
 #pragma once
 
-#include "RenderGameObject.h"
+#include "AnimGameObject.h"
 #include "Engine.h"
 #include <glm/glm.hpp>
 #include "Application.h"
 #include"Scene.h"
 #include "Input.h"
 
-class Player : public RenderGameObject
+class Player : public AnimGameObject
 {
 public:
 	Player(const std::string& name, const std::string& texturePath)
-		: RenderGameObject(name, texturePath)
+		: AnimGameObject(name, texturePath,4,4)
 	{}
 	
 	virtual void Update(float dt)
 	{
-		if (Input::Get().GetKeyDown(GLFW_KEY_A))
+		if (Input::Get().GetKey(GLFW_KEY_A))
 		{
 			m_position.x -= 5.0f * dt;
 
 		}
-		if (Input::Get().GetKeyDown(GLFW_KEY_D))
+		if (Input::Get().GetKey(GLFW_KEY_D))
 		{
 			m_position.x += 5.0f * dt;
 

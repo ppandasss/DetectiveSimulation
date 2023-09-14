@@ -73,7 +73,7 @@ Application::Application()
 
     // build and compile our shader zprogram
     // ------------------------------------
-    m_shader.Initialize("Assets\\Shaders\\transform.vs", "Assets\\Shaders\\transform.fs");
+   m_shader.Initialize("Assets\\Shaders\\transform.vs", "Assets\\Shaders\\transform.fs");
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
