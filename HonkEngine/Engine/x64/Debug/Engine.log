@@ -1,2 +1,37 @@
-﻿  Main.cpp
-  Engine.vcxproj -> C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\x64\Debug\Engine.exe
+﻿  Application.cpp
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(66,8): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(66,8): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(72,3): error C2997: 'Application::vertices': array bound cannot be deduced from a default member initializer
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(66,8): message : see declaration of 'Application::vertices'
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(73,15): error C2229: class 'Application' has an illegal zero-sized array
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(73,15): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(73,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(76,3): error C2997: 'Application::indices': array bound cannot be deduced from a default member initializer
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(73,15): message : see declaration of 'Application::indices'
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(77,9): error C2229: class 'Application' has an illegal zero-sized array
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.cpp(89,35): error C2070: 'float []': illegal sizeof operand
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.cpp(92,43): error C2070: 'unsigned int []': illegal sizeof operand
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.cpp(137,36): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Engine.cpp
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(66,8): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(66,8): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(72,3): error C2997: 'Application::vertices': array bound cannot be deduced from a default member initializer
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(66,8): message : see declaration of 'Application::vertices'
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(73,15): error C2229: class 'Application' has an illegal zero-sized array
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(73,15): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(73,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(76,3): error C2997: 'Application::indices': array bound cannot be deduced from a default member initializer
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(73,15): message : see declaration of 'Application::indices'
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(77,9): error C2229: class 'Application' has an illegal zero-sized array
+  Main.cpp
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(66,8): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(66,8): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(72,3): error C2997: 'Application::vertices': array bound cannot be deduced from a default member initializer
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(66,8): message : see declaration of 'Application::vertices'
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(73,15): error C2229: class 'Application' has an illegal zero-sized array
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(73,15): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(73,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(76,3): error C2997: 'Application::indices': array bound cannot be deduced from a default member initializer
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(73,15): message : see declaration of 'Application::indices'
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(77,9): error C2229: class 'Application' has an illegal zero-sized array
+  Generating Code...

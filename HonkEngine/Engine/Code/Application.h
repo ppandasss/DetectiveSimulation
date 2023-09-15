@@ -11,6 +11,7 @@
 #include "Shader.h"
 #include "Scene.h"
 #include "Input.h"
+#include "Animator.h"
 
 class Application
 {
@@ -63,6 +64,7 @@ private:
 	static Application* s_instance;
 
 	unsigned int VBO, VAO, EBO;
+	Animator m_animator;
 	Shader m_shader;
 	GLFWwindow* m_window;
 	Input m_input;
