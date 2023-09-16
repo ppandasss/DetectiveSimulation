@@ -1,37 +1,17 @@
-﻿  Application.cpp
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(66,8): warning C4200: nonstandard extension used: zero-sized array in struct/union
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(66,8): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(72,3): error C2997: 'Application::vertices': array bound cannot be deduced from a default member initializer
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(66,8): message : see declaration of 'Application::vertices'
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(73,15): error C2229: class 'Application' has an illegal zero-sized array
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(73,15): warning C4200: nonstandard extension used: zero-sized array in struct/union
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(73,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(76,3): error C2997: 'Application::indices': array bound cannot be deduced from a default member initializer
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(73,15): message : see declaration of 'Application::indices'
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(77,9): error C2229: class 'Application' has an illegal zero-sized array
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.cpp(89,35): error C2070: 'float []': illegal sizeof operand
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.cpp(92,43): error C2070: 'unsigned int []': illegal sizeof operand
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.cpp(137,36): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  Engine.cpp
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(66,8): warning C4200: nonstandard extension used: zero-sized array in struct/union
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(66,8): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(72,3): error C2997: 'Application::vertices': array bound cannot be deduced from a default member initializer
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(66,8): message : see declaration of 'Application::vertices'
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(73,15): error C2229: class 'Application' has an illegal zero-sized array
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(73,15): warning C4200: nonstandard extension used: zero-sized array in struct/union
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(73,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(76,3): error C2997: 'Application::indices': array bound cannot be deduced from a default member initializer
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(73,15): message : see declaration of 'Application::indices'
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(77,9): error C2229: class 'Application' has an illegal zero-sized array
-  Main.cpp
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(66,8): warning C4200: nonstandard extension used: zero-sized array in struct/union
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(66,8): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(72,3): error C2997: 'Application::vertices': array bound cannot be deduced from a default member initializer
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(66,8): message : see declaration of 'Application::vertices'
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(73,15): error C2229: class 'Application' has an illegal zero-sized array
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(73,15): warning C4200: nonstandard extension used: zero-sized array in struct/union
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(73,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(76,3): error C2997: 'Application::indices': array bound cannot be deduced from a default member initializer
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(73,15): message : see declaration of 'Application::indices'
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(77,9): error C2229: class 'Application' has an illegal zero-sized array
-  Generating Code...
+﻿  Main.cpp
+glfw3.lib(init.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(init.obj)' or at ''; linking object as if no debug info
+glfw3.lib(window.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(window.obj)' or at ''; linking object as if no debug info
+glfw3.lib(input.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(input.obj)' or at ''; linking object as if no debug info
+glfw3.lib(context.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(context.obj)' or at ''; linking object as if no debug info
+glfw3.lib(win32_init.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(win32_init.obj)' or at ''; linking object as if no debug info
+glfw3.lib(win32_monitor.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(win32_monitor.obj)' or at ''; linking object as if no debug info
+glfw3.lib(win32_time.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(win32_time.obj)' or at ''; linking object as if no debug info
+glfw3.lib(win32_thread.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(win32_thread.obj)' or at ''; linking object as if no debug info
+glfw3.lib(monitor.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(monitor.obj)' or at ''; linking object as if no debug info
+glfw3.lib(vulkan.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(vulkan.obj)' or at ''; linking object as if no debug info
+glfw3.lib(win32_window.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(win32_window.obj)' or at ''; linking object as if no debug info
+glfw3.lib(win32_joystick.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(win32_joystick.obj)' or at ''; linking object as if no debug info
+glfw3.lib(wgl_context.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(wgl_context.obj)' or at ''; linking object as if no debug info
+glfw3.lib(egl_context.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(egl_context.obj)' or at ''; linking object as if no debug info
+glfw3.lib(osmesa_context.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(osmesa_context.obj)' or at ''; linking object as if no debug info
+  Engine.vcxproj -> C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\x64\Debug\Engine.exe

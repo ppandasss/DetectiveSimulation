@@ -1,18 +1,18 @@
 #pragma once
 #pragma once
 
-#include "AnimGameObject.h"
+#include "RenderGameObject.h"
 #include "Engine.h"
 #include <glm/glm.hpp>
 #include "Application.h"
 #include"Scene.h"
 #include "Input.h"
 
-class Player : public AnimGameObject
+class Player : public RenderGameObject
 {
 public:
 	Player(const std::string& name, const std::string& texturePath)
-		: AnimGameObject(name, texturePath,4,4)
+		: RenderGameObject(name, texturePath)
 	{}
 	
 	virtual void Update(float dt)

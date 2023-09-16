@@ -2,7 +2,7 @@
 
 #include "../Scene.h"
 #include "../RenderGameObject.h"
-#include "../AnimGameObject.h"
+
 #include "../Player.h"
 
 class LevelScene : public Scene

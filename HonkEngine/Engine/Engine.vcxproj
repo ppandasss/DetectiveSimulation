@@ -137,8 +137,6 @@
     <ClCompile Include="External\Include\glad\glad.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Code\AnimGameObject.h" />
-    <ClInclude Include="Code\Animator.h" />
     <ClInclude Include="Code\Application.h" />
     <ClInclude Include="Code\GameObject.h" />
     <ClInclude Include="Code\Engine.h" />

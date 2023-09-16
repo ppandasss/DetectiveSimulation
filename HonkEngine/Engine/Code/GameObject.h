@@ -12,6 +12,8 @@ public:
 
 	virtual void Render(){}
 
+	virtual void Clear(){}
+
 	void SetPosition(glm::vec3 newPos){ m_position = newPos; }
 
 	void SetScale(const glm::vec3& scale){m_scale = scale;}

@@ -9,14 +9,19 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include "Shader.h"
+#include "Engine.h"
 #include "Scene.h"
 #include "Input.h"
-#include "Animator.h"
+
+
+// settings
+const unsigned int SCR_WIDTH = 800;
+const unsigned int SCR_HEIGHT = 600;
 
 class Application
 {
 public:
-	Application();
+	Application(int width, int height, const char* title);
 	~Application();
 
 	void AddScene(const std::string& name, Scene* scene)
@@ -58,17 +63,31 @@ public:
 		return m_currentScene;
 	}
 
+	int getVBO()
+	{
+		return VBO;
+	}
+	int getVAO()
+	{
+		return VAO;
+	}
+
+	int getEBO()
+	{
+		return EBO;
+	}
+
+
 
 
 private:
+
 	static Application* s_instance;
 
 	unsigned int VBO, VAO, EBO;
-	Animator m_animator;
 	Shader m_shader;
 	GLFWwindow* m_window;
 	Input m_input;
-
 	Scene* m_currentScene = nullptr;
 	std::map<std::string, Scene*> m_sceneMap;
 

@@ -35,7 +35,7 @@ Application::~Application()
     glfwTerminate();
 }
 
-Application::Application()
+Application::Application(int win_width, int win_height, const char* title)
 {
     std::cout << "Application Constructor\n";
 
@@ -53,7 +53,7 @@ Application::Application()
 
     // glfw window creation
     // --------------------
-    m_window = glfwCreateWindow(1280, 720, "LearnOpenGL", NULL, NULL);
+    m_window = glfwCreateWindow(win_height, win_width,title, NULL, NULL);
     if (m_window == NULL)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
@@ -70,35 +70,9 @@ Application::Application()
     }
 
     m_input.Initialize(m_window);
-
-    // build and compile our shader zprogram
-    // ------------------------------------
-   m_shader.Initialize("Assets\\Shaders\\transform.vs", "Assets\\Shaders\\transform.fs");
+    Initialize(SCR_WIDTH,SCR_HEIGHT);
 
 
-    unsigned int indices[] = {
-        0, 1, 3, // first triangle
-        1, 2, 3  // second triangle
-    };
-
-    glGenVertexArrays(1, &VAO);
-    glGenBuffers(1, &VBO);
-    glGenBuffers(1, &EBO);
-
-    glBindVertexArray(VAO);
-
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-
-    // position attribute
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
-    glEnableVertexAttribArray(0);
-    // texture coord attribute
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
-    glEnableVertexAttribArray(1);
 
 }
 

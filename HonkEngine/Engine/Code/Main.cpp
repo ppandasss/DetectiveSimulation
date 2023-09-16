@@ -1,3 +1,6 @@
+#define WIN_WIDTH  1400
+#define WIN_HEIGHT 1050
+#define NAME    "Ticking Tea Pang Cha"
 
 
 
@@ -18,13 +21,11 @@
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
 
-// settings
-const unsigned int SCR_WIDTH = 800;
-const unsigned int SCR_HEIGHT = 600;
+
 
 int main()
 {
-    Application game;
+    Application game(WIN_WIDTH, WIN_HEIGHT, NAME);
 
     game.AddScene("start", new LevelScene());
     game.SetScene("start");
