@@ -22,6 +22,7 @@ class Application
 {
 public:
 	Application(int width, int height, const char* title);
+
 	~Application();
 
 	void AddScene(const std::string& name, Scene* scene)
@@ -39,7 +40,7 @@ public:
 
 	static Application& Get() { return *s_instance; }
 
-	void DrawTexture(unsigned int textureId, const glm::mat4& transform);
+	//void DrawTexture(unsigned int textureId, const glm::mat4& transform);
 
 
 	glm::vec2  CursorPos()
@@ -63,20 +64,9 @@ public:
 		return m_currentScene;
 	}
 
-	int getVBO()
-	{
-		return VBO;
+	Shader& GetShader() {
+		return m_shader;
 	}
-	int getVAO()
-	{
-		return VAO;
-	}
-
-	int getEBO()
-	{
-		return EBO;
-	}
-
 
 
 
@@ -84,7 +74,6 @@ private:
 
 	static Application* s_instance;
 
-	unsigned int VBO, VAO, EBO;
 	Shader m_shader;
 	GLFWwindow* m_window;
 	Input m_input;

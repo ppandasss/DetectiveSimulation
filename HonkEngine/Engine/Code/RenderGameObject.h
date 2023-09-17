@@ -10,9 +10,8 @@ class RenderGameObject : public GameObject
 {
 public:
 	RenderGameObject(const std::string& name, const std::string& texturePath)
-		: GameObject(name)
+		: GameObject(name),textureId(LoadTexture(texturePath))
 	{
-		*textureId = LoadTexture(texturePath);
 		std::vector<Vertex> vertices;
 		Vertex v1, v2, v3, v4;
 
@@ -30,25 +29,44 @@ public:
 		vertices.push_back(v1);
 		vertices.push_back(v3);
 		vertices.push_back(v4);
-		*meshVert = CreateMesh(vertices);
+
+		//textureId = LoadTexture(texturePath);
+
+		meshVert = CreateMesh(vertices);
+
+		glm::mat4 rMat = glm::mat4(1.0f);
+		glm::mat4 sMat = glm::mat4(1.0f);
+		glm::mat4 tMat = glm::mat4(1.0f);
+
+		rMat = glm::translate(model, m_position);
+		sMat = glm::rotate(model, m_orientation, glm::vec3(0, 0, 1));
+		tMat = glm::scale(model, m_scale);
+
+		model =  tMat * sMat * rMat;
 
 	}
 
 
 	virtual void Render() override
 	{
-		model = glm::translate(model, m_position);
-		model = glm::rotate(model, m_orientation, glm::vec3(0, 0, 1));
-		model = glm::scale(model, m_scale);
-
-		Application::Get().DrawTexture(*textureId, model);
+		
+		SetRenderMode(CDT_TEXTURE, 1.0f);
+		std::cout << "Render::TextureID " << textureId << std::endl;
+		SetTexture(textureId, 0.0f, 0.0f);
+		DrawMesh(meshVert);
+		//plication::Get().DrawTexture(*textureId, model);
 		//Engine::DrawTexture(texture_id, glm::mat4{1});
+	}
+
+	virtual void Clear() 
+	{
+		UnloadMesh(meshVert);
 	}
 
 private:
 
-	Tex* textureId;
-	Mesh* meshVert;
+	Tex textureId;
+	Mesh meshVert;
 	glm::mat4 model {1};
 
 };

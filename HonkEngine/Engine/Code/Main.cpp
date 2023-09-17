@@ -1,5 +1,5 @@
-#define WIN_WIDTH  1400
-#define WIN_HEIGHT 1050
+#define WIN_WIDTH  800
+#define WIN_HEIGHT 600
 #define NAME    "Ticking Tea Pang Cha"
 
 

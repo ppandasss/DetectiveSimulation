@@ -28,20 +28,18 @@ Application::~Application()
         delete scene.second;
     }
 
-    glDeleteVertexArrays(1, &VAO);
-    glDeleteBuffers(1, &VBO);
-    glDeleteBuffers(1, &EBO);
-
     glfwTerminate();
 }
 
 Application::Application(int win_width, int win_height, const char* title)
 {
+   
+
     std::cout << "Application Constructor\n";
 
     s_instance = this;
     // glfw: initialize and configure
-// ------------------------------
+    // ------------------------------
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -53,7 +51,7 @@ Application::Application(int win_width, int win_height, const char* title)
 
     // glfw window creation
     // --------------------
-    m_window = glfwCreateWindow(win_height, win_width,title, NULL, NULL);
+    m_window = glfwCreateWindow(win_width,win_height,title, NULL, NULL);
     if (m_window == NULL)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
@@ -68,7 +66,7 @@ Application::Application(int win_width, int win_height, const char* title)
     {
         std::cout << "Failed to initialize GLAD" << std::endl;
     }
-
+    m_shader.Initialize("Assets/Shaders/transform.vs", "Assets/Shaders/transform.fs");
     m_input.Initialize(m_window);
     Initialize(SCR_WIDTH,SCR_HEIGHT);
 
@@ -81,8 +79,7 @@ void Application::Run()
     
     std::cout << "Application Run\n";
 
-    m_shader.use();
-    m_shader.setInt("texture1", 0);
+    
     //ourShader.setInt("texture2", 1);
 
     double lastFrameTime = glfwGetTime();
@@ -162,23 +159,4 @@ void Application::Run()
 
 }
 
-void Application::DrawTexture(unsigned int textureId, const glm::mat4& transform)
-{
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, textureId);
 
-    // create transformations
-    //glm::mat4 transform = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
-    //transform = glm::translate(transform, glm::vec3(0.5f, -0.5f, 0.0f));
-    //transform = glm::rotate(transform, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
-
-
-    // get matrix's uniform location and set matrix
-    m_shader.use();
-    unsigned int transformLoc = glGetUniformLocation(m_shader.ID, "transform");
-    glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
-
-    // render container
-    glBindVertexArray(VAO);
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-}

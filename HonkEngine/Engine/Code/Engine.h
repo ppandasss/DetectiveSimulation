@@ -14,6 +14,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include"Shader.h"
+#include "Application.h"
 
 
 struct Vertex {
@@ -36,14 +37,15 @@ typedef GLuint Tex;
 
 
     void Initialize(int width, int height);
-    int LoadTexture(std::string path);
+    Tex LoadTexture(std::string path);
     Mesh CreateMesh(std::vector<Vertex> in_vertices);
     void UnloadMesh(Mesh& mesh);
 
      void SetRenderMode(int mode, float alpha);
-     void SetTexture(unsigned int tex, float offsetX, float offsetY);
+     void SetTexture(Tex tex, float offsetX, float offsetY);
      void SetTransform(const glm::mat4& modelMat);
      void DrawMesh(const Mesh& mesh);
+     void DrawTexture(unsigned int textureId, const glm::mat4& transform);
     
 
   

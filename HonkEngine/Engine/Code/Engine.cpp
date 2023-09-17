@@ -33,9 +33,11 @@ void Initialize(int width, int height) {
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    m_shader.Initialize("color_tex_transparency.vert", "color_tex_transparency.frag");
+    m_shader = Application::Get().GetShader();
     m_blankTex = LoadTexture("awesomeface.png");
     m_tranparency = 1.0f;
+
+
 
     // set cam, model view proj matrix
      cdt_camPos = glm::vec3(0.0f, 0.0f, 0.0f);
@@ -77,11 +79,11 @@ Mesh CreateMesh(std::vector<Vertex> in_vertices)
 
     return mesh;
 }
-int LoadTexture(std::string path)
+Tex LoadTexture(std::string path)
 {
     // load and create a texture 
     // -------------------------
-    unsigned int texture1;
+    Tex texture1;
   
     glGenTextures(1, &texture1);
     glBindTexture(GL_TEXTURE_2D, texture1);
@@ -98,14 +100,17 @@ int LoadTexture(std::string path)
     if (data)
     {
         int alpha = nrChannels == 4 ? GL_RGBA : GL_RGB;
-
         glTexImage2D(GL_TEXTURE_2D, 0, alpha, width, height, 0, alpha, GL_UNSIGNED_BYTE, data);
         glGenerateMipmap(GL_TEXTURE_2D);
     }
     else
     {
-        std::cout << "Failed to load texture" << std::endl;
+        std::cerr << "Failed to load texture: " << path << std::endl;
+        // Consider returning a default texture or taking appropriate action.
+        // Returning 0 (an invalid texture ID) as an example.
+        return 0;
     }
+    std::cout << "Texture ID from LoadTexture: " << texture1 << std::endl;
     stbi_image_free(data);
 
     return texture1;
@@ -129,6 +134,7 @@ void SetTexture(Tex tex, float offsetX, float offsetY) {
 
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, tex);
+    std::cout << "SetTextue::TextureID " << tex << std::endl;
     m_shader.setInt("tex1", 0); 
 }
 
@@ -140,8 +146,38 @@ void SetTransform(const glm::mat4& modelMat) {
 
 void DrawMesh(const Mesh& mesh) {
 
+    m_shader.use();
     glBindVertexArray(mesh.vaoHandle);
     glDrawArrays(GL_TRIANGLES, 0, mesh.vertices.size());
 
     glBindVertexArray(0);
 }
+
+void UnloadMesh(Mesh& mesh)
+{
+    glDeleteBuffers(1, &mesh.vertexBuffer);
+    glDeleteVertexArrays(1, &mesh.vaoHandle);
+
+    mesh.vertices.clear();
+}
+
+/*void DrawTexture(unsigned int textureId, const glm::mat4& transform)
+{
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, textureId);
+
+    // create transformations
+    //glm::mat4 transform = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    //transform = glm::translate(transform, glm::vec3(0.5f, -0.5f, 0.0f));
+    //transform = glm::rotate(transform, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
+
+
+    // get matrix's uniform location and set matrix
+    m_shader.use();
+    unsigned int transformLoc = glGetUniformLocation(m_shader.ID, "transform");
+    glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+
+    // render container
+    //lBindVertexArray(&mesh.vaoHandle);
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+}*/
