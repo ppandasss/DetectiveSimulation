@@ -12,11 +12,11 @@ public:
 	Room1()
 	{
 	
-		GameObject* bank = new RenderGameObject("Boss", "Assets/Images/awesomeface.png");
+		//GameObject* bank = new RenderGameObject("Boss", "Assets/Images/awesomeface.png");
 
 
 		
-		m_gameObjects.push_back(bank);
+		//m_gameObjects.push_back(bank);
 
 
 	}

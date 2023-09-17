@@ -1,2 +1,3 @@
-﻿  Main.cpp
-  Engine.vcxproj -> I:\Captain'sWork\DetectiveSimulation\HonkEngine\x64\Debug\Engine.exe
+﻿  Application.cpp
+E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\Application.cpp(110,36): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Engine.vcxproj -> E:\GameEngine\DetectiveSimulation\HonkEngine\x64\Debug\Engine.exe

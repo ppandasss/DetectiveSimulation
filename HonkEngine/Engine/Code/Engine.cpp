@@ -34,7 +34,7 @@ void Initialize(int width, int height) {
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     m_shader = Application::Get().GetShader();
-    m_blankTex = LoadTexture("awesomeface.png");
+    m_blankTex = LoadTexture("Assets/Images/awesomeface.png");
     m_tranparency = 1.0f;
 
 
