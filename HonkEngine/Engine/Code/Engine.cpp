@@ -104,7 +104,14 @@ Tex TextureLoad(std::string path)
     glTexImage2D(GL_TEXTURE_2D, 0, format, texWidth, texHeight, 0, format, GL_UNSIGNED_BYTE, pData);
 
     stbi_image_free(pData); // Free the image data after uploading it to OpenGL.
-    std::cout << "TextureLoad::TextureID " << texture << std::endl;
+
+    if (texture == 0)
+    {
+        std::cerr << "Failed to load texture from path: " << path << std::endl;
+        return 0;
+    }
+
+   
     return texture;
 }
 
@@ -128,6 +135,7 @@ void SetRenderMode(int mode, float alpha) {
 void SetTexture(Tex tex, float offsetX, float offsetY) {
 
     std::cout << "SetTexture::TextureID " << tex << std::endl;
+    m_shader.use();
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, tex);
 	m_shader.setInt("tex1", 0);  // Set integer uniform

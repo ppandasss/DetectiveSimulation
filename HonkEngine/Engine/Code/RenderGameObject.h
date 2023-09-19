@@ -31,6 +31,7 @@ public:
 		vertices.push_back(v4);
 
 		texture_Id = TextureLoad(texturePath);
+		std::cout << "TextureLoad::TextureID " << texture_Id << std::endl;
 
 		meshVert = CreateMesh(vertices);
 

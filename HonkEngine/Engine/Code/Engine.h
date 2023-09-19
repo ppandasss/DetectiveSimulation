@@ -29,6 +29,7 @@ struct Mesh {
     unsigned int vaoHandle;
 
 };
+
 typedef GLuint Tex;
 
 #define CDT_COLOR 0
@@ -37,7 +38,7 @@ typedef GLuint Tex;
 
 
     void Initialize(int width, int height);
-    Tex TextureLoad(std::string path);
+    Tex TextureLoad(const std::string path);
     void TextureUnload(Tex& tex);
 
     Mesh CreateMesh(std::vector<Vertex> in_vertices);

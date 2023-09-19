@@ -64,9 +64,6 @@ public:
 		return m_currentScene;
 	}
 
-	Shader& GetShader() {
-		return m_shader;
-	}
 
 
 
