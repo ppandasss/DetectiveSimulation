@@ -25,7 +25,7 @@ void processInput(GLFWwindow* window);
 
 int main()
 {
-    Application game(WIN_WIDTH, WIN_HEIGHT, NAME);
+   Application game(WIN_WIDTH, WIN_HEIGHT, NAME);
 
     game.AddScene("start", new LevelScene());
     game.SetScene("start");
@@ -34,4 +34,6 @@ int main()
     game.Run();
 
     return 0;
+
+
 }

@@ -33,8 +33,8 @@ void Initialize(int width, int height) {
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    m_shader = Application::Get().GetShader();
-    m_blankTex = LoadTexture("Assets/Images/awesomeface.png");
+    m_shader.Initialize("Assets/Shaders/color_tex_transparency.vert", "Assets/Shaders/color_tex_transparency.frag");
+    m_blankTex = TextureLoad("Assets/Images/awesomeface.png");
     m_tranparency = 1.0f;
 
 
@@ -79,41 +79,39 @@ Mesh CreateMesh(std::vector<Vertex> in_vertices)
 
     return mesh;
 }
-Tex LoadTexture(std::string path)
+Tex TextureLoad(std::string path)
 {
-    // load and create a texture 
-    // -------------------------
-    Tex texture1;
-  
-    glGenTextures(1, &texture1);
-    glBindTexture(GL_TEXTURE_2D, texture1);
-    // set the texture wrapping parameters
+    Tex texture;
+
+    int texWidth, texHeight, channels;
+    //stbi_set_flip_vertically_on_load(false); // STB Image loads images upside-down by default ?
+
+    unsigned char* pData = stbi_load(path.c_str(), &texWidth, &texHeight, &channels, 0);
+    if (!pData)
+    {
+        // Handle error, e.g., by returning a default texture or logging the error.
+        return 0; // Return an invalid texture ID.
+    }
+
+    glGenTextures(1, &texture);
+    glBindTexture(GL_TEXTURE_2D, texture);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    // set texture filtering parameters
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    // load image, create texture and generate mipmaps
-    int width, height, nrChannels;
-    stbi_set_flip_vertically_on_load(true); // tell stb_image.h to flip loaded texture's on the y-axis.
-    unsigned char* data = stbi_load(path.c_str() , &width, &height, &nrChannels, 0);
-    if (data)
-    {
-        int alpha = nrChannels == 4 ? GL_RGBA : GL_RGB;
-        glTexImage2D(GL_TEXTURE_2D, 0, alpha, width, height, 0, alpha, GL_UNSIGNED_BYTE, data);
-        glGenerateMipmap(GL_TEXTURE_2D);
-    }
-    else
-    {
-        std::cerr << "Failed to load texture: " << path << std::endl;
-        // Consider returning a default texture or taking appropriate action.
-        // Returning 0 (an invalid texture ID) as an example.
-        return 0;
-    }
-    std::cout << "Texture ID from LoadTexture: " << texture1 << std::endl;
-    stbi_image_free(data);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    Tex format = (channels == 4) ? GL_RGBA : GL_RGB;
 
-    return texture1;
+    glTexImage2D(GL_TEXTURE_2D, 0, format, texWidth, texHeight, 0, format, GL_UNSIGNED_BYTE, pData);
+
+    stbi_image_free(pData); // Free the image data after uploading it to OpenGL.
+    std::cout << "TextureLoad::TextureID " << texture << std::endl;
+    return texture;
+}
+
+void TextureUnload(Tex& tex)
+{
+	glDeleteTextures(1, &tex);
+	tex = 0;
 }
 
 void SetRenderMode(int mode, float alpha) {
@@ -129,13 +127,12 @@ void SetRenderMode(int mode, float alpha) {
 
 void SetTexture(Tex tex, float offsetX, float offsetY) {
 
-    m_shader.setFloat("offsetX", offsetX);  // Set float uniform
-    m_shader.setFloat("offsetY", offsetY);  // Set float uniform
-
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, tex);
-    std::cout << "SetTextue::TextureID " << tex << std::endl;
-    m_shader.setInt("tex1", 0); 
+    std::cout << "SetTexture::TextureID " << tex << std::endl;
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, tex);
+	m_shader.setInt("tex1", 0);  // Set integer uniform
+	m_shader.setFloat("offsetX", offsetX);  // Set float uniform
+	m_shader.setFloat("offsetY", offsetY);  // Set float uniform
 }
 
 void SetTransform(const glm::mat4& modelMat) {
@@ -161,6 +158,15 @@ void UnloadMesh(Mesh& mesh)
     mesh.vertices.clear();
 }
 
+
+
+int GetWindowWidth() {
+	return m_windowWidth;
+}
+
+int GetWindowHeight() {
+	return m_windowHeight;
+}
 /*void DrawTexture(unsigned int textureId, const glm::mat4& transform)
 {
     glActiveTexture(GL_TEXTURE0);
@@ -181,3 +187,96 @@ void UnloadMesh(Mesh& mesh)
     //lBindVertexArray(&mesh.vaoHandle);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }*/
+
+void MoveCam(float dx, float dy)
+{
+	cdt_camPos.x += dx;
+	cdt_camPos.y += dy;
+
+	cdt_ViewMatrix = glm::lookAt(cdt_camPos, cdt_camPos + cdt_camdir, cdt_camup);
+}
+
+void ZoomIn(float step)
+{
+	cdt_camzoom += step;
+
+	cdt_ProjectionMatrix = glm::ortho(-(m_windowWidth / 2) * cdt_camzoom, (m_windowWidth / 2) * cdt_camzoom, -(m_windowHeight / 2) * cdt_camzoom, (m_windowHeight / 2) * cdt_camzoom, -10.0f, 10.0f);
+}
+
+void ZoomOut(float step)
+{
+	cdt_camzoom -= step;
+
+	cdt_ProjectionMatrix = glm::ortho(-(m_windowWidth / 2) * cdt_camzoom, (m_windowWidth / 2) * cdt_camzoom, -(m_windowHeight / 2) * cdt_camzoom, (m_windowHeight / 2) * cdt_camzoom, -10.0f, 10.0f);
+}
+
+void RotateCam(float degree)
+{
+	cdt_camdegree += degree;
+
+	glm::vec3 newUp;
+	newUp.x = -1 * glm::sin(glm::radians(cdt_camdegree));
+	newUp.y = glm::cos(glm::radians(cdt_camdegree));
+	newUp.z = cdt_camup.z;
+
+	cdt_camup = newUp;
+
+	cdt_ViewMatrix = glm::lookAt(cdt_camPos, cdt_camPos + cdt_camdir, cdt_camup);
+}
+
+void ResetCam()
+{
+	cdt_camPos = glm::vec3(0.0f, 0.0f, 0.0f);
+	cdt_camdir = glm::vec3(0.0f, 0.0f, -1.0f);
+	cdt_camup = glm::vec3(0.0f, 1.0f, 0.0f);
+
+	cdt_ViewMatrix = glm::lookAt(cdt_camPos, cdt_camPos + cdt_camdir, cdt_camup);
+}
+
+void SetCamPosition(float xpos, float ypos)
+{
+	cdt_camPos.x = xpos;
+	cdt_camPos.y = ypos;
+
+	cdt_ViewMatrix = glm::lookAt(cdt_camPos, cdt_camPos + cdt_camdir, cdt_camup);
+}
+
+void SetCamZoom(float zoom)
+{
+	cdt_camzoom = zoom;
+	if (cdt_camzoom < 0.1f) { cdt_camzoom = 0.1f; }
+
+	cdt_ProjectionMatrix = glm::ortho(-(m_windowWidth / 2) * cdt_camzoom, (m_windowWidth / 2) * cdt_camzoom, -(m_windowHeight / 2) * cdt_camzoom, (m_windowHeight / 2) * cdt_camzoom, -10.0f, 10.0f);
+	cdt_ViewMatrix = glm::lookAt(cdt_camPos, cdt_camPos + cdt_camdir, cdt_camup);
+}
+
+void SetCamRotation(float degree)
+{
+	cdt_camdegree = degree;
+
+	glm::vec3 newUp;
+	newUp.x = -1 * glm::sin(glm::radians(cdt_camdegree));
+	newUp.y = glm::cos(glm::radians(cdt_camdegree));
+	newUp.z = cdt_camup.z;
+
+	cdt_camup = newUp;
+
+	cdt_ViewMatrix = glm::lookAt(cdt_camPos, cdt_camPos + cdt_camdir, cdt_camup);
+}
+
+int GetCamPosX()
+{
+	return cdt_camPos.x;
+}
+
+int GetCamPosY()
+{
+	return cdt_camPos.y;
+}
+
+void SetCamPos(float x, float y)
+{
+	cdt_camPos.x = x;
+	cdt_camPos.y = y;
+}
+

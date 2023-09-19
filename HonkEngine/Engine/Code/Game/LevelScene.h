@@ -9,8 +9,8 @@ class LevelScene : public Scene
 {
 public:
 	LevelScene()
-	{
-		Player* boss = new Player("Boss", "Assets/Images/spritesheet_test.png");
+	{ 
+		RenderGameObject* boss = new RenderGameObject("Boss", "Assets/Images/spritesheet_test.png");
 		//GameObject* cabin = new RenderGameObject("Cabin", "Assets/Images/Cabin.png");
 
 		

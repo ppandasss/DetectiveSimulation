@@ -1,4 +1,5 @@
 #include "Application.h"
+#include"RenderGameObject.h"
 
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes
 // ---------------------------------------------------------------------------------------------
@@ -56,6 +57,7 @@ Application::Application(int win_width, int win_height, const char* title)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
+        
     }
     glfwMakeContextCurrent(m_window);
     glfwSetFramebufferSizeCallback(m_window, framebuffer_size_callback);
@@ -66,8 +68,7 @@ Application::Application(int win_width, int win_height, const char* title)
     {
         std::cout << "Failed to initialize GLAD" << std::endl;
     }
-    m_shader.Initialize("Assets/Shaders/transform.vs", "Assets/Shaders/transform.fs");
-    m_input.Initialize(m_window);
+    
     Initialize(SCR_WIDTH,SCR_HEIGHT);
 
 
@@ -121,6 +122,8 @@ void Application::Run()
         if (m_currentScene)
             m_currentScene->Render();
 
+    
+
         /*
         // bind textures on corresponding texture units
         glActiveTexture(GL_TEXTURE0);
@@ -144,6 +147,7 @@ void Application::Run()
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
                 */
+    
 
         glfwSwapBuffers(m_window);
         glfwPollEvents();

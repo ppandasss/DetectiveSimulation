@@ -13,7 +13,8 @@ class Player : public RenderGameObject
 public:
 	Player(const std::string& name, const std::string& texturePath)
 		: RenderGameObject(name, texturePath)
-	{}
+	{
+	}
 	
 	virtual void Update(float dt)
 	{
@@ -41,6 +42,7 @@ public:
 		{
 			Application::Get().SetScene("room1");
 		}
+
 		
 	}
 

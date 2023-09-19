@@ -73,8 +73,6 @@ public:
 private:
 
 	static Application* s_instance;
-
-	Shader m_shader;
 	GLFWwindow* m_window;
 	Input m_input;
 	Scene* m_currentScene = nullptr;
