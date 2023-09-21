@@ -24,5 +24,6 @@ public:
 private:
 	static Input* s_instance;
 	GLFWwindow* m_window = nullptr;
+
 };
 

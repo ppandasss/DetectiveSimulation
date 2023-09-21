@@ -1,5 +1,1 @@
-﻿  Application.cpp
-I:\Captain'sWork\DetectiveSimulation\HonkEngine\Engine\Code\Application.cpp(121,36): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  Main.cpp
-  Generating Code...
-  Engine.vcxproj -> I:\Captain'sWork\DetectiveSimulation\HonkEngine\x64\Debug\Engine.exe
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(439,5): error MSB8020: The build tools for v143 (Platform Toolset = 'v143') cannot be found. To build using the v143 build tools, please install v143 build tools.  Alternatively, you may upgrade to the current Visual Studio tools by selecting the Project menu or right-click the solution, and then selecting "Retarget solution".
