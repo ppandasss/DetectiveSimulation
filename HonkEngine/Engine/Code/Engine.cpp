@@ -1,12 +1,18 @@
 #include "Engine.h"
+#include <vector>
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
+const char* SHADER_VERTEX_PATH = "Assets/Shaders/color_tex_transparency.vert";
+const char* SHADER_FRAGMENT_PATH = "Assets/Shaders/color_tex_transparency.frag";
+const std::string TEXTURE_PATH = "Assets/Images/awesomeface.png";
+
 int m_windowWidth;
-int m_windowHeight;
-int m_programID;
+int m_windowHeight; 
 Shader m_shader;
 Tex m_blankTex;
 float m_tranparency;
@@ -20,6 +26,9 @@ glm::mat4	cdt_ViewMatrix;
 glm::mat4	cdt_ProjectionMatrix;
 glm::mat4	cdt_MVP;
 
+const float NEAR_PLANE = 0.1f;
+const float FAR_PLANE = 10.0f;
+
 void Initialize(int width, int height) {
    
     srand(time(NULL));
@@ -30,24 +39,35 @@ void Initialize(int width, int height) {
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     glDisable(GL_DEPTH_TEST);
     glDisable(GL_CULL_FACE);
+
+
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    m_shader.Initialize("Assets/Shaders/color_tex_transparency.vert", "Assets/Shaders/color_tex_transparency.frag");
-    m_blankTex = TextureLoad("Assets/Images/awesomeface.png");
+    m_shader.Initialize(SHADER_VERTEX_PATH, SHADER_FRAGMENT_PATH);
+    m_blankTex = TextureLoad(TEXTURE_PATH);
     m_tranparency = 1.0f;
 
 
 
     // set cam, model view proj matrix
-     cdt_camPos = glm::vec3(0.0f, 0.0f, 0.0f);
+    cdt_camPos = glm::vec3(0.0f, 0.0f, 0.0f);
     cdt_camdir = glm::vec3(0.0f, 0.0f, -1.0f);
     cdt_camup = glm::vec3(0.0f, 1.0f, 0.0f);
     cdt_camzoom = 1.0f;
     cdt_camdegree = 0.0f;
-    cdt_ProjectionMatrix = glm::ortho(-(m_windowWidth / 2) * cdt_camzoom, (m_windowWidth / 2) * cdt_camzoom, -(m_windowHeight / 2) * cdt_camzoom, (m_windowHeight / 2) * cdt_camzoom, -10.0f, 10.0f);
+    cdt_ProjectionMatrix = glm::ortho(-(m_windowWidth / 2) * cdt_camzoom, (m_windowWidth / 2) * cdt_camzoom, -(m_windowHeight / 2) * cdt_camzoom, (m_windowHeight / 2) * cdt_camzoom, NEAR_PLANE, FAR_PLANE);
     cdt_ViewMatrix = glm::lookAt(cdt_camPos, cdt_camPos + cdt_camdir, cdt_camup);
+    //PrintMatrix(cdt_ProjectionMatrix);
+}
 
+void PrintMatrix(const glm::mat4& mat) {
+    for (int i = 0; i < 4; ++i) {
+        for (int j = 0; j < 4; ++j) {
+            std::cout << mat[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
 }
 
 
@@ -67,19 +87,19 @@ Mesh CreateMesh(std::vector<Vertex> in_vertices)
 
     // Set up vertex attribute pointers
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, x));
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), BUFFER_OFFSET(0));
 
     glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, r));
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), BUFFER_OFFSET(12));
 
     glEnableVertexAttribArray(2);
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, u));
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), BUFFER_OFFSET(24));
 
     glBindVertexArray(0);
 
     return mesh;
 }
-Tex TextureLoad(std::string path)
+Tex TextureLoad(const std::string path)
 {
     Tex texture;
 
@@ -89,8 +109,8 @@ Tex TextureLoad(std::string path)
     unsigned char* pData = stbi_load(path.c_str(), &texWidth, &texHeight, &channels, 0);
     if (!pData)
     {
-        // Handle error, e.g., by returning a default texture or logging the error.
-        return 0; // Return an invalid texture ID.
+        std::cerr << "Failed to load texture. Reason: " << stbi_failure_reason() << std::endl;
+        return 0;
     }
 
     glGenTextures(1, &texture);
@@ -99,7 +119,7 @@ Tex TextureLoad(std::string path)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    Tex format = (channels == 4) ? GL_RGBA : GL_RGB;
+    GLint format = (channels == 4) ? GL_RGBA : GL_RGB;
 
     glTexImage2D(GL_TEXTURE_2D, 0, format, texWidth, texHeight, 0, format, GL_UNSIGNED_BYTE, pData);
 
@@ -111,14 +131,14 @@ Tex TextureLoad(std::string path)
         return 0;
     }
 
-   
+    std::cout << "TextureLoad::TextureID " << texture << std::endl;
     return texture;
 }
 
 void TextureUnload(Tex& tex)
 {
 	glDeleteTextures(1, &tex);
-	tex = 0;
+	tex = GL_INVALID_INDEX;
 }
 
 void SetRenderMode(int mode, float alpha) {
@@ -128,14 +148,13 @@ void SetRenderMode(int mode, float alpha) {
     m_shader.setFloat("alpha", alpha);  // Set float uniform
 
     // default setting
-    SetTexture(m_blankTex, 0.0f, 0.0f);
-    SetTransform(glm::mat4(1.0f));
+    //SetTexture(m_blankTex, 0.0f, 0.0f);
+    //SetTransform(glm::mat4(1.0f));
 }
 
 void SetTexture(Tex tex, float offsetX, float offsetY) {
 
     std::cout << "SetTexture::TextureID " << tex << std::endl;
-    m_shader.use();
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, tex);
 	m_shader.setInt("tex1", 0);  // Set integer uniform
@@ -143,15 +162,26 @@ void SetTexture(Tex tex, float offsetX, float offsetY) {
 	m_shader.setFloat("offsetY", offsetY);  // Set float uniform
 }
 
-void SetTransform(const glm::mat4& modelMat) {
+void SetTransform(const glm::mat4 &modelMat) {
 
     cdt_MVP = cdt_ProjectionMatrix * cdt_ViewMatrix * modelMat;
+    std::cout << "Model matrix at start of SetTransform method:\n";
+    PrintMatrix(modelMat);
+    std::cout << "Proj matrix at start of SetTransform method:\n";
+    PrintMatrix(cdt_ProjectionMatrix);
+    std::cout << "View matrix at start of SetTransform method:\n";
+    PrintMatrix(cdt_ViewMatrix);
+    std::cout << "MVP matrix at start of SetTransform method:\n";
+    PrintMatrix(cdt_MVP);
     glUniformMatrix4fv(glGetUniformLocation(m_shader.ID, "MVP"), 1, GL_FALSE, &cdt_MVP[0][0]);
+   int errocode =  glGetError();
+
+   std::cout << "Error code" << errocode << std::endl;
 }
 
 void DrawMesh(const Mesh& mesh) {
+    std::cout << " DrawMesh method called:\n";
 
-    m_shader.use();
     glBindVertexArray(mesh.vaoHandle);
     glDrawArrays(GL_TRIANGLES, 0, mesh.vertices.size());
 
@@ -165,6 +195,7 @@ void UnloadMesh(Mesh& mesh)
 
     mesh.vertices.clear();
 }
+
 
 
 
@@ -272,12 +303,12 @@ void SetCamRotation(float degree)
 	cdt_ViewMatrix = glm::lookAt(cdt_camPos, cdt_camPos + cdt_camdir, cdt_camup);
 }
 
-int GetCamPosX()
+float GetCamPosX()
 {
 	return cdt_camPos.x;
 }
 
-int GetCamPosY()
+float GetCamPosY()
 {
 	return cdt_camPos.y;
 }

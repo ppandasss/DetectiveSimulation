@@ -67,12 +67,16 @@ public:
         // delete the shaders as they're linked into our program now and no longer necessary
         glDeleteShader(vertex);
         glDeleteShader(fragment);
+
+        std::cout << "Shader Compiled ID : " << ID<< std::endl;
     }
     // activate the shader
     // ------------------------------------------------------------------------
     void use()
     {
+        glGetError();
         glUseProgram(ID);
+        //std::cout << "Using Shader ID: " << ID << std::endl;
     }
     // utility uniform functions
     // ------------------------------------------------------------------------

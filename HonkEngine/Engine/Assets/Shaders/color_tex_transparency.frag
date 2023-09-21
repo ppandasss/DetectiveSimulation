@@ -22,4 +22,5 @@ void main( void )
 	}
 
 	Color0 = finalColor;
+
 }

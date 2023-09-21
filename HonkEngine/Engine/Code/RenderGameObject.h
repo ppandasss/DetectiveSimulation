@@ -31,33 +31,32 @@ public:
 		vertices.push_back(v4);
 
 		texture_Id = TextureLoad(texturePath);
-		std::cout << "TextureLoad::TextureID " << texture_Id << std::endl;
-
 		meshVert = CreateMesh(vertices);
 
+		std::cout << "RenderObject Created: " << m_name << std::endl;
 
 	}
 
 	virtual void Update(float dt)
 	{
-		//std::cout << "Update::TextureID " << textureId << std::endl;
+		std::cout << "RenderObjectUpdated: " << m_name << std::endl;
 
 		glm::mat4 rMat = glm::mat4(1.0f);
 		glm::mat4 sMat = glm::mat4(1.0f);
 		glm::mat4 tMat = glm::mat4(1.0f);
 
-		rMat = glm::translate(model, m_position);
-		sMat = glm::rotate(model, m_orientation, glm::vec3(0, 0, 1));
-		tMat = glm::scale(model, m_scale);
+		tMat = glm::translate(glm::mat4(1.0f), glm::vec3(m_position.x, m_position.y, 0.0f));
+		rMat = glm::rotate(glm::mat4(1.0f), m_orientation, glm::vec3(0.0f, 0.0f, 1.0f));
+		sMat = glm::scale(glm::mat4(1.0f), glm::vec3(m_scale.x, m_scale.y, 1.0f));
 
-		model = tMat * sMat * rMat;
+		model = tMat * rMat * sMat;
+
 	}
-
-
 	virtual void Render() override
 	{
-		SetTexture(texture_Id, 0.0f, 0.0f);
+		std::cout << "Rendering GameObject: " << m_name << std::endl;
 		SetRenderMode(CDT_TEXTURE, 1.0f);
+		SetTexture(texture_Id, 0.0f, 0.0f);
 		std::cout << "Render::TextureID " << texture_Id << std::endl;	
 		SetTransform(model);
 		DrawMesh(meshVert);

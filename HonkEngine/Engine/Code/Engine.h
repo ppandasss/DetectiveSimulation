@@ -7,9 +7,6 @@
 
 #include<iostream>
 #include<string>
-#include <vector>
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -38,6 +35,7 @@ typedef GLuint Tex;
 
 
     void Initialize(int width, int height);
+
     Tex TextureLoad(const std::string path);
     void TextureUnload(Tex& tex);
 
@@ -46,12 +44,12 @@ typedef GLuint Tex;
 
     int  GetWindowWidth();
     int  GetWindowHeight();
-    int GetCamPosX();
-    int GetCamPosY();
+    float GetCamPosX();
+    float GetCamPosY();
 
      void SetRenderMode(int mode, float alpha);
      void SetTexture(Tex tex, float offsetX, float offsetY);
-     void SetTransform(const glm::mat4& modelMat);
+     void SetTransform(const glm::mat4 &modelMat);
      void DrawMesh(const Mesh& mesh);
      
     
@@ -64,6 +62,8 @@ typedef GLuint Tex;
      void SetCamRotation(float degree);
      void ResetCam();
      void SetCamPos(float x, float y);
+
+     void PrintMatrix(const glm::mat4& mat);
   
   
 

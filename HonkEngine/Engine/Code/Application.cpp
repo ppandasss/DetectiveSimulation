@@ -69,8 +69,8 @@ Application::Application(int win_width, int win_height, const char* title)
         std::cout << "Failed to initialize GLAD" << std::endl;
     }
     
-    Initialize(SCR_WIDTH,SCR_HEIGHT);
-
+    
+     Initialize(SCR_WIDTH, SCR_HEIGHT);
 
 
 }
@@ -80,8 +80,8 @@ void Application::Run()
     
     std::cout << "Application Run\n";
 
-    
-    //ourShader.setInt("texture2", 1);
+   
+  
 
     double lastFrameTime = glfwGetTime();
     double frameRateUpdateInterval = 1.0; // Update frame rate every 1 second
@@ -89,9 +89,6 @@ void Application::Run()
     int frameCount = 0;
 
 
-    // render loop
-    // 
-    // -----------
     while (!glfwWindowShouldClose(m_window))
     {
 
@@ -107,24 +104,23 @@ void Application::Run()
         processInput(m_window);
 
 
-       
+      
+           
 
         // render
         // ------
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
+ 
 
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-        if (m_currentScene)
+        if (m_currentScene) {
+
             m_currentScene->Update(dt);
-
-
-
-        if (m_currentScene)
             m_currentScene->Render();
 
+        }
+            
+
+        glGetError();
         glfwSwapBuffers(m_window);
         glfwPollEvents();
 
@@ -136,6 +132,7 @@ void Application::Run()
             frameCount = 0;
         }
     }
+  ;
 
 }
 

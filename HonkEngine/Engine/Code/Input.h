@@ -25,5 +25,6 @@ private:
 	static Input* s_instance;
 	GLFWwindow* m_window = nullptr;
 
+	static bool mouseButtonStates[GLFW_MOUSE_BUTTON_LAST]; // Added for mouse button tracking
 };
 
