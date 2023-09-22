@@ -16,7 +16,7 @@ public:
 		
 		//cabin->SetScale({ 2,2,0 });
 		boss->SetPosition({ 0, 0, 0 });
-		boss->SetScale({ 0.5, 0.5, 0 });
+		boss->SetScale({ 1, 1, 0 });
 		//boss->SetOrientation(1.7);
 		//m_gameObjects.push_back(cabin);
 		m_gameObjects.push_back(boss);

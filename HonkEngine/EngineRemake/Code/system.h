@@ -8,21 +8,26 @@
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-
+#include"Input.h"
 
 
 //define in main.cpp
-extern GLFWwindow* window;
 
-// "Initialize GLFW, GLEW, Input, Create window
-int SystemInit(int width, int height, const char* title);
+class System
+{
+public:
 
-void SystemShutdown();
+	// "Initialize GLFW, GLEW, Input, Create window
+	static int SystemInit(int width, int height, const char* title);
 
-// Get frame duration between each frame
-void FrameInit();
-double FrameStart();
-void FrameEnd();
+	static void SystemShutdown();
 
+	// Get frame duration between each frame
+	void FrameInit();
+	double FrameStart();
+	void FrameEnd();
 
+	static GLFWwindow* window;
+	static Input input;
+};
 

@@ -24,10 +24,13 @@
     <ClCompile Include="Code\Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Engine.cpp">
+    <ClCompile Include="Code\Input.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Input.cpp">
+    <ClCompile Include="Code\Renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Engine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -71,9 +74,14 @@
     <ClInclude Include="External\Include\stb_image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\AnimateGameObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Shaders\transform.fs" />
     <None Include="Assets\Shaders\transform.vs" />
     <None Include="Assets\Shaders\color_tex_transparency.frag" />
     <None Include="Assets\Shaders\color_tex_transparency.vert" />

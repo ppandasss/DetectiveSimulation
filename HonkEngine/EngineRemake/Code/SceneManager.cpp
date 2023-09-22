@@ -1,10 +1,12 @@
 #include "SceneManager.h"
-#include "Input.h"
 #include "system.h"
+
+extern Input m_input;
+
 SceneManager::SceneManager(int win_width,int win_height) : m_currentScene(nullptr)
 {
 
-    SystemInit(win_width, win_height, "Ticking Engine Time");
+   // SystemInit(win_width, win_height, "Ticking Engine Time");
     CDTInit(win_width, win_height);
 
 }
@@ -31,7 +33,7 @@ void SceneManager::Run() {
     double frameRateTimer = 0.0;
     int frameCount = 0;
 
-    while (Input::Get().GetKey(GLFW_KEY_ESCAPE)|| glfwWindowShouldClose(window) == 1) {
+    while (System::input.GetKey(GLFW_KEY_ESCAPE)|| glfwWindowShouldClose(System::window) == 1) {
         double currentTime = glfwGetTime();
         double dt = currentTime - lastFrameTime;
         lastFrameTime = currentTime;
@@ -64,6 +66,6 @@ void SceneManager::Run() {
 
     // Cleanup
     CDTShutdown();
-    SystemShutdown();
+    //SystemShutdown();
     
 }

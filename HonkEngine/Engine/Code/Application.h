@@ -9,9 +9,9 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include "Shader.h"
-#include "Engine.h"
 #include "Scene.h"
 #include "Input.h"
+#include "Renderer.h"
 
 
 // settings
@@ -64,11 +64,12 @@ public:
 		return m_currentScene;
 	}
 
-
+	static Renderer& GetRenderer() { return s_instance->m_renderer; }
 
 
 private:
 
+	Renderer m_renderer;
 	static Application* s_instance;
 	GLFWwindow* m_window;
 	Input m_input;

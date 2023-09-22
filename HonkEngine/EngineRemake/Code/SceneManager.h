@@ -4,6 +4,7 @@
 #include <string>
 #include "Scene.h"
 
+
 class SceneManager {
 public:
     SceneManager(int win_width,int win_height);
@@ -16,4 +17,6 @@ public:
 private:
     Scene* m_currentScene;
     std::map<std::string, Scene*> m_sceneMap;
+
+
 };

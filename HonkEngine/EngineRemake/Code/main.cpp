@@ -18,13 +18,13 @@
 
 // Include GLFW
 #include <GLFW/glfw3.h>
-GLFWwindow* window;
 
 // Include GLM
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
 
+#include "system.h"
 #include "CDT.h"
 #include"SceneManager.h"
 #include"Scene.h"
@@ -38,6 +38,7 @@ int		win_height = 1050;
 
 int main(void) {
 
+	System system;
 	// Initialize the System (GFW, GLEW, Input, Create window)
 	SceneManager sceneManager(win_width,win_height);
 

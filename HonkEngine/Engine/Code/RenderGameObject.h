@@ -1,7 +1,7 @@
 #pragma once
 
 #include "GameObject.h"
-#include "Engine.h"
+
 #include <glm/glm.hpp>
 #include "Application.h"
 #include "Engine.h"
@@ -54,11 +54,14 @@ public:
 	}
 	virtual void Render() override
 	{
+		Renderer& renderer = Application::GetRenderer();
+
 		std::cout << "Rendering GameObject: " << m_name << std::endl;
-		SetRenderMode(CDT_TEXTURE, 1.0f);
-		SetTexture(texture_Id, 0.0f, 0.0f);
-		std::cout << "Render::TextureID " << texture_Id << std::endl;	
-		SetTransform(model);
+		renderer.SetRenderMode(CDT_TEXTURE, 1.0f);
+		renderer.SetTexture(texture_Id, 0.0f, 0.0f);
+		//std::cout << "Render::TextureID " << texture_Id << std::endl;	
+		renderer.SetTransform(model);
+		//renderer.DrawMesh(meshVert);
 		DrawMesh(meshVert);
 		//plication::Get().DrawTexture(*textureId, model);
 		//Engine::DrawTexture(texture_id, glm::mat4{1});

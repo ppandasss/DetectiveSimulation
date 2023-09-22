@@ -5,11 +5,13 @@
 double prevTime = 0.0;
 double currTime = 0.0;
 
+GLFWwindow* System::window = nullptr;
+Input System::input;
 
 // ---------------------------------------------------------------------------
 // Initialize GLFW, GLEW, Input, Create window
 
-int SystemInit(int width, int height, const char* title) {
+int System::SystemInit(int width, int height, const char* title) {
 
 	// Initialise GLFW
 	if (!glfwInit())
@@ -44,12 +46,12 @@ int SystemInit(int width, int height, const char* title) {
 
 	// Ensure we can capture the escape key being pressed below
 	glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
-
+	input.Initialize(window);
 	printf("System succesfully initialize\n");
 
 }
 
-void SystemShutdown() {
+void System::SystemShutdown() {
 
 	printf("Bye Bye\n");
 	glfwTerminate();

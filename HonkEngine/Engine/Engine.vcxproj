@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -134,9 +134,11 @@
     <ClCompile Include="Code\Engine.cpp" />
     <ClCompile Include="Code\Input.cpp" />
     <ClCompile Include="Code\Main.cpp" />
+    <ClCompile Include="Code\Renderer.cpp" />
     <ClCompile Include="External\Include\glad\glad.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Code\AnimateGameObject.h" />
     <ClInclude Include="Code\Application.h" />
     <ClInclude Include="Code\GameObject.h" />
     <ClInclude Include="Code\Engine.h" />
@@ -144,6 +146,7 @@
     <ClInclude Include="Code\Game\Room1.h" />
     <ClInclude Include="Code\Input.h" />
     <ClInclude Include="Code\Player.h" />
+    <ClInclude Include="Code\Renderer.h" />
     <ClInclude Include="Code\RenderGameObject.h" />
     <ClInclude Include="Code\Scene.h" />
     <ClInclude Include="Code\Shader.h" />
@@ -155,7 +158,6 @@
     <None Include="Assets\Shaders\color_tex_transparency.frag" />
     <None Include="Assets\Shaders\color_tex_transparency.vert" />
     <None Include="Assets\Shaders\fragment.shd" />
-    <None Include="Assets\Shaders\transform.fs" />
     <None Include="Assets\Shaders\transform.vs" />
     <None Include="Assets\Shaders\vertext.shd" />
   </ItemGroup>

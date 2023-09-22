@@ -69,9 +69,11 @@ Application::Application(int win_width, int win_height, const char* title)
         std::cout << "Failed to initialize GLAD" << std::endl;
     }
     
-    
-     Initialize(SCR_WIDTH, SCR_HEIGHT);
 
+     //Initialize(SCR_WIDTH, SCR_HEIGHT);
+
+
+    m_renderer.Initialize(SCR_WIDTH, SCR_HEIGHT);
 
 }
 
