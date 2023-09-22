@@ -72,7 +72,7 @@ Application::Application(int win_width, int win_height, const char* title)
 
      //Initialize(SCR_WIDTH, SCR_HEIGHT);
 
-
+    m_input.Initialize(m_window);
     m_renderer.Initialize(SCR_WIDTH, SCR_HEIGHT);
 
 }
@@ -116,7 +116,7 @@ void Application::Run()
 
         if (m_currentScene) {
 
-            m_currentScene->Update(dt);
+            m_currentScene->Update(dt,frameCount);
             m_currentScene->Render();
 
         }
@@ -134,7 +134,6 @@ void Application::Run()
             frameCount = 0;
         }
     }
-  ;
 
 }
 

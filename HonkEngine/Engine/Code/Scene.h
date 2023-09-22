@@ -16,10 +16,10 @@ public:
 		}
 	}
 
-	void Update(float dt)
+	void Update(float dt,long frame)
 	{
 		for (auto& object : m_gameObjects)
-			object->Update(dt);
+			object->Update(dt,frame);
 
 		for (auto& object : m_toAddGameObjects)
 			m_gameObjects.push_back(object);

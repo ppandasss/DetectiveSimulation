@@ -10,15 +10,15 @@ class LevelScene : public Scene
 public:
 	LevelScene()
 	{ 
-		RenderGameObject* boss = new RenderGameObject("Boss", "Assets/Images/awesomeface.png");
+		//RenderGameObject* boss = new RenderGameObject("Boss", "Assets/Images/awesomeface.png");
 		//GameObject* cabin = new RenderGameObject("Cabin", "Assets/Images/Cabin.png");
-
+		Player* Bus = new Player("Bus", "Assets/Images/spritesheet_test.png",4,4);
 		
-		//cabin->SetScale({ 2,2,0 });
-		boss->SetPosition({ 0, 0, 0 });
-		boss->SetScale({ 1, 1, 0 });
+	
+		//Bus->SetScale({ 1, 1, 0 });
 		//boss->SetOrientation(1.7);
 		//m_gameObjects.push_back(cabin);
-		m_gameObjects.push_back(boss);
+		//m_gameObjects.push_back(boss);
+		m_gameObjects.push_back(Bus);
 	}
 };

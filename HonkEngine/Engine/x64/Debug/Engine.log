@@ -1,4 +1,4 @@
 ﻿  Main.cpp
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(23,13): warning C4099: 'Mesh': type name first seen using 'class' now seen using 'struct'
-C:\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(23,8): message : see declaration of 'Mesh'
-  Engine.vcxproj -> C:\DetectiveSimulation\HonkEngine\x64\Debug\Engine.exe
+I:\Captain'sWork\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(23,13): warning C4099: 'Mesh': type name first seen using 'class' now seen using 'struct'
+I:\Captain'sWork\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(23,8): message : see declaration of 'Mesh'
+  Engine.vcxproj -> I:\Captain'sWork\DetectiveSimulation\HonkEngine\x64\Debug\Engine.exe

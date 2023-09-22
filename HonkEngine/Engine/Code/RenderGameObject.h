@@ -37,7 +37,7 @@ public:
 
 	}
 
-	virtual void Update(float dt)
+	virtual void Update(float dt,long frame)
 	{
 		std::cout << "RenderObjectUpdated: " << m_name << std::endl;
 
@@ -74,6 +74,7 @@ public:
 	}
 
 private:
+
 
 	Tex texture_Id;
 	Mesh meshVert;
