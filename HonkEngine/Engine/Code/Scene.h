@@ -18,8 +18,12 @@ public:
 
 	void Update(float dt,long frame)
 	{
-		for (auto& object : m_gameObjects)
-			object->Update(dt,frame);
+		for (auto& object : m_gameObjects) {
+			object->Update(dt, frame);
+			//std::cout << "Gameobject Update" << std::endl;
+		}
+			
+
 
 		for (auto& object : m_toAddGameObjects)
 			m_gameObjects.push_back(object);
@@ -37,6 +41,7 @@ public:
 		for (auto& object : m_gameObjects)
 			object->Render();
 	}
+
 	void AddGameObject(GameObject* newGameObject)
 	{
 		m_toAddGameObjects.push_back(newGameObject);

@@ -14,11 +14,11 @@ public:
 
 	virtual void Clear(){}
 
-	void SetPosition(glm::vec3 newPos){ m_position = newPos; }
+	virtual void SetPosition(glm::vec3 newPos){ m_position = newPos; }
 
-	void SetScale(const glm::vec3& scale){m_scale = scale;}
+	virtual void SetScale(const glm::vec3& scale){m_scale = scale;}
 
-	void SetOrientation(float orientation){m_orientation = orientation;}
+	virtual void SetOrientation(float orientation){m_orientation = orientation;}
 
 protected:
 	std::string m_name;

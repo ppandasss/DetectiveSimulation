@@ -7,45 +7,45 @@
 #include "Application.h"
 #include"Scene.h"
 #include "Input.h"
+#include <iostream>
+#include"GameObject.h"
 
-class Player : public AnimateGameObject
+
+class Player : public RenderGameObject
 {
 public:
 	Player(const std::string& name, const std::string& texturePath,int p_row,int p_col)
-		: AnimateGameObject(name, texturePath,p_row,p_col)
+		:RenderGameObject(name, texturePath)
 	{
 		
 	}
 	
-	virtual void Update(float dt,long frame)
+	virtual void Update(float dt,long frame) 
 	{
+
+		std::cout << "frame" << frame << std::endl;
+	
+		
        
         if (Input::Get().GetKey(GLFW_KEY_A))
         {
             m_position.x -= 5.0f * dt;
-			animY = 2.0f / 4.0f;
-			if (frame % 10)
+			/*animY = 3.0f;
+
+			if (frame % 10 )
 			{
-				animX += 1.0f / 4.0f;
-				if(animX > 3.0f/4.0f)
+				animX += 1.0f;
+				if (animX > 3.0f / 4.0f)
 				{
 					animX = 0.0f;
 				}
-			}
+			}*/
            
         }
         else if (Input::Get().GetKey(GLFW_KEY_D))
         {
             m_position.x += 5.0f * dt;
-			animY = 3.0f / 4.0f;
-			if (frame % 10)
-			{
-				animX += 1.0f / 4.0f;
-				if (animX > 3.0f / 4.0f)
-				{
-					animX = 0.0f;
-				}
-			}
+			
            
         }
 		if (Input::Get().GetKey(GLFW_MOUSE_BUTTON_1))
@@ -65,6 +65,11 @@ public:
 
 		
 	}
+
+
+
+
+
 
 
 

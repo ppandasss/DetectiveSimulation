@@ -33,11 +33,11 @@ public:
 		texture_Id = TextureLoad(texturePath);
 		meshVert = CreateMesh(vertices);
 
-		std::cout << "RenderObject Created: " << m_name << std::endl;
+		//std::cout << "RenderObject Created: " << m_name << std::endl;
 
 	}
 
-	virtual void Update(float dt,long frame)
+	virtual void Update(float dt,long frame) override
 	{
 		std::cout << "RenderObjectUpdated: " << m_name << std::endl;
 
@@ -54,9 +54,10 @@ public:
 	}
 	virtual void Render() override
 	{
+		std::cout << "RenderObjectRender: " << m_name << std::endl;
 		Renderer& renderer = Application::GetRenderer();
 
-		std::cout << "Rendering GameObject: " << m_name << std::endl;
+		//std::cout << "Rendering GameObject: " << m_name << std::endl;
 		renderer.SetRenderMode(CDT_TEXTURE, 1.0f);
 		renderer.SetTexture(texture_Id, 0.0f, 0.0f);
 		//std::cout << "Render::TextureID " << texture_Id << std::endl;	
@@ -72,6 +73,7 @@ public:
 		UnloadMesh(meshVert);
 		TextureUnload(texture_Id);
 	}
+
 
 private:
 
