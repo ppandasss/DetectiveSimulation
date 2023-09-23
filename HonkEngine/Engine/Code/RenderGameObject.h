@@ -39,7 +39,7 @@ public:
 
 	virtual void Update(float dt,long frame) override
 	{
-		std::cout << "RenderObjectUpdated: " << m_name << std::endl;
+	
 
 		glm::mat4 rMat = glm::mat4(1.0f);
 		glm::mat4 sMat = glm::mat4(1.0f);

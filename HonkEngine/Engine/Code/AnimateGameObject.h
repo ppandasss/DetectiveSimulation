@@ -39,13 +39,13 @@ public:
 		texture_Id = TextureLoad(texturePath);
 		meshVert = CreateMesh(vertices);
 
-		std::cout << "RenderObject Created: " << m_name << std::endl;
+		//std::cout << "RenderObject Created: " << m_name << std::endl;
 
 	}
 
 	virtual void Update(float dt, long frame) override
 	{
-		std::cout << "RenderObjectUpdated: " << m_name << std::endl;
+		//std::cout << "RenderObjectUpdated: " << m_name << std::endl;
 
 		glm::mat4 rMat = glm::mat4(1.0f);
 		glm::mat4 sMat = glm::mat4(1.0f);
@@ -55,8 +55,8 @@ public:
 		rMat = glm::rotate(glm::mat4(1.0f), m_orientation, glm::vec3(0.0f, 0.0f, 1.0f));
 		sMat = glm::scale(glm::mat4(1.0f), glm::vec3(m_scale.x, m_scale.y, 1.0f));
 
-		std::cout << "scale" << m_scale.x << " " << m_scale.y << std::endl;
-
+		//std::cout << "scale" << m_scale.x << " " << m_scale.y << std::endl;
+		
 		model = tMat * rMat * sMat;
 
 	}
@@ -64,7 +64,7 @@ public:
 	{
 		Renderer& renderer = Application::GetRenderer();
 
-		std::cout << "Rendering GameObject: " << m_name << std::endl;
+		//std::cout << "Rendering GameObject: " << m_name << std::endl;
 
 		//std::cout << "s_row : " << s_row << std::endl;
 		//std::cout << "s_col : " << s_col<< std::endl;

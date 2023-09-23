@@ -662,7 +662,7 @@ extern "C" {
  *  @ingroup init
  *  @{ */
 /*! @brief No error has occurred.
- *
+ *s
  *  No error has occurred.
  *
  *  @analysis Yay.

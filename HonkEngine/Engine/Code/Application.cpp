@@ -128,8 +128,8 @@ void Application::Run()
 
         if (frameRateTimer >= frameRateUpdateInterval)
         {
-            double frameRate = frameCount / frameRateTimer;
-            std::cout << "                                                                                                          Frame Rate: " << (int)frameRate << " FPS" << std::endl;
+            double frameRate = frameCount / frameRateTimer; //fps == frame per sec
+            std::cout << "                                                                                         FPS: " << (int)frameRate << std::endl;
             frameRateTimer = 0.0;
             frameCount = 0;
         }

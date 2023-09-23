@@ -11,49 +11,55 @@
 #include"GameObject.h"
 
 
-class Player : public RenderGameObject
+class Player : public AnimateGameObject
 {
 public:
 	Player(const std::string& name, const std::string& texturePath,int p_row,int p_col)
-		:RenderGameObject(name, texturePath)
+		:AnimateGameObject(name, texturePath,4.0f,4.0f)
 	{
-		
+		m_scale = glm::vec3(0.5f, 0.5f, 0.0f);
 	}
 	
-	virtual void Update(float dt,long frame) 
+	 void Update(float dt,long frame) override
 	{
 
-		std::cout << "frame" << frame << std::endl;
+		//std::cout << "frame" << frame << std::endl;
 	
-		
+		AnimateGameObject::Update(dt, frame);
        
         if (Input::Get().GetKey(GLFW_KEY_A))
         {
-            m_position.x -= 5.0f * dt;
-			/*animY = 3.0f;
-
-			if (frame % 10 )
+            m_position.x -= 1.0f * dt;
+			animY = 3.0f;
+			if (frame % 20 == 0)
 			{
 				animX += 1.0f;
-				if (animX > 3.0f / 4.0f)
+				if (animX > 4.0f)
 				{
 					animX = 0.0f;
 				}
-			}*/
+			}
            
         }
-        else if (Input::Get().GetKey(GLFW_KEY_D))
+         if (Input::Get().GetKey(GLFW_KEY_D))
         {
-            m_position.x += 5.0f * dt;
-			
+            m_position.x += 1.0f * dt;
+			animY = 2.0f;
+			if (frame % 20 == 0)
+			{
+				animX += 1.0f;
+				if (animX > 4.0f)
+				{
+					animX = 0.0f;
+				}
+			}
            
         }
 		if (Input::Get().GetKey(GLFW_MOUSE_BUTTON_1))
 		{
 			mousePos = Application::Get().CursorPos();
-
 			Application::Get().GetCurrentScene()->AddGameObject(new RenderGameObject("Konrai", "Assets/Images/konrai.jpg"));
-			//GameObjects numbers will print out for debuging .It should be only 3 when click
+
 
 
 			std::cout << "x: " << mousePos.x << " y: " << mousePos.y << std::endl;
@@ -65,11 +71,6 @@ public:
 
 		
 	}
-
-
-
-
-
 
 
 

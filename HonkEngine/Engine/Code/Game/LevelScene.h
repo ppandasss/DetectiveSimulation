@@ -2,6 +2,7 @@
 
 #include "../Scene.h"
 #include "../RenderGameObject.h"
+#include"../AnimateGameObject.h"	
 
 #include "../Player.h"
 
@@ -15,10 +16,10 @@ public:
 		Player* Bus = new Player("Bus", "Assets/Images/spritesheet_test.png",4.0f,4.0f);
 		
 		
-		Bus->SetScale({ 0.2, 0.2, 0 });
+		
 		//boss->SetOrientation(1.7);
 		//m_gameObjects.push_back(cabin);
 		//m_gameObjects.push_back(boss);
-		AddGameObject(Bus);
+		m_gameObjects.push_back(Bus);
 	}
 };

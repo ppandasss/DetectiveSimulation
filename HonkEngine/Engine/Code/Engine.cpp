@@ -154,7 +154,7 @@ void SetRenderMode(int mode, float alpha) {
 
 void SetTexture(Tex tex, float offsetX, float offsetY) {
 
-    std::cout << "SetTexture::TextureID " << tex << std::endl;
+   // std::cout << "SetTexture::TextureID " << tex << std::endl;
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, tex);
 	m_shader.setInt("tex1", 0);  // Set integer uniform
@@ -166,21 +166,21 @@ void SetTransform(const glm::mat4 &modelMat) {
 
     cdt_MVP = cdt_ProjectionMatrix * cdt_ViewMatrix * modelMat;
     std::cout << "Model matrix at start of SetTransform method:\n";
-    PrintMatrix(modelMat);
+   // PrintMatrix(modelMat);
     std::cout << "Proj matrix at start of SetTransform method:\n";
-    PrintMatrix(cdt_ProjectionMatrix);
+   // PrintMatrix(cdt_ProjectionMatrix);
     std::cout << "View matrix at start of SetTransform method:\n";
-    PrintMatrix(cdt_ViewMatrix);
+    //PrintMatrix(cdt_ViewMatrix);
     std::cout << "MVP matrix at start of SetTransform method:\n";
-    PrintMatrix(cdt_MVP);
+   // PrintMatrix(cdt_MVP);
     glUniformMatrix4fv(glGetUniformLocation(m_shader.ID, "MVP"), 1, GL_FALSE, &cdt_MVP[0][0]);
    int errocode =  glGetError();
 
-   std::cout << "Error code" << errocode << std::endl;
+   //std::cout << "Error code" << errocode << std::endl;
 }
 
 void DrawMesh(const Mesh& mesh) {
-    std::cout << " DrawMesh method called:\n";
+    //std::cout << " DrawMesh method called:\n";
 
     glBindVertexArray(mesh.vaoHandle);
     glDrawArrays(GL_TRIANGLES, 0, mesh.vertices.size());

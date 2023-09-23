@@ -37,12 +37,12 @@ void Renderer::SetTransform(const glm::mat4& modelMat) {
 	m_shader.SetMatrix4("MVP", cdt_MVP);
 	int errocode = glGetError();
 
-	std::cout << "Error code" << errocode << std::endl;
+	//std::cout << "Error code" << errocode << std::endl;
 }
 
 void Renderer::SetTexture(GLuint tex, float offsetX, float offsetY) {
 
-	std::cout << "SetTexture::TextureID " << tex << std::endl;
+	//std::cout << "SetTexture::TextureID " << tex << std::endl;
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, tex);
 	m_shader.setInt("tex1", 0);  // Set integer uniform
@@ -52,7 +52,7 @@ void Renderer::SetTexture(GLuint tex, float offsetX, float offsetY) {
 
 
 void Renderer::DrawMesh(const Mesh& mesh) {
-	std::cout << " DrawMesh method called:\n";
+	//std::cout << " DrawMesh method called:\n";
 
 	glBindVertexArray(mesh.vaoHandle);
 	glDrawArrays(GL_TRIANGLES, 0, mesh.vertices.size());
