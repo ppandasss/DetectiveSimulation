@@ -18,16 +18,17 @@ public:
 		:AnimateGameObject(name, texturePath,4.0f,4.0f)
 	{
 		m_scale = glm::vec3(0.5f, 0.5f, 0.0f);
+		
 	}
 	
 	 void Update(float dt,long frame) override
 	{
 
 		//std::cout << "frame" << frame << std::endl;
-	
+		 Input& input = Application::GetInput();
 		AnimateGameObject::Update(dt, frame);
        
-        if (Input::Get().GetKey(GLFW_KEY_A))
+        if (input.Get().GetKey(GLFW_KEY_A))
         {
             m_position.x -= 1.0f * dt;
 			animY = 3.0f;
@@ -41,7 +42,7 @@ public:
 			}
            
         }
-         if (Input::Get().GetKey(GLFW_KEY_D))
+         if (input.Get().GetKey(GLFW_KEY_D))
         {
             m_position.x += 1.0f * dt;
 			animY = 2.0f;
@@ -55,16 +56,15 @@ public:
 			}
            
         }
-		if (Input::Get().GetKey(GLFW_MOUSE_BUTTON_1))
-		{
-			mousePos = Application::Get().CursorPos();
-			Application::Get().GetCurrentScene()->AddGameObject(new RenderGameObject("Konrai", "Assets/Images/konrai.jpg"));
+		 if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1))
+		 {
+			 mousePos = Application::Get().CursorPos();
+			 Application::Get().GetCurrentScene()->AddGameObject(new RenderGameObject("Konrai", "Assets/Images/konrai.jpg"));
 
 
-
-			std::cout << "x: " << mousePos.x << " y: " << mousePos.y << std::endl;
-		}
-		if (Application::Get().IsMouseClick(GLFW_MOUSE_BUTTON_2))
+			 std::cout << "x: " << mousePos.x << " y: " << mousePos.y << std::endl;
+		 }
+		if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_2))
 		{
 			Application::Get().SetScene("room1");
 		}

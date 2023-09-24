@@ -65,6 +65,7 @@ public:
 	}
 
 	static Renderer& GetRenderer() { return s_instance->m_renderer; }
+	static Input& GetInput() { return s_instance->m_input; }
 
 
 private:

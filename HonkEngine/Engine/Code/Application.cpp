@@ -75,6 +75,7 @@ Application::Application(int win_width, int win_height, const char* title)
     m_input.Initialize(m_window);
     m_renderer.Initialize(SCR_WIDTH, SCR_HEIGHT);
 
+
 }
 
 void Application::Run()

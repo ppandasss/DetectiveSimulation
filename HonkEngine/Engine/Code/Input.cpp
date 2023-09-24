@@ -3,23 +3,20 @@
 Input* Input::s_instance = nullptr;
 
 bool Input::mouseButtonStates[GLFW_MOUSE_BUTTON_LAST] = { false };
+bool Input::keyStates[GLFW_KEY_LAST] = { false };
 
 bool Input::GetKeyDown(int keyCode)
 {
-
-    if (keyCode == GLFW_MOUSE_BUTTON_1)
+    if (glfwGetKey(m_window, keyCode) == GLFW_PRESS && !keyStates[keyCode])
     {
-        // Check if the left mouse button is pressed in the current frame but was not pressed in the previous frame
-        if (glfwGetMouseButton(m_window, keyCode) == GLFW_PRESS && !mouseButtonStates[keyCode])
-        {
-            mouseButtonStates[keyCode] = true; // Update the mouse button state   
-            return true; //Left mouse button was clicked in the current frame
-
-        }
-
+        keyStates[keyCode] = true;
+        return true;
     }
-
-    return false; //HERE
+    else if (glfwGetMouseButton(m_window, keyCode) == GLFW_RELEASE)
+    {
+        mouseButtonStates[keyCode] = false;
+    }
+    return false;
 }
 
 bool Input::GetKey(int keyCode)
@@ -29,8 +26,39 @@ bool Input::GetKey(int keyCode)
 
 bool Input::GetKeyUp(int keyCode)
 {
+    if (glfwGetKey(m_window, keyCode) == GLFW_RELEASE)
+    {
+        keyStates[keyCode] = false;
+        return true;
+    }
+    return false;
+}
 
-    mouseButtonStates[keyCode] = (glfwGetMouseButton(m_window, keyCode) == GLFW_PRESS);
-    return glfwGetKey(m_window, keyCode) == GLFW_RELEASE;
+bool Input::GetMouseButtonDown(int button)
+{
+    if (glfwGetMouseButton(m_window, button) == GLFW_PRESS && !mouseButtonStates[button])
+    {
+        mouseButtonStates[button] = true;
+        return true;
+    }
+    else if (glfwGetMouseButton(m_window, button) == GLFW_RELEASE)
+    {
+        mouseButtonStates[button] = false;
+    }
+    return false;
+}
 
+bool Input::GetMouseButton(int button)
+{
+    return glfwGetMouseButton(m_window, button) == GLFW_PRESS;
+}
+
+bool Input::GetMouseButtonUp(int button)
+{
+    if (glfwGetMouseButton(m_window, button) == GLFW_RELEASE)
+    {
+        mouseButtonStates[button] = false;
+        return true;
+    }
+    return false;
 }
