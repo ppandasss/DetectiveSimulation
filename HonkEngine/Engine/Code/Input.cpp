@@ -12,9 +12,9 @@ bool Input::GetKeyDown(int keyCode)
         keyStates[keyCode] = true;
         return true;
     }
-    else if (glfwGetMouseButton(m_window, keyCode) == GLFW_RELEASE)
+    else if (glfwGetKey(m_window, keyCode) == GLFW_RELEASE)
     {
-        mouseButtonStates[keyCode] = false;
+        keyStates[keyCode] = false;
     }
     return false;
 }

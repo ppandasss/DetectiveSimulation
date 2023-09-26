@@ -131,6 +131,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Code\Application.cpp" />
+    <ClCompile Include="Code\Camera.cpp" />
     <ClCompile Include="Code\Engine.cpp" />
     <ClCompile Include="Code\Input.cpp" />
     <ClCompile Include="Code\Main.cpp" />
@@ -140,6 +141,7 @@
   <ItemGroup>
     <ClInclude Include="Code\AnimateGameObject.h" />
     <ClInclude Include="Code\Application.h" />
+    <ClInclude Include="Code\Camera.h" />
     <ClInclude Include="Code\GameObject.h" />
     <ClInclude Include="Code\Engine.h" />
     <ClInclude Include="Code\Game\LevelScene.h" />
