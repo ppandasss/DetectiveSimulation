@@ -34,7 +34,7 @@ public:
 		meshVert = CreateMesh(vertices);
 
 		//std::cout << "RenderObject Created: " << m_name << std::endl;
-
+		
 	}
 
 	virtual void Update(float dt,long frame) override
@@ -55,29 +55,29 @@ public:
 	virtual void Render() override
 	{
 		std::cout << "RenderObjectRender: " << m_name << std::endl;
-		Renderer& renderer = Application::GetRenderer();
+		
 
 		//std::cout << "Rendering GameObject: " << m_name << std::endl;
 		renderer.SetRenderMode(CDT_TEXTURE, 1.0f);
 		renderer.SetTexture(texture_Id, 0.0f, 0.0f);
 		//std::cout << "Render::TextureID " << texture_Id << std::endl;	
 		renderer.SetTransform(model);
-		//renderer.DrawMesh(meshVert);
-		DrawMesh(meshVert);
+		renderer.DrawMesh(meshVert);
+		//DrawMesh(meshVert);
 		//plication::Get().DrawTexture(*textureId, model);
 		//Engine::DrawTexture(texture_id, glm::mat4{1});
 	}
 
 	virtual void Clear() 
 	{
-		UnloadMesh(meshVert);
-		TextureUnload(texture_Id);
+		renderer.UnloadMesh(meshVert);
+		renderer.TextureUnload(texture_Id);
 	}
 
 
 private:
 
-
+	Renderer& renderer = Application::GetRenderer();;
 	Tex texture_Id;
 	Mesh meshVert;
 	glm::mat4 model {1};

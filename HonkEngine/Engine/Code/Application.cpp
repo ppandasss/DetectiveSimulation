@@ -16,6 +16,14 @@ void processInput(GLFWwindow* window)
 {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
+
+    Camera& camera = Application::GetCamera();
+
+    if (glfwGetKey(window, GLFW_KEY_PAGE_UP) == GLFW_PRESS)
+    {
+        // Assuming you have a static GetCamera method in Application
+        camera.ZoomIn(0.1f);  // Zoom in by 0.1 units
+    }
 }
 
 Application* Application::s_instance = nullptr;
@@ -74,6 +82,7 @@ Application::Application(int win_width, int win_height, const char* title)
 
     m_input.Initialize(m_window);
     m_renderer.Initialize(SCR_WIDTH, SCR_HEIGHT);
+    m_camera.Init(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f), win_width, win_height);
 
 
 }
@@ -105,13 +114,6 @@ void Application::Run()
         // input
         // -----
         processInput(m_window);
-
-
-      
-           
-
-        // render
-        // ------
  
 
 

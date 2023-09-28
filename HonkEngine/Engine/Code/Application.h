@@ -12,6 +12,7 @@
 #include "Scene.h"
 #include "Input.h"
 #include "Renderer.h"
+#include "Camera.h"
 
 
 // settings
@@ -66,10 +67,12 @@ public:
 
 	static Renderer& GetRenderer() { return s_instance->m_renderer; }
 	static Input& GetInput() { return s_instance->m_input; }
+	static Camera& GetCamera() { return s_instance->m_camera; }
 
 
 private:
 
+	Camera m_camera;
 	Renderer m_renderer;
 	static Application* s_instance;
 	GLFWwindow* m_window;

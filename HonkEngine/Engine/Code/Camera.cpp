@@ -12,7 +12,7 @@ void Camera::Init(const glm::vec3& position, const glm::vec3& direction, const g
     m_camDegree = 0.0f;
 
     UpdateViewMatrix();
-    UpdateProjectionMatrix();
+   //UpdateProjectionMatrix();
 }
 
 Camera::~Camera() {}

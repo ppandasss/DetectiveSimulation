@@ -2,8 +2,12 @@
 
 #include "Shader.h"
 #include <glm/glm.hpp>
+#include "Camera.h"
 
 class Mesh;
+
+
+typedef GLuint Tex;
 
 class Renderer
 {
@@ -11,10 +15,11 @@ public:
 	void Initialize(int width, int height);
 	void SetRenderMode(int mode, float alpha);
 	void SetTransform(const glm::mat4& modelMat);
-	void SetTexture(GLuint tex, float offsetX, float offsetY);
+	void SetTexture(Tex tex, float offsetX, float offsetY);
 
 	void DrawMesh(const Mesh& mesh);
-
+	void UnloadMesh(Mesh& mesh);
+	void TextureUnload(Tex& tex);
 
 private:
 	glm::mat4	cdt_ViewMatrix;
@@ -23,4 +28,5 @@ private:
 
 	int m_windowWidth, m_windowHeight;
 	Shader m_shader;
+	Camera m_camera;
 };

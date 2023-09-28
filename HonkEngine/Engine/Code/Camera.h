@@ -5,6 +5,7 @@
 #include <glm/gtc/type_ptr.hpp>
 
 class Camera {
+
 public:
 
     ~Camera();
@@ -26,12 +27,15 @@ public:
     float GetPosX() const;
     float GetPosY() const;
 
+
+
 private:
+
     int m_windowWidth;
     int m_windowHeight;
 
-    const float NEAR_PLANE = -10.0f;
-    const float FAR_PLANE = 10.0f;
+    float NEAR_PLANE = 0.1f;
+    float FAR_PLANE = 10.0f;
 
     glm::vec3 m_camPos;
     glm::vec3 m_camDir;
