@@ -12,6 +12,7 @@ public:
 
     glm::mat4 GetProjectionMatrix() const;
     glm::mat4 GetViewMatrix() const;
+    glm::mat4 GetMVP(glm::mat4 ModelMatrix) const;
 
     void Init(const glm::vec3& position, const glm::vec3& direction, const glm::vec3& up,int width,int height);
     void Move(float dx, float dy);
@@ -26,7 +27,7 @@ public:
 
     float GetPosX() const;
     float GetPosY() const;
-
+    float GetZoom() const;
 
 
 private:

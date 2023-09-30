@@ -2,6 +2,7 @@
 	#include "Engine.h"
 
 
+
 	void Renderer::Initialize(int width, int height)
 	{
 		m_windowWidth = width;
@@ -35,8 +36,8 @@
 	void Renderer::SetTransform(const glm::mat4& modelMat) {
 
 		Camera& camera = Application::GetCamera();
-
-		cdt_MVP = camera.GetProjectionMatrix() * camera.GetViewMatrix() * modelMat;
+		std::cout << "zoom: " << m_camera.GetZoom() << std::endl;
+		cdt_MVP = camera.GetMVP(modelMat);
 		m_shader.SetMatrix4("MVP", cdt_MVP);
 		int errocode = glGetError();
 

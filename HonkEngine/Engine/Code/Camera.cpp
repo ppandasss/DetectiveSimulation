@@ -35,6 +35,10 @@ glm::mat4 Camera::GetViewMatrix() const {
     return m_viewMatrix;
 }
 
+glm::mat4 Camera::GetMVP(glm::mat4 ModelMatrix) const {
+	return m_projectionMatrix * m_viewMatrix * ModelMatrix;
+}
+
 void Camera::Move(float dx, float dy) {
     m_camPos.x += dx;
     m_camPos.y += dy;
@@ -78,6 +82,11 @@ void Camera::SetPosition(float xpos, float ypos) {
 void Camera::SetZoom(float zoom) {
     m_camZoom = zoom;
     UpdateProjectionMatrix();
+}
+
+float Camera::GetZoom() const
+{
+    return m_camZoom;
 }
 
 void Camera::SetRotation(float degree) {

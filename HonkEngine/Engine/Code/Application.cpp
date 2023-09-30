@@ -22,7 +22,12 @@ void processInput(GLFWwindow* window)
     if (glfwGetKey(window, GLFW_KEY_PAGE_UP) == GLFW_PRESS)
     {
         // Assuming you have a static GetCamera method in Application
-        camera.ZoomIn(0.1f);  // Zoom in by 0.1 units
+        camera.ZoomIn(0.01f);  // Zoom in by 0.1 units
+    }
+    if (glfwGetKey(window, GLFW_KEY_PAGE_DOWN) == GLFW_PRESS)
+    {
+        // Assuming you have a static GetCamera method in Application
+        camera.ZoomOut(0.01f);  // Zoom in by 0.1 units
     }
 }
 
