@@ -1,4 +1,5 @@
 #include "Camera.h"
+#include <iostream> 
 
 
 void Camera::Init(const glm::vec3& position, const glm::vec3& direction, const glm::vec3& up,int width,int height) {
@@ -47,6 +48,7 @@ void Camera::Move(float dx, float dy) {
 
 void Camera::ZoomIn(float step) {
     m_camZoom += step;
+    std::cout << "zoom: " << m_camZoom << std::endl;
     UpdateProjectionMatrix();
 }
 

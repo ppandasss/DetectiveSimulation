@@ -1,9 +1,4 @@
 ﻿  Camera.cpp
-  Renderer.cpp
-I:\Captain'sWork\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,13): warning C4099: 'Mesh': type name first seen using 'class' now seen using 'struct'
-I:\Captain'sWork\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): message : see declaration of 'Mesh'
-I:\Captain'sWork\DetectiveSimulation\HonkEngine\Engine\Code\Renderer.cpp(62,51): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-  Generating Code...
 glfw3.lib(init.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(init.obj)' or at ''; linking object as if no debug info
 glfw3.lib(window.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(window.obj)' or at ''; linking object as if no debug info
 glfw3.lib(input.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(input.obj)' or at ''; linking object as if no debug info
