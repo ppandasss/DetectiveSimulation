@@ -9,6 +9,7 @@
 #include "Input.h"
 #include <iostream>
 #include"GameObject.h"
+#include "Animator.h"
 
 
 class Player : public AnimateGameObject
