@@ -93,5 +93,6 @@
     <None Include="Assets\Shaders\color_tex_transparency.vert" />
     <None Include="Assets\Shaders\fragment.shd" />
     <None Include="Assets\Shaders\vertext.shd" />
+    <None Include="Assets\Shaders\transform.fs" />
   </ItemGroup>
 </Project>

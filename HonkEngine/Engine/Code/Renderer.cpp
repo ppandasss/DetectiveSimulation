@@ -36,7 +36,7 @@
 	void Renderer::SetTransform(const glm::mat4& modelMat) {
 
 		Camera& camera = Application::GetCamera();
-		std::cout << "zoom: " << m_camera.GetZoom() << std::endl;
+		//std::cout << "zoom: " << camera.GetZoom() << std::endl;
 		cdt_MVP = camera.GetMVP(modelMat);
 		m_shader.SetMatrix4("MVP", cdt_MVP);
 		int errocode = glGetError();

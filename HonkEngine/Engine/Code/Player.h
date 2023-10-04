@@ -25,6 +25,8 @@ public:
 	{
 
 		//std::cout << "frame" << frame << std::endl;
+
+		 //std::cout<< "x: " << m_position.x << " y: " << m_position.y << " z: " << m_position.z << std::endl;	
 		 Input& input = Application::GetInput();
 		AnimateGameObject::Update(dt, frame);
        

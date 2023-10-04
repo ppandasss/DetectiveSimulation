@@ -35,8 +35,10 @@ private:
     int m_windowWidth;
     int m_windowHeight;
 
-    float NEAR_PLANE = 0.1f;
-    float FAR_PLANE = 10.0f;
+    const float NEAR_PLANE = -1.0f;
+    const float FAR_PLANE = 1.0f;
+    float MAX_ZOOM = 2.0f;
+    float MIN_ZOOM = 0.5f;
 
     glm::vec3 m_camPos;
     glm::vec3 m_camDir;
