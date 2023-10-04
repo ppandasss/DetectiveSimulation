@@ -14,7 +14,7 @@ public:
     glm::mat4 GetViewMatrix() const;
     glm::mat4 GetMVP(glm::mat4 ModelMatrix) const;
 
-    void Init(const glm::vec3& position, const glm::vec3& direction, const glm::vec3& up,int width,int height);
+    void Init(int width,int height);
     void Move(float dx, float dy);
     void ZoomIn(float step);
     void ZoomOut(float step);
@@ -35,10 +35,10 @@ private:
     int m_windowWidth;
     int m_windowHeight;
 
-    const float NEAR_PLANE = -1.0f;
-    const float FAR_PLANE = 1.0f;
-    float MAX_ZOOM = 2.0f;
-    float MIN_ZOOM = 0.5f;
+    const float NEAR_PLANE = -10.0f;
+    const float FAR_PLANE = 10.0f;
+    float MAX_ZOOM = 100.0f;
+    float MIN_ZOOM = 0.1f;
 
     glm::vec3 m_camPos;
     glm::vec3 m_camDir;
@@ -49,6 +49,7 @@ private:
 
     glm::mat4 m_projectionMatrix;
     glm::mat4 m_viewMatrix;
+    glm::mat4 CapT_Matrix_Send2GL;
 
     void UpdateProjectionMatrix();
     void UpdateViewMatrix();

@@ -3,14 +3,14 @@
 
 
 
-void Camera::Init(const glm::vec3& position, const glm::vec3& direction, const glm::vec3& up, int width, int height) {
+void Camera::Init(int width, int height) {
     std::cout << "Initializing camera..." << std::endl;
 
     m_windowWidth = width;
     m_windowHeight = height;
-    m_camPos = position;
-    m_camDir = direction;
-    m_camUp = up;
+    m_camPos = glm::vec3(0.0f, 0.0f, 0.0f);
+    m_camDir = glm::vec3(0.0f, 0.0f, -1.0f);
+    m_camUp = glm::vec3(0.0f, 1.0f, 0.0f);
     m_camZoom = 1.0f;
     m_camDegree = 0.0f;
 
@@ -27,9 +27,12 @@ Camera::~Camera() {}
 
 void Camera::UpdateProjectionMatrix() {
 
-    m_projectionMatrix = glm::ortho(-(m_windowWidth / 2) * m_camZoom, (m_windowWidth / 2) * m_camZoom,
-        -(m_windowHeight / 2) * m_camZoom, (m_windowHeight / 2) * m_camZoom,
+    float Scale = 200.0f;
+    m_projectionMatrix = glm::ortho(-(m_windowWidth / Scale) * m_camZoom, (m_windowWidth / Scale) * m_camZoom,
+        -(m_windowHeight / Scale) * m_camZoom, (m_windowHeight / Scale) * m_camZoom,
         NEAR_PLANE, FAR_PLANE);
+
+    //m_projectionMatrix = glm::ortho(-80.0f, 80.0f, -60.0f, 60.0f, -1.0f, 100.0f);
 
     std::cout << "Window Width: " << m_windowWidth << ", Window Height: " << m_windowHeight << std::endl;
     std::cout << "Zoom Level: " << m_camZoom << std::endl;
@@ -44,8 +47,9 @@ void Camera::UpdateProjectionMatrix() {
 }
 
 void Camera::UpdateViewMatrix() {
-    m_viewMatrix = glm::lookAt(m_camPos, m_camPos + m_camDir, m_camUp);
+   // m_viewMatrix = glm::lookAt(m_camPos, m_camPos + m_camDir, m_camUp);
     // Manually print the view matrix
+    m_viewMatrix = glm::mat4(1.0f);
     for (int i = 0; i < 4; ++i) {
         for (int j = 0; j < 4; ++j) {
             std::cout << m_viewMatrix[i][j] << ' ';
@@ -76,7 +80,7 @@ void Camera::ZoomIn(float step) {
     m_camZoom += step;
     if (m_camZoom > MAX_ZOOM) m_camZoom = MAX_ZOOM;
     std::cout << "zoom: " << m_camZoom << std::endl;
-    //UpdateProjectionMatrix();
+    UpdateProjectionMatrix();
 }
 
 void Camera::ZoomOut(float step) {

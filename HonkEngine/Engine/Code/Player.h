@@ -17,7 +17,7 @@ public:
 	Player(const std::string& name, const std::string& texturePath,int p_row,int p_col)
 		:AnimateGameObject(name, texturePath,4.0f,4.0f)
 	{
-		m_scale = glm::vec3(0.5f, 0.5f, 0.0f);
+		m_scale = glm::vec3(1.0f, 1.0f, 0.0f);
 		
 	}
 	
@@ -32,9 +32,9 @@ public:
        
         if (input.Get().GetKey(GLFW_KEY_A))
         {
-            m_position.x -= 1.0f * dt;
+            m_position.x -= speed * dt;
 			animY = 3.0f;
-			if (frame % 20 == 0)
+			if (frame % 5 == 0)
 			{
 				animX += 1.0f;
 				if (animX > 4.0f)
@@ -46,9 +46,9 @@ public:
         }
          if (input.Get().GetKey(GLFW_KEY_D))
         {
-            m_position.x += 1.0f * dt;
+            m_position.x += speed * dt;
 			animY = 2.0f;
-			if (frame % 20 == 0)
+			if (frame % 5 == 0)
 			{
 				animX += 1.0f;
 				if (animX > 4.0f)
@@ -77,6 +77,7 @@ public:
 
 
 private:
+	float speed = 5.0f;
     int frameCounter = 0;
     static const int framesPerCycle = 30;
 	glm::vec2 mousePos;

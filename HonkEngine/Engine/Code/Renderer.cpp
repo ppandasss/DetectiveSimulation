@@ -37,7 +37,7 @@
 
 		Camera& camera = Application::GetCamera();
 		//std::cout << "zoom: " << camera.GetZoom() << std::endl;
-		cdt_MVP = camera.GetMVP(modelMat);
+		cdt_MVP = camera.GetProjectionMatrix() * camera.GetViewMatrix()  * modelMat;
 		m_shader.SetMatrix4("MVP", cdt_MVP);
 		int errocode = glGetError();
 
