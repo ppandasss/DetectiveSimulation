@@ -1,22 +1,37 @@
-#pragma once
+#include <unordered_map>
+#include <functional>
+#include <string>
+
 class Animator {
 public:
-    Animator(float animationSpeed, int maxFrames)
-        : m_speed(animationSpeed), m_maxFrames(maxFrames), m_currentFrame(0) {}
+    enum class LoopType {
+        Once,
+        Loop,
+        PingPong,
+    };
 
-    void Update(float dt) {
-        m_currentFrame += m_speed * dt;
-        if (m_currentFrame >= m_maxFrames) {
-            m_currentFrame = 0;
-        }
-    }
+    struct Animation {
+        float speed;
+        int maxFrames;
+        int row;
+        LoopType loopType;
+        std::function<void()> onComplete;
+    };
 
-    int GetCurrentFrame() const {
-        return static_cast<int>(m_currentFrame);
-    }
+    Animator() : m_currentFrame(0), m_currentAnimation("") {}
 
+    void AddAnimation(const std::string& name, int row, int maxFrames, float speed, LoopType loopType, std::function<void()> onComplete);
+
+    void SetAnimation(const std::string& name);
+
+    void Update(float dt);
+
+    int GetCurrentFrame() const;
+
+    int GetCurrentRow() const;
 private:
-    float m_speed;
-    int m_maxFrames;
     float m_currentFrame;
+    std::string m_currentAnimation;
+    std::unordered_map<std::string, Animation> m_animations;
+    bool m_pingPongForward = true;
 };
