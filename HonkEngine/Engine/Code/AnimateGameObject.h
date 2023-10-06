@@ -5,6 +5,7 @@
 #include <glm/glm.hpp>
 #include "Application.h"
 #include "Engine.h"
+
 class AnimateGameObject : public GameObject
 {
 public:

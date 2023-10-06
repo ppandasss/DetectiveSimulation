@@ -6,19 +6,25 @@ void Animator::AddAnimation(const std::string& name,  int row, int maxFrames, fl
 }
 
 void Animator::SetAnimation(const std::string& name) {
-    if (m_animations.find(name) != m_animations.end()) {
-        std::cout << "Setting animation: " << name << std::endl;
+    if (m_animations.find(name) != m_animations.end() ) {
+
+       // std::cout << "Setting animation: " << name << std::endl;
         m_currentAnimation = name;
-        m_currentFrame = 0;
+        if (m_currentAnimation != name)
+        {
+            m_currentFrame = 0;
+        }
+        
     }
     else {
-        std::cout << "Animation not found: " << name << std::endl;
+       // std::cout << "Animation not found: " << name << std::endl;
+        m_currentFrame = 0;
     }
 }
 
 void Animator::Update(float dt) {
 
-    std::cout << "Updating Animator. Current Frame: " << m_currentFrame << std::endl;
+    
    
  
     if (m_currentAnimation.empty()) return;
@@ -44,6 +50,7 @@ void Animator::Update(float dt) {
     else {
         m_currentFrame += frameIncrement;
         if (m_currentFrame >= anim.maxFrames) {
+            std::cout << "Updating Animator. Current Frame: " << m_currentFrame << std::endl;
             if (anim.loopType == LoopType::Loop) {
                 m_currentFrame = 0;
             }

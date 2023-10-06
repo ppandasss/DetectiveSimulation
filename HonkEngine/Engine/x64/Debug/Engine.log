@@ -1,3 +1,8 @@
-﻿  Animator.cpp
-E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\Animator.cpp(22,36): error C2065: 'anim': undeclared identifier
-E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\Animator.cpp(22,69): error C2065: 'anim': undeclared identifier
+﻿  Main.cpp
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,13): warning C4099: 'Mesh': type name first seen using 'class' now seen using 'struct'
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): message : see declaration of 'Mesh'
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Game\LevelScene.h(16,77): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Game\LevelScene.h(16,72): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Game\Room1.h(16,81): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Game\Room1.h(16,75): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Engine.vcxproj -> C:\DetectiveSimulation\HonkEngine\x64\Debug\Engine.exe

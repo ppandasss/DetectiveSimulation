@@ -24,48 +24,38 @@ public:
 	}
 	
 void Update(float dt, long frame) override
+{
+    Input& input = Application::GetInput();
+    AnimateGameObject::Update(dt, frame);
+
+    // Initialize to a default or idle animation
+    std::string currentAnimation = "idle"; // Assume "idle" is an animation you've added
+
+    if (input.Get().GetKey(GLFW_KEY_A))
     {
-        Input& input = Application::GetInput();
-        AnimateGameObject::Update(dt, frame);
+        m_position.x -= speed * dt;
+        currentAnimation = "walk_left";
+    }
+    if (input.Get().GetKey(GLFW_KEY_D))
+    {
+        m_position.x += speed * dt;
+        currentAnimation = "walk_right";
+    }
 
+    // Set the animation
+    m_animator.SetAnimation(currentAnimation);
 
+    // Then update the animator
+    m_animator.Update(dt);
 
-		if (input.Get().GetKey(GLFW_KEY_A))
-		{
-			m_position.x -= speed * dt;
-			m_animator.SetAnimation("walk_left");
+    // Now get the current frame and row
+    int currentFrame = m_animator.GetCurrentFrame();
+    int currentRow = m_animator.GetCurrentRow();
 
-		}
-		if (input.Get().GetKey(GLFW_KEY_D))
-		{
-			m_position.x += speed * dt;
-			m_animator.SetAnimation("walk_right");
-
-		}
-		 if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1))
-		 {
-			 mousePos = Application::Get().CursorPos();
-			 Application::Get().GetCurrentScene()->AddGameObject(new RenderGameObject("Konrai", "Assets/Images/konrai.jpg"));
-			 std::cout << "x: " << mousePos.x << " y: " << mousePos.y << std::endl;
-		 }
-		if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_2))
-		{
-			Application::Get().SetScene("room1");
-		}
-	
-		// Then update the animator
-		m_animator.Update(dt);
-
-		// Now get the current frame and row
-		int currentFrame = m_animator.GetCurrentFrame();
-		std::cout << "Current Frame: " << currentFrame << std::endl;
-		int currentRow = m_animator.GetCurrentRow();
-
-		// Use the current frame and row for your sprite sheet
-		animY = static_cast<float>(currentRow);
-		animX = static_cast<float>(currentFrame);
-		
-	}
+    // Use the current frame and row for your sprite sheet
+    animY = static_cast<float>(currentRow);
+    animX = static_cast<float>(currentFrame);
+}
 
 
 
