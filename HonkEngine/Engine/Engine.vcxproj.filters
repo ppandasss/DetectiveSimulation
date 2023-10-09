@@ -39,6 +39,9 @@
     <ClCompile Include="Code\Animator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Code\TextRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Shader.h">
@@ -92,6 +95,9 @@
     <ClInclude Include="Code\Animator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Code\TextRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\transform.vs" />
@@ -100,5 +106,10 @@
     <None Include="Assets\Shaders\fragment.shd" />
     <None Include="Assets\Shaders\vertext.shd" />
     <None Include="Assets\Shaders\transform.fs" />
+    <None Include="Code\freetype.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="External\Library\freetype.lib" />
+    <Library Include="External\Library\glfw3.lib" />
   </ItemGroup>
 </Project>

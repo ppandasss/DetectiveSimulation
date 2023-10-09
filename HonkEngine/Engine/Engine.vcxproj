@@ -42,8 +42,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -138,6 +138,7 @@
     <ClCompile Include="Code\Main.cpp" />
     <ClCompile Include="Code\Renderer.cpp" />
     <ClCompile Include="External\Include\glad\glad.c" />
+    <ClCompile Include="Code\TextRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\AnimateGameObject.h" />
@@ -154,6 +155,7 @@
     <ClInclude Include="Code\RenderGameObject.h" />
     <ClInclude Include="Code\Scene.h" />
     <ClInclude Include="Code\Shader.h" />
+    <ClInclude Include="Code\TextRenderer.h" />
     <ClInclude Include="External\Include\GLFW\glfw3.h" />
     <ClInclude Include="External\Include\GLFW\glfw3native.h" />
     <ClInclude Include="External\Include\stb_image.h" />
@@ -165,6 +167,11 @@
     <None Include="Assets\Shaders\transform.fs" />
     <None Include="Assets\Shaders\transform.vs" />
     <None Include="Assets\Shaders\vertext.shd" />
+    <None Include="Code\freetype.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="External\Library\freetype.lib" />
+    <Library Include="External\Library\glfw3.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
