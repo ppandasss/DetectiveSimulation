@@ -43,7 +43,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -167,7 +167,6 @@
     <None Include="Assets\Shaders\transform.fs" />
     <None Include="Assets\Shaders\transform.vs" />
     <None Include="Assets\Shaders\vertext.shd" />
-    <None Include="Code\freetype.dll" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="External\Library\freetype.lib" />

@@ -58,4 +58,5 @@ void TextRenderer::Initialize()
 
 void TextRenderer::RenderText(const std::string& text, float x, float y)
 {
+
 }

@@ -106,7 +106,6 @@
     <None Include="Assets\Shaders\fragment.shd" />
     <None Include="Assets\Shaders\vertext.shd" />
     <None Include="Assets\Shaders\transform.fs" />
-    <None Include="Code\freetype.dll" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="External\Library\freetype.lib" />
