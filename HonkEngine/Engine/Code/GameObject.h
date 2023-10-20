@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include"glm/glm.hpp"
 
 class GameObject
 {
@@ -15,7 +16,7 @@ public:
 	virtual void Clear(){}
 
 	virtual void SetPosition(glm::vec3 newPos){ m_position = newPos; }
-
+	
 	virtual void SetScale(const glm::vec3& scale){m_scale = scale;}
 
 	virtual void SetOrientation(float orientation){m_orientation = orientation;}

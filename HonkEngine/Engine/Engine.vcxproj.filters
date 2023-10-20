@@ -42,6 +42,9 @@
     <ClCompile Include="Code\TextRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Text.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Shader.h">
@@ -106,6 +109,7 @@
     <None Include="Assets\Shaders\fragment.shd" />
     <None Include="Assets\Shaders\vertext.shd" />
     <None Include="Assets\Shaders\transform.fs" />
+    <None Include="freetype.dll" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="External\Library\freetype.lib" />

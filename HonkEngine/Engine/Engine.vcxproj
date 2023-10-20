@@ -137,6 +137,7 @@
     <ClCompile Include="Code\Input.cpp" />
     <ClCompile Include="Code\Main.cpp" />
     <ClCompile Include="Code\Renderer.cpp" />
+    <ClCompile Include="Code\Text.h" />
     <ClCompile Include="External\Include\glad\glad.c" />
     <ClCompile Include="Code\TextRenderer.cpp" />
   </ItemGroup>
@@ -167,6 +168,7 @@
     <None Include="Assets\Shaders\transform.fs" />
     <None Include="Assets\Shaders\transform.vs" />
     <None Include="Assets\Shaders\vertext.shd" />
+    <None Include="freetype.dll" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="External\Library\freetype.lib" />

@@ -9,6 +9,8 @@
 #include <ft2build.h>
 #include FT_FREETYPE_H  
 
+class Mesh;
+
 struct Character {
     unsigned int TextureID;  // ID handle of the glyph texture
     glm::ivec2 Size;         // Size of glyph
