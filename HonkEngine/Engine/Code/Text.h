@@ -1,28 +1,44 @@
 #pragma once
-
 #include "GameObject.h"
+#include "Application.h"
 #include "TextRenderer.h"
+#include "Engine.h"
+#include <string>
+#include <glm/glm.hpp>
 
-class Text : public GameObject
-{
+class Text : public GameObject {
 public:
-    Text(const std::string& name, const std::string& content, TextRenderer& textRenderer)
-        : GameObject(name), m_content(content), m_textRenderer(textRenderer)
+    Text(const std::string& name, const std::string& content, const std::string& fontPath)
+        : GameObject(name), m_content(content)
     {
-        m_textRenderer.Initialize();
+        textRenderer = std::make_unique<TextRenderer>();
+        textRenderer->Initialize(fontPath);
+    }
+
+    virtual void Update(float dt, long frame) override
+    {
+        // Update logic for Text
     }
 
     virtual void Render() override
     {
-        m_textRenderer.RenderText(m_content, m_position.x, m_position.y);
+        float x = m_position.x;
+        float y = m_position.y;
+        textRenderer->RenderText(m_content, x, y, model);
     }
+
+    // No Clear method for now, as TextRenderer doesn't have one
+    virtual void Clear() override {}
 
     void SetContent(const std::string& content)
     {
         m_content = content;
     }
 
+    // No SetFont for now, as TextRenderer doesn't have one
+
 private:
+    std::unique_ptr<TextRenderer> textRenderer;
     std::string m_content;
-    TextRenderer& m_textRenderer;
+    glm::mat4 model{ 1 };
 };

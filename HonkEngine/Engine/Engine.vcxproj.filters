@@ -115,4 +115,7 @@
     <Library Include="External\Library\freetype.lib" />
     <Library Include="External\Library\glfw3.lib" />
   </ItemGroup>
+  <ItemGroup>
+    <Font Include="Assets\Fonts\WD.ttf" />
+  </ItemGroup>
 </Project>

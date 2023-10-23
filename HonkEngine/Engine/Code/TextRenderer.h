@@ -1,31 +1,23 @@
 #pragma once
 
-#include <iostream>
-#include <map>
-#include <string>
-#include <glm/glm.hpp>
 #include <glad/glad.h>
-#include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
 #include <ft2build.h>
-#include FT_FREETYPE_H  
-
-class Mesh;
-
-struct Character {
-    unsigned int TextureID;  // ID handle of the glyph texture
-    glm::ivec2 Size;         // Size of glyph
-    glm::ivec2 Bearing;      // Offset from baseline to left/top of glyph
-    unsigned int Advance;    // Offset to advance to next glyph
-};
+#include FT_FREETYPE_H
+#include <string>
 
 class TextRenderer
 {
 public:
-	void Initialize();
-	void RenderText(const std::string& text, float x, float y);
-	
+    TextRenderer();
+    ~TextRenderer();
+
+    void Initialize(const std::string& fontPath);
+    void RenderText(const std::string& text, float x, float y, const glm::mat4& model);
 
 private:
-    std::map<char, Character> Characters;
+    GLuint m_program;
+    GLuint m_VAO, m_VBO;
+    FT_Library m_ft;
+    FT_Face m_face;
 };
-

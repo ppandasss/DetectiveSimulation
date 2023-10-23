@@ -1,8 +1,4 @@
-﻿  Main.cpp
-C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,13): warning C4099: 'Mesh': type name first seen using 'class' now seen using 'struct'
-C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): message : see declaration of 'Mesh'
-C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Game\LevelScene.h(23,78): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Game\LevelScene.h(23,73): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Game\Room1.h(16,81): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Game\Room1.h(16,75): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  Engine.vcxproj -> C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\x64\Debug\Engine.exe
+﻿  TextRenderer.cpp
+I:\Captain'sWork\DetectiveSimulation\HonkEngine\Engine\Code\TextRenderer.cpp(113,17): warning C4244: 'initializing': conversion from 'unsigned int' to 'float', possible loss of data
+I:\Captain'sWork\DetectiveSimulation\HonkEngine\Engine\Code\TextRenderer.cpp(114,17): warning C4244: 'initializing': conversion from 'unsigned int' to 'float', possible loss of data
+  Engine.vcxproj -> I:\Captain'sWork\DetectiveSimulation\HonkEngine\x64\Debug\Engine.exe

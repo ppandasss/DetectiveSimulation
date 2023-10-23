@@ -12,18 +12,20 @@
 	{
 
 	private:
-		TextRenderer textRenderer;
+		std::unique_ptr<TextRenderer> textRenderer;
 	public:
 		LevelScene()
 		{ 
 			
-			textRenderer.Initialize();
+			textRenderer = std::make_unique<TextRenderer>();
+			textRenderer->Initialize("Assets/Fonts/WD.ttf");  // Initialize with the path to your font
 			//RenderGameObject* boss = new RenderGameObject("Boss", "Assets/Images/awesomeface.png");
 			//GameObject* cabin = new RenderGameObject("Cabin", "Assets/Images/Cabin.png");
 			Player* Bus = new Player("Bus", "Assets/Images/spritesheet_test.png",4.0f,4.0f);
 
-			Text* helloText = new Text("HelloText", "Hello, World!", textRenderer);
-			helloText->SetPosition(glm::vec3(5.0f, 5.0f, 0.0f));
+			Text* helloText = new Text("HelloText", "Hello, World!", "Assets/Fonts/WD.ttf");
+
+			//helloText->SetPosition(glm::vec3(5.0f, 5.0f, 0.0f));
 		
 		
 		
