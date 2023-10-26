@@ -20,6 +20,7 @@ public:
 	void DrawMesh(const Mesh& mesh);
 	void UnloadMesh(Mesh& mesh);
 	void TextureUnload(Tex& tex);
+	void SetTexturerColor(const glm::vec4& color);
 
 private:
 	glm::mat4	cdt_ViewMatrix;

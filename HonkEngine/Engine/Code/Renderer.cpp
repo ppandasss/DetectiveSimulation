@@ -77,3 +77,9 @@
 		glDeleteTextures(1, &tex);
 		tex = GL_INVALID_INDEX;
 	}
+
+	void Renderer::SetTexturerColor(const glm::vec4& color)
+	{
+		m_shader.use();
+		m_shader.SetVector4f("Color", color);
+	}

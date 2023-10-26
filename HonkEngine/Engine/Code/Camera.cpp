@@ -14,8 +14,8 @@ void Camera::Init(int width, int height) {
     m_camZoom = 1.0f;
     m_camDegree = 0.0f;
 
-    std::cout << "Initial Camera Position: (" << m_camPos.x << ", " << m_camPos.y << ", " << m_camPos.z << ")" << std::endl;
-    std::cout << "Initial Camera Direction: (" << m_camDir.x << ", " << m_camDir.y << ", " << m_camDir.z << ")" << std::endl;
+   // std::cout << "Initial Camera Position: (" << m_camPos.x << ", " << m_camPos.y << ", " << m_camPos.z << ")" << std::endl;
+    //std::cout << "Initial Camera Direction: (" << m_camDir.x << ", " << m_camDir.y << ", " << m_camDir.z << ")" << std::endl;
 
     UpdateViewMatrix();
     UpdateProjectionMatrix();
@@ -35,27 +35,27 @@ void Camera::UpdateProjectionMatrix() {
     //m_projectionMatrix = glm::ortho(-80.0f, 80.0f, -60.0f, 60.0f, -1.0f, 100.0f);
 
     std::cout << "Window Width: " << m_windowWidth << ", Window Height: " << m_windowHeight << std::endl;
-    std::cout << "Zoom Level: " << m_camZoom << std::endl;
-    std::cout << "Near Plane: " << NEAR_PLANE << ", Far Plane: " << FAR_PLANE << std::endl;
+    //std::cout << "Zoom Level: " << m_camZoom << std::endl;
+    //std::cout << "Near Plane: " << NEAR_PLANE << ", Far Plane: " << FAR_PLANE << std::endl;
     // Manually print the projection matrix
-    for (int i = 0; i < 4; ++i) {
-        for (int j = 0; j < 4; ++j) {
-            std::cout << m_projectionMatrix[i][j] << ' ';
-        }
-        std::cout << std::endl;
-    }
+    //for (int i = 0; i < 4; ++i) {
+    //    for (int j = 0; j < 4; ++j) {
+    //        std::cout << m_projectionMatrix[i][j] << ' ';
+    //    }
+    //    std::cout << std::endl;
+    //}
 }
 
 void Camera::UpdateViewMatrix() {
    // m_viewMatrix = glm::lookAt(m_camPos, m_camPos + m_camDir, m_camUp);
     // Manually print the view matrix
     m_viewMatrix = glm::mat4(1.0f);
-    for (int i = 0; i < 4; ++i) {
+   /* for (int i = 0; i < 4; ++i) {
         for (int j = 0; j < 4; ++j) {
             std::cout << m_viewMatrix[i][j] << ' ';
         }
         std::cout << std::endl;
-    }
+    }*/
 }
 
 glm::mat4 Camera::GetProjectionMatrix() const {

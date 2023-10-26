@@ -70,8 +70,10 @@ public:
 	static Camera& GetCamera() { return s_instance->m_camera; }
 
 
+
 private:
 
+	Shader m_shader;
 	Camera m_camera;
 	Renderer m_renderer;
 	static Application* s_instance;

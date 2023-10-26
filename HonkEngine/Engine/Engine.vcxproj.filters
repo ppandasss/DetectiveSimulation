@@ -103,12 +103,12 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Shaders\transform.vs" />
+    <None Include="Assets\Shaders\text.vs" />
     <None Include="Assets\Shaders\color_tex_transparency.frag" />
     <None Include="Assets\Shaders\color_tex_transparency.vert" />
     <None Include="Assets\Shaders\fragment.shd" />
     <None Include="Assets\Shaders\vertext.shd" />
-    <None Include="Assets\Shaders\transform.fs" />
+    <None Include="Assets\Shaders\text.fs" />
     <None Include="freetype.dll" />
   </ItemGroup>
   <ItemGroup>
@@ -117,5 +117,6 @@
   </ItemGroup>
   <ItemGroup>
     <Font Include="Assets\Fonts\WD.ttf" />
+    <Font Include="Assets\Fonts\EI.ttf" />
   </ItemGroup>
 </Project>
