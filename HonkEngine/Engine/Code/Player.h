@@ -10,6 +10,7 @@
 #include <iostream>
 #include"GameObject.h"
 #include "Animator.h" 
+#include "Scene.h"
 
 
 class Player : public AnimateGameObject
@@ -41,7 +42,12 @@ void Update(float dt, long frame) override
         m_position.x += speed * dt;
         currentAnimation = "walk_right";
     }
-
+    if (input.Get().GetMouseButton(GLFW_MOUSE_BUTTON_1))
+    {
+        std::cout << "clicked" << std::endl;
+        Application::Get().GetCurrentScene()->AddGameObject(new RenderGameObject("Boss", "Assets/Images/awesomeface.png"));
+     
+    }
     // Set the animation
     m_animator.SetAnimation(currentAnimation);
 

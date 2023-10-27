@@ -86,7 +86,7 @@ Application::Application(int win_width, int win_height, const char* title)
      //Initialize(SCR_WIDTH, SCR_HEIGHT);
 
     m_input.Initialize(m_window);
-    m_renderer.Initialize(SCR_WIDTH, SCR_HEIGHT);
+    m_renderer.Initialize(win_width, win_height);
     m_camera.Init(win_width, win_height);
 
 

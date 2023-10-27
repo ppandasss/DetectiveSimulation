@@ -13,7 +13,7 @@
 #include "Input.h"
 #include "Renderer.h"
 #include "Camera.h"
-
+#include "TextRenderer.h"
 
 // settings
 const unsigned int SCR_WIDTH = 800;

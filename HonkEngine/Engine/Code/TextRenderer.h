@@ -8,6 +8,11 @@
 #include "Shader.h"
 #include"Renderer.h"
 
+class Mesh;
+
+
+typedef GLuint Tex;
+
 
 class TextRenderer
 {
@@ -24,7 +29,9 @@ private:
     Shader m_shader;
     FT_Library m_ft;
     FT_Face m_face;
-    GLuint m_VAO;  // Add this line
-    GLuint m_VBO;  // Add this line
+    GLuint m_VAO; 
+    GLuint m_VBO;  
+
+    int m_windowWidth, m_windowHeight;
 };
 

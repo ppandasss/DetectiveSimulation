@@ -34,7 +34,7 @@ public:
     {
         float x = m_position.x;
         float y = m_position.y;
-        textRenderer->RenderText(m_content, model);
+        textRenderer->RenderText(m_content,x,y,1.0f, model);
     }
 
     // No Clear method for now, as TextRenderer doesn't have one

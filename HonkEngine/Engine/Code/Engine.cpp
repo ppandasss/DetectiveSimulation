@@ -16,19 +16,6 @@ int m_windowHeight;
 Shader m_shader;
 Tex m_blankTex;
 
-
-glm::vec3   cdt_camPos;
-glm::vec3	cdt_camdir;
-glm::vec3	cdt_camup;
-float		cdt_camzoom;
-float		cdt_camdegree;
-glm::mat4	cdt_ViewMatrix;
-glm::mat4	cdt_ProjectionMatrix;
-glm::mat4	cdt_MVP;
-
-const float NEAR_PLANE = 0.1f;
-const float FAR_PLANE = 10.0f;
-
 void Initialize(int width, int height) {
    
     srand(time(NULL));

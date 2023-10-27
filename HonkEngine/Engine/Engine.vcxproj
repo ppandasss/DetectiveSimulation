@@ -130,33 +130,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Code\Animator.cpp" />
-    <ClCompile Include="Code\Application.cpp" />
-    <ClCompile Include="Code\Camera.cpp" />
-    <ClCompile Include="Code\Engine.cpp" />
-    <ClCompile Include="Code\Input.cpp" />
-    <ClCompile Include="Code\Main.cpp" />
-    <ClCompile Include="Code\Renderer.cpp" />
-    <ClCompile Include="Code\Text.h" />
     <ClCompile Include="External\Include\glad\glad.c" />
     <ClCompile Include="Code\TextRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Code\AnimateGameObject.h" />
-    <ClInclude Include="Code\Animator.h" />
-    <ClInclude Include="Code\Application.h" />
-    <ClInclude Include="Code\Camera.h" />
-    <ClInclude Include="Code\GameObject.h" />
-    <ClInclude Include="Code\Engine.h" />
-    <ClInclude Include="Code\Game\LevelScene.h" />
-    <ClInclude Include="Code\Game\Room1.h" />
-    <ClInclude Include="Code\Input.h" />
-    <ClInclude Include="Code\Player.h" />
-    <ClInclude Include="Code\Renderer.h" />
-    <ClInclude Include="Code\RenderGameObject.h" />
-    <ClInclude Include="Code\Scene.h" />
-    <ClInclude Include="Code\Shader.h" />
-    <ClInclude Include="Code\TextRenderer.h" />
+    <ClInclude Include="Code\testshader.h" />
     <ClInclude Include="External\Include\GLFW\glfw3.h" />
     <ClInclude Include="External\Include\GLFW\glfw3native.h" />
     <ClInclude Include="External\Include\stb_image.h" />
