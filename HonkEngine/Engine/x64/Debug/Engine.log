@@ -1,44 +1,33 @@
 ﻿  Animator.cpp
   Application.cpp
-E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,13): warning C4099: 'Mesh': type name first seen using 'class' now seen using 'struct'
-E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): message : see declaration of 'Mesh'
-E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\Application.cpp(127,36): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,13): warning C4099: 'Mesh': type name first seen using 'class' now seen using 'struct'
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): message : see declaration of 'Mesh'
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Application.cpp(127,36): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   Camera.cpp
   Engine.cpp
-E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,13): warning C4099: 'Mesh': type name first seen using 'class' now seen using 'struct'
-E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): message : see declaration of 'Mesh'
-E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\Engine.cpp(34,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,13): warning C4099: 'Mesh': type name first seen using 'class' now seen using 'struct'
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): message : see declaration of 'Mesh'
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Engine.cpp(34,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Input.cpp
   Main.cpp
-E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,13): warning C4099: 'Mesh': type name first seen using 'class' now seen using 'struct'
-E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): message : see declaration of 'Mesh'
-E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\Game\LevelScene.h(24,78): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\Game\LevelScene.h(24,73): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\Game\Room1.h(16,81): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\Game\Room1.h(16,75): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,13): warning C4099: 'Mesh': type name first seen using 'class' now seen using 'struct'
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): message : see declaration of 'Mesh'
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Text.h(37,21): error C2660: 'TextRenderer::RenderText': function does not take 2 arguments
+C:\DetectiveSimulation\HonkEngine\Engine\Code\TextRenderer.h(19,10): message : see declaration of 'TextRenderer::RenderText'
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Text.h(37,21): message : while trying to match the argument list '(std::string, glm::mat4)'
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Game\LevelScene.h(24,78): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Game\LevelScene.h(24,73): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Game\Room1.h(16,81): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Game\Room1.h(16,75): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   Renderer.cpp
-E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,13): warning C4099: 'Mesh': type name first seen using 'class' now seen using 'struct'
-E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): message : see declaration of 'Mesh'
-E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\Renderer.cpp(62,53): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,13): warning C4099: 'Mesh': type name first seen using 'class' now seen using 'struct'
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): message : see declaration of 'Mesh'
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Renderer.cpp(62,51): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
   Text.h
-E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,13): warning C4099: 'Mesh': type name first seen using 'class' now seen using 'struct'
-E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): message : see declaration of 'Mesh'
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,13): warning C4099: 'Mesh': type name first seen using 'class' now seen using 'struct'
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): message : see declaration of 'Mesh'
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Text.h(37,21): error C2660: 'TextRenderer::RenderText': function does not take 2 arguments
+C:\DetectiveSimulation\HonkEngine\Engine\Code\TextRenderer.h(19,10): message : see declaration of 'TextRenderer::RenderText'
+C:\DetectiveSimulation\HonkEngine\Engine\Code\Text.h(37,21): message : while trying to match the argument list '(std::string, glm::mat4)'
   TextRenderer.cpp
   Generating Code...
-  glad.c
-glfw3.lib(init.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(init.obj)' or at ''; linking object as if no debug info
-glfw3.lib(window.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(window.obj)' or at ''; linking object as if no debug info
-glfw3.lib(input.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(input.obj)' or at ''; linking object as if no debug info
-glfw3.lib(context.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(context.obj)' or at ''; linking object as if no debug info
-glfw3.lib(win32_init.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(win32_init.obj)' or at ''; linking object as if no debug info
-glfw3.lib(win32_monitor.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(win32_monitor.obj)' or at ''; linking object as if no debug info
-glfw3.lib(win32_time.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(win32_time.obj)' or at ''; linking object as if no debug info
-glfw3.lib(win32_thread.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(win32_thread.obj)' or at ''; linking object as if no debug info
-glfw3.lib(monitor.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(monitor.obj)' or at ''; linking object as if no debug info
-glfw3.lib(vulkan.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(vulkan.obj)' or at ''; linking object as if no debug info
-glfw3.lib(win32_window.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(win32_window.obj)' or at ''; linking object as if no debug info
-glfw3.lib(win32_joystick.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(win32_joystick.obj)' or at ''; linking object as if no debug info
-glfw3.lib(wgl_context.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(wgl_context.obj)' or at ''; linking object as if no debug info
-glfw3.lib(egl_context.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(egl_context.obj)' or at ''; linking object as if no debug info
-glfw3.lib(osmesa_context.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(osmesa_context.obj)' or at ''; linking object as if no debug info
-  Engine.vcxproj -> E:\GameEngine\DetectiveSimulation\HonkEngine\x64\Debug\Engine.exe

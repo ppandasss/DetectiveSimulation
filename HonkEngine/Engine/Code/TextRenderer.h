@@ -16,7 +16,7 @@ public:
     ~TextRenderer();
 
     void Initialize(const std::string& fontPath);
-    void RenderText(const std::string& text, const glm::mat4& model);
+    void RenderText(const std::string& text,float x,float y ,float scale, const glm::mat4& model);
     void SetTextColor(const glm::vec4& color);
 
 private:

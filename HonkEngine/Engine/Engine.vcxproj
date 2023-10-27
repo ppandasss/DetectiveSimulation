@@ -178,6 +178,15 @@
     <Font Include="Assets\Fonts\EI.ttf" />
     <Font Include="Assets\Fonts\WD.ttf" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\Images\awesomeface.png" />
+    <Image Include="Assets\Images\Cabin.png" />
+    <Image Include="Assets\Images\konrai.jpg" />
+    <Image Include="Assets\Images\spritesheet_test.png" />
+    <Image Include="Assets\Images\spritesheet_test2.png" />
+    <Image Include="Assets\Images\waiter_test.png" />
+    <Image Include="Assets\Images\wardrobe.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

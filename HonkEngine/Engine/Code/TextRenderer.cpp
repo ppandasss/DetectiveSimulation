@@ -38,8 +38,8 @@ void TextRenderer::Initialize(const std::string& fontPath)
     // Disable byte-alignment restriction
     glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
-    const char* SHADER_VERTEX_PATH = "Assets/Shaders/text.vs";
-    const char* SHADER_FRAGMENT_PATH = "Assets/Shaders/text.fs";
+    const char* SHADER_VERTEX_PATH = "Assets/Shaders/text.vert";
+    const char* SHADER_FRAGMENT_PATH = "Assets/Shaders/text.frag";
     m_shader.Initialize(SHADER_VERTEX_PATH, SHADER_FRAGMENT_PATH);
 
     glGenVertexArrays(1, &m_VAO);
@@ -62,7 +62,7 @@ void TextRenderer::Initialize(const std::string& fontPath)
     std::cout << "Initialize() called with fontPath: " << fontPath << std::endl;
 }
 
-void TextRenderer::RenderText(const std::string& text, const glm::mat4& model)
+void TextRenderer::RenderText(const std::string& text,float x,float y ,float scale, const glm::mat4& model)
 {
     std::cout << "RenderText() called with text: " << text << std::endl;
 
