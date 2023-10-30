@@ -32,6 +32,8 @@ void Update(float dt, long frame) override
     // Initialize to a default or idle animation
     std::string currentAnimation = "idle"; // Assume "idle" is an animation you've added
 
+
+    //std::cout << "Player Pos x :" << m_position.x << "Player Pos y :" << m_position.y << std::endl;
     if (input.Get().GetKey(GLFW_KEY_A))
     {
         m_position.x -= speed * dt;

@@ -24,6 +24,6 @@ public:
 protected:
 	std::string m_name;
 	glm::vec3 m_position {0.0f, 0.0f, 0.0f };
-	glm::vec3 m_scale {1.0f, 1.0f, 0.0f};
+	glm::vec3 m_scale {1.0f, 1.0f, 1.0f};
 	float m_orientation = 0.0f;
 };

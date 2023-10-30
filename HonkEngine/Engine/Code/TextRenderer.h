@@ -7,11 +7,15 @@
 #include <string>
 #include "Shader.h"
 #include"Renderer.h"
+#include <map>
 
 class Mesh;
 
 
 typedef GLuint Tex;
+
+
+
 
 
 class TextRenderer
@@ -21,8 +25,7 @@ public:
     ~TextRenderer();
 
     void Initialize(const std::string& fontPath);
-    void RenderText(const std::string& text,float x,float y ,float scale, const glm::mat4& model);
-    void SetTextColor(const glm::vec4& color);
+    void RenderText(std::string text, float x, float y, float scale, glm::vec3 color);
 
 private:
 

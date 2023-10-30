@@ -25,10 +25,13 @@
 
 			Text* helloText = new Text("HelloText", "HelloWorld", "Assets/Fonts/WD.ttf");
 
-			helloText->SetColor(glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
 			
 
-			//helloText->SetPosition(glm::vec3(5.0f, 5.0f, 0.0f));
+			helloText->SetColor(glm::vec3(0.913f, 0.940f, 0.132f));
+			helloText->SetContent("LongLive Tea-Chala");
+			
+
+			helloText->SetPosition(glm::vec3(-1.5f, 0.0f, 0.0f));
 		
 		
 		

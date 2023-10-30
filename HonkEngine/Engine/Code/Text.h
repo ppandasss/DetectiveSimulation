@@ -17,24 +17,14 @@ public:
 
     virtual void Update(float dt, long frame) override
     {
-        // Update logic for Text
-        glm::mat4 rMat = glm::mat4(1.0f);
-        glm::mat4 sMat = glm::mat4(1.0f);
-        glm::mat4 tMat = glm::mat4(1.0f);
 
-        tMat = glm::translate(glm::mat4(1.0f), glm::vec3(m_position.x, m_position.y, 0.0f));
-        rMat = glm::rotate(glm::mat4(1.0f), m_orientation, glm::vec3(0.0f, 0.0f, 1.0f));
-        sMat = glm::scale(glm::mat4(1.0f), glm::vec3(m_scale.x, m_scale.y, 1.0f));
-
-        model = tMat * rMat * sMat;
-        
     }
 
     virtual void Render() override
     {
         float x = m_position.x;
         float y = m_position.y;
-        textRenderer->RenderText(m_content,x,y,1.0f, model);
+        textRenderer->RenderText(m_content, x, y, m_scale, m_color);
     }
 
     // No Clear method for now, as TextRenderer doesn't have one
@@ -45,9 +35,13 @@ public:
         m_content = content;
     }
 
-    void SetColor(const glm::vec4& color)
+    void SetColor(const glm::vec3& color)
     {
-        textRenderer->SetTextColor(color);
+        m_color = color;
+    }
+    void SetScale(float scale)
+    {
+        m_scale = scale;
     }
 
     // No SetFont for now, as TextRenderer doesn't have one
@@ -56,4 +50,7 @@ private:
     std::unique_ptr<TextRenderer> textRenderer;
     std::string m_content;
     glm::mat4 model{ 1 };
+    glm::vec3 m_color = glm::vec3(0.0f, 0.0f, 0.0f);
+    float m_scale = 1.0f;
+
 };
