@@ -18,28 +18,28 @@
     <ClCompile Include="External\Include\glad\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Animator.cpp">
+    <ClCompile Include="Code\Animation\Animator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Code\Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Camera.cpp">
+    <ClCompile Include="Code\Camera\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Code\Engine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Input.cpp">
+    <ClCompile Include="Code\Input\Input.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Code\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Renderer.cpp">
+    <ClCompile Include="Code\Renderer\Renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\TextRenderer.cpp">
+    <ClCompile Include="Code\Text\TextRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -53,52 +53,52 @@
     <ClInclude Include="External\Include\stb_image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\TextRenderer.h">
+    <ClInclude Include="Code\Text\TextRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Text.h">
+    <ClInclude Include="Code\Text\Text.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Shader.h">
+    <ClInclude Include="Code\Renderer\Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Game\LevelScene.h">
+    <ClInclude Include="Code\Scene\LevelScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Game\Room1.h">
+    <ClInclude Include="Code\Scene\Room1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\AnimateGameObject.h">
+    <ClInclude Include="Code\GameObjects\AnimateGameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Animator.h">
+    <ClInclude Include="Code\Animation\Animator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Code\Application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Camera.h">
+    <ClInclude Include="Code\Camera\Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Code\Engine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\GameObject.h">
+    <ClInclude Include="Code\GameObjects\GameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Input.h">
+    <ClInclude Include="Code\Input\Input.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Player.h">
+    <ClInclude Include="Code\GameObjects\Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Renderer.h">
+    <ClInclude Include="Code\Renderer\Renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\RenderGameObject.h">
+    <ClInclude Include="Code\GameObjects\RenderGameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Scene.h">
+    <ClInclude Include="Code\Scene\Scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

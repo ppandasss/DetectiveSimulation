@@ -1,5 +1,5 @@
 #include "Application.h"
-#include"RenderGameObject.h"
+
 
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes
 // ---------------------------------------------------------------------------------------------
@@ -37,6 +37,8 @@ Application::~Application()
 {
     std::cout << "Application Desctructor\n";
 
+   
+
     for (auto& scene : m_sceneMap)
     {
         delete scene.second;
@@ -46,6 +48,7 @@ Application::~Application()
 }
 
 Application::Application(int win_width, int win_height, const char* title)
+    : baseTitle(title)
 {
    
 
@@ -137,7 +140,11 @@ void Application::Run()
         if (frameRateTimer >= frameRateUpdateInterval)
         {
             double frameRate = frameCount / frameRateTimer; //fps == frame per sec
-            std::cout << "                                                                                         FPS: " << (int)frameRate << std::endl;
+
+            std::string newTitle = std::string(baseTitle) + " - FPS: " + std::to_string(static_cast<int>(frameRate));
+            // Set the new window title
+            glfwSetWindowTitle(m_window, newTitle.c_str());
+           
             frameRateTimer = 0.0;
             frameCount = 0;
         }

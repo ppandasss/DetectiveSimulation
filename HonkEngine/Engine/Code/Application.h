@@ -8,12 +8,12 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-#include "Shader.h"
-#include "Scene.h"
-#include "Input.h"
-#include "Renderer.h"
-#include "Camera.h"
-#include "TextRenderer.h"
+#include "Renderer/Shader.h"
+#include "Scene/Scene.h"
+#include "Input/Input.h"
+#include "Renderer/Renderer.h"
+#include "Camera/Camera.h"
+#include "TExt/TextRenderer.h"
 
 // settings
 const unsigned int SCR_WIDTH = 800;
@@ -23,6 +23,7 @@ class Application
 {
 public:
 	Application(int width, int height, const char* title);
+	
 
 	~Application();
 
@@ -73,6 +74,7 @@ public:
 
 private:
 
+	std::string baseTitle;
 	Shader m_shader;
 	Camera m_camera;
 	Renderer m_renderer;

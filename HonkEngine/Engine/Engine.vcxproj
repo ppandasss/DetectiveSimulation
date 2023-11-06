@@ -43,7 +43,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -130,33 +130,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Code\Animator.cpp" />
+    <ClCompile Include="Code\Animation\Animator.cpp" />
     <ClCompile Include="Code\Application.cpp" />
-    <ClCompile Include="Code\Camera.cpp" />
+    <ClCompile Include="Code\Camera\Camera.cpp" />
     <ClCompile Include="Code\Engine.cpp" />
-    <ClCompile Include="Code\Input.cpp" />
+    <ClCompile Include="Code\Input\Input.cpp" />
     <ClCompile Include="Code\Main.cpp" />
-    <ClCompile Include="Code\Renderer.cpp" />
-    <ClCompile Include="Code\TextRenderer.cpp" />
+    <ClCompile Include="Code\Renderer\Renderer.cpp" />
+    <ClCompile Include="Code\Text\TextRenderer.cpp" />
     <ClCompile Include="External\Include\glad\glad.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Code\AnimateGameObject.h" />
-    <ClInclude Include="Code\Animator.h" />
+    <ClInclude Include="Code\GameObjects\AnimateGameObject.h" />
+    <ClInclude Include="Code\Animation\Animator.h" />
     <ClInclude Include="Code\Application.h" />
-    <ClInclude Include="Code\Camera.h" />
+    <ClInclude Include="Code\Camera\Camera.h" />
     <ClInclude Include="Code\Engine.h" />
-    <ClInclude Include="Code\GameObject.h" />
-    <ClInclude Include="Code\Game\LevelScene.h" />
-    <ClInclude Include="Code\Game\Room1.h" />
-    <ClInclude Include="Code\Input.h" />
-    <ClInclude Include="Code\Player.h" />
-    <ClInclude Include="Code\Renderer.h" />
-    <ClInclude Include="Code\RenderGameObject.h" />
-    <ClInclude Include="Code\Scene.h" />
-    <ClInclude Include="Code\Shader.h" />
-    <ClInclude Include="Code\Text.h" />
-    <ClInclude Include="Code\TextRenderer.h" />
+    <ClInclude Include="Code\GameObjects\GameObject.h" />
+    <ClInclude Include="Code\Scene\LevelScene.h" />
+    <ClInclude Include="Code\Scene\Room1.h" />
+    <ClInclude Include="Code\Input\Input.h" />
+    <ClInclude Include="Code\GameObjects\Player.h" />
+    <ClInclude Include="Code\Renderer\Renderer.h" />
+    <ClInclude Include="Code\GameObjects\RenderGameObject.h" />
+    <ClInclude Include="Code\Scene\Scene.h" />
+    <ClInclude Include="Code\Renderer\Shader.h" />
+    <ClInclude Include="Code\Text\Text.h" />
+    <ClInclude Include="Code\Text\TextRenderer.h" />
     <ClInclude Include="External\Include\GLFW\glfw3.h" />
     <ClInclude Include="External\Include\GLFW\glfw3native.h" />
     <ClInclude Include="External\Include\stb_image.h" />
