@@ -17,15 +17,13 @@ class UIElement : public RenderGameObject {
 		// For example, handling UI animations, interactions, etc
 		virtual void Update(float dt, long frame) override {
 
-		}
+		}  
 		virtual void OnClick() {
 
 		}
 		virtual void Clear() override {
 
 		}
-
-		//UI MANAGER - FIND A WAY TO HANDLE ORDERING ELEMENTSa
 		
 	
 	private:
