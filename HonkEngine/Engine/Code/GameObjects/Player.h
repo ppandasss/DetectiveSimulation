@@ -19,9 +19,9 @@ public:
 	Player(const std::string& name, const std::string& texturePath,int p_row,int p_col)
 		:AnimateGameObject(name, texturePath, p_row, p_col)
 	{
-		m_scale = glm::vec3(3.0f, 5.0f, 0.0f);
-	    m_animator.AddAnimation("walk_left", 1, 4, 8.0f, Animator::LoopType::Loop, []() { /* On Complete */ });
-		m_animator.AddAnimation("walk_right", 2, 4, 8.0f, Animator::LoopType::Loop, []() { /* On Complete */ });
+		m_scale = glm::vec3(4.5f, 3.5f, 0.0f);
+	    m_animator.AddAnimation("walk", 1, 8, 7.5f, Animator::LoopType::Loop, []() { /* On Complete */ });
+		//m_animator.AddAnimation("walk_right", 2, 4, 8.0f, Animator::LoopType::Loop, []() { /* On Complete */ });
 	}
 	
 void Update(float dt, long frame) override
@@ -38,13 +38,13 @@ void Update(float dt, long frame) override
     {
         m_position.x -= speed * dt;
         if (m_scale.x > 0) m_scale.x *= -1.0f; // This flips the sprite
-        currentAnimation = "walk_left";
+        currentAnimation = "walk";
     }
     if (input.Get().GetKey(GLFW_KEY_D))
     {
         m_position.x += speed * dt;
         if (m_scale.x < 0) m_scale.x *= -1.0f;
-        currentAnimation = "walk_right";
+        currentAnimation = "walk";
     }
     if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1))
     {

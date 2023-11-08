@@ -21,7 +21,7 @@
 			//textRenderer->Initialize("Assets/Fonts/WD.ttf");  // Initialize with the path to your font
 			//RenderGameObject* boss = new RenderGameObject("Boss", "Assets/Images/waiter_spritesheet_test.png");
 			GameObject* cabin = new RenderGameObject("Cabin", "Assets/Images/Cabin.png");
-			Player* Bus = new Player("waiter", "Assets/Images/waiter_spritesheet_test3.png",2,4);
+			Player* Bus = new Player("waiter", "Assets/Images/waiter_spritesheet_test.png",1,8);
 
 			Text* helloText = new Text("GameTitle", "Ticking Tea Time", "Assets/Fonts/WD.ttf");
 
