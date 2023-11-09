@@ -48,7 +48,7 @@ Application::~Application()
 }
 
 Application::Application(int win_width, int win_height, const char* title)
-    : baseTitle(title)
+    : baseTitle(title),m_audiomanager()
 {
    
 

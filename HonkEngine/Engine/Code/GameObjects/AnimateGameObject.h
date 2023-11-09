@@ -73,11 +73,6 @@ public:
 		
 
 		//std::cout << "Rendering GameObject: " << m_name << std::endl;
-
-		std::cout << "s_row : " << s_row << std::endl;
-		std::cout << "s_col : " << s_col<< std::endl;
-		std::cout << "AnimX : " << animX << std::endl;
-		std::cout << "AnimY: " << animY << std::endl;
 		renderer.SetRenderMode(CDT_TEXTURE, 1.0f);
 		renderer.SetTexture(texture_Id,animX/s_col, animY/ s_row);
 		//std::cout << "Render::TextureID " << texture_Id << std::endl;	

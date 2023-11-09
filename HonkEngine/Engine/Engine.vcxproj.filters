@@ -101,6 +101,9 @@
     <ClInclude Include="Code\Scene\Scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Audio\AudioManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\text.vs" />
@@ -110,6 +113,9 @@
     <None Include="Assets\Shaders\vertext.shd" />
     <None Include="Assets\Shaders\text.fs" />
     <None Include="freetype.dll" />
+    <None Include="ikpFlac.dll" />
+    <None Include="ikpMP3.dll" />
+    <None Include="irrKlang.dll" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="External\Library\freetype.lib" />
@@ -141,5 +147,8 @@
     <Image Include="Assets\Images\wardrobe.png">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Assets\Sounds\ophelia.mp3" />
   </ItemGroup>
 </Project>

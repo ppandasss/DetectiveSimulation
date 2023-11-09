@@ -3,6 +3,8 @@ C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\En
 C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): message : see declaration of 'Mesh'
 C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Player.h(20,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Player.h(20,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Text\TextRenderer.h(12,11): warning C4099: 'Mesh': type name first seen using 'struct' now seen using 'class'
+C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): message : see declaration of 'Mesh'
 C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Room1.h(16,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Room1.h(16,64): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   Engine.vcxproj -> C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\x64\Debug\Engine.exe

@@ -13,7 +13,7 @@
 #include "Input/Input.h"
 #include "Renderer/Renderer.h"
 #include "Camera/Camera.h"
-#include "TExt/TextRenderer.h"
+#include "Audio/AudioManager.h"
 
 // settings
 const unsigned int SCR_WIDTH = 800;
@@ -69,7 +69,8 @@ public:
 	static Renderer& GetRenderer() { return s_instance->m_renderer; }
 	static Input& GetInput() { return s_instance->m_input; }
 	static Camera& GetCamera() { return s_instance->m_camera; }
-
+	static AudioManager& GetAudioManager() { return s_instance->m_audiomanager; }
+	
 
 
 private:
@@ -78,6 +79,7 @@ private:
 	Shader m_shader;
 	Camera m_camera;
 	Renderer m_renderer;
+	AudioManager m_audiomanager;
 	static Application* s_instance;
 	GLFWwindow* m_window;
 	Input m_input;

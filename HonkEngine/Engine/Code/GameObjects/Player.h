@@ -17,7 +17,7 @@ class Player : public AnimateGameObject
 {
 public:
 	Player(const std::string& name, const std::string& texturePath,int p_row,int p_col)
-		:AnimateGameObject(name, texturePath, p_row, p_col)
+		:AnimateGameObject(name, texturePath, p_row, p_col),audioManager(Application::Get().GetAudioManager())
 	{
 		m_scale = glm::vec3(4.5f, 3.5f, 0.0f);
 	    m_animator.AddAnimation("walk", 1, 8, 7.5f, Animator::LoopType::Loop, []() { /* On Complete */ });
@@ -36,6 +36,7 @@ void Update(float dt, long frame) override
     //std::cout << "Player Pos x :" << m_position.x << "Player Pos y :" << m_position.y << std::endl;
     if (input.Get().GetKey(GLFW_KEY_A))
     {
+        
         m_position.x -= speed * dt;
         if (m_scale.x > 0) m_scale.x *= -1.0f; // This flips the sprite
         currentAnimation = "walk";
@@ -85,4 +86,5 @@ private:
 	float speed = 5.0f;
 	glm::vec2 mousePos;
 	Animator m_animator;
+    AudioManager& audioManager;
 };

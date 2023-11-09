@@ -110,7 +110,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\Engine\External\Library;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;irrKlang.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -141,6 +141,7 @@
     <ClCompile Include="External\Include\glad\glad.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Code\Audio\AudioManager.h" />
     <ClInclude Include="Code\GameObjects\AnimateGameObject.h" />
     <ClInclude Include="Code\Animation\Animator.h" />
     <ClInclude Include="Code\Application.h" />
@@ -169,6 +170,9 @@
     <None Include="Assets\Shaders\text.vs" />
     <None Include="Assets\Shaders\vertext.shd" />
     <None Include="freetype.dll" />
+    <None Include="ikpFlac.dll" />
+    <None Include="ikpMP3.dll" />
+    <None Include="irrKlang.dll" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="External\Library\freetype.lib" />
@@ -186,6 +190,9 @@
     <Image Include="Assets\Images\spritesheet_test2.png" />
     <Image Include="Assets\Images\waiter_test.png" />
     <Image Include="Assets\Images\wardrobe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Assets\Sounds\ophelia.mp3" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
