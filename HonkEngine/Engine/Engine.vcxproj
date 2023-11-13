@@ -146,6 +146,7 @@
     <ClInclude Include="Code\Engine.h" />
     <ClInclude Include="Code\Game\LevelScene.h" />
     <ClInclude Include="Code\Game\Room1.h" />
+    <ClInclude Include="Code\UIManager.h" />
     <ClInclude Include="Code\UIButton.h" />
     <ClInclude Include="Code\UIElement.h" />
     <ClInclude Include="Code\Input.h" />

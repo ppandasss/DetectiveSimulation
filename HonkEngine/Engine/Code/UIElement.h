@@ -11,23 +11,37 @@ class UIElement : public RenderGameObject {
 			SetPosition(glm::vec3(position.x, position.y, 0.0f));
 			SetScale(glm::vec3(scale.x, scale.y, 0.0f));
 
+			isClickable = true;
+
 		}
 
-		// Implement UI-specific update logic here
-		// For example, handling UI animations, interactions, etc
+		
 		virtual void Update(float dt, long frame) override {
+		
+			// Implement UI-specific update logic here
+			// For example, handling UI animations, interactions, etc
 
 		}  
-		virtual void OnClick() {
 
+		virtual void OnClick() {};
+
+		bool IsClickable() {
+			return isClickable;
 		}
+
+		void SetClickable(bool clickable) {
+			isClickable = clickable;
+		}
+
+
+
+		// Implement cleanup logic for UI elements
 		virtual void Clear() override {
 
 		}
 		
 	
 	private:
-
-		bool isClickable = false;
+		bool isClickable;
 
 };
