@@ -17,11 +17,11 @@ class Player : public AnimateGameObject
 {
 public:
 	Player(const std::string& name, const std::string& texturePath,int p_row,int p_col)
-		:AnimateGameObject(name, texturePath, p_row, p_col),audioManager(Application::Get().GetAudioManager())
+		:AnimateGameObject(name, texturePath, p_row, p_col),audioManager(AudioManager::GetInstance())
 	{
 		m_scale = glm::vec3(4.5f, 3.5f, 0.0f);
-	    m_animator.AddAnimation("walk", 1, 8, 7.5f, Animator::LoopType::Loop, []() { /* On Complete */ });
-		//m_animator.AddAnimation("walk_right", 2, 4, 8.0f, Animator::LoopType::Loop, []() { /* On Complete */ });
+	    m_animator.AddAnimation("walk", 1, 8, 7.5f, Animator::LoopType::Loop, []() {});
+        audioManager.LoadSound("Player_footsteps","Assets/Sounds/footstep.mp3",3.0f);
 	}
 	
 void Update(float dt, long frame) override
@@ -30,19 +30,22 @@ void Update(float dt, long frame) override
     AnimateGameObject::Update(dt, frame);
 
     // Initialize to a default or idle animation
-    std::string currentAnimation = "idle"; // Assume "idle" is an animation you've added
+    std::string currentAnimation = "idle"; 
+    bool isWalking = false;
 
-
-    //std::cout << "Player Pos x :" << m_position.x << "Player Pos y :" << m_position.y << std::endl;
+    
     if (input.Get().GetKey(GLFW_KEY_A))
     {
-        
+        isWalking = true;
+       // audioManager.PlaySound("Player_footsteps",true);
         m_position.x -= speed * dt;
-        if (m_scale.x > 0) m_scale.x *= -1.0f; // This flips the sprite
+        if (m_scale.x > 0) m_scale.x *= -1.0f;
         currentAnimation = "walk";
     }
     if (input.Get().GetKey(GLFW_KEY_D))
     {
+        isWalking = true;
+       // audioManager.PlaySound("Player_footsteps",true);
         m_position.x += speed * dt;
         if (m_scale.x < 0) m_scale.x *= -1.0f;
         currentAnimation = "walk";
@@ -78,6 +81,13 @@ void Update(float dt, long frame) override
     // Use the current frame and row for your sprite sheet
     animY = static_cast<float>(currentRow);
     animX = static_cast<float>(currentFrame);
+
+    if (isWalking && !audioManager.IsSoundPlaying("Player_footsteps")) {
+        audioManager.PlaySound("Player_footsteps", true);
+    }
+    else if (!isWalking && audioManager.IsSoundPlaying("Player_footsteps")) {
+        audioManager.StopSound("Player_footsteps");
+    }
 }
 
 

@@ -150,5 +150,6 @@
   </ItemGroup>
   <ItemGroup>
     <Media Include="Assets\Sounds\ophelia.mp3" />
+    <Media Include="Assets\Sounds\footsteps.mp3" />
   </ItemGroup>
 </Project>

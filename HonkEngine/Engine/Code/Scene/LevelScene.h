@@ -16,11 +16,11 @@
 		std::unique_ptr<TextRenderer> textRenderer;
 		AudioManager& audioManager;
 	public:
-		LevelScene() : audioManager(Application::Get().GetAudioManager())
+		LevelScene() :audioManager(AudioManager::GetInstance())
 		{
-			audioManager.LoadSound("backgroundMusic", "Assets/Sounds/ophelia.mp3");
+			audioManager.LoadSound("backgroundMusic", "Assets/Sounds/MembersOnly.mp3",0.2f);
 			audioManager.PlaySound("backgroundMusic", true);
-			audioManager.SetSoundVolume("backgroundMusic",0.3f);
+			
 			GameObject* cabin = new RenderGameObject("Cabin", "Assets/Images/Cabin.png");
 			Player* Bus = new Player("waiter", "Assets/Images/waiter_spritesheet_test.png",1,8);
 
