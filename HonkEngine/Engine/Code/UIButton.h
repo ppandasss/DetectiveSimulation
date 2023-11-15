@@ -12,6 +12,8 @@ class UIButton : public UIElement {
 
 		virtual void OnClick() {
 
+			std::cout << "Button Clicked" << std::endl;
+
 		}
 
 
