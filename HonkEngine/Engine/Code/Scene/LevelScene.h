@@ -19,7 +19,9 @@
 		LevelScene() :audioManager(AudioManager::GetInstance())
 		{
 			audioManager.LoadSound("backgroundMusic", "Assets/Sounds/MembersOnly.mp3",0.2f);
+			audioManager.LoadSound("trainAmbience", "Assets/Sounds/Train_Ambience.mp3", 0.2f);
 			audioManager.PlaySound("backgroundMusic", true);
+			audioManager.PlaySound("trainAmbience", true);
 			
 			GameObject* cabin = new RenderGameObject("Cabin", "Assets/Images/Cabin.png");
 			Player* Bus = new Player("waiter", "Assets/Images/waiter_spritesheet_test.png",1,8);

@@ -192,7 +192,9 @@
     <Image Include="Assets\Images\wardrobe.png" />
   </ItemGroup>
   <ItemGroup>
+    <Media Include="Assets\Sounds\footstep.mp3" />
     <Media Include="Assets\Sounds\footsteps.mp3" />
+    <Media Include="Assets\Sounds\MembersOnly.mp3" />
     <Media Include="Assets\Sounds\ophelia.mp3" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
