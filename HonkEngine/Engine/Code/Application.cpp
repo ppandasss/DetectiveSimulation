@@ -1,5 +1,5 @@
 #include "Application.h"
-#include"RenderGameObject.h"
+
 
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes
 // ---------------------------------------------------------------------------------------------
@@ -16,6 +16,19 @@ void processInput(GLFWwindow* window)
 {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
+
+    Camera& camera = Application::GetCamera();
+
+    if (glfwGetKey(window, GLFW_KEY_PAGE_UP) == GLFW_PRESS)
+    {
+        // Assuming you have a static GetCamera method in Application
+        camera.ZoomIn(0.01f);  // Zoom in by 0.1 units
+    }
+    if (glfwGetKey(window, GLFW_KEY_PAGE_DOWN) == GLFW_PRESS)
+    {
+        // Assuming you have a static GetCamera method in Application
+        camera.ZoomOut(0.01f);  // Zoom in by 0.1 units
+    }
 }
 
 Application* Application::s_instance = nullptr;
@@ -23,6 +36,8 @@ Application* Application::s_instance = nullptr;
 Application::~Application()
 {
     std::cout << "Application Desctructor\n";
+
+   
 
     for (auto& scene : m_sceneMap)
     {
@@ -33,6 +48,7 @@ Application::~Application()
 }
 
 Application::Application(int win_width, int win_height, const char* title)
+    : baseTitle(title)
 {
    
 
@@ -73,7 +89,8 @@ Application::Application(int win_width, int win_height, const char* title)
      //Initialize(SCR_WIDTH, SCR_HEIGHT);
 
     m_input.Initialize(m_window);
-    m_renderer.Initialize(SCR_WIDTH, SCR_HEIGHT);
+    m_renderer.Initialize(win_width, win_height);
+    m_camera.Init(win_width, win_height);
 
 
 }
@@ -105,13 +122,6 @@ void Application::Run()
         // input
         // -----
         processInput(m_window);
-
-
-      
-           
-
-        // render
-        // ------
  
 
 
@@ -130,7 +140,11 @@ void Application::Run()
         if (frameRateTimer >= frameRateUpdateInterval)
         {
             double frameRate = frameCount / frameRateTimer; //fps == frame per sec
-            std::cout << "                                                                                         FPS: " << (int)frameRate << std::endl;
+
+            std::string newTitle = std::string(baseTitle) + " - FPS: " + std::to_string(static_cast<int>(frameRate));
+            // Set the new window title
+            glfwSetWindowTitle(m_window, newTitle.c_str());
+           
             frameRateTimer = 0.0;
             frameCount = 0;
         }

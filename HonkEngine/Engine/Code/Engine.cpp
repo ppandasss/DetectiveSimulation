@@ -15,19 +15,6 @@ int m_windowWidth;
 int m_windowHeight; 
 Shader m_shader;
 Tex m_blankTex;
-float m_tranparency;
-
-glm::vec3   cdt_camPos;
-glm::vec3	cdt_camdir;
-glm::vec3	cdt_camup;
-float		cdt_camzoom;
-float		cdt_camdegree;
-glm::mat4	cdt_ViewMatrix;
-glm::mat4	cdt_ProjectionMatrix;
-glm::mat4	cdt_MVP;
-
-const float NEAR_PLANE = 0.1f;
-const float FAR_PLANE = 10.0f;
 
 void Initialize(int width, int height) {
    
@@ -38,26 +25,19 @@ void Initialize(int width, int height) {
 
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     glDisable(GL_DEPTH_TEST);
-    glDisable(GL_CULL_FACE);
-
+    //glDisable(GL_CULL_FACE);
+    glEnable(GL_CULL_FACE);
 
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     m_shader.Initialize(SHADER_VERTEX_PATH, SHADER_FRAGMENT_PATH);
     m_blankTex = TextureLoad(TEXTURE_PATH);
-    m_tranparency = 1.0f;
 
 
 
-    // set cam, model view proj matrix
-    cdt_camPos = glm::vec3(0.0f, 0.0f, 0.0f);
-    cdt_camdir = glm::vec3(0.0f, 0.0f, -1.0f);
-    cdt_camup = glm::vec3(0.0f, 1.0f, 0.0f);
-    cdt_camzoom = 1.0f;
-    cdt_camdegree = 0.0f;
-    cdt_ProjectionMatrix = glm::ortho(-(m_windowWidth / 2) * cdt_camzoom, (m_windowWidth / 2) * cdt_camzoom, -(m_windowHeight / 2) * cdt_camzoom, (m_windowHeight / 2) * cdt_camzoom, NEAR_PLANE, FAR_PLANE);
-    cdt_ViewMatrix = glm::lookAt(cdt_camPos, cdt_camPos + cdt_camdir, cdt_camup);
+
+
     //PrintMatrix(cdt_ProjectionMatrix);
 }
 
@@ -135,68 +115,6 @@ Tex TextureLoad(const std::string path)
     return texture;
 }
 
-void TextureUnload(Tex& tex)
-{
-	glDeleteTextures(1, &tex);
-	tex = GL_INVALID_INDEX;
-}
-
-void SetRenderMode(int mode, float alpha) {
-    glViewport(0, 0, m_windowWidth, m_windowHeight);
-    m_shader.use();  // Activate the shader
-    m_shader.setInt("mode", mode);  // Set integer uniform
-    m_shader.setFloat("alpha", alpha);  // Set float uniform
-
-    // default setting
-    //SetTexture(m_blankTex, 0.0f, 0.0f);
-    //SetTransform(glm::mat4(1.0f));
-}
-
-void SetTexture(Tex tex, float offsetX, float offsetY) {
-
-   // std::cout << "SetTexture::TextureID " << tex << std::endl;
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, tex);
-	m_shader.setInt("tex1", 0);  // Set integer uniform
-	m_shader.setFloat("offsetX", offsetX);  // Set float uniform
-	m_shader.setFloat("offsetY", offsetY);  // Set float uniform
-}
-
-void SetTransform(const glm::mat4 &modelMat) {
-
-    cdt_MVP = cdt_ProjectionMatrix * cdt_ViewMatrix * modelMat;
-    std::cout << "Model matrix at start of SetTransform method:\n";
-   // PrintMatrix(modelMat);
-    std::cout << "Proj matrix at start of SetTransform method:\n";
-   // PrintMatrix(cdt_ProjectionMatrix);
-    std::cout << "View matrix at start of SetTransform method:\n";
-    //PrintMatrix(cdt_ViewMatrix);
-    std::cout << "MVP matrix at start of SetTransform method:\n";
-   // PrintMatrix(cdt_MVP);
-    glUniformMatrix4fv(glGetUniformLocation(m_shader.ID, "MVP"), 1, GL_FALSE, &cdt_MVP[0][0]);
-   int errocode =  glGetError();
-
-   //std::cout << "Error code" << errocode << std::endl;
-}
-
-void DrawMesh(const Mesh& mesh) {
-    //std::cout << " DrawMesh method called:\n";
-
-    glBindVertexArray(mesh.vaoHandle);
-    glDrawArrays(GL_TRIANGLES, 0, mesh.vertices.size());
-
-    glBindVertexArray(0);
-}
-
-void UnloadMesh(Mesh& mesh)
-{
-    glDeleteBuffers(1, &mesh.vertexBuffer);
-    glDeleteVertexArrays(1, &mesh.vaoHandle);
-
-    mesh.vertices.clear();
-}
-
-
 
 
 int GetWindowWidth() {
@@ -227,95 +145,5 @@ int GetWindowHeight() {
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }*/
 
-void MoveCam(float dx, float dy)
-{
-	cdt_camPos.x += dx;
-	cdt_camPos.y += dy;
 
-	cdt_ViewMatrix = glm::lookAt(cdt_camPos, cdt_camPos + cdt_camdir, cdt_camup);
-}
-
-void ZoomIn(float step)
-{
-	cdt_camzoom += step;
-
-	cdt_ProjectionMatrix = glm::ortho(-(m_windowWidth / 2) * cdt_camzoom, (m_windowWidth / 2) * cdt_camzoom, -(m_windowHeight / 2) * cdt_camzoom, (m_windowHeight / 2) * cdt_camzoom, -10.0f, 10.0f);
-}
-
-void ZoomOut(float step)
-{
-	cdt_camzoom -= step;
-
-	cdt_ProjectionMatrix = glm::ortho(-(m_windowWidth / 2) * cdt_camzoom, (m_windowWidth / 2) * cdt_camzoom, -(m_windowHeight / 2) * cdt_camzoom, (m_windowHeight / 2) * cdt_camzoom, -10.0f, 10.0f);
-}
-
-void RotateCam(float degree)
-{
-	cdt_camdegree += degree;
-
-	glm::vec3 newUp;
-	newUp.x = -1 * glm::sin(glm::radians(cdt_camdegree));
-	newUp.y = glm::cos(glm::radians(cdt_camdegree));
-	newUp.z = cdt_camup.z;
-
-	cdt_camup = newUp;
-
-	cdt_ViewMatrix = glm::lookAt(cdt_camPos, cdt_camPos + cdt_camdir, cdt_camup);
-}
-
-void ResetCam()
-{
-	cdt_camPos = glm::vec3(0.0f, 0.0f, 0.0f);
-	cdt_camdir = glm::vec3(0.0f, 0.0f, -1.0f);
-	cdt_camup = glm::vec3(0.0f, 1.0f, 0.0f);
-
-	cdt_ViewMatrix = glm::lookAt(cdt_camPos, cdt_camPos + cdt_camdir, cdt_camup);
-}
-
-void SetCamPosition(float xpos, float ypos)
-{
-	cdt_camPos.x = xpos;
-	cdt_camPos.y = ypos;
-
-	cdt_ViewMatrix = glm::lookAt(cdt_camPos, cdt_camPos + cdt_camdir, cdt_camup);
-}
-
-void SetCamZoom(float zoom)
-{
-	cdt_camzoom = zoom;
-	if (cdt_camzoom < 0.1f) { cdt_camzoom = 0.1f; }
-
-	cdt_ProjectionMatrix = glm::ortho(-(m_windowWidth / 2) * cdt_camzoom, (m_windowWidth / 2) * cdt_camzoom, -(m_windowHeight / 2) * cdt_camzoom, (m_windowHeight / 2) * cdt_camzoom, -10.0f, 10.0f);
-	cdt_ViewMatrix = glm::lookAt(cdt_camPos, cdt_camPos + cdt_camdir, cdt_camup);
-}
-
-void SetCamRotation(float degree)
-{
-	cdt_camdegree = degree;
-
-	glm::vec3 newUp;
-	newUp.x = -1 * glm::sin(glm::radians(cdt_camdegree));
-	newUp.y = glm::cos(glm::radians(cdt_camdegree));
-	newUp.z = cdt_camup.z;
-
-	cdt_camup = newUp;
-
-	cdt_ViewMatrix = glm::lookAt(cdt_camPos, cdt_camPos + cdt_camdir, cdt_camup);
-}
-
-float GetCamPosX()
-{
-	return cdt_camPos.x;
-}
-
-float GetCamPosY()
-{
-	return cdt_camPos.y;
-}
-
-void SetCamPos(float x, float y)
-{
-	cdt_camPos.x = x;
-	cdt_camPos.y = y;
-}
 

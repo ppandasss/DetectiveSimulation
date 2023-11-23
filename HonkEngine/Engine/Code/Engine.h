@@ -10,8 +10,9 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-#include"Shader.h"
+#include"Renderer/Shader.h"
 #include "Application.h"
+#include"Camera/Camera.h"
 
 
 struct Vertex {
@@ -37,31 +38,14 @@ typedef GLuint Tex;
     void Initialize(int width, int height);
 
     Tex TextureLoad(const std::string path);
-    void TextureUnload(Tex& tex);
+ 
 
     Mesh CreateMesh(std::vector<Vertex> in_vertices);
-    void UnloadMesh(Mesh& mesh);
+
 
     int  GetWindowWidth();
     int  GetWindowHeight();
-    float GetCamPosX();
-    float GetCamPosY();
 
-     void SetRenderMode(int mode, float alpha);
-     void SetTexture(Tex tex, float offsetX, float offsetY);
-     void SetTransform(const glm::mat4 &modelMat);
-     void DrawMesh(const Mesh& mesh);
-     
-    
-     void MoveCam(float dx, float dy);
-     void ZoomIn(float step);
-     void ZoomOut(float step);
-     void RotateCam(float degree);
-     void SetCamPosition(float xpos, float ypos);
-     void SetCamZoom(float zoom);
-     void SetCamRotation(float degree);
-     void ResetCam();
-     void SetCamPos(float x, float y);
 
      void PrintMatrix(const glm::mat4& mat);
   

@@ -1,5 +1,5 @@
-#define WIN_WIDTH  800
-#define WIN_HEIGHT 600
+#define WIN_WIDTH  1920
+#define WIN_HEIGHT 1080
 #define NAME    "Ticking Tea Pang Cha"
 
 
@@ -8,11 +8,11 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include "Shader.h"
+#include "Renderer/Shader.h"
 #include "Application.h"
 
-#include "Game/LevelScene.h"
-#include "Game/Room1.h"
+#include "Scene/LevelScene.h"
+#include "Scene/Room1.h"
 #include <iostream>
 
 
