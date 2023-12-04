@@ -28,7 +28,7 @@ public:
 		for (auto& object : m_toAddGameObjects)
 			m_gameObjects.push_back(object);
 
-		std::cout << "GAME OBJECTS: " << m_gameObjects.size() << std::endl;
+		//std::cout << "GAME OBJECTS: " << m_gameObjects.size() << std::endl;
 
 		m_toAddGameObjects.clear();
 	}

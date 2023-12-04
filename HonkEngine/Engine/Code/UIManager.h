@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.h"
+#include "RenderGameObject.h"
 #include "UIElement.h"
 #include "UIButton.h"
 #include <vector>
@@ -8,7 +9,11 @@ class UIManager :public GameObject{
 
 	
 	public:
-		UIManager();
+		UIManager(){
+
+			CreateUIElements();
+		
+		}
 		void RenderUI() {
 
 			// Render UI elements
@@ -51,18 +56,25 @@ class UIManager :public GameObject{
 			
 
 		}
+
+		~UIManager() {
+			for (UIElement* element : uiElements) {
+				delete element;
+			}
+		}
 	
 
 	
 	private:
 		std::vector<UIElement*> uiElements;
 
-		//pushback all UI Elements being used into vector/ to initialize when game begins
-		void CreateUIElement() {
-
-			uiElements.push_back(new UIButton("Button 1", "Assets/Images/konrai.jpg", 4.0f, 4.0f);
-
-		}
 		glm::vec2 mousePos;
+
+		//pushback all UI Elements being used into vector/ to initialize when game begins
+		void CreateUIElements() {
+
+			uiElements.push_back(new UIButton("Button 1", "Assets/Images/journalticket.jpg", glm::vec2(0.0f, 0.0f), glm::vec2(4.0f, 4.0f), UIElement::IN_GAME));
+
+		}	
 	
 };
