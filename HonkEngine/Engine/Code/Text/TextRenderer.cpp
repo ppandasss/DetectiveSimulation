@@ -38,10 +38,10 @@ void TextRenderer::Initialize(const std::string& fontPath)
     Camera& camera = Application::GetCamera();
     glm::mat4 projection = camera.GetProjectionMatrix();
     m_shader.SetMatrix4("projection", projection);
-   // glUniformMatrix4fv(glGetUniformLocation(m_shader.ID, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+    // glUniformMatrix4fv(glGetUniformLocation(m_shader.ID, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
 
-    // FreeType
-// --------
+     // FreeType
+ // --------
     FT_Library ft;
     // All functions return a value different than 0 whenever an error occurred
     if (FT_Init_FreeType(&ft))
@@ -50,7 +50,7 @@ void TextRenderer::Initialize(const std::string& fontPath)
     }
 
     // find path to font
-    
+
     if (fontPath.empty())
     {
         std::cout << "ERROR::FREETYPE: Failed to load font_name" << std::endl;
@@ -126,12 +126,12 @@ void TextRenderer::Initialize(const std::string& fontPath)
     glBindVertexArray(0);
 
     std::cout << "Text::Initialize() called with font path :" << fontPath << std::endl;
-   
+
 }
 
-void TextRenderer::RenderText(std::string text, float x, float y, float scale, glm::vec3 color)
+void TextRenderer::RenderText(std::string text, float x, float y, float scale, glm::vec3 color, int numChars)
 {
-   
+
 
     // activate corresponding render state	
     m_shader.use();
@@ -142,13 +142,13 @@ void TextRenderer::RenderText(std::string text, float x, float y, float scale, g
 
     scale *= 0.01f;
     // iterate through all characters
-    std::string::const_iterator c;
-    for (c = text.begin(); c != text.end(); c++)
+    int charCount = 0;
+    for (auto c = text.begin(); c != text.end() && (numChars == -1 || charCount < numChars); c++)
     {
         Character ch = Characters[*c];
-       
-       /* std::cout << "Character :" << *c << std::endl;
-        std::cout << "Character Size :" << ch.Size.x << " "<< ch.Size.y << std::endl;*/
+
+        /* std::cout << "Character :" << *c << std::endl;
+         std::cout << "Character Size :" << ch.Size.x << " "<< ch.Size.y << std::endl;*/
 
         float xpos = x + ch.Bearing.x * scale;
         float ypos = y - (ch.Size.y - ch.Bearing.y) * scale;
@@ -166,7 +166,7 @@ void TextRenderer::RenderText(std::string text, float x, float y, float scale, g
             { xpos + w, ypos + h,   1.0f, 0.0f }
         };
 
-       
+
         // render glyph texture over quad
         glBindTexture(GL_TEXTURE_2D, ch.TextureID);
         // update content of VBO memory
@@ -181,6 +181,7 @@ void TextRenderer::RenderText(std::string text, float x, float y, float scale, g
         glDrawArrays(GL_POINT, 0, 6);
         // now advance cursors for next glyph (note that advance is number of 1/64 pixels)
         x += (ch.Advance >> 6) * scale; // bitshift by 6 to get value in pixels (2^6 = 64 (divide amount of 1/64th pixels by 64 to get amount of pixels))
+        charCount++;
     }
     glBindVertexArray(0);
     glBindTexture(GL_TEXTURE_2D, 0);

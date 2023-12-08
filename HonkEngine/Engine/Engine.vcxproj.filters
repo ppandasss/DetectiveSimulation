@@ -153,5 +153,6 @@
     <Media Include="Assets\Sounds\footsteps.mp3" />
     <Media Include="Assets\Sounds\footstep.mp3" />
     <Media Include="Assets\Sounds\MembersOnly.mp3" />
+    <Media Include="Assets\Sounds\Train_Ambience.mp3" />
   </ItemGroup>
 </Project>

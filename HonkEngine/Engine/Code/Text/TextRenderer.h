@@ -21,16 +21,15 @@ public:
     ~TextRenderer();
 
     void Initialize(const std::string& fontPath);
-    void RenderText(std::string text, float x, float y, float scale, glm::vec3 color);
+    void RenderText(std::string text, float x, float y, float scale, glm::vec3 color, int numChars = -1);
 
 private:
 
     Shader m_shader;
     FT_Library m_ft;
     FT_Face m_face;
-    GLuint m_VAO; 
-    GLuint m_VBO;  
+    GLuint m_VAO;
+    GLuint m_VBO;
 
     int m_windowWidth, m_windowHeight;
 };
-

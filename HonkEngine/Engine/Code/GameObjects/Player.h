@@ -19,8 +19,10 @@ public:
 	Player(const std::string& name, const std::string& texturePath,int p_row,int p_col)
 		:AnimateGameObject(name, texturePath, p_row, p_col),audioManager(AudioManager::GetInstance())
 	{
-		m_scale = glm::vec3(4.5f, 3.5f, 0.0f);
-	    m_animator.AddAnimation("walk", 1, 8, 7.5f, Animator::LoopType::Loop, []() {});
+		m_scale = glm::vec3(6.5f, 6.125f, 0.0f);
+        m_position = glm::vec3(0.0f, -1.0f, 0.0f);
+	    m_animator.AddAnimation("walk_left", 1, 8, 7.5f, Animator::LoopType::Loop, []() {});
+        m_animator.AddAnimation("walk_right", 2, 8, 7.5f, Animator::LoopType::Loop, []() {});
         audioManager.LoadSound("Player_footsteps","Assets/Sounds/footstep.mp3",3.0f);
 	}
 	
@@ -39,16 +41,16 @@ void Update(float dt, long frame) override
         isWalking = true;
        // audioManager.PlaySound("Player_footsteps",true);
         m_position.x -= speed * dt;
-        if (m_scale.x > 0) m_scale.x *= -1.0f;
-        currentAnimation = "walk";
+        //if (m_scale.x > 0) m_scale.x *= -1.0f;
+        currentAnimation = "walk_left";
     }
     if (input.Get().GetKey(GLFW_KEY_D))
     {
         isWalking = true;
        // audioManager.PlaySound("Player_footsteps",true);
         m_position.x += speed * dt;
-        if (m_scale.x < 0) m_scale.x *= -1.0f;
-        currentAnimation = "walk";
+        //if (m_scale.x < 0) m_scale.x *= -1.0f;
+        currentAnimation = "walk_right";
     }
     if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1))
     {

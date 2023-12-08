@@ -21,6 +21,18 @@ public:
 
 	virtual void SetOrientation(float orientation){m_orientation = orientation;}
 
+	virtual void SetLayer(int layer){this->layer = layer;}
+
+   virtual glm::vec3 GetPosition() const { return m_position; }
+
+   virtual glm::vec3 GetScale() const { return m_scale; }
+
+   virtual float GetOrientation() const { return m_orientation; }
+
+   virtual int GetLayer() const { return layer; }
+
+
+
 protected:
 	std::string m_name;
 	glm::vec3 m_position {0.0f, 0.0f, 0.0f };
