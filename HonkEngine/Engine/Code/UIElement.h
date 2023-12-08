@@ -1,6 +1,10 @@
 #pragma once
 
 #include "RenderGameObject.h"
+#include "Application.h"
+#include "Scene.h"
+#include "Input.h"
+#include "Engine.h"
 
 class UIElement : public RenderGameObject {
 
@@ -26,13 +30,15 @@ class UIElement : public RenderGameObject {
 
 		
 		virtual void Update(float dt, long frame) override {
-		
+
+			GameObject::Update(dt, frame);
+
 			// Implement UI-specific update logic here
 			// For example, handling UI animations, interactions, etc
 
 		}  
 
-		virtual void OnClick() {};
+		virtual void OnClick() = 0;
 
 		bool IsClickable() {
 			return isClickable;
@@ -44,17 +50,27 @@ class UIElement : public RenderGameObject {
 
 		bool IsPointInside(float x, float y) const {
 
+			float xpos = x - 800.0f / 2.0f;
+			float ypos = 600.0f / 2.0f - y;
+
 			float minX = m_position.x - (m_scale.x / 2.0f);
 			float maxX = m_position.x + (m_scale.x / 2.0f);
 			float minY = m_position.y - (m_scale.y / 2.0f);
 			float maxY = m_position.y + (m_scale.y / 2.0f);
 
-			return (x >= minX && x <= maxX && y >= minY && y <= maxY);
+			//std::cout << "winX: " << GetWindowWidth() << " winy: " << GetWindowHeight() << std::endl;
+
+			std::cout << "maxX: " << maxX << " minX: " << minX << std::endl;
+			std::cout << "maxY: " << maxY << " minY: " << minY << std::endl;
+			std::cout << "x: " << x << " y: " << y << std::endl;
+			std::cout << "new xpos: " << xpos << " new ypos: " << ypos << std::endl;
+
+			return (xpos >= minX && xpos <= maxX && ypos >= minY && ypos <= maxY);
 
 		}
 
 
-		// Implement cleanup logic for UI elements
+		//Implement cleanup logic for UI elements
 		//virtual void Clear() override {}
 		
 	
@@ -62,5 +78,6 @@ class UIElement : public RenderGameObject {
 		std::string button_name;
 		bool isClickable;
 		UICategory category;
+
 
 };

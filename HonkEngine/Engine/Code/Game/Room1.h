@@ -13,15 +13,26 @@ public:
 	Room1()
 	{
 	
-		//GameObject* bank = new RenderGameObject("Boss", "Assets/Images/awesomeface.png");
 		//Player* Joph = new Player("Bus", "Assets/Images/spritesheet_test2.png", 4.0f, 4.0f);
-		//m_gameObjects.push_back(Joph);
+	
+
+		/*---------JOURNAL SPRITES NON - UI------------------*/
+		GameObject* journalCover = new RenderGameObject("Cover", "Assets/Images/journalcover.png");
+		journalCover->SetScale(glm::vec3(1.5f, 1.5f, 1.0f));
+		m_gameObjects.push_back(journalCover);
+
+		GameObject* journalPage = new RenderGameObject("Cover", "Assets/Images/journalblankpages.png");
+		journalPage->SetScale(glm::vec3(1.4f, 1.4f, 1.0f));
+		m_gameObjects.push_back(journalPage);
+
+		/*-----------------JOURNAL UI-----------------------*/
 
 		//UIManager* uiManager = new UIManager();
-		//m_gameObjects.push_back(uiManager);
+		
 
 		UIElement* journalButton = new UIButton("Button 1", "Assets/Images/journalticket.png", glm::vec2(0.0f, 0.0f), glm::vec2(4.0f, 4.0f), UIElement::IN_GAME);
 		m_gameObjects.push_back(journalButton);
+		journalButton->SetClickable(true);
 
 
 	}

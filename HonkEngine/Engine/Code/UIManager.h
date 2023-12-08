@@ -1,11 +1,15 @@
 #pragma once
+
+#include <vector>
+#include "Engine.h"
+#include <glm/glm.hpp>
 #include "GameObject.h"
 #include "RenderGameObject.h"
 #include "UIElement.h"
 #include "UIButton.h"
-#include <vector>
 
-class UIManager :public GameObject{
+
+class UIManager{
 
 	
 	public:
@@ -14,7 +18,10 @@ class UIManager :public GameObject{
 			CreateUIElements();
 		
 		}
-		void RenderUI() {
+		
+		/*
+		* 
+		void RenderUI(){
 
 			// Render UI elements
 			for (UIElement* element : uiElements) {
@@ -23,6 +30,9 @@ class UIManager :public GameObject{
 
 		}
 
+		
+		
+		
 		// Handle mouse clicks for UI elements
 		void HandleMouseClick(int x, int y) {
 
@@ -37,30 +47,23 @@ class UIManager :public GameObject{
 
 		}
 
+		*/
+
 
 		void Update(float dt, long frame) {
 
-			Input& input = Application::GetInput();
-
-			// Update UI elements
-			for (UIElement* element : uiElements) {
-				element->Update(dt, frame);
-			}
-
-			if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1))
-			{
-				mousePos = Application::Get().CursorPos();
-				HandleMouseClick(mousePos.x, mousePos.y);
-				//std::cout << "x: " << mousePos.x << " y: " << mousePos.y << std::endl;
-			}
+			
 			
 
 		}
 
 		~UIManager() {
+
 			for (UIElement* element : uiElements) {
 				delete element;
 			}
+
+			uiElements.clear();  //Clear the vector
 		}
 	
 

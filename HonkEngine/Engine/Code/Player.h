@@ -25,7 +25,7 @@ public:
 	{
 
 		//std::cout << "frame" << frame << std::endl;
-		 Input& input = Application::GetInput();
+		Input& input = Application::GetInput();
 		AnimateGameObject::Update(dt, frame);
        
         if (input.Get().GetKey(GLFW_KEY_A))
