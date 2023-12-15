@@ -47,15 +47,7 @@ void Camera::UpdateProjectionMatrix() {
 }
 
 void Camera::UpdateViewMatrix() {
-   // m_viewMatrix = glm::lookAt(m_camPos, m_camPos + m_camDir, m_camUp);
-    // Manually print the view matrix
-    m_viewMatrix = glm::mat4(1.0f);
-   /* for (int i = 0; i < 4; ++i) {
-        for (int j = 0; j < 4; ++j) {
-            std::cout << m_viewMatrix[i][j] << ' ';
-        }
-        std::cout << std::endl;
-    }*/
+    m_viewMatrix = glm::lookAt(m_camPos, m_camPos + m_camDir, m_camUp);
 }
 
 glm::mat4 Camera::GetProjectionMatrix() const {

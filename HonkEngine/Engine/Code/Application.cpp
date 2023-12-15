@@ -126,7 +126,6 @@ void Application::Run()
 
 
         if (m_currentScene) {
-
             m_currentScene->Update(dt,frameCount);
             m_currentScene->Render();
 

@@ -16,7 +16,7 @@ public:
 		}
 	}
 
-	void Update(float dt,long frame)
+	virtual void Update(float dt,long frame)
 	{
 		for (auto& object : m_gameObjects) {
 			object->Update(dt, frame);
@@ -45,6 +45,15 @@ public:
 	void AddGameObject(GameObject* newGameObject)
 	{
 		m_toAddGameObjects.push_back(newGameObject);
+	}
+
+	GameObject* GetGameObjectByName(const std::string& name) {
+		for (auto& object : m_gameObjects) {
+			if (object->GetName() == name) {
+				return object;
+			}
+		}
+		return nullptr; // Return nullptr if no object with the given name is found
 	}
 
 protected:

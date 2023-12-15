@@ -24,7 +24,7 @@
 			audioManager.PlaySound("trainAmbience", true);
 			
 			GameObject* cabin = new RenderGameObject("Cabin", "Assets/Images/Environment_Corridor_Hallway.png");
-			Player* Bus = new Player("waiter", "Assets/Images/waiter_spritesheet_test.png",2,8);
+			Player* player = new Player("waiter", "Assets/Images/waiter_spritesheet_test.png",2,8);
 			
 			//Text* helloText = new Text("GameTitle", "Ticking Tea Time", "Assets/Fonts/WD.ttf");
 
@@ -37,21 +37,34 @@
 		
 		
 			m_gameObjects.push_back(cabin);
-			m_gameObjects.push_back(Bus);
+			m_gameObjects.push_back(player);
 			//m_gameObjects.push_back(helloText);
 		}
 
 		void Update(float dt, long frame) {
-			std::cout<<"LevelScene Update"<<std::endl;
 			Scene::Update(dt, frame); // Call the base class update
-			// Assuming 'Player' is the type of your player object
-			for (auto& object : m_gameObjects) {
-				Player* player = dynamic_cast<Player*>(object);
+
+			// Retrieve the player object by name
+			GameObject* playerObject = GetGameObjectByName("waiter");
+			if (playerObject) {
+				// Cast to Player* if necessary, or directly use if GetPosition is part of GameObject
+				Player* player = dynamic_cast<Player*>(playerObject);
 				if (player) {
-					Camera& camera = Application::GetCamera();
+
+					std::cout << "Found player object" << std::endl;
+					// Get the player's position
 					glm::vec3 playerPos = player->GetPosition();
-					camera.SetPosition(playerPos.x, camera.GetPosY());
-					break; // Assuming there is only one player
+					std::cout << player->GetPosition().x << std::endl;
+					// Get the camera and update its position
+					Camera& camera = Application::GetCamera();
+
+					const float leftBound = -12.74f;
+					const float rightBound = 12.91f;
+					
+					// Clamp the camera's x position within the bounds
+					float clampedX = std::max(leftBound, std::min(playerPos.x, rightBound));
+					camera.SetPosition(clampedX, camera.GetPosY());
+					
 				}
 			}
 		}

@@ -35,21 +35,21 @@ void Update(float dt, long frame) override
     std::string currentAnimation = "idle"; 
     bool isWalking = false;
 
+    const float leftBound = -20.52f;
+    const float rightBound = 21.0f;
     
     if (input.Get().GetKey(GLFW_KEY_A))
     {
         isWalking = true;
-       // audioManager.PlaySound("Player_footsteps",true);
-        m_position.x -= speed * dt;
-        //if (m_scale.x > 0) m_scale.x *= -1.0f;
+        float newPos = m_position.x - speed * dt;
+        m_position.x = std::max(newPos, leftBound); // Ensure player doesn't move past left bound
         currentAnimation = "walk_left";
     }
     if (input.Get().GetKey(GLFW_KEY_D))
     {
         isWalking = true;
-       // audioManager.PlaySound("Player_footsteps",true);
-        m_position.x += speed * dt;
-        //if (m_scale.x < 0) m_scale.x *= -1.0f;
+        float newPos = m_position.x + speed * dt;
+        m_position.x = std::min(newPos, rightBound); // Ensure player doesn't move past right bound
         currentAnimation = "walk_right";
     }
     if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1))
@@ -57,7 +57,6 @@ void Update(float dt, long frame) override
 
         Application::Get().GetCurrentScene()->AddGameObject(new RenderGameObject("Boss", "Assets/Images/awesomeface.png",m_position));
 
-     
     }
     if (m_position.x > GetWindowWidth() / 2.0f)
     {

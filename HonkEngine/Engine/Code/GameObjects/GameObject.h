@@ -31,6 +31,10 @@ public:
 
    virtual int GetLayer() const { return layer; }
 
+   virtual std::string GetName() const {
+	   return m_name;
+   }
+
 
 
 protected:

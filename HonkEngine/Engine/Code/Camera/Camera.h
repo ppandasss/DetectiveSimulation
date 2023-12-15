@@ -49,7 +49,7 @@ private:
 
     glm::mat4 m_projectionMatrix;
     glm::mat4 m_viewMatrix;
-    glm::mat4 CapT_Matrix_Send2GL;
+    
 
     void UpdateProjectionMatrix();
     void UpdateViewMatrix();
