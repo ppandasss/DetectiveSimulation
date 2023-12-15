@@ -132,7 +132,6 @@ void TextRenderer::Initialize(const std::string& fontPath)
 void TextRenderer::RenderText(std::string text, float x, float y, float scale, glm::vec3 color, int numChars)
 {
 
-
     // activate corresponding render state	
     m_shader.use();
     m_shader.SetVector3f("textColor", color);

@@ -35,7 +35,11 @@ public:
 	void SetScene(const std::string& name)
 	{
 		if (m_sceneMap.find(name) != m_sceneMap.end())
+		{
 			m_currentScene = m_sceneMap[name];
+			//m_camera.Reset();
+		}
+
 	}
 
 	void Run();

@@ -34,7 +34,7 @@ void Camera::UpdateProjectionMatrix() {
 
     //m_projectionMatrix = glm::ortho(-80.0f, 80.0f, -60.0f, 60.0f, -1.0f, 100.0f);
 
-    std::cout << "Window Width: " << m_windowWidth << ", Window Height: " << m_windowHeight << std::endl;
+    //std::cout << "Window Width: " << m_windowWidth << ", Window Height: " << m_windowHeight << std::endl;
     //std::cout << "Zoom Level: " << m_camZoom << std::endl;
     //std::cout << "Near Plane: " << NEAR_PLANE << ", Far Plane: " << FAR_PLANE << std::endl;
     // Manually print the projection matrix
@@ -69,14 +69,14 @@ void Camera::Move(float dx, float dy) {
 }
 
 void Camera::ZoomIn(float step) {
-    m_camZoom += step;
+    m_camZoom -= step;
     if (m_camZoom > MAX_ZOOM) m_camZoom = MAX_ZOOM;
-    std::cout << "zoom: " << m_camZoom << std::endl;
+    //std::cout << "zoom: " << m_camZoom << std::endl;
     UpdateProjectionMatrix();
 }
 
 void Camera::ZoomOut(float step) {
-    m_camZoom -= step;
+    m_camZoom += step;
     if (m_camZoom < MIN_ZOOM) m_camZoom = MIN_ZOOM;
     UpdateProjectionMatrix();
 }

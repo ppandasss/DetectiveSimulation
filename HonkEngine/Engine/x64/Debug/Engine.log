@@ -15,10 +15,4 @@ C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Text\TextRenderer.h(12,7): wa
   C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8):
   see declaration of 'Mesh'
   
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Room1.h(16,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  (compiling source file 'Code/Main.cpp')
-  
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Room1.h(16,64): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  (compiling source file 'Code/Main.cpp')
-  
   Engine.vcxproj -> C:\Capt\DetectiveSimulation\HonkEngine\x64\Debug\Engine.exe

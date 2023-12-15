@@ -62,7 +62,7 @@
     <ClInclude Include="Code\Renderer\Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Scene\LevelScene.h">
+    <ClInclude Include="Code\Scene\Hallway.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Code\Scene\Room1.h">
@@ -102,6 +102,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Code\Audio\AudioManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Scene\Journal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\UI\UIButton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\UI\UIElement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\UI\UIManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

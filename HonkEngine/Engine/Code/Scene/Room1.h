@@ -13,11 +13,27 @@ public:
 	{
 	
 		//GameObject* bank = new RenderGameObject("Boss", "Assets/Images/awesomeface.png");
-		Player* Joph = new Player("Bus", "Assets/Images/Matha1.png", 1.0f, 1.0f);
+		RenderGameObject* room = new RenderGameObject("cabin1", "Assets/Images/passenger_room1.png",glm::vec3(0.0f,0.0f,0.0f));
+		room->SetScale(glm::vec3(20.0f, 12.0f, 0.0f));
 
 		
-		//m_gameObjects.push_back(Joph);
+
+
+		m_gameObjects.push_back(room);
 
 
 	}
+
+	void Update(float dt, long frame) {
+		Scene::Update(dt, frame); // Call the base class update
+
+		if (input.Get().GetKeyDown(GLFW_KEY_E))
+		{
+
+			std::cout << "Button pressed" << std::endl;
+			Application::Get().SetScene("Hallway");
+		}
+	}
+
+	Input& input = Application::GetInput();
 };

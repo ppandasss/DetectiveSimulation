@@ -29,6 +29,7 @@ void processInput(GLFWwindow* window)
         // Assuming you have a static GetCamera method in Application
         camera.ZoomOut(0.01f);  // Zoom in by 0.1 units
     }
+
 }
 
 Application* Application::s_instance = nullptr;
@@ -128,6 +129,7 @@ void Application::Run()
         if (m_currentScene) {
             m_currentScene->Update(dt,frameCount);
             m_currentScene->Render();
+            
 
         }
             

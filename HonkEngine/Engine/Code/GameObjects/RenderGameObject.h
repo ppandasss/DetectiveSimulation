@@ -83,10 +83,11 @@ public:
 		model = tMat * rMat * sMat;
 
 	}
+
 	virtual void Render() override
 	{
-		std::cout << "RenderObjectRender: " << m_name << std::endl;
-		
+		//std::cout << "RenderObjectRender: " << m_name << std::endl;
+
 
 		//std::cout << "Rendering GameObject: " << m_name << std::endl;
 		renderer.SetRenderMode(CDT_TEXTURE, 1.0f);
@@ -94,7 +95,7 @@ public:
 		//std::cout << "Render::TextureID " << texture_Id << std::endl;	
 		renderer.SetTransform(model);
 		renderer.DrawMesh(meshVert);
-	
+
 	}
 
 	virtual void Clear() 

@@ -52,23 +52,24 @@ void Update(float dt, long frame) override
         m_position.x = std::min(newPos, rightBound); // Ensure player doesn't move past right bound
         currentAnimation = "walk_right";
     }
+    if (input.Get().GetKeyDown(GLFW_KEY_E))
+    {
+        Application::Get().SetScene("Room1");
+    }
     if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1))
     {
 
         Application::Get().GetCurrentScene()->AddGameObject(new RenderGameObject("Boss", "Assets/Images/awesomeface.png",m_position));
 
     }
-    if (m_position.x > GetWindowWidth() / 2.0f)
+    if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_2))
     {
-        // If the player's x-position is greater than half the window's width, change the scene
-        Application::Get().SetScene("Room1");
-    }
-    // You might also want to check for other directions, for example:
-    else if (m_position.x < -GetWindowWidth() / 2.0f)
-    {
+        Application::Get().SetScene("Journal");
+       // Application::Get().GetCurrentScene()->AddGameObject(new RenderGameObject("Boss", "Assets/Images/awesomeface.png", m_position));
+        //
 
-        Application::Get().SetScene("Room2");
     }
+
     // Set the animation
     m_animator.SetAnimation(currentAnimation);
 
