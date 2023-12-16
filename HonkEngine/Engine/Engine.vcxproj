@@ -148,7 +148,6 @@
     <ClInclude Include="Code\Camera\Camera.h" />
     <ClInclude Include="Code\Engine.h" />
     <ClInclude Include="Code\GameObjects\GameObject.h" />
-    <ClInclude Include="Code\Scene\Journal.h" />
     <ClInclude Include="Code\Scene\Hallway.h" />
     <ClInclude Include="Code\Scene\Room1.h" />
     <ClInclude Include="Code\Input\Input.h" />
@@ -160,8 +159,8 @@
     <ClInclude Include="Code\Text\Text.h" />
     <ClInclude Include="Code\Text\TextRenderer.h" />
     <ClInclude Include="Code\UI\UIButton.h" />
+    <ClInclude Include="Code\UI\UIDraggable.h" />
     <ClInclude Include="Code\UI\UIElement.h" />
-    <ClInclude Include="Code\UI\UIManager.h" />
     <ClInclude Include="External\Include\GLFW\glfw3.h" />
     <ClInclude Include="External\Include\GLFW\glfw3native.h" />
     <ClInclude Include="External\Include\stb_image.h" />

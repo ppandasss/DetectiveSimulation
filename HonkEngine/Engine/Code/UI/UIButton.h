@@ -1,50 +1,55 @@
 #pragma once
-#include "UIElement.h"
+
+#include "../UI/UIElement.h"
+
 
 class UIButton : public UIElement {
 
-public:
-    UIButton(const std::string& name, const std::string& texturePath, const glm::vec2& position, const glm::vec2& scale, UICategory UIcategory)
-        : UIElement(name, texturePath, position, scale, UIcategory) {
-        // Additional properties specific to buttons
-    }
+	public:
+        UIButton(const std::string& name, const std::string& texturePath, const glm::vec3 position, const glm::vec3 scale)
+            : UIElement(name, texturePath, position, scale) {
 
-    virtual void OnClick() {
+            // Additional properties specific to buttons
 
-        std::cout << "Button Clicked" << std::endl;
-    }
+            isClickable = true;
+            //category = UIcategory;
 
-       void Update(float dt, long frame) override {
+        }
 
-		Input& input = Application::GetInput();
+        void OnClick(){
 
-	    if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1))
-		{   
+            std::cout << "Button Clicked" << std::endl;
+        }
 
-            std::cout << IsClickable() << std::endl;
+
+        void Update(float dt, long frame) override {
+
+            Input& input = Application::GetInput();
+            UIElement::Update(dt, frame);
             
-            mousePos = Application::Get().CursorPos();
+                
+                mousePos = Application::Get().CursorPos();
 
-            std::cout << "x objpos: " << m_position.x << "y objpos: " << m_position.y << std::endl;
+                if (IsClickable() && IsPointInside(mousePos.x, mousePos.y)) {
 
-            //IsPointInside(mousePos.x, mousePos.y);
-            //std::cout << "button clicked" << std::endl;
+                    //std::cout << " BUTTON UPDATE" << std::endl;
 
+                    if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1)) {
 
-            if (IsClickable() && IsPointInside(mousePos.x, mousePos.y)) {
+                        OnClick();
 
-                //std::cout << "x: " << mousePos.x << " y: " << mousePos.y << std::endl;
-                std::cout << "Button Clicked" << std::endl;
+                    }
 
-            }
+                }  
 
-            
-		}
-
-
-    }
+        }
+  
 
     private:
+
+        std::string button_name;
+        bool isClickable;
+        //UICategory category;
         glm::vec2 mousePos;
 
 

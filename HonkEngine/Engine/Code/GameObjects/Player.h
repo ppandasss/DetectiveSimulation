@@ -56,19 +56,7 @@ void Update(float dt, long frame) override
     {
         Application::Get().SetScene("Room1");
     }
-    if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1))
-    {
 
-        Application::Get().GetCurrentScene()->AddGameObject(new RenderGameObject("Boss", "Assets/Images/awesomeface.png",m_position));
-
-    }
-    if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_2))
-    {
-        Application::Get().SetScene("Journal");
-       // Application::Get().GetCurrentScene()->AddGameObject(new RenderGameObject("Boss", "Assets/Images/awesomeface.png", m_position));
-        //
-
-    }
 
     // Set the animation
     m_animator.SetAnimation(currentAnimation);

@@ -104,16 +104,13 @@
     <ClInclude Include="Code\Audio\AudioManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Scene\Journal.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Code\UI\UIButton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Code\UI\UIElement.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\UI\UIManager.h">
+    <ClInclude Include="Code\UI\UIDraggable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
