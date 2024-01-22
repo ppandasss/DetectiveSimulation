@@ -158,6 +158,7 @@
     <ClInclude Include="Code\Renderer\Shader.h" />
     <ClInclude Include="Code\Text\Text.h" />
     <ClInclude Include="Code\Text\TextRenderer.h" />
+    <ClInclude Include="Code\UI\Book.h" />
     <ClInclude Include="Code\UI\UIButton.h" />
     <ClInclude Include="Code\UI\UIDraggable.h" />
     <ClInclude Include="Code\UI\UIElement.h" />
