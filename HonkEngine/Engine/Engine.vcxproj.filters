@@ -116,6 +116,12 @@
     <ClInclude Include="Code\UI\Book.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Scene\JournalTest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\GameObjects\Journal\JournalData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\text.vs" />

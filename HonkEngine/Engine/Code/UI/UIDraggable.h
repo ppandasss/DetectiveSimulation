@@ -65,11 +65,20 @@ public:
         
         if (isDragging) {
 
+            /*
+
             // Continue drag - Update object position
             glm::vec2 mouseDelta = MousetoScreen(CurrentMousePos.x, CurrentMousePos.y) - dragStartPos; // Apply offset to maintain relative position under cursor
 
             //glm::vec2 convertedPosition = MousetoScreen(newUiPosition.x, newUiPosition.y);
             m_position = glm::vec3(dragStartPos, 0.0f) + glm::vec3(mouseDelta, 0.0f) + glm::vec3(dragOffset, 0.0f);
+
+            */
+
+            glm::vec2 worldMousePos = MousetoScreen(CurrentMousePos.x, CurrentMousePos.y);
+
+            m_position = glm::vec3(worldMousePos, 0.0f);
+            
 
         }
 

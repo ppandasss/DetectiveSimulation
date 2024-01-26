@@ -56,6 +56,10 @@ void Update(float dt, long frame) override
     {
         Application::Get().SetScene("Room1");
     }
+    if (input.Get().GetKeyDown(GLFW_KEY_J))
+    {
+        Application::Get().SetScene("Journal Room");
+    }
 
 
     // Set the animation

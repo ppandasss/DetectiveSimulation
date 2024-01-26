@@ -66,10 +66,10 @@ public:
 
 		glm::vec2 newPos = MousetoScreen(x, y);
 
-		float minX = m_position.x - (m_scale.x/2.0f );
-		float maxX = m_position.x + (m_scale.x/2.0f);
-		float minY = m_position.y - (m_scale.y/2.0f );
-		float maxY = m_position.y + (m_scale.y/2.0f);
+		float minX = m_position.x - (m_scale.x / 2.0f );
+		float maxX = m_position.x + (m_scale.x / 2.0f);
+		float minY = m_position.y - (m_scale.y / 2.0f );
+		float maxY = m_position.y + (m_scale.y / 2.0f);
 
 		
 		/*

@@ -33,6 +33,8 @@ public:
 			std::cout << "Button pressed" << std::endl;
 			Application::Get().SetScene("Hallway");
 		}
+
+		
 	}
 
 	Input& input = Application::GetInput();
