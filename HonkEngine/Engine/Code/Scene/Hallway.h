@@ -1,4 +1,4 @@
-	#pragma once
+﻿	#pragma once
 
 	#include "Scene.h"
 	#include "../GameObjects/RenderGameObject.h"
@@ -21,21 +21,32 @@
 	public:
 		Hallway() :audioManager(AudioManager::GetInstance())
 		{
+			/*--------------------------------------------------------------🔊LOAD AUDDIO🔊------------------------------------------------------------------------------------------------------- */
 			audioManager.LoadSound("backgroundMusic", "Assets/Sounds/MembersOnly.mp3",0.2f);
 			audioManager.LoadSound("trainAmbience", "Assets/Sounds/Train_Ambience.mp3", 0.2f);
 			audioManager.PlaySound("backgroundMusic", true);
 			audioManager.PlaySound("trainAmbience", true);
-			
+
+			/*--------------------------------------------------------------📦CREATE GAMEOBJECT📦------------------------------------------------------------------------------------------------------- */
+
 			GameObject* hallway = new RenderGameObject("Cabin", "Assets/Images/Environment_Corridor_Hallway.png");
 			GameObject* hallwaylights = new RenderGameObject("CabinLights", "Assets/Images/Environment_Corridor_Light.png");
 
+			/*-------------------------------------------------------------🎮CREATE PLAYER🎮------------------------------------------------------------------------------------------------------- */
+
 			Player* player = new Player("waiter", "Assets/Images/waiter_spritesheet_test.png",2,8);
 			
+			/*-------------------------------------------------------------💬CREATE TEXT💬------------------------------------------------------------------------------------------------------- */
+
 			Text* helloText = new Text("GameTitle", " Welcome To Ticking Tea Time", "Assets/Fonts/WD.ttf");
+
+			/*-------------------------------------------------------------💬CREATE UI💬------------------------------------------------------------------------------------------------------- */
 
 			UIElement* journalButton = new UIButton("JournalButton", "Assets/Images/JournalButton.png", glm::vec3(-6.0f, -4.5f, 0.0f), glm::vec3(4.0f, 4.0f, 0.0f),true);
 			UIElement* ticket = new UIDraggable("ticket", "Assets/Images/Journal_CaseSummary_Ticket_WithText.png", glm::vec3(6.0f, -4.0f, 0.0f), glm::vec3(2.0f, 1.0f, 0.0f),true);
 			
+			/*-------------------------------------------------------------➡️SET TRANSFORNATION➡️------------------------------------------------------------------------------------------------------- */
+
 			hallway->SetScale(glm::vec3(45.0f, 10.5f, 0.0f));
 			hallway->SetPosition(glm::vec3(0.0f, -0.2f, 0.0f));
 			hallwaylights->SetScale(glm::vec3(45.0f, 10.5f, 0.0f));
@@ -44,7 +55,7 @@
 			helloText->SetColor(glm::vec3(1,1,1));
 
 			
-		
+			/*--------------------------------------------------------------✅PUSH BACK✅------------------------------------------------------------------------------------------------------- */
 			m_gameObjects.push_back(hallway);
 			m_gameObjects.push_back(player);
 			m_gameObjects.push_back(hallwaylights);
@@ -82,10 +93,7 @@
 
 					// Set the new camera position
 					camera.SetPosition(targetX, camera.GetPosY());
-
-					
-
-					
+				
 				}
 			}
 

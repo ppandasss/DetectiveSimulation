@@ -33,19 +33,13 @@ public:
 
         RenderGameObject::Update(dt, frame);
 
-        // Implement UI-specific update logic here
-        // For example, handling UI animations, interactions, etc
-
-       // Inside UIElement::Update()
+    
         if (isOnScreen) {
             glm::vec3 camPos = glm::vec3(camera.GetPosX(), camera.GetPosY(), 0.0f);
             glm::vec3 targetPos = camPos + offset;
 
-            // Set position without smoothing
             SetPosition(targetPos);
         }
-
-
     }
 
     virtual void OnClick() = 0;
