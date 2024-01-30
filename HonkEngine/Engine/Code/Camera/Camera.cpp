@@ -103,6 +103,7 @@ void Camera::SetPosition(float xpos, float ypos) {
     m_camPos.x = xpos;
     m_camPos.y = ypos;
     UpdateViewMatrix();
+    std::cout << "Camera Position after Move - X: " << m_camPos.x << ", Y: " << m_camPos.y << std::endl;
 }
 
 void Camera::SetZoom(float zoom) {

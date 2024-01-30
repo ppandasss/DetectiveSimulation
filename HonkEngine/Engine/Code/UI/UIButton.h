@@ -6,8 +6,8 @@
 class UIButton : public UIElement {
 
 	public:
-        UIButton(const std::string& name, const std::string& texturePath, const glm::vec3 position, const glm::vec3 scale)
-            : UIElement(name, texturePath, position, scale) {
+        UIButton(const std::string& name, const std::string& texturePath, const glm::vec3 position, const glm::vec3 scale,bool isOnScreen)
+            : UIElement(name, texturePath, position, scale,isOnScreen) {
 
             // Additional properties specific to buttons
 

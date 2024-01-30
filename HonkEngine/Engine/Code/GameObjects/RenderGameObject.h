@@ -3,8 +3,8 @@
 #include "GameObject.h"
 
 #include <glm/glm.hpp>
-#include "Application.h"
-#include "Engine.h"
+#include "../Application.h"
+#include "../Engine.h"
 
 class RenderGameObject : public GameObject
 {
@@ -75,6 +75,7 @@ public:
 		glm::mat4 rMat = glm::mat4(1.0f);
 		glm::mat4 sMat = glm::mat4(1.0f);
 		glm::mat4 tMat = glm::mat4(1.0f);
+
 
 		tMat = glm::translate(glm::mat4(1.0f), glm::vec3(m_position.x, m_position.y, 0.0f));
 		rMat = glm::rotate(glm::mat4(1.0f), m_orientation, glm::vec3(0.0f, 0.0f, 1.0f));

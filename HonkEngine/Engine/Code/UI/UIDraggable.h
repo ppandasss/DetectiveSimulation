@@ -5,8 +5,8 @@
 class UIDraggable : public UIElement {
 
 public:
-    UIDraggable(const std::string& name, const std::string& texturePath, const glm::vec3 position, const glm::vec3 scale)
-        : UIElement(name, texturePath, position, scale) {
+    UIDraggable(const std::string& name, const std::string& texturePath, const glm::vec3 position, const glm::vec3 scale,bool isOnScreen)
+        : UIElement(name, texturePath, position, scale,isOnScreen) {
 
         //category = UIcategory;
         isDragging = false;

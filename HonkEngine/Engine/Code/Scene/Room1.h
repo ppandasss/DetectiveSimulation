@@ -1,57 +1,46 @@
-
 #pragma once
 
 #include "Scene.h"
-#include "../GameObjects/RenderGameObject.h"
-#include "../GameObjects/Player.h"
+#include "../UI/UINormal.h"  
+#include "../UI/UIElement.h"  
+#include "../Input/Input.h"
+#include "../Engine.h"
+#include <glm/glm.hpp>
+#include <iostream>
 
-class Room1 : public Scene
-{
+class Room1 : public Scene {
 public:
 
-	Room1()
-	{
-	
-		//GameObject* bank = new RenderGameObject("Boss", "Assets/Images/awesomeface.png");
-		
-		
-		RenderGameObject* room = new RenderGameObject("cabin1", "Assets/Images/passenger_room1.png",glm::vec3(0.0f, 0.0f, 0.0f));
-		room->SetScale(glm::vec3(20.0f, 12.0f, 0.0f));
+    Room1() {
 
-		
+        // Create a UIElement instead of RenderGameObject for the cabin
+        UINormal* room = new UINormal("cabin1", "Assets/Images/passenger_room1.png", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(20.0f, 12.0f, 0.0f),true);
+        m_gameObjects.push_back(room);
 
+    }
 
-		m_gameObjects.push_back(room);
+    void Update(float dt, long frame) override {
 
+        Scene::Update(dt, frame); // Call the base class update
 
-	}
+        if (input.Get().GetKeyDown(GLFW_KEY_E)) {
+            std::cout << "Button pressed" << std::endl;
+            Application::Get().SetScene("Hallway");
+        }
 
-	void Update(float dt, long frame) {
+        // Use the UIElement for cabin interaction
+        GameObject* cabinObject = GetGameObjectByName("cabin1");
+        if (cabinObject) {
+            UIElement* cabin = dynamic_cast<UIElement*>(cabinObject);
+            if (cabin) {
+                // Get the player's position
+                glm::vec3 camPos = glm::vec3(camera.GetPosX(), camera.GetPosY(), 0.0f);
+                cabin->SetPosition(camPos);
+            }
+        }
+    }
 
-		Scene::Update(dt, frame); // Call the base class update
-
-		if (input.Get().GetKeyDown(GLFW_KEY_E))
-		{
-
-			std::cout << "Button pressed" << std::endl;
-			Application::Get().SetScene("Hallway");
-		}
-
-		GameObject* cabinObject = GetGameObjectByName("cabin1");
-		if (cabinObject) {
-			// Cast to Player* if necessary, or directly use if GetPosition is part of GameObject
-			RenderGameObject* cabin = dynamic_cast<RenderGameObject*>(cabinObject);
-			if (cabin) {
-
-				// Get the player's position
-				glm::vec3 camPos = glm::vec3(camera.GetPosX(),camera.GetPosY(),0.0f);
-
-				cabin->SetPosition(camPos);
-
-			}
-		}
-	}
-
-	Input& input = Application::GetInput();
-	Camera& camera = Application::GetCamera();
+private:
+    Input& input = Application::GetInput();
+    Camera& camera = Application::GetCamera();
 };

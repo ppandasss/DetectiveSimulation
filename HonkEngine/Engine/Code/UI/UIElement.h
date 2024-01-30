@@ -6,94 +6,93 @@
 #include <glm/glm.hpp>
 #include <iostream>
 
-
 class UIElement : public RenderGameObject {
-
 
 public:
 
-	enum UICategory {
-		BOOK_PAGE1,
-		BOOK_PAGE2,
-		IN_GAME, //journal access button etc.
-		PAUSED,
-		//Add more stages as needed
-	};
+    enum UICategory {
+        BOOK_PAGE1,
+        BOOK_PAGE2,
+        IN_GAME, //journal access button etc.
+        PAUSED,
+        //Add more stages as needed
+    };
 
-	UIElement(const std::string& name, const std::string& texturePath, glm::vec3 position, glm::vec3 scale) : RenderGameObject(name, texturePath, position) {
+    UIElement(const std::string& name, const std::string& texturePath, glm::vec3 position, glm::vec3 scale,bool isOnScreen) : RenderGameObject(name, texturePath, position) {
 
-		m_scale = scale;
-		button_name = name;
-		isClickable = true;
-		//category = UIcategory;
+        m_scale = scale;
+        button_name = name;
+        isClickable = true;
+        offset = position;
+        this->isOnScreen = isOnScreen;
+        //category = UIcategory;
 
-	}
+    }
 
+    virtual void Update(float dt, long frame) override {
 
-	virtual void Update(float dt, long frame) override {
+        RenderGameObject::Update(dt, frame);
 
-		RenderGameObject::Update(dt, frame);
+        // Implement UI-specific update logic here
+        // For example, handling UI animations, interactions, etc
 
-		// Implement UI-specific update logic here
-		// For example, handling UI animations, interactions, etc
+       // Inside UIElement::Update()
+        if (isOnScreen) {
+            glm::vec3 camPos = glm::vec3(camera.GetPosX(), camera.GetPosY(), 0.0f);
+            glm::vec3 targetPos = camPos + offset;
 
-	}
-
-	virtual void OnClick() = 0;
-
-	bool IsClickable() {
-		return isClickable;
-	}
-
-	void SetClickable(bool clickable) {
-		isClickable = clickable;
-	}
+            // Set position without smoothing
+            SetPosition(targetPos);
+        }
 
 
-	glm::vec2 MousetoScreen(float x, float y) const {
+    }
 
-		float xpos = x - (SCR_WIDTH / 2.0f);
-		float ypos = y - (SCR_HEIGHT / 2.0f);
+    virtual void OnClick() = 0;
 
-		xpos = xpos * 16.0 / SCR_WIDTH;
-		ypos = ypos * 9.0 / SCR_HEIGHT * -1;
+    bool IsClickable() {
+        return isClickable;
+    }
 
-		return glm::vec2(xpos, ypos);
+    void SetClickable(bool clickable) {
+        isClickable = clickable;
+    }
 
-	}
+    glm::vec2 MousetoScreen(float x, float y) const {
 
-	bool IsPointInside(float x, float y) const {
+        float xpos = x - (SCR_WIDTH / 2.0f);
+        float ypos = y - (SCR_HEIGHT / 2.0f);
 
-		glm::vec2 newPos = MousetoScreen(x, y);
+        xpos = xpos * 16.0 / SCR_WIDTH;
+        ypos = ypos * 9.0 / SCR_HEIGHT * -1;
 
-		float minX = m_position.x - (m_scale.x/2.0f );
-		float maxX = m_position.x + (m_scale.x/2.0f);
-		float minY = m_position.y - (m_scale.y/2.0f );
-		float maxY = m_position.y + (m_scale.y/2.0f);
+        return glm::vec2(xpos, ypos);
 
-		
-		/*
-		std::cout << "x: " << x << " y: " << y << std::endl;
-		std::cout << "xpos: " << xpos << " ypos: " << ypos << std::endl;
+    }
 
-		std::cout << "new xpos: " << xpos << " new ypos: " << ypos << std::endl;
-		std::cout << "obj x: " << m_position.x << "obj y: " << m_position.y << std::endl;
-		std::cout << "maxX: " << maxX << " minX: " << minX << std::endl;
-		std::cout << "maxY: " << maxY << " minY: " << minY << std::endl;
-		*/
+    bool IsPointInside(float x, float y) const {
 
-		return (newPos.x >= minX && newPos.x <= maxX && newPos.y >= minY && newPos.y <= maxY);
+        glm::vec2 newPos = MousetoScreen(x, y);
 
-	}
+        float minX = m_position.x - (m_scale.x / 2.0f);
+        float maxX = m_position.x + (m_scale.x / 2.0f);
+        float minY = m_position.y - (m_scale.y / 2.0f);
+        float maxY = m_position.y + (m_scale.y / 2.0f);
 
+        return (newPos.x >= minX && newPos.x <= maxX && newPos.y >= minY && newPos.y <= maxY);
 
-	//Implement cleanup logic for UI elements
-	//virtual void Clear() override {}
+    }
 
+    //Implement cleanup logic for UI elements
+    //virtual void Clear() override {}
 
 private:
-	std::string button_name;
-	bool isClickable;
-	//UICategory category;
+    std::string button_name;
+    bool isClickable;
+    glm::vec3 offset;
+    bool isOnScreen;
+    //UICategory category;
+   
 
+    Camera& camera = Application::GetCamera(); // Assuming GetCamera is a static method in your Application class
 };

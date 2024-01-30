@@ -33,8 +33,8 @@
 			
 			Text* helloText = new Text("GameTitle", " Welcome To Ticking Tea Time", "Assets/Fonts/WD.ttf");
 
-			UIElement* journalButton = new UIButton("JournalButton", "Assets/Images/JournalButton.png", glm::vec3(-6.0f, -4.5f, 0.0f), glm::vec3(4.0f, 4.0f, 0.0f));
-			UIElement* ticket = new UIDraggable("ticket", "Assets/Images/Journal_CaseSummary_Ticket_WithText.png", glm::vec3(6.0f, -4.0f, 0.0f), glm::vec3(2.0f, 1.0f, 0.0f));
+			UIElement* journalButton = new UIButton("JournalButton", "Assets/Images/JournalButton.png", glm::vec3(-6.0f, -4.5f, 0.0f), glm::vec3(4.0f, 4.0f, 0.0f),true);
+			UIElement* ticket = new UIDraggable("ticket", "Assets/Images/Journal_CaseSummary_Ticket_WithText.png", glm::vec3(6.0f, -4.0f, 0.0f), glm::vec3(2.0f, 1.0f, 0.0f),true);
 			
 			hallway->SetScale(glm::vec3(45.0f, 10.5f, 0.0f));
 			hallway->SetPosition(glm::vec3(0.0f, -0.2f, 0.0f));
@@ -42,9 +42,6 @@
 			hallwaylights->SetPosition(glm::vec3(0.0f, -0.2f, 0.0f));
 			helloText->SetPosition(glm::vec3(-3.7f, 3.8f, 0.0f));
 			helloText->SetColor(glm::vec3(1,1,1));
-			
-		
-			
 
 			
 		
@@ -53,7 +50,6 @@
 			m_gameObjects.push_back(hallwaylights);
 
 			m_gameObjects.push_back(helloText);
-
 			m_gameObjects.push_back(journalButton);
 			m_gameObjects.push_back(ticket);
 		}
@@ -67,7 +63,6 @@
 				// Cast to Player* if necessary, or directly use if GetPosition is part of GameObject
 				Player* player = dynamic_cast<Player*>(playerObject);
 				if (player) {
-
 					// Get the player's position
 					glm::vec3 playerPos = player->GetPosition();
 					// Get the camera and update its position
@@ -75,14 +70,25 @@
 
 					const float leftBound = -12.74f;
 					const float rightBound = 12.91f;
-					std::cout<<camera.GetZoom() << std::endl;
+
+					// Set the target position for the camera
+					float targetX = std::max(leftBound, std::min(playerPos.x, rightBound));
+
+					// Smoothing factor for camera movement
+					float smoothingFactor = 0.05f; // Experiment with different values
+
+					// Smoothly interpolate the camera's x position towards the target
+					float interpolatedX = camera.GetPosX() + smoothingFactor * (targetX - camera.GetPosX());
+
+					// Set the new camera position
+					camera.SetPosition(targetX, camera.GetPosY());
+
 					
-					// Clamp the camera's x position within the bounds
-					float clampedX = std::max(leftBound, std::min(playerPos.x, rightBound));
-					camera.SetPosition(clampedX, camera.GetPosY());
+
 					
 				}
 			}
+
 		}
 
 	};
