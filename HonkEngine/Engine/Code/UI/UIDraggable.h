@@ -29,7 +29,7 @@ public:
 
         
         Input& input = Application::GetInput();
-        RenderGameObject::Update(dt, frame);
+        UIElement::Update(dt, frame);
 
         CurrentMousePos = Application::Get().CursorPos();
 

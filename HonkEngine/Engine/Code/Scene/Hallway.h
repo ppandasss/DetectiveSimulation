@@ -43,7 +43,7 @@
 			/*-------------------------------------------------------------💬CREATE UI💬------------------------------------------------------------------------------------------------------- */
 
 			UIElement* journalButton = new UIButton("JournalButton", "Assets/Images/JournalButton.png", glm::vec3(-6.0f, -4.5f, 0.0f), glm::vec3(4.0f, 4.0f, 0.0f),true);
-			UIElement* ticket = new UIDraggable("ticket", "Assets/Images/Journal_CaseSummary_Ticket_WithText.png", glm::vec3(6.0f, -4.0f, 0.0f), glm::vec3(2.0f, 1.0f, 0.0f),true);
+			UIElement* ticket = new UIDraggable("ticket", "Assets/Images/Journal_CaseSummary_Ticket_WithText.png", glm::vec3(6.0f, -4.0f, 0.0f), glm::vec3(2.0f, 1.0f, 0.0f),false);
 			
 			/*-------------------------------------------------------------➡️SET TRANSFORNATION➡️------------------------------------------------------------------------------------------------------- */
 
@@ -54,7 +54,6 @@
 			helloText->SetPosition(glm::vec3(-3.7f, 3.8f, 0.0f));
 			helloText->SetColor(glm::vec3(1,1,1));
 
-			
 			/*--------------------------------------------------------------✅PUSH BACK✅------------------------------------------------------------------------------------------------------- */
 			m_gameObjects.push_back(hallway);
 			m_gameObjects.push_back(player);

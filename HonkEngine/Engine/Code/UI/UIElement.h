@@ -1,12 +1,12 @@
 #pragma once
 
-#include "../GameObjects/RenderGameObject.h"
+#include "UIObject.h"
 #include "../Input/Input.h"
 #include "../Engine.h"
 #include <glm/glm.hpp>
 #include <iostream>
 
-class UIElement : public RenderGameObject {
+class UIElement : public UIObject {
 
 public:
 
@@ -18,28 +18,19 @@ public:
         //Add more stages as needed
     };
 
-    UIElement(const std::string& name, const std::string& texturePath, glm::vec3 position, glm::vec3 scale,bool isOnScreen) : RenderGameObject(name, texturePath, position) {
+    UIElement(const std::string& name, const std::string& texturePath, glm::vec3 position, glm::vec3 scale,bool isOnScreen) : UIObject(name, texturePath, position,isOnScreen) {
 
         m_scale = scale;
         button_name = name;
         isClickable = true;
         offset = position;
-        this->isOnScreen = isOnScreen;
         //category = UIcategory;
 
     }
 
     virtual void Update(float dt, long frame) override {
 
-        RenderGameObject::Update(dt, frame);
-
-    
-        if (isOnScreen) {
-            glm::vec3 camPos = glm::vec3(camera.GetPosX(), camera.GetPosY(), 0.0f);
-            glm::vec3 targetPos = camPos + offset;
-
-            SetPosition(targetPos);
-        }
+        UIObject::Update(dt, frame);
     }
 
     virtual void OnClick() = 0;

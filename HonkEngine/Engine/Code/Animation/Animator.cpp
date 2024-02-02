@@ -50,7 +50,7 @@ void Animator::Update(float dt) {
     else {
         m_currentFrame += frameIncrement;
         if (m_currentFrame >= anim.maxFrames) {
-            std::cout << "Updating Animator. Current Frame: " << m_currentFrame << std::endl;
+           // std::cout << "Updating Animator. Current Frame: " << m_currentFrame << std::endl;
             if (anim.loopType == LoopType::Loop) {
                 m_currentFrame = 0;
             }

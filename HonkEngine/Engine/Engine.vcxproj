@@ -138,7 +138,7 @@
     <ClCompile Include="Code\Main.cpp" />
     <ClCompile Include="Code\Renderer\Renderer.cpp" />
     <ClCompile Include="Code\Text\TextRenderer.cpp" />
-    <ClCompile Include="Code\UI\UINormal.h" />
+    <ClCompile Include="Code\UI\UIObject.h" />
     <ClCompile Include="External\Include\glad\glad.c" />
   </ItemGroup>
   <ItemGroup>

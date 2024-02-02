@@ -42,7 +42,7 @@
     <ClCompile Include="Code\Text\TextRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\UI\UINormal.h">
+    <ClCompile Include="Code\UI\UIObject.h">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
