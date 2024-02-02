@@ -38,10 +38,6 @@ public:
 		BlankPage->SetScale(glm::vec3(0.8f, 0.8f, 0.0f));
 		BlankPage->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
-		GameObject* JournalSleeve = new RenderGameObject("JounalSleeve", "Assets/Images/Journal_CaseSummary_Sleeve.png");
-		BlankPage->SetScale(glm::vec3(0.8f, 0.8f, 0.0f));
-		BlankPage->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
-			
 
 		//add all elements above to game object array 
 
@@ -52,6 +48,14 @@ public:
 		UIButton* Tab5 = new UIButton("Tab5", "Assets/Images/JournalButton.png", glm::vec3(-6.0f, -4.5f, 0.0f), glm::vec3(4.0f, 4.0f, 0.0f));
 		UIButton* Tab6 = new UIButton("Tab6", "Assets/Images/JournalButton.png", glm::vec3(-6.0f, -4.5f, 0.0f), glm::vec3(4.0f, 4.0f, 0.0f));
 
+		GameObject* BlankPage2 = new RenderGameObject("BlankPage2", "Assets/Images/Journal_BlankPage.png");
+		BlankPage2->SetScale(glm::vec3(0.8f, 0.8f, 0.0f));
+		BlankPage2->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
+
+
+		GameObject* JournalSleeve = new RenderGameObject("JounalSleeve", "Assets/Images/Journal_CaseSummary_Sleeve.png");
+		BlankPage->SetScale(glm::vec3(0.8f, 0.8f, 0.0f));
+		BlankPage->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
 
 		if (activePage == MAIN) {
@@ -63,39 +67,42 @@ public:
 			Text* TheSpy = new Text("TheSpy", " The Spy", "Assets/Fonts/WD.ttf");
 			//TheSpy->SetPosition(glm::vec3(-3.7f, 3.8f, 0.0f));
 			//TheSpy->SetColor(glm::vec3(1, 1, 1));
+			//TheSpy->SetScale(glm::vec3(-3.7f, 3.8f, 0.0f));
 
-			UIButton* Suspect1 = new UIButton("Suspect1", "Assets/Images/Journal_CaseSummary_Icon_Archibald.png", glm::vec3(-6.0f, -4.5f, 0.0f), glm::vec3(4.0f, 4.0f, 0.0f));
+			//UIButton* Suspect1 = new UIButton("Suspect1", "Assets/Images/Journal_CaseSummary_Icon_Archibald.png", glm::vec3(-6.0f, -4.5f, 0.0f), glm::vec3(4.0f, 4.0f, 0.0f));
 			
-			Text* Cabin1 = new Text("Cabin1", "Cabin 1", "Assets/Fonts/WD.ttf");
+			//Text* Cabin1 = new Text("Cabin1", "Cabin 1", "Assets/Fonts/WD.ttf");
 			//Cabin1->SetPosition(glm::vec3(-3.7f, 3.8f, 0.0f));
 			//Cabin1->SetColor(glm::vec3(1, 1, 1));
+			//Cabin1->SetScale(glm::vec3(-3.7f, 3.8f, 0.0f));
 
+			//UIButton* Suspect2 = new UIButton("Suspect2", "Assets/Images/Journal_CaseSummary_Icon_Evelyn.png", glm::vec3(-6.0f, -4.5f, 0.0f), glm::vec3(4.0f, 4.0f, 0.0f));
 
-			UIButton* Suspect2 = new UIButton("Suspect2", "Assets/Images/Journal_CaseSummary_Icon_Evelyn.png", glm::vec3(-6.0f, -4.5f, 0.0f), glm::vec3(4.0f, 4.0f, 0.0f));
-
-			Text* Cabin21 = new Text("Cabin21", "Cabin 2/1", "Assets/Fonts/WD.ttf");
+			//Text* Cabin21 = new Text("Cabin21", "Cabin 2/1", "Assets/Fonts/WD.ttf");
 			//Cabin21->SetPosition(glm::vec3(-3.7f, 3.8f, 0.0f));
 			//Cabin21->SetColor(glm::vec3(1, 1, 1));
+			//Cabin21->SetScale(glm::vec3(-3.7f, 3.8f, 0.0f));
 
+			//UIButton* Suspect3 = new UIButton("Suspect3", "Assets/Images/Journal_CaseSummary_Icon_Martha.png", glm::vec3(-6.0f, -4.5f, 0.0f), glm::vec3(4.0f, 4.0f, 0.0f));
 
-			UIButton* Suspect3 = new UIButton("Suspect3", "Assets/Images/Journal_CaseSummary_Icon_Martha.png", glm::vec3(-6.0f, -4.5f, 0.0f), glm::vec3(4.0f, 4.0f, 0.0f));
-
-			Text* Cabin22 = new Text("Cabin22", "Cabin 2/2", "Assets/Fonts/WD.ttf");
+			//Text* Cabin22 = new Text("Cabin22", "Cabin 2/2", "Assets/Fonts/WD.ttf");
 			//Cabin22->SetPosition(glm::vec3(-3.7f, 3.8f, 0.0f));
 			//Cabin22->SetColor(glm::vec3(1, 1, 1));
+			//Cabin22->SetScale(glm::vec3(-3.7f, 3.8f, 0.0f));
 
+			//UIButton* Suspect4 = new UIButton("Suspect4", "Assets/Images/Journal_CaseSummary_Icon_Nathaniel.png", glm::vec3(-6.0f, -4.5f, 0.0f), glm::vec3(4.0f, 4.0f, 0.0f));
 
-			UIButton* Suspect4 = new UIButton("Suspect4", "Assets/Images/Journal_CaseSummary_Icon_Nathaniel.png", glm::vec3(-6.0f, -4.5f, 0.0f), glm::vec3(4.0f, 4.0f, 0.0f));
-
-			Text* Cabin3 = new Text("Cabin3", "Cabin 3", "Assets/Fonts/WD.ttf");
+			//Text* Cabin3 = new Text("Cabin3", "Cabin 3", "Assets/Fonts/WD.ttf");
 			//Cabin3->SetPosition(glm::vec3(-3.7f, 3.8f, 0.0f));
 			//Cabin3->SetColor(glm::vec3(1, 1, 1));
+			//Cabin3->SetScale(glm::vec3(-3.7f, 3.8f, 0.0f));
 
-			UIButton* Suspect5 = new UIButton("Suspect5", "Assets/Images/Journal_CaseSummary_Icon_Octavia.png", glm::vec3(-6.0f, -4.5f, 0.0f), glm::vec3(4.0f, 4.0f, 0.0f));
+			//UIButton* Suspect5 = new UIButton("Suspect5", "Assets/Images/Journal_CaseSummary_Icon_Octavia.png", glm::vec3(-6.0f, -4.5f, 0.0f), glm::vec3(4.0f, 4.0f, 0.0f));
 
-			Text* Cabin4 = new Text("Cabin4", "Cabin 4", "Assets/Fonts/WD.ttf");
+			//Text* Cabin4 = new Text("Cabin4", "Cabin 4", "Assets/Fonts/WD.ttf");
 			//Cabin4->SetPosition(glm::vec3(-3.7f, 3.8f, 0.0f));
 			//Cabin4->SetColor(glm::vec3(1, 1, 1));
+			//Cabin4->SetScale(glm::vec3(-3.7f, 3.8f, 0.0f));
 
 
 
