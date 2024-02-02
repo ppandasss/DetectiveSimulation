@@ -5,6 +5,7 @@
 #include "../UI/UIElement.h"
 #include "../UI/UIButton.h"
 #include "../UI/UIDraggable.h"
+#include "../GameObjects/Book.h"
 
 class JournalRoom : public Scene
 {
