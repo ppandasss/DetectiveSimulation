@@ -21,6 +21,8 @@ public:
 	{
 		m_scale = glm::vec3(6.5f, 6.125f, 0.0f);
         m_position = glm::vec3(0.0f, -1.0f, 0.0f);
+        /*--------------------Add Animation states---------------------------*/
+        //AddAnimation(name,row(from bottom),how many collums,Play back type(Loop,Pingpong,once))
 	    m_animator.AddAnimation("walk_left", 1, 8, 7.5f, Animator::LoopType::Loop, []() {});
         m_animator.AddAnimation("walk_right", 2, 8, 7.5f, Animator::LoopType::Loop, []() {});
         audioManager.LoadSound("Player_footsteps","Assets/Sounds/footstep.mp3",3.0f);

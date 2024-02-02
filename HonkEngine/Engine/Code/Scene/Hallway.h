@@ -10,6 +10,7 @@
 	#include"../Audio/AudioManager.h"	
 	#include "../UI/UIButton.h"
 	#include "../UI/UIDraggable.h"
+	#include "../UI/UINormal.h"
 	#include "../UI/UIElement.h"
 
 	class Hallway : public Scene
@@ -34,34 +35,45 @@
 
 			/*-------------------------------------------------------------🎮CREATE PLAYER🎮------------------------------------------------------------------------------------------------------- */
 
-			Player* player = new Player("waiter", "Assets/Images/waiter_spritesheet_test.png",2,8);
+			Player* player = new Player("waiter", "Assets/Images/waiter_spritesheet.png",2,8);
 			
 			/*-------------------------------------------------------------💬CREATE TEXT💬------------------------------------------------------------------------------------------------------- */
 
 			Text* helloText = new Text("GameTitle", " Welcome To Ticking Tea Time", "Assets/Fonts/WD.ttf");
+			Text* orderNoText = new Text("orderNo", "1", "Assets/Fonts/WD.ttf");
 
 			/*-------------------------------------------------------------💬CREATE UI💬------------------------------------------------------------------------------------------------------- */
-
-			UIElement* journalButton = new UIButton("JournalButton", "Assets/Images/JournalButton.png", glm::vec3(-6.0f, -4.5f, 0.0f), glm::vec3(4.0f, 4.0f, 0.0f),true);
+			UIElement* orderPaper = new UINormal("OrderPaper", "Assets/Images/OrderPaper.png", glm::vec3(-7.9f, 3.5f, 0.0f), glm::vec3(3.0f, 3.0f, 0.0f), true);
+			UIElement* journalButton = new UIButton("JournalButton", "Assets/Images/JournalButton.png", glm::vec3(-8.2f, -4.2f, 0.0f), glm::vec3(3.5f,3.5f,0.0f),true);
 			UIElement* ticket = new UIDraggable("ticket", "Assets/Images/Journal_CaseSummary_Ticket_WithText.png", glm::vec3(6.0f, -4.0f, 0.0f), glm::vec3(2.0f, 1.0f, 0.0f),false);
 			
-			/*-------------------------------------------------------------➡️SET TRANSFORNATION➡️------------------------------------------------------------------------------------------------------- */
+			/*-------------------------------------------------------------➡️SET TRANSFORMATION➡️------------------------------------------------------------------------------------------------------- */
 
 			hallway->SetScale(glm::vec3(45.0f, 10.5f, 0.0f));
 			hallway->SetPosition(glm::vec3(0.0f, -0.2f, 0.0f));
 			hallwaylights->SetScale(glm::vec3(45.0f, 10.5f, 0.0f));
 			hallwaylights->SetPosition(glm::vec3(0.0f, -0.2f, 0.0f));
+
+
 			helloText->SetPosition(glm::vec3(-3.7f, 3.8f, 0.0f));
 			helloText->SetColor(glm::vec3(1,1,1));
+			orderNoText->SetPosition(glm::vec3(-8.9f, 4.1f, 0.0f));
+			orderNoText->SetColor(glm::vec3(1, 0, 0));
 
 			/*--------------------------------------------------------------✅PUSH BACK✅------------------------------------------------------------------------------------------------------- */
+			//Environment
 			m_gameObjects.push_back(hallway);
 			m_gameObjects.push_back(player);
 			m_gameObjects.push_back(hallwaylights);
 
-			m_gameObjects.push_back(helloText);
+			//UIs
 			m_gameObjects.push_back(journalButton);
 			m_gameObjects.push_back(ticket);
+			m_gameObjects.push_back(orderPaper);
+
+			//Texts
+			m_gameObjects.push_back(helloText);
+			m_gameObjects.push_back(orderNoText);
 		}
 
 		void Update(float dt, long frame) {

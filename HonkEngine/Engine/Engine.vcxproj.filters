@@ -116,6 +116,9 @@
     <ClInclude Include="Code\UI\UIDraggable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Code\UI\UINormal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\text.vs" />
@@ -157,6 +160,12 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Assets\Images\wardrobe.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Images\OrderPaper.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Images\Timer.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

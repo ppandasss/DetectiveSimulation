@@ -162,6 +162,7 @@
     <ClInclude Include="Code\UI\UIButton.h" />
     <ClInclude Include="Code\UI\UIDraggable.h" />
     <ClInclude Include="Code\UI\UIElement.h" />
+    <ClInclude Include="Code\UI\UINormal.h" />
     <ClInclude Include="External\Include\GLFW\glfw3.h" />
     <ClInclude Include="External\Include\GLFW\glfw3native.h" />
     <ClInclude Include="External\Include\stb_image.h" />
@@ -190,8 +191,10 @@
     <Image Include="Assets\Images\awesomeface.png" />
     <Image Include="Assets\Images\Cabin.png" />
     <Image Include="Assets\Images\konrai.jpg" />
+    <Image Include="Assets\Images\OrderPaper.png" />
     <Image Include="Assets\Images\spritesheet_test.png" />
     <Image Include="Assets\Images\spritesheet_test2.png" />
+    <Image Include="Assets\Images\Timer.png" />
     <Image Include="Assets\Images\waiter_test.png" />
     <Image Include="Assets\Images\wardrobe.png" />
   </ItemGroup>
