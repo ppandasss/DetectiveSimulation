@@ -149,6 +149,7 @@
     <ClInclude Include="Code\Engine.h" />
     <ClInclude Include="Code\GameObjects\GameObject.h" />
     <ClInclude Include="Code\GameObjects\Journal\JournalData.h" />
+    <ClInclude Include="Code\GameObjects\MainPage.h" />
     <ClInclude Include="Code\Scene\Hallway.h" />
     <ClInclude Include="Code\Scene\JournalTest.h" />
     <ClInclude Include="Code\Scene\Room1.h" />

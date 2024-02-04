@@ -9,16 +9,18 @@ class UIButton : public UIElement {
         UIButton(const std::string& name, const std::string& texturePath, const glm::vec3 position, const glm::vec3 scale)
             : UIElement(name, texturePath, position, scale) {
 
-            // Additional properties specific to buttons
+            //Additional properties specific to buttons
 
             isClickable = true;
             //category = UIcategory;
 
         }
 
+
         void OnClick(){
 
-            std::cout << "Button Clicked" << std::endl;
+            std::cout << getButtonName() << " Button Clicked" << std::endl;
+
         }
 
 
@@ -47,9 +49,7 @@ class UIButton : public UIElement {
 
     private:
 
-        std::string button_name;
         bool isClickable;
-        //UICategory category;
         glm::vec2 mousePos;
 
 

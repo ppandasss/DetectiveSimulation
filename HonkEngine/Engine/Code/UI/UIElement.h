@@ -12,6 +12,8 @@ class UIElement : public RenderGameObject {
 
 public:
 
+
+
 	enum UICategory {
 		BOOK_PAGE1,
 		BOOK_PAGE2,
@@ -86,14 +88,16 @@ public:
 
 	}
 
+	std::string getButtonName() {
 
-	//Implement cleanup logic for UI elements
-	//virtual void Clear() override {}
+		return button_name;
+
+	}
+
 
 
 private:
 	std::string button_name;
 	bool isClickable;
-	//UICategory category;
 
 };
