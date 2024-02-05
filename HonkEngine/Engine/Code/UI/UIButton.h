@@ -2,10 +2,15 @@
 
 #include "../UI/UIElement.h"
 
+#include "../Scene/Hallway.h"
+
 
 class UIButton : public UIElement {
 
 	public:
+
+      
+
         UIButton(const std::string& name, const std::string& texturePath, const glm::vec3 position, const glm::vec3 scale)
             : UIElement(name, texturePath, position, scale) {
 
@@ -19,11 +24,17 @@ class UIButton : public UIElement {
 
         void OnClick(){
 
+            if (getButtonName() == "JournalButton") {
+
+                
+
+            }
+
             std::cout << getButtonName() << " Button Clicked" << std::endl;
 
         }
 
-
+     
         void Update(float dt, long frame) override {
 
             Input& input = Application::GetInput();

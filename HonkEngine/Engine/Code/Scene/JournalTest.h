@@ -114,6 +114,8 @@ public:
 		m_gameObjects.push_back(Suspect5);
 		m_gameObjects.push_back(Cabin4);
 
+		//Suspect1->setActiveStatus(false);
+
 
 	}
 

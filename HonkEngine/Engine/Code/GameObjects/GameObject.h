@@ -3,6 +3,7 @@
 #include <string>
 #include"glm/glm.hpp"
 
+
 class GameObject
 {
 public:
@@ -35,7 +36,9 @@ public:
 	   return m_name;
    }
 
+   virtual void setActiveStatus(bool status) { active = status; }
 
+   virtual bool getActiveStatus() const {return active;}
 
 protected:
 	std::string m_name;
@@ -43,4 +46,6 @@ protected:
 	glm::vec3 m_scale {1.0f, 1.0f, 1.0f};
 	int layer = 0;
 	float m_orientation = 0.0f;
+	bool active = true;
+
 };

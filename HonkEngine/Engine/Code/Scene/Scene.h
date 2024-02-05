@@ -39,8 +39,16 @@ public:
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 
-		for (auto& object : m_gameObjects)
-			object->Render();
+		for (auto& object : m_gameObjects) {
+
+			if (object->getActiveStatus()) { //CHECK ACTIVE STATUS
+
+				object->Render();
+
+			}
+			
+		}
+			
 	}
 
 	void AddGameObject(GameObject* newGameObject)

@@ -46,6 +46,7 @@ public:
 
     // No SetFont for now, as TextRenderer doesn't have one
 
+
 private:
     std::unique_ptr<TextRenderer> textRenderer;
     std::string m_content;

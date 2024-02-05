@@ -29,6 +29,7 @@ struct MainPageData {
 
 struct CabinPageData {
 
+	//2 arrays for text clue
 
 	Location lastVisit;
 
@@ -44,7 +45,6 @@ class JournalData {
 			main_page.player_Spy = SPY_EMPTY;
 			main_page.player_BombLocation = LOCATION_EMPTY;
 			
-
 
 		
 		}

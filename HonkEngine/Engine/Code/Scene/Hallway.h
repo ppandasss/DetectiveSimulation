@@ -11,6 +11,7 @@
 	#include "../UI/UIButton.h"
 	#include "../UI/UIDraggable.h"
 	#include "../UI/UIElement.h"
+	#include "../GameObjects/Book.h"
 
 	class Hallway : public Scene
 	{
@@ -18,6 +19,10 @@
 	private:
 		std::unique_ptr<TextRenderer> textRenderer;
 		AudioManager& audioManager;
+
+		Book* Journal;
+
+
 	public:
 		Hallway() :audioManager(AudioManager::GetInstance())
 		{
@@ -33,7 +38,10 @@
 			
 			Text* helloText = new Text("GameTitle", " Welcome To Ticking Tea Time", "Assets/Fonts/WD.ttf");
 
-			UIElement* journalButton = new UIButton("JournalButton", "Assets/Images/JournalButton.png", glm::vec3(-6.0f, -4.5f, 0.0f), glm::vec3(4.0f, 4.0f, 0.0f));
+			UIButton* journalButton = new UIButton("JournalButton", "Assets/Images/JournalButton.png", glm::vec3(-6.5f, -4.5f, 0.0f), glm::vec3(3.0f, 3.0f, 0.0f));
+			
+			
+
 			UIElement* ticket = new UIDraggable("ticket", "Assets/Images/Journal_CaseSummary_Ticket_WithText.png", glm::vec3(6.0f, -4.0f, 0.0f), glm::vec3(2.0f, 1.0f, 0.0f));
 			
 			hallway->SetScale(glm::vec3(45.0f, 10.5f, 0.0f));
@@ -43,11 +51,8 @@
 			helloText->SetPosition(glm::vec3(-3.7f, 3.8f, 0.0f));
 			helloText->SetColor(glm::vec3(1,1,1));
 			
-		
-			
+			//Journal = new Book();
 
-			
-		
 			m_gameObjects.push_back(hallway);
 			m_gameObjects.push_back(player);
 			m_gameObjects.push_back(hallwaylights);
@@ -56,6 +61,9 @@
 
 			m_gameObjects.push_back(journalButton);
 			m_gameObjects.push_back(ticket);
+
+			//m_gameObjects.push_back(Journal);
+
 		}
 
 		void Update(float dt, long frame) {
@@ -83,6 +91,12 @@
 					
 				}
 			}
+		}
+
+		void OpenJournal() {
+
+			m_gameObjects.push_back(Journal);
+
 		}
 
 	};
