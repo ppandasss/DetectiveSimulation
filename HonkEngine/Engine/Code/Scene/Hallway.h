@@ -35,7 +35,7 @@
 
 			/*-------------------------------------------------------------🎮CREATE PLAYER🎮------------------------------------------------------------------------------------------------------- */
 
-			Player* player = new Player("waiter", "Assets/Images/waiter_spritesheet.png",2,8);
+			Player* player = new Player("waiter", "Assets/Images/MainCharacter_WithTray_Walk.png",2,8);
 			
 			/*-------------------------------------------------------------💬CREATE TEXT💬------------------------------------------------------------------------------------------------------- */
 
@@ -44,20 +44,22 @@
 
 			/*-------------------------------------------------------------💬CREATE UI💬------------------------------------------------------------------------------------------------------- */
 			UIElement* orderPaper = new UINormal("OrderPaper", "Assets/Images/OrderPaper.png", glm::vec3(-7.9f, 3.5f, 0.0f), glm::vec3(3.0f, 3.0f, 0.0f), true);
-			UIElement* journalButton = new UIButton("JournalButton", "Assets/Images/JournalButton.png", glm::vec3(-8.2f, -4.2f, 0.0f), glm::vec3(3.5f,3.5f,0.0f),true);
+			UIElement* timer = new UINormal("Timer", "Assets/Images/Timer.png", glm::vec3(7.9f, 3.5f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true);
+			UIElement* screenUI = new UINormal("ScreenUI", "Assets/Images/ScreenUI.png", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(16.0f * 1.19f, 9.0f * 1.19f, 0.0f), true);
+			UIElement* journalButton = new UIButton("JournalButton", "Assets/Images/JournalButton.png", glm::vec3(-8.4f, -4.1f, 0.0f), glm::vec3(2.8f,2.8f,0.0f),true);
 			UIElement* ticket = new UIDraggable("ticket", "Assets/Images/Journal_CaseSummary_Ticket_WithText.png", glm::vec3(6.0f, -4.0f, 0.0f), glm::vec3(2.0f, 1.0f, 0.0f),false);
 			
 			/*-------------------------------------------------------------➡️SET TRANSFORMATION➡️------------------------------------------------------------------------------------------------------- */
 
-			hallway->SetScale(glm::vec3(45.0f, 10.5f, 0.0f));
-			hallway->SetPosition(glm::vec3(0.0f, -0.2f, 0.0f));
+			hallway->SetScale(glm::vec3(45.0f * 0.94f, 10.5f * 0.94f, 0.0f));
+			hallway->SetPosition(glm::vec3(0.0f, 0.24f, 0.0f));
 			hallwaylights->SetScale(glm::vec3(45.0f, 10.5f, 0.0f));
 			hallwaylights->SetPosition(glm::vec3(0.0f, -0.2f, 0.0f));
 
 
 			helloText->SetPosition(glm::vec3(-3.7f, 3.8f, 0.0f));
 			helloText->SetColor(glm::vec3(1,1,1));
-			orderNoText->SetPosition(glm::vec3(-8.9f, 4.1f, 0.0f));
+			orderNoText->SetPosition(glm::vec3(-8.7f, 4.5f, 0.0f));
 			orderNoText->SetColor(glm::vec3(1, 0, 0));
 
 			/*--------------------------------------------------------------✅PUSH BACK✅------------------------------------------------------------------------------------------------------- */
@@ -68,8 +70,10 @@
 
 			//UIs
 			m_gameObjects.push_back(journalButton);
+			//m_gameObjects.push_back(timer);
+			//m_gameObjects.push_back(orderPaper);
+			m_gameObjects.push_back(screenUI);
 			m_gameObjects.push_back(ticket);
-			m_gameObjects.push_back(orderPaper);
 
 			//Texts
 			m_gameObjects.push_back(helloText);
