@@ -15,7 +15,7 @@ public:
 
 		//SPY BUTTONS
 
-		UIButton* Suspect1 = new UIButton("Suspect1", "Assets/Images/Journal_CaseSummary_Icon_Archibald.png", glm::vec3(1.2f, 2.3f, 0.0f), glm::vec3(1.2f, 1.2f, 0.0f));
+		UIButton* Suspect1 = new UIButton("Suspect1", "Assets/Images/Journal_CaseSummary_Icon_Archibald.png", glm::vec3(1.2f, 2.3f, 0.0f), glm::vec3(1.2f, 1.2f, 0.0f), true);
 
 		Text* Cabin1 = new Text("Cabin1", "Cabin 1", "Assets/Fonts/WD.ttf");
 		Cabin1->SetPosition(glm::vec3(0.7f, 1.1f, 0.0f));
@@ -23,7 +23,7 @@ public:
 		Cabin1->SetScale(0.6f);
 
 
-		UIButton* Suspect2 = new UIButton("Suspect2", "Assets/Images/Journal_CaseSummary_Icon_Evelyn.png", glm::vec3(3.0f, 2.3f, 0.0f), glm::vec3(1.2f, 1.2f, 0.0f));
+		UIButton* Suspect2 = new UIButton("Suspect2", "Assets/Images/Journal_CaseSummary_Icon_Evelyn.png", glm::vec3(3.0f, 2.3f, 0.0f), glm::vec3(1.2f, 1.2f, 0.0f), true);
 
 		Text* Cabin21 = new Text("Cabin21", "Cabin 2/1", "Assets/Fonts/WD.ttf");
 		Cabin21->SetPosition(glm::vec3(2.3f, 1.1f, 0.0f));
@@ -31,7 +31,7 @@ public:
 		Cabin21->SetScale(0.6f);
 
 
-		UIButton* Suspect3 = new UIButton("Suspect3", "Assets/Images/Journal_CaseSummary_Icon_Martha.png", glm::vec3(4.8f, 2.3f, 0.0f), glm::vec3(1.2f, 1.2f, 0.0f));
+		UIButton* Suspect3 = new UIButton("Suspect3", "Assets/Images/Journal_CaseSummary_Icon_Martha.png", glm::vec3(4.8f, 2.3f, 0.0f), glm::vec3(1.2f, 1.2f, 0.0f), true);
 
 		Text* Cabin22 = new Text("Cabin22", "Cabin 2/2", "Assets/Fonts/WD.ttf");
 		Cabin22->SetPosition(glm::vec3(4.2f, 1.1f, 0.0f));
@@ -39,7 +39,7 @@ public:
 		Cabin22->SetScale(0.6f);
 
 
-		UIButton* Suspect4 = new UIButton("Suspect4", "Assets/Images/Journal_CaseSummary_Icon_Nathaniel.png", glm::vec3(1.2f, 0.0f, 0.0f), glm::vec3(1.2f, 1.2f, 0.0f));
+		UIButton* Suspect4 = new UIButton("Suspect4", "Assets/Images/Journal_CaseSummary_Icon_Nathaniel.png", glm::vec3(1.2f, 0.0f, 0.0f), glm::vec3(1.2f, 1.2f, 0.0f), true);
 
 		Text* Cabin3 = new Text("Cabin3", "Cabin 3", "Assets/Fonts/WD.ttf");
 		Cabin3->SetPosition(glm::vec3(0.7f, -1.2f, 0.0f));
@@ -47,7 +47,7 @@ public:
 		Cabin3->SetScale(0.6f);
 
 
-		UIButton* Suspect5 = new UIButton("Suspect5", "Assets/Images/Journal_CaseSummary_Icon_Octavia.png", glm::vec3(3.0f, 0.0f, 0.0f), glm::vec3(1.2f, 1.2f, 0.0f));
+		UIButton* Suspect5 = new UIButton("Suspect5", "Assets/Images/Journal_CaseSummary_Icon_Octavia.png", glm::vec3(3.0f, 0.0f, 0.0f), glm::vec3(1.2f, 1.2f, 0.0f), true);
 
 		Text* Cabin4 = new Text("Cabin4", "Cabin 4", "Assets/Fonts/WD.ttf");
 		Cabin4->SetPosition(glm::vec3(2.3f, -1.2, 0.0f));

@@ -1,103 +1,89 @@
 #pragma once
 
-#include "../GameObjects/RenderGameObject.h"
+#include "UIObject.h"
 #include "../Input/Input.h"
 #include "../Engine.h"
 #include <glm/glm.hpp>
 #include <iostream>
 
-
-class UIElement : public RenderGameObject {
-
+class UIElement : public UIObject {
 
 public:
 
+    enum UICategory {
+        BOOK_PAGE1,
+        BOOK_PAGE2,
+        IN_GAME, //journal access button etc.
+        PAUSED,
+        //Add more stages as needed
+    };
 
+    UIElement(const std::string& name, const std::string& texturePath, glm::vec3 position, glm::vec3 scale,bool isOnScreen) : UIObject(name, texturePath, position,isOnScreen) {
 
-	enum UICategory {
-		BOOK_PAGE1,
-		BOOK_PAGE2,
-		IN_GAME, //journal access button etc.
-		PAUSED,
-		//Add more stages as needed
-	};
+        m_scale = scale;
+        button_name = name;
+        isClickable = true;
+        offset = position;
+        //category = UIcategory;
 
-	UIElement(const std::string& name, const std::string& texturePath, glm::vec3 position, glm::vec3 scale) : RenderGameObject(name, texturePath, position) {
+    }
 
-		m_scale = scale;
-		button_name = name;
-		isClickable = true;
-		//category = UIcategory;
+    virtual void Update(float dt, long frame) override {
 
-	}
+        UIObject::Update(dt, frame);
+    }
 
+    virtual void OnClick() = 0;
 
-	virtual void Update(float dt, long frame) override {
+    bool IsClickable() {
+        return isClickable;
+    }
 
-		RenderGameObject::Update(dt, frame);
+    void SetClickable(bool clickable) {
+        isClickable = clickable;
+    }
 
-		// Implement UI-specific update logic here
-		// For example, handling UI animations, interactions, etc
+    glm::vec2 MousetoScreen(float x, float y) const {
 
-	}
+        float xpos = x - (SCR_WIDTH / 2.0f);
+        float ypos = y - (SCR_HEIGHT / 2.0f);
 
-	virtual void OnClick() = 0;
+        xpos = xpos * 16.0 / SCR_WIDTH;
+        ypos = ypos * 9.0 / SCR_HEIGHT * -1;
 
-	bool IsClickable() {
-		return isClickable;
-	}
+        return glm::vec2(xpos, ypos);
 
-	void SetClickable(bool clickable) {
-		isClickable = clickable;
-	}
+    }
 
+    bool IsPointInside(float x, float y) const {
 
-	glm::vec2 MousetoScreen(float x, float y) const {
+        glm::vec2 newPos = MousetoScreen(x, y);
 
-		float xpos = x - (SCR_WIDTH / 2.0f);
-		float ypos = y - (SCR_HEIGHT / 2.0f);
+        float minX = m_position.x - (m_scale.x / 2.0f);
+        float maxX = m_position.x + (m_scale.x / 2.0f);
+        float minY = m_position.y - (m_scale.y / 2.0f);
+        float maxY = m_position.y + (m_scale.y / 2.0f);
 
-		xpos = xpos * 16.0 / SCR_WIDTH;
-		ypos = ypos * 9.0 / SCR_HEIGHT * -1;
+        return (newPos.x >= minX && newPos.x <= maxX && newPos.y >= minY && newPos.y <= maxY);
 
-		return glm::vec2(xpos, ypos);
+    }
 
-	}
+    std::string getButtonName() {
 
-	bool IsPointInside(float x, float y) const {
+        return button_name;
 
-		glm::vec2 newPos = MousetoScreen(x, y);
+    }
 
-		float minX = m_position.x - (m_scale.x / 2.0f );
-		float maxX = m_position.x + (m_scale.x / 2.0f);
-		float minY = m_position.y - (m_scale.y / 2.0f );
-		float maxY = m_position.y + (m_scale.y / 2.0f);
-
-		
-		/*
-		std::cout << "x: " << x << " y: " << y << std::endl;
-		std::cout << "xpos: " << xpos << " ypos: " << ypos << std::endl;
-
-		std::cout << "new xpos: " << xpos << " new ypos: " << ypos << std::endl;
-		std::cout << "obj x: " << m_position.x << "obj y: " << m_position.y << std::endl;
-		std::cout << "maxX: " << maxX << " minX: " << minX << std::endl;
-		std::cout << "maxY: " << maxY << " minY: " << minY << std::endl;
-		*/
-
-		return (newPos.x >= minX && newPos.x <= maxX && newPos.y >= minY && newPos.y <= maxY);
-
-	}
-
-	std::string getButtonName() {
-
-		return button_name;
-
-	}
-
-
+    //Implement cleanup logic for UI elements
+    //virtual void Clear() override {}
 
 private:
-	std::string button_name;
-	bool isClickable;
+    std::string button_name;
+    bool isClickable;
+    glm::vec3 offset;
+    bool isOnScreen;
+    //UICategory category;
+   
 
+    Camera& camera = Application::GetCamera(); // Assuming GetCamera is a static method in your Application class
 };

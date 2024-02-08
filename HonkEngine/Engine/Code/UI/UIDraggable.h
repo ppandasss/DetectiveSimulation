@@ -5,8 +5,8 @@
 class UIDraggable : public UIElement {
 
 public:
-    UIDraggable(const std::string& name, const std::string& texturePath, const glm::vec3 position, const glm::vec3 scale)
-        : UIElement(name, texturePath, position, scale) {
+    UIDraggable(const std::string& name, const std::string& texturePath, const glm::vec3 position, const glm::vec3 scale,bool isOnScreen)
+        : UIElement(name, texturePath, position, scale,isOnScreen) {
 
         //category = UIcategory;
         isDragging = false;
@@ -29,7 +29,7 @@ public:
 
         
         Input& input = Application::GetInput();
-        RenderGameObject::Update(dt, frame);
+        UIElement::Update(dt, frame);
 
         CurrentMousePos = Application::Get().CursorPos();
 
@@ -65,20 +65,11 @@ public:
         
         if (isDragging) {
 
-            /*
-
             // Continue drag - Update object position
             glm::vec2 mouseDelta = MousetoScreen(CurrentMousePos.x, CurrentMousePos.y) - dragStartPos; // Apply offset to maintain relative position under cursor
 
             //glm::vec2 convertedPosition = MousetoScreen(newUiPosition.x, newUiPosition.y);
             m_position = glm::vec3(dragStartPos, 0.0f) + glm::vec3(mouseDelta, 0.0f) + glm::vec3(dragOffset, 0.0f);
-
-            */
-
-            glm::vec2 worldMousePos = MousetoScreen(CurrentMousePos.x, CurrentMousePos.y);
-
-            m_position = glm::vec3(worldMousePos, 0.0f);
-            
 
         }
 

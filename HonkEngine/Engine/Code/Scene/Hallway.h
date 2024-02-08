@@ -38,11 +38,11 @@
 			
 			Text* helloText = new Text("GameTitle", " Welcome To Ticking Tea Time", "Assets/Fonts/WD.ttf");
 
-			UIButton* journalButton = new UIButton("JournalButton", "Assets/Images/JournalButton.png", glm::vec3(-6.5f, -4.5f, 0.0f), glm::vec3(3.0f, 3.0f, 0.0f));
+			UIButton* journalButton = new UIButton("JournalButton", "Assets/Images/JournalButton.png", glm::vec3(-6.5f, -4.5f, 0.0f), glm::vec3(3.0f, 3.0f, 0.0f), true);
 			
 			
 
-			UIElement* ticket = new UIDraggable("ticket", "Assets/Images/Journal_CaseSummary_Ticket_WithText.png", glm::vec3(6.0f, -4.0f, 0.0f), glm::vec3(2.0f, 1.0f, 0.0f));
+			UIElement* ticket = new UIDraggable("ticket", "Assets/Images/Journal_CaseSummary_Ticket_WithText.png", glm::vec3(6.0f, -4.0f, 0.0f), glm::vec3(2.0f, 1.0f, 0.0f), true);
 			
 			hallway->SetScale(glm::vec3(45.0f, 10.5f, 0.0f));
 			hallway->SetPosition(glm::vec3(0.0f, -0.2f, 0.0f));

@@ -107,12 +107,6 @@
     <ClInclude Include="Code\UI\UIButton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\UI\UIElement.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\UI\UIDraggable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Code\UI\Book.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -126,6 +120,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Code\GameObjects\MainPage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\UI\UINormal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\UI\UIObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\UI\UIElement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\UI\UIDraggable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

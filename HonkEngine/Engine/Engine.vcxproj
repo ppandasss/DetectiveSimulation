@@ -166,6 +166,8 @@
     <ClInclude Include="Code\UI\UIButton.h" />
     <ClInclude Include="Code\UI\UIDraggable.h" />
     <ClInclude Include="Code\UI\UIElement.h" />
+    <ClInclude Include="Code\UI\UINormal.h" />
+    <ClInclude Include="Code\UI\UIObject.h" />
     <ClInclude Include="External\Include\GLFW\glfw3.h" />
     <ClInclude Include="External\Include\GLFW\glfw3native.h" />
     <ClInclude Include="External\Include\stb_image.h" />
