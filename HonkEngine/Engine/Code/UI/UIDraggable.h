@@ -5,11 +5,14 @@
 class UIDraggable : public UIElement {
 
 public:
-    UIDraggable(const std::string& name, const std::string& texturePath, const glm::vec3 position, const glm::vec3 scale,bool isOnScreen)
+    UIDraggable(const std::string& name, const std::string& texturePath, const glm::vec3 position, const glm::vec3 scale,bool isOnScreen, glm::vec3 snapToPos)
         : UIElement(name, texturePath, position, scale,isOnScreen) {
 
         //category = UIcategory;
         isDragging = false;
+        originalPosition = position;
+        snapToPosition = snapToPos;
+        
 
     }
 
@@ -24,6 +27,23 @@ public:
 
     }
 
+    void withinRange(glm::vec3 uiPos) {
+
+        float distance = glm::distance(uiPos, snapToPosition);
+
+        if (distance <= snapThreshold) {
+
+            m_position = snapToPosition;
+
+        }
+        else {
+
+            m_position = originalPosition;
+
+        }
+
+
+    }
  
     void Update(float dt, long frame) override {
 
@@ -37,6 +57,8 @@ public:
 
             isDragging = false;
             //std::cout << "DRAGGABLE RELEASED" << std::endl;
+
+            withinRange(m_position);
 
         }
 
@@ -80,7 +102,11 @@ private:
     glm::vec2 CurrentMousePos;
     glm::vec2 dragStartPos;
     bool isDragging;
-
     glm::vec2 dragOffset; // Offset between
+
+    //snap to position variables
+    glm::vec3 originalPosition; //instantiation position
+    glm::vec3 snapToPosition;
+    float snapThreshold = 8.0f;
 
 };
