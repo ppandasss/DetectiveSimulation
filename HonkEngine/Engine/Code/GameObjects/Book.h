@@ -54,7 +54,7 @@ public:
 
 
 		GameObject* BlankPage = new RenderGameObject("BlankPage", "Assets/Images/Journal_BlankPage.png");
-		BlankPage->SetScale(glm::vec3(13.0f, 9.0f, 0.0f));
+		BlankPage->SetScale(glm::vec3(13.0f, 9.0f, 1.0f));
 		BlankPage->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
 		GameObject* JournalSleeve = new RenderGameObject("JounalSleeve", "Assets/Images/Journal_CaseSummary_Sleeve.png");
@@ -138,6 +138,25 @@ public:
 		allPages[activePage]->Render();
 
 	}
+
+	virtual void Update(float dt, long frame) override {
+
+		for (auto& object : m_gameObjects) {
+
+			if (object->getActiveStatus()) { //CHECK ACTIVE STATUS
+
+				object->Update(dt, frame);
+
+			}
+
+		}
+
+		allPages[activePage]->Update(dt, frame);
+
+	
+	}
+
+	
 
 protected:
 

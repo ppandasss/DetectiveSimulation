@@ -98,6 +98,7 @@ public:
 	{
 		//std::cout << "RenderObjectRender: " << m_name << std::endl;
 
+		
 
 		//std::cout << "Rendering GameObject: " << m_name << std::endl;
 		renderer.SetRenderMode(CDT_TEXTURE, 1.0f);

@@ -45,6 +45,21 @@ public:
 
 	}
 
+	virtual void Update(float dt, long frame) override {
+
+		for (auto& object : m_gameObjects) {
+
+			if (object->getActiveStatus()) { //CHECK ACTIVE STATUS
+
+				object->Update(dt, frame);
+
+			}
+
+		}
+
+
+	}
+
 
 protected:
 

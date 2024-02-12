@@ -40,7 +40,6 @@
 
 			UIButton* journalButton = new UIButton("JournalButton", "Assets/Images/JournalButton.png", glm::vec3(-6.5f, -4.5f, 0.0f), glm::vec3(3.0f, 3.0f, 0.0f), true);
 			
-			
 
 			UIElement* ticket = new UIDraggable("ticket", "Assets/Images/Journal_CaseSummary_Ticket_WithText.png", glm::vec3(6.0f, -4.0f, 0.0f), glm::vec3(2.0f, 1.0f, 0.0f), true, glm::vec3(6.0f, -4.0f, 0.0f));
 			
@@ -51,7 +50,7 @@
 			helloText->SetPosition(glm::vec3(-3.7f, 3.8f, 0.0f));
 			helloText->SetColor(glm::vec3(1,1,1));
 			
-			//Journal = new Book();
+			Journal = new Book();
 
 			m_gameObjects.push_back(hallway);
 			m_gameObjects.push_back(player);
@@ -62,7 +61,7 @@
 			m_gameObjects.push_back(journalButton);
 			m_gameObjects.push_back(ticket);
 
-			//m_gameObjects.push_back(Journal);
+			m_gameObjects.push_back(Journal);
 
 		}
 
