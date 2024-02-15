@@ -43,16 +43,6 @@ public:
 		UIButton* Tab5 = new UIButton("Tab5", "Assets/Images/Journal_Bookmark_Passenger 3.png", glm::vec3(6.8f, -1.0f, 0.0f), glm::vec3(2.3f, 1.0f, 0.0f), true);
 		UIButton* Tab6 = new UIButton("Tab6", "Assets/Images/Journal_Bookmark_Passenger 4.png", glm::vec3(6.8f, -2.2f, 0.0f), glm::vec3(2.3f, 1.0f, 0.0f), true);
 
-		m_gameObjects.push_back(JournalCover);
-
-		m_gameObjects.push_back(Tab1);
-		m_gameObjects.push_back(Tab2);
-		m_gameObjects.push_back(Tab3);
-		m_gameObjects.push_back(Tab4);
-		m_gameObjects.push_back(Tab5);
-		m_gameObjects.push_back(Tab6);
-
-
 		GameObject* BlankPage = new RenderGameObject("BlankPage", "Assets/Images/Journal_BlankPage.png");
 		BlankPage->SetScale(glm::vec3(13.0f, 9.0f, 1.0f));
 		BlankPage->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
@@ -61,8 +51,14 @@ public:
 		JournalSleeve->SetScale(glm::vec3(3.5f, 9.7f, 0.0f));
 		JournalSleeve->SetPosition(glm::vec3(-5.3f, 0.0f, 0.0f));
 
+		m_gameObjects.push_back(JournalCover);
+		m_gameObjects.push_back(Tab1);
+		m_gameObjects.push_back(Tab2);
+		m_gameObjects.push_back(Tab3);
+		m_gameObjects.push_back(Tab4);
+		m_gameObjects.push_back(Tab5);
+		m_gameObjects.push_back(Tab6);
 		m_gameObjects.push_back(JournalSleeve);
-
 		m_gameObjects.push_back(BlankPage);
 
 
@@ -83,6 +79,8 @@ public:
 		allPages.push_back(foodGuide);
 
 
+		closeBook();
+
 	}
 
 
@@ -98,8 +96,6 @@ public:
 			}
 
 		}
-
-		//add all elements above to game object array 
 
 
 	}

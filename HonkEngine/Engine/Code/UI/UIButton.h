@@ -21,16 +21,17 @@ class UIButton : public UIElement {
 
         }
 
+        // Method to set the click action
+        void SetOnClickAction(const std::function<void()>& action) {
+            onClickAction = action;
+        }
+
 
         void OnClick(){
 
-            if (getButtonName() == "JournalButton") {
-
-                
-
+            if (onClickAction) {
+                onClickAction();
             }
-
-            std::cout << getButtonName() << " Button Clicked" << std::endl;
 
         }
 
@@ -62,6 +63,7 @@ class UIButton : public UIElement {
 
         bool isClickable;
         glm::vec2 mousePos;
+        std::function<void()> onClickAction;
 
 
 };

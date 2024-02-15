@@ -44,8 +44,6 @@ class JournalData {
 		
 			main_page.player_Spy = SPY_EMPTY;
 			main_page.player_BombLocation = LOCATION_EMPTY;
-			
-
 		
 		}
 
