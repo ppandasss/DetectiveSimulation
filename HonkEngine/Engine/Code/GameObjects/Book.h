@@ -79,7 +79,7 @@ public:
 		allPages.push_back(foodGuide);
 
 
-		closeBook();
+		//closeBook();
 
 	}
 
@@ -157,10 +157,8 @@ public:
 protected:
 
 	std::vector<GameObject*> m_gameObjects;
-
 	std::vector<Page*> allPages;
 
 	currentPage activePage = MAIN;
-
 
 };

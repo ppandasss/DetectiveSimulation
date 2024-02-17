@@ -51,7 +51,7 @@
 			helloText->SetColor(glm::vec3(1,1,1));
 			
 			Journal = new Book();
-			journalButton->SetOnClickAction([this]() { Journal->drawBook(); });
+			//journalButton->SetOnClickAction([this]() { Journal->drawBook(); });
 
 			m_gameObjects.push_back(hallway);
 			m_gameObjects.push_back(player);
