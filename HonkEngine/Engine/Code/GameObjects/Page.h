@@ -30,6 +30,8 @@ public:
 		
 	}
 
+
+
 	virtual void Render() override
 	{
 
@@ -58,6 +60,18 @@ public:
 		}
 
 
+	}
+
+	virtual void setActiveStatus(bool status) { 
+
+		for (auto& object : m_gameObjects) {
+
+			object->setActiveStatus(status);
+
+		}
+
+		active = status;
+	
 	}
 
 

@@ -38,8 +38,9 @@
 			
 			Text* helloText = new Text("GameTitle", " Welcome To Ticking Tea Time", "Assets/Fonts/WD.ttf");
 
-			UIButton* journalButton = new UIButton("JournalButton", "Assets/Images/JournalButton.png", glm::vec3(-6.5f, -4.5f, 0.0f), glm::vec3(3.0f, 3.0f, 0.0f), true);
+			UIButton* journalButton = new UIButton("JournalButton", "Assets/Images/JournalButton.png", glm::vec3(-6.8f, -4.5f, 0.0f), glm::vec3(3.0f, 3.0f, 0.0f), true);
 			
+			//UIButton* journalCloseButton = new UIButton("JournalCloseButton", "Assets/Images/JournalButton.png", glm::vec3(-6.5f, 3.5f, 0.0f), glm::vec3(3.0f, 3.0f, 0.0f), true);
 
 			UIElement* ticket = new UIDraggable("ticket", "Assets/Images/Journal_CaseSummary_Ticket_WithText.png", glm::vec3(6.0f, -4.0f, 0.0f), glm::vec3(2.0f, 1.0f, 0.0f), true, glm::vec3(6.0f, -4.0f, 0.0f));
 			
@@ -49,9 +50,11 @@
 			hallwaylights->SetPosition(glm::vec3(0.0f, -0.2f, 0.0f));
 			helloText->SetPosition(glm::vec3(-3.7f, 3.8f, 0.0f));
 			helloText->SetColor(glm::vec3(1,1,1));
-			
+
 			Journal = new Book();
-			//journalButton->SetOnClickAction([this]() { Journal->drawBook(); });
+
+			journalButton->SetOnClickAction([this]() { Journal->drawBook(); });
+			//journalCloseButton->SetOnClickAction([this]() { Journal->closeBook(); });
 
 			m_gameObjects.push_back(hallway);
 			m_gameObjects.push_back(player);
@@ -60,9 +63,12 @@
 			m_gameObjects.push_back(helloText);
 
 			m_gameObjects.push_back(journalButton);
+			//m_gameObjects.push_back(journalCloseButton);
 			m_gameObjects.push_back(ticket);
 
 			m_gameObjects.push_back(Journal);
+			Journal->closeBook();
+
 
 		}
 
@@ -91,6 +97,18 @@
 					
 				}
 			}
+			GameObject* journalObject = GetGameObjectByName("JournalButton");
+
+			if (journalObject) {
+
+				// Cast to Player* if necessary, or directly use if GetPosition is part of GameObject
+				Book* journal = dynamic_cast<Book*>(journalObject);
+
+
+
+			}
+
+
 		}
 
 		void OpenJournal() {

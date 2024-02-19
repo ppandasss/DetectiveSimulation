@@ -197,6 +197,7 @@
   </ItemGroup>
   <ItemGroup>
     <Font Include="Assets\Fonts\EI.ttf" />
+    <Font Include="Assets\Fonts\mvboli.ttf" />
     <Font Include="Assets\Fonts\WD.ttf" />
   </ItemGroup>
   <ItemGroup>

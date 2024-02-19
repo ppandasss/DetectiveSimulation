@@ -29,10 +29,11 @@ class Book: public GameObject{
 public:
 
 	JournalData journalData;
+	GameObject* JournalCover;
 	
 	Book() : GameObject("Book") {
 
-		GameObject* JournalCover = new RenderGameObject("JournalCover", "Assets/Images/Journal_Cover.png");
+		JournalCover = new RenderGameObject("JournalCover", "Assets/Images/Journal_Cover.png");
 		JournalCover->SetScale(glm::vec3(14.0f, 10.0f, 0.0f));
 		JournalCover->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
@@ -42,6 +43,13 @@ public:
 		UIButton* Tab4 = new UIButton("Tab4", "Assets/Images/Journal_Bookmark_Passenger2.png", glm::vec3(6.8f, 0.2f, 0.0f), glm::vec3(2.3f, 1.0f, 0.0f), true);
 		UIButton* Tab5 = new UIButton("Tab5", "Assets/Images/Journal_Bookmark_Passenger 3.png", glm::vec3(6.8f, -1.0f, 0.0f), glm::vec3(2.3f, 1.0f, 0.0f), true);
 		UIButton* Tab6 = new UIButton("Tab6", "Assets/Images/Journal_Bookmark_Passenger 4.png", glm::vec3(6.8f, -2.2f, 0.0f), glm::vec3(2.3f, 1.0f, 0.0f), true);
+
+		Tab1->SetOnClickAction([this]() { setActiveTab1(); });
+		Tab2->SetOnClickAction([this]() { setActiveTab2(); });
+		Tab3->SetOnClickAction([this]() { setActiveTab3(); });
+		Tab4->SetOnClickAction([this]() { setActiveTab4(); });
+		Tab5->SetOnClickAction([this]() { setActiveTab5(); });
+		Tab6->SetOnClickAction([this]() { setActiveTab6(); });
 
 		GameObject* BlankPage = new RenderGameObject("BlankPage", "Assets/Images/Journal_BlankPage.png");
 		BlankPage->SetScale(glm::vec3(13.0f, 9.0f, 1.0f));
@@ -61,7 +69,6 @@ public:
 		m_gameObjects.push_back(JournalSleeve);
 		m_gameObjects.push_back(BlankPage);
 
-
 		Page* mainPage = new MainPage();
 		Page* cabinPage1 = new CabinPage1();
 		Page* cabinPage2 = new CabinPage2();
@@ -79,14 +86,11 @@ public:
 		allPages.push_back(foodGuide);
 
 
-		//closeBook();
-
 	}
 
+	//----------------------------------- OPEN & CLOSE ------------------------------------
 
 	void drawBook(){
-
-
 		for (auto& object : m_gameObjects) {
 
 			if (!object->getActiveStatus()) { //IF NOT ACTIVE SET AS ACTIVE
@@ -97,10 +101,16 @@ public:
 
 		}
 
+		for (auto& object : allPages) {
 
+			object->setActiveStatus(true);
+
+
+		}
 	}
 
 	void closeBook() {
+
 
 		activePage = MAIN;
 
@@ -114,9 +124,37 @@ public:
 
 		}
 
+		for (auto& object : allPages) {
+
+			object->setActiveStatus(false);
+
+
+		}
+
 		//make all gameobjects in book inactive
 
 	}
+
+	bool clickOutOfJournal(glm::vec2 mousePos){
+
+		glm::vec2 newPos = UIElement::MousetoScreen(mousePos.x, mousePos.y);
+
+		glm::vec3 journalPos = JournalCover->GetPosition();
+		glm::vec3 journalScale = JournalCover->GetScale();
+
+		float minX = journalPos.x - (journalScale.x / 2.0f);
+		float maxX = journalPos.x + (journalScale.x / 2.0f);
+		float minY = journalPos.y - (journalScale.y / 2.0f);
+		float maxY = journalPos.y + (journalScale.y / 2.0f);
+
+		//returns true if click inside of book
+		return ((newPos.x >= minX && newPos.x <= maxX) && (newPos.y >= minY && newPos.y <= maxY));
+
+	}
+
+
+
+	//--------------------------------UPDATE & RENDER-----------------------------------------------------
 
 	virtual void Render() override
 	{
@@ -137,22 +175,36 @@ public:
 
 	virtual void Update(float dt, long frame) override {
 
+		Input& input = Application::GetInput();
+
 		for (auto& object : m_gameObjects) {
-
 			if (object->getActiveStatus()) { //CHECK ACTIVE STATUS
-
 				object->Update(dt, frame);
-
 			}
-
 		}
 
 		allPages[activePage]->Update(dt, frame);
 
+		//BUTTON CLICKS OUTSIDE OF JOURNAL -> CLOSE BOOK
+
+		mousePos = Application::Get().CursorPos();
+
+		if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1)) {
+			if (!clickOutOfJournal(mousePos)) { closeBook();}
+		}
+
 	
 	}
 
-	
+	//-----------------------BOOK UI BUTTON FUNCTIONS-----------------------------------
+
+	void setActiveTab1() { if (activePage != MAIN) { activePage = MAIN; } };
+	void setActiveTab2() { if (activePage != CABIN1) { activePage = CABIN1; } };
+	void setActiveTab3() { if (activePage != CABIN2) { activePage = CABIN2; } };
+	void setActiveTab4() { if (activePage != CABIN3) { activePage = CABIN3; } };
+	void setActiveTab5() { if (activePage != CABIN4) { activePage = CABIN4; } };
+	void setActiveTab6() { if (activePage != CABIN5) { activePage = CABIN5; } };
+
 
 protected:
 
@@ -160,5 +212,9 @@ protected:
 	std::vector<Page*> allPages;
 
 	currentPage activePage = MAIN;
+
+	bool openStatus = true; //true - open, false - closed
+
+	glm::vec2 mousePos;
 
 };

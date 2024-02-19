@@ -10,7 +10,6 @@ class UIButton : public UIElement {
 	public:
 
       
-
         UIButton(const std::string& name, const std::string& texturePath, const glm::vec3 position, const glm::vec3 scale, bool isOnScreen)
             : UIElement(name, texturePath, position, scale, isOnScreen) {
 
@@ -21,7 +20,7 @@ class UIButton : public UIElement {
 
         }
 
-        // Method to set the click action
+        //Method to set the click action
         void SetOnClickAction(const std::function<void()>& action) {
             onClickAction = action;
         }
@@ -34,6 +33,17 @@ class UIButton : public UIElement {
             }
 
         }
+
+       /* void(*clickfunc)();
+
+        void BindOnClick(void(*newfunc)())
+        {
+            clickfunc = newfunc;
+        }
+
+        void OnClick() {
+            clickfunc();
+        }*/
 
      
         void Update(float dt, long frame) override {

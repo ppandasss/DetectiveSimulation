@@ -10,13 +10,6 @@ class UIElement : public UIObject {
 
 public:
 
-    enum UICategory {
-        BOOK_PAGE1,
-        BOOK_PAGE2,
-        IN_GAME, //journal access button etc.
-        PAUSED,
-        //Add more stages as needed
-    };
 
     UIElement(const std::string& name, const std::string& texturePath, glm::vec3 position, glm::vec3 scale,bool isOnScreen) : UIObject(name, texturePath, position,isOnScreen) {
 
@@ -43,7 +36,7 @@ public:
         isClickable = clickable;
     }
 
-    glm::vec2 MousetoScreen(float x, float y) const {
+    static glm::vec2 MousetoScreen(float x, float y) {
 
         float xpos = x - (SCR_WIDTH / 2.0f);
         float ypos = y - (SCR_HEIGHT / 2.0f);
