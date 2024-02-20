@@ -39,8 +39,6 @@
 			Text* helloText = new Text("GameTitle", " Welcome To Ticking Tea Time", "Assets/Fonts/WD.ttf");
 
 			UIButton* journalButton = new UIButton("JournalButton", "Assets/Images/JournalButton.png", glm::vec3(-6.8f, -4.5f, 0.0f), glm::vec3(3.0f, 3.0f, 0.0f), true);
-			
-			//UIButton* journalCloseButton = new UIButton("JournalCloseButton", "Assets/Images/JournalButton.png", glm::vec3(-6.5f, 3.5f, 0.0f), glm::vec3(3.0f, 3.0f, 0.0f), true);
 
 			UIElement* ticket = new UIDraggable("ticket", "Assets/Images/Journal_CaseSummary_Ticket_WithText.png", glm::vec3(6.0f, -4.0f, 0.0f), glm::vec3(2.0f, 1.0f, 0.0f), true, glm::vec3(6.0f, -4.0f, 0.0f));
 			
@@ -54,7 +52,6 @@
 			Journal = new Book();
 
 			journalButton->SetOnClickAction([this]() { Journal->drawBook(); });
-			//journalCloseButton->SetOnClickAction([this]() { Journal->closeBook(); });
 
 			m_gameObjects.push_back(hallway);
 			m_gameObjects.push_back(player);

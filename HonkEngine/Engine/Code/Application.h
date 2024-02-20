@@ -23,7 +23,7 @@ class Application
 {
 public:
 	Application(int width, int height, const char* title);
-	
+
 
 	~Application();
 
@@ -61,8 +61,8 @@ public:
 
 	bool IsMouseClick(int mouseButton)
 	{
-		return  glfwGetMouseButton(m_window,mouseButton) == GLFW_PRESS;
-		
+		return  glfwGetMouseButton(m_window, mouseButton) == GLFW_PRESS;
+
 	}
 
 	Scene* GetCurrentScene()
@@ -73,7 +73,8 @@ public:
 	static Renderer& GetRenderer() { return s_instance->m_renderer; }
 	static Input& GetInput() { return s_instance->m_input; }
 	static Camera& GetCamera() { return s_instance->m_camera; }
-	
+
+	void ToggleFullscreen(GLFWwindow* window);
 
 
 private:

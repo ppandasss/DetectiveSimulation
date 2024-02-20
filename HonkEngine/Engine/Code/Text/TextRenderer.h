@@ -6,11 +6,17 @@
 #include FT_FREETYPE_H
 #include <string>
 #include "../Renderer/Shader.h"
-#include"../Renderer/Renderer.h"
+#include "../Renderer/Renderer.h"
 #include <map>
 
 class Mesh;
 
+struct Character {
+    unsigned int TextureID; // ID handle of the glyph texture
+    glm::ivec2   Size;      // Size of glyph
+    glm::ivec2   Bearing;   // Offset from baseline to left/top of glyph
+    unsigned int Advance;   // Horizontal offset to advance to next glyph
+};
 
 typedef GLuint Tex;
 
@@ -22,14 +28,11 @@ public:
 
     void Initialize(const std::string& fontPath);
     void RenderText(std::string text, float x, float y, float scale, glm::vec3 color, int numChars = -1);
-
+    void CleanupCharacters();
 private:
-
-    Shader m_shader;
-    FT_Library m_ft;
-    FT_Face m_face;
-    GLuint m_VAO;
-    GLuint m_VBO;
+    Shader m_shader; // Only one declaration of m_shader
+    unsigned int m_VAO, m_VBO;
+    std::map<GLchar, Character> Characters;
 
     int m_windowWidth, m_windowHeight;
 };

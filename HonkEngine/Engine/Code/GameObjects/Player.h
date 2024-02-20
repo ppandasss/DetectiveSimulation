@@ -11,8 +11,6 @@
 #include"GameObject.h"
 #include "../Animation/Animator.h" 
 
-
-
 class Player : public AnimateGameObject
 {
 public:

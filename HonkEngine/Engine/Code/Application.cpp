@@ -10,12 +10,43 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
     glViewport(0, 0, width, height);
 }
 
+void Application::ToggleFullscreen(GLFWwindow* window) {
+    static int windowedWidth = 800, windowedHeight = 600, windowedPosX, windowedPosY;
+
+    if (glfwGetWindowMonitor(window) == NULL) { // If currently windowed
+        // Get the primary monitor
+        GLFWmonitor* primaryMonitor = glfwGetPrimaryMonitor();
+        // Get the video mode of the primary monitor
+        const GLFWvidmode* mode = glfwGetVideoMode(primaryMonitor);
+        // Store windowed mode position and size
+        glfwGetWindowPos(window, &windowedPosX, &windowedPosY);
+        glfwGetWindowSize(window, &windowedWidth, &windowedHeight);
+        // Switch to fullscreen
+        glfwSetWindowMonitor(window, primaryMonitor, 0, 0, mode->width, mode->height, mode->refreshRate);
+    }
+    else { // If currently fullscreen
+        // Switch back to windowed mode
+        glfwSetWindowMonitor(window, NULL, windowedPosX, windowedPosY, windowedWidth, windowedHeight, 0);
+    }
+}
+
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
 // ---------------------------------------------------------------------------------------------------------
 void processInput(GLFWwindow* window)
 {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
+
+    static bool fsTogglePressedLastFrame = false;
+    bool fsToggle = glfwGetKey(window, GLFW_KEY_F11) == GLFW_PRESS;
+
+    if (fsToggle && !fsTogglePressedLastFrame) {
+        Application::Get().ToggleFullscreen(window); // Adjusted to call the standalone function
+        fsTogglePressedLastFrame = true;
+    }
+    else if (!fsToggle) {
+        fsTogglePressedLastFrame = false;
+    }
 
     Camera& camera = Application::GetCamera();
 
@@ -38,7 +69,7 @@ Application::~Application()
 {
     std::cout << "Application Desctructor\n";
 
-   
+
 
     for (auto& scene : m_sceneMap)
     {
@@ -51,7 +82,7 @@ Application::~Application()
 Application::Application(int win_width, int win_height, const char* title)
     : baseTitle(title)
 {
-   
+
 
     std::cout << "Application Constructor\n";
 
@@ -69,12 +100,12 @@ Application::Application(int win_width, int win_height, const char* title)
 
     // glfw window creation
     // --------------------
-    m_window = glfwCreateWindow(win_width,win_height,title, NULL, NULL);
+    m_window = glfwCreateWindow(win_width, win_height, title, NULL, NULL);
     if (m_window == NULL)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
-        
+
     }
     glfwMakeContextCurrent(m_window);
     glfwSetFramebufferSizeCallback(m_window, framebuffer_size_callback);
@@ -85,9 +116,9 @@ Application::Application(int win_width, int win_height, const char* title)
     {
         std::cout << "Failed to initialize GLAD" << std::endl;
     }
-    
 
-     //Initialize(SCR_WIDTH, SCR_HEIGHT);
+
+    //Initialize(SCR_WIDTH, SCR_HEIGHT);
 
     m_input.Initialize(m_window);
     m_renderer.Initialize(win_width, win_height);
@@ -98,11 +129,11 @@ Application::Application(int win_width, int win_height, const char* title)
 
 void Application::Run()
 {
-    
+
     std::cout << "Application Run\n";
 
-   
-  
+
+
 
     double lastFrameTime = glfwGetTime();
     double frameRateUpdateInterval = 1.0; // Update frame rate every 1 second
@@ -123,16 +154,16 @@ void Application::Run()
         // input
         // -----
         processInput(m_window);
- 
+
 
 
         if (m_currentScene) {
-            m_currentScene->Update(dt,frameCount);
+            m_currentScene->Update(dt, frameCount);
             m_currentScene->Render();
-            
+
 
         }
-            
+
 
         glGetError();
         glfwSwapBuffers(m_window);
@@ -145,12 +176,10 @@ void Application::Run()
             std::string newTitle = std::string(baseTitle) + " - FPS: " + std::to_string(static_cast<int>(frameRate));
             // Set the new window title
             glfwSetWindowTitle(m_window, newTitle.c_str());
-           
+
             frameRateTimer = 0.0;
             frameCount = 0;
         }
     }
 
 }
-
-

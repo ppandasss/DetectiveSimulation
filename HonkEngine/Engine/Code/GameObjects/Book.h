@@ -91,6 +91,7 @@ public:
 	//----------------------------------- OPEN & CLOSE ------------------------------------
 
 	void drawBook(){
+
 		for (auto& object : m_gameObjects) {
 
 			if (!object->getActiveStatus()) { //IF NOT ACTIVE SET AS ACTIVE
@@ -107,10 +108,12 @@ public:
 
 
 		}
+
+		openStatus = true;
+
 	}
 
 	void closeBook() {
-
 
 		activePage = MAIN;
 
@@ -130,6 +133,8 @@ public:
 
 
 		}
+
+		openStatus = false;
 
 		//make all gameobjects in book inactive
 
@@ -190,7 +195,11 @@ public:
 		mousePos = Application::Get().CursorPos();
 
 		if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1)) {
-			if (!clickOutOfJournal(mousePos)) { closeBook();}
+			if (!clickOutOfJournal(mousePos)) { 
+				if (openStatus == true) {
+					closeBook();
+				}
+			}
 		}
 
 	
