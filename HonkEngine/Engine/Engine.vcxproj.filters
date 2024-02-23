@@ -185,6 +185,13 @@
     <Font Include="Assets\Fonts\WD.ttf" />
     <Font Include="Assets\Fonts\EI.ttf" />
     <Font Include="Assets\Fonts\mvboli.ttf" />
+    <Font Include="Assets\Fonts\CourierPrime-Regular.ttf" />
+    <Font Include="Assets\Fonts\CourierPrime-Bold.ttf" />
+    <Font Include="Assets\Fonts\ESA-m.ttf" />
+    <Font Include="Assets\Fonts\JMH.ttf" />
+    <Font Include="Assets\Fonts\JibrilRegular.ttf" />
+    <Font Include="Assets\Fonts\ESA-smb.ttf" />
+    <Font Include="Assets\Fonts\segoepr.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Images\awesomeface.png">
