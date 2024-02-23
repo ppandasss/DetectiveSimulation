@@ -36,29 +36,27 @@ struct CabinPageData {
 
 };
 
+//SINGLETON CLASS
+
 class JournalData {
 
 	public:
 
-		JournalData(){
-		
-			main_page.player_Spy = SPY_EMPTY;
-			main_page.player_BombLocation = LOCATION_EMPTY;
-		
-		}
+		static JournalData* GetInstance() {
 
-		//GET FUNCTIONS
-
-		MainPageData& GetMainPageData() {return main_page;}
-
-		CabinPageData& GetCabinPageData(Spy cabin) {
-			return allCabinData[cabin];
+			if (instance == nullptr) {
+				instance = new JournalData();
+			}
+			return instance;
 		}
 
 		//SET FUNCTIONS FOR MAIN PAGE
 
 		void SetPlayerSpyChoice(Spy spyChoice) {
 			main_page.player_Spy = spyChoice;
+
+			//std::cout << "SET SPY " << spyChoice << std::endl;
+
 		}
 
 		void SetPlayerBombLocation(Location bombLocation) {
@@ -72,8 +70,27 @@ class JournalData {
 		}
 
 
+		//GET FUNCTIONS
+
+		MainPageData& GetMainPageData() {return main_page;}
+
+		CabinPageData& GetCabinPageData(Spy cabin) {
+			return allCabinData[cabin];
+		}
+		
+
 
 	private:
+
+		static JournalData* instance;
+
+
+		JournalData() {
+
+			main_page.player_Spy = SPY_EMPTY;
+			main_page.player_BombLocation = LOCATION_EMPTY;
+
+		}
 
 		MainPageData main_page;
 
@@ -81,4 +98,6 @@ class JournalData {
 
 
 };
+
+JournalData* JournalData::instance = nullptr;
 

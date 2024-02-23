@@ -17,15 +17,9 @@ class Page: public GameObject{
 
 public:
 
+	JournalData* journalDataObj;
+
 	Page() : GameObject("page") {
-
-		
-
-		//check journal data and draw circle around chosen suspect
-
-		//check journal data and draw line
-		
-		
 
 		
 	}
@@ -78,6 +72,5 @@ public:
 protected:
 
 	std::vector<GameObject*> m_gameObjects;
-
 
 };
