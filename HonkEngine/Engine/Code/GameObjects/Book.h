@@ -2,12 +2,12 @@
 
 #include "GameObject.h"
 #include "RenderGameObject.h"
-#include "Engine.h"
+#include "../Engine.h"
 #include <glm/glm.hpp>
 #include "../Input/Input.h"
 #include "JournalData.h"
 #include <iostream>
-#include "Application.h"
+#include "../Application.h"
 #include"../Scene/Scene.h"
 #include "../Text/Text.h"
 
@@ -142,7 +142,7 @@ public:
 
 	bool clickOutOfJournal(glm::vec2 mousePos){
 
-		glm::vec2 newPos = UIElement::MousetoScreen(mousePos.x, mousePos.y);
+		glm::vec2 newPos = UIElement::MousetoWorld(mousePos.x, mousePos.y);
 
 		glm::vec3 journalPos = JournalCover->GetPosition();
 		glm::vec3 journalScale = JournalCover->GetScale();

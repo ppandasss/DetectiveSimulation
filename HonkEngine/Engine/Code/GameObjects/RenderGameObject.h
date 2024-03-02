@@ -3,8 +3,8 @@
 #include "GameObject.h"
 
 #include <glm/glm.hpp>
-#include "Application.h"
-#include "Engine.h"
+#include "../Application.h"
+#include "../Engine.h"
 
 class RenderGameObject : public GameObject
 {
@@ -87,7 +87,6 @@ public:
 	virtual void Render() override
 	{
 	
-
 		//std::cout << "Rendering GameObject: " << m_name << std::endl;
 		renderer.SetRenderMode(CDT_TEXTURE, 1.0f);
 		renderer.SetTexture(texture_Id, 0.0f, 0.0f);

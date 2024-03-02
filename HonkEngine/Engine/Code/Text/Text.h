@@ -1,8 +1,8 @@
 #pragma once
 #include "../GameObjects/GameObject.h"
-#include "Application.h"
+#include "../Application.h"
 #include "TextRenderer.h"
-#include "Engine.h"
+#include "../Engine.h"
 #include <string>
 #include <glm/glm.hpp>
 

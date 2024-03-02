@@ -2,9 +2,9 @@
 #pragma once
 
 #include "AnimateGameObject.h"
-#include "Engine.h"
+#include "../Engine.h"
 #include <glm/glm.hpp>
-#include "Application.h"
+#include "../Application.h"
 #include"../Scene/Scene.h"
 #include "../Input/Input.h"
 #include <iostream>

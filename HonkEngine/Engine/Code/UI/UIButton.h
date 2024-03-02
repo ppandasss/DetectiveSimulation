@@ -53,8 +53,10 @@ class UIButton : public UIElement {
             
                 
                 mousePos = Application::Get().CursorPos();
+                mousePosWorld = MousetoWorld(mousePos.x, mousePos.y);
 
-                if (IsClickable() && IsPointInside(mousePos.x, mousePos.y)) {
+
+                if (IsClickable() && IsPointInside(mousePosWorld.x, mousePosWorld.y)) {
 
                     //std::cout << " BUTTON UPDATE" << std::endl;
 
@@ -73,6 +75,7 @@ class UIButton : public UIElement {
 
         bool isClickable;
         glm::vec2 mousePos;
+        glm::vec2 mousePosWorld;
         std::function<void()> onClickAction;
 
 

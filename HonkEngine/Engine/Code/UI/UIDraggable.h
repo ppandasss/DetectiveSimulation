@@ -51,7 +51,8 @@ public:
         Input& input = Application::GetInput();
         UIElement::Update(dt, frame);
 
-        CurrentMousePos = Application::Get().CursorPos();
+        mousePos = Application::Get().CursorPos();
+        mouseWorldPos = MousetoWorld(mousePos.x, mousePos.y);
 
         if (input.Get().GetMouseButtonUp(GLFW_MOUSE_BUTTON_1)) {
 
@@ -66,17 +67,14 @@ public:
 
             //std::cout << "DRAGGABLE CLICK" << std::endl;
 
-            if (IsPointInside(CurrentMousePos.x, CurrentMousePos.y)) {
-
-                //std::cout << "DRAGGABLE POINT" << std::endl;
+            if (IsPointInside(mouseWorldPos.x, mouseWorldPos.y)) {
 
                 if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1)) {
 
                     OnClick();
                     isDragging = true;
-                    dragStartPos = CurrentMousePos; // Capture the starting point of the drag
-
-                    dragOffset = glm::vec2(m_position.x, m_position.y) - MousetoScreen(CurrentMousePos.x, CurrentMousePos.y); // Offset between mouse and object position
+                    dragStartPos = mouseWorldPos; // Capture the starting point of the drag
+                    dragOffset = glm::vec2(m_position.x, m_position.y) - mouseWorldPos; // Offset between mouse and object position
 
                 }
 
@@ -86,20 +84,17 @@ public:
 
         
         if (isDragging) {
-
             // Continue drag - Update object position
-            glm::vec2 mouseDelta = MousetoScreen(CurrentMousePos.x, CurrentMousePos.y) - dragStartPos; // Apply offset to maintain relative position under cursor
-
-            //glm::vec2 convertedPosition = MousetoScreen(newUiPosition.x, newUiPosition.y);
+            glm::vec2 mouseDelta = mouseWorldPos - dragStartPos; // Use the already converted mouseWorldPos
             m_position = glm::vec3(dragStartPos, 0.0f) + glm::vec3(mouseDelta, 0.0f) + glm::vec3(dragOffset, 0.0f);
-
         }
 
     }
 
 private:
 
-    glm::vec2 CurrentMousePos;
+    glm::vec2 mousePos;
+    glm::vec2 mouseWorldPos;
     glm::vec2 dragStartPos;
     bool isDragging;
     glm::vec2 dragOffset; // Offset between
