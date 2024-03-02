@@ -51,9 +51,7 @@ class UIButton : public UIElement {
             Input& input = Application::GetInput();
             UIElement::Update(dt, frame);
             
-                
-                mousePos = Application::Get().CursorPos();
-                mousePosWorld = MousetoWorld(mousePos.x, mousePos.y);
+                mousePosWorld = Application::Get().MousetoWorld();
 
 
                 if (IsClickable() && IsPointInside(mousePosWorld.x, mousePosWorld.y)) {
@@ -65,12 +63,9 @@ class UIButton : public UIElement {
                         OnClick();
 
                     }
-
                 }  
-
         }
-  
-
+ 
     private:
 
         bool isClickable;

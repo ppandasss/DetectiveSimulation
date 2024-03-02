@@ -223,4 +223,7 @@
     <Media Include="Assets\Sounds\MembersOnly.mp3" />
     <Media Include="Assets\Sounds\Train_Ambience.mp3" />
   </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Assets\Dialogue\Dialogue_Martha_OrderPhase.xml" />
+  </ItemGroup>
 </Project>

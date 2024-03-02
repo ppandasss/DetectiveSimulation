@@ -70,6 +70,17 @@ public:
 		return m_currentScene;
 	}
 
+	static glm::vec2 MousetoWorld() {
+		Camera& camera = Application::GetCamera();
+		float zoom = camera.GetZoom();
+		glm::vec2 cameraPos = glm::vec2(camera.GetPosX(), camera.GetPosY());
+		glm::vec2 mousePos = Application::Get().CursorPos();
+		float xpos = ((mousePos.x - (SCR_WIDTH / 2.0f)) / zoom) * (16.0 / SCR_WIDTH) + cameraPos.x;
+		float ypos = ((mousePos.y - (SCR_HEIGHT / 2.0f)) / zoom) * (9.0 / SCR_HEIGHT) * -1 + cameraPos.y;
+
+		return glm::vec2(xpos, ypos);
+	}
+
 	static Renderer& GetRenderer() { return s_instance->m_renderer; }
 	static Input& GetInput() { return s_instance->m_input; }
 	static Camera& GetCamera() { return s_instance->m_camera; }

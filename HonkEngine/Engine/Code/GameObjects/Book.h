@@ -142,7 +142,7 @@ public:
 
 	bool clickOutOfJournal(glm::vec2 mousePos){
 
-		glm::vec2 newPos = UIElement::MousetoWorld(mousePos.x, mousePos.y);
+		glm::vec2 newPos = Application::Get().MousetoWorld();
 
 		glm::vec3 journalPos = JournalCover->GetPosition();
 		glm::vec3 journalScale = JournalCover->GetScale();

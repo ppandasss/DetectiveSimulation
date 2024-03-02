@@ -226,6 +226,9 @@
     <Media Include="Assets\Sounds\ophelia.mp3" />
     <Media Include="Assets\Sounds\Train_Ambience.mp3" />
   </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Assets\Dialogue\Dialogue_Martha_OrderPhase.xml" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

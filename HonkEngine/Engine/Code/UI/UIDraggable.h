@@ -51,8 +51,8 @@ public:
         Input& input = Application::GetInput();
         UIElement::Update(dt, frame);
 
-        mousePos = Application::Get().CursorPos();
-        mouseWorldPos = MousetoWorld(mousePos.x, mousePos.y);
+        //mousePos = Application::Get().CursorPos();
+        mouseWorldPos = Application::Get().MousetoWorld();
 
         if (input.Get().GetMouseButtonUp(GLFW_MOUSE_BUTTON_1)) {
 
@@ -77,8 +77,6 @@ public:
                     dragOffset = glm::vec2(m_position.x, m_position.y) - mouseWorldPos; // Offset between mouse and object position
 
                 }
-
-            
             }
         }
 

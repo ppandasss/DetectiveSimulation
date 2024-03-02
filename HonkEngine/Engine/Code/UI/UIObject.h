@@ -71,27 +71,38 @@ public:
 
 	virtual void Update(float dt, long frame) override
 	{
+		//UIObject::Update(dt, frame);
 
 		glm::mat4 rMat = glm::mat4(1.0f);
 		glm::mat4 sMat = glm::mat4(1.0f);
 		glm::mat4 tMat = glm::mat4(1.0f);
 
-		glm::vec3 camPos = glm::vec3(camera.GetPosX(), camera.GetPosY(), 0.0f);
-		glm::vec3 targetPos = camPos + m_position;
 		if (isOnScreen)
 		{
-			tMat = glm::translate(glm::mat4(1.0f), glm::vec3(targetPos.x, targetPos.y, 0.0f));
+			glm::vec3 camPos = glm::vec3(camera.GetPosX(), camera.GetPosY(), 0.0f);
+			m_transformedPosition = camPos + m_position;
+			tMat = glm::translate(glm::mat4(1.0f), m_transformedPosition);
 		}
 		else
 		{
-			tMat = glm::translate(glm::mat4(1.0f), glm::vec3(m_position.x, m_position.y, 0.0f));
+			m_transformedPosition = m_position;
+			tMat = glm::translate(glm::mat4(1.0f), m_position);
 		}
-		
+
 		rMat = glm::rotate(glm::mat4(1.0f), m_orientation, glm::vec3(0.0f, 0.0f, 1.0f));
 		sMat = glm::scale(glm::mat4(1.0f), glm::vec3(m_scale.x, m_scale.y, 1.0f));
 
 		model = tMat * rMat * sMat;
+	}
 
+	bool IsPointInside(float x, float y) const
+	{
+		float minX = m_transformedPosition.x - (m_scale.x / 2.0f);
+		float maxX = m_transformedPosition.x + (m_scale.x / 2.0f);
+		float minY = m_transformedPosition.y - (m_scale.y / 2.0f);
+		float maxY = m_transformedPosition.y + (m_scale.y / 2.0f);
+
+		return ((x >= minX && x <= maxX) && (y >= minY && y <= maxY));
 	}
 
 	virtual void Render() override
@@ -118,6 +129,7 @@ public:
 
 private:
 
+	glm::vec3 m_transformedPosition;
 	bool isOnScreen;
 	Renderer& renderer = Application::GetRenderer();
 	Camera& camera = Application::GetCamera();

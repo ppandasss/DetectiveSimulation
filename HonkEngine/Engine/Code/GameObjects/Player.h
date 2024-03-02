@@ -58,6 +58,10 @@ void Update(float dt, long frame) override
     {
         Application::Get().SetScene("Journal Room");
     }
+    if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1))
+    {
+
+    }
 
 
     // Set the animation
@@ -80,6 +84,10 @@ void Update(float dt, long frame) override
     else if (!isWalking && audioManager.IsSoundPlaying("Player_footsteps")) {
         audioManager.StopSound("Player_footsteps");
     }
+
+
+    glm::vec2 mosePos = Application::Get().MousetoWorld();
+
 }
 
 

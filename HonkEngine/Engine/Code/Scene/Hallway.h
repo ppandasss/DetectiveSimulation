@@ -86,6 +86,12 @@ public:
 		Journal->closeBook();
 
 
+		GameObject* cursorIndicator = new RenderGameObject("CursorIndicator", "Assets/Images/Matha1.png");
+		cursorIndicator->SetScale(glm::vec3(0.5f, 0.5f, 0.0f)); // Adjust the size as needed
+		m_gameObjects.push_back(cursorIndicator);
+		glm::vec2 mosePos = Application::Get().MousetoWorld();
+		hallwaylights->SetPosition(glm::vec3(mosePos.x, mosePos.y, 0.0f));
+		
 	}
 
 	void Update(float dt, long frame) {

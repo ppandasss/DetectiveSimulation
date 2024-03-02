@@ -36,33 +36,6 @@ public:
         isClickable = clickable;
     }
 
-    static glm::vec2 MousetoWorld(float x, float y) {
-        float xpos = 0.0f;
-        float ypos = 0.0f;
-
-        Camera& camera = Application::GetCamera();
-        float zoom = camera.GetZoom();
-   
-        xpos = (x - (SCR_WIDTH / 2.0f)) * (16.0 / SCR_WIDTH) / zoom ;
-        ypos = (y - (SCR_HEIGHT / 2.0f)) * (9.0 / SCR_HEIGHT) / zoom * -1 ;
-
-        return glm::vec2(xpos, ypos);
-    }
-
-
-    bool IsPointInside(float x, float y) const {
-
-
-        float minX = m_position.x - (m_scale.x / 2.0f);
-        float maxX = m_position.x + (m_scale.x / 2.0f);
-        float minY = m_position.y - (m_scale.y / 2.0f);
-        float maxY = m_position.y + (m_scale.y / 2.0f);
-   
-
-        return ((x >= minX && x <= maxX) && (y >= minY && y <= maxY));
-
-    }
-
     std::string getButtonName() {
 
         return button_name;
