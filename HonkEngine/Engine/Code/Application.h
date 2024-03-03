@@ -72,7 +72,7 @@ public:
 
 	static glm::vec2 MousetoWorld() {
 		Camera& camera = Application::GetCamera();
-		float zoom = camera.GetZoom();
+		float zoom = camera.GetZoom()-0.155f;
 		glm::vec2 cameraPos = glm::vec2(camera.GetPosX(), camera.GetPosY());
 		glm::vec2 mousePos = Application::Get().CursorPos();
 		float xpos = ((mousePos.x - (SCR_WIDTH / 2.0f)) / zoom) * (16.0 / SCR_WIDTH) + cameraPos.x;

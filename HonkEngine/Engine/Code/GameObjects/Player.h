@@ -58,10 +58,6 @@ void Update(float dt, long frame) override
     {
         Application::Get().SetScene("Journal Room");
     }
-    if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1))
-    {
-
-    }
 
 
     // Set the animation

@@ -1,27 +1,11 @@
 ﻿  Main.cpp
-C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(78,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  (compiling source file 'Code/Main.cpp')
-  
-C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(79,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  (compiling source file 'Code/Main.cpp')
-  
-C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): warning C4099: 'Mesh': type name first seen using 'class' now seen using 'struct'
-  (compiling source file 'Code/Main.cpp')
-  C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8):
-  see declaration of 'Mesh'
-  
-C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Player.h(18,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'Code/Main.cpp')
-  
-C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Player.h(18,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'Code/Main.cpp')
-  
-C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Text\TextRenderer.h(12,7): warning C4099: 'Mesh': type name first seen using 'struct' now seen using 'class'
-  (compiling source file 'Code/Main.cpp')
-  C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8):
-  see declaration of 'Mesh'
-  
-C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Room1.h(8,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  (compiling source file 'Code/Main.cpp')
-  
-  Engine.vcxproj -> C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\x64\Debug\Engine.exe
+E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(78,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(79,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,13): warning C4099: 'Mesh': type name first seen using 'class' now seen using 'struct'
+E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): message : see declaration of 'Mesh'
+E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Player.h(18,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Player.h(18,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\Text\TextRenderer.h(12,11): warning C4099: 'Mesh': type name first seen using 'struct' now seen using 'class'
+E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): message : see declaration of 'Mesh'
+E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Room1.h(8,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Engine.vcxproj -> E:\GameEngine\DetectiveSimulation\HonkEngine\x64\Debug\Engine.exe
