@@ -22,14 +22,15 @@ public:
        UIElement* hat = new UINormal("Hat", "Assets/Images/Martharoom_hat.png", glm::vec3(-0.9f, -1.0f, 0.0f), glm::vec3(3.3f, 1.0f, 0.0f), true);
 
        dialogueManager = std::make_unique<DialogueManager>("DialogueManagerName", "Assets/Fonts/EI.ttf", "Assets/Dialogue/Dialogue_Martha_OrderPhase.xml");
-       UIElement* dialogueBox = new UINormal("DialogueBox", "Assets/Images/DialogueBox.png", glm::vec3(0.0f, -3.0f, 0.0f), glm::vec3(7.0f, 1.0f, 0.0f), true);
+       UIElement* dialogueBox = new UINormal("DialogueBox", "Assets/Images/DialogueBox.png", glm::vec3(0.0f, -2.0f, 0.0f), glm::vec3(7.0f, 1.0f, 0.0f), true);
 
-        dialogueManager->SetDialoguePosition(-7.0f,-3.0f);
+        dialogueManager->SetDialoguePosition(0.0f,-2.0f);
+        dialogueManager->SetDialogueScale(0.6f);
         m_gameObjects.push_back(room);
         m_gameObjects.push_back(martha);
         m_gameObjects.push_back(lamp);
         m_gameObjects.push_back(hat);
-       // m_gameObjects.push_back(dialogueBox);
+        m_gameObjects.push_back(dialogueBox);
 
     }
 
