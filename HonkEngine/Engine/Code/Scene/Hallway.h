@@ -60,7 +60,7 @@ public:
 		hallwaylights->SetPosition(glm::vec3(0.0f, -0.2f, 0.0f));
 
 
-		helloText->SetPosition(glm::vec3(-3.7f, 3.8f, 0.0f));
+		helloText->SetPosition(glm::vec3(0.0f, 3.0f, 0.0f));
 		helloText->SetColor(glm::vec3(1, 1, 1));
 		orderNoText->SetPosition(glm::vec3(-8.7f, 4.5f, 0.0f));
 		orderNoText->SetColor(glm::vec3(1, 0, 0));
