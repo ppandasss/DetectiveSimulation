@@ -21,7 +21,7 @@ public:
         LoadDialogues(filePath);
         if (!dialogues.empty()) {
             // Initialize the Text object with the first dialogue
-            currentText = std::make_shared<Text>("DialogueText", dialogues[currentDialogueIndex].text, fontPath);
+            currentText = std::make_shared<Text>("DialogueText", dialogues[currentDialogueIndex].text, fontPath,true);
         }
     }
 

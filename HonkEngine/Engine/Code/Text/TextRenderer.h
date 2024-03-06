@@ -27,7 +27,7 @@ public:
     ~TextRenderer();
 
     void Initialize(const std::string& fontPath);
-    void RenderText(std::string text, float x, float y, float scale, glm::vec3 color, int numChars = -1);
+    void RenderText(std::string text, float x, float y, float scale, glm::vec3 color,bool centerPivot, int numChars = -1);
     void CleanupCharacters();
 private:
     Shader m_shader; // Only one declaration of m_shader

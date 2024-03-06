@@ -122,7 +122,7 @@ void TextRenderer::Initialize(const std::string& fontPath)
 
 }
 
-void TextRenderer::RenderText(std::string text, float x, float y, float scale, glm::vec3 color, int numChars)
+void TextRenderer::RenderText(std::string text, float x, float y, float scale, glm::vec3 color,bool centerPivot, int numChars)
 {
     // activate corresponding render state	
     m_shader.use();
@@ -144,9 +144,13 @@ void TextRenderer::RenderText(std::string text, float x, float y, float scale, g
         charCount++;
     }
 
-    // Adjust x and y to center the text
-    x -= totalWidth / 2.0f;
-    y -= totalHeight / 2.0f;
+    if (centerPivot)
+	{
+        // Adjust x and y to center the text
+        x -= totalWidth / 2.0f;
+        y -= totalHeight / 2.0f;
+	}
+
 
     // Render each character
     for (auto c = text.begin(); c != text.end() && (numChars == -1 || charCount < numChars); c++)

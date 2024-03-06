@@ -8,8 +8,8 @@
 
 class Text : public GameObject {
 public:
-    Text(const std::string& name, const std::string& content, const std::string& fontPath)
-        : GameObject(name), m_content(content)
+    Text(const std::string& name, const std::string& content, const std::string& fontPath,bool isCenterPivot = false)
+        : GameObject(name), m_content(content),m_isCenterPivot(isCenterPivot)
     {
         textRenderer = std::make_unique<TextRenderer>();
         textRenderer->Initialize(fontPath);
@@ -24,7 +24,7 @@ public:
     {
         float x = m_position.x;
         float y = m_position.y;
-        textRenderer->RenderText(m_content, x, y, m_scale, m_color);
+        textRenderer->RenderText(m_content, x, y, m_scale, m_color, m_isCenterPivot);
     }
 
     // No Clear method for now, as TextRenderer doesn't have one
@@ -53,5 +53,5 @@ private:
     glm::mat4 model{ 1 };
     glm::vec3 m_color = glm::vec3(0.0f, 0.0f, 0.0f);
     float m_scale = 1.0f;
-
+    bool m_isCenterPivot;
 };
