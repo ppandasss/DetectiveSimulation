@@ -43,27 +43,27 @@ public:
 		/*-------------------------------------------------------------💬CREATE TEXT💬------------------------------------------------------------------------------------------------------- */
 
 		Text* helloText = new Text("GameTitle", " Welcome To Ticking Tea Time", "Assets/Fonts/WD.ttf");
-		Text* orderNoText = new Text("orderNo", "1", "Assets/Fonts/WD.ttf");
+		Text* orderNoText = new Text("orderNo", "1", "Assets/Fonts/mvboli.ttf");
 
 		/*-------------------------------------------------------------💬CREATE UI💬------------------------------------------------------------------------------------------------------- */
-		UIElement* orderPaper = new UINormal("OrderPaper", "Assets/Images/OrderPaper.png", glm::vec3(-7.9f, 3.5f, 0.0f), glm::vec3(3.0f, 3.0f, 0.0f), true);
-		UIElement* timer = new UINormal("Timer", "Assets/Images/Timer.png", glm::vec3(7.9f, 3.5f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true);
+		UIElement* orderPaper = new UINormal("OrderPaper", "Assets/Images/OrderPaper.png", glm::vec3(-7.65f, 4.0f, 0.0f), glm::vec3(3.55f, 2.54f, 0.0f), true);
+		UIElement* timer = new UINormal("Timer", "Assets/Images/Timer.png", glm::vec3(7.3f, 5.1f, 0.0f), glm::vec3(4.37f, 3.13f, 0.0f), true);
 		UIElement* screenUI = new UINormal("ScreenUI", "Assets/Images/ScreenUI.png", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(16.0f * 1.19f, 9.0f * 1.19f, 0.0f), true);
-		UIButton* journalButton = new UIButton("JournalButton", "Assets/Images/JournalButton.png", glm::vec3(-8.4f, -4.1f, 0.0f), glm::vec3(2.8f, 2.8f, 0.0f), true);
+		UIButton* journalButton = new UIButton("JournalButton", "Assets/Images/JournalButton.png", glm::vec3(-8.32f, -4.8f, 0.0f), glm::vec3(3.0f, 3.0f, 0.0f), true);
 		journalButton->SetOnClickAction([this]() { Journal->drawBook(); });
 
 		/*-------------------------------------------------------------➡️SET TRANSFORMATION➡️------------------------------------------------------------------------------------------------------- */
 
-		hallway->SetScale(glm::vec3(45.0f, 10.5f, 0.0f));
-		hallway->SetPosition(glm::vec3(0.0f, 0.24f, 0.0f));
-		hallwaylights->SetScale(glm::vec3(45.0f, 10.5f, 0.0f));
+		hallway->SetScale(glm::vec3(50.00f, 10.8f, 0.0f));
+		hallway->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
+		hallwaylights->SetScale(glm::vec3(50.0f, 10.8f, 0.0f));
 		hallwaylights->SetPosition(glm::vec3(0.0f, -0.2f, 0.0f));
 
 
 		helloText->SetPosition(glm::vec3(0.0f, 3.0f, 0.0f));
 		helloText->SetColor(glm::vec3(1, 1, 1));
-		orderNoText->SetPosition(glm::vec3(-8.7f, 4.5f, 0.0f));
-		orderNoText->SetColor(glm::vec3(1, 0, 0));
+		orderNoText->SetPosition(glm::vec3(-8.8f, 4.6f, 0.0f));
+		orderNoText->SetColor(glm::vec3(0.5, 0, 0));
 
 		/*--------------------------------------------------------------✅PUSH BACK✅------------------------------------------------------------------------------------------------------- */
 		//Environment
@@ -73,12 +73,12 @@ public:
 
 		//UIs
 		m_gameObjects.push_back(journalButton);
-		//m_gameObjects.push_back(timer);
-		//m_gameObjects.push_back(orderPaper);
-		m_gameObjects.push_back(screenUI);
+		m_gameObjects.push_back(timer);
+		m_gameObjects.push_back(orderPaper);
+		//m_gameObjects.push_back(screenUI);
 
 		//Texts
-		m_gameObjects.push_back(helloText);
+		//m_gameObjects.push_back(helloText);
 		m_gameObjects.push_back(orderNoText);
 
 		//Journal

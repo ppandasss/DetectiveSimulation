@@ -33,16 +33,17 @@ public:
 	Book() : GameObject("Book") {
 
 		JournalCover = new RenderGameObject("JournalCover", "Assets/Images/Journal/Cover.png");
-		JournalCover->SetScale(glm::vec3(14.0f, 10.0f, 0.0f));
+		JournalCover->SetScale(glm::vec3(14.36f, 8.24f, 0.0f));
 		JournalCover->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
-		UIButton* Tab1 = new UIButton("Tab1", "Assets/Images/Journal/Bookmark_CaseSummary.png", glm::vec3(6.8f, 3.8f, 0.0f), glm::vec3(2.3f, 1.0f, 0.0f), true);
-		UIButton* Tab2 = new UIButton("Tab2", "Assets/Images/Journal/Bookmark_P1.png", glm::vec3(6.8f, 2.6f, 0.0f), glm::vec3(2.3f, 1.0f, 0.0f), true);
-		UIButton* Tab3 = new UIButton("Tab3", "Assets/Images/Journal/Bookmark_P2.png", glm::vec3(6.8f, 1.4f, 0.0f), glm::vec3(2.3f, 1.0f, 0.0f), true);
-		UIButton* Tab4 = new UIButton("Tab4", "Assets/Images/Journal/Bookmark_P2_2.png", glm::vec3(6.8f, 0.2f, 0.0f), glm::vec3(2.3f, 1.0f, 0.0f), true);
-		UIButton* Tab5 = new UIButton("Tab5", "Assets/Images/Journal/Bookmark_P3.png", glm::vec3(6.8f, -1.0f, 0.0f), glm::vec3(2.3f, 1.0f, 0.0f), true);
-		UIButton* Tab6 = new UIButton("Tab6", "Assets/Images/Journal/Bookmark_P4.png", glm::vec3(6.8f, -2.2f, 0.0f), glm::vec3(2.3f, 1.0f, 0.0f), true);
-		//ADD FOOD GUIDE
+		// BOOKMARK BUTTONS
+		UIButton* Tab1 = new UIButton("Tab1", "Assets/Images/Journal/Bookmark_CaseSummary.png", glm::vec3(6.57f, 2.87f, 0.0f), glm::vec3(2.25f, 0.96f, 0.0f), true);
+		UIButton* Tab2 = new UIButton("Tab2", "Assets/Images/Journal/Bookmark_P1.png", glm::vec3(6.57f, 1.85f, 0.0f), glm::vec3(2.13f, 0.91f, 0.0f), true);
+		UIButton* Tab3 = new UIButton("Tab3", "Assets/Images/Journal/Bookmark_P2.png", glm::vec3(6.55f, 0.92f, 0.0f), glm::vec3(2.13f, 0.91f, 0.0f), true);
+		UIButton* Tab4 = new UIButton("Tab4", "Assets/Images/Journal/Bookmark_P2_2.png", glm::vec3(6.61f, 0.0f, 0.0f), glm::vec3(2.13f, 0.91f, 0.0f), true);
+		UIButton* Tab5 = new UIButton("Tab5", "Assets/Images/Journal/Bookmark_P3.png", glm::vec3(6.55f, -0.93f, 0.0f), glm::vec3(2.13f, 0.91f, 0.0f), true);
+		UIButton* Tab6 = new UIButton("Tab6", "Assets/Images/Journal/Bookmark_P4.png", glm::vec3(6.55f, -1.85f, 0.0f), glm::vec3(2.13f, 0.91f, 0.0f), true);
+		UIButton* Tab7 = new UIButton("Tab6", "Assets/Images/Journal/Bookmark_TeaGuide.png", glm::vec3(6.49f, -2.8f, 0.0f), glm::vec3(2.13f, 0.91f, 0.0f), true);
 
 		Tab1->SetOnClickAction([this]() { setActiveTab1(); });
 		Tab2->SetOnClickAction([this]() { setActiveTab2(); });
@@ -52,12 +53,8 @@ public:
 		Tab6->SetOnClickAction([this]() { setActiveTab6(); });
 
 		GameObject* BlankPage = new RenderGameObject("BlankPage", "Assets/Images/Journal/BlankPage.png");
-		BlankPage->SetScale(glm::vec3(13.0f, 9.0f, 1.0f));
+		BlankPage->SetScale(glm::vec3(12.68f, 7.45f, 1.0f));
 		BlankPage->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
-
-		GameObject* JournalSleeve = new RenderGameObject("JounalSleeve", "Assets/Images/Journal/CaseSummary_Sleeve.png");
-		JournalSleeve->SetScale(glm::vec3(3.5f, 9.7f, 0.0f));
-		JournalSleeve->SetPosition(glm::vec3(-5.3f, 0.0f, 0.0f));
 
 		m_gameObjects.push_back(JournalCover);
 		m_gameObjects.push_back(Tab1);
@@ -66,7 +63,7 @@ public:
 		m_gameObjects.push_back(Tab4);
 		m_gameObjects.push_back(Tab5);
 		m_gameObjects.push_back(Tab6);
-		m_gameObjects.push_back(JournalSleeve);
+		m_gameObjects.push_back(Tab7);
 		m_gameObjects.push_back(BlankPage);
 
 		Page* mainPage = new MainPage();
