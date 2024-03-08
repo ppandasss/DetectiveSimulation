@@ -144,18 +144,18 @@ public:
 		m_gameObjects.push_back(Occupation);
 		m_gameObjects.push_back(CabinStamp);
 
-		m_gameObjects.push_back(N_Clue1);
+		/*m_gameObjects.push_back(N_Clue1);
 		m_gameObjects.push_back(N_Clue2);
 		m_gameObjects.push_back(N_Clue3_1);
 		m_gameObjects.push_back(N_Clue3_2);
 		m_gameObjects.push_back(N_Clue4_1);
-		m_gameObjects.push_back(N_Clue4_2);
+		m_gameObjects.push_back(N_Clue4_2);*/
 		m_gameObjects.push_back(Divider1);
 
 
 		m_gameObjects.push_back(LastActivity);
-		m_gameObjects.push_back(N_LA1);
-		m_gameObjects.push_back(N_LA2);
+		/*m_gameObjects.push_back(N_LA1);
+		m_gameObjects.push_back(N_LA2);*/
 
 		m_gameObjects.push_back(Divider2);
 		m_gameObjects.push_back(LastVisit);
