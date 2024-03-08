@@ -20,11 +20,11 @@ public:
 
 	virtual void Update(float dt, long frame)
 	{
-		for (auto& object : m_gameObjects) {
-			object->Update(dt, frame);
-			//std::cout << "Gameobject Update" << std::endl;
-		}
 
+		for (auto it = m_gameObjects.rbegin(); it != m_gameObjects.rend(); ++it) {
+			GameObject* object = *it;
+			object->Update(dt, frame);
+		}
 
 
 		for (auto& object : m_toAddGameObjects)

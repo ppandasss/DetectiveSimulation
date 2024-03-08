@@ -8,7 +8,6 @@ public:
 
 	MainPage() :Page() {
 
-
 		// DRAGGABLE PAPERS
 
 		UIDraggable* CaseNews = new UIDraggable("CaseNews", "Assets/Images/Journal/CaseSummary_News.png", glm::vec3(-3.2f, 0.0f, 0.0f), glm::vec3(5.34f, 6.85f, 0.0f), true, glm::vec3(-3.2f, 0.0f, 0.0f));
@@ -16,7 +15,7 @@ public:
 		UIDraggable* Ticket = new UIDraggable("Ticket", "Assets/Images/Journal/CaseSummary_Ticket.png", glm::vec3(-3.7f, 0.75f, 1.0f), glm::vec3(4.18f, 1.65f, 0.0f), true, glm::vec3(-3.7f, 0.75f, 0.0f));
 
 		//JOURNAL PART
-		GameObject* JournalSleeve = new RenderGameObject("JounalSleeve", "Assets/Images/Journal/CaseSummary_Sleeve.png");
+		GameObject* JournalSleeve = new UIObject("JounalSleeve", "Assets/Images/Journal/CaseSummary_Sleeve.png", true);
 		JournalSleeve->SetScale(glm::vec3(2.68f, 8.09f, 0.0f));
 		JournalSleeve->SetPosition(glm::vec3(-5.8f, 0.0f, 0.0f));
 
@@ -83,11 +82,11 @@ public:
 		Cabin4->SetColor(glm::vec3(0, 0, 0));
 		Cabin4->SetScale(0.5f);
 
-		RedCircle = new RenderGameObject("RedCircle", "Assets/Images/Journal/Journal_CaseSummary_Icon_Red_Circle_3.png");
+		RedCircle = new UIObject("RedCircle", "Assets/Images/Journal/Journal_CaseSummary_Icon_Red_Circle_3.png", true);
 		RedCircle->setActiveStatus(false);
 		RedCircle->SetScale(glm::vec3(1.0f, 0.5f, 0.0f));
 		RedCircle->SetPosition(glm::vec3(1.15f, 1.55f, 0.0f));
-		
+
 		// BOMB LOCATIONS
 		Text* TownSquare = new Text("TownSquare", "Town Square", "Assets/Fonts/ESA-m.ttf");
 		TownSquare->SetPosition(glm::vec3(0.8f, -2.25f, 0.0f));
@@ -150,29 +149,29 @@ public:
 
 	//--------------------- SUSPECT BUTTON FUNCTIONS -----------------------
 
-	void setSpy1() { 
-		JournalData::GetInstance()->SetPlayerSpyChoice(SPY1); 
+	void setSpy1() {
+		JournalData::GetInstance()->SetPlayerSpyChoice(SPY1);
 		RedCircle->SetPosition(glm::vec3(1.15f, 1.55f, 0.0f));
 
 		//if (!RedCircle->getActiveStatus()) { RedCircle->setActiveStatus(true); }
 	};
 
 	void setSpy21() {
-		JournalData::GetInstance()->SetPlayerSpyChoice(SPY21); 
+		JournalData::GetInstance()->SetPlayerSpyChoice(SPY21);
 		RedCircle->SetPosition(glm::vec3(2.65f, 1.55f, 0.0f));
 	};
 
-	void setSpy22() { 
-		JournalData::GetInstance()->SetPlayerSpyChoice(SPY22); 
+	void setSpy22() {
+		JournalData::GetInstance()->SetPlayerSpyChoice(SPY22);
 		RedCircle->SetPosition(glm::vec3(4.15f, 1.55f, 0.0f));
 	};
 
-	void setSpy3() { 
-		JournalData::GetInstance()->SetPlayerSpyChoice(SPY3); 
+	void setSpy3() {
+		JournalData::GetInstance()->SetPlayerSpyChoice(SPY3);
 		RedCircle->SetPosition(glm::vec3(1.15f, 0.25f, 0.0f));
 	};
 
-	void setSpy4() { 
+	void setSpy4() {
 		JournalData::GetInstance()->SetPlayerSpyChoice(SPY4);
 		RedCircle->SetPosition(glm::vec3(2.65f, 0.25f, 0.0f));
 	};
@@ -190,14 +189,14 @@ public:
 		Page::Update(dt, frame);
 
 
-		
+
 
 
 	}
 
-	private:
+private:
 
-		GameObject* RedCircle;
+	GameObject* RedCircle;
 
 
 };

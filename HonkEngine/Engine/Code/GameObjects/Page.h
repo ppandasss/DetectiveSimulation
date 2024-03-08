@@ -13,16 +13,12 @@
 #include "JournalData.h"
 
 
-class Page: public GameObject{
+class Page : public GameObject {
 
 public:
 
-	JournalData* journalDataObj;
 
-	Page() : GameObject("page") {
-
-		
-	}
+	Page() : GameObject("page") {}
 
 
 
@@ -43,12 +39,14 @@ public:
 
 	virtual void Update(float dt, long frame) override {
 
-		for (auto& object : m_gameObjects) {
+		//Update from last object to first
+		//top layer to bottom
 
-			if (object->getActiveStatus()) { //CHECK ACTIVE STATUS
+		for (auto it = m_gameObjects.rbegin(); it != m_gameObjects.rend(); ++it) {
 
+			GameObject* object = *it;
+			if (object->getActiveStatus()) { // CHECK ACTIVE STATUS
 				object->Update(dt, frame);
-
 			}
 
 		}
@@ -56,7 +54,7 @@ public:
 
 	}
 
-	virtual void setActiveStatus(bool status) { 
+	virtual void setActiveStatus(bool status) {
 
 		for (auto& object : m_gameObjects) {
 
@@ -65,7 +63,7 @@ public:
 		}
 
 		active = status;
-	
+
 	}
 
 

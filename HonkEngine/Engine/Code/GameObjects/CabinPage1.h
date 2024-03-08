@@ -9,15 +9,15 @@ public:
 	CabinPage1() :Page() {
 
 		// LEFT PAGE
-		GameObject* P1Picture = new RenderGameObject("P1Picture", "Assets/Images/Journal/Passenger_Picture_Martha.png");
+		GameObject* P1Picture = new UIObject("P1Picture", "Assets/Images/Journal/Passenger_Picture_Martha.png", true);
 		P1Picture->SetScale(glm::vec3(5.50f, 3.19f, 0.0f));
 		P1Picture->SetPosition(glm::vec3(-3.1f, 1.65f, 0.0f));
 
-		GameObject* PaperClip = new RenderGameObject("PaperClip", "Assets/Images/Journal/PaperClip.png");
+		GameObject* PaperClip = new UIObject("PaperClip", "Assets/Images/Journal/PaperClip.png", true);
 		PaperClip->SetScale(glm::vec3(0.51f, 0.92f, 0.0f));
 		PaperClip->SetPosition(glm::vec3(-4.0f, 3.31f, 0.0f));
 
-		GameObject* InfoPaper = new RenderGameObject("InfoPaper", "Assets/Images/Journal/Passenger_InfoPaper.png");
+		GameObject* InfoPaper = new UIObject("InfoPaper", "Assets/Images/Journal/Passenger_InfoPaper.png", true);
 		InfoPaper->SetScale(glm::vec3(5.41f, 3.30f, 0.0f));
 		InfoPaper->SetPosition(glm::vec3(-3.1f, -1.7f, 0.0f));
 
@@ -41,7 +41,7 @@ public:
 		Occupation->SetColor(glm::vec3(0, 0, 0));
 		Occupation->SetScale(0.47f);
 
-		GameObject* CabinStamp = new RenderGameObject("CabinStamp", "Assets/Images/Journal/CabinStamp_1.png");
+		GameObject* CabinStamp = new UIObject("CabinStamp", "Assets/Images/Journal/CabinStamp_1.png", true);
 		CabinStamp->SetScale(glm::vec3(2.07f, 1.11f, 0.0f));
 		CabinStamp->SetPosition(glm::vec3(-1.6f, -2.6f, 0.0f));
 
@@ -73,7 +73,7 @@ public:
 		M_C4_2->SetColor(glm::vec3(0, 0, 0));
 		M_C4_2->SetScale(0.6f);
 
-		GameObject* Divider1 = new RenderGameObject("Divider1", "Assets/Images/Journal/Line_1.png");
+		GameObject* Divider1 = new UIObject("Divider1", "Assets/Images/Journal/Line_1.png", true);
 		Divider1->SetScale(glm::vec3(4.71f, 0.15f, 0.0f));
 		Divider1->SetPosition(glm::vec3(3.2f, 1.0f, 0.0f));
 
@@ -108,7 +108,7 @@ public:
 
 
 		// DIVIDER 2
-		GameObject* Divider2 = new RenderGameObject("Divider2", "Assets/Images/Journal/Line_2.png");
+		GameObject* Divider2 = new UIObject("Divider2", "Assets/Images/Journal/Line_2.png", true);
 		Divider2->SetScale(glm::vec3(4.81f, 0.09f, 0.0f));
 		Divider2->SetPosition(glm::vec3(3.2f, -1.0f, 0.0f));
 
