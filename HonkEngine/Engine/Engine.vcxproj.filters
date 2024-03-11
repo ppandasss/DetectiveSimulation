@@ -161,6 +161,9 @@
     <ClInclude Include="Code\GameObjects\Book.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Code\UI\UIButtonEmpty.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\text.vs" />

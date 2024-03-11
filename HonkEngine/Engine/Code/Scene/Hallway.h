@@ -13,6 +13,14 @@
 #include "../UI/UINormal.h"
 #include "../UI/UIElement.h"
 #include "../GameObjects/Book.h"
+#include "../UI/UIButtonEmpty.h"
+
+void printEmpty() {
+
+	Application::Get().SetScene("Room1");
+
+	std::cout << "CLICK EMPTY BUTTONNNNNN" << std::endl;
+}
 
 class Hallway : public Scene
 {
@@ -52,6 +60,9 @@ public:
 		UIButton* journalButton = new UIButton("JournalButton", "Assets/Images/JournalButton.png", glm::vec3(-8.32f, -4.8f, 0.0f), glm::vec3(3.0f, 3.0f, 0.0f), true);
 		journalButton->SetOnClickAction([this]() { Journal->drawBook(); });
 
+		UIButton* TestEmpty = new UIButtonEmpty("Empty Button", "", glm::vec3(0.4f, -0.5f, 0.0f), glm::vec3(2.8f, 5.7f, 0.0f), false);
+		TestEmpty->SetOnClickAction([this]() { printEmpty(); });
+
 		/*-------------------------------------------------------------➡️SET TRANSFORMATION➡️------------------------------------------------------------------------------------------------------- */
 
 		hallway->SetScale(glm::vec3(50.00f, 10.8f, 0.0f));
@@ -75,7 +86,7 @@ public:
 		m_gameObjects.push_back(journalButton);
 		m_gameObjects.push_back(timer);
 		m_gameObjects.push_back(orderPaper);
-		//m_gameObjects.push_back(screenUI);
+		m_gameObjects.push_back(TestEmpty);
 
 		//Texts
 		//m_gameObjects.push_back(helloText);
@@ -125,3 +136,4 @@ public:
 	}
 
 };
+

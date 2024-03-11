@@ -26,24 +26,13 @@ class UIButton : public UIElement {
         }
 
 
-        void OnClick(){
+        void OnClick() override {
 
             if (onClickAction) {
                 onClickAction();
             }
 
         }
-
-       /* void(*clickfunc)();
-
-        void BindOnClick(void(*newfunc)())
-        {
-            clickfunc = newfunc;
-        }
-
-        void OnClick() {
-            clickfunc();
-        }*/
 
      
         void Update(float dt, long frame) override {
