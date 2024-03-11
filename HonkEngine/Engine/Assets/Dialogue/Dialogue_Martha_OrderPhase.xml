@@ -37,7 +37,7 @@
   </Dialogue>
   <Dialogue id="1MD02">
     <Speaker name="Martha_Happy">
-      <line1>Such a splendid job for your first  time! Impressive!</line1>
+      <line1>Such a splendid job for your first  time! Impressive-</line1>
       <line2>you seem like a pro already.</line2>
     </Speaker>
     <Choices/>
@@ -63,7 +63,7 @@
   <Dialogue id="1MD04">
     <Speaker name="Martha_Happy">
       <line1>May I please have a cup of  delightful floral tea,</line1>
-      <line2>a creamy sandwich, and that  charming biscuit— I do apologize,  the name escapes me.</line2>
+      <line2>a creamy sandwich, and that  charming biscuit- I do apologize,  the name escapes me.</line2>
       <line3>But it's ever so crumbly and  simply divine with a spoonful  of jam.</line3>
     </Speaker>
     <Choices/>

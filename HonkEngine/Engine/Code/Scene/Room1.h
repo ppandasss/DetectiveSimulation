@@ -5,7 +5,7 @@
 #include "../UI/UIElement.h"  
 #include "../Input/Input.h"
 #include "../Engine.h"
-#include <glm/glm.hpp>e
+#include <glm/glm.hpp>
 #include <iostream>
 #include "../Dialogue/DialogueBox.h"
 #include "../Dialogue/Dialoguemanager.h"
@@ -34,7 +34,7 @@ public:
         UIElement* waiterIcon = new UINormal("WaiterIcon", "Assets/Images/UI/Speaker_icon_Waiter.png", glm::vec3(4.18f, 3.53f, 0.0f), glm::vec3(1.23f, 1.4f, 0.0f), true);
 
 
-        dialogueManager->SetDialoguePosition(-0.5f, 3.85f);
+        dialogueManager->SetDialoguePosition(-0.5f, 3.70f);
         dialogueManager->SetDialogueScale(0.55f);
         m_gameObjects.push_back(background);
         m_gameObjects.push_back(room);
