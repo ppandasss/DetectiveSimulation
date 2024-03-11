@@ -11,18 +11,19 @@
 struct Dialogue {
     std::string id;
     std::string speakerName;
-    std::string text;
+    std::vector<std::string> text;
 };
 
 class DialogueManager  {
 public:
     DialogueManager(const std::string& name, const std::string& fontPath, const std::string& filePath)
+        : currentDialogueIndex(0), currentLineIndex(0)
     {
         LoadDialogues(filePath);
-        if (!dialogues.empty()) {
-            // Initialize the Text object with the first dialogue
-            currentText = std::make_shared<Text>("DialogueText", dialogues[currentDialogueIndex].text, fontPath,true);
+        if (!dialogues.empty() && !dialogues[0].text.empty()) {
+            currentText = std::make_shared<Text>("DialogueText", dialogues[0].text[0], fontPath, true);
         }
+ 
     }
 
     ~DialogueManager() {
@@ -45,13 +46,10 @@ public:
                 if (speakerElement) {
                     dialogue.speakerName = speakerElement->Attribute("name");
 
-                    // Assuming you want to concatenate all lines into a single text for the dialogue
-                    std::string fullText;
+                    // Store each line as a separate string in the vector
                     for (tinyxml2::XMLElement* lineElement = speakerElement->FirstChildElement(); lineElement != nullptr; lineElement = lineElement->NextSiblingElement()) {
-                        if (fullText.length() > 0) fullText += " "; // Add space between lines
-                        fullText += lineElement->GetText();
+                        dialogue.text.push_back(lineElement->GetText());
                     }
-                    dialogue.text = fullText;
                 }
 
                 dialogues.push_back(dialogue);
@@ -91,22 +89,37 @@ public:
         }
     }
 
-    void PlayNextDialogue() {
-        std::cout << "Loaded " << dialogues.size() << " dialogues." << std::endl;
-        if (currentDialogueIndex >= 0 && currentDialogueIndex < dialogues.size()) {
-            // Move to the next dialogue
-            currentDialogueIndex++;
 
-            // Loop back to the first dialogue if we've reached the end
-            if (currentDialogueIndex >= dialogues.size()) {
-                currentDialogueIndex = 0;
+    void PlayNextDialogue() {
+        if (currentDialogueIndex < dialogues.size()) {
+            if (currentLineIndex + 1 < dialogues[currentDialogueIndex].text.size()) {
+                currentLineIndex++;
+            }
+            else {
+                currentDialogueIndex++;
+                currentLineIndex = 0;
+                if (currentDialogueIndex >= dialogues.size()) {
+                    currentDialogueIndex = 0; // Reset to the first dialogue
+                }
             }
 
-            // Update the content of the current Text object
-            currentText->SetContent(dialogues[currentDialogueIndex].text);
-            std::cout << "Dialogue ID: " << dialogues[currentDialogueIndex].id << " - Text: " << dialogues[currentDialogueIndex].text << std::endl;
+            if (currentDialogueIndex < dialogues.size() && currentLineIndex < dialogues[currentDialogueIndex].text.size()) {
+                currentText->SetContent(dialogues[currentDialogueIndex].text[currentLineIndex]);
+                std::cout << "Playing Dialogue ID: " << dialogues[currentDialogueIndex].id
+                    << " - Text: " << dialogues[currentDialogueIndex].text[currentLineIndex] << std::endl;
+            }
+            else {
+                std::cerr << "Error: Invalid dialogue or line index!" << std::endl;
+            }
+        }
+        else {
+            std::cout << "No more dialogues available." << std::endl;
         }
     }
+
+
+
+
 
     std::shared_ptr<Text> GetCurrentText() {
         return currentText;
@@ -116,7 +129,8 @@ public:
 
 private:
     std::vector<Dialogue> dialogues;
-    std::shared_ptr<Text> currentText; // Single Text object for display
-    size_t currentDialogueIndex = 0;
-    std::string fontPath; // Path to the font used for dialogues
+    std::shared_ptr<Text> currentText;
+    size_t currentDialogueIndex;
+    size_t currentLineIndex;  // Added this line
+    std::string fontPath;
 };

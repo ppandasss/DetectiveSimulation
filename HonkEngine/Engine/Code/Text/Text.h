@@ -32,8 +32,10 @@ public:
 
     void SetContent(const std::string& content)
     {
+       // std::cout << "Setting content: " << content << std::endl;
         m_content = content;
     }
+
 
     void SetColor(const glm::vec3& color)
     {

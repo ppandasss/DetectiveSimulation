@@ -122,66 +122,85 @@ void TextRenderer::Initialize(const std::string& fontPath)
 
 }
 
-void TextRenderer::RenderText(std::string text, float x, float y, float scale, glm::vec3 color,bool centerPivot, int numChars)
+void TextRenderer::RenderText(std::string text, float x, float y, float scale, glm::vec3 color, bool centerPivot, int numChars)
 {
-    // activate corresponding render state	
+    // Activate corresponding render state
     m_shader.use();
     m_shader.SetVector3f("textColor", color);
     glActiveTexture(GL_TEXTURE0);
     glBindVertexArray(m_VAO);
 
     scale *= 0.01f;
-    float totalWidth = 0.0f;
-    float totalHeight = 0.0f;
-    int charCount = 0;
+    float lineHeight = 0.0f; // Adjust line height as needed
+    float originalX = x;
+    float originalY = y;
 
-    // Calculate total width and height of the text
-    for (auto c = text.begin(); c != text.end() && (numChars == -1 || charCount < numChars); c++)
+    std::vector<std::string> lines;
+    std::string currentLine;
+    std::string::const_iterator c;
+    for (c = text.begin(); c != text.end(); ++c)
     {
-        Character ch = Characters[*c];
-        totalWidth += (ch.Advance >> 6) * scale; // Advance is in 1/64th pixels
-        totalHeight = std::max(totalHeight, ch.Size.y * scale);
-        charCount++;
+        if (*c == ' ' && *(c + 1) == ' ') // Detect double space as a marker for a new line
+        {
+            lines.push_back(currentLine);
+            currentLine.clear();
+            c++; // Skip the second space
+            continue;
+        }
+        currentLine += *c;
     }
+    lines.push_back(currentLine); // Add the last line
 
-    if (centerPivot)
-	{
-        // Adjust x and y to center the text
-        x -= totalWidth / 2.0f;
-        y -= totalHeight / 2.0f;
-	}
-
-
-    // Render each character
-    for (auto c = text.begin(); c != text.end() && (numChars == -1 || charCount < numChars); c++)
+    for (const std::string& line : lines)
     {
-        Character ch = Characters[*c];
+        float totalWidth = 0.0f;
+        // Calculate total width of the line
+        for (char ch : line)
+        {
+            totalWidth += (Characters[ch].Advance >> 6) * scale; // Advance is in 1/64th pixels
+        }
 
-        float xpos = x + ch.Bearing.x * scale;
-        float ypos = y - (ch.Size.y - ch.Bearing.y) * scale;
+        if (centerPivot)
+        {
+            // Adjust x to center the line
+            x = originalX - totalWidth / 2.0f;
+        }
 
-        float w = ch.Size.x * scale;
-        float h = ch.Size.y * scale;
+        // Render each character in the line
+        for (char ch : line)
+        {
+            Character glyph = Characters[ch];
 
-        float vertices[6][4] = {
-            { xpos,     ypos + h,   0.0f, 0.0f },
-            { xpos,     ypos,       0.0f, 1.0f },
-            { xpos + w, ypos,       1.0f, 1.0f },
+            float xpos = x + glyph.Bearing.x * scale;
+            float ypos = y - (glyph.Size.y - glyph.Bearing.y) * scale;
 
-            { xpos,     ypos + h,   0.0f, 0.0f },
-            { xpos + w, ypos,       1.0f, 1.0f },
-            { xpos + w, ypos + h,   1.0f, 0.0f }
-        };
+            float w = glyph.Size.x * scale;
+            float h = glyph.Size.y * scale;
+            lineHeight = std::max(lineHeight, h + 10.0f * scale); // Update line height
 
-        glBindTexture(GL_TEXTURE_2D, ch.TextureID);
-        glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-        glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
+            // Update VBO for each character
+            float vertices[6][4] = {
+                { xpos,     ypos + h,   0.0f, 0.0f },
+                { xpos,     ypos,       0.0f, 1.0f },
+                { xpos + w, ypos,       1.0f, 1.0f },
 
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
-        glDrawArrays(GL_TRIANGLES, 0, 6);
+                { xpos,     ypos + h,   0.0f, 0.0f },
+                { xpos + w, ypos,       1.0f, 1.0f },
+                { xpos + w, ypos + h,   1.0f, 0.0f }
+            };
 
-        x += (ch.Advance >> 6) * scale;
-        charCount++;
+            glBindTexture(GL_TEXTURE_2D, glyph.TextureID);
+            glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
+            glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
+
+            glBindBuffer(GL_ARRAY_BUFFER, 0);
+            glDrawArrays(GL_TRIANGLES, 0, 6);
+
+            x += (glyph.Advance >> 6) * scale; // Advance cursor to the next glyph
+        }
+
+        y -= lineHeight; // Move to the next line
+        lineHeight = 0.0f; // Reset line height for the next line
     }
 
     glBindVertexArray(0);

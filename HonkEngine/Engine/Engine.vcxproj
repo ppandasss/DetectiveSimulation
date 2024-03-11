@@ -143,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Audio\AudioManager.h" />
+    <ClInclude Include="Code\Dialogue\DialogueManager.h" />
     <ClInclude Include="Code\EventManager.h" />
     <ClInclude Include="Code\GameObjects\AnimateGameObject.h" />
     <ClInclude Include="Code\Animation\Animator.h" />
@@ -206,6 +207,7 @@
     <Font Include="Assets\Fonts\JibrilRegular.ttf" />
     <Font Include="Assets\Fonts\JMH.ttf" />
     <Font Include="Assets\Fonts\mvboli.ttf" />
+    <Font Include="Assets\Fonts\OverpassMono.ttf" />
     <Font Include="Assets\Fonts\segoepr.ttf" />
     <Font Include="Assets\Fonts\WD.ttf" />
   </ItemGroup>

@@ -161,6 +161,9 @@
     <ClInclude Include="Code\GameObjects\Book.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Dialogue\DialogueManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\text.vs" />
@@ -189,6 +192,7 @@
     <Font Include="Assets\Fonts\JibrilRegular.ttf" />
     <Font Include="Assets\Fonts\ESA-smb.ttf" />
     <Font Include="Assets\Fonts\segoepr.ttf" />
+    <Font Include="Assets\Fonts\OverpassMono.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Images\awesomeface.png">

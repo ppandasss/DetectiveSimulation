@@ -34,7 +34,7 @@ public:
         UIElement* waiterIcon = new UINormal("WaiterIcon", "Assets/Images/UI/Speaker_icon_Waiter.png", glm::vec3(4.18f, 3.53f, 0.0f), glm::vec3(1.23f, 1.4f, 0.0f), true);
 
 
-        dialogueManager->SetDialoguePosition(6.8f, 3.85f);
+        dialogueManager->SetDialoguePosition(-0.5f, 3.85f);
         dialogueManager->SetDialogueScale(0.55f);
         m_gameObjects.push_back(background);
         m_gameObjects.push_back(room);
@@ -61,7 +61,7 @@ public:
             Application::Get().SetScene("Hallway");
         }
 
-        if (input.Get().GetKeyDown(GLFW_KEY_T)) {
+        if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1)) {
             dialogueManager->PlayNextDialogue();
             //alogueText
         }
