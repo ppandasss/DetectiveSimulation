@@ -16,9 +16,12 @@ public:
 
     Room1() {
 
-        GameObject* background = new RenderGameObject("BG", "Assets/Images/Cabin_Background.png");
-        background->SetScale(glm::vec3(76.60f, 10.8f, 0.0f));
-        background->SetPosition(glm::vec3(-3.2f, 3.0f, 0.0f));
+        GameObject* background1 = new RenderGameObject("BG1", "Assets/Images/Cabin_Background.png");
+        GameObject* background2 = new RenderGameObject("BG2", "Assets/Images/Cabin_Background.png");
+        background1->SetScale(glm::vec3(76.6f, 10.8f, 0.0f));
+        background2->SetScale(glm::vec3(76.6f, 10.8f, 0.0f));
+        background1->SetPosition(glm::vec3(0.0f, 3.0f, 0.0f));
+        background2->SetPosition(glm::vec3(76.6f, 3.0f, 0.0f));
 
         UIElement* room = new UINormal("cabin1", "Assets/Images/Martharoom.png", glm::vec3(0.0f, -0.15f, 0.0f), glm::vec3(14.30f * 1.345f, 10.55f * 1.345f, 0.0f), true);
         UIElement* martha = new UINormal("Martha", "Assets/Images/Martha.png", glm::vec3(5.4f, -2.85f, 0.0f), glm::vec3(3.81f * 1.345f, 6.53f * 1.345f, 0.0f), true);
@@ -36,7 +39,8 @@ public:
 
         dialogueManager->SetDialoguePosition(-0.5f, 3.70f);
         dialogueManager->SetDialogueScale(0.55f);
-        m_gameObjects.push_back(background);
+        m_gameObjects.push_back(background1);
+        m_gameObjects.push_back(background2);
         m_gameObjects.push_back(room);
         m_gameObjects.push_back(martha);
         m_gameObjects.push_back(lamp);
@@ -51,26 +55,55 @@ public:
     }
 
     void Update(float dt, long frame) override {
-
-        Scene::Update(dt, frame); // Call the base class update
-
+        Scene::Update(dt, frame);
         dialogueManager->Update(dt, frame);
 
-        GameObject* dialogueText = GetGameObjectByName("Dialogue1");
         if (input.Get().GetKeyDown(GLFW_KEY_E)) {
             Application::Get().SetScene("Hallway");
         }
 
         if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1)) {
             dialogueManager->PlayNextDialogue();
-            //alogueText
         }
 
+        // Get mouse position and calculate offset from screen center
+        glm::vec2 mousePos = Application::Get().MousetoWorld();
+        glm::vec2 screenCenter = glm::vec2(SCR_WIDTH / 2.0f, SCR_HEIGHT / 2.0f);
+        glm::vec2 mouseOffset = (mousePos - screenCenter) / screenCenter;
 
-        // Use the UIElement for cabin interaction
+        // Debugging the distance and direction of the mouse from the center
+        float distanceFromCenter = glm::length(mouseOffset);
+        std::cout << "Distance from center: " << distanceFromCenter << std::endl;
+        std::cout << "Direction (x, y): (" << mouseOffset.x << ", " << mouseOffset.y << ")" << std::endl;
+        // Background parallax scrolling
+        glm::vec3 background1Pos = GetGameObjectByName("BG1")->GetPosition();
+        glm::vec3 background2Pos = GetGameObjectByName("BG2")->GetPosition();
 
+        background1Pos.x -= backgroundSpeed + mouseOffset.x * backgroundMultiplier;
+        background2Pos.x -= backgroundSpeed + mouseOffset.x * backgroundMultiplier;
 
+        float backgroundWidth = 76.6f;
+        if (background1Pos.x <= -backgroundWidth) {
+            background1Pos.x = background2Pos.x + backgroundWidth;
+        }
+        if (background2Pos.x <= -backgroundWidth) {
+            background2Pos.x = background1Pos.x + backgroundWidth;
+        }
+
+        GetGameObjectByName("BG1")->SetPosition(background1Pos);
+        GetGameObjectByName("BG2")->SetPosition(background2Pos);
+
+        // Environment parallax
+        GameObject* room = GetGameObjectByName("cabin1");
+        glm::vec3 roomPos = room->GetPosition() + glm::vec3(mouseOffset.x * environmentMultiplier, 0.0f, 0.0f);
+        room->SetPosition(roomPos);
+
+        // Object parallax
+        GameObject* martha = GetGameObjectByName("Martha");
+        glm::vec3 marthaPos = martha->GetPosition() + glm::vec3(mouseOffset.x * objectMultiplier, 0.0f, 0.0f);
+        martha->SetPosition(marthaPos);
     }
+
     void Render() override {
         Scene::Render(); // Renders GameObjects
 
@@ -79,6 +112,11 @@ public:
     }
 
 private:
+    float backgroundSpeed = 0.01f;
+    float backgroundMultiplier = 0.5f;
+    float environmentMultiplier = 0.02f; // Adjusted from 0.05f to 0.02f
+    float objectMultiplier = 0.04f;
+
     Input& input = Application::GetInput();
     Camera& camera = Application::GetCamera();
     std::unique_ptr<DialogueManager> dialogueManager;
