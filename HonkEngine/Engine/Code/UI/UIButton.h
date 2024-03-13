@@ -8,20 +8,23 @@
 class UIButton : public UIElement {
 
 	public:
-
-      
-        UIButton(const std::string& name, const std::string& texturePath, const glm::vec3 position, const glm::vec3 scale, bool isOnScreen)
+        
+        UIButton(const std::string& name, const std::string& texturePath, const glm::vec3 position, const glm::vec3 scale, bool isOnScreen, bool containText)
             : UIElement(name, texturePath, position, scale, isOnScreen) {
 
-            //Additional properties specific to buttons
-
             isClickable = true;
-            //category = UIcategory;
 
+            // Initialize the text object with an empty content
+            if (containText) {
+                buttonTextObj->SetPosition(position);
+            }
+
+            containsText = containText;
+           
         }
 
         //Method to set the click action
-        void SetOnClickAction(const std::function<void()>& action) {
+        virtual void SetOnClickAction(const std::function<void()>& action) {
             onClickAction = action;
         }
 
@@ -39,7 +42,11 @@ class UIButton : public UIElement {
 
             Input& input = Application::GetInput();
             UIElement::Update(dt, frame);
-            
+
+            if (containsText) {
+                buttonTextObj->Update(dt, frame);
+            }
+
                 mousePosWorld = Application::Get().MousetoWorld();
 
 
@@ -54,13 +61,32 @@ class UIButton : public UIElement {
                     }
                 }  
         }
- 
-    private:
 
+        void RenderText() {
+
+            if (containsText) {
+                buttonTextObj->Render(); // Render the button text
+            }
+
+        }
+
+        void Render() override {
+            UIElement::Render(); // Render the button texture     
+
+        }
+
+        void setButtonText(const std::string& buttonText) {
+            buttonTextObj->SetContent(buttonText);
+        }
+       
+
+
+    private:
+        Text* buttonTextObj = new Text("ButtonText", "hiiii", "Assets/Fonts/ESA-m.ttf", true);
+        bool containsText = true;
         bool isClickable;
         glm::vec2 mousePos;
         glm::vec2 mousePosWorld;
         std::function<void()> onClickAction;
-
-
+        
 };

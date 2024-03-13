@@ -9,6 +9,7 @@
 #include "../Text/Text.h"
 #include "../UI/UIButton.h"
 #include "../UI/UIDraggable.h"
+#include "../UI/UIButtonEmpty.h"
 
 #include "JournalData.h"
 

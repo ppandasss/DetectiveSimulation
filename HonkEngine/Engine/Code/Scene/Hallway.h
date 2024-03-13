@@ -57,11 +57,11 @@ public:
 		UIElement* orderPaper = new UINormal("OrderPaper", "Assets/Images/OrderPaper.png", glm::vec3(-7.65f, 4.0f, 0.0f), glm::vec3(3.55f, 2.54f, 0.0f), true);
 		UIElement* timer = new UINormal("Timer", "Assets/Images/Timer.png", glm::vec3(7.3f, 5.1f, 0.0f), glm::vec3(4.37f, 3.13f, 0.0f), true);
 		UIElement* screenUI = new UINormal("ScreenUI", "Assets/Images/ScreenUI.png", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(16.0f * 1.19f, 9.0f * 1.19f, 0.0f), true);
-		UIButton* journalButton = new UIButton("JournalButton", "Assets/Images/JournalButton.png", glm::vec3(-8.32f, -4.8f, 0.0f), glm::vec3(3.0f, 3.0f, 0.0f), true);
+		UIButton* journalButton = new UIButton("JournalButton", "Assets/Images/JournalButton.png", glm::vec3(-8.32f, -4.8f, 0.0f), glm::vec3(3.0f, 3.0f, 0.0f), true, false);
 		journalButton->SetOnClickAction([this]() { Journal->drawBook(); });
 
-		UIButton* TestEmpty = new UIButtonEmpty("Empty Button", "", glm::vec3(0.4f, -0.5f, 0.0f), glm::vec3(2.8f, 5.7f, 0.0f), false);
-		TestEmpty->SetOnClickAction([this]() { printEmpty(); });
+		UIButtonEmpty* TestEmpty = new UIButtonEmpty("Empty Button", "", glm::vec3(0.4f, -0.5f, 0.0f), glm::vec3(2.8f, 5.7f, 0.0f), false, true);
+		TestEmpty->SetOnClickAction(&printEmpty);
 
 		/*-------------------------------------------------------------➡️SET TRANSFORMATION➡️------------------------------------------------------------------------------------------------------- */
 

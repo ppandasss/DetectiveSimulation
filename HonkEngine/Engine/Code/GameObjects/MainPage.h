@@ -38,7 +38,7 @@ public:
 
 		//SPY BUTTONS
 
-		UIButton* Suspect1 = new UIButton("Suspect1", "Assets/Images/Journal/CaseSummary_Icon_Martha.png", glm::vec3(1.25f, 2.15f, 0.0f), glm::vec3(0.864f, 0.81f, 0.0f), true);
+		UIButton* Suspect1 = new UIButton("Suspect1", "Assets/Images/Journal/CaseSummary_Icon_Martha.png", glm::vec3(1.25f, 2.15f, 0.0f), glm::vec3(0.864f, 0.81f, 0.0f), true, false);
 		Suspect1->SetOnClickAction([this]() { setSpy1(); });
 
 		Text* Cabin1 = new Text("Cabin1", "Cabin 1", "Assets/Fonts/ESA-m.ttf");
@@ -47,7 +47,7 @@ public:
 		Cabin1->SetScale(0.55f);
 
 
-		UIButton* Suspect2 = new UIButton("Suspect2", "Assets/Images/Journal/CaseSummary_Icon_Nathaniel.png", glm::vec3(2.65f, 2.15f, 0.0f), glm::vec3(0.864f, 0.81f, 0.0f), true);
+		UIButton* Suspect2 = new UIButton("Suspect2", "Assets/Images/Journal/CaseSummary_Icon_Nathaniel.png", glm::vec3(2.65f, 2.15f, 0.0f), glm::vec3(0.864f, 0.81f, 0.0f), true, false);
 		Suspect2->SetOnClickAction([this]() { setSpy21(); });
 
 		Text* Cabin21 = new Text("Cabin21", "Cabin 2/1", "Assets/Fonts/ESA-m.ttf");
@@ -56,7 +56,7 @@ public:
 		Cabin21->SetScale(0.5f);
 
 
-		UIButton* Suspect3 = new UIButton("Suspect3", "Assets/Images/Journal/CaseSummary_Icon_Evelyn.png", glm::vec3(4.2f, 2.15f, 0.0f), glm::vec3(0.864f, 0.81f, 0.0f), true);
+		UIButton* Suspect3 = new UIButton("Suspect3", "Assets/Images/Journal/CaseSummary_Icon_Evelyn.png", glm::vec3(4.2f, 2.15f, 0.0f), glm::vec3(0.864f, 0.81f, 0.0f), true, false);
 		Suspect3->SetOnClickAction([this]() { setSpy22(); });
 
 		Text* Cabin22 = new Text("Cabin22", "Cabin 2/2", "Assets/Fonts/ESA-m.ttf");
@@ -65,7 +65,7 @@ public:
 		Cabin22->SetScale(0.5f);
 
 
-		UIButton* Suspect4 = new UIButton("Suspect4", "Assets/Images/Journal/CaseSummary_Icon_Archibald.png", glm::vec3(1.25f, 0.85f, 0.0f), glm::vec3(0.864f, 0.81f, 0.0f), true);
+		UIButton* Suspect4 = new UIButton("Suspect4", "Assets/Images/Journal/CaseSummary_Icon_Archibald.png", glm::vec3(1.25f, 0.85f, 0.0f), glm::vec3(0.864f, 0.81f, 0.0f), true, false);
 		Suspect4->SetOnClickAction([this]() { setSpy3(); });
 
 		Text* Cabin3 = new Text("Cabin3", "Cabin 3", "Assets/Fonts/ESA-m.ttf");
@@ -74,7 +74,7 @@ public:
 		Cabin3->SetScale(0.5f);
 
 
-		UIButton* Suspect5 = new UIButton("Suspect5", "Assets/Images/Journal/CaseSummary_Icon_Octavia.png", glm::vec3(2.65f, 0.85f, 0.0f), glm::vec3(0.864f, 0.81f, 0.0f), true);
+		UIButton* Suspect5 = new UIButton("Suspect5", "Assets/Images/Journal/CaseSummary_Icon_Octavia.png", glm::vec3(2.65f, 0.85f, 0.0f), glm::vec3(0.864f, 0.81f, 0.0f), true, false);
 		Suspect5->SetOnClickAction([this]() { setSpy4(); });
 
 		Text* Cabin4 = new Text("Cabin4", "Cabin 4", "Assets/Fonts/ESA-m.ttf");
@@ -88,10 +88,14 @@ public:
 		RedCircle->SetPosition(glm::vec3(1.15f, 1.55f, 0.0f));
 
 		// BOMB LOCATIONS
-		Text* TownSquare = new Text("TownSquare", "Town Square", "Assets/Fonts/ESA-m.ttf");
+
+		UIButtonEmpty* TownSquare = new UIButtonEmpty("TownSquare", "", glm::vec3(0.8f, -2.25f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, true);
+
+		
+		/*Text* TownSquare = new Text("TownSquare", "Town Square", "Assets/Fonts/ESA-m.ttf");
 		TownSquare->SetPosition(glm::vec3(0.8f, -2.25f, 0.0f));
 		TownSquare->SetColor(glm::vec3(0, 0, 0));
-		TownSquare->SetScale(0.6f);
+		TownSquare->SetScale(0.6f);*/
 
 		Text* TheHolyChurch = new Text("TheHolyChurch", "The Holy Church", "Assets/Fonts/ESA-m.ttf");
 		TheHolyChurch->SetPosition(glm::vec3(2.9f, -2.25f, 0.0f));
