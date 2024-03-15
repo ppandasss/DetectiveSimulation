@@ -181,6 +181,7 @@
     <ClInclude Include="External\Include\GLFW\glfw3.h" />
     <ClInclude Include="External\Include\GLFW\glfw3native.h" />
     <ClInclude Include="External\Include\stb_image.h" />
+    <ClInclude Include="Code\Effects\ParallaxManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\color_tex_transparency.frag" />
