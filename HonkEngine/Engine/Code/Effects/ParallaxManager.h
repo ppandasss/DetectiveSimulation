@@ -59,7 +59,7 @@ private:
             float multiplier = layer.first;
             for (GameObject* object : layer.second) {
                 glm::vec3 pos = object->GetPosition();
-                pos += glm::vec3(-mouseOffset.x * multiplier, 0.0f, 0.0f);
+                pos += glm::vec3(-mouseOffset.x * multiplier, mouseOffset.y * multiplier, 0.0f);
                 object->SetPosition(pos);
             }
         }
