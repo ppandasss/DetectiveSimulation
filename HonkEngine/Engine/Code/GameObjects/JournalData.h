@@ -22,7 +22,7 @@ struct MainPageData {
 
 	Location player_BombLocation;  
 
-	std::string evidence;
+	int player_Evidence;
 
 
 };
@@ -69,6 +69,19 @@ class JournalData {
 			allCabinData[cabin].lastVisit = location;
 		}
 
+		void incrementEvidence() {
+
+			// Increment index and wrap around if needed
+			main_page.player_Evidence = (main_page.player_Evidence + 1) % 4;  
+
+		}
+
+		std::string getEvidenceText() {
+
+			return mainPageEvidence[main_page.player_Evidence];
+
+		}
+
 
 		//GET FUNCTIONS
 
@@ -89,12 +102,15 @@ class JournalData {
 
 			main_page.player_Spy = SPY_EMPTY;
 			main_page.player_BombLocation = LOCATION_EMPTY;
+			main_page.player_Evidence = 0;
 
 		}
 
 		MainPageData main_page;
 
 		std::map<Spy, CabinPageData> allCabinData;
+
+		std::string mainPageEvidence[4] = { "Evidence 1","Evidence 2", "Evidence 3", "Evidence 4" };
 
 
 };

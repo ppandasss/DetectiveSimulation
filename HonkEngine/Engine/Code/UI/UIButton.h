@@ -75,14 +75,22 @@ class UIButton : public UIElement {
 
         }
 
-        void setButtonText(const std::string& buttonText) {
+        virtual void setButtonText(const std::string& buttonText) {
             buttonTextObj->SetContent(buttonText);
         }
-       
+
+        virtual void SetTextSize(float scale) {
+            buttonTextObj->SetScale(scale);
+        }
+
+        virtual void setTextPosition(glm::vec3 position) {
+            buttonTextObj->SetPosition(position);
+        }
+
 
 
     private:
-        Text* buttonTextObj = new Text("ButtonText", "hiiii", "Assets/Fonts/ESA-m.ttf", true);
+        Text* buttonTextObj = new Text("ButtonText", "Placeholder", "Assets/Fonts/ESA-m.ttf", true);
         bool containsText = true;
         bool isClickable;
         glm::vec2 mousePos;

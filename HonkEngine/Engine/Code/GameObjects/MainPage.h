@@ -89,28 +89,42 @@ public:
 
 		// BOMB LOCATIONS
 
-		UIButtonEmpty* TownSquare = new UIButtonEmpty("TownSquare", "", glm::vec3(0.8f, -2.25f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, true);
+		UIButtonEmpty* TownSquare = new UIButtonEmpty("TownSquare", glm::vec3(0.8f, -2.25f, 0.0f), glm::vec3(1.4f, 0.4f, 0.0f), true, true);
+		TownSquare->setButtonText("Town Square");
+		TownSquare->SetTextSize(0.6f);
+		TownSquare->SetOnClickAction([this]() { setLocationTownSquare(); });
 
-		
-		/*Text* TownSquare = new Text("TownSquare", "Town Square", "Assets/Fonts/ESA-m.ttf");
-		TownSquare->SetPosition(glm::vec3(0.8f, -2.25f, 0.0f));
-		TownSquare->SetColor(glm::vec3(0, 0, 0));
-		TownSquare->SetScale(0.6f);*/
+		UIButtonEmpty* TheHolyChurch = new UIButtonEmpty("TheHolyChurch", glm::vec3(2.9f, -2.25f, 0.0f), glm::vec3(1.4f, 0.4f, 0.0f), true, true);
+		TheHolyChurch->setButtonText("The Holy Church");
+		TheHolyChurch->SetTextSize(0.6f);
+		TheHolyChurch->SetOnClickAction([this]() { setLocationHolyChurch(); });
 
-		Text* TheHolyChurch = new Text("TheHolyChurch", "The Holy Church", "Assets/Fonts/ESA-m.ttf");
-		TheHolyChurch->SetPosition(glm::vec3(2.9f, -2.25f, 0.0f));
-		TheHolyChurch->SetColor(glm::vec3(0, 0, 0));
-		TheHolyChurch->SetScale(0.6f);
+		UIButtonEmpty* TheCouncil = new UIButtonEmpty("TheCouncil", glm::vec3(0.8f, -2.75f, 0.0f), glm::vec3(1.4f, 0.4f, 0.0f), true, true);
+		TheCouncil->setButtonText("The Council");
+		TheCouncil->SetTextSize(0.6f);
+		TheCouncil->SetOnClickAction([this]() { setLocationCouncil(); });
 
-		Text* TheCouncil = new Text("TheCouncil", "The Council", "Assets/Fonts/ESA-m.ttf");
-		TheCouncil->SetPosition(glm::vec3(0.8f, -2.75f, 0.0f));
-		TheCouncil->SetColor(glm::vec3(0, 0, 0));
-		TheCouncil->SetScale(0.6f);
+		UIButtonEmpty* SupremeCourt = new UIButtonEmpty("SupremeCourt", glm::vec3(2.9f, -2.75f, 0.0f), glm::vec3(1.4f, 0.4f, 0.0f), true, true);
+		SupremeCourt->setButtonText("Supreme Court");
+		SupremeCourt->SetTextSize(0.6f);
+		SupremeCourt->SetOnClickAction([this]() { setLocationSupremeCourt(); });
 
-		Text* SupremeCourt = new Text("SupremeCourt", "Supreme Court", "Assets/Fonts/ESA-m.ttf");
-		SupremeCourt->SetPosition(glm::vec3(2.9f, -2.75f, 0.0f));
-		SupremeCourt->SetColor(glm::vec3(0, 0, 0));
-		SupremeCourt->SetScale(0.6f);
+		RedUnderline = new UIObject("RedUnderline", "Assets/Images/Journal/Journal_CaseSummary_Icon_Red_Circle_3.png", true);
+		RedUnderline->setActiveStatus(false);
+		RedUnderline->SetScale(glm::vec3(1.5f, 0.2f, 0.0f));
+		RedUnderline->SetPosition(glm::vec3(0.8f, -2.45f, 0.0f));
+
+		// EVIDENCE TEXT
+
+		EvidenceButton = new UIButtonEmpty("EvidenceText", glm::vec3(3.2f, -1.0f, 0.0f), glm::vec3(5.0f, 0.5f, 0.0f), true, true);
+		EvidenceButton->setButtonText(JournalData::GetInstance()->getEvidenceText());
+		EvidenceButton->SetTextSize(0.6f);
+		EvidenceButton->SetOnClickAction([this]() { updateEvidence(); });
+
+
+		/*UIObject* testBox = new UIObject("testBox", "Assets/Images/Square_Border.png", true);
+		testBox->SetScale(glm::vec3(5.0f, 0.5f, 0.0f));
+		testBox->SetPosition(glm::vec3(3.2f, -1.0f, 0.0f));*/
 
 
 		m_gameObjects.push_back(TheSpy);
@@ -133,13 +147,18 @@ public:
 		m_gameObjects.push_back(RedCircle);
 
 		m_gameObjects.push_back(Evidence);
+		m_gameObjects.push_back(EvidenceButton);
 
 		m_gameObjects.push_back(BombLocation);
+
+		//m_gameObjects.push_back(testBox);
 
 		m_gameObjects.push_back(TownSquare);
 		m_gameObjects.push_back(TheHolyChurch);
 		m_gameObjects.push_back(TheCouncil);
 		m_gameObjects.push_back(SupremeCourt);
+
+		m_gameObjects.push_back(RedUnderline);
 
 
 		m_gameObjects.push_back(CaseNews);
@@ -182,25 +201,53 @@ public:
 
 	////--------------------- BOMB LOCATION FUNCTIONS ------------------------
 
-	void setLocationTownSquare() { JournalData::GetInstance()->SetPlayerBombLocation(TOWNSQUARE); }
-	void setLocationHolyChurch() { JournalData::GetInstance()->SetPlayerBombLocation(HOLYCHURCH); }
-	void setLocationCouncil() { JournalData::GetInstance()->SetPlayerBombLocation(COUNCIL); }
-	void setLocationSupremeCourt() { JournalData::GetInstance()->SetPlayerBombLocation(SUPREMECOURT); }
+	void setLocationTownSquare() {
+		JournalData::GetInstance()->SetPlayerBombLocation(TOWNSQUARE);
+		RedUnderline->SetPosition(glm::vec3(0.8f, -2.45f, 0.0f));
+		
+	};
+
+	void setLocationHolyChurch() {
+		JournalData::GetInstance()->SetPlayerBombLocation(HOLYCHURCH);
+		RedUnderline->SetPosition(glm::vec3(2.9f, -2.45f, 0.0f));
+		
+	};
+
+	void setLocationCouncil() {
+		JournalData::GetInstance()->SetPlayerBombLocation(COUNCIL);
+		RedUnderline->SetPosition(glm::vec3(0.8f, -2.95f, 0.0f));
+		
+	};
+
+	void setLocationSupremeCourt() {
+		JournalData::GetInstance()->SetPlayerBombLocation(SUPREMECOURT);
+		RedUnderline->SetPosition(glm::vec3(2.9f, -2.95f, 0.0f));
+		
+	};
+	
+	//------------------------EVIDENCE FUNCTIONS--------------------
+
+	void updateEvidence() {
+
+		JournalData::GetInstance()->incrementEvidence();
+
+		EvidenceButton->setButtonText(JournalData::GetInstance()->getEvidenceText());
+
+	}
 
 
 	virtual void Update(float dt, long frame) override {
 
 		Page::Update(dt, frame);
 
-
-
-
-
 	}
+
+
 
 private:
 
-	GameObject* RedCircle;
-
+	UIObject* RedCircle;
+	UIObject* RedUnderline;
+	UIButtonEmpty* EvidenceButton;
 
 };

@@ -60,8 +60,8 @@ public:
 		UIButton* journalButton = new UIButton("JournalButton", "Assets/Images/JournalButton.png", glm::vec3(-8.32f, -4.8f, 0.0f), glm::vec3(3.0f, 3.0f, 0.0f), true, false);
 		journalButton->SetOnClickAction([this]() { Journal->drawBook(); });
 
-		UIButtonEmpty* TestEmpty = new UIButtonEmpty("Empty Button", "", glm::vec3(0.4f, -0.5f, 0.0f), glm::vec3(2.8f, 5.7f, 0.0f), false, true);
-		TestEmpty->SetOnClickAction(&printEmpty);
+		//UIButtonEmpty* TestEmpty = new UIButtonEmpty("Empty Button", "", glm::vec3(0.4f, -0.5f, 0.0f), glm::vec3(2.8f, 5.7f, 0.0f), false, false);
+		//TestEmpty->SetOnClickAction(&printEmpty);
 
 		/*-------------------------------------------------------------➡️SET TRANSFORMATION➡️------------------------------------------------------------------------------------------------------- */
 
@@ -86,7 +86,7 @@ public:
 		m_gameObjects.push_back(journalButton);
 		m_gameObjects.push_back(timer);
 		m_gameObjects.push_back(orderPaper);
-		m_gameObjects.push_back(TestEmpty);
+		//m_gameObjects.push_back(TestEmpty);
 
 		//Texts
 		//m_gameObjects.push_back(helloText);
