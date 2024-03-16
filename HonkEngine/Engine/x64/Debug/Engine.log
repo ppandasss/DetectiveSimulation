@@ -1,24 +1,10 @@
 ﻿  Main.cpp
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(78,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  (compiling source file 'Code/Main.cpp')
-  
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(79,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  (compiling source file 'Code/Main.cpp')
-  
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): warning C4099: 'Mesh': type name first seen using 'class' now seen using 'struct'
-  (compiling source file 'Code/Main.cpp')
-  C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8):
-  see declaration of 'Mesh'
-  
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Player.h(18,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'Code/Main.cpp')
-  
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Player.h(18,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'Code/Main.cpp')
-  
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Text\TextRenderer.h(12,7): warning C4099: 'Mesh': type name first seen using 'struct' now seen using 'class'
-  (compiling source file 'Code/Main.cpp')
-  C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8):
-  see declaration of 'Mesh'
-  
-  Engine.vcxproj -> C:\Capt\DetectiveSimulation\HonkEngine\x64\Debug\Engine.exe
+D:\GAME PROJECT\TTT\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(78,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\GAME PROJECT\TTT\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(79,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\GAME PROJECT\TTT\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,13): warning C4099: 'Mesh': type name first seen using 'class' now seen using 'struct'
+D:\GAME PROJECT\TTT\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24): message : see declaration of 'Mesh'
+D:\GAME PROJECT\TTT\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Player.h(18,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GAME PROJECT\TTT\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Player.h(18,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\GAME PROJECT\TTT\DetectiveSimulation\HonkEngine\Engine\Code\Text\TextRenderer.h(12,11): warning C4099: 'Mesh': type name first seen using 'struct' now seen using 'class'
+D:\GAME PROJECT\TTT\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24): message : see declaration of 'Mesh'
+  Engine.vcxproj -> D:\GAME PROJECT\TTT\DetectiveSimulation\HonkEngine\x64\Debug\Engine.exe

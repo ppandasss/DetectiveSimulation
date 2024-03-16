@@ -3,7 +3,7 @@
   <Dialogue id="1WD01">
     <Speaker name="Waiter">
       <line1>Good afternoon and welcome to  Hesperia Express. Mrs. Longbow.</line1>
-      <line2>My name is Somchai. I will be  taking care of you for this trip.</line2>
+      <line2>My name is Victor. I will be  taking care of you for this trip.</line2>
     </Speaker>
     <Choices/>
   </Dialogue>

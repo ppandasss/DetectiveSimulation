@@ -24,14 +24,17 @@ public:
         background1->SetPosition(glm::vec3(0.0f, 3.0f, 0.0f));
         background2->SetPosition(glm::vec3(76.6f, 3.0f, 0.0f));
 
-        //Objects
-        UIElement* room = new UINormal("cabin1", "Assets/Images/Martharoom.png", glm::vec3(0.0f, -0.15f, 0.0f), glm::vec3(14.30f * 1.345f, 10.55f * 1.345f, 0.0f), true);
-        UIElement* martha = new UINormal("Martha", "Assets/Images/Martha.png", glm::vec3(5.4f, -2.85f, 0.0f), glm::vec3(3.81f * 1.345f, 6.53f * 1.345f, 0.0f), true);
-        UIElement* lamp = new UINormal("Lamp", "Assets/Images/Martharoom_Lamp.png", glm::vec3(-1.45f, -0.45f, 0.0f), glm::vec3(1.62f * 1.345f, 2.25f * 1.345f, 0.0f), true);
-        UIElement* hat = new UINormal("Hat", "Assets/Images/Martharoom_hat.png", glm::vec3(-1.2f, -1.5f, 0.0f), glm::vec3(3.12f * 1.345f, 0.92f * 1.345f, 0.0f), true);
-        UIElement* bag = new UINormal("Bag", "Assets/Images/Martharoom_bag.png", glm::vec3(-0.6f, -5.6f, 0.0f), glm::vec3(2.59f * 1.345f, 1.64f * 1.345f, 0.0f), true);
-        UIElement* cane = new UINormal("Cane", "Assets/Images/Martharoom_cane.png", glm::vec3(-4.55f, -3.73f, 0.0f), glm::vec3(1.07f * 1.345f, 3.7f * 1.345f, 0.0f), true);
-        UIElement* letter = new UINormal("Letter", "Assets/Images/Martharoom_letter.png", glm::vec3(-2.35f, -7.5, 0.0f), glm::vec3(1.13f * 1.345f, 0.73f * 1.345f, 0.0f), true);
+        // Scale Multiplier to fit asset scale with screensize
+        float sm = 1.23f;
+
+        //Objects     
+        UIElement* room = new UINormal("cabin1", "Assets/Images/Martha_Cabin.png", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(19.60f * sm, 10.55f * sm, 0.0f), true);
+        UIElement* martha = new UINormal("Martha", "Assets/Images/Martha/Martha_Normal.png", glm::vec3(4.95f, -2.45f, 0.0f), glm::vec3(3.81f * sm, 6.53f * sm, 0.0f), true);
+        UIElement* lamp = new UINormal("Lamp", "Assets/Images/Martha/Lamp.png", glm::vec3(-1.3f, -0.3f, 0.0f), glm::vec3(1.62f * sm, 2.25f * sm, 0.0f), true);
+        UIElement* hat = new UINormal("Hat", "Assets/Images/Martha/Hat.png", glm::vec3(-1.1f, -1.22f, 0.0f), glm::vec3(3.12f * sm, 0.92f * sm, 0.0f), true);
+        UIElement* bag = new UINormal("Bag", "Assets/Images/Martha/Bag.png", glm::vec3(-0.25f, -5.25f, 0.0f), glm::vec3(2.59f * sm * 1.2f, 1.64f * sm * 1.2f, 0.0f), true);
+        UIElement* cane = new UINormal("Cane", "Assets/Images/Martha/Inspection_Cane.png", glm::vec3(-4.0f, -3.72f, 0.0f), glm::vec3(1.07f * sm * 1.2f, 3.7f * sm * 1.2f, 0.0f), true);
+        UIElement* letter = new UINormal("Letter", "Assets/Images/Martha/Inspection_Letter.png", glm::vec3(-2.15f, -5.9f, 0.0f), glm::vec3(1.13f * sm * 1.2f, 0.73f * sm * 1.2f, 0.0f), true);
 
         //UIs
         dialogueManager = std::make_unique<DialogueManager>("DialogueManagerName", "Assets/Fonts/OverpassMono.ttf", "Assets/Dialogue/Dialogue_Martha_OrderPhase.xml");
@@ -42,7 +45,6 @@ public:
         //setDialogueUI
         dialogueManager->SetDialoguePosition(-0.5f, 3.70f);
         dialogueManager->SetDialogueScale(0.55f);
-
 
         //Push GamePbjects
         m_gameObjects.push_back(background1);
@@ -55,22 +57,26 @@ public:
         m_gameObjects.push_back(cane);
         m_gameObjects.push_back(letter);
         m_gameObjects.push_back(dialogueBox);
-        //m_gameObjects.push_back(marthaIcon);
-        m_gameObjects.push_back(waiterIcon);
+        m_gameObjects.push_back(marthaIcon);
+        //m_gameObjects.push_back(waiterIcon);
 
         //add Parallax Effects
         parallaxManager = std::make_unique<ParallaxManager>();
+
+        float defaultLayer = 0.8f;
+        float objectLayerOne = 0.83f;
+
         // Add objects to different layers
-        parallaxManager->AddObjectToLayer(room, 0.1f);   // Layer 1
-        parallaxManager->AddObjectToLayer(lamp, 0.15f);   // Layer 1.5
-        parallaxManager->AddObjectToLayer(hat, 0.2f);    // Layer 2
-        parallaxManager->AddObjectToLayer(bag, 0.2f);    // Layer 2
-        parallaxManager->AddObjectToLayer(cane, 0.2f);   // Layer 2
-        parallaxManager->AddObjectToLayer(letter, 0.2f); // Layer 2
-        parallaxManager->AddObjectToLayer(martha, 0.15f); // Layer 2
+        parallaxManager->AddObjectToLayer(room, defaultLayer);   // Layer 1
+        parallaxManager->AddObjectToLayer(lamp, defaultLayer);   // Layer 1.5
+        parallaxManager->AddObjectToLayer(hat, objectLayerOne);    // Layer 2
+        parallaxManager->AddObjectToLayer(bag, objectLayerOne);    // Layer 2
+        parallaxManager->AddObjectToLayer(cane, objectLayerOne);   // Layer 2
+        parallaxManager->AddObjectToLayer(letter, objectLayerOne); // Layer 2
+        parallaxManager->AddObjectToLayer(martha, objectLayerOne); // Layer 2
 
         //Scrolling effect for Background
-        parallaxManager->SetBackgroundSpeed(0.05f);
+        parallaxManager->SetBackgroundSpeed(0.02f);
         parallaxManager->AddBackgroundObject(background1);
         parallaxManager->AddBackgroundObject(background2);
 
