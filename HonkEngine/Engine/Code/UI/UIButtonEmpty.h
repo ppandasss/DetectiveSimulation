@@ -6,8 +6,8 @@ class UIButtonEmpty: public UIButton {
 
 	public:
 
-        UIButtonEmpty(const std::string& name, const glm::vec3 position, const glm::vec3 scale, bool isOnScreen, bool containText)
-            : UIButton(name, "" , position, scale, isOnScreen, containText) {
+        UIButtonEmpty(const std::string& name, const glm::vec3 position, const glm::vec3 scale, bool isOnScreen, bool containText, const std::string& fontPath)
+            : UIButton(name, "" , position, scale, isOnScreen, containText, fontPath) {
 
 
         }

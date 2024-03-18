@@ -9,17 +9,17 @@ class UIButton : public UIElement {
 
 	public:
         
-        UIButton(const std::string& name, const std::string& texturePath, const glm::vec3 position, const glm::vec3 scale, bool isOnScreen, bool containText)
+        UIButton(const std::string& name, const std::string& texturePath, const glm::vec3 position, const glm::vec3 scale, bool isOnScreen, bool containText, const std::string& fontPath)
             : UIElement(name, texturePath, position, scale, isOnScreen) {
 
             isClickable = true;
 
-            // Initialize the text object with an empty content
             if (containText) {
+                buttonTextObj = new Text("ButtonText", "Placeholder", fontPath, true);
                 buttonTextObj->SetPosition(position);
             }
 
-            containsText = containText;
+            containsText = containText; 
            
         }
 
@@ -75,22 +75,22 @@ class UIButton : public UIElement {
 
         }
 
-        virtual void setButtonText(const std::string& buttonText) {
+        void setButtonText(const std::string& buttonText) {
             buttonTextObj->SetContent(buttonText);
         }
 
-        virtual void SetTextSize(float scale) {
+        void SetTextSize(float scale) {
             buttonTextObj->SetScale(scale);
         }
 
-        virtual void setTextPosition(glm::vec3 position) {
+        void setTextPosition(glm::vec3 position) {
             buttonTextObj->SetPosition(position);
         }
 
 
 
     private:
-        Text* buttonTextObj = new Text("ButtonText", "Placeholder", "Assets/Fonts/ESA-m.ttf", true);
+        Text* buttonTextObj;
         bool containsText = true;
         bool isClickable;
         glm::vec2 mousePos;

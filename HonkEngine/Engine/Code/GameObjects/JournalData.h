@@ -15,7 +15,6 @@ struct textClue {
 };
 
 
-
 struct MainPageData {
 
 	Spy player_Spy;
@@ -68,6 +67,8 @@ class JournalData {
 		void SetLastVisit(Spy cabin, Location location) {
 			allCabinData[cabin].lastVisit = location;
 		}
+
+		//MAIN PAGE EVIDENCE FUNCTIONS
 
 		void incrementEvidence() {
 
