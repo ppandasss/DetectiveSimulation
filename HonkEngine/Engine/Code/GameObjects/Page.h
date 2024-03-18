@@ -22,7 +22,6 @@ public:
 	Page() : GameObject("page") {}
 
 
-
 	virtual void Render() override
 	{
 

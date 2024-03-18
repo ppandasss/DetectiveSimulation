@@ -113,6 +113,8 @@ class JournalData {
 
 		std::string mainPageEvidence[4] = { "Evidence 1","Evidence 2", "Evidence 3", "Evidence 4" };
 
+		
+
 
 };
 

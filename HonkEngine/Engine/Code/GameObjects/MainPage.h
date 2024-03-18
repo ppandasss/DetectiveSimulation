@@ -174,28 +174,34 @@ public:
 
 	void setSpy1() {
 		JournalData::GetInstance()->SetPlayerSpyChoice(SPY1);
-		RedCircle->SetPosition(glm::vec3(1.15f, 1.55f, 0.0f));
 
-		//if (!RedCircle->getActiveStatus()) { RedCircle->setActiveStatus(true); }
+		if (!RedCircle->getActiveStatus()) {RedCircle->setActiveStatus(true);}
+		
+		RedCircle->SetPosition(glm::vec3(1.15f, 1.55f, 0.0f));
 	};
 
 	void setSpy21() {
 		JournalData::GetInstance()->SetPlayerSpyChoice(SPY21);
+		if (!RedCircle->getActiveStatus()) { RedCircle->setActiveStatus(true); }
 		RedCircle->SetPosition(glm::vec3(2.65f, 1.55f, 0.0f));
+		
 	};
 
 	void setSpy22() {
 		JournalData::GetInstance()->SetPlayerSpyChoice(SPY22);
+		if (!RedCircle->getActiveStatus()) { RedCircle->setActiveStatus(true); }
 		RedCircle->SetPosition(glm::vec3(4.15f, 1.55f, 0.0f));
 	};
 
 	void setSpy3() {
 		JournalData::GetInstance()->SetPlayerSpyChoice(SPY3);
+		if (!RedCircle->getActiveStatus()) { RedCircle->setActiveStatus(true); }
 		RedCircle->SetPosition(glm::vec3(1.15f, 0.25f, 0.0f));
 	};
 
 	void setSpy4() {
 		JournalData::GetInstance()->SetPlayerSpyChoice(SPY4);
+		if (!RedCircle->getActiveStatus()) { RedCircle->setActiveStatus(true); }
 		RedCircle->SetPosition(glm::vec3(2.65f, 0.25f, 0.0f));
 	};
 
@@ -203,24 +209,28 @@ public:
 
 	void setLocationTownSquare() {
 		JournalData::GetInstance()->SetPlayerBombLocation(TOWNSQUARE);
+		if (!RedUnderline->getActiveStatus()) { RedUnderline->setActiveStatus(true); }
 		RedUnderline->SetPosition(glm::vec3(0.8f, -2.45f, 0.0f));
 		
 	};
 
 	void setLocationHolyChurch() {
 		JournalData::GetInstance()->SetPlayerBombLocation(HOLYCHURCH);
+		if (!RedUnderline->getActiveStatus()) { RedUnderline->setActiveStatus(true); }
 		RedUnderline->SetPosition(glm::vec3(2.9f, -2.45f, 0.0f));
 		
 	};
 
 	void setLocationCouncil() {
 		JournalData::GetInstance()->SetPlayerBombLocation(COUNCIL);
+		if (!RedUnderline->getActiveStatus()) { RedUnderline->setActiveStatus(true); }
 		RedUnderline->SetPosition(glm::vec3(0.8f, -2.95f, 0.0f));
 		
 	};
 
 	void setLocationSupremeCourt() {
 		JournalData::GetInstance()->SetPlayerBombLocation(SUPREMECOURT);
+		if (!RedUnderline->getActiveStatus()) { RedUnderline->setActiveStatus(true); }
 		RedUnderline->SetPosition(glm::vec3(2.9f, -2.95f, 0.0f));
 		
 	};
@@ -239,6 +249,17 @@ public:
 	virtual void Update(float dt, long frame) override {
 
 		Page::Update(dt, frame);
+
+		MainPageData main = JournalData::GetInstance()->GetMainPageData();
+
+		if (main.player_Spy == SPY_EMPTY) {
+			RedCircle->setActiveStatus(false);
+		}	
+
+		if (main.player_BombLocation == LOCATION_EMPTY) {
+			RedUnderline->setActiveStatus(false);
+		}
+		
 
 	}
 
