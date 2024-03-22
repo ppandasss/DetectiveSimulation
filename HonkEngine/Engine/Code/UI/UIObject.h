@@ -33,9 +33,11 @@ public:
 		vertices.push_back(v3);
 		vertices.push_back(v4);
 
+		
 		texture_Id = TextureLoad(texturePath);
 		meshVert = CreateMesh(vertices);
 
+		
 		//std::cout << "RenderObject Created: " << m_name << std::endl;
 
 	}
@@ -61,9 +63,11 @@ public:
 		vertices.push_back(v1);
 		vertices.push_back(v3);
 		vertices.push_back(v4);
+		
 
 		texture_Id = TextureLoad(texturePath);
 		meshVert = CreateMesh(vertices);
+		
 
 		//std::cout << "RenderObject Created: " << m_name << std::endl;
 

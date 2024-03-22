@@ -38,13 +38,13 @@ public:
 		JournalCover->SetScale(glm::vec3(14.36f, 8.24f, 0.0f));
 		JournalCover->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
-		UIButton* Tab1 = new UIButton("Tab1", "Assets/Images/Journal/Bookmark_CaseSummary.png", glm::vec3(6.57f, 2.87f, 0.0f), glm::vec3(2.25f, 0.96f, 0.0f), true);
-		UIButton* Tab2 = new UIButton("Tab2", "Assets/Images/Journal/Bookmark_P1.png", glm::vec3(6.57f, 1.85f, 0.0f), glm::vec3(2.13f, 0.91f, 0.0f), true);
-		UIButton* Tab3 = new UIButton("Tab3", "Assets/Images/Journal/Bookmark_P2.png", glm::vec3(6.55f, 0.92f, 0.0f), glm::vec3(2.13f, 0.91f, 0.0f), true);
-		UIButton* Tab4 = new UIButton("Tab4", "Assets/Images/Journal/Bookmark_P2_2.png", glm::vec3(6.61f, 0.0f, 0.0f), glm::vec3(2.13f, 0.91f, 0.0f), true);
-		UIButton* Tab5 = new UIButton("Tab5", "Assets/Images/Journal/Bookmark_P3.png", glm::vec3(6.55f, -0.93f, 0.0f), glm::vec3(2.13f, 0.91f, 0.0f), true);
-		UIButton* Tab6 = new UIButton("Tab6", "Assets/Images/Journal/Bookmark_P4.png", glm::vec3(6.55f, -1.85f, 0.0f), glm::vec3(2.13f, 0.91f, 0.0f), true);
-		UIButton* Tab7 = new UIButton("Tab6", "Assets/Images/Journal/Bookmark_TeaGuide.png", glm::vec3(6.49f, -2.8f, 0.0f), glm::vec3(2.13f, 0.91f, 0.0f), true);
+		UIButton* Tab1 = new UIButton("Tab1", "Assets/Images/Journal/Bookmark_CaseSummary.png", glm::vec3(6.57f, 2.87f, 0.0f), glm::vec3(2.25f, 0.96f, 0.0f), true, false, "");
+		UIButton* Tab2 = new UIButton("Tab2", "Assets/Images/Journal/Bookmark_P1.png", glm::vec3(6.57f, 1.85f, 0.0f), glm::vec3(2.13f, 0.91f, 0.0f), true, false, "");
+		UIButton* Tab3 = new UIButton("Tab3", "Assets/Images/Journal/Bookmark_P2.png", glm::vec3(6.55f, 0.92f, 0.0f), glm::vec3(2.13f, 0.91f, 0.0f), true, false, "");
+		UIButton* Tab4 = new UIButton("Tab4", "Assets/Images/Journal/Bookmark_P2_2.png", glm::vec3(6.61f, 0.0f, 0.0f), glm::vec3(2.13f, 0.91f, 0.0f), true, false, "");
+		UIButton* Tab5 = new UIButton("Tab5", "Assets/Images/Journal/Bookmark_P3.png", glm::vec3(6.55f, -0.93f, 0.0f), glm::vec3(2.13f, 0.91f, 0.0f), true, false, "");
+		UIButton* Tab6 = new UIButton("Tab6", "Assets/Images/Journal/Bookmark_P4.png", glm::vec3(6.55f, -1.85f, 0.0f), glm::vec3(2.13f, 0.91f, 0.0f), true, false, "");
+		UIButton* Tab7 = new UIButton("Tab6", "Assets/Images/Journal/Bookmark_TeaGuide.png", glm::vec3(6.49f, -2.8f, 0.0f), glm::vec3(2.13f, 0.91f, 0.0f), true, false, "");
 
 		Tab1->SetOnClickAction([this]() { setActiveTab1(); });
 		Tab2->SetOnClickAction([this]() { setActiveTab2(); });
@@ -108,9 +108,7 @@ public:
 
 			object->setActiveStatus(true);
 
-
 		}
-
 
 		//std::cout << "OPEN BOOKK" << std::endl;
 	}
@@ -120,7 +118,7 @@ public:
 		//make all gameobjects in book inactive
 
 		openStatus = false;
-		activePage = MAIN;
+		activePage = currentPage::MAIN;
 
 		for (auto& object : m_gameObjects) {
 
@@ -217,13 +215,13 @@ public:
 
 	//-----------------------BOOK UI BUTTON FUNCTIONS-----------------------------------
 
-	void setActiveTab1() { if (activePage != MAIN) { activePage = MAIN; } };
-	void setActiveTab2() { if (activePage != CABIN1) { activePage = CABIN1; } };
-	void setActiveTab3() { if (activePage != CABIN2) { activePage = CABIN2; } };
-	void setActiveTab4() { if (activePage != CABIN3) { activePage = CABIN3; } };
-	void setActiveTab5() { if (activePage != CABIN4) { activePage = CABIN4; } };
-	void setActiveTab6() { if (activePage != CABIN5) { activePage = CABIN5; } };
-	void setActiveTab7() { if (activePage != CABIN5) { activePage = FOODGUIDE; } }
+	void setActiveTab1() { if (activePage != MAIN) { activePage = currentPage::MAIN; } };
+	void setActiveTab2() { if (activePage != CABIN1) { activePage = currentPage::CABIN1; } };
+	void setActiveTab3() { if (activePage != CABIN2) { activePage = currentPage::CABIN2; } };
+	void setActiveTab4() { if (activePage != CABIN3) { activePage = currentPage::CABIN3; } };
+	void setActiveTab5() { if (activePage != CABIN4) { activePage = currentPage::CABIN4; } };
+	void setActiveTab6() { if (activePage != CABIN5) { activePage = currentPage::CABIN5; } };
+	void setActiveTab7() { if (activePage != CABIN5) { activePage = currentPage::FOODGUIDE; } }
 
 
 protected:
@@ -231,7 +229,7 @@ protected:
 	std::vector<GameObject*> m_gameObjects;
 	std::vector<Page*> allPages;
 
-	currentPage activePage = MAIN;
+	currentPage activePage = currentPage::MAIN;
 
 	bool openStatus = false; //true - open, false - closed
 
