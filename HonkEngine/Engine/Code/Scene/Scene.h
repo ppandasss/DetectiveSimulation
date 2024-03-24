@@ -13,7 +13,7 @@ public:
 		{
 			if (object) {
 				object->Clear();
-				//delete object;
+				delete object;
 			}
 		}
 	}

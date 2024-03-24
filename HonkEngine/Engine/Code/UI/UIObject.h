@@ -97,6 +97,7 @@ public:
 		sMat = glm::scale(glm::mat4(1.0f), glm::vec3(m_scale.x, m_scale.y, 1.0f));
 
 		model = tMat * rMat * sMat;
+
 	}
 
 	bool IsPointInside(float x, float y) const
@@ -111,14 +112,9 @@ public:
 
 	virtual void Render() override
 	{
-		//std::cout << "RenderObjectRender: " << m_name << std::endl;
-
 		
-
-		//std::cout << "Rendering GameObject: " << m_name << std::endl;
 		renderer.SetRenderMode(CDT_TEXTURE, 1.0f);
 		renderer.SetTexture(texture_Id, 0.0f, 0.0f);
-		//std::cout << "Render::TextureID " << texture_Id << std::endl;	
 		renderer.SetTransform(model);
 		renderer.DrawMesh(meshVert);
 
@@ -128,6 +124,10 @@ public:
 	{
 		renderer.UnloadMesh(meshVert);
 		renderer.TextureUnload(texture_Id);
+	}
+
+	const glm::mat4& GetModelMatrix() const {
+		return model;
 	}
 
 

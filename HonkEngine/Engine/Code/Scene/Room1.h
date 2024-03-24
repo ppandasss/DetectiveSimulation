@@ -12,6 +12,8 @@
 #include "../Effects/ParallaxManager.h"
 #include <memory>
 
+using namespace std;
+
 class Room1 : public Scene {
 public:
 
@@ -37,14 +39,24 @@ public:
         UIElement* letter = new UINormal("Letter", "Assets/Images/Martha/Inspection_Letter.png", glm::vec3(-2.15f, -5.9f, 0.0f), glm::vec3(1.13f * sm * 1.2f, 0.73f * sm * 1.2f, 0.0f), true);
 
         //UIs
-        dialogueManager = std::make_unique<DialogueManager>("DialogueManagerName", "Assets/Fonts/OverpassMono.ttf", "Assets/Dialogue/Dialogue_Martha_OrderPhase.xml");
-        UIElement* dialogueBox = new UINormal("DialogueBox", "Assets/Images/UI/DialogueBox.png", glm::vec3(0.0f, 3.6f, 0.0f), glm::vec3(10.96f, 2.05f, 0.0f), true);
+        UIButton* dialogueBox = new UIButton("DialogueBox", "Assets/Images/UI/DialogueBox.png",
+            glm::vec3(0.0f, 3.6f, 0.0f), glm::vec3(10.96f, 2.05f, 0.0f),
+            true, true, "Assets/Fonts/OverpassMono.ttf");
         UIElement* marthaIcon = new UINormal("MarthaIcon", "Assets/Images/UI/Speaker_icon_Martha.png", glm::vec3(4.18f, 3.6f, 0.0f), glm::vec3(2.19f, 1.57f, 0.0f), true);
+
         UIElement* waiterIcon = new UINormal("WaiterIcon", "Assets/Images/UI/Speaker_icon_Waiter.png", glm::vec3(4.18f, 3.53f, 0.0f), glm::vec3(1.23f, 1.4f, 0.0f), true);
+
+        dialogueManager =make_unique<DialogueManager>("DialogueManagerName", dialogueBox,
+             "Assets/Dialogue/Dialogue_Martha_OrderPhase.xml");
+        dialogueManager->AddSpeakerIcon("M", marthaIcon);
+        dialogueManager->AddSpeakerIcon("W", waiterIcon);
+        
 
         //setDialogueUI
         dialogueManager->SetDialoguePosition(-0.5f, 3.70f);
         dialogueManager->SetDialogueScale(0.55f);
+        dialogueManager->SetDialogueBoxPosition(glm::vec3(0.0f, 3.6f, 0.0f));
+        dialogueManager->SetDialogueBoxScale(glm::vec3(10.96f, 2.05f, 0.0f));
 
         //Push GamePbjects
         m_gameObjects.push_back(background1);
@@ -57,11 +69,11 @@ public:
         m_gameObjects.push_back(cane);
         m_gameObjects.push_back(letter);
         m_gameObjects.push_back(dialogueBox);
-        m_gameObjects.push_back(marthaIcon);
-        //m_gameObjects.push_back(waiterIcon);
+        m_gameObjects.push_back(marthaIcon);  
+        m_gameObjects.push_back(waiterIcon);
 
         //add Parallax Effects
-        parallaxManager = std::make_unique<ParallaxManager>();
+        parallaxManager = make_unique<ParallaxManager>();
 
         float defaultLayer = 0.8f;
         float objectLayerOne = 0.83f;
@@ -97,6 +109,7 @@ public:
             dialogueManager->PlayNextDialogue();
         }
 
+ 
     }
 
 
@@ -112,7 +125,7 @@ public:
 private:
     Input& input = Application::GetInput();
     Camera& camera = Application::GetCamera();
-    std::unique_ptr<DialogueManager> dialogueManager;
-    std::unique_ptr<ParallaxManager> parallaxManager;
+   unique_ptr<DialogueManager> dialogueManager;
+   unique_ptr<ParallaxManager> parallaxManager;
 
 };

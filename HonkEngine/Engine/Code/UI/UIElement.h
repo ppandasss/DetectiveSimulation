@@ -21,10 +21,21 @@ public:
 
     }
 
+
+
     virtual void Update(float dt, long frame) override {
 
-        UIObject::Update(dt, frame);
+        if (IsActive()) {
+            UIObject::Update(dt, frame);
+        }
+
     }
+
+    virtual void Render() override {
+
+		UIObject::Render();
+
+	}
 
     virtual void OnClick() = 0;
 
@@ -34,6 +45,14 @@ public:
 
     void SetClickable(bool clickable) {
         isClickable = clickable;
+    }
+
+    void SetActive(bool active) {
+        this->active = active;
+    }
+
+    bool IsActive() const {
+        return active;
     }
 
     std::string getButtonName() {
@@ -46,6 +65,7 @@ public:
     //virtual void Clear() override {}
 
 private:
+    bool active = true;
     std::string button_name;
     bool isClickable;
     glm::vec3 offset;
