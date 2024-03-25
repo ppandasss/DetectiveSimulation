@@ -25,8 +25,8 @@ public:
         backgroundSpeed = newSpeed;
     }
 
-    void Update() {
-        UpdateBackgroundPositions();
+    void Update(float dt, long frame) {
+        UpdateBackgroundPositions(dt);
         UpdateLayeredObjects();
     }
 
@@ -35,11 +35,11 @@ private:
     std::vector<GameObject*> backgroundObjects;
     float backgroundSpeed;
 
-    void UpdateBackgroundPositions() {
+    void UpdateBackgroundPositions(float dt) {
         float backgroundWidth = 76.6f; // Adjust this to your background width
         for (GameObject* background : backgroundObjects) {
             glm::vec3 pos = background->GetPosition();
-            pos.x -= backgroundSpeed;
+            pos.x -= backgroundSpeed * dt;
             if (pos.x <= -backgroundWidth) {
                 pos.x += 2 * backgroundWidth; // Adjust for the number of background objects
             }

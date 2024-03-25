@@ -42,21 +42,31 @@ public:
         UIButton* dialogueBox = new UIButton("DialogueBox", "Assets/Images/UI/DialogueBox.png",
             glm::vec3(0.0f, 3.6f, 0.0f), glm::vec3(10.96f, 2.05f, 0.0f),
             true, true, "Assets/Fonts/OverpassMono.ttf");
+
+        UIButton* dialogueChoice1 = new UIButton("DialogueChoiceBox1", "Assets/Images/UI/DialogueChoiceBox.png",
+            glm::vec3(0.0f, 1.6f, 0.0f), glm::vec3(10.96f, 2.05f, 0.0f),
+            true, true, "Assets/Fonts/OverpassMono.ttf");
+        UIButton* dialogueChoice2 = new UIButton("DialogueChoiceBox2", "Assets/Images/UI/DialogueChoiceBox.png",
+            glm::vec3(0.0f, -1.6f, 0.0f), glm::vec3(10.96f, 2.05f, 0.0f),
+            true, true, "Assets/Fonts/OverpassMono.ttf");
+
         UIElement* marthaIcon = new UINormal("MarthaIcon", "Assets/Images/UI/Speaker_icon_Martha.png", glm::vec3(4.18f, 3.6f, 0.0f), glm::vec3(2.19f, 1.57f, 0.0f), true);
 
         UIElement* waiterIcon = new UINormal("WaiterIcon", "Assets/Images/UI/Speaker_icon_Waiter.png", glm::vec3(4.18f, 3.53f, 0.0f), glm::vec3(1.23f, 1.4f, 0.0f), true);
 
         dialogueManager =make_unique<DialogueManager>("DialogueManagerName", dialogueBox,
              "Assets/Dialogue/Dialogue_Martha_OrderPhase.xml");
+        //Add SpeakerIcon
         dialogueManager->AddSpeakerIcon("M", marthaIcon);
         dialogueManager->AddSpeakerIcon("W", waiterIcon);
+        //Add ChoiceButton
+        dialogueManager->AddChoiceButton(dialogueChoice1);
+        dialogueManager->AddChoiceButton(dialogueChoice2);
         
 
         //setDialogueUI
         dialogueManager->SetDialoguePosition(-0.5f, 3.70f);
         dialogueManager->SetDialogueScale(0.55f);
-        dialogueManager->SetDialogueBoxPosition(glm::vec3(0.0f, 3.6f, 0.0f));
-        dialogueManager->SetDialogueBoxScale(glm::vec3(10.96f, 2.05f, 0.0f));
 
         //Push GamePbjects
         m_gameObjects.push_back(background1);
@@ -69,6 +79,8 @@ public:
         m_gameObjects.push_back(cane);
         m_gameObjects.push_back(letter);
         m_gameObjects.push_back(dialogueBox);
+        m_gameObjects.push_back(dialogueChoice1);
+        m_gameObjects.push_back(dialogueChoice2);
         m_gameObjects.push_back(marthaIcon);  
         m_gameObjects.push_back(waiterIcon);
 
@@ -88,7 +100,7 @@ public:
         parallaxManager->AddObjectToLayer(martha, objectLayerOne); // Layer 2
 
         //Scrolling effect for Background
-        parallaxManager->SetBackgroundSpeed(0.02f);
+        parallaxManager->SetBackgroundSpeed(2.0f);
         parallaxManager->AddBackgroundObject(background1);
         parallaxManager->AddBackgroundObject(background2);
 
@@ -99,7 +111,7 @@ public:
 
         Scene::Update(dt, frame);
         dialogueManager->Update(dt, frame);
-        parallaxManager->Update();
+        parallaxManager->Update(dt,frame);
 
         if (input.Get().GetKeyDown(GLFW_KEY_E)) {
             Application::Get().SetScene("Hallway");

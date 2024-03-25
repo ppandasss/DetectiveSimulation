@@ -56,15 +56,18 @@ class UIButton : public UIElement {
 
             UIElement::Update(dt, frame);
 
-            if (containsText) {
-                buttonTextObj->Update(dt, frame);
-            }
+            if (getActiveStatus()) {
 
-            mousePosWorld = Application::Get().MousetoWorld();
+                if (containsText) {
+                    buttonTextObj->Update(dt, frame);
+                }
 
-            if (IsClickable() && IsPointInside(mousePosWorld.x, mousePosWorld.y)) {
-                if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1)) {
-                    OnClick();
+                mousePosWorld = Application::Get().MousetoWorld();
+
+                if (IsClickable() && IsPointInside(mousePosWorld.x, mousePosWorld.y)) {
+                    if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1)) {
+                        OnClick();
+                    }
                 }
             }
 
@@ -116,6 +119,9 @@ class UIButton : public UIElement {
         void SetTextColor(glm::vec3 colour) {
 			buttonTextObj->SetColor(colour);
 		}
+
+        //void setActiveStatus(bool status) override { active = status; }
+
 
 
 

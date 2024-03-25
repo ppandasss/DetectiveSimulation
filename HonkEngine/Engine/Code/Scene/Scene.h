@@ -42,7 +42,11 @@ public:
 
 
 		for (auto& object : m_gameObjects)
-			object->Render();
+			if (object->getActiveStatus())
+			{
+				object->Render();
+			}
+			
 	}
 
 	void AddGameObject(GameObject* newGameObject)
