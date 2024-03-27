@@ -19,7 +19,8 @@ struct Dialogue {
     string id;
     string speakerName;
     vector<string> text;
-    vector<DialogueChoice> choices;  // Add this line
+    vector<DialogueChoice> choices;
+    string next; 
 };
 
 
@@ -68,6 +69,12 @@ public:
                     }
                 }
 
+                // Read next attribute
+                const char* nextAttr = element->Attribute("next");
+                if (nextAttr) {
+                    dialogue.next = nextAttr;
+                }
+
                 dialogues.push_back(dialogue);
             }
         }
@@ -96,12 +103,6 @@ public:
             }
         }
     }
-
-
-
-
-
-
 
     void AddChoiceButton(UIButton* choiceButton) {
         int choiceIndex = choiceButtons.size(); // Get the index for the new choice button
@@ -143,14 +144,12 @@ public:
    }
 
    void HideChoices() {
-       std::cout << "Hiding choices for dialogue " << dialogues[currentDialogueIndex].id << std::endl;
+       //std::cout << "Hiding choices for dialogue " << dialogues[currentDialogueIndex].id << std::endl;
        for (size_t i = 0; i < choiceButtons.size(); ++i) {
            choiceButtons[i]->setActiveStatus(false); // Set the button to inactive
-           std::cout << "Setting choice button " << i << " to inactive." << std::endl;
+          //std::cout << "Setting choice button " << i << " to inactive." << std::endl;
        }
    }
-
-
 
     void Update(float dt, long frame) {
 		
@@ -169,7 +168,17 @@ public:
         
     }
 
-
+    bool IsConsequenceDialogue(size_t index) {
+        // A dialogue is considered a consequence if it's the 'next' dialogue of any choice in the previous dialogues
+        for (size_t i = 0; i < index; i++) {
+            for (const auto& choice : dialogues[i].choices) {
+                if (choice.nextDialogueId == dialogues[index].id) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
     void PlayNextDialogue() {
         // Check if the current dialogue is a question and if a choice has been made
@@ -180,19 +189,31 @@ public:
 
         // Advance to the next line or dialogue
         if (currentLineIndex + 1 < dialogues[currentDialogueIndex].text.size()) {
-            // Move to the next line in the current dialogue
             currentLineIndex++;
         }
         else {
-            // Move to the next dialogue only if it's the correct one based on the choice made
+            // Find the next dialogue based on the 'next' attribute or skip to the next non-consequence dialogue
             size_t nextDialogueIndex = currentDialogueIndex + 1;
-            if (nextDialogueIndex < dialogues.size() && (!IsCurrentDialogueQuestion() || choiceMade)) {
-                currentDialogueIndex = nextDialogueIndex;
-                currentLineIndex = 0;
+            if (!dialogues[currentDialogueIndex].next.empty()) {
+                auto it = std::find_if(dialogues.begin(), dialogues.end(), [&](const Dialogue& d) {
+                    return d.id == dialogues[currentDialogueIndex].next;
+                    });
+                if (it != dialogues.end()) {
+                    nextDialogueIndex = std::distance(dialogues.begin(), it);
+                }
+            }
+            else {
+                while (nextDialogueIndex < dialogues.size() && IsConsequenceDialogue(nextDialogueIndex)) {
+                    nextDialogueIndex++;
+                }
             }
 
-            // Check if we've reached the end of the dialogues
-            if (currentDialogueIndex >= dialogues.size()) {
+            if (nextDialogueIndex < dialogues.size()) {
+                currentDialogueIndex = nextDialogueIndex;
+                currentLineIndex = 0;
+                choiceMade = false;
+            }
+            else {
                 std::cout << "No more dialogues available." << std::endl;
                 return;
             }
@@ -200,16 +221,12 @@ public:
 
         // Update the dialogue button text
         if (currentDialogueIndex < dialogues.size() && currentLineIndex < dialogues[currentDialogueIndex].text.size()) {
-            std::cout << "Playing dialogue: " << dialogues[currentDialogueIndex].id << std::endl; // Add this line to print the current dialogue ID
+            std::cout << "Playing dialogue: " << dialogues[currentDialogueIndex].id << std::endl;
             currentDialogueButton->SetButtonText(dialogues[currentDialogueIndex].text[currentLineIndex]);
 
             // Display choices if the current dialogue is a question
             if (IsCurrentDialogueQuestion()) {
                 DisplayChoices();
-            }
-            else {
-                // If it's not a question dialogue, reset choiceMade for the next dialogue
-                choiceMade = false;
             }
         }
         else {

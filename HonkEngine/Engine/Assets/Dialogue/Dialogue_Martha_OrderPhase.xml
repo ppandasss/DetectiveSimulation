@@ -23,26 +23,26 @@
       <Choice2 next="1WD03">It has been five years.</Choice2>
     </Choices>
   </Dialogue>
-  <Dialogue id="1WD02">
+  <Dialogue id="1WD02" next="1MD02">
     <Speaker name="Waiter">
       <line1>This is my very first trip.</line1>
     </Speaker>
     <Choices/>
   </Dialogue>
-  <Dialogue id="1WD03">
+  <Dialogue id="1WD03" next="1MD03">
     <Speaker name="Waiter">
       <line1>It has been my five years aboard  this express.</line1>
     </Speaker>
     <Choices/>
   </Dialogue>
-  <Dialogue id="1MD02">
+  <Dialogue id="1MD02" next ="1WD04">
     <Speaker name="Martha_Happy">
       <line1>Such a splendid job for your first  time! Impressive-</line1>
       <line2>you seem like a pro already.</line2>
     </Speaker>
     <Choices/>
   </Dialogue>
-  <Dialogue id="1MD03">
+  <Dialogue id="1MD03" next ="1WD04">
     <Speaker name="Martha_Happy">
       <line1>Absolutely no surprise that  you're excelling at your job.</line1>
     </Speaker>
