@@ -26,13 +26,14 @@ struct Dialogue {
 
 class DialogueManager  {
 public:
-    DialogueManager(const string& name, UIButton* dialogueBox, const string& filePath)
-        : currentDialogueIndex(0), currentLineIndex(0), currentDialogueButton(dialogueBox), choiceMade(false) {
+    DialogueManager(const string& name, UIButton* dialogueBox, const string& filePath, const string& defaultSprite)
+        : currentDialogueIndex(0), currentLineIndex(0), currentDialogueButton(dialogueBox), choiceMade(false), defaultSpriteName(defaultSprite) {
         LoadDialogues(filePath);
         if (!dialogues.empty() && !dialogues[0].text.empty()) {
             currentDialogueButton->SetButtonText(dialogues[0].text[0]);
             currentDialogueButton->SetTextSize(0.55f); // Set text size if needed
         }
+       
     }
 
     ~DialogueManager() {
@@ -83,6 +84,17 @@ public:
 
     void AddSpeakerIcon(const string& speakerCode, UIElement* icon) {
         speakerIcons[speakerCode] = icon;
+    }
+
+    void AddSpeakerSprite(const string& speakerCode, UIElement* sprite) {
+        speakerSprites[speakerCode] = sprite;
+        // Activate the sprite if its name matches the default sprite name
+        if (speakerCode == defaultSpriteName) {
+            speakerSprites[speakerCode]->setActiveStatus(true);
+        }
+        else {
+            speakerSprites[speakerCode]->setActiveStatus(false);
+        }
     }
 
     void HandleChoice(int choiceIndex) {
@@ -152,21 +164,23 @@ public:
    }
 
     void Update(float dt, long frame) {
-		
+        UpdateSpeakerSprite();
 	}
 
     void Render() {
         if (currentDialogueButton) {
             currentDialogueButton->Render();
-        }
+        } 
 
+        // Get the speaker code for the current dialogue
         string speakerCode = GetSpeakerCodeFromId(dialogues[currentDialogueIndex].id);
+
+        // Render speaker icons
         if (speakerIcons.find(speakerCode) != speakerIcons.end()) {
             speakerIcons[speakerCode]->Render();
         }
-
-        
     }
+
 
     bool IsConsequenceDialogue(size_t index) {
         // A dialogue is considered a consequence if it's the 'next' dialogue of any choice in the previous dialogues
@@ -270,9 +284,33 @@ public:
 
 
    private:
+   
+
+       void UpdateSpeakerSprite() {
+           string speakerName = dialogues[currentDialogueIndex].speakerName;
+           string speakerCode = GetSpeakerCodeFromId(dialogues[currentDialogueIndex].id);
+
+           // If the speaker code is "W", keep the previous sprite active
+           if (speakerCode == "W") {
+               return;
+           }
+
+           // Deactivate all sprites
+           for (auto& pair : speakerSprites) {
+               pair.second->setActiveStatus(false);
+           }
+
+           // Activate the sprite for the current speaker
+           if (speakerSprites.find(speakerName) != speakerSprites.end()) {
+               speakerSprites[speakerName]->setActiveStatus(true);
+           }
+       }
+
+       string defaultSpriteName;
        vector<Dialogue> dialogues;
        UIButton* currentDialogueButton;
        map<string, UIElement*> speakerIcons;
+       map<string, UIElement*> speakerSprites;
        vector<UIButton*> choiceButtons;
        bool choiceMade;
        size_t currentDialogueIndex;

@@ -31,7 +31,6 @@ public:
 
         //Objects     
         UIElement* room = new UINormal("cabin1", "Assets/Images/Martha_Cabin.png", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(19.60f * sm, 10.55f * sm, 0.0f), true);
-        UIElement* martha = new UINormal("Martha", "Assets/Images/Martha/Martha_Normal.png", glm::vec3(4.95f, -2.45f, 0.0f), glm::vec3(3.81f * sm, 6.53f * sm, 0.0f), true);
         UIElement* lamp = new UINormal("Lamp", "Assets/Images/Martha/Lamp.png", glm::vec3(-1.3f, -0.3f, 0.0f), glm::vec3(1.62f * sm, 2.25f * sm, 0.0f), true);
         UIElement* hat = new UINormal("Hat", "Assets/Images/Martha/Hat.png", glm::vec3(-1.1f, -1.22f, 0.0f), glm::vec3(3.12f * sm, 0.92f * sm, 0.0f), true);
         UIElement* bag = new UINormal("Bag", "Assets/Images/Martha/Bag.png", glm::vec3(-0.25f, -5.25f, 0.0f), glm::vec3(2.59f * sm * 1.2f, 1.64f * sm * 1.2f, 0.0f), true);
@@ -39,23 +38,30 @@ public:
         UIElement* letter = new UINormal("Letter", "Assets/Images/Martha/Inspection_Letter.png", glm::vec3(-2.15f, -5.9f, 0.0f), glm::vec3(1.13f * sm * 1.2f, 0.73f * sm * 1.2f, 0.0f), true);
 
         //UIs
+        //Speaker Sprite emotion
+        UIElement* marthaNormal = new UINormal("Martha_Normal", "Assets/Images/Martha/Martha_Normal.png", glm::vec3(4.95f, -2.45f, 0.0f), glm::vec3(3.81f * sm, 6.53f * sm, 0.0f), true);
+        UIElement* marthaHappy = new UINormal("Martha_Happy", "Assets/Images/Martha/Martha_Happy.png", glm::vec3(4.95f, -2.45f, 0.0f), glm::vec3(3.81f * sm, 6.53f * sm, 0.0f), true);
+        //dialogue Box
         UIButton* dialogueBox = new UIButton("DialogueBox", "Assets/Images/UI/DialogueBox.png",
             glm::vec3(0.0f, 3.6f, 0.0f), glm::vec3(10.96f, 2.05f, 0.0f),
             true, true, "Assets/Fonts/OverpassMono.ttf");
-
+        //Choices
         UIButton* dialogueChoice1 = new UIButton("DialogueChoiceBox1", "Assets/Images/UI/DialogueChoiceBox.png",
             glm::vec3(0.0f, 1.6f, 0.0f), glm::vec3(10.96f, 2.05f, 0.0f),
             true, true, "Assets/Fonts/OverpassMono.ttf");
         UIButton* dialogueChoice2 = new UIButton("DialogueChoiceBox2", "Assets/Images/UI/DialogueChoiceBox.png",
             glm::vec3(0.0f, -1.6f, 0.0f), glm::vec3(10.96f, 2.05f, 0.0f),
             true, true, "Assets/Fonts/OverpassMono.ttf");
-
+        //Speak Icons
         UIElement* marthaIcon = new UINormal("MarthaIcon", "Assets/Images/UI/Speaker_icon_Martha.png", glm::vec3(4.18f, 3.6f, 0.0f), glm::vec3(2.19f, 1.57f, 0.0f), true);
-
         UIElement* waiterIcon = new UINormal("WaiterIcon", "Assets/Images/UI/Speaker_icon_Waiter.png", glm::vec3(4.18f, 3.53f, 0.0f), glm::vec3(1.23f, 1.4f, 0.0f), true);
 
-        dialogueManager =make_unique<DialogueManager>("DialogueManagerName", dialogueBox,
-             "Assets/Dialogue/Dialogue_Martha_OrderPhase.xml");
+        dialogueManager =make_unique<DialogueManager>("MarthaDialogue", dialogueBox,
+             "Assets/Dialogue/Dialogue_Martha_OrderPhase.xml", "Martha_Normal");
+
+        //Add SpeakSprite
+        dialogueManager->AddSpeakerSprite("Martha_Normal", marthaNormal);
+        dialogueManager->AddSpeakerSprite("Martha_Happy", marthaHappy);
         //Add SpeakerIcon
         dialogueManager->AddSpeakerIcon("M", marthaIcon);
         dialogueManager->AddSpeakerIcon("W", waiterIcon);
@@ -72,7 +78,8 @@ public:
         m_gameObjects.push_back(background1);
         m_gameObjects.push_back(background2);
         m_gameObjects.push_back(room);
-        m_gameObjects.push_back(martha);
+        m_gameObjects.push_back(marthaNormal);
+        m_gameObjects.push_back(marthaHappy);
         m_gameObjects.push_back(lamp);
         m_gameObjects.push_back(hat);
         m_gameObjects.push_back(bag);
@@ -97,7 +104,8 @@ public:
         parallaxManager->AddObjectToLayer(bag, objectLayerOne);    // Layer 2
         parallaxManager->AddObjectToLayer(cane, objectLayerOne);   // Layer 2
         parallaxManager->AddObjectToLayer(letter, objectLayerOne); // Layer 2
-        parallaxManager->AddObjectToLayer(martha, objectLayerOne); // Layer 2
+        parallaxManager->AddObjectToLayer(marthaNormal, objectLayerOne); // Layer 2
+        parallaxManager->AddObjectToLayer(marthaHappy, objectLayerOne); // Layer 2
 
         //Scrolling effect for Background
         parallaxManager->SetBackgroundSpeed(2.0f);

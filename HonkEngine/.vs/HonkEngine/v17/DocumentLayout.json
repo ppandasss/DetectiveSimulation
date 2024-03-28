@@ -3,23 +3,20 @@
   "WorkspaceRootPath": "C:\\Capt\\DetectiveSimulation\\HonkEngine\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A82E3B78-84AD-47F6-89A0-E69A91AFB3F9}|Engine\\Engine.vcxproj|C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Assets\\Dialogue\\Dialogue_Martha_OrderPhase.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{A82E3B78-84AD-47F6-89A0-E69A91AFB3F9}|Engine\\Engine.vcxproj|solutionrelative:Engine\\Assets\\Dialogue\\Dialogue_Martha_OrderPhase.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A82E3B78-84AD-47F6-89A0-E69A91AFB3F9}|Engine\\Engine.vcxproj|C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Code\\Dialogue\\DialogueManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A82E3B78-84AD-47F6-89A0-E69A91AFB3F9}|Engine\\Engine.vcxproj|solutionrelative:Engine\\Code\\Dialogue\\DialogueManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A82E3B78-84AD-47F6-89A0-E69A91AFB3F9}|Engine\\Engine.vcxproj|C:\\PROGRAM FILES\\MICROSOFT VISUAL STUDIO\\2022\\COMMUNITY\\VC\\TOOLS\\MSVC\\14.39.33519\\INCLUDE\\VECTOR||{3B902123-F8A7-4915-9F01-361F908088D0}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A82E3B78-84AD-47F6-89A0-E69A91AFB3F9}|Engine\\Engine.vcxproj|C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Code\\UI\\UIButton.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A82E3B78-84AD-47F6-89A0-E69A91AFB3F9}|Engine\\Engine.vcxproj|solutionrelative:Engine\\Code\\UI\\UIButton.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A82E3B78-84AD-47F6-89A0-E69A91AFB3F9}|Engine\\Engine.vcxproj|C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Assets\\Dialogue\\Dialogue_Martha_OrderPhase.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A82E3B78-84AD-47F6-89A0-E69A91AFB3F9}|Engine\\Engine.vcxproj|solutionrelative:Engine\\Assets\\Dialogue\\Dialogue_Martha_OrderPhase.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A82E3B78-84AD-47F6-89A0-E69A91AFB3F9}|Engine\\Engine.vcxproj|C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Code\\Scene\\Room1.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A82E3B78-84AD-47F6-89A0-E69A91AFB3F9}|Engine\\Engine.vcxproj|solutionrelative:Engine\\Code\\Scene\\Room1.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A82E3B78-84AD-47F6-89A0-E69A91AFB3F9}|Engine\\Engine.vcxproj|C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Code\\UI\\UIButton.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A82E3B78-84AD-47F6-89A0-E69A91AFB3F9}|Engine\\Engine.vcxproj|solutionrelative:Engine\\Code\\UI\\UIButton.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A82E3B78-84AD-47F6-89A0-E69A91AFB3F9}|Engine\\Engine.vcxproj|C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Code\\UI\\UINormal.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -92,6 +89,9 @@
     {
       "AbsoluteMoniker": "D:0:0:{A82E3B78-84AD-47F6-89A0-E69A91AFB3F9}|Engine\\Engine.vcxproj|C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Code\\GameObjects\\JournalData.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A82E3B78-84AD-47F6-89A0-E69A91AFB3F9}|Engine\\Engine.vcxproj|solutionrelative:Engine\\Code\\GameObjects\\JournalData.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\vector||{3B902123-F8A7-4915-9F01-361F908088D0}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -101,31 +101,30 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "Room1.h",
               "DocumentMoniker": "C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Code\\Scene\\Room1.h",
               "RelativeDocumentMoniker": "Engine\\Code\\Scene\\Room1.h",
               "ToolTip": "C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Code\\Scene\\Room1.h",
               "RelativeToolTip": "Engine\\Code\\Scene\\Room1.h",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAAAC0AAAAsAAAA",
+              "ViewState": "AQIAACAAAAAAAAAAAAAAADsAAABOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-03-01T13:38:37.312Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "DialogueManager.h",
               "DocumentMoniker": "C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Code\\Dialogue\\DialogueManager.h",
               "RelativeDocumentMoniker": "Engine\\Code\\Dialogue\\DialogueManager.h",
               "ToolTip": "C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Code\\Dialogue\\DialogueManager.h",
               "RelativeToolTip": "Engine\\Code\\Dialogue\\DialogueManager.h",
-              "ViewState": "AQIAAOQAAAAAAAAAAAAAABoBAAAAAAAA",
+              "ViewState": "AQIAAA4BAAAAAAAAAAAAADIBAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-03-01T13:38:37.312Z",
               "IsPinned": true,
@@ -139,25 +138,23 @@
               "RelativeDocumentMoniker": "Engine\\Code\\UI\\UIButton.h",
               "ToolTip": "C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Code\\UI\\UIButton.h",
               "RelativeToolTip": "Engine\\Code\\UI\\UIButton.h",
-              "ViewState": "AQIAAFUAAAAAAAAAAAAQwIgAAAACAAAA",
+              "ViewState": "AQIAAFcAAAAAAAAAAAAAAIgAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-03-02T01:49:48.309Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Dialogue_Martha_OrderPhase.xml",
               "DocumentMoniker": "C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Assets\\Dialogue\\Dialogue_Martha_OrderPhase.xml",
               "RelativeDocumentMoniker": "Engine\\Assets\\Dialogue\\Dialogue_Martha_OrderPhase.xml",
               "ToolTip": "C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Assets\\Dialogue\\Dialogue_Martha_OrderPhase.xml",
               "RelativeToolTip": "Engine\\Assets\\Dialogue\\Dialogue_Martha_OrderPhase.xml",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAwBgAAAANAAAA",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAABwAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003576|",
               "WhenOpened": "2024-03-27T03:59:31.146Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -169,7 +166,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 22,
               "Title": "vector",
               "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\vector",
               "RelativeDocumentMoniker": "..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\vector",
@@ -177,12 +174,11 @@
               "RelativeToolTip": "..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\vector",
               "ViewState": "AQIAAEkHAAAAAAAAAAAIwFUHAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-27T06:15:57.998Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-27T06:15:57.998Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "UINormal.h",
               "DocumentMoniker": "C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Code\\UI\\UINormal.h",
               "RelativeDocumentMoniker": "Engine\\Code\\UI\\UINormal.h",
@@ -194,7 +190,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "Text.h",
               "DocumentMoniker": "C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Code\\Text\\Text.h",
               "RelativeDocumentMoniker": "Engine\\Code\\Text\\Text.h",
@@ -206,7 +202,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
               "Title": "UIElement.h",
               "DocumentMoniker": "C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Code\\UI\\UIElement.h",
               "RelativeDocumentMoniker": "Engine\\Code\\UI\\UIElement.h",
@@ -218,7 +214,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 10,
               "Title": "TextRenderer.cpp",
               "DocumentMoniker": "C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Code\\Text\\TextRenderer.cpp",
               "RelativeDocumentMoniker": "Engine\\Code\\Text\\TextRenderer.cpp",
@@ -230,7 +226,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 9,
               "Title": "Hallway.h",
               "DocumentMoniker": "C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Code\\Scene\\Hallway.h",
               "RelativeDocumentMoniker": "Engine\\Code\\Scene\\Hallway.h",
@@ -242,7 +238,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 7,
               "Title": "TextRenderer.h",
               "DocumentMoniker": "C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Code\\Text\\TextRenderer.h",
               "RelativeDocumentMoniker": "Engine\\Code\\Text\\TextRenderer.h",
@@ -254,7 +250,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 11,
               "Title": "Scene.h",
               "DocumentMoniker": "C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Code\\Scene\\Scene.h",
               "RelativeDocumentMoniker": "Engine\\Code\\Scene\\Scene.h",
@@ -266,7 +262,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 12,
               "Title": "Renderer.cpp",
               "DocumentMoniker": "C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Code\\Renderer\\Renderer.cpp",
               "RelativeDocumentMoniker": "Engine\\Code\\Renderer\\Renderer.cpp",
@@ -278,7 +274,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 14,
               "Title": "CabinPage2.h",
               "DocumentMoniker": "C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Code\\GameObjects\\CabinPage2.h",
               "RelativeDocumentMoniker": "Engine\\Code\\GameObjects\\CabinPage2.h",
@@ -290,7 +286,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 13,
               "Title": "Book.h",
               "DocumentMoniker": "C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Code\\GameObjects\\Book.h",
               "RelativeDocumentMoniker": "Engine\\Code\\GameObjects\\Book.h",
@@ -302,7 +298,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 8,
               "Title": "Camera.cpp",
               "DocumentMoniker": "C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Code\\Camera\\Camera.cpp",
               "RelativeDocumentMoniker": "Engine\\Code\\Camera\\Camera.cpp",
@@ -314,7 +310,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 20,
               "Title": "tinyxml2.h",
               "DocumentMoniker": "C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Code\\Dialogue\\tinyxml2.h",
               "RelativeDocumentMoniker": "Engine\\Code\\Dialogue\\tinyxml2.h",
@@ -326,7 +322,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 16,
               "Title": "tinyxml2.cpp",
               "DocumentMoniker": "C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Code\\Dialogue\\tinyxml2.cpp",
               "RelativeDocumentMoniker": "Engine\\Code\\Dialogue\\tinyxml2.cpp",
@@ -338,7 +334,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 17,
               "Title": "DialogueManager.cpp",
               "DocumentMoniker": "C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Code\\Dialogue\\DialogueManager.cpp",
               "RelativeDocumentMoniker": "Engine\\Code\\Dialogue\\DialogueManager.cpp",
@@ -350,7 +346,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 19,
               "Title": "DialogueBox.h",
               "DocumentMoniker": "C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Code\\Dialogue\\DialogueBox.h",
               "RelativeDocumentMoniker": "Engine\\Code\\Dialogue\\DialogueBox.h",
@@ -362,7 +358,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 15,
               "Title": "MainPage.h",
               "DocumentMoniker": "C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Code\\GameObjects\\MainPage.h",
               "RelativeDocumentMoniker": "Engine\\Code\\GameObjects\\MainPage.h",
@@ -374,7 +370,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 21,
               "Title": "JournalData.h",
               "DocumentMoniker": "C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Code\\GameObjects\\JournalData.h",
               "RelativeDocumentMoniker": "Engine\\Code\\GameObjects\\JournalData.h",
@@ -386,7 +382,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 18,
               "Title": "Page.h",
               "DocumentMoniker": "C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Code\\GameObjects\\Page.h",
               "RelativeDocumentMoniker": "Engine\\Code\\GameObjects\\Page.h",
