@@ -40,7 +40,15 @@ public:
     virtual void OnClick() = 0;
 
     bool IsClickable() {
-        return isClickable;
+
+        if (this->getActiveStatus()) {
+            return isClickable;
+        }
+        else {
+            return false;
+        }
+
+        
     }
 
     void SetClickable(bool clickable) {
