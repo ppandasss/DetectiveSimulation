@@ -269,19 +269,27 @@ public:
         }
     }
 
-
-    void SetDialogueColor(const glm::vec3& color) {
-        if (currentDialogueButton) {
-            currentDialogueButton->SetTextColor(color);
-        }
-    }
-
     void SetDialogueScale(float scale) {
         if (currentDialogueButton) {
             currentDialogueButton->SetTextSize(scale);
         }
     }
 
+    void SetChoicePosition(float x, float y) {
+        for (auto& choiceButton : choiceButtons) {
+            if (choiceButton) {
+                choiceButton->SetTextPosition(glm::vec3(x, y, 0.0f));
+            }
+        }
+    }
+
+    void SetChoiceScale(float scale) {
+        for (auto& choiceButton : choiceButtons) {
+            if (choiceButton) {
+                choiceButton->SetTextSize(scale);
+            }
+        }
+    }
 
    private:
    

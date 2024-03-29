@@ -47,10 +47,10 @@ public:
             true, true, "Assets/Fonts/OverpassMono.ttf");
         //Choices
         UIButton* dialogueChoice1 = new UIButton("DialogueChoiceBox1", "Assets/Images/UI/DialogueChoiceBox.png",
-            glm::vec3(0.0f, 1.6f, 0.0f), glm::vec3(10.96f, 2.05f, 0.0f),
+            glm::vec3(0.0f, -2.6f, 0.0f), glm::vec3(8.0f, 1.25f, 0.0f),
             true, true, "Assets/Fonts/OverpassMono.ttf");
         UIButton* dialogueChoice2 = new UIButton("DialogueChoiceBox2", "Assets/Images/UI/DialogueChoiceBox.png",
-            glm::vec3(0.0f, -1.6f, 0.0f), glm::vec3(10.96f, 2.05f, 0.0f),
+            glm::vec3(0.0f, -4.0f, 0.0f), glm::vec3(8.0f, 1.25f, 0.0f),
             true, true, "Assets/Fonts/OverpassMono.ttf");
         //Speak Icons
         UIElement* marthaIcon = new UINormal("MarthaIcon", "Assets/Images/UI/Speaker_icon_Martha.png", glm::vec3(4.18f, 3.6f, 0.0f), glm::vec3(2.19f, 1.57f, 0.0f), true);
@@ -73,6 +73,7 @@ public:
         //setDialogueUI
         dialogueManager->SetDialoguePosition(-0.5f, 3.70f);
         dialogueManager->SetDialogueScale(0.55f);
+        dialogueManager->SetChoiceScale(0.75f);
 
         //Push GamePbjects
         m_gameObjects.push_back(background1);
