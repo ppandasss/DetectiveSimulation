@@ -84,7 +84,7 @@ public:
 
 		RedCircle = new UIObject("RedCircle", "Assets/Images/Journal/Journal_CaseSummary_Icon_Red_Circle_3.png", true);
 		RedCircle->setActiveStatus(false);
-		RedCircle->SetScale(glm::vec3(1.0f, 0.5f, 0.0f));
+		RedCircle->SetScale(glm::vec3(1.44f, 0.44f, 0.0f));
 		RedCircle->SetPosition(glm::vec3(1.15f, 1.55f, 0.0f));
 
 		// BOMB LOCATIONS
@@ -109,10 +109,10 @@ public:
 		SupremeCourt->SetTextSize(0.6f);
 		SupremeCourt->SetOnClickAction([this]() { setLocationSupremeCourt(); });
 
-		RedUnderline = new UIObject("RedUnderline", "Assets/Images/Journal/Journal_CaseSummary_Icon_Red_Circle_3.png", true);
+		RedUnderline = new UIObject("RedUnderline", "Assets/Images/Journal/CaseSummary_Icon_Red_Underline.png", true);
 		RedUnderline->setActiveStatus(false);
-		RedUnderline->SetScale(glm::vec3(1.5f, 0.1f, 0.0f));
-		RedUnderline->SetPosition(glm::vec3(0.8f, -2.45f, 0.0f));
+		RedUnderline->SetScale(glm::vec3(1.7f, 0.1f, 0.0f));
+		RedUnderline->SetPosition(glm::vec3(1.1f, -2.0f, 0.0f));
 		// EVIDENCE TEXT
 
 		EvidenceButton = new UIButtonEmpty("EvidenceText", glm::vec3(3.2f, -1.0f, 0.0f), glm::vec3(5.0f, 0.5f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");

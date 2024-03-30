@@ -27,12 +27,18 @@ enum currentPage { MAIN, CABIN1, CABIN2, CABIN3, CABIN4, CABIN5, FOODGUIDE };
 class Book : public GameObject {
 
 public:
+	AudioManager& audioManager;
+
+public:
 
 	GameObject* JournalCover;
 
 	//UIObject* JournalCoverUI;
 
-	Book() : GameObject("Book") {
+	Book() : GameObject("Book"), audioManager(AudioManager::GetInstance()) {
+
+		audioManager.LoadSound("openJournal", "Assets/Sounds/SFX_OpenJournal.mp3", 0.55f);
+		audioManager.LoadSound("pageSwitch", "Assets/Sounds/SFX_PageSwitch.mp3", 0.5f);
 
 		JournalCover = new UIObject("JournalCover", "Assets/Images/Journal/Cover.png", true);
 		JournalCover->SetScale(glm::vec3(14.36f, 8.24f, 0.0f));
@@ -54,11 +60,15 @@ public:
 		Tab6->SetOnClickAction([this]() { setActiveTab6(); });
 		Tab7->SetOnClickAction([this]() { setActiveTab7(); });
 
+		GameObject* BackGround = new UIObject("JournalBG", "Assets/Images/Journal/BlackAlpha.png", true);
+		BackGround->SetScale(glm::vec3(19.2f, 10.8f, 0.0f));
+		BackGround->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
 		GameObject* BlankPage = new UIObject("BlankPage", "Assets/Images/Journal/BlankPage.png", true);
 		BlankPage->SetScale(glm::vec3(12.68f, 7.45f, 1.0f));
 		BlankPage->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
+		m_gameObjects.push_back(BackGround);
 		m_gameObjects.push_back(JournalCover);
 		m_gameObjects.push_back(Tab1);
 		m_gameObjects.push_back(Tab2);
@@ -92,6 +102,8 @@ public:
 
 	void drawBook() {
 
+		audioManager.PlaySound("openJournal", false);
+
 		openStatus = true;
 
 		for (auto& object : m_gameObjects) {
@@ -116,6 +128,8 @@ public:
 	void closeBook() {
 
 		//make all gameobjects in book inactive
+
+		audioManager.PlaySound("openJournal", false);
 
 		openStatus = false;
 		activePage = currentPage::MAIN;
@@ -215,13 +229,13 @@ public:
 
 	//-----------------------BOOK UI BUTTON FUNCTIONS-----------------------------------
 
-	void setActiveTab1() { if (activePage != MAIN) { activePage = currentPage::MAIN; } };
-	void setActiveTab2() { if (activePage != CABIN1) { activePage = currentPage::CABIN1; } };
-	void setActiveTab3() { if (activePage != CABIN2) { activePage = currentPage::CABIN2; } };
-	void setActiveTab4() { if (activePage != CABIN3) { activePage = currentPage::CABIN3; } };
-	void setActiveTab5() { if (activePage != CABIN4) { activePage = currentPage::CABIN4; } };
-	void setActiveTab6() { if (activePage != CABIN5) { activePage = currentPage::CABIN5; } };
-	void setActiveTab7() { if (activePage != CABIN5) { activePage = currentPage::FOODGUIDE; } }
+	void setActiveTab1() { if (activePage != MAIN) { activePage = currentPage::MAIN; } audioManager.PlaySound("pageSwitch", false);};
+	void setActiveTab2() { if (activePage != CABIN1) { activePage = currentPage::CABIN1; } audioManager.PlaySound("pageSwitch", false); };
+	void setActiveTab3() { if (activePage != CABIN2) { activePage = currentPage::CABIN2; } audioManager.PlaySound("pageSwitch", false);};
+	void setActiveTab4() { if (activePage != CABIN3) { activePage = currentPage::CABIN3; } audioManager.PlaySound("pageSwitch", false);};
+	void setActiveTab5() { if (activePage != CABIN4) { activePage = currentPage::CABIN4; } audioManager.PlaySound("pageSwitch", false);};
+	void setActiveTab6() { if (activePage != CABIN5) { activePage = currentPage::CABIN5; } audioManager.PlaySound("pageSwitch", false);};
+	void setActiveTab7() { if (activePage != CABIN5) { activePage = currentPage::FOODGUIDE; } audioManager.PlaySound("pageSwitch", false); };
 
 
 protected:

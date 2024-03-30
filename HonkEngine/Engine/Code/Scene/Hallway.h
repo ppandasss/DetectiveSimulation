@@ -33,9 +33,9 @@ public:
 	Hallway() :audioManager(AudioManager::GetInstance())
 	{
 		/*--------------------------------------------------------------🔊LOAD AUDDIO🔊------------------------------------------------------------------------------------------------------- */
-		audioManager.LoadSound("backgroundMusic", "Assets/Sounds/MembersOnly.mp3", 0.2f);
-		audioManager.LoadSound("trainAmbience", "Assets/Sounds/Train_Ambience.mp3", 0.2f);
-		audioManager.PlaySound("backgroundMusic", true);
+		audioManager.LoadSound("hallwayMusic", "Assets/Sounds/BGmusic_Corridor_NoTimer.mp3", 0.3f);
+		audioManager.LoadSound("trainAmbience", "Assets/Sounds/Ambience_Train.mp3", 0.3f);
+		audioManager.PlaySound("hallwayMusic", true);
 		audioManager.PlaySound("trainAmbience", true);
 
 		/*--------------------------------------------------------------📦CREATE GAMEOBJECT📦------------------------------------------------------------------------------------------------------- */
@@ -94,10 +94,7 @@ public:
 
 		//Journal
 		m_gameObjects.push_back(Journal);
-		Journal->closeBook();
-
-
-
+		//Journal->closeBook();
 
 	}
 
