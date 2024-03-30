@@ -22,7 +22,7 @@ public:
 
 		/*--------------------------------------------------------------CREATE GAMEOBJECT------------------------------------------------------------------------------------------------------- */
 
-		GameObject* KitchenBackground = new RenderGameObject("KitchenBackground", "Assets/Images/Kitchen/Kitchen_Background.png");
+		GameObject* KitchenBackground = new UIObject("KitchenBackground", "Assets/Images/Kitchen/Kitchen_Background.png",true);
 		KitchenBackground->SetScale(glm::vec3(19.2f, 10.8f, 0.0f));
 		KitchenBackground->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
@@ -73,51 +73,51 @@ public:
 
 		/*-------------------------------------------------------------- CREATE PLATED FOOD ------------------------------------------------------------------------------------------------------- */
 
-		GameObject* AssamBlack_dish = new RenderGameObject("AssamBlackDish", "Assets/Images/Kitchen/Food/Tea/TeaBox_Assam.png");
+		GameObject* AssamBlack_dish = new UIObject("AssamBlackDish", "Assets/Images/Kitchen/Food/Tea/TeaBox_Assam.png", true);
 		AssamBlack_dish->SetPosition(TeaDishPosition);
 		AssamBlack_dish->SetScale(glm::vec3(1.2f, 1.6f, 0.0f));
 
-		GameObject* EarlGreyTea_dish = new RenderGameObject("EarlGreyDish", "Assets/Images/Kitchen/Food/Tea/TeaBox_Earl.png");
+		GameObject* EarlGreyTea_dish = new UIObject("EarlGreyDish", "Assets/Images/Kitchen/Food/Tea/TeaBox_Earl.png", true);
 		EarlGreyTea_dish->SetPosition(TeaDishPosition);
 		EarlGreyTea_dish->SetScale(glm::vec3(1.2f, 1.6f, 0.0f));
 
-		GameObject* GreenTea_dish = new RenderGameObject("GreenTeaDish", "Assets/Images/Kitchen/Food/Tea/TeaBox_Green.png");
+		GameObject* GreenTea_dish = new UIObject("GreenTeaDish", "Assets/Images/Kitchen/Food/Tea/TeaBox_Green.png", true);
 		GreenTea_dish->SetPosition(TeaDishPosition);
 		GreenTea_dish->SetScale(glm::vec3(1.3f, 1.5f, 0.0f));
 
-		GameObject* ChamomileTea_dish = new RenderGameObject("ChamomileTeaDish", "Assets/Images/Kitchen/Food/Tea/TeaBox_Chamomile.png");
+		GameObject* ChamomileTea_dish = new UIObject("ChamomileTeaDish", "Assets/Images/Kitchen/Food/Tea/TeaBox_Chamomile.png", true);
 		ChamomileTea_dish->SetPosition(TeaDishPosition);
 		ChamomileTea_dish->SetScale(glm::vec3(1.1f, 1.75f, 0.0f));
 
-		GameObject* SalmonDish = new RenderGameObject("SalmonDish", "Assets/Images/Kitchen/Food/Sandwhich/Sandwich_Salmon.png");
+		GameObject* SalmonDish = new UIObject("SalmonDish", "Assets/Images/Kitchen/Food/Sandwhich/Sandwich_Salmon.png", true);
 		SalmonDish->SetPosition(SandwhichDishPosition);
 		SalmonDish->SetScale(glm::vec3(2.35f, 1.28f, 0.0f));
 
-		GameObject* EggDish = new RenderGameObject("EggDish", "Assets/Images/Kitchen/Food/Sandwhich/Sandwich_Egg.png");
+		GameObject* EggDish = new UIObject("EggDish", "Assets/Images/Kitchen/Food/Sandwhich/Sandwich_Egg.png", true);
 		EggDish->SetPosition(SandwhichDishPosition);
 		EggDish->SetScale(glm::vec3(2.61f, 1.14f, 0.0f));
 
-		GameObject* CucumberDish = new RenderGameObject("CucumberDish", "Assets/Images/Kitchen/Food/Sandwhich/Sandwich_Cucumber.png");
+		GameObject* CucumberDish = new UIObject("CucumberDish", "Assets/Images/Kitchen/Food/Sandwhich/Sandwich_Cucumber.png", true);
 		CucumberDish->SetPosition(SandwhichDishPosition);
 		CucumberDish->SetScale(glm::vec3(2.23f, 1.25f, 0.0f));
 
-		GameObject* BeefDish = new RenderGameObject("BeefDish", "Assets/Images/Kitchen/Food/Sandwhich/Sandwich_Beef.png");
+		GameObject* BeefDish = new UIObject("BeefDish", "Assets/Images/Kitchen/Food/Sandwhich/Sandwich_Beef.png", true);
 		BeefDish->SetPosition(SandwhichDishPosition);
 		BeefDish->SetScale(glm::vec3(2.21f, 1.02f, 0.0f));
 
-		GameObject* EclairDish = new RenderGameObject("EclairDish", "Assets/Images/Kitchen/Food/Dessert/Dessert_Eclair.png");
+		GameObject* EclairDish = new UIObject("EclairDish", "Assets/Images/Kitchen/Food/Dessert/Dessert_Eclair.png", true);
 		EclairDish->SetPosition(DessertDishPosition);
 		EclairDish->SetScale(glm::vec3(2.6f, 0.8f, 0.0f));
 
-		GameObject* LemonTartDish = new RenderGameObject("LemonTartDish", "Assets/Images/Kitchen/Food/Dessert/Dessert_LemonTart.png");
+		GameObject* LemonTartDish = new UIObject("LemonTartDish", "Assets/Images/Kitchen/Food/Dessert/Dessert_LemonTart.png", true);
 		LemonTartDish->SetPosition(DessertDishPosition);
 		LemonTartDish->SetScale(glm::vec3(2.08f, 0.97f, 0.0f));
 
-		GameObject* SconeDish = new RenderGameObject("SconeDish", "Assets/Images/Kitchen/Food/Dessert/Dessert_Scone.png");
+		GameObject* SconeDish = new UIObject("SconeDish", "Assets/Images/Kitchen/Food/Dessert/Dessert_Scone.png", true);
 		SconeDish->SetPosition(DessertDishPosition);
 		SconeDish->SetScale(glm::vec3(1.7f, 0.75f, 0.0f));
 
-		GameObject* MacaronDish = new RenderGameObject("MacaronDish", "Assets/Images/Kitchen/Food/Dessert/Dessert_Macaron.png");
+		GameObject* MacaronDish = new UIObject("MacaronDish", "Assets/Images/Kitchen/Food/Dessert/Dessert_Macaron.png", true);
 		MacaronDish->SetPosition(DessertDishPosition);
 		MacaronDish->SetScale(glm::vec3(2.6f, 0.8f, 0.0f));
 
