@@ -7,14 +7,19 @@
 
 #include "../UI/UIButton.h"
 #include "../UI/UIDraggable.h"
+#include "../UI/UIButtonEmpty.h"
+
 #include "KitchenData.h"
 
 class Kitchen : public Scene {
 
 public:
 
-	Kitchen() :audioManager(AudioManager::GetInstance()) {
+	UIButtonEmpty* platePositionArea = new UIButtonEmpty("PlatePosition", glm::vec3(-5.5f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
+	
 
+	Kitchen() :audioManager(AudioManager::GetInstance()) {
+		platePositionArea->SetButtonText("Drop Area");
 
 		/*--------------------------------------------------------------LOAD AUDDIO------------------------------------------------------------------------------------------------------- */
 		/*audioManager.LoadSound("kitchenAmbience", "Assets/Sounds/Ambience_Kitchen.mp3", 0.2f);
@@ -26,6 +31,12 @@ public:
 		KitchenBackground->SetScale(glm::vec3(19.2f, 10.8f, 0.0f));
 		KitchenBackground->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
+		UIElement* orderPaper = new UINormal("OrderPaper", "Assets/Images/OrderPaper.png", glm::vec3(-7.65f, 4.0f, 0.0f), glm::vec3(3.55f, 2.54f, 0.0f), true);
+		
+		/*--------------------------------------------------------------CREATE GAMEOBJECT------------------------------------------------------------------------------------------------------- */
+
+		Text* orderNoText = new Text("orderNo", "1", "Assets/Fonts/mvboli.ttf", true);
+		m_gameObjects.push_back(orderNoText);
 
 		/*--------------------------------------------------------------CREATE BUTTONS------------------------------------------------------------------------------------------------------- */
 
@@ -33,7 +44,7 @@ public:
 		ServeBellButton->setActiveStatus(false);
 		ServeBellButton->SetOnClickAction([this]() { Serve(); });
 		
-		ServeBellGrey = new RenderGameObject("ServeBellGrey", "Assets/Images/Kitchen/ServeButton_notServable_default.png");
+		ServeBellGrey = new UIObject("ServeBellGrey", "Assets/Images/Kitchen/ServeButton_notServable_default.png", true);
 		ServeBellGrey->SetPosition(glm::vec3(-4.9f, -2.6f, 0.0f));
 		ServeBellGrey->SetScale(glm::vec3(2.02f, 1.45f, 0.0f));
 
@@ -126,6 +137,7 @@ public:
 		m_gameObjects.push_back(KitchenBackground);
 		m_gameObjects.push_back(ServeBellButton);
 		m_gameObjects.push_back(ServeBellGrey);
+		m_gameObjects.push_back(orderPaper);
 
 		//PLATED FOOD GAMEOBJECTS
 
@@ -175,6 +187,8 @@ public:
 		m_gameObjects.push_back(LemonTart);
 		m_gameObjects.push_back(Scone);
 		m_gameObjects.push_back(Macaron);
+
+		m_gameObjects.push_back(platePositionArea);
 
 
 		//set all plate gameobjects as inactive
@@ -262,8 +276,8 @@ public:
 
 	void releaseAssam() {
 
-		//std::cout << "ASSAM RELEASED" << std::endl;
-		if (AssamBlackTea->withinRage(platePosition, snapThreshold)) {
+		std::cout << platePositionArea->GetPosition().x  << platePositionArea->GetPosition().y << std::endl;
+		if (AssamBlackTea->withinRage(platePositionArea->GetOnscreenPosition(), snapThreshold)) {
 			KitchenData::GetInstance()->setTea(ASSAMTEA);
 			updateTeaStatus();
 		}
@@ -272,7 +286,7 @@ public:
 	void releaseEarlGrey() {
 
 		//std::cout << "EARL GREY RELEASED" << std::endl;
-		if (EarlGreyTea->withinRage(platePosition, snapThreshold)) {
+		if (EarlGreyTea->withinRage(platePositionArea->GetOnscreenPosition(), snapThreshold)) {
 			KitchenData::GetInstance()->setTea(EARLGREYTEA);
 			updateTeaStatus();
 		}
@@ -281,7 +295,7 @@ public:
 	void releaseGreenTea() {
 
 		//std::cout << "GREEN TEA RELEASED" << std::endl;
-		if (GreenTea->withinRage(platePosition, snapThreshold)) {
+		if (GreenTea->withinRage(platePositionArea->GetOnscreenPosition(), snapThreshold)) {
 			KitchenData::GetInstance()->setTea(GREENTEA);
 			updateTeaStatus();
 		}
@@ -290,7 +304,7 @@ public:
 	void releaseChamomileTea() {
 
 		//std::cout << "CHAMOMILE TEA RELEASED" << std::endl;
-		if (ChamomileTea->withinRage(platePosition, snapThreshold)) {
+		if (ChamomileTea->withinRage(platePositionArea->GetOnscreenPosition(), snapThreshold)) {
 			KitchenData::GetInstance()->setTea(CHAMOMILETEA);
 			updateTeaStatus();
 		}
@@ -299,7 +313,7 @@ public:
 	void releaseSalmonSandwhich() {
 
 		//std::cout << "SALMON SANDWHICH RELEASED" << std::endl;
-		if (SalmonSandwhich->withinRage(platePosition, snapThreshold)) {
+		if (SalmonSandwhich->withinRage(platePositionArea->GetOnscreenPosition(), snapThreshold)) {
 			KitchenData::GetInstance()->setSandwhich(SALMON);
 			updateSandwhichStatus();
 		}
@@ -308,7 +322,7 @@ public:
 	void releaseEggSandwhich() {
 
 		//std::cout << "EGG SANDWHICH RELEASED" << std::endl;
-		if (EggSandwhich->withinRage(platePosition, snapThreshold)) {
+		if (EggSandwhich->withinRage(platePositionArea->GetOnscreenPosition(), snapThreshold)) {
 			KitchenData::GetInstance()->setSandwhich(EGG);
 			updateSandwhichStatus();
 		}
@@ -317,7 +331,7 @@ public:
 	void releaseCucumberSandwhich() {
 
 		//std::cout << "CUCUMBER SANDWHICH RELEASED" << std::endl;
-		if (CucumberSandwhich->withinRage(platePosition, snapThreshold)) {
+		if (CucumberSandwhich->withinRage(platePositionArea->GetOnscreenPosition(), snapThreshold)) {
 			KitchenData::GetInstance()->setSandwhich(CUCUMBER);
 			updateSandwhichStatus();
 		}
@@ -326,7 +340,7 @@ public:
 	void releaseBeefSandwhich() {
 
 		//std::cout << "BEEF SANDWHICH RELEASED" << std::endl;
-		if (BeefSandwhich->withinRage(platePosition, snapThreshold)) {
+		if (BeefSandwhich->withinRage(platePositionArea->GetOnscreenPosition(), snapThreshold)) {
 			KitchenData::GetInstance()->setSandwhich(BEEF);
 			updateSandwhichStatus();
 		}
@@ -335,7 +349,7 @@ public:
 	void releaseEclair() {
 
 		//std::cout << "ECLAIR RELEASED" << std::endl;
-		if (Eclair->withinRage(platePosition, snapThreshold)) {
+		if (Eclair->withinRage(platePositionArea->GetOnscreenPosition(), snapThreshold)) {
 			KitchenData::GetInstance()->setDessert(ECLAIR);
 			updateDessertStatus();
 		}
@@ -344,7 +358,7 @@ public:
 	void releaseLemonTart() {
 
 		//std::cout << "LEMON TART RELEASED" << std::endl;
-		if (LemonTart->withinRage(platePosition, snapThreshold)) {
+		if (LemonTart->withinRage(platePositionArea->GetOnscreenPosition(), snapThreshold)) {
 			KitchenData::GetInstance()->setDessert(TART);
 			updateDessertStatus();
 		}
@@ -353,7 +367,7 @@ public:
 	void releaseScone() {
 
 		//std::cout << "SCONE RELEASED" << std::endl;
-		if (Scone->withinRage(platePosition, snapThreshold)) {
+		if (Scone->withinRage(platePositionArea->GetOnscreenPosition(), snapThreshold)) {
 			KitchenData::GetInstance()->setDessert(SCONE);
 			updateDessertStatus();
 		}
@@ -362,7 +376,7 @@ public:
 	void releaseMacaron() {
 
 		//std::cout << "MACARON RELEASED" << std::endl;
-		if (Macaron->withinRage(platePosition, snapThreshold)) {
+		if (Macaron->withinRage(platePositionArea->GetOnscreenPosition(), snapThreshold)) {
 			KitchenData::GetInstance()->setDessert(MACARON);
 			updateDessertStatus();
 		}
@@ -423,7 +437,10 @@ private:
 
 	//within range
 
-	const glm::vec3 platePosition = glm::vec3(-5.5f, 0.0f, 0.0f);
+	glm::vec3 platePosition = glm::vec3(-5.5f, 0.0f, 0.0f);
+
+
+
 	const float snapThreshold = 4.0f;
 
 

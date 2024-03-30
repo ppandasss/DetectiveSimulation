@@ -130,6 +130,7 @@ public:
 		return model;
 	}
 
+	const glm::vec3 GetOnscreenPosition() const { return m_transformedPosition; }
 	
 
 private:
