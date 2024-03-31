@@ -156,6 +156,8 @@
     <ClInclude Include="Code\GameObjects\CabinPage3.h" />
     <ClInclude Include="Code\GameObjects\CabinPage4.h" />
     <ClInclude Include="Code\GameObjects\CabinPage5.h" />
+    <ClInclude Include="Code\GameObjects\Door.h" />
+    <ClInclude Include="Code\GameObjects\DoorsManager.h" />
     <ClInclude Include="Code\GameObjects\FoodGuidePage.h" />
     <ClInclude Include="Code\GameObjects\GameObject.h" />
     <ClInclude Include="Code\GameObjects\JournalData.h" />

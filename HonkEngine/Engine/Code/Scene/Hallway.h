@@ -14,6 +14,8 @@
 #include "../UI/UIElement.h"
 #include "../GameObjects/Book.h"
 #include "../UI/UIButtonEmpty.h"
+#include "../GameObjects/Door.h"
+#include "../GameObjects/DoorsManager.h"
 
 class Hallway : public Scene
 {
@@ -22,6 +24,7 @@ private:
 	std::unique_ptr<TextRenderer> textRenderer;
 	AudioManager& audioManager;
 	Book* Journal;
+	
 public:
 	Hallway() :audioManager(AudioManager::GetInstance())
 	{
@@ -53,9 +56,11 @@ public:
 		UIButton* journalButton = new UIButton("JournalButton", "Assets/Images/JournalButton.png", glm::vec3(-8.32f, -4.8f, 0.0f), glm::vec3(3.0f, 3.0f, 0.0f), true, false, "");
 		journalButton->SetOnClickAction([this]() { Journal->drawBook(); });
 
-		UIButtonEmpty* KitchenDoorButton = new UIButtonEmpty("KitchenDoor", glm::vec3(18.35f, -0.55f, 0.0f), glm::vec3(2.8f, 5.7f, 0.0f), false, false);
-		KitchenDoorButton->SetOnClickAction([this]() { EnterKitchen(); });
+		Door* kitchenDoor = new Door("KitchenDoor", glm::vec3(18.35f, -0.55f, 0.0f), glm::vec3(2.8f, 5.7f, 0.0f), "Kitchen");
+		DoorManager::GetInstance().AddDoor(kitchenDoor);
 
+		Door* room1Door = new Door("Room1Door", glm::vec3(-18.35f, -0.55f, 0.0f), glm::vec3(2.8f, 5.7f, 0.0f), "Room1");
+		DoorManager::GetInstance().AddDoor(room1Door);
 
 		//TO TEST DRAW EMPTY UI
 		/*GameObject* box = new RenderGameObject("textbox", "Assets/Images/Square_Border.png");
@@ -86,9 +91,10 @@ public:
 		m_gameObjects.push_back(journalButton);
 		m_gameObjects.push_back(timer);
 		m_gameObjects.push_back(orderPaper);
-		m_gameObjects.push_back(KitchenDoorButton);
+		m_gameObjects.push_back(kitchenDoor);
+		m_gameObjects.push_back(room1Door);
 		
-
+		
 		//Texts
 		//m_gameObjects.push_back(helloText);
 		m_gameObjects.push_back(orderNoText);
@@ -131,10 +137,6 @@ public:
 			}
 		}
 
-	}
-
-	void EnterKitchen() {
-		Application::Get().SetScene("Kitchen");
 	}
 
 };

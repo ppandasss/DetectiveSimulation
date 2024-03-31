@@ -10,6 +10,10 @@
 #include <iostream>
 #include"GameObject.h"
 #include "../Animation/Animator.h" 
+#include "../Audio/AudioManager.h"
+#include "../Scene/Hallway.h"
+#include "../GameObjects/DoorsManager.h"
+
 
 class Player : public AnimateGameObject
 {
@@ -50,14 +54,22 @@ public:
             m_position.x = std::min(newPos, rightBound); // Ensure player doesn't move past right bound
             currentAnimation = "walk_right";
         }
-        if (input.Get().GetKeyDown(GLFW_KEY_E))
-        {
-            Application::Get().SetScene("Room1");
-        }
+       
+        bool collidedWithDoor = false;
+        DoorManager& doorManager = DoorManager::GetInstance();
 
-        if (input.Get().GetKeyDown(GLFW_KEY_K))
-        {
-            Application::Get().SetScene("Kitchen");
+        // Check for collisions with doors
+        doorManager.CheckDoorCollisions(GetPosition(), GetScale(), [this, &collidedWithDoor, &input](const std::string& sceneName) {
+            if (!inDoorCollision && input.Get().GetKeyDown(GLFW_KEY_E)) {
+                Application::Get().SetScene(sceneName);
+                inDoorCollision = true;
+                collidedWithDoor = true;
+            }
+            });
+
+        // If the player is not colliding with any door, clear the inDoorCollision flag
+        if (!collidedWithDoor) {
+            inDoorCollision = false;
         }
 
 
@@ -94,4 +106,5 @@ private:
     glm::vec2 mousePos;
     Animator m_animator;
     AudioManager& audioManager;
+    bool inDoorCollision = false;
 };

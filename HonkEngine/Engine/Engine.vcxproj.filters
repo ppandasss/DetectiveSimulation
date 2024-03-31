@@ -173,6 +173,15 @@
     <ClInclude Include="Code\Scene\KitchenData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Code\UI\UIButtonEmpty.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\GameObjects\Door.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\GameObjects\DoorsManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\text.vs" />

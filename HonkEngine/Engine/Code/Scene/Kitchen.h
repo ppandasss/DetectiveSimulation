@@ -19,7 +19,7 @@ public:
 	
 
 	Kitchen() :audioManager(AudioManager::GetInstance()) {
-		platePositionArea->SetButtonText("Drop Area");
+		//platePositionArea->SetButtonText("Drop Area");
 
 		/*--------------------------------------------------------------LOAD AUDDIO------------------------------------------------------------------------------------------------------- */
 		/*audioManager.LoadSound("kitchenAmbience", "Assets/Sounds/Ambience_Kitchen.mp3", 0.2f);
@@ -200,7 +200,7 @@ public:
 
 		Scene::Update(dt, frame);
 
-		if (input.Get().GetKeyDown(GLFW_KEY_K)) {
+		if (input.Get().GetKeyDown(GLFW_KEY_E)) {
 			Application::Get().SetScene("Hallway");
 		}
 

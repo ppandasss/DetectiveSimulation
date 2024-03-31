@@ -72,4 +72,4 @@ private:
     //UICategory category;
     //Camera& camera = Application::GetCamera();
 };
-// Assuming GetCamera is a static method in your Application class
+
