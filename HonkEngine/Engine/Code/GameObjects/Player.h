@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 
 #include "AnimateGameObject.h"
 #include "../Engine.h"

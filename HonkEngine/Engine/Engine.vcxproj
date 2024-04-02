@@ -167,6 +167,7 @@
     <ClInclude Include="Code\Scene\Hallway.h" />
     <ClInclude Include="Code\Scene\Kitchen.h" />
     <ClInclude Include="Code\Scene\KitchenData.h" />
+    <ClInclude Include="Code\Scene\LoadScene.h" />
     <ClInclude Include="Code\Scene\Room1.h" />
     <ClInclude Include="Code\Input\Input.h" />
     <ClInclude Include="Code\GameObjects\Player.h" />
