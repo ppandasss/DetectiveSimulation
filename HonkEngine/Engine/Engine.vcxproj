@@ -221,9 +221,28 @@
   <ItemGroup>
     <Image Include="Assets\Images\awesomeface.png" />
     <Image Include="Assets\Images\Cabin.png" />
+    <Image Include="Assets\Images\Cabin_Background.png" />
+    <Image Include="Assets\Images\DialogueBox.png" />
+    <Image Include="Assets\Images\DialogueChoiceBox.png" />
+    <Image Include="Assets\Images\Environment_Corridor_Hallway.png" />
+    <Image Include="Assets\Images\Environment_Corridor_Light.png" />
+    <Image Include="Assets\Images\JournalButton.png" />
+    <Image Include="Assets\Images\Journal_CaseSummary_Ticket_WithText.png" />
     <Image Include="Assets\Images\konrai.jpg" />
+    <Image Include="Assets\Images\logo.png" />
+    <Image Include="Assets\Images\MainCharacter_WithTray_Walk.png" />
+    <Image Include="Assets\Images\Martha.png" />
+    <Image Include="Assets\Images\Martha1.png" />
+    <Image Include="Assets\Images\Martha_Cabin.png" />
+    <Image Include="Assets\Images\OrderPaper.png" />
+    <Image Include="Assets\Images\passenger_room1.png" />
+    <Image Include="Assets\Images\ScreenUI.png" />
     <Image Include="Assets\Images\spritesheet_test.png" />
     <Image Include="Assets\Images\spritesheet_test2.png" />
+    <Image Include="Assets\Images\Square_Border.png" />
+    <Image Include="Assets\Images\Timer.png" />
+    <Image Include="Assets\Images\train_corridorpng.png" />
+    <Image Include="Assets\Images\waiter_spritesheet.png" />
     <Image Include="Assets\Images\waiter_test.png" />
     <Image Include="Assets\Images\wardrobe.png" />
   </ItemGroup>

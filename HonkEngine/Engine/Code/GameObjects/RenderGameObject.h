@@ -72,6 +72,13 @@ public:
 	virtual void Update(float dt,long frame) override
 	{
 
+	
+
+	}
+
+	virtual void Render() override
+	{
+
 		glm::mat4 rMat = glm::mat4(1.0f);
 		glm::mat4 sMat = glm::mat4(1.0f);
 		glm::mat4 tMat = glm::mat4(1.0f);
@@ -82,13 +89,9 @@ public:
 
 		model = tMat * rMat * sMat;
 
-	}
-
-	virtual void Render() override
-	{
 	
 		//std::cout << "Rendering GameObject: " << m_name << std::endl;
-		renderer.SetRenderMode(CDT_TEXTURE, 1.0f);
+		renderer.SetRenderMode(CDT_TEXTURE, m_alpha);
 		renderer.SetTexture(texture_Id, 0.0f, 0.0f);
 		//std::cout << "Render::TextureID " << texture_Id << std::endl;	
 		renderer.SetTransform(model);
@@ -102,10 +105,16 @@ public:
 		renderer.TextureUnload(texture_Id);
 	}
 
+	void SetAlpha(float alpha)
+	{
+		m_alpha = alpha;
+	}
+
+
 
 
 private:
-
+	float m_alpha = 1.0f;
 	Renderer& renderer = Application::GetRenderer();;
 	Tex texture_Id;
 	Mesh meshVert;

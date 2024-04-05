@@ -17,8 +17,7 @@ void main( void )
 	if (mode == 0){
 		finalColor = vec4(Color,alpha);
 	}else{
-		texColor.rgb *= alpha;
-		finalColor = texColor;
+		finalColor = vec4(texColor.rgb, texColor.a * alpha);
 	}
 
 	Color0 = finalColor;

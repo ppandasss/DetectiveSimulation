@@ -237,6 +237,63 @@
     <Image Include="Assets\Images\wardrobe.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Assets\Images\Cabin_Background.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Images\DialogueBox.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Images\DialogueChoiceBox.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Images\Environment_Corridor_Hallway.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Images\Environment_Corridor_Light.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Images\Journal_CaseSummary_Ticket_WithText.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Images\JournalButton.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Images\logo.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Images\MainCharacter_WithTray_Walk.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Images\Martha.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Images\Martha_Cabin.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Images\Martha1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Images\OrderPaper.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Images\passenger_room1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Images\ScreenUI.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Images\Square_Border.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Images\Timer.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Images\train_corridorpng.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Images\waiter_spritesheet.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Media Include="Assets\Sounds\ophelia.mp3" />

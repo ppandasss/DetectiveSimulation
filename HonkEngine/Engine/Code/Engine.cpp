@@ -16,40 +16,6 @@ int m_windowHeight;
 Shader m_shader;
 Tex m_blankTex;
 
-void Initialize(int width, int height) {
-   
-    srand(time(NULL));
-
-    m_windowWidth = width;
-    m_windowHeight= height;
-
-    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-    glDisable(GL_DEPTH_TEST);
-    //glDisable(GL_CULL_FACE);
-    glEnable(GL_CULL_FACE);
-
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-    m_shader.Initialize(SHADER_VERTEX_PATH, SHADER_FRAGMENT_PATH);
-    m_blankTex = TextureLoad(TEXTURE_PATH);
-
-
-
-
-
-    //PrintMatrix(cdt_ProjectionMatrix);
-}
-
-void PrintMatrix(const glm::mat4& mat) {
-    for (int i = 0; i < 4; ++i) {
-        for (int j = 0; j < 4; ++j) {
-            std::cout << mat[i][j] << " ";
-        }
-        std::cout << std::endl;
-    }
-}
-
 
 
 Mesh CreateMesh(std::vector<Vertex> in_vertices)
@@ -124,26 +90,7 @@ int GetWindowWidth() {
 int GetWindowHeight() {
 	return m_windowHeight;
 }
-/*void DrawTexture(unsigned int textureId, const glm::mat4& transform)
-{
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, textureId);
 
-    // create transformations
-    //glm::mat4 transform = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
-    //transform = glm::translate(transform, glm::vec3(0.5f, -0.5f, 0.0f));
-    //transform = glm::rotate(transform, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
-
-
-    // get matrix's uniform location and set matrix
-    m_shader.use();
-    unsigned int transformLoc = glGetUniformLocation(m_shader.ID, "transform");
-    glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
-
-    // render container
-    //lBindVertexArray(&mesh.vaoHandle);
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-}*/
 
 
 

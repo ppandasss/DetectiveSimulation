@@ -9,7 +9,7 @@
 		m_windowWidth = width;
 		m_windowHeight = height;
 
-		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glDisable(GL_DEPTH_TEST);
 		glDisable(GL_CULL_FACE);
 

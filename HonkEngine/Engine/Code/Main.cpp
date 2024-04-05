@@ -31,12 +31,14 @@ int main()
 
     //Add scene
     game.AddScene("LoadScene", new LoadScene());
+    //Set start scene
+
     game.AddScene("Hallway", new Hallway());
     game.AddScene("Room1", new Room1());
     game.AddScene("Kitchen", new Kitchen());
-
-    //Set start scene
     game.SetScene("LoadScene");
+
+
 
     //Run game
     game.Run();
