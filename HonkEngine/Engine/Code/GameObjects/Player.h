@@ -12,13 +12,15 @@
 #include "../Audio/AudioManager.h"
 #include "../Scene/Hallway.h"
 #include "../GameObjects/DoorsManager.h"
+#include "../GameObjects/Book.h"
 
 
 class Player : public AnimateGameObject
 {
+    Book* m_journal;
 public:
-    Player(const std::string& name, const std::string& texturePath, int p_row, int p_col)
-        :AnimateGameObject(name, texturePath, p_row, p_col), audioManager(AudioManager::GetInstance())
+    Player(const std::string& name, const std::string& texturePath, int p_row, int p_col, Book* journal)
+        : AnimateGameObject(name, texturePath, p_row, p_col), m_journal(journal), audioManager(AudioManager::GetInstance())
     {
         m_scale = glm::vec3(6.5f, 6.125f, 0.0f);
         m_position = glm::vec3(0.0f, -1.0f, 0.0f);
@@ -52,6 +54,15 @@ public:
             float newPos = m_position.x + speed * dt;
             m_position.x = std::min(newPos, rightBound); // Ensure player doesn't move past right bound
             currentAnimation = "walk_right";
+        }
+        if (input.Get().GetKeyDown(GLFW_KEY_TAB)) {
+
+            if (m_journal->isOpen()) {
+                m_journal->closeBook();
+            }
+            else {
+                m_journal->drawBook();
+            }
         }
        
         bool collidedWithDoor = false;
@@ -101,9 +112,11 @@ public:
 
 
 private:
+
     float speed = 5.0f;
     glm::vec2 mousePos;
     Animator m_animator;
     AudioManager& audioManager;
     bool inDoorCollision = false;
+
 };

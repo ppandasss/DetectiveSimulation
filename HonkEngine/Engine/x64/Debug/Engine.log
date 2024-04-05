@@ -10,16 +10,16 @@ C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): warning C4099
   C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8):
   see declaration of 'Mesh'
   
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Player.h(21,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'Code/Main.cpp')
-  
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Player.h(21,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'Code/Main.cpp')
-  
 C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Text\TextRenderer.h(12,7): warning C4099: 'Mesh': type name first seen using 'struct' now seen using 'class'
   (compiling source file 'Code/Main.cpp')
   C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8):
   see declaration of 'Mesh'
+  
+C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Player.h(23,55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  (compiling source file 'Code/Main.cpp')
+  
+C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Player.h(23,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  (compiling source file 'Code/Main.cpp')
   
 C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Dialogue\Dialoguemanager.h(120,25): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'Code/Main.cpp')

@@ -133,7 +133,7 @@ public:
             Application::Get().SetScene("Hallway");
         }
 
-        if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1)) {
+        if (input.Get().GetKeyDown(GLFW_KEY_SPACE)) {
             dialogueManager->PlayNextDialogue();
         }
 

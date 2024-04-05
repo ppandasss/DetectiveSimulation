@@ -153,6 +153,11 @@ public:
 
 	}
 
+	bool isOpen()
+	{
+		return openStatus;
+	}
+
 	bool clickOutOfJournal(glm::vec2 mousePos) {
 
 		glm::vec2 newPos = Application::Get().MousetoWorld();
