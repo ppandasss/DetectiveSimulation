@@ -248,6 +248,10 @@ public:
         }
     }
 
+    bool IsDialogueFinished() const {
+        return currentDialogueIndex + 1 >= dialogues.size();
+    }
+
 
     void SetDialoguePosition(float x, float y) {
         if (currentDialogueButton) {

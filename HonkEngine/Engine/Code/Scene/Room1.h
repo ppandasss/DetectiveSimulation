@@ -7,7 +7,6 @@
 #include "../Engine.h"
 #include <glm/glm.hpp>
 #include <iostream>
-#include "../Dialogue/DialogueBox.h"
 #include "../Dialogue/Dialoguemanager.h"
 #include "../Effects/ParallaxManager.h"
 #include <memory>
@@ -15,13 +14,25 @@
 using namespace std;
 
 
+
+
 class Room1 : public Scene {
 
 private:
     AudioManager& audioManager;
 
+    enum class RoomPhase {
+        TakeOrderPhase,
+        ServePhase,
+        InspectionPhase
+    };
+
+    RoomPhase currentPhase = RoomPhase::TakeOrderPhase;
+
 public:
     Room1() :audioManager(AudioManager::GetInstance()) {
+
+        
 
         audioManager.LoadSound("cabinMusic", "Assets/Sounds/BGmusic_Cabin.mp3", 0.2f);
         audioManager.PlaySound("cabinMusic", true);
@@ -126,13 +137,35 @@ public:
     void Update(float dt, long frame) override {
 
         Scene::Update(dt, frame);
-        dialogueManager->Update(dt, frame);
-        parallaxManager->Update(dt,frame);
+        switch (currentPhase) {
+        case RoomPhase::TakeOrderPhase:
+            // Handle TakeOrderPhase logic
+            dialogueManager->Update(dt, frame);
+            if (dialogueManager->IsDialogueFinished()) {
+                currentPhase = RoomPhase::ServePhase;
+            }
+            break;
 
-        if (input.Get().GetKeyDown(GLFW_KEY_E)) {
+        case RoomPhase::ServePhase:
+            // Handle ServePhase logic
+            // For now, leave blank as per the instructions
+            break;
+
+        case RoomPhase::InspectionPhase:
+            // Handle InspectionPhase logic
+            // For now, leave blank as per the instructions
+            break;
+        }
+
+        // Update ParallaxManager for background only
+        parallaxManager->UpdateBackground(dt);
+
+        // Allow leaving the room only in phases other than TakeOrderPhase
+        if (currentPhase != RoomPhase::TakeOrderPhase && input.Get().GetKeyDown(GLFW_KEY_E)) {
             Application::Get().SetScene("Hallway");
         }
 
+        // Handle dialogue progression
         if (input.Get().GetKeyDown(GLFW_KEY_SPACE)) {
             dialogueManager->PlayNextDialogue();
         }

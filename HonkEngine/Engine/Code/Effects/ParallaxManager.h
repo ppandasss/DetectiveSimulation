@@ -25,10 +25,13 @@ public:
         backgroundSpeed = newSpeed;
     }
 
-    void Update(float dt, long frame) {
+    void UpdateBackground(float dt) {
         UpdateBackgroundPositions(dt);
-        UpdateLayeredObjects();
     }
+
+    void UpdateLayers() {
+		UpdateLayeredObjects();
+	}
 
 private:
     std::unordered_map<float, std::vector<GameObject*>> layerObjects;

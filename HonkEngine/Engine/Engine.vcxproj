@@ -144,6 +144,7 @@
   <ItemGroup>
     <ClInclude Include="Code\Audio\AudioManager.h" />
     <ClInclude Include="Code\Dialogue\DialogueManager.h" />
+    <ClInclude Include="Code\Dialogue\tinyxml2.h" />
     <ClInclude Include="Code\EventManager.h" />
     <ClInclude Include="Code\GameObjects\AnimateGameObject.h" />
     <ClInclude Include="Code\Animation\Animator.h" />
