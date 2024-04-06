@@ -16,6 +16,7 @@
 #include "../UI/UIButtonEmpty.h"
 #include "../GameObjects/Door.h"
 #include "../GameObjects/DoorsManager.h"
+#include "../GameObjects/OrderData.h"
 
 class Hallway : public Scene
 {
@@ -39,6 +40,9 @@ public:
 		GameObject* hallway = new RenderGameObject("Cabin", "Assets/Images/Environment_Corridor_Hallway.png");
 		GameObject* hallwaylights = new RenderGameObject("CabinLights", "Assets/Images/Environment_Corridor_Light.png");
 		Journal = new Book();
+		// Inside the Hallway constructor
+		
+
 
 		/*-------------------------------------------------------------🎮CREATE PLAYER🎮------------------------------------------------------------------------------------------------------- */
 
@@ -47,7 +51,14 @@ public:
 		/*-------------------------------------------------------------💬CREATE TEXT💬------------------------------------------------------------------------------------------------------- */
 
 		Text* helloText = new Text("GameTitle", " Welcome To Ticking Tea Time", "Assets/Fonts/WD.ttf",true);
-		Text* orderNoText = new Text("orderNo", "1", "Assets/Fonts/mvboli.ttf",true);
+		Text* orderNoText = new Text("orderNo", "", "Assets/Fonts/mvboli.ttf",true);
+		Text* teaOrderText = new Text("TeaOrder", "", "Assets/Fonts/mvboli.ttf", true);
+		Text* sandwichOrderText = new Text("sandwichOrder", "", "Assets/Fonts/mvboli.ttf", true);
+		Text* pastryOrderText = new Text("PastryOrder", "", "Assets/Fonts/mvboli.ttf", true);
+
+		//OrderData to manager Order Text
+		OrderData& orderData = OrderData::GetInstance();
+		orderData.Initialize(orderNoText, teaOrderText, sandwichOrderText, pastryOrderText);
 
 		/*-------------------------------------------------------------💬CREATE UI💬------------------------------------------------------------------------------------------------------- */
 		UIElement* orderPaper = new UINormal("OrderPaper", "Assets/Images/OrderPaper.png", glm::vec3(-7.65f, 4.0f, 0.0f), glm::vec3(3.55f, 2.54f, 0.0f), true);
@@ -78,8 +89,14 @@ public:
 
 		helloText->SetPosition(glm::vec3(0.0f, 3.0f, 0.0f));
 		helloText->SetColor(glm::vec3(1, 1, 1));
-		orderNoText->SetPosition(glm::vec3(-8.8f, 4.6f, 0.0f));
+		orderNoText->SetPosition(glm::vec3(-8.8f, 4.5f, 0.0f));
 		orderNoText->SetColor(glm::vec3(0.5, 0, 0));
+		teaOrderText->SetPosition(glm::vec3(-6.8f, 4.6f, 0.0f));
+		teaOrderText->SetScale(0.5f);
+		sandwichOrderText->SetPosition(glm::vec3(-7.8f, 4.0f, 0.0f));
+		sandwichOrderText->SetScale(0.5f);
+		pastryOrderText->SetPosition(glm::vec3(-7.8f, 3.3f, 0.0f));
+		pastryOrderText-> SetScale(0.5f);
 
 		/*--------------------------------------------------------------✅PUSH BACK✅------------------------------------------------------------------------------------------------------- */
 		//Environment
@@ -98,6 +115,9 @@ public:
 		//Texts
 		//m_gameObjects.push_back(helloText);
 		m_gameObjects.push_back(orderNoText);
+		m_gameObjects.push_back(teaOrderText);
+		m_gameObjects.push_back(sandwichOrderText);
+		m_gameObjects.push_back(pastryOrderText);
 
 		//Journal
 		m_gameObjects.push_back(Journal);

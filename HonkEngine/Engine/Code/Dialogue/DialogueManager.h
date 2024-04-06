@@ -7,6 +7,7 @@
 #include <vector>
 #include <memory>
 #include <iostream>
+#include "../GameObjects/OrderData.h"
 
 using namespace std;
 
@@ -20,7 +21,8 @@ struct Dialogue {
     string speakerName;
     vector<string> text;
     vector<DialogueChoice> choices;
-    string next; 
+    string next;
+    tinyxml2::XMLElement* orderElement = nullptr;
 };
 
 
@@ -76,10 +78,17 @@ public:
                     dialogue.next = nextAttr;
                 }
 
+                // Read order data
+                tinyxml2::XMLElement* orderElement = element->FirstChildElement("Order");
+                if (orderElement) {
+                    dialogue.orderElement = orderElement;
+                }
+
                 dialogues.push_back(dialogue);
             }
         }
     }
+
 
 
     void AddSpeakerIcon(const string& speakerCode, UIElement* icon) {
@@ -229,6 +238,7 @@ public:
             }
             else {
                 std::cout << "No more dialogues available." << std::endl;
+                SetOrderDataForCurrentDialogue();
                 return;
             }
         }
@@ -294,6 +304,41 @@ public:
             }
         }
     }
+
+    void SetOrderDataForCurrentDialogue() {
+        const Dialogue& currentDialogue = dialogues[currentDialogueIndex];
+        tinyxml2::XMLElement* orderElement = currentDialogue.orderElement;
+        if (orderElement) {
+            OrderData& orderData = OrderData::GetInstance();
+            tinyxml2::XMLElement* roomNumberElement = orderElement->FirstChildElement("RoomNumber");
+            tinyxml2::XMLElement* teaElement = orderElement->FirstChildElement("Tea");
+            tinyxml2::XMLElement* sandwichElement = orderElement->FirstChildElement("Sandwich");
+            tinyxml2::XMLElement* pastryElement = orderElement->FirstChildElement("Pastry");
+            if (roomNumberElement) {
+                std::string roomNumber = roomNumberElement->GetText();
+                orderData.SetRoomNumber(roomNumber);
+                std::cout << "Room Number: " << roomNumber << std::endl;
+            }
+            if (teaElement) {
+                std::string teaOrder = teaElement->GetText();
+                orderData.SetTeaOrder(teaOrder);
+                std::cout << "Tea Order: " << teaOrder << std::endl;
+            }
+            if (sandwichElement) {
+                std::string sandwichOrder = sandwichElement->GetText();
+                orderData.SetSandwichOrder(sandwichOrder);
+                std::cout << "Sandwich Order: " << sandwichOrder << std::endl;
+            }
+            if (pastryElement) {
+                std::string pastryOrder = pastryElement->GetText();
+                orderData.SetPastryOrder(pastryOrder);
+                std::cout << "Pastry Order: " << pastryOrder << std::endl;
+            }
+        }
+    }
+
+
+
 
    private:
    

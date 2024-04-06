@@ -67,6 +67,12 @@
       <line3>But it's ever so crumbly and  simply divine with a spoonful  of jam.</line3>
     </Speaker>
     <Choices/>
+  <Order>
+      <RoomNumber>101</RoomNumber>
+      <Tea>Floral Tea</Tea>
+      <Sandwich>Creamy Sandwich</Sandwich>
+      <Pastry>Biscuit with Jam</Pastry>
+    </Order>
   </Dialogue>
   <Dialogue id="1WD06">
     <Speaker name="Waiter">
