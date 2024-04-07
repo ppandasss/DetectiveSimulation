@@ -11,6 +11,14 @@
 
 using namespace std;
 
+struct TempOrderData {
+    std::string roomNumber;
+    std::string teaOrder;
+    std::string sandwichOrder;
+    std::string pastryOrder;
+};
+
+
 struct DialogueChoice {
     string text;
     string nextDialogueId;
@@ -23,7 +31,10 @@ struct Dialogue {
     vector<DialogueChoice> choices;
     string next;
     tinyxml2::XMLElement* orderElement = nullptr;
+    bool hasOrderData = false;  // Add this line
+    TempOrderData* tempOrderData = nullptr;
 };
+
 
 
 class DialogueManager  {
@@ -39,10 +50,19 @@ public:
     }
 
     ~DialogueManager() {
-		if (currentDialogueButton) {
+        if (currentDialogueButton) {
             currentDialogueButton->Clear();
-		}
-	}
+        }
+
+        // Free memory allocated for tempOrderData in each Dialogue
+        for (auto& dialogue : dialogues) {
+            if (dialogue.tempOrderData) {
+                delete dialogue.tempOrderData;
+                dialogue.tempOrderData = nullptr;
+            }
+        }
+    }
+
 
 
     void LoadDialogues(const string& filePath) {
@@ -82,8 +102,21 @@ public:
                 tinyxml2::XMLElement* orderElement = element->FirstChildElement("Order");
                 if (orderElement) {
                     dialogue.orderElement = orderElement;
-                }
+                    dialogue.hasOrderData = true;
 
+                    // Allocate memory for tempOrderData
+                    dialogue.tempOrderData = new TempOrderData();
+
+                    // Parse and store the order data
+                    tinyxml2::XMLElement* roomNumberElement = orderElement->FirstChildElement("RoomNumber");
+                    if (roomNumberElement) dialogue.tempOrderData->roomNumber = roomNumberElement->GetText();
+                    tinyxml2::XMLElement* teaElement = orderElement->FirstChildElement("Tea");
+                    if (teaElement) dialogue.tempOrderData->teaOrder = teaElement->GetText();
+                    tinyxml2::XMLElement* sandwichElement = orderElement->FirstChildElement("Sandwich");
+                    if (sandwichElement) dialogue.tempOrderData->sandwichOrder = sandwichElement->GetText();
+                    tinyxml2::XMLElement* pastryElement = orderElement->FirstChildElement("Pastry");
+                    if (pastryElement) dialogue.tempOrderData->pastryOrder = pastryElement->GetText();
+                }
                 dialogues.push_back(dialogue);
             }
         }
@@ -232,13 +265,16 @@ public:
             }
 
             if (nextDialogueIndex < dialogues.size()) {
+                if (dialogues[currentDialogueIndex].hasOrderData) {
+                    // Apply the order data
+                    SetOrderDataForCurrentDialogue();
+                }
                 currentDialogueIndex = nextDialogueIndex;
                 currentLineIndex = 0;
                 choiceMade = false;
             }
             else {
                 std::cout << "No more dialogues available." << std::endl;
-                SetOrderDataForCurrentDialogue();
                 return;
             }
         }
@@ -307,35 +343,27 @@ public:
 
     void SetOrderDataForCurrentDialogue() {
         const Dialogue& currentDialogue = dialogues[currentDialogueIndex];
-        tinyxml2::XMLElement* orderElement = currentDialogue.orderElement;
-        if (orderElement) {
-            OrderData& orderData = OrderData::GetInstance();
-            tinyxml2::XMLElement* roomNumberElement = orderElement->FirstChildElement("RoomNumber");
-            tinyxml2::XMLElement* teaElement = orderElement->FirstChildElement("Tea");
-            tinyxml2::XMLElement* sandwichElement = orderElement->FirstChildElement("Sandwich");
-            tinyxml2::XMLElement* pastryElement = orderElement->FirstChildElement("Pastry");
-            if (roomNumberElement) {
-                std::string roomNumber = roomNumberElement->GetText();
-                orderData.SetRoomNumber(roomNumber);
-                std::cout << "Room Number: " << roomNumber << std::endl;
-            }
-            if (teaElement) {
-                std::string teaOrder = teaElement->GetText();
-                orderData.SetTeaOrder(teaOrder);
-                std::cout << "Tea Order: " << teaOrder << std::endl;
-            }
-            if (sandwichElement) {
-                std::string sandwichOrder = sandwichElement->GetText();
-                orderData.SetSandwichOrder(sandwichOrder);
-                std::cout << "Sandwich Order: " << sandwichOrder << std::endl;
-            }
-            if (pastryElement) {
-                std::string pastryOrder = pastryElement->GetText();
-                orderData.SetPastryOrder(pastryOrder);
-                std::cout << "Pastry Order: " << pastryOrder << std::endl;
-            }
+        OrderData& orderData = OrderData::GetInstance();
+
+        // Set the order data using the temporary structure
+        if (!currentDialogue.tempOrderData->roomNumber.empty()) {
+            orderData.SetRoomNumber(currentDialogue.tempOrderData->roomNumber);
+            std::cout << "Room Number: " << currentDialogue.tempOrderData->roomNumber << std::endl;
+        }
+        if (!currentDialogue.tempOrderData->teaOrder.empty()) {
+            orderData.SetTeaOrder(currentDialogue.tempOrderData->teaOrder);
+            std::cout << "Tea Order: " << currentDialogue.tempOrderData->teaOrder << std::endl;
+        }
+        if (!currentDialogue.tempOrderData->sandwichOrder.empty()) {
+            orderData.SetSandwichOrder(currentDialogue.tempOrderData->sandwichOrder);
+            std::cout << "Sandwich Order: " << currentDialogue.tempOrderData->sandwichOrder << std::endl;
+        }
+        if (!currentDialogue.tempOrderData->pastryOrder.empty()) {
+            orderData.SetPastryOrder(currentDialogue.tempOrderData->pastryOrder);
+            std::cout << "Pastry Order: " << currentDialogue.tempOrderData->pastryOrder << std::endl;
         }
     }
+
 
 
 

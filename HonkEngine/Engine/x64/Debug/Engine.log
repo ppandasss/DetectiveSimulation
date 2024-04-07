@@ -7,5 +7,5 @@ E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\Text\TextRenderer.h(12,
 E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): message : see declaration of 'Mesh'
 E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Player.h(23,55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Player.h(23,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\Dialogue\Dialoguemanager.h(129,1): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+E:\GameEngine\DetectiveSimulation\HonkEngine\Engine\Code\Dialogue\Dialoguemanager.h(162,1): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   Engine.vcxproj -> E:\GameEngine\DetectiveSimulation\HonkEngine\x64\Debug\Engine.exe
