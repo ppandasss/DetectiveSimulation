@@ -73,23 +73,7 @@ public:
 
 	virtual void Update(float dt, long frame) override
 	{
-		//UIObject::Update(dt, frame);
-
-
-	}
-
-	bool IsPointInside(float x, float y) const
-	{
-		float minX = m_transformedPosition.x - (m_scale.x / 2.0f);
-		float maxX = m_transformedPosition.x + (m_scale.x / 2.0f);
-		float minY = m_transformedPosition.y - (m_scale.y / 2.0f);
-		float maxY = m_transformedPosition.y + (m_scale.y / 2.0f);
-
-		return ((x >= minX && x <= maxX) && (y >= minY && y <= maxY));
-	}
-
-	virtual void Render() override
-	{
+		
 		glm::mat4 rMat = glm::mat4(1.0f);
 		glm::mat4 sMat = glm::mat4(1.0f);
 		glm::mat4 tMat = glm::mat4(1.0f);
@@ -110,6 +94,23 @@ public:
 		sMat = glm::scale(glm::mat4(1.0f), glm::vec3(m_scale.x, m_scale.y, 1.0f));
 
 		model = tMat * rMat * sMat;
+
+	}
+
+	bool IsPointInside(float x, float y) const
+	{
+		float minX = m_transformedPosition.x - (m_scale.x / 2.0f);
+		float maxX = m_transformedPosition.x + (m_scale.x / 2.0f);
+		float minY = m_transformedPosition.y - (m_scale.y / 2.0f);
+		float maxY = m_transformedPosition.y + (m_scale.y / 2.0f);
+
+		return ((x >= minX && x <= maxX) && (y >= minY && y <= maxY));
+	}
+
+	virtual void Render() override
+	{
+		UIObject::Update(0, 0);
+
 		renderer.SetRenderMode(CDT_TEXTURE, 1.0f);
 		renderer.SetTexture(texture_Id, 0.0f, 0.0f);
 		renderer.SetTransform(model);

@@ -16,7 +16,7 @@ class UIButtonEmpty: public UIButton {
            
         //Comment render out to draw texture to test sizing
         void Render() override {
-
+  
             //override Render to not draw texture
             RenderText();    
 
