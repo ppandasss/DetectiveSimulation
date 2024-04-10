@@ -17,7 +17,6 @@ public:
         button_name = name;
         isClickable = true;
         offset = position;
-        //category = UIcategory;
 
     }
 

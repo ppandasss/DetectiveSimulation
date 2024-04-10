@@ -240,7 +240,7 @@ public:
 	void setActiveTab4() { if (activePage != CABIN3) { activePage = currentPage::CABIN3; } audioManager.PlaySound("pageSwitch", false);};
 	void setActiveTab5() { if (activePage != CABIN4) { activePage = currentPage::CABIN4; } audioManager.PlaySound("pageSwitch", false);};
 	void setActiveTab6() { if (activePage != CABIN5) { activePage = currentPage::CABIN5; } audioManager.PlaySound("pageSwitch", false);};
-	void setActiveTab7() { if (activePage != CABIN5) { activePage = currentPage::FOODGUIDE; } audioManager.PlaySound("pageSwitch", false); };
+	void setActiveTab7() { if (activePage != FOODGUIDE) { activePage = currentPage::FOODGUIDE; } audioManager.PlaySound("pageSwitch", false); };
 
 
 protected:
