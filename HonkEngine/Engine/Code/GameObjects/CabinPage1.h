@@ -48,6 +48,8 @@ public:
 
 		// RIGHT PAGE
 		// CLUES	[M = Martha, C = Clue]
+
+		/*
 		Text* M_C1 = new Text("M_C1", "Family resides at Eastside", "Assets/Fonts/ESA-m.ttf");
 		M_C1->SetPosition(glm::vec3(1.0f, 2.7f, 0.0f));
 		M_C1->SetColor(glm::vec3(0, 0, 0));
@@ -73,17 +75,22 @@ public:
 		M_C4_2->SetColor(glm::vec3(0, 0, 0));
 		M_C4_2->SetScale(0.6f);
 
+		*/
+
 		GameObject* Divider1 = new UIObject("Divider1", "Assets/Images/Journal/Line_1.png", true);
 		Divider1->SetScale(glm::vec3(4.71f, 0.15f, 0.0f));
 		Divider1->SetPosition(glm::vec3(3.2f, 1.0f, 0.0f));
 
 
 		// LAST ACTIVITY	[M = Martha, LA = Last Activity]
+
+		
 		Text* LastActivity = new Text("LastActivity", "Last Activity", "Assets/Fonts/mvboli.ttf");
 		LastActivity->SetPosition(glm::vec3(0.8f, 0.3f, 0.0f));
 		LastActivity->SetColor(glm::vec3(0, 0, 0));
 		LastActivity->SetScale(0.85f);
 
+		/*
 		// LAST ACTIVITY 1
 		Text* M_LA1 = new Text("M_LA1", "Received a letter", "Assets/Fonts/ESA-smb.ttf");
 		M_LA1->SetPosition(glm::vec3(0.85f, -0.2f, 0.0f));
@@ -106,6 +113,7 @@ public:
 		M_LA2_2->SetColor(glm::vec3(0, 0, 0));
 		M_LA2_2->SetScale(0.5f);
 
+		*/
 
 		// DIVIDER 2
 		GameObject* Divider2 = new UIObject("Divider2", "Assets/Images/Journal/Line_2.png", true);
@@ -139,8 +147,6 @@ public:
 		SupremeCourt->SetColor(glm::vec3(0, 0, 0));
 		SupremeCourt->SetScale(0.6f);
 
-
-
 		m_gameObjects.push_back(P1Picture);
 		m_gameObjects.push_back(PaperClip);
 		m_gameObjects.push_back(InfoPaper);
@@ -151,19 +157,18 @@ public:
 		m_gameObjects.push_back(Occupation);
 		m_gameObjects.push_back(CabinStamp);
 
-		m_gameObjects.push_back(M_C1);
+		/*m_gameObjects.push_back(M_C1);
 		m_gameObjects.push_back(M_C2);
 		m_gameObjects.push_back(M_C3);
 		m_gameObjects.push_back(M_C4_1);
-		m_gameObjects.push_back(M_C4_2);
+		m_gameObjects.push_back(M_C4_2);*/
 		m_gameObjects.push_back(Divider1);
 
-
 		m_gameObjects.push_back(LastActivity);
-		m_gameObjects.push_back(M_LA1);
+		/*m_gameObjects.push_back(M_LA1);
 		m_gameObjects.push_back(M_LA1_2);
 		m_gameObjects.push_back(M_LA2_1);
-		m_gameObjects.push_back(M_LA2_2);
+		m_gameObjects.push_back(M_LA2_2);*/
 
 		m_gameObjects.push_back(LastVisit);
 		m_gameObjects.push_back(Divider2);

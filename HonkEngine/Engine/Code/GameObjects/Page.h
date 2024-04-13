@@ -66,6 +66,12 @@ public:
 
 	}
 
+	void UpdateClueStatus() {
+
+
+
+	}
+
 
 protected:
 
