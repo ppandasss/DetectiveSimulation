@@ -63,7 +63,9 @@ public:
             else {
                 m_journal->drawBook();
             }
+
         }
+
        
         bool collidedWithDoor = false;
         DoorManager& doorManager = DoorManager::GetInstance();

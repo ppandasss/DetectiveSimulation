@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="1MD07_2" next="1MQ03">
+		<Speaker name="Martha_Normal">
+			<line1>Here you are.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MQ03">
+		<Speaker name="Martha_Disappoint">
+			<line1>I must admit, I'm a bit disappointed  that it took this long.</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="1WD09">Apologize to Martha</Choice1>
+			<Choice2 next="1WD10">Say nothing</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="1WD09" next="1MD08">
+		<Speaker name="Waiter">
+			<line1>I apologize for the delay, ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1WD10" next="1MD08">
+		<Speaker name="Waiter">
+			<line1>...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD08">
+		<Speaker name="Martha_Disappoint">
+			<line1>...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD09">
+		<Speaker name="Martha_Normal">
+			<line1>Let's put that behind us.</line1>
+			<line2>I appreciate your efforts anywise.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1WD11">
+		<Speaker name="Waiter">
+			<line1>Thank you, ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1WD32">
+		<Speaker name="Waiter">
+			<line1>[You serve the meal to Ms. Martha  and start brewing the tea.]</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

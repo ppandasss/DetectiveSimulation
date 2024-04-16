@@ -47,35 +47,44 @@ public:
 
 
 		// RIGHT PAGE
-		// CLUES	[M = Martha, C = Clue]
+		// CLUES	[M = Martha, C = Clue]	
 
-		/*
-		Text* M_C1 = new Text("M_C1", "Family resides at Eastside", "Assets/Fonts/ESA-m.ttf");
-		M_C1->SetPosition(glm::vec3(1.0f, 2.7f, 0.0f));
+		Text* M_C1 = new Text("M_C1", "First time visiting Westside", "Assets/Fonts/ESA-m.ttf");
+		M_C1->SetPosition(glm::vec3(0.9f, 2.7f, 0.0f));
 		M_C1->SetColor(glm::vec3(0, 0, 0));
-		M_C1->SetScale(0.58f);
+		M_C1->SetScale(0.6f);
 
 		Text* M_C2 = new Text("M_C2", "Injury at right leg", "Assets/Fonts/ESA-smb.ttf");
-		M_C2->SetPosition(glm::vec3(0.9f, 2.1f, 0.0f));
+		M_C2->SetPosition(glm::vec3(0.9f, 2.2f, 0.0f));
 		M_C2->SetColor(glm::vec3(0, 0, 0));
 		M_C2->SetScale(0.6f);
 
-		Text* M_C3 = new Text("M_C3", "Pen-pal friend?", "Assets/Fonts/ESA-smb.ttf");
-		M_C3->SetPosition(glm::vec3(1.05f, 1.45f, 0.0f));
+		Text* M_C3 = new Text("M_C3", "Severe domestic violence accident", "Assets/Fonts/ESA-m.ttf");
+		M_C3->SetPosition(glm::vec3(0.9f, 1.7f, 0.0f));
 		M_C3->SetColor(glm::vec3(0, 0, 0));
-		M_C3->SetScale(0.65f);
+		M_C3->SetScale(0.6f);
 
-		Text* M_C4_1 = new Text("M_C4_1", "Severe domestic", "Assets/Fonts/ESA-m.ttf");
-		M_C4_1->SetPosition(glm::vec3(3.65f, 1.9f, 0.0f));
-		M_C4_1->SetColor(glm::vec3(0, 0, 0));
-		M_C4_1->SetScale(0.6f);
+		Text* M_C4 = new Text("M_C4", "Westside pen-pal friend", "Assets/Fonts/ESA-m.ttf");
+		M_C4->SetPosition(glm::vec3(0.9f, 1.2f, 0.0f));
+		M_C4->SetColor(glm::vec3(0.5, 0, 0));
+		M_C4->SetScale(0.65f);
 
-		Text* M_C4_2 = new Text("M_C4_2", "violence accident", "Assets/Fonts/ESA-m.ttf");
-		M_C4_2->SetPosition(glm::vec3(3.65f, 1.6f, 0.0f));
-		M_C4_2->SetColor(glm::vec3(0, 0, 0));
-		M_C4_2->SetScale(0.6f);
+		ClueData* cabin1_clue1 = new ClueData();
+		cabin1_clue1->showText = true;
+		cabin1_clue1->clueText = M_C1;
 
-		*/
+		ClueData* cabin1_clue2 = new ClueData();
+		cabin1_clue2->showText = true;
+		cabin1_clue2->clueText = M_C2;
+
+		ClueData* cabin1_clue3 = new ClueData();
+		cabin1_clue3->showText = true;
+		cabin1_clue3->clueText = M_C3;
+
+		ClueData* cabin1_clue4 = new ClueData();
+		cabin1_clue4->showText = true;
+		cabin1_clue4->clueText = M_C4;
+
 
 		GameObject* Divider1 = new UIObject("Divider1", "Assets/Images/Journal/Line_1.png", true);
 		Divider1->SetScale(glm::vec3(4.71f, 0.15f, 0.0f));
@@ -83,69 +92,84 @@ public:
 
 
 		// LAST ACTIVITY	[M = Martha, LA = Last Activity]
-
-		
 		Text* LastActivity = new Text("LastActivity", "Last Activity", "Assets/Fonts/mvboli.ttf");
-		LastActivity->SetPosition(glm::vec3(0.8f, 0.3f, 0.0f));
+		LastActivity->SetPosition(glm::vec3(0.8f, 0.1f, 0.0f));
 		LastActivity->SetColor(glm::vec3(0, 0, 0));
 		LastActivity->SetScale(0.85f);
 
-		/*
 		// LAST ACTIVITY 1
-		Text* M_LA1 = new Text("M_LA1", "Received a letter", "Assets/Fonts/ESA-smb.ttf");
-		M_LA1->SetPosition(glm::vec3(0.85f, -0.2f, 0.0f));
-		M_LA1->SetColor(glm::vec3(0, 0, 0));
+		Text* M_LA1 = new Text("M_LA1", "Exchange letters with someone on Westside", "Assets/Fonts/ESA-smb.ttf");
+		M_LA1->SetPosition(glm::vec3(0.85f, -0.4f, 0.0f));
+		M_LA1->SetColor(glm::vec3(0.5, 0, 0));
 		M_LA1->SetScale(0.6f);
 
-		Text* M_LA1_2 = new Text("M_LA1_2", "from Westside", "Assets/Fonts/ESA-smb.ttf");
-		M_LA1_2->SetPosition(glm::vec3(0.85f, -0.55f, 0.0f));
-		M_LA1_2->SetColor(glm::vec3(0, 0, 0));
-		M_LA1_2->SetScale(0.6f);
-
 		// LAST ACTIVITY 2
-		Text* M_LA2_1 = new Text("M_LA2_1", "Hire someone to send a letter", "Assets/Fonts/ESA-m.ttf");
-		M_LA2_1->SetPosition(glm::vec3(3.1f, -0.22f, 0.0f));
-		M_LA2_1->SetColor(glm::vec3(0, 0, 0));
-		M_LA2_1->SetScale(0.5f);
+		Text* M_LA2 = new Text("M_LA2", "Hire someone to send the letter", "Assets/Fonts/ESA-m.ttf");
+		M_LA2->SetPosition(glm::vec3(2.4f, -0.8f, 0.0f));
+		M_LA2->SetColor(glm::vec3(0, 0, 0));
+		M_LA2->SetScale(0.54f);
 
-		Text* M_LA2_2 = new Text("M_LA2_2", "instead of using post service", "Assets/Fonts/ESA-m.ttf");
-		M_LA2_2->SetPosition(glm::vec3(3.15f, -0.5f, 0.0f));
-		M_LA2_2->SetColor(glm::vec3(0, 0, 0));
-		M_LA2_2->SetScale(0.5f);
+		ClueData* cabin1_clue5 = new ClueData();
+		cabin1_clue5->showText = true;
+		cabin1_clue5->clueText = M_LA1;
 
-		*/
+		ClueData* cabin1_clue6 = new ClueData();
+		cabin1_clue6->showText = true;
+		cabin1_clue6->clueText = M_LA2;
 
+		textClues.push_back(cabin1_clue1);
+		textClues.push_back(cabin1_clue2);
+		textClues.push_back(cabin1_clue3);
+		textClues.push_back(cabin1_clue4);
+
+		textClues.push_back(cabin1_clue5);
+		textClues.push_back(cabin1_clue6);
+
+		m_journalData->addClueToJournalData(CLUE_CABIN1, cabin1_clue1);
+		m_journalData->addClueToJournalData(CLUE_CABIN1, cabin1_clue2);
+		m_journalData->addClueToJournalData(CLUE_CABIN1, cabin1_clue3);
+		m_journalData->addClueToJournalData(CLUE_CABIN1, cabin1_clue4);
+
+		m_journalData->addClueToJournalData(CLUE_CABIN1, cabin1_clue5);
+		m_journalData->addClueToJournalData(CLUE_CABIN1, cabin1_clue6);
+
+		
 		// DIVIDER 2
 		GameObject* Divider2 = new UIObject("Divider2", "Assets/Images/Journal/Line_2.png", true);
-		Divider2->SetScale(glm::vec3(4.81f, 0.09f, 0.0f));
-		Divider2->SetPosition(glm::vec3(3.2f, -1.0f, 0.0f));
+		Divider2->SetScale(glm::vec3(4.8f, 0.06f, 0.0f));
+		Divider2->SetPosition(glm::vec3(3.2f, -1.25f, 0.0f));
 
 
 		// LAST VISIT
 		Text* LastVisit = new Text("LastVisit", "Last Visit", "Assets/Fonts/mvboli.ttf");
-		LastVisit->SetPosition(glm::vec3(0.8f, -1.75f, 0.0f));
+		LastVisit->SetPosition(glm::vec3(0.8f, -1.95f, 0.0f));
 		LastVisit->SetColor(glm::vec3(0, 0, 0));
 		LastVisit->SetScale(0.85f);
 
 		Text* TownSquare = new Text("TownSquare", "Town Square", "Assets/Fonts/ESA-m.ttf");
-		TownSquare->SetPosition(glm::vec3(0.8f, -2.25f, 0.0f));
+		TownSquare->SetPosition(glm::vec3(0.8f, -2.45f, 0.0f));
 		TownSquare->SetColor(glm::vec3(0, 0, 0));
 		TownSquare->SetScale(0.6f);
 
 		Text* TheHolyChurch = new Text("TheHolyChurch", "The Holy Church", "Assets/Fonts/ESA-m.ttf");
-		TheHolyChurch->SetPosition(glm::vec3(2.9f, -2.25f, 0.0f));
+		TheHolyChurch->SetPosition(glm::vec3(2.9f, -2.45f, 0.0f));
 		TheHolyChurch->SetColor(glm::vec3(0, 0, 0));
 		TheHolyChurch->SetScale(0.6f);
 
 		Text* TheCouncil = new Text("TheCouncil", "The Council", "Assets/Fonts/ESA-m.ttf");
-		TheCouncil->SetPosition(glm::vec3(0.8f, -2.75f, 0.0f));
+		TheCouncil->SetPosition(glm::vec3(0.8f, -2.95f, 0.0f));
 		TheCouncil->SetColor(glm::vec3(0, 0, 0));
 		TheCouncil->SetScale(0.6f);
 
 		Text* SupremeCourt = new Text("SupremeCourt", "Supreme Court", "Assets/Fonts/ESA-m.ttf");
-		SupremeCourt->SetPosition(glm::vec3(2.9f, -2.75f, 0.0f));
+		SupremeCourt->SetPosition(glm::vec3(2.9f, -2.95f, 0.0f));
 		SupremeCourt->SetColor(glm::vec3(0, 0, 0));
 		SupremeCourt->SetScale(0.6f);
+
+		RedUnderline_Cabin1 = new UIObject("UnderlineCabin1", "Assets/Images/Journal/CaseSummary_Icon_Red_Underline.png", true);
+		RedUnderline_Cabin1->setActiveStatus(false);
+		RedUnderline_Cabin1->SetScale(glm::vec3(1.7f, 0.1f, 0.0f));
+		RedUnderline_Cabin1->SetPosition(glm::vec3(1.1f, -2.0f, 0.0f));
 
 		m_gameObjects.push_back(P1Picture);
 		m_gameObjects.push_back(PaperClip);
@@ -157,18 +181,9 @@ public:
 		m_gameObjects.push_back(Occupation);
 		m_gameObjects.push_back(CabinStamp);
 
-		/*m_gameObjects.push_back(M_C1);
-		m_gameObjects.push_back(M_C2);
-		m_gameObjects.push_back(M_C3);
-		m_gameObjects.push_back(M_C4_1);
-		m_gameObjects.push_back(M_C4_2);*/
 		m_gameObjects.push_back(Divider1);
 
 		m_gameObjects.push_back(LastActivity);
-		/*m_gameObjects.push_back(M_LA1);
-		m_gameObjects.push_back(M_LA1_2);
-		m_gameObjects.push_back(M_LA2_1);
-		m_gameObjects.push_back(M_LA2_2);*/
 
 		m_gameObjects.push_back(LastVisit);
 		m_gameObjects.push_back(Divider2);
@@ -178,8 +193,32 @@ public:
 		m_gameObjects.push_back(TheCouncil);
 		m_gameObjects.push_back(SupremeCourt);
 
+		m_gameObjects.push_back(RedUnderline_Cabin1);
+
+	}
+
+	virtual void Update(float dt, long frame) override {
+
+		Page::Update(dt, frame);
+
+		CabinPageData cabinData = m_journalData->GetCabinPageData(Cabin::CLUE_CABIN1);
+
+		if (!cabinData.ShowLastActivity) {
+
+			RedUnderline_Cabin1->setActiveStatus(false);
+
+		}
+		else {
+
+			RedUnderline_Cabin1->setActiveStatus(true);
+		
+		}
+
 	}
 
 
+private:
+
+	UIObject* RedUnderline_Cabin1;
 
 };

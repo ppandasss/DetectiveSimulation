@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="1MD05">
+		<Speaker name="Martha_Happy">
+			<line1>Here you are, dear. You're on time  as I expected.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MQ02">
+		<Speaker name="Martha_Normal">
+			<line1>Was it any inconvenience to get  everything I requested?</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="1WD07">Certainly not</Choice1>
+			<Choice2 next="1WD08">A slight challenge</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="1WD07" next="1MD06">
+		<Speaker name="Waiter">
+			<line1>Certainly not, ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1WD08" next="1MD07">
+		<Speaker name="Waiter">
+			<line1>A slight challenge, ma'am.</line1>
+			<line2>But I hope what I've prepared will  be to your liking.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD06" next="1WD32">
+		<Speaker name="Martha_Happy">
+			<line1>Glad to hear!</line1>
+			<line2>I'm sure the meal will be wonderful.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD07" next="1WD32">
+		<Speaker name="Martha_Happy">
+			<line1>Thank you for your service, dear.</line1>
+			<line2>I'm sure the meal will be wonderful.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1WD32">
+		<Speaker name="Waiter">
+			<line1>[You serve the meal to Ms. Martha  and start brewing the tea.]</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

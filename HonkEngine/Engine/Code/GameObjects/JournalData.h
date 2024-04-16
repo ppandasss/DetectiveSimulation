@@ -6,14 +6,13 @@ enum Location { LOCATION_EMPTY, TOWNSQUARE, HOLYCHURCH, COUNCIL, SUPREMECOURT };
 
 enum Spy { SPY_EMPTY, SPY1, SPY21, SPY22, SPY3, SPY4 };
 
-enum Cabin {ClUE_CABIN1, ClUE_CABIN21, ClUE_CABIN22, ClUE_CABIN3, ClUE_CABIN4 };
+enum Cabin {CLUE_CABIN1, CLUE_CABIN21, CLUE_CABIN22, CLUE_CABIN3, CLUE_CABIN4 };
 
-//FOR TEXT CLUES THAT GET UNBLURRED THROUGHOUT THE GAME
 
-struct EvidenceClue {
+struct ClueData {
 
 	bool showText;
-	Text* evidenceText = nullptr;
+	Text* clueText = nullptr;
 
 };
 
@@ -28,8 +27,8 @@ struct MainPageData {
 
 struct CabinPageData {
 
-	std::vector<EvidenceClue> textClues;
-	Location lastVisit;
+	std::vector<ClueData*> textClues;
+	bool ShowLastActivity = false;
 
 };
 
@@ -71,48 +70,42 @@ class JournalData {
 		}
 
 		//------------------CABIN PAGE FUNCTIONS--------------------------
-		
-		//Set last visit
-		void SetLastVisit(Cabin cabin, Location location) {
-			allCabinData[cabin].lastVisit = location;
-		}
+	
 
 		// Function to activate a clue for a specific page
 		void ActivateClue(Cabin cabin, int index) {
+
 			if (index >= 0 && index < allCabinData[cabin].textClues.size()) {
-				allCabinData[cabin].textClues[index].showText = true;
+
+				allCabinData[cabin].textClues[index]->showText = true;
+
 			}
+
 		}
 
 		// Function to deactivate a clue for a specific page
 		void DeactivateClue(Cabin cabin, int index) {
-			if (index >= 0 && index < allCabinData[cabin].textClues.size()) {
-				allCabinData[cabin].textClues[index].showText = false;
-			}
-		}
-
-		// Function to check if the showText status of a clue is true or false
-		bool isClueActive(Cabin cabin, int index) {
 
 			if (index >= 0 && index < allCabinData[cabin].textClues.size()) {
-				return allCabinData[cabin].textClues[index].showText;
-			}
 
-			return false; // Return false if the provided cabin or index is invalid
+				allCabinData[cabin].textClues[index]->showText = false;
+
+			}
 
 		}
 
-		// Function to get the Text object of a clue
-		Text* getClueText(Cabin cabin, int index) {
+		void activateLastActivity(Cabin cabin) {
 
-			if (index >= 0 && index < allCabinData[cabin].textClues.size()) {
-				return allCabinData[cabin].textClues[index].evidenceText;
-			}
-
-			return nullptr; // Return nullptr if the provided cabin or index is invalid
+			allCabinData[cabin].ShowLastActivity = true;
 
 		}
-		
+
+		void addClueToJournalData(Cabin cabin, ClueData *newClue){
+
+			allCabinData[cabin].textClues.push_back(newClue);
+
+		}
+	
 
 		//GET PAGE INFO FUNCTIONS
 
@@ -122,79 +115,7 @@ class JournalData {
 			return allCabinData[cabin];
 		}
 
-		void InstantiateClues() {
-
-			//----------------CABIN 1-------------------
-
-			Text* M_C1 = new Text("M_C1", "Family resides at Eastside", "Assets/Fonts/ESA-m.ttf");
-			M_C1->SetPosition(glm::vec3(1.0f, 2.7f, 0.0f));
-			M_C1->SetColor(glm::vec3(0, 0, 0));
-			M_C1->SetScale(0.58f);
-
-			EvidenceClue cabin1_clue1;
-			cabin1_clue1.evidenceText = M_C1;
-			cabin1_clue1.showText = false;
-
-			Text* M_C2 = new Text("M_C2", "Injury at right leg", "Assets/Fonts/ESA-smb.ttf");
-			M_C2->SetPosition(glm::vec3(0.9f, 2.1f, 0.0f));
-			M_C2->SetColor(glm::vec3(0, 0, 0));
-			M_C2->SetScale(0.6f);
-
-			EvidenceClue cabin1_clue2;
-			cabin1_clue1.evidenceText = M_C2;
-			cabin1_clue1.showText = false;
-
-			Text* M_C3 = new Text("M_C3", "Pen-pal friend?", "Assets/Fonts/ESA-smb.ttf");
-			M_C3->SetPosition(glm::vec3(1.05f, 1.45f, 0.0f));
-			M_C3->SetColor(glm::vec3(0, 0, 0));
-			M_C3->SetScale(0.65f);
-
-			EvidenceClue cabin1_clue3;
-			cabin1_clue1.evidenceText = M_C3;
-			cabin1_clue1.showText = false;
-
-			Text* M_C4 = new Text("M_C4", "Severe domestic violence accident", "Assets/Fonts/ESA-m.ttf");
-			M_C4->SetPosition(glm::vec3(3.65f, 1.9f, 0.0f));
-			M_C4->SetColor(glm::vec3(0, 0, 0));
-			M_C4->SetScale(0.6f);
-
-			EvidenceClue cabin1_clue4;
-			cabin1_clue1.evidenceText = M_C4;
-			cabin1_clue1.showText = false;
-
-			allCabinData[Cabin::ClUE_CABIN1].textClues.push_back(cabin1_clue1);
-			allCabinData[Cabin::ClUE_CABIN1].textClues.push_back(cabin1_clue2);
-			allCabinData[Cabin::ClUE_CABIN1].textClues.push_back(cabin1_clue3);
-			allCabinData[Cabin::ClUE_CABIN1].textClues.push_back(cabin1_clue4);
-
-			// LAST ACTIVITY 1
-			Text* M_LA = new Text("M_LA1", "Received a letter from Westside", "Assets/Fonts/ESA-smb.ttf");
-			M_LA->SetPosition(glm::vec3(0.85f, -0.2f, 0.0f));
-			M_LA->SetColor(glm::vec3(0, 0, 0));
-			M_LA->SetScale(0.6f);
-
-			EvidenceClue cabin1_lastActivity1;
-			cabin1_lastActivity1.evidenceText = M_LA;
-			cabin1_lastActivity1.showText = false;
-
-			Text* M_LA2 = new Text("M_LA2", "Hire someone to send a letter instead of using post service", "Assets/Fonts/ESA-m.ttf");
-			M_LA2->SetPosition(glm::vec3(3.1f, -0.22f, 0.0f));
-			M_LA2->SetColor(glm::vec3(0, 0, 0));
-			M_LA2->SetScale(0.5f);
-
-			EvidenceClue cabin1_lastActivity2;
-			cabin1_lastActivity1.evidenceText = M_LA2;
-			cabin1_lastActivity1.showText = false;
-
-			allCabinData[Cabin::ClUE_CABIN1].textClues.push_back(cabin1_lastActivity1);
-			allCabinData[Cabin::ClUE_CABIN1].textClues.push_back(cabin1_lastActivity2);
-
-			//----------------CABIN 21-------------------
-
-
-
-		}
-		
+	
 
 
 	private:
@@ -207,8 +128,6 @@ class JournalData {
 			main_page.player_Spy = Spy::SPY_EMPTY;
 			main_page.player_BombLocation = Location::LOCATION_EMPTY;
 			main_page.player_Evidence = 0;
-
-			InstantiateClues();
 
 		}
 

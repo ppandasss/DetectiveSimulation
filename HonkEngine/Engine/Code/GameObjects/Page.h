@@ -35,6 +35,17 @@ public:
 
 		}
 
+		for (auto& object : textClues) {
+
+			if (object->showText) { //CHECK ACTIVE STATUS
+
+				object->clueText->Render();
+
+			}
+
+		}
+
+
 	}
 
 	virtual void Update(float dt, long frame) override {
@@ -51,6 +62,11 @@ public:
 
 		}
 
+		for (auto& object : textClues) {
+
+			object->clueText->Update(dt, frame);
+
+		}
 
 	}
 
@@ -62,13 +78,23 @@ public:
 
 		}
 
+
+		for (auto& object : textClues) {
+
+			if (object->clueText) { //checks for nullptr
+
+				if (object->showText) {
+					object->clueText->setActiveStatus(status); //sets status accordingly if clue is active
+				}
+				else {
+
+					object->clueText->setActiveStatus(false); //if inactive always set as false
+				}
+
+			}
+		}
+
 		active = status;
-
-	}
-
-	void UpdateClueStatus() {
-
-
 
 	}
 
@@ -76,5 +102,9 @@ public:
 protected:
 
 	std::vector<GameObject*> m_gameObjects;
+
+	std::vector<ClueData*> textClues;
+
+	JournalData* m_journalData = JournalData::GetInstance();
 
 };

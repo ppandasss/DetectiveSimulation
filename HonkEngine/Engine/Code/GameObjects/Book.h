@@ -144,6 +144,7 @@ public:
 
 		}
 
+
 		for (auto& object : allPages)
 		{
 			object->setActiveStatus(false);

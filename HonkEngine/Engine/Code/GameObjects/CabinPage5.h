@@ -48,90 +48,127 @@ public:
 
 		// RIGHT PAGE
 		// CLUES	[O = Octavia, C = Clue]
-		Text* O_Clue1 = new Text("O_Clue1", "Opera singer", "Assets/Fonts/ESA-m.ttf");
-		O_Clue1->SetPosition(glm::vec3(0.9f, 2.67f, 0.0f));
+		Text* O_Clue1 = new Text("O_Clue1", "Westside's Minister ex-wife", "Assets/Fonts/ESA-smb.ttf");
+		O_Clue1->SetPosition(glm::vec3(0.9f, 2.7f, 0.0f));
 		O_Clue1->SetColor(glm::vec3(0, 0, 0));
 		O_Clue1->SetScale(0.53f);
 
-		Text* O_Clue2 = new Text("O_Clue2", "High cult missionary", "Assets/Fonts/ESA-m.ttf");
-		O_Clue2->SetPosition(glm::vec3(0.95f, 2.1f, 0.0f));
-		O_Clue2->SetColor(glm::vec3(0, 0, 0));
+		Text* O_Clue2 = new Text("O_Clue2", "Opera singer, travelling between East and West", "Assets/Fonts/ESA-m.ttf");
+		O_Clue2->SetPosition(glm::vec3(0.9f, 2.2f, 0.0f));
+		O_Clue2->SetColor(glm::vec3(0.5, 0, 0));
 		O_Clue2->SetScale(0.54f);
 
-		Text* O_Clue3 = new Text("O_Clue3", "Westside's Minister ex-wife", "Assets/Fonts/ESA-smb.ttf");
-		O_Clue3->SetPosition(glm::vec3(2.5f, 2.65f, 0.0f));
+		Text* O_Clue3 = new Text("O_Clue3", "High cult missionary", "Assets/Fonts/ESA-m.ttf");
+		O_Clue3->SetPosition(glm::vec3(0.9f, 1.7f, 0.0f));
 		O_Clue3->SetColor(glm::vec3(0, 0, 0));
 		O_Clue3->SetScale(0.58f);
 
-		Text* O_Clue4_1 = new Text("O_Clue4_1", "Always travelling", "Assets/Fonts/ESA-m.ttf");
-		O_Clue4_1->SetPosition(glm::vec3(3.45f, 2.1f, 0.0f));
-		O_Clue4_1->SetColor(glm::vec3(0, 0, 0));
-		O_Clue4_1->SetScale(0.5f);
+		Text* O_Clue4 = new Text("O_Clue4", "The cult obsessively dedicated to Westside", "Assets/Fonts/ESA-smb.ttf");
+		O_Clue4->SetPosition(glm::vec3(0.88f, 1.2f, 0.0f));
+		O_Clue4->SetColor(glm::vec3(0.5, 0, 0));
+		O_Clue4->SetScale(0.58f);
 
-		Text* O_Clue4_2 = new Text("O_Clue4_2", "between East and West", "Assets/Fonts/ESA-m.ttf");
-		O_Clue4_2->SetPosition(glm::vec3(3.35f, 1.8f, 0.0f));
-		O_Clue4_2->SetColor(glm::vec3(0, 0, 0));
-		O_Clue4_2->SetScale(0.5f);
+		ClueData* cabin4_clue1 = new ClueData();
+		cabin4_clue1->showText = true;
+		cabin4_clue1->clueText = O_Clue1;
 
-		Text* O_Clue5 = new Text("O_Clue5", "The cult obsessively dedicated to Westside", "Assets/Fonts/ESA-smb.ttf");
-		O_Clue5->SetPosition(glm::vec3(0.92f, 1.37f, 0.0f));
-		O_Clue5->SetColor(glm::vec3(0, 0, 0));
-		O_Clue5->SetScale(0.58f);
+		ClueData* cabin4_clue2 = new ClueData();
+		cabin4_clue2->showText = true;
+		cabin4_clue2->clueText = O_Clue2;
+
+		ClueData* cabin4_clue3 = new ClueData();
+		cabin4_clue3->showText = true;
+		cabin4_clue3->clueText = O_Clue3;
+
+		ClueData* cabin4_clue4 = new ClueData();
+		cabin4_clue4->showText = true;
+		cabin4_clue4->clueText = O_Clue4;
+
+		textClues.push_back(cabin4_clue1);
+		textClues.push_back(cabin4_clue2);
+		textClues.push_back(cabin4_clue3);
+		textClues.push_back(cabin4_clue4);
+
+		m_journalData->addClueToJournalData(CLUE_CABIN4, cabin4_clue1);
+		m_journalData->addClueToJournalData(CLUE_CABIN4, cabin4_clue2);
+		m_journalData->addClueToJournalData(CLUE_CABIN4, cabin4_clue3);
+		m_journalData->addClueToJournalData(CLUE_CABIN4, cabin4_clue4);
 
 
+
+		// DIVIDER 1
 		GameObject* Divider1 = new UIObject("Divider1", "Assets/Images/Journal/Line_1.png", true);
-		Divider1->SetScale(glm::vec3(4.71f, 0.15f, 0.0f));
-		Divider1->SetPosition(glm::vec3(3.2f, 1.0f, 0.0f));
+		Divider1->SetScale(glm::vec3(4.78f, 0.08f, 0.0f));
+		Divider1->SetPosition(glm::vec3(3.2f, 0.7f, 0.0f));
 
 
 		// LAST ACTIVITY	[O = Octavia, LA = Last Activity]
 		Text* LastActivity = new Text("LastActivity", "Last Activity", "Assets/Fonts/mvboli.ttf");
-		LastActivity->SetPosition(glm::vec3(0.8f, 0.3f, 0.0f));
+		LastActivity->SetPosition(glm::vec3(0.8f, 0.1f, 0.0f));
 		LastActivity->SetColor(glm::vec3(0, 0, 0));
 		LastActivity->SetScale(0.85f);
 
 		Text* O_LA1 = new Text("O_LA1", "Spread the cult ideology", "Assets/Fonts/ESA-smb.ttf");
-		O_LA1->SetPosition(glm::vec3(0.82f, -0.23f, 0.0f));
+		O_LA1->SetPosition(glm::vec3(0.82f, -0.4f, 0.0f));
 		O_LA1->SetColor(glm::vec3(0, 0, 0));
 		O_LA1->SetScale(0.58f);
 
-		Text* O_LA2 = new Text("O_LA2", "Met the devotees at Town Square", "Assets/Fonts/ESA-m.ttf");
-		O_LA2->SetPosition(glm::vec3(2.2f, -0.66f, 0.0f));
+		Text* O_LA2 = new Text("O_LA2", "Meet the devotees at Town Square", "Assets/Fonts/ESA-m.ttf");
+		O_LA2->SetPosition(glm::vec3(2.2f, -0.8f, 0.0f));
 		O_LA2->SetColor(glm::vec3(0, 0, 0));
 		O_LA2->SetScale(0.52f);
+
+		ClueData* cabin4_clue5 = new ClueData();
+		cabin4_clue5->showText = true;
+		cabin4_clue5->clueText = O_LA1;
+
+		ClueData* cabin4_clue6 = new ClueData();
+		cabin4_clue6->showText = true;
+		cabin4_clue6->clueText = O_LA2;
+
+		textClues.push_back(cabin4_clue5);
+		textClues.push_back(cabin4_clue6);
+
+		m_journalData->addClueToJournalData(CLUE_CABIN4, cabin4_clue5);
+		m_journalData->addClueToJournalData(CLUE_CABIN4, cabin4_clue6);
 
 
 		// DIVIDER 2
 		GameObject* Divider2 = new UIObject("Divider2", "Assets/Images/Journal/Line_2.png", true);
-		Divider2->SetScale(glm::vec3(4.81f, 0.09f, 0.0f));
-		Divider2->SetPosition(glm::vec3(3.2f, -1.0f, 0.0f));
+		Divider2->SetScale(glm::vec3(4.8f, 0.06f, 0.0f));
+		Divider2->SetPosition(glm::vec3(3.2f, -1.25f, 0.0f));
 
 
 		// LAST VISIT
 		Text* LastVisit = new Text("LastVisit", "Last Visit", "Assets/Fonts/mvboli.ttf");
-		LastVisit->SetPosition(glm::vec3(0.8f, -1.75f, 0.0f));
+		LastVisit->SetPosition(glm::vec3(0.8f, -1.95f, 0.0f));
 		LastVisit->SetColor(glm::vec3(0, 0, 0));
 		LastVisit->SetScale(0.85f);
 
 		Text* TownSquare = new Text("TownSquare", "Town Square", "Assets/Fonts/ESA-m.ttf");
-		TownSquare->SetPosition(glm::vec3(0.8f, -2.25f, 0.0f));
+		TownSquare->SetPosition(glm::vec3(0.8f, -2.45f, 0.0f));
 		TownSquare->SetColor(glm::vec3(0, 0, 0));
 		TownSquare->SetScale(0.6f);
 
 		Text* TheHolyChurch = new Text("TheHolyChurch", "The Holy Church", "Assets/Fonts/ESA-m.ttf");
-		TheHolyChurch->SetPosition(glm::vec3(2.9f, -2.25f, 0.0f));
+		TheHolyChurch->SetPosition(glm::vec3(2.9f, -2.45f, 0.0f));
 		TheHolyChurch->SetColor(glm::vec3(0, 0, 0));
 		TheHolyChurch->SetScale(0.6f);
 
 		Text* TheCouncil = new Text("TheCouncil", "The Council", "Assets/Fonts/ESA-m.ttf");
-		TheCouncil->SetPosition(glm::vec3(0.8f, -2.75f, 0.0f));
+		TheCouncil->SetPosition(glm::vec3(0.8f, -2.95f, 0.0f));
 		TheCouncil->SetColor(glm::vec3(0, 0, 0));
 		TheCouncil->SetScale(0.6f);
 
 		Text* SupremeCourt = new Text("SupremeCourt", "Supreme Court", "Assets/Fonts/ESA-m.ttf");
-		SupremeCourt->SetPosition(glm::vec3(2.9f, -2.75f, 0.0f));
+		SupremeCourt->SetPosition(glm::vec3(2.9f, -2.95f, 0.0f));
 		SupremeCourt->SetColor(glm::vec3(0, 0, 0));
 		SupremeCourt->SetScale(0.6f);
+
+		RedUnderline_Cabin5 = new UIObject("UnderlineCabin5", "Assets/Images/Journal/CaseSummary_Icon_Red_Underline.png", true);
+		RedUnderline_Cabin5->setActiveStatus(false);
+		RedUnderline_Cabin5->SetScale(glm::vec3(1.7f, 0.1f, 0.0f));
+		RedUnderline_Cabin5->SetPosition(glm::vec3(1.1f, -2.0f, 0.0f));
 
 
 
@@ -145,18 +182,9 @@ public:
 		m_gameObjects.push_back(Occupation);
 		m_gameObjects.push_back(CabinStamp);
 
-		/*m_gameObjects.push_back(O_Clue1);
-		m_gameObjects.push_back(O_Clue2);
-		m_gameObjects.push_back(O_Clue3);
-		m_gameObjects.push_back(O_Clue4_1);
-		m_gameObjects.push_back(O_Clue4_2);
-		m_gameObjects.push_back(O_Clue5);*/
 		m_gameObjects.push_back(Divider1);
 
-
 		m_gameObjects.push_back(LastActivity);
-		/*m_gameObjects.push_back(O_LA1);
-		m_gameObjects.push_back(O_LA2);*/
 
 		m_gameObjects.push_back(Divider2);
 		m_gameObjects.push_back(LastVisit);
@@ -166,9 +194,34 @@ public:
 		m_gameObjects.push_back(TheCouncil);
 		m_gameObjects.push_back(SupremeCourt);
 
+		m_gameObjects.push_back(RedUnderline_Cabin5);
+
+
+
+	}
+
+	virtual void Update(float dt, long frame) override {
+
+		Page::Update(dt, frame);
+
+		CabinPageData cabinData = m_journalData->GetCabinPageData(Cabin::CLUE_CABIN4);
+
+		if (!cabinData.ShowLastActivity) {
+
+			RedUnderline_Cabin5->setActiveStatus(false);
+
+		}
+		else {
+
+			RedUnderline_Cabin5->setActiveStatus(true);
+
+		}
 
 	}
 
 
+private:
+
+	UIObject* RedUnderline_Cabin5;
 
 };

@@ -22,8 +22,8 @@ public:
 		//platePositionArea->SetButtonText("Drop Area");
 
 		/*--------------------------------------------------------------LOAD AUDDIO------------------------------------------------------------------------------------------------------- */
-		/*audioManager.LoadSound("kitchenAmbience", "Assets/Sounds/Ambience_Kitchen.mp3", 0.2f);
-		audioManager.PlaySound("kitchenAmbience", true);*/
+		audioManager.LoadSound("kitchenAmbience", "Assets/Sounds/Ambience_Kitchen.mp3", 0.2f);
+		audioManager.PlaySound("kitchenAmbience", true);
 
 		/*--------------------------------------------------------------CREATE GAMEOBJECT------------------------------------------------------------------------------------------------------- */
 
@@ -43,7 +43,7 @@ public:
 		ServeBellButton = new UIButton("ServeBellButton", "Assets/Images/Kitchen/ServeButton_servable_default.png", glm::vec3(-4.9f, -2.6f, 0.0f), glm::vec3(2.02f, 1.45f, 0.0f), true, false);
 		ServeBellButton->setActiveStatus(false);
 		ServeBellButton->SetOnClickAction([this]() { Serve(); });
-		
+
 		ServeBellGrey = new UIObject("ServeBellGrey", "Assets/Images/Kitchen/ServeButton_notServable_default.png", true);
 		ServeBellGrey->SetPosition(glm::vec3(-4.9f, -2.6f, 0.0f));
 		ServeBellGrey->SetScale(glm::vec3(2.02f, 1.45f, 0.0f));

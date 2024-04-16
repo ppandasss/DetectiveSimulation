@@ -172,7 +172,7 @@ private:
 
     std::function<void()> onReleaseAction;
 
-    glm::vec2 minBound = glm::vec2(-4.0f, -3.0f); //top - left corner
-    glm::vec2 maxBound = glm::vec2(4.0f, 3.0f); //bottom - right corner
+    glm::vec2 minBound = glm::vec2(-10.0f, -6.0f); //top - left corner
+    glm::vec2 maxBound = glm::vec2(10.0f, 6.0f); //bottom - right corner
 
 };
