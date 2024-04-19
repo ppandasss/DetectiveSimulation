@@ -15,6 +15,8 @@ class Kitchen : public Scene {
 
 public:
 
+	Book* Journal;
+
 	UIButtonEmpty* teaDropArea = new UIButtonEmpty("teaDropArea", glm::vec3(-7.5f, -0.4f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
 	UIButtonEmpty* sandwhichDropArea = new UIButtonEmpty("sandwhichDropArea", glm::vec3(-5.1f, -0.5f, 0.0f) , glm::vec3(1.0f, 1.0f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
 	UIButtonEmpty* dessertDropArea = new UIButtonEmpty("dessertDropArea", glm::vec3(-2.4f, -0.6f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
@@ -34,6 +36,8 @@ public:
 		KitchenBackground->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
 		UIElement* orderPaper = new UINormal("OrderPaper", "Assets/Images/OrderPaper.png", glm::vec3(-7.65f, 4.0f, 0.0f), glm::vec3(3.55f, 2.54f, 0.0f), true);
+
+		Journal = new Book();
 		
 		/*--------------------------------------------------------------CREATE GAMEOBJECT------------------------------------------------------------------------------------------------------- */
 
@@ -54,6 +58,9 @@ public:
 		sandwhichDropArea->SetButtonText("Sandwhich");
 		dessertDropArea->SetButtonText("Dessert");
 		optionalDropArea->SetButtonText("Optional");
+
+		UIButton* journalButton = new UIButton("JournalButton", "Assets/Images/JournalButton.png", glm::vec3(-8.32f, -4.8f, 0.0f), glm::vec3(3.0f, 3.0f, 0.0f), true, false, "");
+		journalButton->SetOnClickAction([this]() { Journal->drawBook(); });
 
 
 		/*--------------------------------------------------------------CREATE FOOD DRAGGABLES------------------------------------------------------------------------------------------------------- */
@@ -169,6 +176,11 @@ public:
 		platedTea[GREENTEA] = GreenTea_dish;
 		platedTea[CHAMOMILETEA] = ChamomileTea_dish;
 
+		platedTeaMilk[ASSAMTEA] = EarlGreyTea_dish;
+		platedTeaMilk[EARLGREYTEA] = AssamBlack_dish;
+		platedTeaMilk[GREENTEA] = ChamomileTea_dish;
+		platedTeaMilk[CHAMOMILETEA] = GreenTea_dish;
+
 		platedSandwhich[SALMON] = SalmonDish;
 		platedSandwhich[EGG] = EggDish;
 		platedSandwhich[CUCUMBER] = CucumberDish;
@@ -226,6 +238,9 @@ public:
 		m_gameObjects.push_back(dessertDropArea);
 		m_gameObjects.push_back(optionalDropArea);
 
+		//Journal
+		m_gameObjects.push_back(Journal);
+		m_gameObjects.push_back(journalButton);
 
 		//set all plate gameobjects as inactive
 		clearPlate();
@@ -270,7 +285,7 @@ public:
 
 	}
 
-	void updateSandwhichStatus() {
+	void updateSandwhichObjects() {
 
 		for (int i = 0; i < 4; i++) {
 			if (i == Kitchen_Data->getSandwhich()) {
@@ -283,7 +298,7 @@ public:
 
 	}
 
-	void updateDessertStatus() {
+	void updateDessertObjects() {
 
 
 		for (int i = 0; i < 4; i++) {
@@ -297,21 +312,40 @@ public:
 
 	}
 
-	void updateTeaStatus() {
+	void updateTeaObjects() {
 
+		if (Kitchen_Data->getOptional() == MILK) {
 
-		for (int i = 0; i < 4; i++) {
-			if (i == Kitchen_Data->getTea()) {
-				platedTea[i]->setActiveStatus(true);
+			for (int i = 0; i < 4; i++) {
+				platedTea[i]->setActiveStatus(false);	
 			}
-			else {
-				platedTea[i]->setActiveStatus(false);
+
+			for (int i = 0; i < 4; i++) {
+				if (i == Kitchen_Data->getTea()) {
+					platedTeaMilk[i]->setActiveStatus(true);
+				}
+				else {
+					platedTeaMilk[i]->setActiveStatus(false);
+				}
 			}
+
 		}
+		else {
+
+			for (int i = 0; i < 4; i++) {
+				if (i == Kitchen_Data->getTea()) {
+					platedTea[i]->setActiveStatus(true);
+				}
+				else {
+					platedTea[i]->setActiveStatus(false);
+				}
+			}
+
+		}	
 
 	}
 
-	void updateOptionalStatus() {
+	void updateOptionalObjects() {
 
 
 		for (int i = 0; i < 2; i++) {
@@ -331,7 +365,7 @@ public:
 
 		if (AssamBlackTea->withinRage(teaDropArea->GetOnscreenPosition(), snapThreshold)) {
 			Kitchen_Data->setTea(ASSAMTEA);
-			updateTeaStatus();
+			updateTeaObjects();
 		}
 	}
 
@@ -340,7 +374,7 @@ public:
 		//std::cout << "EARL GREY RELEASED" << std::endl;
 		if (EarlGreyTea->withinRage(teaDropArea->GetOnscreenPosition(), snapThreshold)) {
 			Kitchen_Data->setTea(EARLGREYTEA);
-			updateTeaStatus();
+			updateTeaObjects();
 		}
 
 	}
@@ -350,7 +384,7 @@ public:
 		//std::cout << "GREEN TEA RELEASED" << std::endl;
 		if (GreenTea->withinRage(teaDropArea->GetOnscreenPosition(), snapThreshold)) {
 			Kitchen_Data->setTea(GREENTEA);
-			updateTeaStatus();
+			updateTeaObjects();
 		}
 	}
 
@@ -359,7 +393,7 @@ public:
 		//std::cout << "CHAMOMILE TEA RELEASED" << std::endl;
 		if (ChamomileTea->withinRage(teaDropArea->GetOnscreenPosition(), snapThreshold)) {
 			Kitchen_Data->setTea(CHAMOMILETEA);
-			updateTeaStatus();
+			updateTeaObjects();
 		}
 	}
 
@@ -368,7 +402,7 @@ public:
 		//std::cout << "SALMON SANDWHICH RELEASED" << std::endl;
 		if (SalmonSandwhich->withinRage(sandwhichDropArea->GetOnscreenPosition(), snapThreshold)) {
 			Kitchen_Data->setSandwhich(SALMON);
-			updateSandwhichStatus();
+			updateSandwhichObjects();
 		}
 	}
 
@@ -377,7 +411,7 @@ public:
 		//std::cout << "EGG SANDWHICH RELEASED" << std::endl;
 		if (EggSandwhich->withinRage(sandwhichDropArea->GetOnscreenPosition(), snapThreshold)) {
 			Kitchen_Data->setSandwhich(EGG);
-			updateSandwhichStatus();
+			updateSandwhichObjects();
 		}
 	}
 
@@ -386,7 +420,7 @@ public:
 		//std::cout << "CUCUMBER SANDWHICH RELEASED" << std::endl;
 		if (CucumberSandwhich->withinRage(sandwhichDropArea->GetOnscreenPosition(), snapThreshold)) {
 			Kitchen_Data->setSandwhich(CUCUMBER);
-			updateSandwhichStatus();
+			updateSandwhichObjects();
 		}
 	}
 
@@ -395,7 +429,7 @@ public:
 		//std::cout << "BEEF SANDWHICH RELEASED" << std::endl;
 		if (BeefSandwhich->withinRage(sandwhichDropArea->GetOnscreenPosition(), snapThreshold)) {
 			Kitchen_Data->setSandwhich(BEEF);
-			updateSandwhichStatus();
+			updateSandwhichObjects();
 		}
 	}
 
@@ -405,7 +439,7 @@ public:
 		//std::cout << "ECLAIR RELEASED" << std::endl;
 		if (Eclair->withinRage(dessertDropArea->GetOnscreenPosition(), snapThreshold)) {
 			Kitchen_Data->setDessert(ECLAIR);
-			updateDessertStatus();
+			updateDessertObjects();
 		}
 	}
 
@@ -414,7 +448,7 @@ public:
 		//std::cout << "LEMON TART RELEASED" << std::endl;
 		if (LemonTart->withinRage(dessertDropArea->GetOnscreenPosition(), snapThreshold)) {
 			Kitchen_Data->setDessert(TART);
-			updateDessertStatus();
+			updateDessertObjects();
 		}
 	}
 
@@ -423,7 +457,7 @@ public:
 		//std::cout << "SCONE RELEASED" << std::endl;
 		if (Scone->withinRage(dessertDropArea->GetOnscreenPosition(), snapThreshold)) {
 			Kitchen_Data->setDessert(SCONE);
-			updateDessertStatus();
+			updateDessertObjects();
 		}
 	}
 
@@ -432,7 +466,7 @@ public:
 		//std::cout << "MACARON RELEASED" << std::endl;
 		if (Macaron->withinRage(dessertDropArea->GetOnscreenPosition(), snapThreshold)) {
 			Kitchen_Data->setDessert(MACARON);
-			updateDessertStatus();
+			updateDessertObjects();
 		}
 	}
 
@@ -441,7 +475,7 @@ public:
 		//std::cout << "MILK RELEASED" << std::endl;
 		if (Milk->withinRage(dessertDropArea->GetOnscreenPosition(), snapThreshold)) {
 			Kitchen_Data->setOptional(MILK);
-			updateOptionalStatus();
+			updateOptionalObjects();		
 		}
 	}
 
@@ -450,7 +484,7 @@ public:
 		//std::cout << "CHAMPAGNE RELEASED" << std::endl;
 		if (Champagne->withinRage(dessertDropArea->GetOnscreenPosition(), snapThreshold)) {
 			Kitchen_Data->setOptional(CHAMPAGNE);
-			updateOptionalStatus();
+			updateOptionalObjects();
 		}
 	}
 
@@ -510,9 +544,13 @@ private:
 	//Array of plated game objects
 	GameObject* platedSandwhich[4];
 	GameObject* platedDessert[4];
+	
 	GameObject* platedTea[4];
+	GameObject* platedTeaMilk[4];
+
 	GameObject* platedOptional[2];
 
+	//Plated dish positions
 	const glm::vec3 TeaDishPosition = glm::vec3(-7.5f, -0.4f, 0.0f);
 	const glm::vec3 SandwhichDishPosition = glm::vec3(-5.1f, -0.5f, 0.0f);
 	const glm::vec3 DessertDishPosition = glm::vec3(-2.4f, -0.6f, 0.0f);

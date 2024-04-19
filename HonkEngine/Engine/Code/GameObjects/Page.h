@@ -87,7 +87,6 @@ public:
 					object->clueText->setActiveStatus(status); //sets status accordingly if clue is active
 				}
 				else {
-
 					object->clueText->setActiveStatus(false); //if inactive always set as false
 				}
 
