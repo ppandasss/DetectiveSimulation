@@ -65,6 +65,10 @@ public:
 		Scone = new UIDraggable("Scone", "Assets/Images/Kitchen/Food/Dessert/Dessert_Icon_Scone.png", glm::vec3(5.2f, -4.4f, 0.0f), glm::vec3(1.46f, 0.7f, 0.0f), true);
 		Macaron = new UIDraggable("Macaron", "Assets/Images/Kitchen/Food/Dessert/Dessert_Icon_Macaron.png", glm::vec3(7.3f, -4.38f, 0.0f), glm::vec3(2.0f, 0.77f, 0.0f), true);
 
+		Milk = new UIDraggable("Milk", "Assets/Images/Kitchen/Food/Tea/TeaBox_Assam.png", glm::vec3(6.0f, 0.2f, 0.0f), glm::vec3(1.2f, 1.6f, 0.0f), true);
+		Champagne = new UIDraggable("Champagne", "Assets/Images/Kitchen/Food/Tea/TeaBox_Assam.png", glm::vec3(7.2f, 0.2f, 0.0f), glm::vec3(1.2f, 1.6f, 0.0f), true);
+
+
 		/*--------------------------------------------------------------SET DRAGGABLE FOOD FUNCTIONS------------------------------------------------------------------------------------------------------- */
 
 		AssamBlackTea->SetOnReleaseAction([this]() { releaseAssam(); });
@@ -81,6 +85,9 @@ public:
 		LemonTart->SetOnReleaseAction([this]() { releaseLemonTart(); });
 		Scone->SetOnReleaseAction([this]() { releaseScone(); });
 		Macaron->SetOnReleaseAction([this]() { releaseMacaron(); });
+
+		Milk->SetOnReleaseAction([this]() { releaseMilk(); });
+		Champagne->SetOnReleaseAction([this]() { releaseChampagne(); });
 
 		/*-------------------------------------------------------------- CREATE PLATED FOOD ------------------------------------------------------------------------------------------------------- */
 
@@ -132,6 +139,14 @@ public:
 		MacaronDish->SetPosition(DessertDishPosition);
 		MacaronDish->SetScale(glm::vec3(2.6f, 0.8f, 0.0f));
 
+		GameObject* MilkDish = new UIObject("MilkDish", "Assets/Images/Kitchen/Food/Tea/TeaBox_Assam.png", true);
+		MilkDish->SetPosition(OptionalDishPosition);
+		MilkDish->SetScale(glm::vec3(1.2f, 1.6f, 0.0f));
+
+		GameObject* ChampagneDish = new UIObject("ChampagneDish", "Assets/Images/Kitchen/Food/Tea/TeaBox_Assam.png", true);
+		ChampagneDish->SetPosition(OptionalDishPosition);
+		ChampagneDish->SetScale(glm::vec3(1.2f, 1.6f, 0.0f));
+
 		/*--------------------------------------------------------------PUSH BACK------------------------------------------------------------------------------------------------------- */
 
 		m_gameObjects.push_back(KitchenBackground);
@@ -156,6 +171,9 @@ public:
 		platedDessert[SCONE] = SconeDish;
 		platedDessert[MACARON] = MacaronDish;
 
+		platedOptional[MILK] = MilkDish;
+		platedOptional[CHAMPAGNE] = ChampagneDish;
+
 		m_gameObjects.push_back(AssamBlack_dish);
 		m_gameObjects.push_back(EarlGreyTea_dish);
 		m_gameObjects.push_back(GreenTea_dish);
@@ -170,6 +188,9 @@ public:
 		m_gameObjects.push_back(LemonTartDish);
 		m_gameObjects.push_back(SconeDish);
 		m_gameObjects.push_back(MacaronDish);
+
+		m_gameObjects.push_back(MilkDish);
+		m_gameObjects.push_back(ChampagneDish);
 
 
 		//DRAGGABLE FOOD	
@@ -187,6 +208,9 @@ public:
 		m_gameObjects.push_back(LemonTart);
 		m_gameObjects.push_back(Scone);
 		m_gameObjects.push_back(Macaron);
+
+		m_gameObjects.push_back(Milk);
+		m_gameObjects.push_back(Champagne);
 
 		m_gameObjects.push_back(platePositionArea);
 
@@ -226,15 +250,18 @@ public:
 		for (int i = 0; i < 4; i++) {
 			platedDessert[i]->setActiveStatus(false);
 		}
+		for (int i = 0; i < 2; i++) {
+			platedOptional[i]->setActiveStatus(false);
+		}
 
-		KitchenData::GetInstance()->clearPlate();
+		Kitchen_Data->clearPlate();
 
 	}
 
 	void updateSandwhichStatus() {
 
 		for (int i = 0; i < 4; i++) {
-			if (i == KitchenData::GetInstance()->getSandwhich()) {
+			if (i == Kitchen_Data->getSandwhich()) {
 				platedSandwhich[i]->setActiveStatus(true);
 			}
 			else {
@@ -248,7 +275,7 @@ public:
 
 
 		for (int i = 0; i < 4; i++) {
-			if (i == KitchenData::GetInstance()->getDessert()) {
+			if (i == Kitchen_Data->getDessert()) {
 				platedDessert[i]->setActiveStatus(true);
 			}
 			else {
@@ -262,11 +289,25 @@ public:
 
 
 		for (int i = 0; i < 4; i++) {
-			if (i == KitchenData::GetInstance()->getTea()) {
+			if (i == Kitchen_Data->getTea()) {
 				platedTea[i]->setActiveStatus(true);
 			}
 			else {
 				platedTea[i]->setActiveStatus(false);
+			}
+		}
+
+	}
+
+	void updateOptionalStatus() {
+
+
+		for (int i = 0; i < 2; i++) {
+			if (i == Kitchen_Data->getOptional()) {
+				platedOptional[i]->setActiveStatus(true);
+			}
+			else {
+				platedOptional[i]->setActiveStatus(false);
 			}
 		}
 
@@ -278,7 +319,7 @@ public:
 
 		std::cout << platePositionArea->GetPosition().x  << platePositionArea->GetPosition().y << std::endl;
 		if (AssamBlackTea->withinRage(platePositionArea->GetOnscreenPosition(), snapThreshold)) {
-			KitchenData::GetInstance()->setTea(ASSAMTEA);
+			Kitchen_Data->setTea(ASSAMTEA);
 			updateTeaStatus();
 		}
 	}
@@ -287,16 +328,17 @@ public:
 
 		//std::cout << "EARL GREY RELEASED" << std::endl;
 		if (EarlGreyTea->withinRage(platePositionArea->GetOnscreenPosition(), snapThreshold)) {
-			KitchenData::GetInstance()->setTea(EARLGREYTEA);
+			Kitchen_Data->setTea(EARLGREYTEA);
 			updateTeaStatus();
 		}
+
 	}
 
 	void releaseGreenTea() {
 
 		//std::cout << "GREEN TEA RELEASED" << std::endl;
 		if (GreenTea->withinRage(platePositionArea->GetOnscreenPosition(), snapThreshold)) {
-			KitchenData::GetInstance()->setTea(GREENTEA);
+			Kitchen_Data->setTea(GREENTEA);
 			updateTeaStatus();
 		}
 	}
@@ -305,7 +347,7 @@ public:
 
 		//std::cout << "CHAMOMILE TEA RELEASED" << std::endl;
 		if (ChamomileTea->withinRage(platePositionArea->GetOnscreenPosition(), snapThreshold)) {
-			KitchenData::GetInstance()->setTea(CHAMOMILETEA);
+			Kitchen_Data->setTea(CHAMOMILETEA);
 			updateTeaStatus();
 		}
 	}
@@ -314,7 +356,7 @@ public:
 
 		//std::cout << "SALMON SANDWHICH RELEASED" << std::endl;
 		if (SalmonSandwhich->withinRage(platePositionArea->GetOnscreenPosition(), snapThreshold)) {
-			KitchenData::GetInstance()->setSandwhich(SALMON);
+			Kitchen_Data->setSandwhich(SALMON);
 			updateSandwhichStatus();
 		}
 	}
@@ -323,7 +365,7 @@ public:
 
 		//std::cout << "EGG SANDWHICH RELEASED" << std::endl;
 		if (EggSandwhich->withinRage(platePositionArea->GetOnscreenPosition(), snapThreshold)) {
-			KitchenData::GetInstance()->setSandwhich(EGG);
+			Kitchen_Data->setSandwhich(EGG);
 			updateSandwhichStatus();
 		}
 	}
@@ -332,7 +374,7 @@ public:
 
 		//std::cout << "CUCUMBER SANDWHICH RELEASED" << std::endl;
 		if (CucumberSandwhich->withinRage(platePositionArea->GetOnscreenPosition(), snapThreshold)) {
-			KitchenData::GetInstance()->setSandwhich(CUCUMBER);
+			Kitchen_Data->setSandwhich(CUCUMBER);
 			updateSandwhichStatus();
 		}
 	}
@@ -341,7 +383,7 @@ public:
 
 		//std::cout << "BEEF SANDWHICH RELEASED" << std::endl;
 		if (BeefSandwhich->withinRage(platePositionArea->GetOnscreenPosition(), snapThreshold)) {
-			KitchenData::GetInstance()->setSandwhich(BEEF);
+			Kitchen_Data->setSandwhich(BEEF);
 			updateSandwhichStatus();
 		}
 	}
@@ -350,7 +392,7 @@ public:
 
 		//std::cout << "ECLAIR RELEASED" << std::endl;
 		if (Eclair->withinRage(platePositionArea->GetOnscreenPosition(), snapThreshold)) {
-			KitchenData::GetInstance()->setDessert(ECLAIR);
+			Kitchen_Data->setDessert(ECLAIR);
 			updateDessertStatus();
 		}
 	}
@@ -359,7 +401,7 @@ public:
 
 		//std::cout << "LEMON TART RELEASED" << std::endl;
 		if (LemonTart->withinRage(platePositionArea->GetOnscreenPosition(), snapThreshold)) {
-			KitchenData::GetInstance()->setDessert(TART);
+			Kitchen_Data->setDessert(TART);
 			updateDessertStatus();
 		}
 	}
@@ -368,7 +410,7 @@ public:
 
 		//std::cout << "SCONE RELEASED" << std::endl;
 		if (Scone->withinRage(platePositionArea->GetOnscreenPosition(), snapThreshold)) {
-			KitchenData::GetInstance()->setDessert(SCONE);
+			Kitchen_Data->setDessert(SCONE);
 			updateDessertStatus();
 		}
 	}
@@ -377,10 +419,30 @@ public:
 
 		//std::cout << "MACARON RELEASED" << std::endl;
 		if (Macaron->withinRage(platePositionArea->GetOnscreenPosition(), snapThreshold)) {
-			KitchenData::GetInstance()->setDessert(MACARON);
+			Kitchen_Data->setDessert(MACARON);
 			updateDessertStatus();
 		}
 	}
+
+	void releaseMilk() {
+
+		//std::cout << "MILK RELEASED" << std::endl;
+		if (Milk->withinRage(platePositionArea->GetOnscreenPosition(), snapThreshold)) {
+			Kitchen_Data->setOptional(MILK);
+			updateOptionalStatus();
+		}
+	}
+
+	void releaseChampagne() {
+
+		//std::cout << "CHAMPAGNE RELEASED" << std::endl;
+		if (Champagne->withinRage(platePositionArea->GetOnscreenPosition(), snapThreshold)) {
+			Kitchen_Data->setOptional(CHAMPAGNE);
+			updateOptionalStatus();
+		}
+	}
+
+
 
 	void Serve() {
 		std::cout << "SERVE FOOD" << std::endl;
@@ -388,7 +450,7 @@ public:
 
 	void updateServeButton() {
 
-		if (KitchenData::GetInstance()->checkCompletePlate()) {
+		if (Kitchen_Data->checkCompletePlate()) {
 			ServeBellButton->setActiveStatus(true);
 			ServeBellGrey->setActiveStatus(false);
 		}
@@ -405,6 +467,8 @@ private:
 	AudioManager& audioManager;
 	Input& input = Application::GetInput();
 
+	KitchenData *Kitchen_Data = KitchenData::GetInstance();
+
 	const glm::vec3 tea_platePos;
 	const glm::vec3 sandwhich_platePos;
 	const glm::vec3 dessert_platePos;
@@ -413,14 +477,19 @@ private:
 	UIDraggable* EarlGreyTea;
 	UIDraggable* GreenTea;
 	UIDraggable* ChamomileTea;
+
 	UIDraggable* SalmonSandwhich;
 	UIDraggable* EggSandwhich;
 	UIDraggable* CucumberSandwhich;
 	UIDraggable* BeefSandwhich;
+
 	UIDraggable* Eclair;
 	UIDraggable* LemonTart;
 	UIDraggable* Scone;
 	UIDraggable* Macaron;
+
+	UIDraggable* Milk;
+	UIDraggable* Champagne;
 
 	UIButton* ServeBellButton;
 	GameObject* ServeBellGrey;
@@ -430,10 +499,12 @@ private:
 	GameObject* platedSandwhich[4];
 	GameObject* platedDessert[4];
 	GameObject* platedTea[4];
+	GameObject* platedOptional[2];
 
 	const glm::vec3 TeaDishPosition = glm::vec3(-7.5f, -0.4f, 0.0f);
 	const glm::vec3 SandwhichDishPosition = glm::vec3(-5.1f, -0.5f, 0.0f);
 	const glm::vec3 DessertDishPosition = glm::vec3(-2.4f, -0.6f, 0.0f);
+	const glm::vec3 OptionalDishPosition = glm::vec3(-4.0f, -1.3f, 0.0f);
 
 	//within range
 
