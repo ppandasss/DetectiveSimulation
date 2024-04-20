@@ -258,6 +258,12 @@
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Assets\Dialogue\Dialogue_Martha_OrderPhase.xml" />
+    <Xml Include="Assets\Dialogue\Martha\Martha_MealReact_Tea_Assam_EarlGray.xml" />
+    <Xml Include="Assets\Dialogue\Martha\Martha_MealReact_Tea_Chamomile.xml" />
+    <Xml Include="Assets\Dialogue\Martha\Martha_MealReact_Tea_GreenTea.xml" />
+    <Xml Include="Assets\Dialogue\Martha\Martha_Order.xml" />
+    <Xml Include="Assets\Dialogue\Martha\Martha_Serve_Late.xml" />
+    <Xml Include="Assets\Dialogue\Martha\Martha_Serve_OnTime.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
