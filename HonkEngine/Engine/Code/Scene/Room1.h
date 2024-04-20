@@ -84,7 +84,7 @@ public:
         UIElement* waiterIcon = new UINormal("WaiterIcon", "Assets/Images/UI/Speaker_icon_Waiter.png", glm::vec3(4.18f, 3.43f, 0.0f), glm::vec3(1.23f, 1.4f, 0.0f), true);
 
         dialogueManager = make_unique<DialogueManager>("MarthaDialogue", dialogueBox,
-            "Assets/Dialogue/Martha/Martha_MealReact_Tea_Assam_EarlGray.xml", "Martha_Normal");
+            "Assets/Dialogue/Martha/Martha_Order.xml", "Martha_Normal");
 
 
         //Add SpeakSprite
