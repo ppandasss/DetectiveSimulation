@@ -7,7 +7,7 @@ enum Dessert { ECLAIR, MACARON, TART, SCONE, DESSERT_EMPTY };
 
 enum Tea { EARLGREYTEA, ASSAMTEA, GREENTEA, CHAMOMILETEA, TEA_EMPTY };
 
-enum Optional {MILK, CHAMPAGNE, ADDITION_EMPTY};
+enum Optional {MILK, OPTIONAL_EMPTY};
 
 class KitchenData {
 
@@ -26,7 +26,7 @@ public:
 		sandwhichChoice = SANDWHICH_EMPTY;
 		dessertChoice = DESSERT_EMPTY;
 		teaChoice = TEA_EMPTY;
-		optionalChoice = ADDITION_EMPTY;
+		optionalChoice = OPTIONAL_EMPTY;
 
 	}
 
@@ -57,7 +57,7 @@ private:
 		sandwhichChoice = SANDWHICH_EMPTY;
 		dessertChoice = DESSERT_EMPTY;
 		teaChoice = TEA_EMPTY;
-		optionalChoice = ADDITION_EMPTY;
+		optionalChoice = OPTIONAL_EMPTY;
 
 	}
 

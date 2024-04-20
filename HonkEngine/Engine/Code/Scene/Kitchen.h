@@ -102,7 +102,6 @@ public:
 		Macaron->SetOnReleaseAction([this]() { releaseMacaron(); });
 
 		Milk->SetOnReleaseAction([this]() { releaseMilk(); });
-		Champagne->SetOnReleaseAction([this]() { releaseChampagne(); });
 
 		/*-------------------------------------------------------------- CREATE PLATED FOOD ------------------------------------------------------------------------------------------------------- */
 
@@ -158,10 +157,6 @@ public:
 		MilkDish->SetPosition(OptionalDishPosition);
 		MilkDish->SetScale(glm::vec3(1.2f, 1.6f, 0.0f));
 
-		GameObject* ChampagneDish = new UIObject("ChampagneDish", "Assets/Images/Kitchen/Food/Tea/TeaBox_Assam.png", true);
-		ChampagneDish->SetPosition(OptionalDishPosition);
-		ChampagneDish->SetScale(glm::vec3(1.2f, 1.6f, 0.0f));
-
 		/*--------------------------------------------------------------PUSH BACK------------------------------------------------------------------------------------------------------- */
 
 		m_gameObjects.push_back(KitchenBackground);
@@ -176,11 +171,6 @@ public:
 		platedTea[GREENTEA] = GreenTea_dish;
 		platedTea[CHAMOMILETEA] = ChamomileTea_dish;
 
-		platedTeaMilk[ASSAMTEA] = EarlGreyTea_dish;
-		platedTeaMilk[EARLGREYTEA] = AssamBlack_dish;
-		platedTeaMilk[GREENTEA] = ChamomileTea_dish;
-		platedTeaMilk[CHAMOMILETEA] = GreenTea_dish;
-
 		platedSandwhich[SALMON] = SalmonDish;
 		platedSandwhich[EGG] = EggDish;
 		platedSandwhich[CUCUMBER] = CucumberDish;
@@ -191,8 +181,7 @@ public:
 		platedDessert[SCONE] = SconeDish;
 		platedDessert[MACARON] = MacaronDish;
 
-		platedOptional[MILK] = MilkDish;
-		platedOptional[CHAMPAGNE] = ChampagneDish;
+		platedMilk = MilkDish;
 
 		m_gameObjects.push_back(AssamBlack_dish);
 		m_gameObjects.push_back(EarlGreyTea_dish);
@@ -210,7 +199,6 @@ public:
 		m_gameObjects.push_back(MacaronDish);
 
 		m_gameObjects.push_back(MilkDish);
-		m_gameObjects.push_back(ChampagneDish);
 
 
 		//DRAGGABLE FOOD	
@@ -230,7 +218,6 @@ public:
 		m_gameObjects.push_back(Macaron);
 
 		m_gameObjects.push_back(Milk);
-		m_gameObjects.push_back(Champagne);
 
 		//drop area
 		m_gameObjects.push_back(teaDropArea);
@@ -277,9 +264,8 @@ public:
 		for (int i = 0; i < 4; i++) {
 			platedDessert[i]->setActiveStatus(false);
 		}
-		for (int i = 0; i < 2; i++) {
-			platedOptional[i]->setActiveStatus(false);
-		}
+
+		platedMilk->setActiveStatus(false);
 
 		Kitchen_Data->clearPlate();
 
@@ -314,47 +300,25 @@ public:
 
 	void updateTeaObjects() {
 
-		if (Kitchen_Data->getOptional() == MILK) {
-
-			for (int i = 0; i < 4; i++) {
-				platedTea[i]->setActiveStatus(false);	
+		for (int i = 0; i < 4; i++) {
+			if (i == Kitchen_Data->getTea()) {
+				platedTea[i]->setActiveStatus(true);
 			}
-
-			for (int i = 0; i < 4; i++) {
-				if (i == Kitchen_Data->getTea()) {
-					platedTeaMilk[i]->setActiveStatus(true);
-				}
-				else {
-					platedTeaMilk[i]->setActiveStatus(false);
-				}
+			else {
+				platedTea[i]->setActiveStatus(false);
 			}
-
 		}
-		else {
 
-			for (int i = 0; i < 4; i++) {
-				if (i == Kitchen_Data->getTea()) {
-					platedTea[i]->setActiveStatus(true);
-				}
-				else {
-					platedTea[i]->setActiveStatus(false);
-				}
-			}
-
-		}	
 
 	}
 
 	void updateOptionalObjects() {
 
-
-		for (int i = 0; i < 2; i++) {
-			if (i == Kitchen_Data->getOptional()) {
-				platedOptional[i]->setActiveStatus(true);
-			}
-			else {
-				platedOptional[i]->setActiveStatus(false);
-			}
+		if (Kitchen_Data->getOptional() == Optional::MILK) {
+			platedMilk->setActiveStatus(true);
+		}
+		else {
+			platedMilk->setActiveStatus(false);
 		}
 
 	}
@@ -367,6 +331,7 @@ public:
 			Kitchen_Data->setTea(ASSAMTEA);
 			updateTeaObjects();
 		}
+
 	}
 
 	void releaseEarlGrey() {
@@ -479,22 +444,13 @@ public:
 		}
 	}
 
-	void releaseChampagne() {
-
-		//std::cout << "CHAMPAGNE RELEASED" << std::endl;
-		if (Champagne->withinRage(dessertDropArea->GetOnscreenPosition(), snapThreshold)) {
-			Kitchen_Data->setOptional(CHAMPAGNE);
-			updateOptionalObjects();
-		}
-	}
-
 
 
 	void Serve() {
 		std::cout << "SERVE FOOD" << std::endl;
 	}
 
-	void updateServeButton() {
+	void updateServeButton() { 
 
 		if (Kitchen_Data->checkCompletePlate()) {
 			ServeBellButton->setActiveStatus(true);
@@ -544,10 +500,8 @@ private:
 	//Array of plated game objects
 	GameObject* platedSandwhich[4];
 	GameObject* platedDessert[4];
-	
 	GameObject* platedTea[4];
-	GameObject* platedTeaMilk[4];
-
+	GameObject* platedMilk;
 	GameObject* platedOptional[2];
 
 	//Plated dish positions
