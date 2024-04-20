@@ -41,8 +41,31 @@ public:
 		
 		/*--------------------------------------------------------------CREATE GAMEOBJECT------------------------------------------------------------------------------------------------------- */
 
-		Text* orderNoText = new Text("orderNo", "1", "Assets/Fonts/mvboli.ttf", true);
-		m_gameObjects.push_back(orderNoText);
+		
+		orderNoText = new Text("orderNo", "", "Assets/Fonts/mvboli.ttf", true);
+		teaOrderText = new Text("TeaOrder", "", "Assets/Fonts/mvboli.ttf", true);
+		sandwichOrderText = new Text("sandwichOrder", "", "Assets/Fonts/mvboli.ttf", true);
+		pastryOrderText = new Text("PastryOrder", "", "Assets/Fonts/mvboli.ttf", true);
+
+
+		orderNoText->SetPosition(glm::vec3(-8.8f, 4.5f, 0.0f));
+		orderNoText->SetColor(glm::vec3(0.5, 0, 0));
+		teaOrderText->SetPosition(glm::vec3(-6.8f, 4.6f, 0.0f));
+		teaOrderText->SetScale(0.5f);
+		sandwichOrderText->SetPosition(glm::vec3(-7.8f, 4.0f, 0.0f));
+		sandwichOrderText->SetScale(0.5f);
+		pastryOrderText->SetPosition(glm::vec3(-7.8f, 3.3f, 0.0f));
+		pastryOrderText->SetScale(0.5f);
+
+		//OrderData to manager Order Text
+		OrderData& orderData = OrderData::GetInstance();
+		orderData.Initialize(orderNoText, teaOrderText, sandwichOrderText, pastryOrderText);
+
+		// Add observer to update UI on change
+		orderData.AddObserver([this]() { this->UpdateOrderDisplay(); });
+
+		
+
 
 		/*--------------------------------------------------------------CREATE BUTTONS------------------------------------------------------------------------------------------------------- */
 
@@ -164,6 +187,11 @@ public:
 		m_gameObjects.push_back(ServeBellGrey);
 		m_gameObjects.push_back(orderPaper);
 
+		m_gameObjects.push_back(orderNoText);
+		m_gameObjects.push_back(teaOrderText);
+		m_gameObjects.push_back(sandwichOrderText);
+		m_gameObjects.push_back(pastryOrderText);
+
 		//PLATED FOOD GAMEOBJECTS
 
 		platedTea[ASSAMTEA] = AssamBlack_dish;
@@ -247,8 +275,34 @@ public:
 		}
 
 		updateServeButton();
+		UpdateOrderDisplay();
 
 	}
+
+
+	void UpdateOrderDisplay() {
+		OrderData& orderData = OrderData::GetInstance();
+		std::cout << "Updating order display in Kitchen" << std::endl;
+		std::cout << "Room Number: " << orderData.GetRoomNumber() << std::endl;
+		std::cout << "Tea Order: " << orderData.GetTeaOrder() << std::endl;
+		std::cout << "Sandwich Order: " << orderData.GetSandwichOrder() << std::endl;
+		std::cout << "Pastry Order: " << orderData.GetPastryOrder() << std::endl;
+
+		if (orderNoText && teaOrderText && sandwichOrderText && pastryOrderText) {
+			orderNoText->SetContent(orderData.GetRoomNumber());
+			teaOrderText->SetContent(orderData.GetTeaOrder());
+			sandwichOrderText->SetContent(orderData.GetSandwichOrder());
+			pastryOrderText->SetContent(orderData.GetPastryOrder());
+
+			// Debug: Confirm the update visually
+			std::cout << "Text set for Room Number: " << orderNoText->GetContent() << std::endl;
+			orderNoText->SetColor(glm::vec3(1.0f, 0.0f, 0.0f)); // Set text color to red for visibility
+		}
+		else {
+			std::cout << "One or more text objects are null." << std::endl;
+		}
+	}
+
 
 
 	void clearPlate() {
@@ -513,5 +567,12 @@ private:
 
 	const float snapThreshold = 2.0f;
 
+
+
+
+	Text* orderNoText;
+	Text* teaOrderText;
+	Text* sandwichOrderText;
+	Text* pastryOrderText;
 
 };

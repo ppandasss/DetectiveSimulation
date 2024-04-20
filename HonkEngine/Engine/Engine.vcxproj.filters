@@ -191,6 +191,9 @@
     <ClInclude Include="Code\GameObjects\OrderData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Code\GameObjects\Timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\text.vs" />

@@ -17,6 +17,7 @@
 #include "../GameObjects/Door.h"
 #include "../GameObjects/DoorsManager.h"
 #include "../GameObjects/OrderData.h"
+#include "../GameObjects/Timer.h"
 
 class Hallway : public Scene
 {
@@ -25,6 +26,13 @@ private:
 	std::unique_ptr<TextRenderer> textRenderer;
 	AudioManager& audioManager;
 	Book* Journal;
+
+	Text* orderNoText;
+	Text* teaOrderText;
+	Text* sandwichOrderText;
+	Text* pastryOrderText;
+
+	Text* timerText;
 	
 public:
 	Hallway() :audioManager(AudioManager::GetInstance())
@@ -53,20 +61,33 @@ public:
 
 		/*-------------------------------------------------------------💬CREATE TEXT💬------------------------------------------------------------------------------------------------------- */
 
-		Text* helloText = new Text("GameTitle", " Welcome To Ticking Tea Time", "Assets/Fonts/WD.ttf", true);
-		Text* timerText = new Text("timerText", "00:00", "Assets/Fonts/Jibril.ttf", true);
-		Text* orderNoText = new Text("orderNo", "", "Assets/Fonts/mvboli.ttf", true);
-		Text* teaOrderText = new Text("TeaOrder", "", "Assets/Fonts/mvboli.ttf", true);
-		Text* sandwichOrderText = new Text("sandwichOrder", "", "Assets/Fonts/mvboli.ttf", true);
-		Text* pastryOrderText = new Text("PastryOrder", "", "Assets/Fonts/mvboli.ttf", true);
+		
+		orderNoText = new Text("orderNo", "", "Assets/Fonts/mvboli.ttf",true);
+		teaOrderText = new Text("TeaOrder", "", "Assets/Fonts/mvboli.ttf", true);
+		sandwichOrderText = new Text("sandwichOrder", "", "Assets/Fonts/mvboli.ttf", true);
+		pastryOrderText = new Text("PastryOrder", "", "Assets/Fonts/mvboli.ttf", true);
 
-		//OrderData to manager Order Text
+		// OrderData Setup
 		OrderData& orderData = OrderData::GetInstance();
-		orderData.Initialize(orderNoText, teaOrderText, sandwichOrderText, pastryOrderText);
+		orderData.AddObserver([this, &orderData]() {
+			this->orderNoText->SetContent(orderData.GetRoomNumber());
+			this->teaOrderText->SetContent(orderData.GetTeaOrder());
+			this->sandwichOrderText->SetContent(orderData.GetSandwichOrder());
+			this->pastryOrderText->SetContent(orderData.GetPastryOrder());
+			});
+
+		//Timer Setup
+		Timer& timer = Timer::GetInstance();
+		Text* timerText = new Text("timerText", "", "Assets/Fonts/Jibril.ttf", true);
+
+		
 
 		/*-------------------------------------------------------------💬CREATE UI💬------------------------------------------------------------------------------------------------------- */
-		UIElement* orderPaper = new UINormal("OrderPaper", "Assets/Images/OrderPaper.png", glm::vec3(-7.65f, 4.0f, 0.0f), glm::vec3(3.55f, 2.54f, 0.0f), true);
-		UIElement* timer = new UINormal("Timer", "Assets/Images/Timer.png", glm::vec3(7.3f, 5.1f, 0.0f), glm::vec3(4.37f, 3.13f, 0.0f), true);
+		UIElement* orderPaper = new UINormal("OrderPaper", "Assets/Images/OrderPaper.png",
+			glm::vec3(-7.65f, 4.0f, 0.0f), glm::vec3(3.55f, 2.54f, 0.0f), true); // Start inactive
+		orderData.SetOrderPaper(orderPaper);
+		UIElement* timerUI = new UINormal("Timer", "Assets/Images/Timer.png", glm::vec3(7.3f, 5.1f, 0.0f), glm::vec3(4.37f, 3.13f, 0.0f), true);
+		timer.Initialize(timerText,timerUI);
 		UIElement* screenUI = new UINormal("ScreenUI", "Assets/Images/ScreenUI.png", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(16.0f * 1.19f, 9.0f * 1.19f, 0.0f), true);
 		UIButton* journalButton = new UIButton("JournalButton", "Assets/Images/JournalButton.png", glm::vec3(-8.32f, -4.8f, 0.0f), glm::vec3(3.0f, 3.0f, 0.0f), true, false, "");
 		journalButton->SetOnClickAction([this]() { Journal->drawBook(); });
@@ -91,13 +112,7 @@ public:
 		hallwaylights->SetPosition(glm::vec3(0.0f, -0.2f, 0.0f));
 
 
-		helloText->SetPosition(glm::vec3(0.0f, 3.0f, 0.0f));
-		helloText->SetColor(glm::vec3(1, 1, 1));
-
-		timerText->SetPosition(glm::vec3(6.65f, 4.12f, 0.0f));
-		timerText->SetColor(glm::vec3(1, 1, 1));
-		timerText->SetScale(1.4f);
-
+		
 		orderNoText->SetPosition(glm::vec3(-8.8f, 4.5f, 0.0f));
 		orderNoText->SetColor(glm::vec3(0.5, 0, 0));
 
@@ -110,6 +125,11 @@ public:
 		pastryOrderText->SetPosition(glm::vec3(-7.8f, 3.3f, 0.0f));
 		pastryOrderText->SetScale(0.6f);
 
+
+		timerText->SetPosition(glm::vec3(6.65f, 4.12f, 0.0f));
+		timerText->SetColor(glm::vec3(1, 1, 1));
+		timerText->SetScale(1.4f);
+
 		/*--------------------------------------------------------------✅PUSH BACK✅------------------------------------------------------------------------------------------------------- */
 		//Environment
 		m_gameObjects.push_back(hallway);
@@ -118,18 +138,18 @@ public:
 
 		//UIs
 		m_gameObjects.push_back(journalButton);
-		m_gameObjects.push_back(timer);
+		m_gameObjects.push_back(timerUI);
 		m_gameObjects.push_back(orderPaper);
 		m_gameObjects.push_back(kitchenDoor);
 		m_gameObjects.push_back(room1Door);
 		
 		
-		//Texts
-		//m_gameObjects.push_back(helloText);
+		//UITexts
 		m_gameObjects.push_back(orderNoText);
 		m_gameObjects.push_back(teaOrderText);
 		m_gameObjects.push_back(sandwichOrderText);
 		m_gameObjects.push_back(pastryOrderText);
+		m_gameObjects.push_back(timerText);
 
 		//Journal
 		m_gameObjects.push_back(Journal);
@@ -139,6 +159,10 @@ public:
 
 	void Update(float dt, long frame) {
 		Scene::Update(dt, frame); // Call the base class update
+
+		Timer& timer = Timer::GetInstance();
+	    timer.Update(dt);
+		
 
 		// Retrieve the player object by name
 		GameObject* playerObject = GetGameObjectByName("waiter");

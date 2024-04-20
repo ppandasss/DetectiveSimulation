@@ -47,6 +47,10 @@ public:
     }
 
     // No SetFont for now, as TextRenderer doesn't have one
+    std::string GetContent() const
+	{
+		return m_content;
+	}
 
 
 private:

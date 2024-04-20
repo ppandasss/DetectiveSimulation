@@ -9,6 +9,7 @@
 #include <iostream>
 #include "../GameObjects/OrderData.h"
 
+
 using namespace std;
 
 struct TempOrderData {
@@ -363,8 +364,6 @@ public:
             std::cout << "Pastry Order: " << currentDialogue.tempOrderData->pastryOrder << std::endl;
         }
     }
-
-
 
 
 

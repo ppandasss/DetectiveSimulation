@@ -166,6 +166,7 @@
     <ClInclude Include="Code\GameObjects\MainPage.h" />
     <ClInclude Include="Code\GameObjects\OrderData.h" />
     <ClInclude Include="Code\GameObjects\Page.h" />
+    <ClInclude Include="Code\GameObjects\Timer.h" />
     <ClInclude Include="Code\Scene\Hallway.h" />
     <ClInclude Include="Code\Scene\Kitchen.h" />
     <ClInclude Include="Code\Scene\KitchenData.h" />

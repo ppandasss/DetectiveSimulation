@@ -9,6 +9,7 @@
 #include <iostream>
 #include "../Dialogue/Dialoguemanager.h"
 #include "../Effects/ParallaxManager.h"
+#include "../GameObjects/Timer.h"
 #include <memory>
 
 using namespace std;
@@ -27,10 +28,12 @@ private:
 
     RoomPhase currentPhase = RoomPhase::TakeOrderPhase;
 
+    Timer* timer;
+
 public:
     Room1() :audioManager(AudioManager::GetInstance()) {
 
-
+        timer = &Timer::GetInstance();
 
         audioManager.LoadSound("cabinMusic", "Assets/Sounds/BGmusic_Cabin.mp3", 0.2f);
         audioManager.PlaySound("cabinMusic", true);
@@ -183,7 +186,11 @@ public:
 
         // Allow leaving the room only in phases other than TakeOrderPhase
         if (currentPhase != RoomPhase::TakeOrderPhase && input.Get().GetKeyDown(GLFW_KEY_E)) {
+
             Application::Get().SetScene("Hallway");
+
+            //Start timer
+            timer->start(300);
         }
 
         // Handle dialogue progression
