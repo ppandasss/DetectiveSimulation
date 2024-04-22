@@ -31,8 +31,10 @@ private:
 	Text* teaOrderText;
 	Text* sandwichOrderText;
 	Text* pastryOrderText;
+	UIElement* orderPaper;
 
 	Text* timerText;
+    UIElement* timerUI;
 	
 public:
 	Hallway() :audioManager(AudioManager::GetInstance())
@@ -78,16 +80,20 @@ public:
 
 		//Timer Setup
 		Timer& timer = Timer::GetInstance();
-		Text* timerText = new Text("timerText", "", "Assets/Fonts/Jibril.ttf", true);
+		timerText = new Text("timerText", "", "Assets/Fonts/Jibril.ttf", true);
+		timer.Initialize(timerText);
 
+		timer.AddObserver([this, &timer]() {
+			this->timerText->SetContent(timer.GetTime());
+		});
 		
 
 		/*-------------------------------------------------------------💬CREATE UI💬------------------------------------------------------------------------------------------------------- */
-		UIElement* orderPaper = new UINormal("OrderPaper", "Assets/Images/OrderPaper.png",
+		 orderPaper = new UINormal("OrderPaper", "Assets/Images/OrderPaper.png",
 			glm::vec3(-7.65f, 4.0f, 0.0f), glm::vec3(3.55f, 2.54f, 0.0f), true); // Start inactive
 		orderData.SetOrderPaper(orderPaper);
-		UIElement* timerUI = new UINormal("Timer", "Assets/Images/Timer.png", glm::vec3(7.3f, 5.1f, 0.0f), glm::vec3(4.37f, 3.13f, 0.0f), true);
-		timer.Initialize(timerText,timerUI);
+		 timerUI = new UINormal("Timer", "Assets/Images/Timer.png", glm::vec3(7.3f, 5.1f, 0.0f), glm::vec3(4.37f, 3.13f, 0.0f), true);
+		timer.SetTimerUI(this->timerUI);
 		UIElement* screenUI = new UINormal("ScreenUI", "Assets/Images/ScreenUI.png", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(16.0f * 1.19f, 9.0f * 1.19f, 0.0f), true);
 		UIButton* journalButton = new UIButton("JournalButton", "Assets/Images/JournalButton.png", glm::vec3(-8.32f, -4.8f, 0.0f), glm::vec3(3.0f, 3.0f, 0.0f), true, false, "");
 		journalButton->SetOnClickAction([this]() { Journal->drawBook(); });
@@ -115,16 +121,12 @@ public:
 		
 		orderNoText->SetPosition(glm::vec3(-8.8f, 4.5f, 0.0f));
 		orderNoText->SetColor(glm::vec3(0.5, 0, 0));
-
 		teaOrderText->SetPosition(glm::vec3(-6.8f, 4.6f, 0.0f));
-		teaOrderText->SetScale(0.6f);
-
+		teaOrderText->SetScale(0.5f);
 		sandwichOrderText->SetPosition(glm::vec3(-7.8f, 4.0f, 0.0f));
-		sandwichOrderText->SetScale(0.6f);
-
+		sandwichOrderText->SetScale(0.5f);
 		pastryOrderText->SetPosition(glm::vec3(-7.8f, 3.3f, 0.0f));
-		pastryOrderText->SetScale(0.6f);
-
+		pastryOrderText->SetScale(0.5f);
 
 		timerText->SetPosition(glm::vec3(6.65f, 4.12f, 0.0f));
 		timerText->SetColor(glm::vec3(1, 1, 1));

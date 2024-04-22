@@ -35,7 +35,8 @@ public:
 		KitchenBackground->SetScale(glm::vec3(19.2f, 10.8f, 0.0f));
 		KitchenBackground->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
-		UIElement* orderPaper = new UINormal("OrderPaper", "Assets/Images/OrderPaper.png", glm::vec3(-7.65f, 4.0f, 0.0f), glm::vec3(3.55f, 2.54f, 0.0f), true);
+		orderPaper  = new UINormal("OrderPaper", "Assets/Images/OrderPaper.png", glm::vec3(-7.65f, 4.0f, 0.0f), glm::vec3(3.55f, 2.54f, 0.0f), true);
+		timerUI = new UINormal("TimerUI", "Assets/Images/Timer.png", glm::vec3(7.3f, 5.1f, 0.0f), glm::vec3(4.37f, 3.13f, 0.0f), true);
 
 		Journal = new Book();
 		
@@ -60,9 +61,28 @@ public:
 		//OrderData to manager Order Text
 		OrderData& orderData = OrderData::GetInstance();
 		orderData.Initialize(orderNoText, teaOrderText, sandwichOrderText, pastryOrderText);
-
+		//orderData.SetOrderPaper(orderPaper);
 		// Add observer to update UI on change
-		orderData.AddObserver([this]() { this->UpdateOrderDisplay(); });
+		
+		// In Kitchen Constructor
+		Timer& timer = Timer::GetInstance();
+		timerText = new Text("timerText", "", "Assets/Fonts/Jibril.ttf", true); 
+		
+		
+		timerText->SetPosition(glm::vec3(6.65f, 4.12f, 0.0f));
+		timerText->SetColor(glm::vec3(1, 1, 1));
+		timerText->SetScale(1.4f);
+
+		timerUI->setActiveStatus(false);
+
+		timer.Initialize(timerText);
+		//timer.SetTimerUI(this->timerUI);
+
+		orderData.AddObserver([this]() { this->UpdateTimerDisplay(); });
+		timer.AddObserver([this, &timer]() {this->UpdateOrderDisplay(); });
+	
+		//m_gameObjects.push_back(timerUI); // Add the timer UI to the game object list
+		//m_gameObjects.push_back(timerText); // Add the timer text to the game object list
 
 		
 
@@ -186,11 +206,15 @@ public:
 		m_gameObjects.push_back(ServeBellButton);
 		m_gameObjects.push_back(ServeBellGrey);
 		m_gameObjects.push_back(orderPaper);
+		m_gameObjects.push_back(timerUI);
 
 		m_gameObjects.push_back(orderNoText);
 		m_gameObjects.push_back(teaOrderText);
 		m_gameObjects.push_back(sandwichOrderText);
 		m_gameObjects.push_back(pastryOrderText);
+
+		m_gameObjects.push_back(timerText);
+		
 
 		//PLATED FOOD GAMEOBJECTS
 
@@ -259,12 +283,15 @@ public:
 
 		//set all plate gameobjects as inactive
 		clearPlate();
-
+		
 	}
 
 	void Update(float dt, long frame) override {
 
 		Scene::Update(dt, frame);
+
+		Timer& timer = Timer::GetInstance();
+		timer.Update(dt);
 
 		if (input.Get().GetKeyDown(GLFW_KEY_E)) {
 			Application::Get().SetScene("Hallway");
@@ -281,26 +308,36 @@ public:
 
 
 	void UpdateOrderDisplay() {
-		OrderData& orderData = OrderData::GetInstance();
-		std::cout << "Updating order display in Kitchen" << std::endl;
-		std::cout << "Room Number: " << orderData.GetRoomNumber() << std::endl;
-		std::cout << "Tea Order: " << orderData.GetTeaOrder() << std::endl;
-		std::cout << "Sandwich Order: " << orderData.GetSandwichOrder() << std::endl;
-		std::cout << "Pastry Order: " << orderData.GetPastryOrder() << std::endl;
 
-		if (orderNoText && teaOrderText && sandwichOrderText && pastryOrderText) {
+		OrderData& orderData = OrderData::GetInstance();
+		
+
+		if (orderNoText && teaOrderText && sandwichOrderText && pastryOrderText && orderPaper) {
 			orderNoText->SetContent(orderData.GetRoomNumber());
 			teaOrderText->SetContent(orderData.GetTeaOrder());
 			sandwichOrderText->SetContent(orderData.GetSandwichOrder());
 			pastryOrderText->SetContent(orderData.GetPastryOrder());
-
+			orderPaper->setActiveStatus(orderData.GetOrderPaperVisibility());
 			// Debug: Confirm the update visually
-			std::cout << "Text set for Room Number: " << orderNoText->GetContent() << std::endl;
-			orderNoText->SetColor(glm::vec3(1.0f, 0.0f, 0.0f)); // Set text color to red for visibility
+			//orderNoText->SetColor(glm::vec3(1.0f, 0.0f, 0.0f)); // Set text color to red for visibility
 		}
 		else {
 			std::cout << "One or more text objects are null." << std::endl;
 		}
+
+
+	}
+
+	void UpdateTimerDisplay() {
+		Timer& timer = Timer::GetInstance();
+		if (timerText && timerUI) {
+			timerText->SetContent(timer.GetTime());
+			timerUI->setActiveStatus(!timer.GetTimerUIVisibility());
+			// Adjust formatting or visibility as needed
+		}
+		else {
+					std::cout << "One or more text objects are null." << std::endl;
+	    }
 	}
 
 
@@ -568,11 +605,13 @@ private:
 	const float snapThreshold = 2.0f;
 
 
-
-
 	Text* orderNoText;
 	Text* teaOrderText;
 	Text* sandwichOrderText;
 	Text* pastryOrderText;
+
+	Text* timerText;
+	UIElement* timerUI;
+    UIElement* orderPaper;
 
 };
