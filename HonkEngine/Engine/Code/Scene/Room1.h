@@ -35,8 +35,9 @@ public:
 
         timer = &Timer::GetInstance();
 
+        //audioManager.StopSound("HallwayMusic");
         audioManager.LoadSound("cabinMusic", "Assets/Sounds/BGmusic_Cabin.mp3", 0.2f);
-        audioManager.PlaySound("cabinMusic", true);
+        audioManager.SetSoundVolume("cabinMusic", 4.0f);
 
         GameObject* background1 = new RenderGameObject("BG1", "Assets/Images/Cabin_Background.png");
         GameObject* background2 = new RenderGameObject("BG2", "Assets/Images/Cabin_Background.png");
@@ -158,6 +159,11 @@ public:
 
     }
 
+    void OnEnter() override {
+        Scene::OnEnter();  // Call base class if there's relevant logic
+        audioManager.PlaySound("cabinMusic", true);
+    }
+
     void Update(float dt, long frame) override {
 
         Scene::Update(dt, frame);
@@ -206,6 +212,11 @@ public:
 
         // Manually call DialogueManager's render function
         dialogueManager->Render();
+    }
+
+    void OnExit() override {
+        Scene::OnExit();  // Call base class if there's relevant logic
+        audioManager.StopSound("cabinMusic");
     }
 
 private:

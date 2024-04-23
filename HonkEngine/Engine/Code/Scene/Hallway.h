@@ -42,8 +42,7 @@ public:
 		/*--------------------------------------------------------------🔊LOAD AUDDIO🔊------------------------------------------------------------------------------------------------------- */
 		audioManager.LoadSound("hallwayMusic", "Assets/Sounds/BGmusic_Corridor_NoTimer.mp3", 0.3f);
 		audioManager.LoadSound("trainAmbience", "Assets/Sounds/Ambience_Train.mp3", 0.3f);
-		audioManager.PlaySound("hallwayMusic", true);
-		audioManager.PlaySound("trainAmbience", true);
+
 
 		/*--------------------------------------------------------------📦CREATE GAMEOBJECT📦------------------------------------------------------------------------------------------------------- */
 
@@ -159,6 +158,12 @@ public:
 
 	}
 
+	void OnEnter() override {
+		Scene::OnEnter(); 
+		audioManager.PlaySound("hallwayMusic", true);
+		audioManager.PlaySound("trainAmbience", true);
+	}
+
 	void Update(float dt, long frame) {
 		Scene::Update(dt, frame); // Call the base class update
 
@@ -196,6 +201,14 @@ public:
 		}
 
 	}
+
+	void OnExit() override {
+		Scene::OnExit(); 
+		audioManager.StopSound("hallwayMusic");
+		audioManager.StopSound("trainAmbience");
+		audioManager.StopSound("Player_footsteps");
+	}
+
 
 };
 

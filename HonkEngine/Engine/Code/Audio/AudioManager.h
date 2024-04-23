@@ -58,18 +58,19 @@ public:
     }
 
     void StopSound(const std::string& soundName) {
-        
         auto it = playingSounds.find(soundName);
         if (it != playingSounds.end()) {
             for (auto& sound : it->second) {
                 if (sound && !sound->isFinished()) {
                     sound->stop();
-                    sound->drop(); 
+                    sound->drop(); // Properly release the sound
                 }
             }
-            it->second.clear(); 
+            it->second.clear(); // Clear the list of sounds
+            std::cout << "Stopped sound: " << soundName << std::endl;
         }
     }
+
 
     void SetMasterVolume(float volume) {
         // Set the master volume (0.0 to 1.0)

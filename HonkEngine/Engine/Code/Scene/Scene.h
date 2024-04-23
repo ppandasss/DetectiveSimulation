@@ -52,6 +52,15 @@ public:
 		}
 	}
 
+	virtual void OnEnter() {
+		// This will be overridden in derived classes to handle scene entry logic
+	}
+
+	virtual void OnExit() {
+		// This will be overridden in derived classes to handle scene exit logic
+	}
+
+
 	void AddGameObject(GameObject* newGameObject)
 	{
 		m_toAddGameObjects.push_back(newGameObject);

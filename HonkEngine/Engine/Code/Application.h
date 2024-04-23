@@ -36,8 +36,13 @@ public:
 	{
 		if (m_sceneMap.find(name) != m_sceneMap.end())
 		{
-			m_currentScene = m_sceneMap[name];
-			//m_camera.Reset();
+			if (m_currentScene) {
+				m_currentScene->OnExit();
+			}
+			m_currentScene = m_sceneMap[name];  // Assume existence for simplicity
+			if (m_currentScene) {
+				m_currentScene->OnEnter();
+			}
 		}
 
 	}
@@ -69,6 +74,8 @@ public:
 	{
 		return m_currentScene;
 	}
+
+
 
 	static glm::vec2 MousetoWorld() {
 		Camera& camera = Application::GetCamera();
