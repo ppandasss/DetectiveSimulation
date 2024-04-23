@@ -167,7 +167,7 @@
               "RelativeDocumentMoniker": "Engine\\Code\\Audio\\AudioManager.h",
               "ToolTip": "C:\\Capt\\DetectiveSimulation\\HonkEngine\\Engine\\Code\\Audio\\AudioManager.h",
               "RelativeToolTip": "Engine\\Code\\Audio\\AudioManager.h",
-              "ViewState": "AQIAAGgAAAAAAAAAAAAQwIAAAAAAAAAA",
+              "ViewState": "AQIAAGgAAAAAAAAAAAAQwJEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-04-23T13:08:11.325Z",
               "IsPinned": true,
@@ -184,8 +184,7 @@
               "ViewState": "AQIAAMMAAAAAAAAAAAAAANMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-03-01T13:38:37.3Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -198,8 +197,7 @@
               "ViewState": "AQIAAJkAAAAAAAAAAAAlwMMAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-03-01T13:38:37.312Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -219,8 +217,7 @@
               "RelativeToolTip": "Engine\\Code\\Application.h",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAACQAAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-04-23T13:30:02.161Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-23T13:30:02.161Z"
             },
             {
               "$type": "Document",
@@ -232,8 +229,7 @@
               "RelativeToolTip": "Engine\\Code\\GameObjects\\Player.h",
               "ViewState": "AQIAABAAAAAAAAAAAAAAABwAAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-31T14:06:05.247Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-31T14:06:05.247Z"
             },
             {
               "$type": "Document",
@@ -245,8 +241,7 @@
               "RelativeToolTip": "Engine\\Code\\Main.cpp",
               "ViewState": "AQIAAAgAAAAAAAAAAAAcwCYAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-04-05T04:00:46.882Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-05T04:00:46.882Z"
             },
             {
               "$type": "Document",
@@ -258,8 +253,7 @@
               "RelativeToolTip": "Engine\\Code\\Application.cpp",
               "ViewState": "AQIAAIYAAAAAAAAAAAAQwK8AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-04-05T06:44:46.713Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-05T06:44:46.713Z"
             },
             {
               "$type": "Document",
@@ -271,8 +265,7 @@
               "RelativeToolTip": "Engine\\Code\\Scene\\Scene.h",
               "ViewState": "AQIAACcAAAAAAAAAAAAQwFAAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-01T13:38:37.311Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-01T13:38:37.311Z"
             },
             {
               "$type": "Document",
@@ -284,8 +277,7 @@
               "RelativeToolTip": "Engine\\Code\\GameObjects\\Door.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-31T14:15:32.853Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-31T14:15:32.853Z"
             },
             {
               "$type": "Document",
@@ -297,8 +289,7 @@
               "RelativeToolTip": "Engine\\Code\\Scene\\LoadScene.h",
               "ViewState": "AQIAAD4AAAAAAAAAAAAAwEYAAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-04-05T03:56:44.582Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-05T03:56:44.582Z"
             },
             {
               "$type": "Document",
@@ -310,8 +301,7 @@
               "RelativeToolTip": "Engine\\Code\\Renderer\\Renderer.cpp",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-03-01T14:05:43.085Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-01T14:05:43.085Z"
             },
             {
               "$type": "Document",
@@ -323,8 +313,7 @@
               "RelativeToolTip": "Engine\\Code\\UI\\UIButton.h",
               "ViewState": "AQIAABkAAAAAAAAAAABBwAoAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-02T01:49:48.309Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-02T01:49:48.309Z"
             },
             {
               "$type": "Document",
@@ -336,8 +325,7 @@
               "RelativeToolTip": "Engine\\Code\\Engine.h",
               "ViewState": "AQIAAA8AAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-04-16T11:01:21.174Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-16T11:01:21.174Z"
             },
             {
               "$type": "Document",
@@ -349,8 +337,7 @@
               "RelativeToolTip": "Engine\\Code\\GameObjects\\Book.h",
               "ViewState": "AQIAAHoAAAAAAAAAAAAuwJwAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-02T01:54:16.111Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-02T01:54:16.111Z"
             },
             {
               "$type": "Document",
@@ -362,8 +349,7 @@
               "RelativeToolTip": "Engine\\Code\\GameObjects\\MainPage.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-01T13:38:37.313Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-01T13:38:37.313Z"
             },
             {
               "$type": "Document",
@@ -375,8 +361,7 @@
               "RelativeToolTip": "Engine\\Code\\Engine.cpp",
               "ViewState": "AQIAAD0AAAAAAAAAAABBwD0AAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-04-05T17:14:11.656Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-05T17:14:11.656Z"
             },
             {
               "$type": "Document",
@@ -388,8 +373,7 @@
               "RelativeToolTip": "Engine\\Code\\Scene\\KitchenData.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-31T16:38:55.457Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-31T16:38:55.457Z"
             },
             {
               "$type": "Document",
@@ -401,8 +385,7 @@
               "RelativeToolTip": "Engine\\Code\\GameObjects\\GameObject.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAACcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-31T14:10:54.571Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-31T14:10:54.571Z"
             },
             {
               "$type": "Document",
@@ -414,8 +397,7 @@
               "RelativeToolTip": "Engine\\Code\\GameObjects\\RenderGameObject.h",
               "ViewState": "AQIAAEYAAAAAAAAAAABBwF0AAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-04-05T07:41:46.17Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-05T07:41:46.17Z"
             },
             {
               "$type": "Document",
@@ -427,8 +409,7 @@
               "RelativeToolTip": "Engine\\Assets\\Shaders\\color_tex_transparency.frag",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-04-05T17:29:48.997Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-05T17:29:48.997Z"
             },
             {
               "$type": "Document",
@@ -440,8 +421,7 @@
               "RelativeToolTip": "Engine\\Code\\Scene\\Kitchen.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-31T16:38:56.003Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-31T16:38:56.003Z"
             },
             {
               "$type": "Document",
@@ -453,8 +433,7 @@
               "RelativeToolTip": "Engine\\Code\\GameObjects\\DoorsManager.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-31T14:38:26.95Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-31T14:38:26.95Z"
             },
             {
               "$type": "Document",
@@ -466,8 +445,7 @@
               "RelativeToolTip": "Engine\\Code\\UI\\UIElement.h",
               "ViewState": "AQIAAB4AAAAAAAAAAAAQwDQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-01T13:38:37.303Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-01T13:38:37.303Z"
             },
             {
               "$type": "Document",
@@ -479,8 +457,7 @@
               "RelativeToolTip": "Engine\\Code\\Dialogue\\DialogueManager.h",
               "ViewState": "AQIAAPcAAAAAAAAAAABBwAQBAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-01T13:38:37.312Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-01T13:38:37.312Z"
             },
             {
               "$type": "Document",
@@ -492,8 +469,7 @@
               "RelativeToolTip": "Engine\\Assets\\Dialogue\\Dialogue_Martha_OrderPhase.xml",
               "ViewState": "AQIAABAAAAAAAAAAAABBwBwAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003576|",
-              "WhenOpened": "2024-03-27T03:59:31.146Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-27T03:59:31.146Z"
             },
             {
               "$type": "Document",
@@ -517,8 +493,7 @@
               "RelativeToolTip": "Engine\\Code\\UI\\UINormal.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-01T13:38:37.303Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-01T13:38:37.303Z"
             },
             {
               "$type": "Document",
@@ -530,8 +505,7 @@
               "RelativeToolTip": "Engine\\Code\\Text\\Text.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAlwCcAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-06T16:02:49.719Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-06T16:02:49.719Z"
             },
             {
               "$type": "Document",
@@ -543,8 +517,7 @@
               "RelativeToolTip": "Engine\\Code\\Text\\TextRenderer.cpp",
               "ViewState": "AQIAAG8AAAAAAAAAAAAIwHkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-03-01T13:38:37.189Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-01T13:38:37.189Z"
             },
             {
               "$type": "Document",
@@ -556,8 +529,7 @@
               "RelativeToolTip": "Engine\\Code\\Text\\TextRenderer.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAIwBIAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-06T16:02:56.571Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-06T16:02:56.571Z"
             },
             {
               "$type": "Document",
@@ -569,8 +541,7 @@
               "RelativeToolTip": "Engine\\Code\\GameObjects\\CabinPage2.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-02T01:59:34.328Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-02T01:59:34.328Z"
             },
             {
               "$type": "Document",
@@ -582,8 +553,7 @@
               "RelativeToolTip": "Engine\\Code\\Camera\\Camera.cpp",
               "ViewState": "AQIAAGgAAAAAAAAAAAAIwHoAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-03-01T14:03:49.011Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-01T14:03:49.011Z"
             },
             {
               "$type": "Document",
@@ -595,8 +565,7 @@
               "RelativeToolTip": "Engine\\Code\\Dialogue\\tinyxml2.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAEsJAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-01T13:38:37.308Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-01T13:38:37.308Z"
             },
             {
               "$type": "Document",
@@ -608,8 +577,7 @@
               "RelativeToolTip": "Engine\\Code\\Dialogue\\tinyxml2.cpp",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAA8AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-03-01T13:38:37.309Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-01T13:38:37.309Z"
             },
             {
               "$type": "Document",
@@ -645,8 +613,7 @@
               "RelativeToolTip": "Engine\\Code\\GameObjects\\Page.h",
               "ViewState": "AQIAAC0AAAAAAAAAAAAAwD8AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-01T13:38:37.315Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-01T13:38:37.315Z"
             }
           ]
         }
