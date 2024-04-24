@@ -35,16 +35,26 @@ public:
 
         timer = &Timer::GetInstance();
 
-        //audioManager.StopSound("HallwayMusic");
-        audioManager.LoadSound("cabinMusic", "Assets/Sounds/BGmusic_Cabin.mp3", 0.2f);
-        audioManager.SetSoundVolume("cabinMusic", 4.0f);
+        audioManager.LoadSound("cabinMusic", "Assets/Sounds/Music/BGmusic_Cabin.mp3", 4.0f);
+        audioManager.LoadSound("doorOpen", "Assets/Sounds/SFX_OpenDoor.mp3", 2.0f);
+        audioManager.LoadSound("closeDoor", "Assets/Sounds/SFX_CloseDoor.mp3", 2.0f);
+        audioManager.LoadSound("timerTicking", "Assets/Sounds/SFX_TimerTicking.mp3", 0.9f);
 
-        GameObject* background1 = new RenderGameObject("BG1", "Assets/Images/Cabin_Background.png");
-        GameObject* background2 = new RenderGameObject("BG2", "Assets/Images/Cabin_Background.png");
-        background1->SetScale(glm::vec3(76.6f, 10.8f, 0.0f));
-        background2->SetScale(glm::vec3(76.6f, 10.8f, 0.0f));
-        background1->SetPosition(glm::vec3(0.0f, 3.0f, 0.0f));
-        background2->SetPosition(glm::vec3(76.6f, 3.0f, 0.0f));
+
+        GameObject* background1 = new RenderGameObject("BG1", "Assets/Images/BG/Cabin_Background_01.png");
+        GameObject* background2 = new RenderGameObject("BG2", "Assets/Images/BG/Cabin_Background_02.png");
+        GameObject* background3 = new RenderGameObject("BG3", "Assets/Images/BG/Cabin_Background_03.png");
+        GameObject* background4 = new RenderGameObject("BG3", "Assets/Images/BG/Cabin_Background_04.png");
+        GameObject* background5 = new RenderGameObject("BG3", "Assets/Images/BG/Cabin_Background_05.png");
+        GameObject* background6 = new RenderGameObject("BG3", "Assets/Images/BG/Cabin_Background_06.png");
+
+        background1->SetScale(glm::vec3(76.6f, 10.8f, 0.0f)); background1->SetPosition(glm::vec3(0.0f, 3.0f, 0.0f));
+        background2->SetScale(glm::vec3(76.6f, 10.8f, 0.0f)); background2->SetPosition(glm::vec3(76.6f, 3.0f, 0.0f));
+        background3->SetScale(glm::vec3(76.6f, 10.8f, 0.0f));  background3->SetPosition(glm::vec3(76.6f, 3.0f, 0.0f));
+        background4->SetScale(glm::vec3(76.6f, 10.8f, 0.0f));  background4->SetPosition(glm::vec3(76.6f, 3.0f, 0.0f));
+        background5->SetScale(glm::vec3(76.6f, 10.8f, 0.0f));  background5->SetPosition(glm::vec3(76.6f, 3.0f, 0.0f));
+        background6->SetScale(glm::vec3(76.6f, 10.8f, 0.0f));  background6->SetPosition(glm::vec3(76.6f, 3.0f, 0.0f));
+
 
         // Scale Multiplier to fit asset scale with screensize
         float sm = 1.23f;
@@ -112,6 +122,10 @@ public:
         //Push GamePbjects
         m_gameObjects.push_back(background1);
         m_gameObjects.push_back(background2);
+        m_gameObjects.push_back(background3);
+        m_gameObjects.push_back(background4);
+        m_gameObjects.push_back(background5);
+        m_gameObjects.push_back(background6);
         m_gameObjects.push_back(room);
         m_gameObjects.push_back(marthaNormal);
         m_gameObjects.push_back(marthaHappy);
@@ -155,12 +169,18 @@ public:
         parallaxManager->SetBackgroundSpeed(2.0f);
         parallaxManager->AddBackgroundObject(background1);
         parallaxManager->AddBackgroundObject(background2);
+        parallaxManager->AddBackgroundObject(background3);
+        parallaxManager->AddBackgroundObject(background4);
+        parallaxManager->AddBackgroundObject(background5);
+        parallaxManager->AddBackgroundObject(background6);
 
 
     }
 
     void OnEnter() override {
         Scene::OnEnter();  // Call base class if there's relevant logic
+        audioManager.StopSound("hallwayMusic");
+        audioManager.PlaySound("doorOpen", false);
         audioManager.PlaySound("cabinMusic", true);
     }
 
@@ -197,6 +217,7 @@ public:
 
             //Start timer
             timer->start(300);
+            audioManager.PlaySound("timerTicking", true);
         }
 
         // Handle dialogue progression
@@ -216,6 +237,7 @@ public:
 
     void OnExit() override {
         Scene::OnExit();  // Call base class if there's relevant logic
+        audioManager.PlaySound("closeDoor");
         audioManager.StopSound("cabinMusic");
     }
 

@@ -18,6 +18,7 @@
 #include "../GameObjects/DoorsManager.h"
 #include "../GameObjects/OrderData.h"
 #include "../GameObjects/Timer.h"
+#include "../Effects/ParallaxManager.h"
 
 class Hallway : public Scene
 {
@@ -25,6 +26,7 @@ class Hallway : public Scene
 private:
 	std::unique_ptr<TextRenderer> textRenderer;
 	AudioManager& audioManager;
+
 	Book* Journal;
 
 	Text* orderNoText;
@@ -40,14 +42,26 @@ public:
 	Hallway() :audioManager(AudioManager::GetInstance())
 	{
 		/*--------------------------------------------------------------🔊LOAD AUDDIO🔊------------------------------------------------------------------------------------------------------- */
-		audioManager.LoadSound("hallwayMusic", "Assets/Sounds/BGmusic_Corridor_NoTimer.mp3", 0.3f);
-		audioManager.LoadSound("trainAmbience", "Assets/Sounds/Ambience_Train.mp3", 0.3f);
+		audioManager.LoadSound("hallwayMusic", "Assets/Sounds/Music/BGmusic_Corridor_NoTimer.mp3", 0.15f);
+		audioManager.LoadSound("trainAmbience", "Assets/Sounds/Ambience/Ambience_Train.mp3", 0.1f);
 
 
 		/*--------------------------------------------------------------📦CREATE GAMEOBJECT📦------------------------------------------------------------------------------------------------------- */
+		GameObject* background1 = new RenderGameObject("BG1", "Assets/Images/BG/Cabin_Background_01.png");
+		background1->SetScale(glm::vec3(76.6f, 10.8f, 0.0f));
+		background1->SetPosition(glm::vec3(0.0f, 3.0f, 0.0f));
 
-		GameObject* hallway = new RenderGameObject("Cabin", "Assets/Images/Environment_Corridor_Hallway.png");
-		GameObject* hallwaylights = new RenderGameObject("CabinLights", "Assets/Images/Environment_Corridor_Light.png");
+		GameObject* hallway = new RenderGameObject("Cabin", "Assets/Images/Corridor/Corridor_Background.png");
+		GameObject* hallwaylights = new RenderGameObject("CabinLights", "Assets/Images/Corridor/Corridor_Light.png");
+
+		GameObject* doorOneNormal = new RenderGameObject("doorOneNormal", "Assets/Images/Corridor/Door1_Normal.png");
+		GameObject* doorOneHighlight = new RenderGameObject("doorOneHighlight", "Assets/Images/Corridor/Door1_Highlight.png");
+
+		GameObject* bellCabin1 = new RenderGameObject("bellCabin1", "Assets/Images/Corridor/Bell_Normal.png");
+		GameObject* bellCabin2 = new RenderGameObject("bellCabin2", "Assets/Images/Corridor/Bell_Normal.png");
+		GameObject* bellCabin3 = new RenderGameObject("bellCabin3", "Assets/Images/Corridor/Bell_Normal.png");
+		GameObject* bellCabin4 = new RenderGameObject("bellCabin4", "Assets/Images/Corridor/Bell_Normal.png");
+
 		Journal = new Book();
 		// Inside the Hallway constructor
 	
@@ -88,10 +102,10 @@ public:
 		
 
 		/*-------------------------------------------------------------💬CREATE UI💬------------------------------------------------------------------------------------------------------- */
-		 orderPaper = new UINormal("OrderPaper", "Assets/Images/OrderPaper.png",
+		 orderPaper = new UINormal("OrderPaper", "Assets/Images/UI/OrderPaper.png",
 			glm::vec3(-7.65f, 4.0f, 0.0f), glm::vec3(3.55f, 2.54f, 0.0f), true); // Start inactive
 		orderData.SetOrderPaper(orderPaper);
-		 timerUI = new UINormal("Timer", "Assets/Images/Timer.png", glm::vec3(7.3f, 5.1f, 0.0f), glm::vec3(4.37f, 3.13f, 0.0f), true);
+		 timerUI = new UINormal("Timer", "Assets/Images/UI/Timer.png", glm::vec3(7.3f, 5.1f, 0.0f), glm::vec3(4.37f, 3.13f, 0.0f), true);
 		timer.SetTimerUI(this->timerUI);
 		UIElement* screenUI = new UINormal("ScreenUI", "Assets/Images/ScreenUI.png", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(16.0f * 1.19f, 9.0f * 1.19f, 0.0f), true);
 		UIButton* journalButton = new UIButton("JournalButton", "Assets/Images/JournalButton.png", glm::vec3(-8.32f, -4.8f, 0.0f), glm::vec3(3.0f, 3.0f, 0.0f), true, false, "");
@@ -116,6 +130,15 @@ public:
 		hallwaylights->SetScale(glm::vec3(50.0f, 10.8f, 0.0f));
 		hallwaylights->SetPosition(glm::vec3(0.0f, -0.2f, 0.0f));
 
+		doorOneNormal->SetScale(glm::vec3(2.25f * 1.2f, 4.61f * 1.2f, 0.0f));
+		doorOneNormal->SetPosition(glm::vec3(-17.6f, -0.63f, 0.0f));
+
+		doorOneHighlight->SetScale(glm::vec3(2.37f * 1.2f, 4.73f * 1.2f, 0.0f)); doorOneHighlight->SetPosition(glm::vec3(-17.6f, -0.63f, 0.0f));
+
+		bellCabin1->SetScale(glm::vec3(1.6f * 1.2f, 1.6f * 1.2f, 0.0f)); bellCabin1->SetPosition(glm::vec3(-16.54f, 1.49f, 0.0f));
+		bellCabin2->SetScale(glm::vec3(1.6f * 1.2f, 1.6f * 1.2f, 0.0f)); bellCabin2->SetPosition(glm::vec3(-7.54f, 1.49f, 0.0f));
+		bellCabin3->SetScale(glm::vec3(1.6f * 1.2f, 1.6f * 1.2f, 0.0f)); bellCabin3->SetPosition(glm::vec3(1.41f, 1.49f, 0.0f));
+		bellCabin4->SetScale(glm::vec3(1.6f * 1.2f, 1.6f * 1.2f, 0.0f)); bellCabin4->SetPosition(glm::vec3(10.44f, 1.49f, 0.0f));
 
 		
 		orderNoText->SetPosition(glm::vec3(-8.8f, 4.5f, 0.0f));
@@ -133,7 +156,17 @@ public:
 
 		/*--------------------------------------------------------------✅PUSH BACK✅------------------------------------------------------------------------------------------------------- */
 		//Environment
+		m_gameObjects.push_back(background1);
 		m_gameObjects.push_back(hallway);
+
+		m_gameObjects.push_back(doorOneNormal);
+		m_gameObjects.push_back(doorOneHighlight);
+
+		m_gameObjects.push_back(bellCabin1);
+		m_gameObjects.push_back(bellCabin2);
+		m_gameObjects.push_back(bellCabin3);
+		m_gameObjects.push_back(bellCabin4);
+
 		m_gameObjects.push_back(player);
 		m_gameObjects.push_back(hallwaylights);
 
@@ -204,8 +237,7 @@ public:
 
 	void OnExit() override {
 		Scene::OnExit(); 
-		audioManager.StopSound("hallwayMusic");
-		audioManager.StopSound("trainAmbience");
+		//audioManager.StopSound("hallwayMusic");
 		audioManager.StopSound("Player_footsteps");
 	}
 

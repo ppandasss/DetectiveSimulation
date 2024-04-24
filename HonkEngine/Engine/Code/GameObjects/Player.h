@@ -26,7 +26,7 @@ public:
         m_position = glm::vec3(0.0f, -1.0f, 0.0f);
         m_animator.AddAnimation("walk_left", 1, 8, 7.5f, Animator::LoopType::Loop, []() {});
         m_animator.AddAnimation("walk_right", 2, 8, 7.5f, Animator::LoopType::Loop, []() {});
-        audioManager.LoadSound("Player_footsteps", "Assets/Sounds/footstep.mp3", 3.0f);
+        audioManager.LoadSound("Player_footsteps", "Assets/Sounds/footstep.mp3", 0.6f);
     }
 
     void Update(float dt, long frame) override

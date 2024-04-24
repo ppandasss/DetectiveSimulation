@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="1MD60">
+		<Speaker name="Martha_Sad">
+			<line1>Unfortunately, I believe this is  not the one I mentioned.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD60">
+		<Speaker name="Martha_Normal">
+			<line1>But it's completely fine, this  looks very appealing as well.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

@@ -124,66 +124,56 @@ void TextRenderer::Initialize(const std::string& fontPath)
 
 void TextRenderer::RenderText(std::string text, float x, float y, float scale, glm::vec3 color, bool centerPivot, int numChars)
 {
-    // Activate corresponding render state
     m_shader.use();
     m_shader.SetVector3f("textColor", color);
     glActiveTexture(GL_TEXTURE0);
     glBindVertexArray(m_VAO);
 
-    scale *= 0.01f;
-    float lineHeight = 0.0f; // Adjust line height as needed
-    float originalX = x;
-    float originalY = y;
+    scale *= 0.01f;  // Scale adjustment if needed
+    float lineHeight = 0.0f;  // This will be calculated based on glyph heights
+    float lineSpacing = 0.1f; // This is the additional space between lines
 
     std::vector<std::string> lines;
     std::string currentLine;
     std::string::const_iterator c;
-    for (c = text.begin(); c != text.end(); ++c)
-    {
-        if (*c == ' ' && *(c + 1) == ' ') // Detect double space as a marker for a new line
-        {
+
+    // Break text into lines based on double spaces
+    for (c = text.begin(); c != text.end(); ++c) {
+        if (*c == ' ' && *(c + 1) == ' ') {
             lines.push_back(currentLine);
             currentLine.clear();
-            c++; // Skip the second space
+            ++c;  // Skip the second space
             continue;
         }
         currentLine += *c;
     }
-    lines.push_back(currentLine); // Add the last line
+    lines.push_back(currentLine);
 
-    for (const std::string& line : lines)
-    {
+    for (const std::string& line : lines) {
         float totalWidth = 0.0f;
-        // Calculate total width of the line
-        for (char ch : line)
-        {
-            totalWidth += (Characters[ch].Advance >> 6) * scale; // Advance is in 1/64th pixels
+        // Calculate total width of the line for centering
+        for (char ch : line) {
+            Character glyph = Characters[ch];
+            totalWidth += (glyph.Advance >> 6) * scale; // Bitshift by 6 to convert from 1/64 pixels to pixels
         }
 
-        if (centerPivot)
-        {
-            // Adjust x to center the line
-            x = originalX - totalWidth / 2.0f;
-        }
+        float currentX = centerPivot ? (x - totalWidth / 2) : x;
 
         // Render each character in the line
-        for (char ch : line)
-        {
+        for (char ch : line) {
             Character glyph = Characters[ch];
 
-            float xpos = x + glyph.Bearing.x * scale;
+            float xpos = currentX + glyph.Bearing.x * scale;
             float ypos = y - (glyph.Size.y - glyph.Bearing.y) * scale;
 
             float w = glyph.Size.x * scale;
             float h = glyph.Size.y * scale;
-            lineHeight = std::max(lineHeight, h + 10.0f * scale); // Update line height
+            lineHeight = std::max(lineHeight, h);
 
-            // Update VBO for each character
             float vertices[6][4] = {
                 { xpos,     ypos + h,   0.0f, 0.0f },
                 { xpos,     ypos,       0.0f, 1.0f },
                 { xpos + w, ypos,       1.0f, 1.0f },
-
                 { xpos,     ypos + h,   0.0f, 0.0f },
                 { xpos + w, ypos,       1.0f, 1.0f },
                 { xpos + w, ypos + h,   1.0f, 0.0f }
@@ -196,11 +186,11 @@ void TextRenderer::RenderText(std::string text, float x, float y, float scale, g
             glBindBuffer(GL_ARRAY_BUFFER, 0);
             glDrawArrays(GL_TRIANGLES, 0, 6);
 
-            x += (glyph.Advance >> 6) * scale; // Advance cursor to the next glyph
+            currentX += (glyph.Advance >> 6) * scale;
         }
 
-        y -= lineHeight; // Move to the next line
-        lineHeight = 0.0f; // Reset line height for the next line
+        y -= lineHeight + lineSpacing;  // Move to the next line, adding extra space defined by lineSpacing
+        lineHeight = 0.0f;  // Reset lineHeight for the next line
     }
 
     glBindVertexArray(0);

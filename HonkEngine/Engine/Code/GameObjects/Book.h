@@ -37,8 +37,8 @@ public:
 
 	Book() : GameObject("Book"), audioManager(AudioManager::GetInstance()) {
 
-		audioManager.LoadSound("openJournal", "Assets/Sounds/SFX_OpenJournal.mp3", 0.55f);
-		audioManager.LoadSound("pageSwitch", "Assets/Sounds/SFX_PageSwitch.mp3", 0.5f);
+		audioManager.LoadSound("openJournal", "Assets/Sounds/Journal/SFX_OpenJournal.mp3", 0.3f);
+		audioManager.LoadSound("pageSwitch", "Assets/Sounds/Journal/SFX_PageSwitch.mp3", 0.2f);
 
 		JournalCover = new UIObject("JournalCover", "Assets/Images/Journal/Cover.png", true);
 		JournalCover->SetScale(glm::vec3(14.36f, 8.24f, 0.0f));

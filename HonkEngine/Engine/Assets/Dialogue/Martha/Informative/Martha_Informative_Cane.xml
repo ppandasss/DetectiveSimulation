@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="1WD20">
+		<Speaker name="Waiter">
+			<line1>(Nice cane.)</line1>
+			<line2>(Hope I don’t need one after this  mission.)</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MQ06">
+		<Speaker name="Martha_Normal">
+			<line1>You seem to be interested in my  cane, dear.</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="1WD21">Admit directly</Choice1>
+			<Choice2 next="1WD22">Try to refuse</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="1WD21" next="1MD27">
+		<Speaker name="Waiter">
+			<line1>I must admit, it is indeed a  beautiful cane.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1WD22" next="1MD28">
+		<Speaker name="Waiter">
+			<line1>Oh, I did not, ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD27">
+		<Speaker name="Martha_Normal">
+			<line1>When your leg doesn't work as well  as before,</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD27_2" next="1MQ07">
+		<Speaker name="Martha_Happy">
+			<line1>having a beautiful cane adds a touch  of elegance to each step.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD28">
+		<Speaker name="Martha_Normal">
+			<line1>Oh, my apologies, dear.</line1>
+			<line2>I must be misunderstanding.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD28_2" next="1MQ07">
+		<Speaker name="Martha_Happy">
+			<line1>Never mind, then.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MQ07">
+		<Speaker name="Martha_Normal">
+			<line1>Thanks to this cane, I can still  bring myself to wherever I need to.</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="1WD23">Reply with care</Choice1>
+			<Choice2 next="1WD24">Reply neutrally</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="1WD23" next="1MD17">
+		<Speaker name="Waiter">
+			<line1>If there is anything I can do to  make your journey more comfortable,</line1>
+			<line2>please let me know right away.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1WD24" next="1MD17_2">
+		<Speaker name="Waiter">
+			<line1>That is good to know, ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD17">
+		<Speaker name="Martha_Happy">
+			<line1>Thank you, dear.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD17_1">
+		<Speaker name="Martha_Happy">
+			<line1>I appreciate that.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD17_2">
+		<Speaker name="Martha_Sad">
+			<line1>It was... a tragic accident,  you know.</line1>
+			<line2>I managed to survive fortunately.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD17_3">
+		<Speaker name="Martha_Normal">
+			<line1>....</line1>
+			<line2>Please, dear waiter...</line2>
+			<line3>Promise me you will stay as a  gentleman.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MQ08">
+		<Speaker name="Martha_Normal">
+			<line1>Do not make the same horrible  mistake like my former husband did.</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="1WD25">Express empathy</Choice1>
+			<Choice2 next="1WD26">Promise Martha</Choice2>
+			<Choice3 next="1WD27">Remain silent</Choice3>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="1WD25" next="1MD30">
+		<Speaker name="Waiter">
+			<line1>Ma'am... I am so sorry to hear that.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1WD26" next="1MD30">
+		<Speaker name="Waiter">
+			<line1>I promise, ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1WD27" next="1MD31">
+		<Speaker name="Waiter">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD30" next="1MD30_2">
+		<Speaker name="Martha_Normal">
+			<line1>Thank you, dear.</line1>
+			<line2>It means a lot to me. More than you  will ever know.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD30_2" next="1MD32">
+		<Speaker name="Martha_Happy">
+			<line1>Oh, dear, I do tend to get carried  away reminiscing.</line1>
+			<line2>Let's move on to a different topic,  shall we?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD31">
+		<Speaker name="Martha_Normal">
+			<line1>Oh, dear, I do tend to get carried  away reminiscing.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD31_2" next="1MD32">
+		<Speaker name="Martha_Happy">
+			<line1>My apologies if I've gone over  a bit.</line1>
+			<line2>Let's move on to a different topic,  shall we?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD32">
+		<Speaker name="Martha_Normal">
+			<line1>Apart from my injury, my back has  also been acting up lately.</line1>
+			<line2>It does make traveling for long  periods quite challenging.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD32_2">
+		<Speaker name="Martha_Normal">
+			<line1>However, this time is different;  it's very important.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD32_3">
+		<Speaker name="Martha_Shy">
+			<line1>There are matters of the heart  awaiting me at Westside.</line1>
+			<line2>Finally, we will get to meet  in person.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD33">
+		<Speaker name="Martha_Happy">
+			<line1>The excitement is getting the  best of me.</line1>
+			<line2>I can't wait to see her face anymore.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD34">
+		<Speaker name="Martha_Normal">
+			<line1>Talking about delightful thing...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD34">
+		<Speaker name="Martha_Normal">
+			<line1>That sandwich you've served me.</line1>
+			<line2>It looks like the one from that  famous little shop,</line2>
+			<line3>back in the National Day celebration.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD35">
+		<Speaker name="Martha_Happy">
+			<line1>I couldn’t buy it as it sold out,  but I bet yours will taste as good.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

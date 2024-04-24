@@ -26,14 +26,24 @@ public:
 		//platePositionArea->SetButtonText("Drop Area");
 
 		/*--------------------------------------------------------------LOAD AUDDIO------------------------------------------------------------------------------------------------------- */
-		audioManager.LoadSound("kitchenAmbience", "Assets/Sounds/Ambience_Kitchen.mp3", 0.2f);
-		audioManager.PlaySound("kitchenAmbience", true);
+		audioManager.LoadSound("kitchenAmbience", "Assets/Sounds/Ambience/Ambience_Kitchen.mp3", 0.9f);
+
+		audioManager.LoadSound("plateSound1", "Assets/Sounds/Kitchen/SFX_MealSelect1.mp3", 1.0f);
+		audioManager.LoadSound("plateSound2", "Assets/Sounds/Kitchen/SFX_MealSelect2.mp3", 1.0f);
+		audioManager.LoadSound("plateSound3", "Assets/Sounds/Kitchen/SFX_MealSelect3.mp3", 1.0f);
+		audioManager.LoadSound("plateSound4", "Assets/Sounds/Kitchen/SFX_MealSelect4.mp3", 1.0f);
+		audioManager.LoadSound("closeDoor", "Assets/Sounds/SFX_CloseDoor.mp3", 2.0f);
+
 
 		/*--------------------------------------------------------------CREATE GAMEOBJECT------------------------------------------------------------------------------------------------------- */
 
 		GameObject* KitchenBackground = new UIObject("KitchenBackground", "Assets/Images/Kitchen/Kitchen_Background.png",true);
 		KitchenBackground->SetScale(glm::vec3(19.2f, 10.8f, 0.0f));
 		KitchenBackground->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
+
+		GameObject* Tray = new UIObject("Tray", "Assets/Images/Kitchen/Tray.png", true);
+		Tray->SetScale(glm::vec3(7.13f * 0.8f, 3.45f * 0.8f, 0.0f));
+		Tray->SetPosition(glm::vec3(-4.9f, -0.3f, 0.0f));
 
 		orderPaper  = new UINormal("OrderPaper", "Assets/Images/OrderPaper.png", glm::vec3(-7.65f, 4.0f, 0.0f), glm::vec3(3.55f, 2.54f, 0.0f), true);
 		timerUI = new UINormal("TimerUI", "Assets/Images/Timer.png", glm::vec3(7.3f, 5.1f, 0.0f), glm::vec3(4.37f, 3.13f, 0.0f), true);
@@ -203,6 +213,7 @@ public:
 		/*--------------------------------------------------------------PUSH BACK------------------------------------------------------------------------------------------------------- */
 
 		m_gameObjects.push_back(KitchenBackground);
+		m_gameObjects.push_back(Tray);
 		m_gameObjects.push_back(ServeBellButton);
 		m_gameObjects.push_back(ServeBellGrey);
 		m_gameObjects.push_back(orderPaper);
@@ -286,6 +297,12 @@ public:
 		
 	}
 
+	void OnEnter() override {
+		Scene::OnEnter();  // Call base class if there's relevant logic
+		audioManager.PlaySound("kitchenAmbience", true);
+		audioManager.PlaySound("closeDoor", false);
+	}
+
 	void Update(float dt, long frame) override {
 
 		Scene::Update(dt, frame);
@@ -295,6 +312,7 @@ public:
 
 		if (input.Get().GetKeyDown(GLFW_KEY_E)) {
 			Application::Get().SetScene("Hallway");
+			audioManager.StopSound("kitchenAmbience");
 		}
 
 		if (input.Get().GetKeyDown(GLFW_KEY_R)) { //RESET KITCHEN
@@ -372,6 +390,7 @@ public:
 				platedSandwhich[i]->setActiveStatus(false);
 			}
 		}
+		audioManager.PlaySound("plateSound4", false);
 
 	}
 
@@ -386,6 +405,7 @@ public:
 				platedDessert[i]->setActiveStatus(false);
 			}
 		}
+		audioManager.PlaySound("plateSound2", false);
 
 	}
 
@@ -399,6 +419,7 @@ public:
 				platedTea[i]->setActiveStatus(false);
 			}
 		}
+		audioManager.PlaySound("plateSound3", false);
 
 
 	}
@@ -411,6 +432,7 @@ public:
 		else {
 			platedMilk->setActiveStatus(false);
 		}
+		audioManager.PlaySound("plateSound1", false);
 
 	}
 
@@ -551,7 +573,12 @@ public:
 			ServeBellButton->setActiveStatus(false);
 			ServeBellGrey->setActiveStatus(true);
 		}
+	}
 
+	void OnExit() override {
+		Scene::OnExit();  // Call base class if there's relevant logic
+		audioManager.PlaySound("closeDoor");
+		audioManager.StopSound("kitchenAmbience");
 	}
 
 
