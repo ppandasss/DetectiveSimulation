@@ -11,8 +11,9 @@ public:
     using TimerObserver = std::function<void()>;
 
     // Correct constructor definition without the class name prefix
-    Timer() : isRunning(false) {
+    Timer() : isRunning(false), audioManager(AudioManager::GetInstance()) {
         UpdateTimerUIVisibility();  // Update UI visibility at initialization
+        audioManager.LoadSound("timerTicking", "Assets/Sounds/SFX_TimerTicking.mp3", 0.9f);
     }
 
     static Timer& GetInstance() {
@@ -53,6 +54,7 @@ public:
                 timerUI->setActiveStatus(true);  // Directly set to true when starting
             }
             NotifyObservers();
+            audioManager.PlaySound("timerTicking", true);
         }
     }
 
@@ -63,6 +65,7 @@ public:
                 timerUI->setActiveStatus(false);  // Directly set to false when stopping
             }
             NotifyObservers();
+            audioManager.StopSound("timerTicking");
         }
     }
 
@@ -129,4 +132,5 @@ private:
     bool isRunning = false;
     Text* countdownText = nullptr;
     UIElement* timerUI = nullptr; // UI Element to show/hide based on the timer status
+    AudioManager& audioManager;
 };

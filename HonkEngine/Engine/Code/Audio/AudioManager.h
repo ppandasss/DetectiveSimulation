@@ -44,18 +44,47 @@ public:
 
 
     void PlaySound(const std::string& soundName, bool loop = false) {
- 
-        auto it = sounds.find(soundName);
-        if (it != sounds.end()) {
-            ISound* sound = engine->play2D(it->second, loop, false, true);
-            if (sound) {
-                sound->setVolume(soundVolumes[soundName]); 
-                sound->setPlaybackSpeed(soundSpeeds[soundName]);
-                sound->setIsPaused(false);
-                playingSounds[soundName].push_back(sound);
+        if (IsSoundPaused(soundName)) {
+            ResumeSound(soundName); // Resume the sound if it's paused
+        }
+        else {
+            auto it = sounds.find(soundName);
+            if (it != sounds.end()) {
+                ISound* sound = engine->play2D(it->second, loop, true, true);
+                if (sound) {
+                    sound->setVolume(soundVolumes[soundName]);
+                    sound->setPlaybackSpeed(soundSpeeds[soundName]);
+                    sound->setIsPaused(false);
+                    playingSounds[soundName].push_back(sound);
+                }
             }
         }
     }
+
+
+    void PauseSound(const std::string& soundName) {
+        auto it = playingSounds.find(soundName);
+        if (it != playingSounds.end()) {
+            for (auto& sound : it->second) {
+                if (sound && !sound->isFinished() && !sound->getIsPaused()) {
+                    sound->setIsPaused(true);
+                }
+            }
+        }
+    }
+
+    void ResumeSound(const std::string& soundName) {
+        auto it = playingSounds.find(soundName);
+        if (it != playingSounds.end()) {
+            for (auto& sound : it->second) {
+                if (sound && sound->getIsPaused()) {
+                    sound->setIsPaused(false);
+                }
+            }
+        }
+    }
+
+
 
     void StopSound(const std::string& soundName) {
         auto it = playingSounds.find(soundName);
@@ -69,6 +98,18 @@ public:
             it->second.clear(); // Clear the list of sounds
             std::cout << "Stopped sound: " << soundName << std::endl;
         }
+    }
+
+    bool IsSoundPaused(const std::string& soundName) {
+        auto it = playingSounds.find(soundName);
+        if (it != playingSounds.end()) {
+            for (auto& sound : it->second) {
+                if (sound && sound->getIsPaused()) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
 

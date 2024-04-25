@@ -164,7 +164,7 @@
     <ClInclude Include="Code\Dialogue\DialogueManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Effects\ParallaxManager.h">
+    <ClInclude Include="Code\Effects\ObjectsParallax.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Code\Scene\Kitchen.h">
@@ -192,6 +192,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Code\GameObjects\Timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Effects\BackgroundParallax.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

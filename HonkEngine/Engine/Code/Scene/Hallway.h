@@ -1,9 +1,10 @@
 ﻿#pragma once
 
 #include "Scene.h"
+#include <memory>
+
 #include "../GameObjects/RenderGameObject.h"
 #include"../GameObjects/AnimateGameObject.h"	
-
 #include "../GameObjects/Player.h"
 #include "../Text/TextRenderer.h"
 #include "../Text/Text.h"
@@ -18,13 +19,14 @@
 #include "../GameObjects/DoorsManager.h"
 #include "../GameObjects/OrderData.h"
 #include "../GameObjects/Timer.h"
-#include "../Effects/ParallaxManager.h"
+#include "../Effects/BackgroundParallax.h"
 
 class Hallway : public Scene
 {
 
 private:
 	std::unique_ptr<TextRenderer> textRenderer;
+	std::unique_ptr<BackgroundParallax> BackgroundparallaxManager;
 	AudioManager& audioManager;
 
 	Book* Journal;
@@ -38,18 +40,27 @@ private:
 	Text* timerText;
     UIElement* timerUI;
 	
+	
 public:
 	Hallway() :audioManager(AudioManager::GetInstance())
 	{
 		/*--------------------------------------------------------------🔊LOAD AUDDIO🔊------------------------------------------------------------------------------------------------------- */
 		audioManager.LoadSound("hallwayMusic", "Assets/Sounds/Music/BGmusic_Corridor_NoTimer.mp3", 0.15f);
 		audioManager.LoadSound("trainAmbience", "Assets/Sounds/Ambience/Ambience_Train.mp3", 0.1f);
+		audioManager.LoadSound("doorOpen", "Assets/Sounds/SFX_OpenDoor.mp3", 2.0f);
+		audioManager.LoadSound("closeDoor", "Assets/Sounds/SFX_CloseDoor.mp3", 2.0f);
 
 
 		/*--------------------------------------------------------------📦CREATE GAMEOBJECT📦------------------------------------------------------------------------------------------------------- */
-		GameObject* background1 = new RenderGameObject("BG1", "Assets/Images/BG/Cabin_Background_01.png");
-		background1->SetScale(glm::vec3(76.6f, 10.8f, 0.0f));
-		background1->SetPosition(glm::vec3(0.0f, 3.0f, 0.0f));
+		GameObject* background1a = new RenderGameObject("BG1", "Assets/Images/BG/Cabin_Background_01.png");
+		GameObject* background2a = new RenderGameObject("BG2", "Assets/Images/BG/Cabin_Background_02.png");
+		GameObject* background1b = new RenderGameObject("BG3", "Assets/Images/BG/Cabin_Background_01.png");
+		GameObject* background2b = new RenderGameObject("BG4", "Assets/Images/BG/Cabin_Background_02.png");
+
+		background1a->SetScale(glm::vec3(76.6f, 10.8f, 0.0f));background1a->SetPosition(glm::vec3(0.0f, 3.0f, 0.0f)); 
+		background2a->SetScale(glm::vec3(76.6f, 10.8f, 0.0f)); background2a->SetPosition(glm::vec3(0.0f, 3.0f, 0.0f));
+		background1b->SetScale(glm::vec3(76.6f, 10.8f, 0.0f)); background1b->SetPosition(glm::vec3(76.6f, 3.0f, 0.0f));
+		background2b->SetScale(glm::vec3(76.6f, 10.8f, 0.0f)); background2b->SetPosition(glm::vec3(76.6f, 3.0f, 0.0f));
 
 		GameObject* hallway = new RenderGameObject("Cabin", "Assets/Images/Corridor/Corridor_Background.png");
 		GameObject* hallwaylights = new RenderGameObject("CabinLights", "Assets/Images/Corridor/Corridor_Light.png");
@@ -62,9 +73,16 @@ public:
 		GameObject* bellCabin3 = new RenderGameObject("bellCabin3", "Assets/Images/Corridor/Bell_Normal.png");
 		GameObject* bellCabin4 = new RenderGameObject("bellCabin4", "Assets/Images/Corridor/Bell_Normal.png");
 
+		BackgroundparallaxManager = std::make_unique<BackgroundParallax>();
+
+		BackgroundparallaxManager->AddBackgroundPair(0, background1a, background1b, 0.5f);
+		BackgroundparallaxManager->AddBackgroundPair(1, background2a, background2b, 1.0f);
+
+
+
 		Journal = new Book();
 		// Inside the Hallway constructor
-	
+	 
 
 		//activate clue in journal
 		/*JournalData::GetInstance()->ActivateClue(CLUE_CABIN1, 0);
@@ -156,7 +174,10 @@ public:
 
 		/*--------------------------------------------------------------✅PUSH BACK✅------------------------------------------------------------------------------------------------------- */
 		//Environment
-		m_gameObjects.push_back(background1);
+		m_gameObjects.push_back(background1a);
+		m_gameObjects.push_back(background1b);
+		m_gameObjects.push_back(background2a);
+		m_gameObjects.push_back(background2b);
 		m_gameObjects.push_back(hallway);
 
 		m_gameObjects.push_back(doorOneNormal);
@@ -192,13 +213,15 @@ public:
 	}
 
 	void OnEnter() override {
-		Scene::OnEnter(); 
+		//Scene::OnEnter();
 		audioManager.PlaySound("hallwayMusic", true);
 		audioManager.PlaySound("trainAmbience", true);
 	}
 
 	void Update(float dt, long frame) {
 		Scene::Update(dt, frame); // Call the base class update
+
+		BackgroundparallaxManager->Update(dt);
 
 		Timer& timer = Timer::GetInstance();
 	    timer.Update(dt);
@@ -236,9 +259,10 @@ public:
 	}
 
 	void OnExit() override {
-		Scene::OnExit(); 
-		//audioManager.StopSound("hallwayMusic");
+		//Scene::OnExit(); 
+		audioManager.PauseSound("hallwayMusic");
 		audioManager.StopSound("Player_footsteps");
+		audioManager.PlaySound("doorOpen", false);
 	}
 
 

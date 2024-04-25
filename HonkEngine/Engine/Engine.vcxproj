@@ -145,6 +145,7 @@
     <ClInclude Include="Code\Audio\AudioManager.h" />
     <ClInclude Include="Code\Dialogue\DialogueManager.h" />
     <ClInclude Include="Code\Dialogue\tinyxml2.h" />
+    <ClInclude Include="Code\Effects\BackgroundParallax.h" />
     <ClInclude Include="Code\EventManager.h" />
     <ClInclude Include="Code\GameObjects\AnimateGameObject.h" />
     <ClInclude Include="Code\Animation\Animator.h" />
@@ -190,7 +191,7 @@
     <ClInclude Include="External\Include\GLFW\glfw3.h" />
     <ClInclude Include="External\Include\GLFW\glfw3native.h" />
     <ClInclude Include="External\Include\stb_image.h" />
-    <ClInclude Include="Code\Effects\ParallaxManager.h" />
+    <ClInclude Include="Code\Effects\ObjectsParallax.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\color_tex_transparency.frag" />

@@ -8,7 +8,8 @@
 #include <glm/glm.hpp>
 #include <iostream>
 #include "../Dialogue/Dialoguemanager.h"
-#include "../Effects/ParallaxManager.h"
+#include "../Effects/ObjectsParallax.h"
+#include "../Effects/BackgroundParallax.h"
 #include "../GameObjects/Timer.h"
 #include <memory>
 
@@ -36,24 +37,35 @@ public:
         timer = &Timer::GetInstance();
 
         audioManager.LoadSound("cabinMusic", "Assets/Sounds/Music/BGmusic_Cabin.mp3", 4.0f);
-        audioManager.LoadSound("doorOpen", "Assets/Sounds/SFX_OpenDoor.mp3", 2.0f);
-        audioManager.LoadSound("closeDoor", "Assets/Sounds/SFX_CloseDoor.mp3", 2.0f);
-        audioManager.LoadSound("timerTicking", "Assets/Sounds/SFX_TimerTicking.mp3", 0.9f);
+        
 
+        GameObject* background1a = new RenderGameObject("BG1", "Assets/Images/BG/Cabin_Background_01.png");
+        GameObject* background2a = new RenderGameObject("BG2", "Assets/Images/BG/Cabin_Background_02.png");
+        GameObject* background3a = new RenderGameObject("BG3", "Assets/Images/BG/Cabin_Background_03.png");
+        GameObject* background4a = new RenderGameObject("BG3", "Assets/Images/BG/Cabin_Background_04.png");
+        GameObject* background5a = new RenderGameObject("BG3", "Assets/Images/BG/Cabin_Background_05.png");
+        GameObject* background6a = new RenderGameObject("BG3", "Assets/Images/BG/Cabin_Background_06.png");
 
-        GameObject* background1 = new RenderGameObject("BG1", "Assets/Images/BG/Cabin_Background_01.png");
-        GameObject* background2 = new RenderGameObject("BG2", "Assets/Images/BG/Cabin_Background_02.png");
-        GameObject* background3 = new RenderGameObject("BG3", "Assets/Images/BG/Cabin_Background_03.png");
-        GameObject* background4 = new RenderGameObject("BG3", "Assets/Images/BG/Cabin_Background_04.png");
-        GameObject* background5 = new RenderGameObject("BG3", "Assets/Images/BG/Cabin_Background_05.png");
-        GameObject* background6 = new RenderGameObject("BG3", "Assets/Images/BG/Cabin_Background_06.png");
+        GameObject* background1b = new RenderGameObject("BG1", "Assets/Images/BG/Cabin_Background_01.png");
+        GameObject* background2b = new RenderGameObject("BG2", "Assets/Images/BG/Cabin_Background_02.png");
+        GameObject* background3b = new RenderGameObject("BG3", "Assets/Images/BG/Cabin_Background_03.png");
+        GameObject* background4b = new RenderGameObject("BG3", "Assets/Images/BG/Cabin_Background_04.png");
+        GameObject* background5b = new RenderGameObject("BG3", "Assets/Images/BG/Cabin_Background_05.png");
+        GameObject* background6b = new RenderGameObject("BG3", "Assets/Images/BG/Cabin_Background_06.png");
 
-        background1->SetScale(glm::vec3(76.6f, 10.8f, 0.0f)); background1->SetPosition(glm::vec3(0.0f, 3.0f, 0.0f));
-        background2->SetScale(glm::vec3(76.6f, 10.8f, 0.0f)); background2->SetPosition(glm::vec3(76.6f, 3.0f, 0.0f));
-        background3->SetScale(glm::vec3(76.6f, 10.8f, 0.0f));  background3->SetPosition(glm::vec3(76.6f, 3.0f, 0.0f));
-        background4->SetScale(glm::vec3(76.6f, 10.8f, 0.0f));  background4->SetPosition(glm::vec3(76.6f, 3.0f, 0.0f));
-        background5->SetScale(glm::vec3(76.6f, 10.8f, 0.0f));  background5->SetPosition(glm::vec3(76.6f, 3.0f, 0.0f));
-        background6->SetScale(glm::vec3(76.6f, 10.8f, 0.0f));  background6->SetPosition(glm::vec3(76.6f, 3.0f, 0.0f));
+        background1a->SetScale(glm::vec3(76.6f, 10.8f, 0.0f)); background1a->SetPosition(glm::vec3(0.0f, 3.0f, 0.0f));
+        background2a->SetScale(glm::vec3(76.6f, 10.8f, 0.0f)); background2a->SetPosition(glm::vec3(0.0f, 3.0f, 0.0f));
+        background3a->SetScale(glm::vec3(76.6f, 10.8f, 0.0f));  background3a->SetPosition(glm::vec3(0.0f, 3.0f, 0.0f));
+        background4a->SetScale(glm::vec3(76.6f, 10.8f, 0.0f));  background4a->SetPosition(glm::vec3(0.0f, 3.0f, 0.0f));
+        background5a->SetScale(glm::vec3(76.6f, 10.8f, 0.0f));  background5a->SetPosition(glm::vec3(0.0f, 3.0f, 0.0f));
+        background6a->SetScale(glm::vec3(76.6f, 10.8f, 0.0f));  background6a->SetPosition(glm::vec3(0.0f, 3.0f, 0.0f));
+
+        background1b->SetScale(glm::vec3(76.6f, 10.8f, 0.0f)); background1b->SetPosition(glm::vec3(76.6f, 3.0f, 0.0f));
+        background2b->SetScale(glm::vec3(76.6f, 10.8f, 0.0f)); background2b->SetPosition(glm::vec3(76.6f, 3.0f, 0.0f));
+        background3b->SetScale(glm::vec3(76.6f, 10.8f, 0.0f));  background3b->SetPosition(glm::vec3(76.6f, 3.0f, 0.0f));
+        background4b->SetScale(glm::vec3(76.6f, 10.8f, 0.0f));  background4b->SetPosition(glm::vec3(76.6f, 3.0f, 0.0f));
+        background5b->SetScale(glm::vec3(76.6f, 10.8f, 0.0f));  background5b->SetPosition(glm::vec3(76.6f, 3.0f, 0.0f));
+        background6b->SetScale(glm::vec3(76.6f, 10.8f, 0.0f));  background6b->SetPosition(glm::vec3(76.6f, 3.0f, 0.0f));
 
 
         // Scale Multiplier to fit asset scale with screensize
@@ -120,12 +132,18 @@ public:
         dialogueManager->SetChoiceScale(0.56f);
 
         //Push GamePbjects
-        m_gameObjects.push_back(background1);
-        m_gameObjects.push_back(background2);
-        m_gameObjects.push_back(background3);
-        m_gameObjects.push_back(background4);
-        m_gameObjects.push_back(background5);
-        m_gameObjects.push_back(background6);
+        m_gameObjects.push_back(background1a);
+        m_gameObjects.push_back(background1b);
+        m_gameObjects.push_back(background2a);
+        m_gameObjects.push_back(background2b);
+        m_gameObjects.push_back(background3a);
+        m_gameObjects.push_back(background3b);
+        m_gameObjects.push_back(background4a);
+        m_gameObjects.push_back(background4b);
+        m_gameObjects.push_back(background5a);
+        m_gameObjects.push_back(background5b);
+        m_gameObjects.push_back(background6a);
+        m_gameObjects.push_back(background6b);
         m_gameObjects.push_back(room);
         m_gameObjects.push_back(marthaNormal);
         m_gameObjects.push_back(marthaHappy);
@@ -146,47 +164,45 @@ public:
         m_gameObjects.push_back(waiterIcon);
 
         //add Parallax Effects
-        parallaxManager = make_unique<ParallaxManager>();
+        ObjectsparallaxManager = make_unique<ObjectsParallax>();
+        backgroundParallaxManager = std::make_unique<BackgroundParallax>();
 
         float defaultLayer = 0.8f;
         float objectLayerOne = 0.83f;
 
         // Add objects to different layers
-        parallaxManager->AddObjectToLayer(room, defaultLayer);   // Layer 1
-        parallaxManager->AddObjectToLayer(lamp, defaultLayer);   // Layer 1.5
-        parallaxManager->AddObjectToLayer(hat, objectLayerOne);    // Layer 2
-        parallaxManager->AddObjectToLayer(bag, objectLayerOne);    // Layer 2
-        parallaxManager->AddObjectToLayer(cane, objectLayerOne);   // Layer 2
-        parallaxManager->AddObjectToLayer(letter, objectLayerOne); // Layer 2
-        parallaxManager->AddObjectToLayer(marthaNormal, objectLayerOne); // Layer 2
-        parallaxManager->AddObjectToLayer(marthaHappy, objectLayerOne); // Layer 2
-        parallaxManager->AddObjectToLayer(marthaDisappoint, objectLayerOne); // Layer 2
-        parallaxManager->AddObjectToLayer(marthaUpset, objectLayerOne); // Layer 2
-        parallaxManager->AddObjectToLayer(marthaSad, objectLayerOne); // Layer 2
-        parallaxManager->AddObjectToLayer(marthaShy, objectLayerOne); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(room, defaultLayer);   // Layer 1
+        ObjectsparallaxManager->AddObjectToLayer(lamp, defaultLayer);   // Layer 1.5
+        ObjectsparallaxManager->AddObjectToLayer(hat, objectLayerOne);    // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(bag, objectLayerOne);    // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(cane, objectLayerOne);   // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(letter, objectLayerOne); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(marthaNormal, objectLayerOne); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(marthaHappy, objectLayerOne); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(marthaDisappoint, objectLayerOne); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(marthaUpset, objectLayerOne); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(marthaSad, objectLayerOne); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(marthaShy, objectLayerOne); // Layer 2
 
         //Scrolling effect for Background
-        parallaxManager->SetBackgroundSpeed(2.0f);
-        parallaxManager->AddBackgroundObject(background1);
-        parallaxManager->AddBackgroundObject(background2);
-        parallaxManager->AddBackgroundObject(background3);
-        parallaxManager->AddBackgroundObject(background4);
-        parallaxManager->AddBackgroundObject(background5);
-        parallaxManager->AddBackgroundObject(background6);
-
+        backgroundParallaxManager->AddBackgroundPair(0, background1a, background1b, 0.5f); // Layer 0, slower
+        backgroundParallaxManager->AddBackgroundPair(1, background2a, background2b, 1.0f); // Layer 1, normal
+        backgroundParallaxManager->AddBackgroundPair(2, background3a, background3b, 1.5f); // Layer 2, faster
+        backgroundParallaxManager->AddBackgroundPair(3, background4a, background4b, 2.0f); // Layer 3, fastest
+        backgroundParallaxManager->AddBackgroundPair(4, background5a, background5b, 2.5f); // Layer 4, fastest
+        backgroundParallaxManager->AddBackgroundPair(5, background6a, background6b, 3.0f); // Layer 5, fastest
 
     }
 
     void OnEnter() override {
-        Scene::OnEnter();  // Call base class if there's relevant logic
-        audioManager.StopSound("hallwayMusic");
-        audioManager.PlaySound("doorOpen", false);
+        //Scene::OnEnter();  // Call base class if there's relevant logic  
         audioManager.PlaySound("cabinMusic", true);
     }
 
     void Update(float dt, long frame) override {
 
         Scene::Update(dt, frame);
+        backgroundParallaxManager->Update(dt);
         switch (currentPhase) {
         case RoomPhase::TakeOrderPhase:
             // Handle TakeOrderPhase logic
@@ -198,7 +214,7 @@ public:
 
         case RoomPhase::ServePhase:
             // Handle ServePhase logic
-            // For now, leave blank as per the instructions
+            // For now, leave blank as per the instructions 
             break;
 
         case RoomPhase::InspectionPhase:
@@ -207,9 +223,6 @@ public:
             break;
         }
 
-        // Update ParallaxManager for background only
-        parallaxManager->UpdateBackground(dt);
-
         // Allow leaving the room only in phases other than TakeOrderPhase
         if (currentPhase != RoomPhase::TakeOrderPhase && input.Get().GetKeyDown(GLFW_KEY_E)) {
 
@@ -217,14 +230,13 @@ public:
 
             //Start timer
             timer->start(300);
-            audioManager.PlaySound("timerTicking", true);
+            
         }
 
         // Handle dialogue progression
         if (input.Get().GetKeyDown(GLFW_KEY_SPACE)) {
             dialogueManager->PlayNextDialogue();
         }
-
 
     }
 
@@ -236,15 +248,17 @@ public:
     }
 
     void OnExit() override {
-        Scene::OnExit();  // Call base class if there's relevant logic
-        audioManager.PlaySound("closeDoor");
-        audioManager.StopSound("cabinMusic");
+       // Scene::OnExit();  // Call base class if there's relevant logic
+        audioManager.PlaySound("closeDoor",false);
+        audioManager.PauseSound("cabinMusic");
     }
 
 private:
-    Input& input = Application::GetInput();
+    Input& input = Application::GetInput(); 
     Camera& camera = Application::GetCamera();
     unique_ptr<DialogueManager> dialogueManager;
-    unique_ptr<ParallaxManager> parallaxManager;
+    unique_ptr<ObjectsParallax> ObjectsparallaxManager;
+    unique_ptr<BackgroundParallax> backgroundParallaxManager;
+
 
 };
