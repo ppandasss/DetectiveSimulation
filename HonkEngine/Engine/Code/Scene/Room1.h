@@ -197,6 +197,7 @@ public:
     void OnEnter() override {
         //Scene::OnEnter();  // Call base class if there's relevant logic  
         audioManager.PlaySound("cabinMusic", true);
+        audioManager.StopSound("Player_footstep");
     }
 
     void Update(float dt, long frame) override {
@@ -234,7 +235,7 @@ public:
         }
 
         // Handle dialogue progression
-        if (input.Get().GetKeyDown(GLFW_KEY_SPACE)) {
+        if (input.Get().GetKeyDown(GLFW_KEY_SPACE) || input.Get().GetMouseButtonDown(0)) {
             dialogueManager->PlayNextDialogue();
         }
 

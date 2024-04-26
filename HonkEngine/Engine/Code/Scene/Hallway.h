@@ -25,10 +25,12 @@ class Hallway : public Scene
 {
 
 private:
+
 	std::unique_ptr<TextRenderer> textRenderer;
 	std::unique_ptr<BackgroundParallax> BackgroundparallaxManager;
 	AudioManager& audioManager;
 
+	Player* player;
 	Book* Journal;
 
 	Text* orderNoText;
@@ -39,8 +41,7 @@ private:
 
 	Text* timerText;
     UIElement* timerUI;
-	
-	
+	Text* instructionText;
 public:
 	Hallway() :audioManager(AudioManager::GetInstance())
 	{
@@ -52,6 +53,7 @@ public:
 
 
 		/*--------------------------------------------------------------📦CREATE GAMEOBJECT📦------------------------------------------------------------------------------------------------------- */
+		/*-------------------------------------------------------------🌲CREATE ENVIRONMENT🌲------------------------------------------------------------------------------------------------------- */
 		GameObject* background1a = new RenderGameObject("BG1", "Assets/Images/BG/Cabin_Background_01.png");
 		GameObject* background2a = new RenderGameObject("BG2", "Assets/Images/BG/Cabin_Background_02.png");
 		GameObject* background1b = new RenderGameObject("BG3", "Assets/Images/BG/Cabin_Background_01.png");
@@ -62,26 +64,33 @@ public:
 		background1b->SetScale(glm::vec3(76.6f, 10.8f, 0.0f)); background1b->SetPosition(glm::vec3(76.6f, 3.0f, 0.0f));
 		background2b->SetScale(glm::vec3(76.6f, 10.8f, 0.0f)); background2b->SetPosition(glm::vec3(76.6f, 3.0f, 0.0f));
 
-		GameObject* hallway = new RenderGameObject("Cabin", "Assets/Images/Corridor/Corridor_Background.png");
-		GameObject* hallwaylights = new RenderGameObject("CabinLights", "Assets/Images/Corridor/Corridor_Light.png");
-
-		GameObject* doorOneNormal = new RenderGameObject("doorOneNormal", "Assets/Images/Corridor/Door1_Normal.png");
-		GameObject* doorOneHighlight = new RenderGameObject("doorOneHighlight", "Assets/Images/Corridor/Door1_Highlight.png");
-
-		GameObject* bellCabin1 = new RenderGameObject("bellCabin1", "Assets/Images/Corridor/Bell_Normal.png");
-		GameObject* bellCabin2 = new RenderGameObject("bellCabin2", "Assets/Images/Corridor/Bell_Normal.png");
-		GameObject* bellCabin3 = new RenderGameObject("bellCabin3", "Assets/Images/Corridor/Bell_Normal.png");
-		GameObject* bellCabin4 = new RenderGameObject("bellCabin4", "Assets/Images/Corridor/Bell_Normal.png");
-
 		BackgroundparallaxManager = std::make_unique<BackgroundParallax>();
 
 		BackgroundparallaxManager->AddBackgroundPair(0, background1a, background1b, 0.5f);
 		BackgroundparallaxManager->AddBackgroundPair(1, background2a, background2b, 1.0f);
 
 
+		GameObject* hallway = new RenderGameObject("Cabin", "Assets/Images/Corridor/Corridor_Background.png");
+		GameObject* hallwaylights = new RenderGameObject("CabinLights", "Assets/Images/Corridor/Corridor_Light.png");
+
+		GameObject* bellCabin1 = new RenderGameObject("bellCabin1", "Assets/Images/Corridor/Bell_Normal.png");
+		GameObject* bellCabin2 = new RenderGameObject("bellCabin2", "Assets/Images/Corridor/Bell_Normal.png");
+		GameObject* bellCabin3 = new RenderGameObject("bellCabin3", "Assets/Images/Corridor/Bell_Normal.png");
+		GameObject* bellCabin4 = new RenderGameObject("bellCabin4", "Assets/Images/Corridor/Bell_Normal.png");
+
+		
+
+		/*-------------------------------------------------------------🚪CREATE DOORS🚪------------------------------------------------------------------------------------------------------- */
+		GameObject* roomdoorHighlight = new RenderGameObject("RoomdoorHighlight", "Assets/Images/Corridor/Door1_Highlight.png");
+		GameObject* kitchendoorHighlight = new RenderGameObject("KitchendoorHighlight", "Assets/Images/Corridor/KitchenDoor_Highlight.png");
+		Door* room1Door = new Door("Room1Door", roomdoorHighlight, glm::vec3(-17.6f, -0.63f, 0.0f), glm::vec3(2.37f * 1.2f, 4.73f * 1.2f, 0.0f), "Room1");
+		DoorManager::GetInstance().AddDoor(room1Door);
+		Door* kitchenDoor = new Door("KitchenDoor", kitchendoorHighlight, glm::vec3(18.35f, -0.55f, 0.0f), glm::vec3(2.8f, 5.7f, 0.0f), "Kitchen");
+		DoorManager::GetInstance().AddDoor(kitchenDoor);
+		
 
 		Journal = new Book();
-		// Inside the Hallway constructor
+		
 	 
 
 		//activate clue in journal
@@ -90,7 +99,7 @@ public:
 
 		/*-------------------------------------------------------------🎮CREATE PLAYER🎮------------------------------------------------------------------------------------------------------- */
 
-		Player* player = new Player("waiter", "Assets/Images/MainCharacter_WithTray_Walk.png", 2, 8, Journal);
+		player = new Player("waiter", "Assets/Images/MainCharacter_WithTray_Walk.png", 2, 8, Journal);
 
 		/*-------------------------------------------------------------💬CREATE TEXT💬------------------------------------------------------------------------------------------------------- */
 
@@ -117,6 +126,11 @@ public:
 		timer.AddObserver([this, &timer]() {
 			this->timerText->SetContent(timer.GetTime());
 		});
+
+		instructionText = new Text("instrunction", "Press [E] to enter","Assets/Fonts/mvboli.ttf", true);
+		instructionText->SetScale(0.6f);
+		instructionText->SetPosition(glm::vec3(7.52f, -4.3f, 0.0f));
+		instructionText->SetColor(glm::vec3(1, 1, 1));
 		
 
 		/*-------------------------------------------------------------💬CREATE UI💬------------------------------------------------------------------------------------------------------- */
@@ -129,11 +143,7 @@ public:
 		UIButton* journalButton = new UIButton("JournalButton", "Assets/Images/JournalButton.png", glm::vec3(-8.32f, -4.8f, 0.0f), glm::vec3(3.0f, 3.0f, 0.0f), true, false, "");
 		journalButton->SetOnClickAction([this]() { Journal->drawBook(); });
 
-		Door* kitchenDoor = new Door("KitchenDoor", glm::vec3(18.35f, -0.55f, 0.0f), glm::vec3(2.8f, 5.7f, 0.0f), "Kitchen");
-		DoorManager::GetInstance().AddDoor(kitchenDoor);
-
-		Door* room1Door = new Door("Room1Door", glm::vec3(-18.35f, -0.55f, 0.0f), glm::vec3(2.8f, 5.7f, 0.0f), "Room1");
-		DoorManager::GetInstance().AddDoor(room1Door);
+		
 
 		//TO TEST DRAW EMPTY UI
 		/*GameObject* box = new RenderGameObject("textbox", "Assets/Images/Square_Border.png");
@@ -147,11 +157,6 @@ public:
 		hallway->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 		hallwaylights->SetScale(glm::vec3(50.0f, 10.8f, 0.0f));
 		hallwaylights->SetPosition(glm::vec3(0.0f, -0.2f, 0.0f));
-
-		doorOneNormal->SetScale(glm::vec3(2.25f * 1.2f, 4.61f * 1.2f, 0.0f));
-		doorOneNormal->SetPosition(glm::vec3(-17.6f, -0.63f, 0.0f));
-
-		doorOneHighlight->SetScale(glm::vec3(2.37f * 1.2f, 4.73f * 1.2f, 0.0f)); doorOneHighlight->SetPosition(glm::vec3(-17.6f, -0.63f, 0.0f));
 
 		bellCabin1->SetScale(glm::vec3(1.6f * 1.2f, 1.6f * 1.2f, 0.0f)); bellCabin1->SetPosition(glm::vec3(-16.54f, 1.49f, 0.0f));
 		bellCabin2->SetScale(glm::vec3(1.6f * 1.2f, 1.6f * 1.2f, 0.0f)); bellCabin2->SetPosition(glm::vec3(-7.54f, 1.49f, 0.0f));
@@ -180,9 +185,13 @@ public:
 		m_gameObjects.push_back(background2b);
 		m_gameObjects.push_back(hallway);
 
-		m_gameObjects.push_back(doorOneNormal);
-		m_gameObjects.push_back(doorOneHighlight);
+		//Doors
+		m_gameObjects.push_back(kitchenDoor);
+		m_gameObjects.push_back(room1Door);
+		m_gameObjects.push_back(roomdoorHighlight);
+		m_gameObjects.push_back(kitchendoorHighlight);
 
+		//Bells
 		m_gameObjects.push_back(bellCabin1);
 		m_gameObjects.push_back(bellCabin2);
 		m_gameObjects.push_back(bellCabin3);
@@ -195,9 +204,7 @@ public:
 		m_gameObjects.push_back(journalButton);
 		m_gameObjects.push_back(timerUI);
 		m_gameObjects.push_back(orderPaper);
-		m_gameObjects.push_back(kitchenDoor);
-		m_gameObjects.push_back(room1Door);
-		
+
 		
 		//UITexts
 		m_gameObjects.push_back(orderNoText);
@@ -205,6 +212,7 @@ public:
 		m_gameObjects.push_back(sandwichOrderText);
 		m_gameObjects.push_back(pastryOrderText);
 		m_gameObjects.push_back(timerText);
+		m_gameObjects.push_back(instructionText);
 
 		//Journal
 		m_gameObjects.push_back(Journal);
@@ -228,32 +236,31 @@ public:
 		
 
 		// Retrieve the player object by name
-		GameObject* playerObject = GetGameObjectByName("waiter");
-		if (playerObject) {
-			// Cast to Player* if necessary, or directly use if GetPosition is part of GameObject
-			Player* player = dynamic_cast<Player*>(playerObject);
-			if (player) {
-				// Get the player's position
-				glm::vec3 playerPos = player->GetPosition();
-				// Get the camera and update its position
-				Camera& camera = Application::GetCamera();
 
-				const float leftBound = -12.74f;
-				const float rightBound = 12.91f;
+		if (player) {
+			// Get the player's position
+			glm::vec3 playerPos = player->GetPosition();
+			// Get the camera and update its position
+			Camera& camera = Application::GetCamera();
 
-				// Set the target position for the camera
-				float targetX = std::max(leftBound, std::min(playerPos.x, rightBound));
+			const float leftBound = -12.74f;
+			const float rightBound = 12.91f;
 
-				// Smoothing factor for camera movement
-				float smoothingFactor = 0.05f; // Experiment with different values
+			// Set the target position for the camera
+			float targetX = std::max(leftBound, std::min(playerPos.x, rightBound));
 
-				// Smoothly interpolate the camera's x position towards the target
-				float interpolatedX = camera.GetPosX() + smoothingFactor * (targetX - camera.GetPosX());
+			// Smoothing factor for camera movement
+			float smoothingFactor = 0.05f; // Experiment with different values
 
-				// Set the new camera position
-				camera.SetPosition(targetX, camera.GetPosY());
+			// Smoothly interpolate the camera's x position towards the target
+			float interpolatedX = camera.GetPosX() + smoothingFactor * (targetX - camera.GetPosX());
 
-			}
+			// Set the new camera position
+			camera.SetPosition(targetX, camera.GetPosY());
+
+			bool isNearDoor = DoorManager::GetInstance().CheckDoorCollisions(player->GetPosition(), player->GetScale(), [](const std::string& sceneName) {});
+			instructionText->setActiveStatus(isNearDoor);
+
 		}
 
 	}
