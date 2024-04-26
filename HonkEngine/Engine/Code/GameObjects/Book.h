@@ -33,8 +33,6 @@ public:
 
 	GameObject* JournalCover;
 
-	//UIObject* JournalCoverUI;
-
 	Book() : GameObject("Book"), audioManager(AudioManager::GetInstance()) {
 
 		audioManager.LoadSound("openJournal", "Assets/Sounds/SFX_OpenJournal.mp3", 0.55f);
@@ -68,6 +66,9 @@ public:
 		BlankPage->SetScale(glm::vec3(12.68f, 7.45f, 1.0f));
 		BlankPage->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
+		UIButton* CloseJournalButton = new UIButton("Tab6", "Assets/Images/Journal/Bookmark_TeaGuide.png", glm::vec3(6.7f, 3.5f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, false, "");
+		CloseJournalButton->SetOnClickAction([this]() { closeJournal(); });
+
 		m_gameObjects.push_back(BackGround);
 		m_gameObjects.push_back(JournalCover);
 		m_gameObjects.push_back(Tab1);
@@ -78,6 +79,7 @@ public:
 		m_gameObjects.push_back(Tab6);
 		m_gameObjects.push_back(Tab7);
 		m_gameObjects.push_back(BlankPage);
+		m_gameObjects.push_back(CloseJournalButton);
 
 		Page* mainPage = new MainPage();
 		Page* cabinPage1 = new CabinPage1();
@@ -159,23 +161,23 @@ public:
 		return openStatus;
 	}
 
-	bool clickOutOfJournal(glm::vec2 mousePos) {
 
-		glm::vec2 newPos = Application::Get().MousetoWorld();
+	//bool clickOutOfJournal(glm::vec2 mousePos) {
 
-		glm::vec3 journalPos = JournalCover->GetPosition();
-		glm::vec3 journalScale = JournalCover->GetScale();
+	//	glm::vec2 newPos = Application::Get().MousetoWorld();
 
-		float minX = journalPos.x - (journalScale.x / 2.0f);
-		float maxX = journalPos.x + (journalScale.x / 2.0f);
-		float minY = journalPos.y - (journalScale.y / 2.0f);
-		float maxY = journalPos.y + (journalScale.y / 2.0f);
+	//	glm::vec3 journalPos = JournalCover->GetPosition();
+	//	glm::vec3 journalScale = JournalCover->GetScale();
 
-		//returns true if click inside of book
-		return ((newPos.x >= minX && newPos.x <= maxX) && (newPos.y >= minY && newPos.y <= maxY));
+	//	float minX = journalPos.x - (journalScale.x / 2.0f);
+	//	float maxX = journalPos.x + (journalScale.x / 2.0f);
+	//	float minY = journalPos.y - (journalScale.y / 2.0f);
+	//	float maxY = journalPos.y + (journalScale.y / 2.0f);
 
-	}
+	//	//returns true if click inside of book
+	//	return ((newPos.x >= minX && newPos.x <= maxX) && (newPos.y >= minY && newPos.y <= maxY));
 
+	//}
 
 
 	//--------------------------------UPDATE & RENDER-----------------------------------------------------
@@ -216,20 +218,7 @@ public:
 
 		allPages[activePage]->Update(dt, frame);
 
-		//BUTTON CLICKS OUTSIDE OF JOURNAL -> CLOSE BOOK
-
 		mousePos = Application::Get().CursorPos();
-
-
-
-		if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1)) {
-			if (!clickOutOfJournal(mousePos)) {
-				if (openStatus == true) {
-					closeBook();
-				}
-			}
-		}
-
 
 	}
 
@@ -242,6 +231,12 @@ public:
 	void setActiveTab5() { if (activePage != CABIN4) { activePage = currentPage::CABIN4; } audioManager.PlaySound("pageSwitch", false);};
 	void setActiveTab6() { if (activePage != CABIN5) { activePage = currentPage::CABIN5; } audioManager.PlaySound("pageSwitch", false);};
 	void setActiveTab7() { if (activePage != FOODGUIDE) { activePage = currentPage::FOODGUIDE; } audioManager.PlaySound("pageSwitch", false); };
+
+	void closeJournal() {
+		if (openStatus == true) {
+			closeBook();
+		}
+	}
 
 
 protected:
