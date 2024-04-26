@@ -6,7 +6,9 @@ enum Location { LOCATION_EMPTY, TOWNSQUARE, HOLYCHURCH, COUNCIL, SUPREMECOURT };
 
 enum Spy { SPY_EMPTY, SPY1, SPY21, SPY22, SPY3, SPY4 };
 
-enum Cabin {CLUE_CABIN1, CLUE_CABIN21, CLUE_CABIN22, CLUE_CABIN3, CLUE_CABIN4 };
+//used for clues and character data
+
+enum Cabin {CABIN1, CABIN21, CABIN22, CABIN3, CABIN4 };
 
 
 struct ClueData {

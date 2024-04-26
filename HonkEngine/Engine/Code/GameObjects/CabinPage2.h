@@ -124,13 +124,13 @@ public:
 		textClues.push_back(cabin21_clue5);
 		textClues.push_back(cabin21_clue6);
 
-		m_journalData->addClueToJournalData(CLUE_CABIN21, cabin21_clue1);
-		m_journalData->addClueToJournalData(CLUE_CABIN21, cabin21_clue2);
-		m_journalData->addClueToJournalData(CLUE_CABIN21, cabin21_clue3);
-		m_journalData->addClueToJournalData(CLUE_CABIN21, cabin21_clue4);
+		m_journalData->addClueToJournalData(CABIN21, cabin21_clue1);
+		m_journalData->addClueToJournalData(CABIN21, cabin21_clue2);
+		m_journalData->addClueToJournalData(CABIN21, cabin21_clue3);
+		m_journalData->addClueToJournalData(CABIN21, cabin21_clue4);
 
-		m_journalData->addClueToJournalData(CLUE_CABIN21, cabin21_clue5);
-		m_journalData->addClueToJournalData(CLUE_CABIN21, cabin21_clue6);
+		m_journalData->addClueToJournalData(CABIN21, cabin21_clue5);
+		m_journalData->addClueToJournalData(CABIN21, cabin21_clue6);
 
 
 		// DIVIDER 2
@@ -202,7 +202,7 @@ public:
 
 		Page::Update(dt, frame);
 
-		CabinPageData cabinData = m_journalData->GetCabinPageData(Cabin::CLUE_CABIN21);
+		CabinPageData cabinData = m_journalData->GetCabinPageData(Cabin::CABIN21);
 
 		if (!cabinData.ShowLastActivity) {
 

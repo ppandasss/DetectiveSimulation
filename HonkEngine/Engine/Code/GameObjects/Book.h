@@ -20,7 +20,7 @@
 #include "FoodGuidePage.h"
 
 
-enum currentPage { MAIN, CABIN1, CABIN2, CABIN3, CABIN4, CABIN5, FOODGUIDE };
+enum currentPage { MAIN_PAGE, CABIN1_PAGE, CABIN2_PAGE, CABIN3_PAGE, CABIN4_PAGE, CABIN5_PAGE, FOODGUIDE_PAGE};
 
 //FIGURE OUT A DATA STRUCTURE TO STORE PAGE DATA
 
@@ -134,7 +134,7 @@ public:
 		audioManager.PlaySound("openJournal", false);
 
 		openStatus = false;
-		activePage = currentPage::MAIN;
+		activePage = currentPage::MAIN_PAGE;
 
 		for (auto& object : m_gameObjects) {
 
@@ -160,24 +160,6 @@ public:
 	{
 		return openStatus;
 	}
-
-
-	//bool clickOutOfJournal(glm::vec2 mousePos) {
-
-	//	glm::vec2 newPos = Application::Get().MousetoWorld();
-
-	//	glm::vec3 journalPos = JournalCover->GetPosition();
-	//	glm::vec3 journalScale = JournalCover->GetScale();
-
-	//	float minX = journalPos.x - (journalScale.x / 2.0f);
-	//	float maxX = journalPos.x + (journalScale.x / 2.0f);
-	//	float minY = journalPos.y - (journalScale.y / 2.0f);
-	//	float maxY = journalPos.y + (journalScale.y / 2.0f);
-
-	//	//returns true if click inside of book
-	//	return ((newPos.x >= minX && newPos.x <= maxX) && (newPos.y >= minY && newPos.y <= maxY));
-
-	//}
 
 
 	//--------------------------------UPDATE & RENDER-----------------------------------------------------
@@ -224,13 +206,13 @@ public:
 
 	//-----------------------BOOK UI BUTTON FUNCTIONS-----------------------------------
 
-	void setActiveTab1() { if (activePage != MAIN) { activePage = currentPage::MAIN; } audioManager.PlaySound("pageSwitch", false);};
-	void setActiveTab2() { if (activePage != CABIN1) { activePage = currentPage::CABIN1; } audioManager.PlaySound("pageSwitch", false); };
-	void setActiveTab3() { if (activePage != CABIN2) { activePage = currentPage::CABIN2; } audioManager.PlaySound("pageSwitch", false);};
-	void setActiveTab4() { if (activePage != CABIN3) { activePage = currentPage::CABIN3; } audioManager.PlaySound("pageSwitch", false);};
-	void setActiveTab5() { if (activePage != CABIN4) { activePage = currentPage::CABIN4; } audioManager.PlaySound("pageSwitch", false);};
-	void setActiveTab6() { if (activePage != CABIN5) { activePage = currentPage::CABIN5; } audioManager.PlaySound("pageSwitch", false);};
-	void setActiveTab7() { if (activePage != FOODGUIDE) { activePage = currentPage::FOODGUIDE; } audioManager.PlaySound("pageSwitch", false); };
+	void setActiveTab1() { if (activePage != MAIN_PAGE) { activePage = currentPage::MAIN_PAGE; } audioManager.PlaySound("pageSwitch", false);};
+	void setActiveTab2() { if (activePage != CABIN1_PAGE) { activePage = currentPage::CABIN1_PAGE; } audioManager.PlaySound("pageSwitch", false); };
+	void setActiveTab3() { if (activePage != CABIN2_PAGE) { activePage = currentPage::CABIN2_PAGE; } audioManager.PlaySound("pageSwitch", false);};
+	void setActiveTab4() { if (activePage != CABIN3_PAGE) { activePage = currentPage::CABIN3_PAGE; } audioManager.PlaySound("pageSwitch", false);};
+	void setActiveTab5() { if (activePage != CABIN4_PAGE) { activePage = currentPage::CABIN4_PAGE; } audioManager.PlaySound("pageSwitch", false);};
+	void setActiveTab6() { if (activePage != CABIN5_PAGE) { activePage = currentPage::CABIN5_PAGE; } audioManager.PlaySound("pageSwitch", false);};
+	void setActiveTab7() { if (activePage != FOODGUIDE_PAGE) { activePage = currentPage::FOODGUIDE_PAGE; } audioManager.PlaySound("pageSwitch", false); };
 
 	void closeJournal() {
 		if (openStatus == true) {
@@ -244,7 +226,7 @@ protected:
 	std::vector<GameObject*> m_gameObjects;
 	std::vector<Page*> allPages;
 
-	currentPage activePage = currentPage::MAIN;
+	currentPage activePage = currentPage::MAIN_PAGE;
 
 	bool openStatus = false; //true - open, false - closed
 
