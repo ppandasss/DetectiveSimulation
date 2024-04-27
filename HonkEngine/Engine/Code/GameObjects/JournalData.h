@@ -18,6 +18,12 @@ struct ClueData {
 
 };
 
+struct DeferredRenderObject {
+
+	bool showObject;
+	GameObject* gameObj;
+};
+
 
 struct MainPageData {
 

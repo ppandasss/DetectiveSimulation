@@ -45,6 +45,16 @@ public:
 
 		}
 
+		for (auto& object : deffered_m_gameObjects) {
+
+			if (object->showObject) { //CHECK ACTIVE STATUS
+
+				object->gameObj->Render();
+
+			}
+
+		}
+
 
 	}
 
@@ -65,6 +75,12 @@ public:
 		for (auto& object : textClues) {
 
 			object->clueText->Update(dt, frame);
+
+		}
+
+		for (auto& object : deffered_m_gameObjects) {
+
+			object->gameObj->Update(dt, frame);
 
 		}
 
@@ -93,6 +109,21 @@ public:
 			}
 		}
 
+		for (auto& object : deffered_m_gameObjects) {
+
+			if (object->gameObj) { //checks for nullptr
+
+				if (object->showObject) {
+					object->gameObj->setActiveStatus(status); //sets status accordingly if clue is active
+				}
+				else {
+					object->gameObj->setActiveStatus(false); //if inactive always set as false
+				}
+
+			}
+		}
+
+
 		active = status;
 
 	}
@@ -103,6 +134,8 @@ protected:
 	std::vector<GameObject*> m_gameObjects;
 
 	std::vector<ClueData*> textClues;
+
+	std::vector<DeferredRenderObject*> deffered_m_gameObjects;
 
 	JournalData* m_journalData = JournalData::GetInstance();
 

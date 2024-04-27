@@ -115,18 +115,17 @@ public:
 		RedUnderline->setActiveStatus(false);
 		RedUnderline->SetScale(glm::vec3(1.7f, 0.1f, 0.0f));
 		RedUnderline->SetPosition(glm::vec3(1.1f, -2.0f, 0.0f));
+
+		redUnderline = new DeferredRenderObject();
+		redUnderline->showObject = false;
+		redUnderline->gameObj = RedUnderline;
+
 		// EVIDENCE TEXT
 
 		EvidenceButton = new UIButtonEmpty("EvidenceText", glm::vec3(3.2f, -1.0f, 0.0f), glm::vec3(5.0f, 0.5f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
 		EvidenceButton->SetButtonText(JournalData::GetInstance()->getEvidenceText());
 		EvidenceButton->SetTextSize(0.6f);
 		EvidenceButton->SetOnClickAction([this]() { updateEvidence(); });
-
-
-		/*UIObject* testBox = new UIObject("testBox", "Assets/Images/Square_Border.png", true);
-		testBox->SetScale(glm::vec3(5.0f, 0.5f, 0.0f));
-		testBox->SetPosition(glm::vec3(3.2f, -1.0f, 0.0f));*/
-
 
 		m_gameObjects.push_back(TheSpy);
 
@@ -152,15 +151,13 @@ public:
 
 		m_gameObjects.push_back(BombLocation);
 
-		//m_gameObjects.push_back(testBox);
 
 		m_gameObjects.push_back(TownSquare);
 		m_gameObjects.push_back(TheHolyChurch);
 		m_gameObjects.push_back(TheCouncil);
 		m_gameObjects.push_back(SupremeCourt);
 
-		m_gameObjects.push_back(RedUnderline);
-
+		deffered_m_gameObjects.push_back(redUnderline);
 
 		m_gameObjects.push_back(CaseNews);
 
@@ -177,7 +174,7 @@ public:
 		m_journalData->SetPlayerSpyChoice(SPY1);
 
 		if (!RedCircle->getActiveStatus()) {RedCircle->setActiveStatus(true);}
-		
+
 		RedCircle->SetPosition(glm::vec3(1.15f, 1.55f, 0.0f));
 	};
 
@@ -210,29 +207,29 @@ public:
 
 	void setLocationTownSquare() {
 		m_journalData->SetPlayerBombLocation(TOWNSQUARE);
-		if (!RedUnderline->getActiveStatus()) { RedUnderline->setActiveStatus(true); }
-		RedUnderline->SetPosition(glm::vec3(1.4f, -2.45f, 0.0f));
+		/*if (!RedUnderline->getActiveStatus()) { RedUnderline->setActiveStatus(true); }
+		RedUnderline->SetPosition(glm::vec3(1.4f, -2.45f, 0.0f));*/
 		
 	};
 
 	void setLocationHolyChurch() {
 		m_journalData->SetPlayerBombLocation(HOLYCHURCH);
-		if (!RedUnderline->getActiveStatus()) { RedUnderline->setActiveStatus(true); }
-		RedUnderline->SetPosition(glm::vec3(3.5f, -2.45f, 0.0f));
+		/*if (!RedUnderline->getActiveStatus()) { RedUnderline->setActiveStatus(true); }
+		RedUnderline->SetPosition(glm::vec3(3.5f, -2.45f, 0.0f));*/
 		
 	};
 
 	void setLocationCouncil() {
 		m_journalData->SetPlayerBombLocation(COUNCIL);
-		if (!RedUnderline->getActiveStatus()) { RedUnderline->setActiveStatus(true); }
-		RedUnderline->SetPosition(glm::vec3(1.4f, -2.95f, 0.0f));
+		/*if (!RedUnderline->getActiveStatus()) { RedUnderline->setActiveStatus(true); }
+		RedUnderline->SetPosition(glm::vec3(1.4f, -2.95f, 0.0f));*/
 		
 	};
 
 	void setLocationSupremeCourt() {
 		m_journalData->SetPlayerBombLocation(SUPREMECOURT);
-		if (!RedUnderline->getActiveStatus()) { RedUnderline->setActiveStatus(true); }
-		RedUnderline->SetPosition(glm::vec3(3.5f, -2.95f, 0.0f));
+		/*if (!RedUnderline->getActiveStatus()) { RedUnderline->setActiveStatus(true); }
+		RedUnderline->SetPosition(glm::vec3(3.5f, -2.95f, 0.0f));*/
 		
 	};
 	
@@ -253,13 +250,13 @@ public:
 
 		MainPageData main = m_journalData->GetMainPageData();
 
-		if (main.player_Spy == SPY_EMPTY) {
+		/*if (main.player_Spy == SPY_EMPTY) {
 			RedCircle->setActiveStatus(false);
 		}	
 
 		if (main.player_BombLocation == LOCATION_EMPTY) {
 			RedUnderline->setActiveStatus(false);
-		}
+		}*/
 		
 	}
 
@@ -269,6 +266,9 @@ private:
 
 	UIObject* RedCircle;
 	UIObject* RedUnderline;
+
+	DeferredRenderObject* redUnderline;
+
 	UIButtonEmpty* EvidenceButton;
 
 };

@@ -190,7 +190,6 @@ public:
 			return;
 		}
 
-		Input& input = Application::GetInput();
 
 		for (auto& object : m_gameObjects) {
 			if (object->getActiveStatus()) { //CHECK ACTIVE STATUS
@@ -199,8 +198,6 @@ public:
 		}
 
 		allPages[activePage]->Update(dt, frame);
-
-		mousePos = Application::Get().CursorPos();
 
 	}
 
