@@ -75,6 +75,15 @@ public:
 		return nullptr; // Return nullptr if no object with the given name is found
 	}
 
+	bool IsType(const std::string& type) {
+		for (auto& object : m_gameObjects) {
+			if (object->GetName() == type) {
+				return true;
+			}
+		}
+		return false; // Return false if no object with the given type is found
+	}
+
 protected:
 	std::vector<GameObject*> m_gameObjects;
 	std::vector<GameObject*> m_toAddGameObjects;

@@ -99,7 +99,7 @@ public:
         animY = static_cast<float>(currentRow);
         animX = static_cast<float>(currentFrame);
 
-        if (isWalking && !audioManager.IsSoundPlaying("Player_footsteps")) {
+        if (isWalking && !audioManager.IsSoundPlaying("Player_footsteps") && Application::Get().GetCurrentScene()->IsType("Hallway")) {
             audioManager.PlaySound("Player_footsteps", true);
         }
         else if (!isWalking && audioManager.IsSoundPlaying("Player_footsteps")) {
