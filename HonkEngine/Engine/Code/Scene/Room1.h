@@ -30,6 +30,7 @@ private:
     RoomPhase currentPhase = RoomPhase::TakeOrderPhase;
 
     Timer* timer;
+    Text* instructionText;
 
 public:
     Room1() :audioManager(AudioManager::GetInstance()) {
@@ -109,6 +110,11 @@ public:
         dialogueManager = make_unique<DialogueManager>("MarthaDialogue", dialogueBox,
             "Assets/Dialogue/Martha/Martha_Order.xml", "Martha_Normal");
 
+        //Text
+        instructionText = new Text("dialogueinstruction", "Use [Left-click] or [Space] to continue dialogue", "Assets/Fonts/mvboli.ttf", true);
+        instructionText->SetScale(0.6f);
+        instructionText->SetPosition(glm::vec3(6.00f, -4.3f, 0.0f));
+        instructionText->SetColor(glm::vec3(1, 1, 1));
 
         //Add SpeakSprite
         dialogueManager->AddSpeakerSprite("Martha_Normal", marthaNormal);
@@ -162,6 +168,7 @@ public:
         m_gameObjects.push_back(dialogueChoice3);
         m_gameObjects.push_back(marthaIcon);
         m_gameObjects.push_back(waiterIcon);
+        m_gameObjects.push_back(instructionText);
 
         //add Parallax Effects
         ObjectsparallaxManager = make_unique<ObjectsParallax>();
@@ -192,6 +199,7 @@ public:
         backgroundParallaxManager->AddBackgroundPair(4, background5a, background5b, 2.5f); // Layer 4, fastest
         backgroundParallaxManager->AddBackgroundPair(5, background6a, background6b, 3.0f); // Layer 5, fastest
 
+    
     }
 
     void OnEnter() override {
@@ -209,6 +217,7 @@ public:
             // Handle TakeOrderPhase logic
             dialogueManager->Update(dt, frame);
             if (dialogueManager->IsDialogueFinished()) {
+                instructionText->SetContent("Press [E] to leave");
                 currentPhase = RoomPhase::ServePhase;
             }
             break;
