@@ -2,7 +2,7 @@
 <Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Dialogue id="1WD01">
     <Speaker name="Waiter">
-      <line1>Good afternoon and welcome to  Hesperia Express. Mrs. Longbow.</line1>
+      <line1>Good afternoon and welcome to  [Hesperia] Express. Mrs. Longbow.</line1>
       <line2>My name is Victor. I will be  taking care of you for this trip.</line2>
     </Speaker>
     <Choices/>
