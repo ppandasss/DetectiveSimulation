@@ -153,7 +153,7 @@ void TextRenderer::RenderText(std::string text, float x, float y, float scale, g
         std::istringstream iss(line);
         std::string word;
         while (iss >> word) {
-            bool specialColor = (word.front() == '[' && word.back() == ']');
+            bool specialColor = (word.front() == '%' && word.back() == '%');
             glm::vec3 currentColor = specialColor ? glm::vec3(1.0f, 0.0f, 0.0f) : color;  // Red if special, otherwise default
             if (specialColor) {
                 word = word.substr(1, word.size() - 2);  // Strip the brackets
@@ -171,7 +171,7 @@ void TextRenderer::RenderText(std::string text, float x, float y, float scale, g
         iss.clear();
         iss.str(line);
         while (iss >> word) {
-            bool specialColor = (word.front() == '[' && word.back() == ']');
+            bool specialColor = (word.front() == '%' && word.back() == '%');
             glm::vec3 currentColor = specialColor ? glm::vec3(1.0f, 0.0f, 0.0f) : color;
             if (specialColor) {
                 word = word.substr(1, word.size() - 2);
