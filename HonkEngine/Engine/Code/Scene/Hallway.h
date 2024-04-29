@@ -48,8 +48,6 @@ public:
 		/*--------------------------------------------------------------🔊LOAD AUDDIO🔊------------------------------------------------------------------------------------------------------- */
 		audioManager.LoadSound("hallwayMusic", "Assets/Sounds/Music/BGmusic_Corridor_NoTimer.mp3", 0.15f);
 		audioManager.LoadSound("trainAmbience", "Assets/Sounds/Ambience/Ambience_Train.mp3", 0.1f);
-		audioManager.LoadSound("doorOpen", "Assets/Sounds/SFX_OpenDoor.mp3", 2.0f);
-		audioManager.LoadSound("closeDoor", "Assets/Sounds/SFX_CloseDoor.mp3", 2.0f);
 
 
 		/*--------------------------------------------------------------📦CREATE GAMEOBJECT📦------------------------------------------------------------------------------------------------------- */
@@ -81,11 +79,25 @@ public:
 		
 
 		/*-------------------------------------------------------------🚪CREATE DOORS🚪------------------------------------------------------------------------------------------------------- */
-		GameObject* roomdoorHighlight = new RenderGameObject("RoomdoorHighlight", "Assets/Images/Corridor/Door1_Highlight.png");
+		GameObject* roomdoor1Highlight = new RenderGameObject("RoomdoorHighlight", "Assets/Images/Corridor/PassengerDoor_Highlight.png");
+		GameObject* roomdoor2Highlight = new RenderGameObject("RoomdoorHighlight", "Assets/Images/Corridor/PassengerDoor_Highlight.png");
+		GameObject* roomdoor3Highlight = new RenderGameObject("RoomdoorHighlight", "Assets/Images/Corridor/PassengerDoor_Highlight.png");
+		GameObject* roomdoor4Highlight = new RenderGameObject("RoomdoorHighlight", "Assets/Images/Corridor/PassengerDoor_Highlight.png");
 		GameObject* kitchendoorHighlight = new RenderGameObject("KitchendoorHighlight", "Assets/Images/Corridor/KitchenDoor_Highlight.png");
-		Door* room1Door = new Door("Room1Door", roomdoorHighlight, glm::vec3(-17.6f, -0.63f, 0.0f), glm::vec3(2.37f * 1.2f, 4.73f * 1.2f, 0.0f), "Room1");
+
+		Door* room1Door = new Door("Room1Door", roomdoor1Highlight, glm::vec3(-17.58f, -0.632f, 0.0f), glm::vec3(2.29f * 1.2f, 4.65f * 1.2f, 0.0f), "Room1");
 		DoorManager::GetInstance().AddDoor(room1Door);
-		Door* kitchenDoor = new Door("KitchenDoor", kitchendoorHighlight, glm::vec3(18.35f, -0.55f, 0.0f), glm::vec3(2.8f, 5.7f, 0.0f), "Kitchen");
+
+		Door* room2Door = new Door("Room2Door", roomdoor2Highlight, glm::vec3(-8.588f, -0.632f, 0.0f), glm::vec3(2.29f * 1.2f, 4.65f * 1.2f, 0.0f), "Room1");
+		DoorManager::GetInstance().AddDoor(room2Door);
+
+		Door* room3Door = new Door("Room3Door", roomdoor3Highlight, glm::vec3(0.38f, -0.632f, 0.0f), glm::vec3(2.29f * 1.2f, 4.65f * 1.2f, 0.0f), "Room2");
+		DoorManager::GetInstance().AddDoor(room3Door);
+
+		Door* room4Door = new Door("Room4Door", roomdoor4Highlight, glm::vec3(9.358f, -0.632f, 0.0f), glm::vec3(2.29f * 1.2f, 4.65f * 1.2f, 0.0f), "Room1");
+		DoorManager::GetInstance().AddDoor(room4Door);
+
+		Door* kitchenDoor = new Door("KitchenDoor", kitchendoorHighlight, glm::vec3(18.31f, -0.629f, 0.0f), glm::vec3(2.29f * 1.2f, 4.65f * 1.2f, 0.0f), "Kitchen");
 		DoorManager::GetInstance().AddDoor(kitchenDoor);
 		
 
@@ -99,7 +111,7 @@ public:
 
 		/*-------------------------------------------------------------🎮CREATE PLAYER🎮------------------------------------------------------------------------------------------------------- */
 
-		player = new Player("waiter", "Assets/Images/MainCharacter_WithTray_Walk.png", 2, 8, Journal);
+		player = new Player("waiter", "Assets/Images/Waiter_Sprite_Walk.png", 2, 8, Journal);
 
 		/*-------------------------------------------------------------💬CREATE TEXT💬------------------------------------------------------------------------------------------------------- */
 
@@ -166,16 +178,16 @@ public:
 		
 		orderNoText->SetPosition(glm::vec3(-8.8f, 4.5f, 0.0f));
 		orderNoText->SetColor(glm::vec3(0.5, 0, 0));
-		teaOrderText->SetPosition(glm::vec3(-6.8f, 4.6f, 0.0f));
-		teaOrderText->SetScale(0.5f);
-		sandwichOrderText->SetPosition(glm::vec3(-7.8f, 4.0f, 0.0f));
-		sandwichOrderText->SetScale(0.5f);
-		pastryOrderText->SetPosition(glm::vec3(-7.8f, 3.3f, 0.0f));
-		pastryOrderText->SetScale(0.5f);
+		teaOrderText->SetPosition(glm::vec3(-7.1f, 4.5f, 0.0f));
+		teaOrderText->SetScale(0.6f);
+		sandwichOrderText->SetPosition(glm::vec3(-7.6f, 3.9f, 0.0f));
+		sandwichOrderText->SetScale(0.55f);
+		pastryOrderText->SetPosition(glm::vec3(-7.6f, 3.28f, 0.0f));
+		pastryOrderText->SetScale(0.55f);
 
 		timerText->SetPosition(glm::vec3(6.65f, 4.12f, 0.0f));
-		timerText->SetColor(glm::vec3(1, 1, 1));
-		timerText->SetScale(1.4f);
+		timerText->SetColor(glm::vec3(0.78039, 0.72549, 0.44314));
+		timerText->SetScale(1.45f);
 
 		/*--------------------------------------------------------------✅PUSH BACK✅------------------------------------------------------------------------------------------------------- */
 		//Environment
@@ -188,7 +200,13 @@ public:
 		//Doors
 		m_gameObjects.push_back(kitchenDoor);
 		m_gameObjects.push_back(room1Door);
-		m_gameObjects.push_back(roomdoorHighlight);
+		m_gameObjects.push_back(room2Door);
+		m_gameObjects.push_back(room3Door);
+		m_gameObjects.push_back(room4Door);
+		m_gameObjects.push_back(roomdoor1Highlight);
+		m_gameObjects.push_back(roomdoor2Highlight);
+		m_gameObjects.push_back(roomdoor3Highlight);
+		m_gameObjects.push_back(roomdoor4Highlight);
 		m_gameObjects.push_back(kitchendoorHighlight);
 
 		//Bells
@@ -269,7 +287,6 @@ public:
 		//Scene::OnExit(); 
 		audioManager.PauseSound("hallwayMusic");
 		audioManager.StopSound("Player_footsteps");
-		audioManager.PlaySound("doorOpen", false);
 	}
 
 

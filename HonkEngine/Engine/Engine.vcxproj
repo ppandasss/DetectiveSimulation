@@ -177,6 +177,7 @@
     <ClInclude Include="Code\GameObjects\Player.h" />
     <ClInclude Include="Code\Renderer\Renderer.h" />
     <ClInclude Include="Code\GameObjects\RenderGameObject.h" />
+    <ClInclude Include="Code\Scene\Room2.h" />
     <ClInclude Include="Code\Scene\Scene.h" />
     <ClInclude Include="Code\Renderer\Shader.h" />
     <ClInclude Include="Code\Text\Text.h" />
