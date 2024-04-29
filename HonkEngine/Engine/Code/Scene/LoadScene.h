@@ -7,7 +7,7 @@
 class LoadScene : public Scene
 {
 private:
-    float fadeInDuration = 3.0f; // Duration for fade-in effect in seconds
+    float fadeInDuration = 3.0f;  // Duration for fade-in effect in seconds
     float fadeOutDuration = 2.0f; // Duration for fade-out effect in seconds
     float holdDuration = 2.0f;    // Duration to hold the logo before fading out
     float currentTime = 0.0f;     // Current time elapsed
@@ -53,7 +53,7 @@ public:
             }
 
             case Holding:
-                // Hold the logo at 120% opacity and scale
+                
                 engineLogo->SetAlpha(1.0f);
                 engineLogo->SetScale(glm::vec3(7.3f, 2.83f, 1.0f)); // 120% of initial size
 

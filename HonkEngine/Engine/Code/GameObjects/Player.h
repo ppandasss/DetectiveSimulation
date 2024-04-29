@@ -103,13 +103,13 @@ public:
         if (isWalking && Application::Get().GetCurrentSceneName() == ("Hallway")) {
             if (!audioManager.IsSoundPlaying("Player_footsteps")) {
                 audioManager.PlaySound("Player_footsteps", true);
-                std::cout << "Playing sound" << std::endl;
+                //std::cout << "Playing sound" << std::endl;
 
             }
         }
         else {
             if (audioManager.IsSoundPlaying("Player_footsteps")) {
-                audioManager.StopSound("Player_footsteps");
+                //audioManager.StopSound("Player_footsteps");
             }
         }
 
