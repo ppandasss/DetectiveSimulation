@@ -13,7 +13,7 @@ public:
     // Correct constructor definition without the class name prefix
     Timer() : isRunning(false), audioManager(AudioManager::GetInstance()) {
         UpdateTimerUIVisibility();  // Update UI visibility at initialization
-        audioManager.LoadSound("timerTicking", "Assets/Sounds/SFX_TimerTicking.mp3", 0.9f);
+        audioManager.LoadSound("timerTicking", "Assets/Sounds/SFX_TimerTicking.mp3", 0.75f);
     }
 
     static Timer& GetInstance() {

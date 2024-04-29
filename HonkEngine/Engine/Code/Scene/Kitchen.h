@@ -26,13 +26,13 @@ public:
 		//platePositionArea->SetButtonText("Drop Area");
 
 		/*--------------------------------------------------------------LOAD AUDDIO------------------------------------------------------------------------------------------------------- */
-		audioManager.LoadSound("kitchenAmbience", "Assets/Sounds/Ambience/Ambience_Kitchen.mp3", 0.9f);
+		audioManager.LoadSound("kitchenAmbience", "Assets/Sounds/Ambience/Ambience_Kitchen.mp3", 0.65f);
 
 		audioManager.LoadSound("plateSound1", "Assets/Sounds/Kitchen/SFX_MealSelect1.mp3", 1.0f);
 		audioManager.LoadSound("plateSound2", "Assets/Sounds/Kitchen/SFX_MealSelect2.mp3", 1.0f);
 		audioManager.LoadSound("plateSound3", "Assets/Sounds/Kitchen/SFX_MealSelect3.mp3", 1.0f);
 		audioManager.LoadSound("plateSound4", "Assets/Sounds/Kitchen/SFX_MealSelect4.mp3", 1.0f);
-		audioManager.LoadSound("closeDoor", "Assets/Sounds/SFX_CloseDoor.mp3", 2.0f);
+		audioManager.LoadSound("slideDoor", "Assets/Sounds/SFX_SlideDoor.mp3", 2.5f);
 
 
 		/*--------------------------------------------------------------CREATE GAMEOBJECT------------------------------------------------------------------------------------------------------- */
@@ -45,14 +45,13 @@ public:
 		Tray->SetScale(glm::vec3(7.13f * 0.8f, 3.45f * 0.8f, 0.0f));
 		Tray->SetPosition(glm::vec3(-4.9f, -0.3f, 0.0f));
 
-		orderPaper  = new UINormal("OrderPaper", "Assets/Images/OrderPaper.png", glm::vec3(-7.65f, 4.0f, 0.0f), glm::vec3(3.55f, 2.54f, 0.0f), true);
-		timerUI = new UINormal("TimerUI", "Assets/Images/Timer.png", glm::vec3(7.3f, 5.1f, 0.0f), glm::vec3(4.37f, 3.13f, 0.0f), true);
+		orderPaper  = new UINormal("OrderPaper", "Assets/Images/UI/OrderPaper.png", glm::vec3(-7.65f, 4.0f, 0.0f), glm::vec3(3.55f, 2.54f, 0.0f), true);
+		timerUI = new UINormal("TimerUI", "Assets/Images/UI/Timer.png", glm::vec3(7.3f, 5.1f, 0.0f), glm::vec3(4.37f, 3.13f, 0.0f), true);
 
 		Journal = new Book();
 		
 		/*--------------------------------------------------------------CREATE GAMEOBJECT------------------------------------------------------------------------------------------------------- */
 
-		
 		orderNoText = new Text("orderNo", "", "Assets/Fonts/mvboli.ttf", true);
 		teaOrderText = new Text("TeaOrder", "", "Assets/Fonts/mvboli.ttf", true);
 		sandwichOrderText = new Text("sandwichOrder", "", "Assets/Fonts/mvboli.ttf", true);
@@ -61,12 +60,14 @@ public:
 
 		orderNoText->SetPosition(glm::vec3(-8.8f, 4.5f, 0.0f));
 		orderNoText->SetColor(glm::vec3(0.5, 0, 0));
-		teaOrderText->SetPosition(glm::vec3(-6.8f, 4.6f, 0.0f));
-		teaOrderText->SetScale(0.5f);
-		sandwichOrderText->SetPosition(glm::vec3(-7.8f, 4.0f, 0.0f));
-		sandwichOrderText->SetScale(0.5f);
-		pastryOrderText->SetPosition(glm::vec3(-7.8f, 3.3f, 0.0f));
-		pastryOrderText->SetScale(0.5f);
+		teaOrderText->SetPosition(glm::vec3(-7.1f, 4.5f, 0.0f));
+		teaOrderText->SetScale(0.6f);
+		sandwichOrderText->SetPosition(glm::vec3(-7.6f, 3.9f, 0.0f));
+		sandwichOrderText->SetScale(0.55f);
+		pastryOrderText->SetPosition(glm::vec3(-7.6f, 3.28f, 0.0f));
+		pastryOrderText->SetScale(0.55f);
+
+
 
 		//OrderData to manager Order Text
 		OrderData& orderData = OrderData::GetInstance();
@@ -78,10 +79,9 @@ public:
 		Timer& timer = Timer::GetInstance();
 		timerText = new Text("timerText", "", "Assets/Fonts/Jibril.ttf", true); 
 		
-		
 		timerText->SetPosition(glm::vec3(6.65f, 4.12f, 0.0f));
-		timerText->SetColor(glm::vec3(1, 1, 1));
-		timerText->SetScale(1.4f);
+		timerText->SetColor(glm::vec3(0.78039, 0.72549, 0.44314));
+		timerText->SetScale(1.45f);
 
 		timerUI->setActiveStatus(false);
 
@@ -300,7 +300,7 @@ public:
 	void OnEnter() override {
 		Scene::OnEnter();  // Call base class if there's relevant logic
 		audioManager.PlaySound("kitchenAmbience", true);
-		audioManager.PlaySound("closeDoor", false);
+		audioManager.PlaySound("slideDoor");
 	}
 
 	void Update(float dt, long frame) override {
@@ -336,6 +336,8 @@ public:
 			sandwichOrderText->SetContent(orderData.GetSandwichOrder());
 			pastryOrderText->SetContent(orderData.GetPastryOrder());
 			orderPaper->setActiveStatus(orderData.GetOrderPaperVisibility());
+
+
 			// Debug: Confirm the update visually
 			//orderNoText->SetColor(glm::vec3(1.0f, 0.0f, 0.0f)); // Set text color to red for visibility
 		}
@@ -351,7 +353,6 @@ public:
 		if (timerText && timerUI) {
 			timerText->SetContent(timer.GetTime());
 			timerUI->setActiveStatus(!timer.GetTimerUIVisibility());
-			// Adjust formatting or visibility as needed
 		}
 		else {
 					std::cout << "One or more text objects are null." << std::endl;
@@ -577,7 +578,7 @@ public:
 
 	void OnExit() override {
 		Scene::OnExit();  // Call base class if there's relevant logic
-		audioManager.PlaySound("closeDoor");
+		audioManager.PlaySound("slideDoor");
 		audioManager.StopSound("kitchenAmbience");
 	}
 
