@@ -70,10 +70,16 @@ public:
 
 	}
 
-	Scene* GetCurrentScene()
-	{
-		return m_currentScene;
+	std::string GetCurrentSceneName() const {
+		for (const auto& pair : m_sceneMap) {
+			if (pair.second == m_currentScene) {
+				return pair.first;  // Return the name of the current scene
+			}
+		}
+		return "";  
 	}
+
+
 
 
 

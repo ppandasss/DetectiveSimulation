@@ -33,6 +33,7 @@ public:
     {
         Input& input = Application::GetInput();
         AnimateGameObject::Update(dt, frame);
+         
 
         // Initialize to a default or idle animation
         std::string currentAnimation = "idle";
@@ -99,11 +100,17 @@ public:
         animY = static_cast<float>(currentRow);
         animX = static_cast<float>(currentFrame);
 
-        if (isWalking && !audioManager.IsSoundPlaying("Player_footsteps") && Application::Get().GetCurrentScene()->IsType("Hallway")) {
-            audioManager.PlaySound("Player_footsteps", true);
+        if (isWalking && Application::Get().GetCurrentSceneName() == ("Hallway")) {
+            if (!audioManager.IsSoundPlaying("Player_footsteps")) {
+                audioManager.PlaySound("Player_footsteps", true);
+                std::cout << "Playing sound" << std::endl;
+
+            }
         }
-        else if (!isWalking && audioManager.IsSoundPlaying("Player_footsteps")) {
-            audioManager.StopSound("Player_footsteps");
+        else {
+            if (audioManager.IsSoundPlaying("Player_footsteps")) {
+                audioManager.StopSound("Player_footsteps");
+            }
         }
 
 
