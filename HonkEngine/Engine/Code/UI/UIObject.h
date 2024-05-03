@@ -129,6 +129,18 @@ public:
 	}
 
 	const glm::vec3 GetOnscreenPosition() const { return m_transformedPosition; }
+
+
+	Tex GetTextureID() {
+		return texture_Id;
+	}
+
+	void SetTextureID(Tex textureID) {
+
+		texture_Id = textureID;
+
+	}
+
 	
 
 private:

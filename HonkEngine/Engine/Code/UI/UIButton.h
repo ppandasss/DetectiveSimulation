@@ -68,7 +68,19 @@ public:
                 if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1)) {
                     OnClick();
                 }
+
+                //HOVER STATE
+                
+                isHover = true;
+
             }
+            else {
+
+                isHover = false;
+
+            }
+
+
         }
 
     }
@@ -84,10 +96,22 @@ public:
 
     void Render() override {
 
+        if (textureHoverID != -1) {
+
+            if (isHover) {
+                SetTextureID(textureHoverID);
+            }
+            else {
+                SetTextureID(textureNormalID);
+            }
+
+        }
+        
         UIElement::Render(); // Render the button texture using the transformation matrix from UIObject
         if (containsText) {
             buttonTextObj->Render(); // Render the button text
         }
+
     }
 
     void SetButtonPosition(const glm::vec3& position) {
@@ -122,7 +146,12 @@ public:
 
     //void setActiveStatus(bool status) override { active = status; }
 
+    void SetHoverTexture(const std::string& texturePath) {
 
+        textureHoverID = TextureLoad(texturePath);
+        textureNormalID = GetTextureID();
+
+    }
 
 
 private:
@@ -131,7 +160,12 @@ private:
     Text* buttonTextObj;
     bool containsText = true;
     bool isClickable;
+    bool isHover = false;
     glm::vec2 mousePosWorld;
     std::function<void()> onClickAction;
+
+    Tex textureHoverID = -1;
+    Tex textureNormalID = -1;
+
 
 };

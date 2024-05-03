@@ -62,9 +62,7 @@ public:
 		orderData.Initialize(orderNoText, teaOrderText, sandwichOrderText, pastryOrderText);
 
 		// Add observer to update UI on change
-		orderData.AddObserver([this]() { this->UpdateOrderDisplay(); });
-
-		
+		orderData.AddObserver([this]() { this->UpdateOrderDisplay(); });	
 
 
 		/*--------------------------------------------------------------CREATE BUTTONS------------------------------------------------------------------------------------------------------- */
@@ -254,8 +252,8 @@ public:
 		m_gameObjects.push_back(optionalDropArea);
 
 		//Journal
-		m_gameObjects.push_back(Journal);
 		m_gameObjects.push_back(journalButton);
+		m_gameObjects.push_back(Journal);
 
 		//set all plate gameobjects as inactive
 		clearPlate();

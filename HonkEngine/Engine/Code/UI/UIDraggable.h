@@ -92,8 +92,34 @@ public:
     }
 
 
+    void SetHoverTexture(const std::string& texturePath) {
+
+        textureHoverID = TextureLoad(texturePath);
+        textureNormalID = GetTextureID();
+
+    }
+
+
     void snapBack() {
         m_position = originalPosition;
+    }
+
+    void Render() override {
+
+        if (textureHoverID != -1) {
+
+            if (isHover) {
+                SetTextureID(textureHoverID);
+            }
+            else {
+                SetTextureID(textureNormalID);
+            }
+
+        }
+
+        UIElement::Render(); 
+ 
+
     }
 
 
@@ -106,26 +132,32 @@ public:
         //mousePos = Application::Get().CursorPos();
         mouseWorldPos = Application::Get().MousetoWorld();
 
-        if (IsClickable()) {
+        //std::cout << "DRAGGABLE CLICK" << std::endl;
 
-            //std::cout << "DRAGGABLE CLICK" << std::endl;
+        if (IsClickable() && IsPointInside(mouseWorldPos.x, mouseWorldPos.y)) {
 
-            if (IsPointInside(mouseWorldPos.x, mouseWorldPos.y)) {
+            if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1)) {
 
-                if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1)) {
-
-                    OnClick();
-                    isDragging = true;
-                    dragStartPos = mouseWorldPos; // Capture the starting point of the drag
-                    dragOffset = glm::vec2(m_position.x, m_position.y) - mouseWorldPos; // Offset between mouse and object position
-
-                }
+                OnClick();
+                isDragging = true;
+                dragStartPos = mouseWorldPos; // Capture the starting point of the drag
+                dragOffset = glm::vec2(m_position.x, m_position.y) - mouseWorldPos; // Offset between mouse and object position
 
             }
+
+            isHover = true;
+
+        }
+        else {
+
+            isHover = false;
+
         }
 
 
         if (isDragging) {
+
+            isHover = false;
 
             glm::vec2 mouseDelta = mouseWorldPos - dragStartPos;
             glm::vec3 newPosition = glm::vec3(dragStartPos, 0.0f) + glm::vec3(mouseDelta, 0.0f) + glm::vec3(dragOffset, 0.0f);
@@ -163,6 +195,7 @@ private:
 
     glm::vec2 dragStartPos;
     bool isDragging;
+    bool isHover = false;
     glm::vec2 dragOffset; // Offset between
 
     //snap to position variables
@@ -174,5 +207,8 @@ private:
 
     glm::vec2 minBound = glm::vec2(-10.0f, -6.0f); //top - left corner
     glm::vec2 maxBound = glm::vec2(10.0f, 6.0f); //bottom - right corner
+
+    Tex textureHoverID = -1;
+    Tex textureNormalID = -1;
 
 };

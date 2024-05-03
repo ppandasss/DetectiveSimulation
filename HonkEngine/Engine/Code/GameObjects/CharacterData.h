@@ -2,10 +2,12 @@
 
 #include "../Scene/KitchenData.h"
 #include "JournalData.h"
+#include "Timer.h"
 
 #include <map>
 
 enum InteractionLevel {LOW, AVERAGE, INFORMATIVE};
+enum PrepTime {ONTIME, LATE};
 
 struct characterFoodScores {
 
@@ -30,7 +32,20 @@ public:
 
 	//get score based on food choices
 
-	int calculateScore(Cabin cabin) {
+	int calculateStage1Score() { //NO MEAL SCORE JUST TIME TO SERVE
+
+		int remainingTime = Timer::GetInstance().getRemainingTime();
+
+		if (remainingTime == 0) {
+			return -2;
+		}
+		return 0;
+	}
+
+	
+	
+
+	int calculateScore(Cabin cabin) { //with meal score and timer
 
 		int totalScore;
 

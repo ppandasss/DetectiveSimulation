@@ -10,6 +10,8 @@ enum Spy { SPY_EMPTY, SPY1, SPY21, SPY22, SPY3, SPY4 };
 
 enum Cabin {CABIN1, CABIN21, CABIN22, CABIN3, CABIN4 };
 
+enum Ending {END1, END2, END3, END4, END5, END6};
+
 
 struct ClueData {
 
@@ -77,6 +79,8 @@ class JournalData {
 			return mainPageEvidence[main_page.player_Evidence];
 		}
 
+		
+
 		//------------------CABIN PAGE FUNCTIONS--------------------------
 	
 
@@ -123,6 +127,50 @@ class JournalData {
 			return allCabinData[cabin];
 		}
 
+		//CHECK FINAL ENTRY
+
+		Ending checkMainPageEntry() {
+
+			Spy spy_choice = main_page.player_Spy;
+			Location location_choice = main_page.player_BombLocation;
+			int evidence_choice = main_page.player_Evidence;
+
+			//----------CHECK IF CHOICES ARE CORRECT HERE AND SET BOOL BELOW----------------
+
+			bool spyCorrect = true;
+			bool locationCorrect = true;
+			bool evidenceCorrect = true;
+
+
+			if (spyCorrect) {
+
+				if (evidenceCorrect && locationCorrect)
+					return END1;	
+
+				if (evidenceCorrect && !locationCorrect)
+					return END2;
+				
+				if (!evidenceCorrect && locationCorrect)
+					return END3;
+
+				if (!evidenceCorrect && !locationCorrect) 
+					return END4;
+				
+			}
+			else {
+
+				if (locationCorrect) {
+					return END5;
+				}
+				else {
+					return END6;
+				}
+
+			}
+
+		}
+
+		
 	
 
 
@@ -143,11 +191,12 @@ class JournalData {
 
 		std::map<Cabin, CabinPageData> allCabinData;
 
+		std::vector<std::string> mainPageEvidenceVec;
+
 		std::string mainPageEvidence[4] = { "Evidence 1","Evidence 2", "Evidence 3", "Evidence 4" };
 
-		
-
 };
+
 
 JournalData* JournalData::instance = nullptr;
 
