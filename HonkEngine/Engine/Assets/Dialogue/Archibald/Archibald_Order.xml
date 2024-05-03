@@ -44,8 +44,8 @@
 	</Dialogue>
 	<Dialogue id="2AD02" next="2WD05">
 		<Speaker name="Archibald_Normal">
-			<line1>Whatever the fuss may be, I do  not care.</line1>
-			<line2>Just get on with it, take my order, and leave.</line2>
+			<line1>Whatever the fuss may be, I , do,  not, care.</line1>
+			<line2>Just get on with it, take my order,  and leave.</line2>
 		</Speaker>
 		<Choices/>
 	</Dialogue>

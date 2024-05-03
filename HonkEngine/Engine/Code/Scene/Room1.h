@@ -81,7 +81,7 @@ public:
         UIElement* bag = new UINormal("Bag", "Assets/Images/Martha/Bag.png", glm::vec3(-0.25f, -5.25f, 0.0f), glm::vec3(2.59f * sm * 1.2f, 1.64f * sm * 1.2f, 0.0f), true);
         
         //Inspection Items
-        UIElement* cane = new UINormal("Cane", "Assets/Images/Martha/Inspection_Cane.png", glm::vec3(-4.0f, -3.72f, 0.0f), glm::vec3(1.07f * sm * 1.2f, 3.7f * sm * 1.2f, 0.0f), true);
+        UIElement* cane = new UINormal("Cane", "Assets/Images/Martha/Martharoom_Canex3.png", glm::vec3(-4.0f, -3.72f, 0.0f), glm::vec3(1.07f * sm * 1.2f, 3.7f * sm * 1.2f, 0.0f), true);
         UIElement* letter = new UINormal("Letter", "Assets/Images/Martha/Inspection_Letter.png", glm::vec3(-2.15f, -5.9f, 0.0f), glm::vec3(1.13f * sm * 1.2f, 0.73f * sm * 1.2f, 0.0f), true);
 
         //UIs
@@ -99,13 +99,13 @@ public:
             true, true, "Assets/Fonts/OverpassMono.ttf");
         //Choices
         UIButton* dialogueChoice1 = new UIButton("DialogueChoiceBox1", "Assets/Images/UI/DialogueChoiceBox.png",
-            glm::vec3(0.0f, -2.5f, 0.0f), glm::vec3(7.47f, 1.07f, 0.0f),
+            glm::vec3(0.0f, -2.8f, 0.0f), glm::vec3(7.47f * 0.9f, 1.07f * 0.9f, 0.0f),
             true, true, "Assets/Fonts/OverpassMono-SemiBold.ttf");
         UIButton* dialogueChoice2 = new UIButton("DialogueChoiceBox2", "Assets/Images/UI/DialogueChoiceBox.png",
-            glm::vec3(0.0f, -3.65f, 0.0f), glm::vec3(7.47f, 1.07f, 0.0f),
+            glm::vec3(0.0f, -3.8f, 0.0f), glm::vec3(7.47f * 0.9f, 1.07f * 0.9f, 0.0f),
             true, true, "Assets/Fonts/OverpassMono-SemiBold.ttf");
         UIButton* dialogueChoice3 = new UIButton("DialogueChoiceBox3", "Assets/Images/UI/DialogueChoiceBox.png",
-            glm::vec3(0.0f, -1.35f, 0.0f), glm::vec3(7.47f, 1.07f, 0.0f),
+            glm::vec3(0.0f, -1.8f, 0.0f), glm::vec3(7.47f * 0.9f, 1.07f * 0.9f, 0.0f),
             true, true, "Assets/Fonts/OverpassMono-SemiBold.ttf");
         //Speak Icons
         UIElement* marthaIcon = new UINormal("MarthaIcon", "Assets/Images/UI/Speaker_icon_Martha.png", glm::vec3(4.18f, 3.5f, 0.0f), glm::vec3(2.19f, 1.57f, 0.0f), true);
