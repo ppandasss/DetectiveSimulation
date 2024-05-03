@@ -152,6 +152,8 @@
     <ClInclude Include="Code\Application.h" />
     <ClInclude Include="Code\Camera\Camera.h" />
     <ClInclude Include="Code\Engine.h" />
+    <ClInclude Include="Code\GameObjects\Bell.h" />
+    <ClInclude Include="Code\GameObjects\BellManager.h" />
     <ClInclude Include="Code\GameObjects\Book.h" />
     <ClInclude Include="Code\GameObjects\CabinPage1.h" />
     <ClInclude Include="Code\GameObjects\CabinPage2.h" />
@@ -159,7 +161,7 @@
     <ClInclude Include="Code\GameObjects\CabinPage4.h" />
     <ClInclude Include="Code\GameObjects\CabinPage5.h" />
     <ClInclude Include="Code\GameObjects\Door.h" />
-    <ClInclude Include="Code\GameObjects\DoorsManager.h" />
+    <ClInclude Include="Code\GameObjects\DoorManager.h" />
     <ClInclude Include="Code\GameObjects\FoodGuidePage.h" />
     <ClInclude Include="Code\GameObjects\GameObject.h" />
     <ClInclude Include="Code\GameObjects\JournalData.h" />

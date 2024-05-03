@@ -96,7 +96,7 @@ public:
                 }
             }
             it->second.clear(); // Clear the list of sounds
-            std::cout << "Stopped sound: " << soundName << std::endl;
+            //std::cout << "Stopped sound: " << soundName << std::endl;
         }
     }
 

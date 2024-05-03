@@ -11,7 +11,6 @@
 #include "../Animation/Animator.h" 
 #include "../Audio/AudioManager.h"
 #include "../Scene/Hallway.h"
-#include "../GameObjects/DoorsManager.h"
 #include "../GameObjects/Book.h"
 
 
@@ -67,25 +66,6 @@ public:
 
         }
 
-       
-        bool collidedWithDoor = false;
-        DoorManager& doorManager = DoorManager::GetInstance();
-
-        // Check for collisions with doors
-        doorManager.CheckDoorCollisions(GetPosition(), GetScale(), [this, &collidedWithDoor, &input](const std::string& sceneName) {
-            if (!inDoorCollision && input.Get().GetKeyDown(GLFW_KEY_E)) {
-                Application::Get().SetScene(sceneName);
-                inDoorCollision = true;
-                collidedWithDoor = true;
-            }
-            });
-
-        // If the player is not colliding with any door, clear the inDoorCollision flag
-        if (!collidedWithDoor) {
-            inDoorCollision = false;
-        }
-
-
         // Set the animation
         m_animator.SetAnimation(currentAnimation);
 
@@ -104,12 +84,11 @@ public:
             if (!audioManager.IsSoundPlaying("Player_footsteps")) {
                 audioManager.PlaySound("Player_footsteps", true);
                 //std::cout << "Playing sound" << std::endl;
-
             }
         }
         else {
             if (audioManager.IsSoundPlaying("Player_footsteps")) {
-                //audioManager.StopSound("Player_footsteps");
+                audioManager.StopSound("Player_footsteps");
             }
         }
 
@@ -126,6 +105,6 @@ private:
     glm::vec2 mousePos;
     Animator m_animator;
     AudioManager& audioManager;
-    bool inDoorCollision = false;
+    
 
 };

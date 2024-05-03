@@ -7,7 +7,7 @@
 class Door : public GameObject {
 public:
     Door(const std::string& name, GameObject* highlighted, const glm::vec3& position, const glm::vec3& scale, const std::string& sceneName)
-        : GameObject(name), highlightState(highlighted), m_sceneName(sceneName) {
+        : GameObject(name), highlightState(highlighted), m_sceneName(sceneName), isOpen(false) {
         SetPosition(position);
         SetScale(scale);
         highlightState->setActiveStatus(false);
@@ -37,7 +37,16 @@ public:
         return m_sceneName;
     }
 
+    void setPermission(bool open) {
+        isOpen = open;
+    }
+
+    bool getPermission() const {
+        return isOpen;
+    }
+
 private:
+    bool isOpen;
     const float collisionScaleFactor = 0.3f;
     GameObject* highlightState;
     std::string m_sceneName;

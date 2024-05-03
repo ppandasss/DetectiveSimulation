@@ -75,6 +75,35 @@ Application::~Application() {
     glfwTerminate();
 }
 
+void Application::SetTimer(long long duration, std::function<void()> callback, bool repeat) {
+    GlobalTimer timer;
+    timer.duration = duration;
+    timer.callback = callback;
+    timer.endTime = std::chrono::steady_clock::now() + std::chrono::milliseconds(duration);
+    timer.repeat = repeat;
+    timers.push(timer);
+    //std::cout << "Timer set for " << duration << " ms\n";
+}
+
+void Application::processTimers() {
+    auto now = std::chrono::steady_clock::now();
+    while (!timers.empty()) {
+        const auto& timer = timers.top();
+        if (now >= timer.endTime) {
+            //std::cout << "Timer triggered\n";
+            timer.callback();
+            timers.pop();
+            if (timer.repeat) {
+                std::cout << "Re-setting repeating timer\n";
+                SetTimer(timer.duration, timer.callback, true);  // Re-set the timer
+            }
+        }
+        else {
+            break;  // All upcoming timers are not due yet
+        }
+    }
+}
+
 
 Application::Application(int win_width, int win_height, const char* title)
     : baseTitle(title)
@@ -167,6 +196,7 @@ void Application::Run()
             frameRateTimer = 0.0;
             frameCount = 0;
         }
+        processTimers();
     }
 
     if (m_currentScene) {

@@ -179,7 +179,7 @@
     <ClInclude Include="Code\GameObjects\Door.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\GameObjects\DoorsManager.h">
+    <ClInclude Include="Code\GameObjects\DoorManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Code\Scene\LoadScene.h">
@@ -198,6 +198,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Code\Scene\Room2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\GameObjects\Bell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\GameObjects\BellManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

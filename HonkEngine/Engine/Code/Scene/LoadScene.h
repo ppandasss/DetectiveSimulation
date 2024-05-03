@@ -24,10 +24,7 @@ public:
 
     void Update(float dt, long frame)
     {
-        // Update the current time
         currentTime += dt;
-
-        // Get the engineLogo object
         RenderGameObject* engineLogo = dynamic_cast<RenderGameObject*>(GetGameObjectByName("EngineLogo"));
         if (engineLogo)
         {
@@ -35,73 +32,65 @@ public:
             {
             case FadingIn:
             {
-                // Calculate the new alpha value for fade-in effect
+                // Scope for FadingIn variables
                 float alphaIn = currentTime / fadeInDuration;
                 engineLogo->SetAlpha(alphaIn);
-
-                // Calculate the scale for the fade-in effect from initial scale to 120%
-                float scale = 1.0f + 0.2f * alphaIn; // Expands from 100% to 120%
-                engineLogo->SetScale(glm::vec3(7.3f * scale, 2.83f * scale, 1.0f));
-
-                // Check if the fade-in duration is complete
+                float scaleIn = 1.0f + 0.2f * alphaIn; // Expands from 100% to 120%
+                engineLogo->SetScale(glm::vec3(4.0f * scaleIn, 3.0f * scaleIn, 1.0f)); // Adjust based on original size
                 if (currentTime >= fadeInDuration)
                 {
                     fadeState = Holding;
-                    currentTime = 0.0f; // Reset the current time for holding
+                    currentTime = 0.0f;
                 }
                 break;
             }
 
             case Holding:
-                
+            {
+                // Holding phase does not require scoped variables
                 engineLogo->SetAlpha(1.0f);
-                engineLogo->SetScale(glm::vec3(7.3f, 2.83f, 1.0f)); // 120% of initial size
-
-                // Check if the hold duration is complete
+                engineLogo->SetScale(glm::vec3(4.8f, 3.6f, 1.0f)); // Maintained at 120%
                 if (currentTime >= holdDuration)
                 {
                     fadeState = FadingOut;
-                    currentTime = 0.0f; // Reset the current time for fade-out
+                    currentTime = 0.0f;
                 }
                 break;
+            }
 
             case FadingOut:
             {
+                // Scope for FadingOut variables
                 float alphaOut = 1.0f - (currentTime / fadeOutDuration);
                 engineLogo->SetAlpha(alphaOut);
-
-                // Check if the fade-out duration is complete
+                float scaleOut = 1.2f - 0.2f * (currentTime / fadeOutDuration); // Gradually return to 100%
+               // engineLogo->SetScale(glm::vec3(4.0f * scaleOut, 3.0f * scaleOut, 1.0f));
                 if (currentTime >= fadeOutDuration)
                 {
                     fadeState = FullyTransparent;
-                    currentTime = 0.0f; // Reset the current time for the fully transparent state
+                    currentTime = 0.0f;
+                    engineLogo->SetAlpha(0.0f); // Ensure it's fully transparent
+                    Application::Get().SetScene("Hallway"); // Change scene when fully faded out
                 }
                 break;
             }
-            case FullyTransparent:
-                // Keep the logo fully transparent
-                engineLogo->SetAlpha(0.0f);
 
-                // Check if the logo has been fully transparent for 1 second
-                if (currentTime >= 1.0f)
-                {
-                    // Switch to the "Hallway" scene
-                    Application::Get().SetScene("Hallway");
-                }
-                break;
+            case FullyTransparent:
+            {
+                // Fully Transparent phase does not require scoped variables
+                break; // Nothing else to do once fully transparent
+            }
             }
         }
 
-        // Check for any key press to switch scenes
+        // Handle instant scene switch on key press (debug or skip functionality)
         Input& input = Application::GetInput();
-        for (int key = GLFW_KEY_SPACE; key <= GLFW_KEY_LAST; ++key)
+        if (input.Get().GetKey(GLFW_KEY_SPACE))
         {
-            if (input.Get().GetKey(key))
-            {
-                Application::Get().SetScene("Hallway");
-                break; // Exit the loop once a key is detected
-            }
+            Application::Get().SetScene("Hallway");
         }
     }
+
+
 
 };

@@ -211,6 +211,8 @@ public:
         audioManager.PlaySound("cabinMusic", true);
         audioManager.PlaySound("knockDoor");
         audioManager.StopSound("Player_footsteps");
+        audioManager.StopSound("bellRing");
+        
     }
 
     void Update(float dt, long frame) override {
@@ -266,6 +268,7 @@ public:
        // Scene::OnExit();  // Call base class if there's relevant logic
         audioManager.PlaySound("slideDoor");
         audioManager.PauseSound("cabinMusic");
+        BellManager::GetInstance().StopAllRinging();
     }
 
 private:

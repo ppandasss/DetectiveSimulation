@@ -16,10 +16,12 @@
 #include "../GameObjects/Book.h"
 #include "../UI/UIButtonEmpty.h"
 #include "../GameObjects/Door.h"
-#include "../GameObjects/DoorsManager.h"
+#include "../GameObjects/DoorManager.h"
+#include "../GameObjects/BellManager.h"
 #include "../GameObjects/OrderData.h"
 #include "../GameObjects/Timer.h"
 #include "../Effects/BackgroundParallax.h"
+#include "../GameObjects/Bell.h"
 
 class Hallway : public Scene
 {
@@ -42,13 +44,29 @@ private:
 	Text* timerText;
     UIElement* timerUI;
 	Text* instructionText;
+
+
+	Door* room1Door;
+	Door* room2Door;
+	Door* room3Door;
+	Door* room4Door;
+	Door* kitchenDoor;
+
+	Bell* bellCabin1;
+	Bell* bellCabin2;
+	Bell* bellCabin3;
+	Bell* bellCabin4;
+
+	bool firstEntry = true;
+	bool inDoorCollision = false;
+
 public:
 	Hallway() :audioManager(AudioManager::GetInstance())
 	{
 		/*--------------------------------------------------------------🔊LOAD AUDDIO🔊------------------------------------------------------------------------------------------------------- */
-		audioManager.LoadSound("hallwayMusic", "Assets/Sounds/Music/BGmusic_Corridor_NoTimer.mp3", 0.15f);
+		audioManager.LoadSound("hallwayMusic", "Assets/Sounds/Music/BGmusic_Corridor_NoTimer.mp3", 0.1f);
 		audioManager.LoadSound("trainAmbience", "Assets/Sounds/Ambience/Ambience_Train.mp3", 0.1f);
-
+		audioManager.LoadSound("bellRing", "Assets/Sounds/SFX_CallingBell.mp3", 0.1f);
 
 		/*--------------------------------------------------------------📦CREATE GAMEOBJECT📦------------------------------------------------------------------------------------------------------- */
 		/*-------------------------------------------------------------🌲CREATE ENVIRONMENT🌲------------------------------------------------------------------------------------------------------- */
@@ -71,13 +89,6 @@ public:
 		GameObject* hallway = new RenderGameObject("Cabin", "Assets/Images/Corridor/Corridor_Background.png");
 		GameObject* hallwaylights = new RenderGameObject("CabinLights", "Assets/Images/Corridor/Corridor_Light.png");
 
-		GameObject* bellCabin1 = new RenderGameObject("bellCabin1", "Assets/Images/Corridor/Bell_Normal.png");
-		GameObject* bellCabin2 = new RenderGameObject("bellCabin2", "Assets/Images/Corridor/Bell_Normal.png");
-		GameObject* bellCabin3 = new RenderGameObject("bellCabin3", "Assets/Images/Corridor/Bell_Normal.png");
-		GameObject* bellCabin4 = new RenderGameObject("bellCabin4", "Assets/Images/Corridor/Bell_Normal.png");
-
-		
-
 		/*-------------------------------------------------------------🚪CREATE DOORS🚪------------------------------------------------------------------------------------------------------- */
 		GameObject* roomdoor1Highlight = new RenderGameObject("RoomdoorHighlight", "Assets/Images/Corridor/PassengerDoor_Highlight.png");
 		GameObject* roomdoor2Highlight = new RenderGameObject("RoomdoorHighlight", "Assets/Images/Corridor/PassengerDoor_Highlight.png");
@@ -85,25 +96,39 @@ public:
 		GameObject* roomdoor4Highlight = new RenderGameObject("RoomdoorHighlight", "Assets/Images/Corridor/PassengerDoor_Highlight.png");
 		GameObject* kitchendoorHighlight = new RenderGameObject("KitchendoorHighlight", "Assets/Images/Corridor/KitchenDoor_Highlight.png");
 
-		Door* room1Door = new Door("Room1Door", roomdoor1Highlight, glm::vec3(-17.58f, -0.632f, 0.0f), glm::vec3(2.29f * 1.2f, 4.65f * 1.2f, 0.0f), "Room1");
-		DoorManager::GetInstance().AddDoor(room1Door);
+		DoorManager& doorManager = DoorManager::GetInstance();
+		room1Door = new Door("Room1Door", roomdoor1Highlight, glm::vec3(-17.58f, -0.632f, 0.0f), glm::vec3(2.29f * 1.2f, 4.65f * 1.2f, 0.0f), "Room1");
+		doorManager.AddDoor(room1Door);
 
-		Door* room2Door = new Door("Room2Door", roomdoor2Highlight, glm::vec3(-8.588f, -0.632f, 0.0f), glm::vec3(2.29f * 1.2f, 4.65f * 1.2f, 0.0f), "Room1");
-		DoorManager::GetInstance().AddDoor(room2Door);
+		room2Door = new Door("Room2Door", roomdoor2Highlight, glm::vec3(-8.588f, -0.632f, 0.0f), glm::vec3(2.29f * 1.2f, 4.65f * 1.2f, 0.0f), "Room1");
+		doorManager.AddDoor(room2Door);
 
-		Door* room3Door = new Door("Room3Door", roomdoor3Highlight, glm::vec3(0.38f, -0.632f, 0.0f), glm::vec3(2.29f * 1.2f, 4.65f * 1.2f, 0.0f), "Room2");
-		DoorManager::GetInstance().AddDoor(room3Door);
+		room3Door = new Door("Room3Door", roomdoor3Highlight, glm::vec3(0.38f, -0.632f, 0.0f), glm::vec3(2.29f * 1.2f, 4.65f * 1.2f, 0.0f), "Room2");
+		doorManager.AddDoor(room3Door);
 
-		Door* room4Door = new Door("Room4Door", roomdoor4Highlight, glm::vec3(9.358f, -0.632f, 0.0f), glm::vec3(2.29f * 1.2f, 4.65f * 1.2f, 0.0f), "Room1");
-		DoorManager::GetInstance().AddDoor(room4Door);
+		room4Door = new Door("Room4Door", roomdoor4Highlight, glm::vec3(9.358f, -0.632f, 0.0f), glm::vec3(2.29f * 1.2f, 4.65f * 1.2f, 0.0f), "Room1");
+		doorManager.AddDoor(room4Door);
 
-		Door* kitchenDoor = new Door("KitchenDoor", kitchendoorHighlight, glm::vec3(18.31f, -0.629f, 0.0f), glm::vec3(2.29f * 1.2f, 4.65f * 1.2f, 0.0f), "Kitchen");
-		DoorManager::GetInstance().AddDoor(kitchenDoor);
-		
+		kitchenDoor = new Door("KitchenDoor", kitchendoorHighlight, glm::vec3(18.31f, -0.629f, 0.0f), glm::vec3(2.29f * 1.2f, 4.65f * 1.2f, 0.0f), "Kitchen");
+		doorManager.AddDoor(kitchenDoor);
+
+
+		/*-------------------------------------------------------------🔔CREATE BELLS🔔------------------------------------------------------------------------------------------------------- */
+		bellCabin1 = new Bell("bellCabin1", "Assets/Images/Corridor/Bell_Ring_Sprite.png", 1, 3);
+		bellCabin2 = new Bell("bellCabin2", "Assets/Images/Corridor/Bell_Ring_Sprite.png", 1, 3);
+		bellCabin3 = new Bell("bellCabin3", "Assets/Images/Corridor/Bell_Ring_Sprite.png", 1, 3);
+		bellCabin4 = new Bell("bellCabin4", "Assets/Images/Corridor/Bell_Ring_Sprite.png", 1, 3);
+
+		BellManager& bellManager = BellManager::GetInstance();
+
+		bellManager.AddBell(bellCabin1,room1Door);
+		bellManager.AddBell(bellCabin2,room2Door);
+		bellManager.AddBell(bellCabin3,room3Door);
+		bellManager.AddBell(bellCabin4,room4Door);
+
 
 		Journal = new Book();
 		
-	 
 
 		//activate clue in journal
 		/*JournalData::GetInstance()->ActivateClue(CLUE_CABIN1, 0);
@@ -141,7 +166,7 @@ public:
 
 		instructionText = new Text("instruction", "Press [E] to enter","Assets/Fonts/mvboli.ttf", true);
 		instructionText->SetScale(0.6f);
-		instructionText->SetPosition(glm::vec3(7.52f, -4.3f, 0.0f));
+		instructionText->SetPosition(glm::vec3(7.30f, -4.3f, 0.0f));
 		instructionText->SetColor(glm::vec3(1, 1, 1));
 		
 
@@ -242,57 +267,57 @@ public:
 		//Scene::OnEnter();
 		audioManager.PlaySound("hallwayMusic", true);
 		audioManager.PlaySound("trainAmbience", true);
+
+		Application::Get().SetTimer(5000, [this]() { bellCabin1->startRinging();  }, false);
 	}
 
 	void Update(float dt, long frame) {
-		Scene::Update(dt, frame); // Call the base class update
 
+		Scene::Update(dt, frame);
 		BackgroundparallaxManager->Update(dt);
 
 		Timer& timer = Timer::GetInstance();
-	    timer.Update(dt);
-		
+		timer.Update(dt);
 
-		// Retrieve the player object by name
+		BellManager& bellManager = BellManager::GetInstance();
+		bellManager.Update(dt, frame);
 
 		if (player) {
-			// Get the player's position
 			glm::vec3 playerPos = player->GetPosition();
-			// Get the camera and update its position
 			Camera& camera = Application::GetCamera();
+			float targetX = std::max(-12.74f, std::min(playerPos.x, 12.91f));
+			camera.SetPosition(targetX + 0.05f * (targetX - camera.GetPosX()), camera.GetPosY());
 
-			const float leftBound = -12.74f;
-			const float rightBound = 12.91f;
+			DoorManager& doorManager = DoorManager::GetInstance();
+			bool isNearDoor = doorManager.CheckDoorCollisions(playerPos, player->GetScale(),
+				[this, &bellManager](Door* door) {  // Capture bellManager by reference
+					Input& input = Application::GetInput();
+					if (door) {
+						if (door->getPermission()  ) {
+							instructionText->SetContent("Press [E] to enter");
+							if (input.Get().GetKeyDown(GLFW_KEY_E))
+							{
+								bellManager.StopAllRinging();
+								Application::Get().SetScene(door->GetSceneName());
+							}
+						}
+						else if (!door->getPermission()) {
+							instructionText->SetContent("You do not have permission.");
+						}
+					}
+				});
 
-			// Set the target position for the camera
-			float targetX = std::max(leftBound, std::min(playerPos.x, rightBound));
-
-			// Smoothing factor for camera movement
-			float smoothingFactor = 0.05f; // Experiment with different values
-
-			// Smoothly interpolate the camera's x position towards the target
-			float interpolatedX = camera.GetPosX() + smoothingFactor * (targetX - camera.GetPosX());
-
-			// Set the new camera position
-			camera.SetPosition(targetX, camera.GetPosY());
-
-			bool isNearDoor = DoorManager::GetInstance().CheckDoorCollisions(player->GetPosition(), player->GetScale(), [](const std::string& sceneName) {});
 			instructionText->setActiveStatus(isNearDoor);
-
 		}
-
 	}
+
 
 	void OnExit() override {
 		//Scene::OnExit(); 
 		audioManager.PauseSound("hallwayMusic");
 		audioManager.StopSound("Player_footsteps");
+		
 	}
 
 
 };
-
-
-
-
-

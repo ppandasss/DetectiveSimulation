@@ -3,6 +3,10 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include <vector>
+#include <functional>
+#include <queue>
+#include <chrono>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
@@ -19,11 +23,23 @@
 const unsigned int SCR_WIDTH = 1920;
 const unsigned int SCR_HEIGHT = 1080;
 
+struct GlobalTimer {
+	std::function<void()> callback;
+	std::chrono::steady_clock::time_point endTime;
+	long long duration;  // Duration in milliseconds
+	bool repeat;
+
+	// Comparator for priority queue (earliest time first)
+	bool operator<(const GlobalTimer& other) const {
+		return endTime > other.endTime;
+	}
+};
+
 class Application
 {
 public:
-	Application(int width, int height, const char* title);
 
+	Application(int width, int height, const char* title);
 
 	~Application();
 
@@ -46,6 +62,8 @@ public:
 		}
 
 	}
+
+	void SetTimer(long long duration, std::function<void()> callback, bool repeat = false);
 
 	void Run();
 
@@ -103,6 +121,8 @@ public:
 
 private:
 
+	void processTimers();
+	std::priority_queue<GlobalTimer> timers;
 	std::string baseTitle;
 	Shader m_shader;
 	Camera m_camera;
