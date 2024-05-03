@@ -2,13 +2,11 @@
 
 #include "../Text/Text.h"
 
-enum Location { LOCATION_EMPTY, TOWNSQUARE, HOLYCHURCH, COUNCIL, SUPREMECOURT };
-
-enum Spy { SPY_EMPTY, SPY1, SPY21, SPY22, SPY3, SPY4 };
+enum Location { TOWNSQUARE, HOLYCHURCH, COUNCIL, SUPREMECOURT, LOCATION_EMPTY };
 
 //used for clues and character data
 
-enum Cabin {CABIN1, CABIN21, CABIN22, CABIN3, CABIN4 };
+enum Cabin {CABIN1, CABIN21, CABIN22, CABIN3, CABIN4, CABIN_EMPTY };
 
 enum Ending {END1, END2, END3, END4, END5, END6};
 
@@ -17,6 +15,7 @@ struct ClueData {
 
 	bool showText;
 	Text* clueText = nullptr;
+	bool isEvidence = false;
 
 };
 
@@ -29,9 +28,9 @@ struct DeferredRenderObject {
 
 struct MainPageData {
 
-	Spy player_Spy;
+	Cabin player_Spy;
 	Location player_BombLocation;  
-	int player_Evidence;
+	std::string player_Evidence;
 
 };
 
@@ -60,7 +59,7 @@ class JournalData {
 
 		//SER PLAYER CHOICES
 
-		void SetPlayerSpyChoice(Spy spyChoice) {
+		void SetPlayerSpyChoice(Cabin spyChoice) {
 			main_page.player_Spy = spyChoice;
 		}
 
@@ -72,11 +71,11 @@ class JournalData {
 
 		void incrementEvidence() {
 			// Increment index and wrap around if needed
-			main_page.player_Evidence = (main_page.player_Evidence + 1) % 4;
+			//main_page.player_Evidence = (main_page.player_Evidence + 1) % 2;
 		}
 
 		std::string getEvidenceText() {
-			return mainPageEvidence[main_page.player_Evidence];
+			return main_page.player_Evidence;
 		}
 
 		
@@ -89,7 +88,12 @@ class JournalData {
 
 			if (index >= 0 && index < allCabinData[cabin].textClues.size()) {
 
-				allCabinData[cabin].textClues[index]->showText = true;
+				ClueData* activatedClue = allCabinData[cabin].textClues[index];
+				activatedClue->showText = true;
+
+				if (activatedClue->isEvidence) {
+					allCabinEvidenceChoices[cabin].push_back(activatedClue->clueText->GetContent());
+				}
 
 			}
 
@@ -116,6 +120,10 @@ class JournalData {
 
 			allCabinData[cabin].textClues.push_back(newClue);
 
+			if (newClue->showText && newClue->isEvidence) {
+				allCabinEvidenceChoices[cabin].push_back(newClue->clueText->GetContent());
+			}
+
 		}
 	
 
@@ -131,16 +139,19 @@ class JournalData {
 
 		Ending checkMainPageEntry() {
 
-			Spy spy_choice = main_page.player_Spy;
+			Cabin spy_choice = main_page.player_Spy;
 			Location location_choice = main_page.player_BombLocation;
-			int evidence_choice = main_page.player_Evidence;
+			std::string evidence_choice = main_page.player_Evidence;
 
 			//----------CHECK IF CHOICES ARE CORRECT HERE AND SET BOOL BELOW----------------
 
-			bool spyCorrect = true;
-			bool locationCorrect = true;
-			bool evidenceCorrect = true;
+			bool spyCorrect = false;
+			bool locationCorrect = false;
+			bool evidenceCorrect = false;
 
+			if (spy_choice == CABIN21) spyCorrect = true;
+			if (location_choice == TOWNSQUARE) locationCorrect = true;
+			if (evidence_choice == "After visiting National Day Event with his sister") evidenceCorrect = true;
 
 			if (spyCorrect) {
 
@@ -181,9 +192,9 @@ class JournalData {
 
 		JournalData() {
 
-			main_page.player_Spy = Spy::SPY_EMPTY;
+			main_page.player_Spy = CABIN_EMPTY;
 			main_page.player_BombLocation = Location::LOCATION_EMPTY;
-			main_page.player_Evidence = 0;
+			main_page.player_Evidence = "";
 
 		}
 
@@ -191,9 +202,11 @@ class JournalData {
 
 		std::map<Cabin, CabinPageData> allCabinData;
 
-		std::vector<std::string> mainPageEvidenceVec;
+		std::map<Cabin,std::vector<std::string>> allCabinEvidenceChoices;
 
-		std::string mainPageEvidence[4] = { "Evidence 1","Evidence 2", "Evidence 3", "Evidence 4" };
+		std::string mainPageEvidence[2] = { "Evidence 1","Evidence 2" };
+
+
 
 };
 

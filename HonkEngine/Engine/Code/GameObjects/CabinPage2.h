@@ -71,6 +71,7 @@ public:
 		ClueData* cabin21_clue1 = new ClueData();
 		cabin21_clue1->showText = true;
 		cabin21_clue1->clueText = N_Clue1;
+		cabin21_clue1->isEvidence = true;
 
 		ClueData* cabin21_clue2 = new ClueData();
 		cabin21_clue2->showText = true;
@@ -115,6 +116,7 @@ public:
 		ClueData* cabin21_clue6 = new ClueData();
 		cabin21_clue6->showText = true;
 		cabin21_clue6->clueText = N_LA2;
+		cabin21_clue6->isEvidence = true;
 
 		textClues.push_back(cabin21_clue1);
 		textClues.push_back(cabin21_clue2);

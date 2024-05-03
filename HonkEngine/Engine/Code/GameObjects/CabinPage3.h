@@ -71,6 +71,7 @@ public:
 		ClueData* cabin22_clue1 = new ClueData();
 		cabin22_clue1->showText = true;
 		cabin22_clue1->clueText = E_Clue1;
+		cabin22_clue1->isEvidence = true;
 
 		ClueData* cabin22_clue2 = new ClueData();
 		cabin22_clue2->showText = true;
@@ -113,6 +114,7 @@ public:
 		ClueData* cabin22_clue6 = new ClueData();
 		cabin22_clue6->showText = true;
 		cabin22_clue6->clueText = E_LA2;
+		cabin22_clue6->isEvidence = true;
 
 		textClues.push_back(cabin22_clue1);
 		textClues.push_back(cabin22_clue2);

@@ -84,6 +84,7 @@ public:
 		ClueData* cabin1_clue4 = new ClueData();
 		cabin1_clue4->showText = true;
 		cabin1_clue4->clueText = M_C4;
+		cabin1_clue4->isEvidence = true;
 
 
 		GameObject* Divider1 = new UIObject("Divider1", "Assets/Images/Journal/Line_1.png", true);
@@ -112,6 +113,7 @@ public:
 		ClueData* cabin1_clue5 = new ClueData();
 		cabin1_clue5->showText = true;
 		cabin1_clue5->clueText = M_LA1;
+		cabin1_clue5->isEvidence = true;
 
 		ClueData* cabin1_clue6 = new ClueData();
 		cabin1_clue6->showText = true;

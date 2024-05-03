@@ -130,7 +130,7 @@ public:
 		// EVIDENCE TEXT
 
 		EvidenceButton = new UIButtonEmpty("EvidenceText", glm::vec3(3.2f, -1.0f, 0.0f), glm::vec3(5.0f, 0.5f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
-		EvidenceButton->SetButtonText(JournalData::GetInstance()->getEvidenceText());
+		EvidenceButton->SetButtonText(m_journalData->getEvidenceText());
 		EvidenceButton->SetTextSize(0.6f);
 		EvidenceButton->SetOnClickAction([this]() { updateEvidence(); });
 
@@ -178,7 +178,7 @@ public:
 	//--------------------- SUSPECT BUTTON FUNCTIONS -----------------------
 
 	void setSpy1() {
-		m_journalData->SetPlayerSpyChoice(SPY1);
+		m_journalData->SetPlayerSpyChoice(CABIN1);
 
 		if (redCircle->showObject == false) {
 			redCircle->showObject = true;
@@ -187,7 +187,7 @@ public:
 	};
 
 	void setSpy21() {
-		m_journalData->SetPlayerSpyChoice(SPY21);
+		m_journalData->SetPlayerSpyChoice(CABIN21);
 
 		if (redCircle->showObject == false) {
 			redCircle->showObject = true;
@@ -197,7 +197,7 @@ public:
 	};
 
 	void setSpy22() {
-		m_journalData->SetPlayerSpyChoice(SPY22);
+		m_journalData->SetPlayerSpyChoice(CABIN22);
 
 		if (redCircle->showObject == false) {
 			redCircle->showObject = true;
@@ -207,7 +207,7 @@ public:
 	};
 
 	void setSpy3() {
-		m_journalData->SetPlayerSpyChoice(SPY3);
+		m_journalData->SetPlayerSpyChoice(CABIN3);
 
 		if (redCircle->showObject == false) {
 			redCircle->showObject = true;
@@ -217,7 +217,7 @@ public:
 	};
 
 	void setSpy4() {
-		m_journalData->SetPlayerSpyChoice(SPY4);
+		m_journalData->SetPlayerSpyChoice(CABIN3);
 
 		if (redCircle->showObject == false) {
 			redCircle->showObject = true;

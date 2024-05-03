@@ -80,6 +80,7 @@ public:
 		ClueData* cabin3_clue2 = new ClueData();
 		cabin3_clue2->showText = true;
 		cabin3_clue2->clueText = A_Clue2;
+		cabin3_clue2->isEvidence = true;
 
 		ClueData* cabin3_clue3 = new ClueData();
 		cabin3_clue3->showText = true;
@@ -132,7 +133,8 @@ public:
 		A_LA2_1->SetPosition(glm::vec3(3.4f, -0.47, 0.0f));
 		A_LA2_1->SetColor(glm::vec3(0.5, 0, 0));
 		A_LA2_1->SetScale(0.62f);
-
+		
+		//CAN WE CONDENSE THIS INTO ONE OBJECT
 		Text* A_LA2_2 = new Text("A_LA2_2", "to Westside client", "Assets/Fonts/ESA-smb.ttf");
 		A_LA2_2->SetPosition(glm::vec3(3.4f, -0.8f, 0.0f));
 		A_LA2_2->SetColor(glm::vec3(0.5, 0, 0));
@@ -149,6 +151,7 @@ public:
 		ClueData* cabin3_clue8 = new ClueData();
 		cabin3_clue8->showText = true;
 		cabin3_clue8->clueText = A_LA2_1;
+		cabin3_clue8->isEvidence = true;
 
 		ClueData* cabin3_clue9 = new ClueData();
 		cabin3_clue9->showText = true;

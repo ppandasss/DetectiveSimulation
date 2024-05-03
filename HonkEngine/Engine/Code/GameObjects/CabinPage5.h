@@ -75,6 +75,7 @@ public:
 		ClueData* cabin4_clue2 = new ClueData();
 		cabin4_clue2->showText = true;
 		cabin4_clue2->clueText = O_Clue2;
+		cabin4_clue2->isEvidence = true;
 
 		ClueData* cabin4_clue3 = new ClueData();
 		cabin4_clue3->showText = true;
@@ -83,6 +84,7 @@ public:
 		ClueData* cabin4_clue4 = new ClueData();
 		cabin4_clue4->showText = true;
 		cabin4_clue4->clueText = O_Clue4;
+		cabin4_clue4->isEvidence = true;
 
 		textClues.push_back(cabin4_clue1);
 		textClues.push_back(cabin4_clue2);
