@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="1MD53">
+		<Speaker name="Martha_Happy">
+			<line1>The sandwich looks creamy and  savory just as I requested!</line1>
+			<line2>Very appetizing.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD56">
+		<Speaker name="Martha_Normal">
+			<line1>Well, let's take a look at the  pastry...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

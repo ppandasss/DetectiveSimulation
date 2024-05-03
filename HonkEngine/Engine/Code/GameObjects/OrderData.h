@@ -96,6 +96,10 @@ public:
         return pastryOrder;
     }
 
+    const bool GetOrderPaperVisibility() const {
+		return orderPaper->getActiveStatus();
+	}
+
 
     bool IsValidOrder() const {
         return !roomNumber.empty() && !teaOrder.empty() && !sandwichOrder.empty() && !pastryOrder.empty();

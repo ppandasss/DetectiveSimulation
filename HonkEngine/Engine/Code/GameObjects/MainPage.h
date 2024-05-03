@@ -5,8 +5,15 @@
 class MainPage : public Page {
 
 public:
+	AudioManager& audioManager;
 
-	MainPage() :Page() {
+public:
+
+	MainPage() :Page(), audioManager(AudioManager::GetInstance()) {
+
+		audioManager.LoadSound("spyCircle", "Assets/Sounds/Journal/SFX_SpyCircle.mp3", 1.0f);
+		audioManager.LoadSound("bombUnderline", "Assets/Sounds/Journal/SFX_BombUnderline3.mp3", 1.0f);
+		audioManager.LoadSound("evidenceWrite", "Assets/Sounds/Journal/SFX_EvidenceWrite1.mp3", 1.2f);
 
 
 		// DRAGGABLE PAPERS
@@ -114,10 +121,11 @@ public:
 		RedUnderline = new UIObject("RedUnderline", "Assets/Images/Journal/CaseSummary_Icon_Red_Underline.png", true);
 		RedUnderline->setActiveStatus(false);
 		RedUnderline->SetScale(glm::vec3(1.7f, 0.1f, 0.0f));
-		RedUnderline->SetPosition(glm::vec3(1.1f, -2.0f, 0.0f));
-		// EVIDENCE TEXT
+		RedUnderline->SetPosition(glm::vec3(1.1f, -1.7f, 0.0f));
 
-		EvidenceButton = new UIButtonEmpty("EvidenceText", glm::vec3(3.2f, -1.0f, 0.0f), glm::vec3(5.0f, 0.5f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
+
+		// EVIDENCE TEXT
+		EvidenceButton = new UIButtonEmpty("EvidenceText", glm::vec3(3.2f, -0.9f, 0.0f), glm::vec3(5.0f, 0.5f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
 		EvidenceButton->SetButtonText(JournalData::GetInstance()->getEvidenceText());
 		EvidenceButton->SetTextSize(0.6f);
 		EvidenceButton->SetOnClickAction([this]() { updateEvidence(); });
@@ -177,33 +185,41 @@ public:
 		m_journalData->SetPlayerSpyChoice(SPY1);
 
 		if (!RedCircle->getActiveStatus()) {RedCircle->setActiveStatus(true);}
-		
+
 		RedCircle->SetPosition(glm::vec3(1.15f, 1.55f, 0.0f));
+		audioManager.PlaySound("spyCircle", false);
 	};
 
 	void setSpy21() {
 		m_journalData->SetPlayerSpyChoice(SPY21);
 		if (!RedCircle->getActiveStatus()) { RedCircle->setActiveStatus(true); }
+
 		RedCircle->SetPosition(glm::vec3(2.65f, 1.55f, 0.0f));
-		
+		audioManager.PlaySound("spyCircle", false);
 	};
 
 	void setSpy22() {
 		m_journalData->SetPlayerSpyChoice(SPY22);
 		if (!RedCircle->getActiveStatus()) { RedCircle->setActiveStatus(true); }
+
 		RedCircle->SetPosition(glm::vec3(4.15f, 1.55f, 0.0f));
+		audioManager.PlaySound("spyCircle", false);
 	};
 
 	void setSpy3() {
 		m_journalData->SetPlayerSpyChoice(SPY3);
 		if (!RedCircle->getActiveStatus()) { RedCircle->setActiveStatus(true); }
+
 		RedCircle->SetPosition(glm::vec3(1.15f, 0.25f, 0.0f));
+		audioManager.PlaySound("spyCircle", false);
 	};
 
 	void setSpy4() {
 		m_journalData->SetPlayerSpyChoice(SPY4);
 		if (!RedCircle->getActiveStatus()) { RedCircle->setActiveStatus(true); }
+
 		RedCircle->SetPosition(glm::vec3(2.65f, 0.25f, 0.0f));
+		audioManager.PlaySound("spyCircle", false);
 	};
 
 	////--------------------- BOMB LOCATION FUNCTIONS ------------------------
@@ -212,28 +228,32 @@ public:
 		m_journalData->SetPlayerBombLocation(TOWNSQUARE);
 		if (!RedUnderline->getActiveStatus()) { RedUnderline->setActiveStatus(true); }
 		RedUnderline->SetPosition(glm::vec3(1.4f, -2.45f, 0.0f));
-		
+		audioManager.PlaySound("bombUnderline", false);
+
 	};
 
 	void setLocationHolyChurch() {
 		m_journalData->SetPlayerBombLocation(HOLYCHURCH);
 		if (!RedUnderline->getActiveStatus()) { RedUnderline->setActiveStatus(true); }
 		RedUnderline->SetPosition(glm::vec3(3.5f, -2.45f, 0.0f));
-		
+		audioManager.PlaySound("bombUnderline", false);
+
 	};
 
 	void setLocationCouncil() {
 		m_journalData->SetPlayerBombLocation(COUNCIL);
 		if (!RedUnderline->getActiveStatus()) { RedUnderline->setActiveStatus(true); }
 		RedUnderline->SetPosition(glm::vec3(1.4f, -2.95f, 0.0f));
-		
+		audioManager.PlaySound("bombUnderline", false);
+
 	};
 
 	void setLocationSupremeCourt() {
 		m_journalData->SetPlayerBombLocation(SUPREMECOURT);
 		if (!RedUnderline->getActiveStatus()) { RedUnderline->setActiveStatus(true); }
 		RedUnderline->SetPosition(glm::vec3(3.5f, -2.95f, 0.0f));
-		
+		audioManager.PlaySound("bombUnderline", false);
+
 	};
 	
 	//------------------------EVIDENCE FUNCTIONS--------------------
@@ -243,7 +263,7 @@ public:
 		m_journalData->incrementEvidence();
 
 		EvidenceButton->SetButtonText(m_journalData->getEvidenceText());
-
+		audioManager.PlaySound("evidenceWrite", false);
 	}
 
 

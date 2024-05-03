@@ -26,8 +26,14 @@ public:
 		//platePositionArea->SetButtonText("Drop Area");
 
 		/*--------------------------------------------------------------LOAD AUDDIO------------------------------------------------------------------------------------------------------- */
-		audioManager.LoadSound("kitchenAmbience", "Assets/Sounds/Ambience_Kitchen.mp3", 0.2f);
-		audioManager.PlaySound("kitchenAmbience", true);
+		audioManager.LoadSound("kitchenAmbience", "Assets/Sounds/Ambience/Ambience_Kitchen.mp3", 0.65f);
+
+		audioManager.LoadSound("plateSound1", "Assets/Sounds/Kitchen/SFX_MealSelect1.mp3", 1.0f);
+		audioManager.LoadSound("plateSound2", "Assets/Sounds/Kitchen/SFX_MealSelect2.mp3", 1.0f);
+		audioManager.LoadSound("plateSound3", "Assets/Sounds/Kitchen/SFX_MealSelect3.mp3", 1.0f);
+		audioManager.LoadSound("plateSound4", "Assets/Sounds/Kitchen/SFX_MealSelect4.mp3", 1.0f);
+		audioManager.LoadSound("slideDoor", "Assets/Sounds/SFX_SlideDoor.mp3", 2.5f);
+
 
 		/*--------------------------------------------------------------CREATE GAMEOBJECT------------------------------------------------------------------------------------------------------- */
 
@@ -35,13 +41,17 @@ public:
 		KitchenBackground->SetScale(glm::vec3(19.2f, 10.8f, 0.0f));
 		KitchenBackground->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
-		UIElement* orderPaper = new UINormal("OrderPaper", "Assets/Images/OrderPaper.png", glm::vec3(-7.65f, 4.0f, 0.0f), glm::vec3(3.55f, 2.54f, 0.0f), true);
+		GameObject* Tray = new UIObject("Tray", "Assets/Images/Kitchen/Tray.png", true);
+		Tray->SetScale(glm::vec3(7.13f * 0.8f, 3.45f * 0.8f, 0.0f));
+		Tray->SetPosition(glm::vec3(-4.9f, -0.3f, 0.0f));
+
+		orderPaper  = new UINormal("OrderPaper", "Assets/Images/UI/OrderPaper.png", glm::vec3(-7.65f, 4.0f, 0.0f), glm::vec3(3.55f, 2.54f, 0.0f), true);
+		timerUI = new UINormal("TimerUI", "Assets/Images/UI/Timer.png", glm::vec3(7.3f, 5.1f, 0.0f), glm::vec3(4.37f, 3.13f, 0.0f), true);
 
 		Journal = new Book();
 		
 		/*--------------------------------------------------------------CREATE GAMEOBJECT------------------------------------------------------------------------------------------------------- */
 
-		
 		orderNoText = new Text("orderNo", "", "Assets/Fonts/mvboli.ttf", true);
 		teaOrderText = new Text("TeaOrder", "", "Assets/Fonts/mvboli.ttf", true);
 		sandwichOrderText = new Text("sandwichOrder", "", "Assets/Fonts/mvboli.ttf", true);
@@ -50,19 +60,39 @@ public:
 
 		orderNoText->SetPosition(glm::vec3(-8.8f, 4.5f, 0.0f));
 		orderNoText->SetColor(glm::vec3(0.5, 0, 0));
-		teaOrderText->SetPosition(glm::vec3(-6.8f, 4.6f, 0.0f));
-		teaOrderText->SetScale(0.5f);
-		sandwichOrderText->SetPosition(glm::vec3(-7.8f, 4.0f, 0.0f));
-		sandwichOrderText->SetScale(0.5f);
-		pastryOrderText->SetPosition(glm::vec3(-7.8f, 3.3f, 0.0f));
-		pastryOrderText->SetScale(0.5f);
+		teaOrderText->SetPosition(glm::vec3(-7.1f, 4.5f, 0.0f));
+		teaOrderText->SetScale(0.6f);
+		sandwichOrderText->SetPosition(glm::vec3(-7.6f, 3.9f, 0.0f));
+		sandwichOrderText->SetScale(0.55f);
+		pastryOrderText->SetPosition(glm::vec3(-7.6f, 3.28f, 0.0f));
+		pastryOrderText->SetScale(0.55f);
+
+
 
 		//OrderData to manager Order Text
 		OrderData& orderData = OrderData::GetInstance();
 		orderData.Initialize(orderNoText, teaOrderText, sandwichOrderText, pastryOrderText);
-
+		//orderData.SetOrderPaper(orderPaper);
 		// Add observer to update UI on change
-		orderData.AddObserver([this]() { this->UpdateOrderDisplay(); });
+		
+		// In Kitchen Constructor
+		Timer& timer = Timer::GetInstance();
+		timerText = new Text("timerText", "", "Assets/Fonts/Jibril.ttf", true); 
+		
+		timerText->SetPosition(glm::vec3(6.65f, 4.12f, 0.0f));
+		timerText->SetColor(glm::vec3(0.78039, 0.72549, 0.44314));
+		timerText->SetScale(1.45f);
+
+		timerUI->setActiveStatus(false);
+
+		timer.Initialize(timerText);
+		//timer.SetTimerUI(this->timerUI);
+
+		orderData.AddObserver([this]() { this->UpdateTimerDisplay(); });
+		timer.AddObserver([this, &timer]() {this->UpdateOrderDisplay(); });
+	
+		//m_gameObjects.push_back(timerUI); // Add the timer UI to the game object list
+		//m_gameObjects.push_back(timerText); // Add the timer text to the game object list
 
 		
 
@@ -183,14 +213,19 @@ public:
 		/*--------------------------------------------------------------PUSH BACK------------------------------------------------------------------------------------------------------- */
 
 		m_gameObjects.push_back(KitchenBackground);
+		m_gameObjects.push_back(Tray);
 		m_gameObjects.push_back(ServeBellButton);
 		m_gameObjects.push_back(ServeBellGrey);
 		m_gameObjects.push_back(orderPaper);
+		m_gameObjects.push_back(timerUI);
 
 		m_gameObjects.push_back(orderNoText);
 		m_gameObjects.push_back(teaOrderText);
 		m_gameObjects.push_back(sandwichOrderText);
 		m_gameObjects.push_back(pastryOrderText);
+
+		m_gameObjects.push_back(timerText);
+		
 
 		//PLATED FOOD GAMEOBJECTS
 
@@ -259,15 +294,25 @@ public:
 
 		//set all plate gameobjects as inactive
 		clearPlate();
+		
+	}
 
+	void OnEnter() override {
+		Scene::OnEnter();  // Call base class if there's relevant logic
+		audioManager.PlaySound("kitchenAmbience", true);
+		audioManager.PlaySound("slideDoor");
 	}
 
 	void Update(float dt, long frame) override {
 
 		Scene::Update(dt, frame);
 
+		Timer& timer = Timer::GetInstance();
+		timer.Update(dt);
+
 		if (input.Get().GetKeyDown(GLFW_KEY_E)) {
 			Application::Get().SetScene("Hallway");
+			audioManager.StopSound("kitchenAmbience");
 		}
 
 		if (input.Get().GetKeyDown(GLFW_KEY_R)) { //RESET KITCHEN
@@ -281,26 +326,37 @@ public:
 
 
 	void UpdateOrderDisplay() {
-		OrderData& orderData = OrderData::GetInstance();
-		std::cout << "Updating order display in Kitchen" << std::endl;
-		std::cout << "Room Number: " << orderData.GetRoomNumber() << std::endl;
-		std::cout << "Tea Order: " << orderData.GetTeaOrder() << std::endl;
-		std::cout << "Sandwich Order: " << orderData.GetSandwichOrder() << std::endl;
-		std::cout << "Pastry Order: " << orderData.GetPastryOrder() << std::endl;
 
-		if (orderNoText && teaOrderText && sandwichOrderText && pastryOrderText) {
+		OrderData& orderData = OrderData::GetInstance();
+		
+
+		if (orderNoText && teaOrderText && sandwichOrderText && pastryOrderText && orderPaper) {
 			orderNoText->SetContent(orderData.GetRoomNumber());
 			teaOrderText->SetContent(orderData.GetTeaOrder());
 			sandwichOrderText->SetContent(orderData.GetSandwichOrder());
 			pastryOrderText->SetContent(orderData.GetPastryOrder());
+			orderPaper->setActiveStatus(orderData.GetOrderPaperVisibility());
+
 
 			// Debug: Confirm the update visually
-			std::cout << "Text set for Room Number: " << orderNoText->GetContent() << std::endl;
-			orderNoText->SetColor(glm::vec3(1.0f, 0.0f, 0.0f)); // Set text color to red for visibility
+			//orderNoText->SetColor(glm::vec3(1.0f, 0.0f, 0.0f)); // Set text color to red for visibility
 		}
 		else {
 			std::cout << "One or more text objects are null." << std::endl;
 		}
+
+
+	}
+
+	void UpdateTimerDisplay() {
+		Timer& timer = Timer::GetInstance();
+		if (timerText && timerUI) {
+			timerText->SetContent(timer.GetTime());
+			timerUI->setActiveStatus(!timer.GetTimerUIVisibility());
+		}
+		else {
+					std::cout << "One or more text objects are null." << std::endl;
+	    }
 	}
 
 
@@ -335,6 +391,7 @@ public:
 				platedSandwhich[i]->setActiveStatus(false);
 			}
 		}
+		audioManager.PlaySound("plateSound4", false);
 
 	}
 
@@ -349,6 +406,7 @@ public:
 				platedDessert[i]->setActiveStatus(false);
 			}
 		}
+		audioManager.PlaySound("plateSound2", false);
 
 	}
 
@@ -362,6 +420,7 @@ public:
 				platedTea[i]->setActiveStatus(false);
 			}
 		}
+		audioManager.PlaySound("plateSound3", false);
 
 
 	}
@@ -374,6 +433,7 @@ public:
 		else {
 			platedMilk->setActiveStatus(false);
 		}
+		audioManager.PlaySound("plateSound1", false);
 
 	}
 
@@ -514,7 +574,12 @@ public:
 			ServeBellButton->setActiveStatus(false);
 			ServeBellGrey->setActiveStatus(true);
 		}
+	}
 
+	void OnExit() override {
+		Scene::OnExit();  // Call base class if there's relevant logic
+		audioManager.PlaySound("slideDoor");
+		audioManager.StopSound("kitchenAmbience");
 	}
 
 
@@ -568,11 +633,13 @@ private:
 	const float snapThreshold = 2.0f;
 
 
-
-
 	Text* orderNoText;
 	Text* teaOrderText;
 	Text* sandwichOrderText;
 	Text* pastryOrderText;
+
+	Text* timerText;
+	UIElement* timerUI;
+    UIElement* orderPaper;
 
 };

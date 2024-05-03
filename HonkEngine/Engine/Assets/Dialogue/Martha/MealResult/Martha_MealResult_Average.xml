@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="1MD10" next="1MD61">
+		<Speaker name="Martha_Normal">
+			<line1>You've done a great job with the meal.</line1>
+			<line2>Though it is not perfect to my liking,  everything looks absolutely delicious.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD61" next="1WD37">
+		<Speaker name="Martha_Normal">
+			<line1>Has your duty here completed, dear?</line1>
+			<line2>You deserve a break after such a  long service.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1WD37" next="1MD62">
+		<Speaker name="Waiter">
+			<line1>I'm afraid I must remain, ma'am.</line1>
+			<line2>We need to ensure the tea is brewed  to perfection for your best enjoyment.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD62">
+		<Speaker name="Martha_Happy">
+			<line1>Oh, really? What a considerate  service!</line1>
+			<line2>I hope you wouldn't mind continuing  our conversation for a while longer.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

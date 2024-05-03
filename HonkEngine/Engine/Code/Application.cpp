@@ -65,19 +65,16 @@ void processInput(GLFWwindow* window)
 
 Application* Application::s_instance = nullptr;
 
-Application::~Application()
-{
-    std::cout << "Application Desctructor\n";
-
-
-
-    for (auto& scene : m_sceneMap)
-    {
+Application::~Application() {
+    if (m_currentScene) {
+        m_currentScene->OnExit();
+    }
+    for (auto& scene : m_sceneMap) {
         delete scene.second;
     }
-
     glfwTerminate();
 }
+
 
 Application::Application(int win_width, int win_height, const char* title)
     : baseTitle(title)
@@ -141,31 +138,21 @@ void Application::Run()
     int frameCount = 0;
 
 
-    while (!glfwWindowShouldClose(m_window))
-    {
-
+    while (!glfwWindowShouldClose(m_window)) {
         double currentTime = glfwGetTime();
         double dt = currentTime - lastFrameTime;
         lastFrameTime = currentTime;
 
-        frameRateTimer += dt;
-        frameCount++;
-
-        // input
-        // -----
+        // Input handling
         processInput(m_window);
 
-
-
+        // Scene management
         if (m_currentScene) {
             m_currentScene->Update(dt, frameCount);
             m_currentScene->Render();
-
-
         }
 
-
-        glGetError();
+        // Buffer swapping and event polling
         glfwSwapBuffers(m_window);
         glfwPollEvents();
 
@@ -180,6 +167,10 @@ void Application::Run()
             frameRateTimer = 0.0;
             frameCount = 0;
         }
+    }
+
+    if (m_currentScene) {
+        m_currentScene->OnExit();
     }
 
 }

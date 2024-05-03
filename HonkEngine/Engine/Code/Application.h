@@ -36,8 +36,13 @@ public:
 	{
 		if (m_sceneMap.find(name) != m_sceneMap.end())
 		{
-			m_currentScene = m_sceneMap[name];
-			//m_camera.Reset();
+			if (m_currentScene) {
+				m_currentScene->OnExit();
+			}
+			m_currentScene = m_sceneMap[name];  // Assume existence for simplicity
+			if (m_currentScene) {
+				m_currentScene->OnEnter();
+			}
 		}
 
 	}
@@ -65,10 +70,18 @@ public:
 
 	}
 
-	Scene* GetCurrentScene()
-	{
-		return m_currentScene;
+	std::string GetCurrentSceneName() const {
+		for (const auto& pair : m_sceneMap) {
+			if (pair.second == m_currentScene) {
+				return pair.first;  // Return the name of the current scene
+			}
+		}
+		return "";  
 	}
+
+
+
+
 
 	static glm::vec2 MousetoWorld() {
 		Camera& camera = Application::GetCamera();

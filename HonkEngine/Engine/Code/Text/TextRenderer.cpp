@@ -124,88 +124,103 @@ void TextRenderer::Initialize(const std::string& fontPath)
 
 void TextRenderer::RenderText(std::string text, float x, float y, float scale, glm::vec3 color, bool centerPivot, int numChars)
 {
-    // Activate corresponding render state
     m_shader.use();
     m_shader.SetVector3f("textColor", color);
     glActiveTexture(GL_TEXTURE0);
     glBindVertexArray(m_VAO);
 
-    scale *= 0.01f;
-    float lineHeight = 0.0f; // Adjust line height as needed
-    float originalX = x;
-    float originalY = y;
-
+    scale *= 0.01f;  // Scale adjustment
+    float lineSpacing = 0.1f; // This is the additional space between lines
     std::vector<std::string> lines;
     std::string currentLine;
-    std::string::const_iterator c;
-    for (c = text.begin(); c != text.end(); ++c)
-    {
-        if (*c == ' ' && *(c + 1) == ' ') // Detect double space as a marker for a new line
-        {
+
+    // Break text into lines based on double spaces
+    for (auto c = text.begin(); c != text.end(); ++c) {
+        if (*c == ' ' && *(c + 1) == ' ') {
             lines.push_back(currentLine);
             currentLine.clear();
-            c++; // Skip the second space
+            ++c;  // Skip the second space
             continue;
         }
         currentLine += *c;
     }
-    lines.push_back(currentLine); // Add the last line
+    lines.push_back(currentLine);
 
-    for (const std::string& line : lines)
-    {
+    for (const std::string& line : lines) {
         float totalWidth = 0.0f;
-        // Calculate total width of the line
-        for (char ch : line)
-        {
-            totalWidth += (Characters[ch].Advance >> 6) * scale; // Advance is in 1/64th pixels
+        float maxHeight = 0.0f;  // Max height of glyphs in the current line
+
+        std::istringstream iss(line);
+        std::string word;
+        while (iss >> word) {
+            bool specialColor = (word.front() == '%' && word.back() == '%');
+            glm::vec3 currentColor = specialColor ? glm::vec3(1.0f, 0.0f, 0.0f) : color;  // Red if special, otherwise default
+            if (specialColor) {
+                word = word.substr(1, word.size() - 2);  // Strip the brackets
+            }
+
+            for (char ch : word) {
+                Character glyph = Characters[ch];
+                totalWidth += (glyph.Advance >> 6) * scale;
+                maxHeight = std::max(maxHeight, static_cast<float>(glyph.Size.y) * scale);
+            }
+            totalWidth += (Characters[' '].Advance >> 6) * scale;  // Account for space after each word
         }
 
-        if (centerPivot)
-        {
-            // Adjust x to center the line
-            x = originalX - totalWidth / 2.0f;
+        float currentX = centerPivot ? (x - totalWidth / 2) : x;
+        iss.clear();
+        iss.str(line);
+        while (iss >> word) {
+            bool specialColor = (word.front() == '%' && word.back() == '%');
+            glm::vec3 currentColor = specialColor ? glm::vec3(1.0f, 0.0f, 0.0f) : color;
+            if (specialColor) {
+                word = word.substr(1, word.size() - 2);
+            }
+            m_shader.SetVector3f("textColor", currentColor);
+            for (char ch : word) {
+                RenderCharacter(ch, currentX, y, scale, currentColor);
+            }
+            RenderCharacter(' ', currentX, y, scale, currentColor);  // Render the space after the word
         }
 
-        // Render each character in the line
-        for (char ch : line)
-        {
-            Character glyph = Characters[ch];
-
-            float xpos = x + glyph.Bearing.x * scale;
-            float ypos = y - (glyph.Size.y - glyph.Bearing.y) * scale;
-
-            float w = glyph.Size.x * scale;
-            float h = glyph.Size.y * scale;
-            lineHeight = std::max(lineHeight, h + 10.0f * scale); // Update line height
-
-            // Update VBO for each character
-            float vertices[6][4] = {
-                { xpos,     ypos + h,   0.0f, 0.0f },
-                { xpos,     ypos,       0.0f, 1.0f },
-                { xpos + w, ypos,       1.0f, 1.0f },
-
-                { xpos,     ypos + h,   0.0f, 0.0f },
-                { xpos + w, ypos,       1.0f, 1.0f },
-                { xpos + w, ypos + h,   1.0f, 0.0f }
-            };
-
-            glBindTexture(GL_TEXTURE_2D, glyph.TextureID);
-            glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-            glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
-
-            glBindBuffer(GL_ARRAY_BUFFER, 0);
-            glDrawArrays(GL_TRIANGLES, 0, 6);
-
-            x += (glyph.Advance >> 6) * scale; // Advance cursor to the next glyph
-        }
-
-        y -= lineHeight; // Move to the next line
-        lineHeight = 0.0f; // Reset line height for the next line
+        y -= maxHeight + lineSpacing;  // Move to the next line
     }
 
     glBindVertexArray(0);
     glBindTexture(GL_TEXTURE_2D, 0);
 }
+
+
+
+
+void TextRenderer::RenderCharacter(char ch, float& x, float y, float scale, glm::vec3 color)
+{
+    Character glyph = Characters[ch];
+
+    float xpos = x + glyph.Bearing.x * scale;
+    float ypos = y - (glyph.Size.y - glyph.Bearing.y) * scale;
+
+    float w = glyph.Size.x * scale;
+    float h = glyph.Size.y * scale;
+
+    float vertices[6][4] = {
+        { xpos,     ypos + h,   0.0f, 0.0f },
+        { xpos,     ypos,       0.0f, 1.0f },
+        { xpos + w, ypos,       1.0f, 1.0f },
+        { xpos,     ypos + h,   0.0f, 0.0f },
+        { xpos + w, ypos,       1.0f, 1.0f },
+        { xpos + w, ypos + h,   1.0f, 0.0f }
+    };
+
+    glBindTexture(GL_TEXTURE_2D, glyph.TextureID);
+    glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
+    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glDrawArrays(GL_TRIANGLES, 0, 6);
+
+    x += (glyph.Advance >> 6) * scale;  // Advance the position for the next character
+}
+
 
 
 void TextRenderer::CleanupCharacters()

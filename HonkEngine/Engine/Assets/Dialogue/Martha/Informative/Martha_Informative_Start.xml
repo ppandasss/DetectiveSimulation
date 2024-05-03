@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="1MD11">
+		<Speaker name="Martha_Happy">
+			<line1>Hmm, the tea indeed smells nice.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD11_2">
+		<Speaker name="Martha_Normal">
+			<line1>There's nothing like a splendid cup  of tea in the afternoon.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD12">
+		<Speaker name="Martha_Normal">
+			<line1>My family used to gather around for  tea parties.</line1>
+			<line2>Those were cherished moments.</line2>
+			<line3>The aroma takes me right back,  it does.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MQ04">
+		<Speaker name="Martha_Happy">
+			<line1>Eastsiders surely know how to make  an afternoon pleasing.</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="1WD11">Agree with Martha</Choice1>
+			<Choice2 next="1WD12">Agree as an Eastsider</Choice2>
+			<Choice3 next="1WD13">Imply to be a Westsider</Choice3>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="1WD11" next="1MD13">
+		<Speaker name="Waiter">
+			<line1>Glad to hear that, ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1WD12" next="1MD14">
+		<Speaker name="Waiter">
+			<line1>We surely do. It is my favorite  Eastside tradition.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1WD13" next="1MD15">
+		<Speaker name="Waiter">
+			<line1>What a lovely tradition.</line1>
+			<line2>We don’t have such thing on Westside.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD13" next="1MD16">
+		<Speaker name="Martha_Normal">
+			<line1>There is nothing like sipping on  a warm cup of tea,</line1>
+			<line2>sharing stories, and enjoying the  simple pleasures of life.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD14" next="1MD14_2">
+		<Speaker name="Martha_Happy">
+			<line1>A fellow Eastsider, you say?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD14_2" next="1MD16">
+		<Speaker name="Martha_Happy">
+			<line1>No wonder the aroma feels like  a warm hug from home.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD15" next="1MD15_2">
+		<Speaker name="Martha_Normal">
+			<line1>You're from the Westside, you say?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD15_2">
+		<Speaker name="Martha_Happy">
+			<line1>Never would have guessed with  that fine service.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD15_3" next="1MD16">
+		<Speaker name="Martha_Happy">
+			<line1>It's heartening to see a folk from  different side coming together,</line1>
+			<line2>sharing a friendly chat on this train.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD16">
+		<Speaker name="Martha_Normal">
+			<line1>Well dear,</line1>
+			<line2>this journey has me eager to see  what awaits me on the other side.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD16_2">
+		<Speaker name="Martha_Happy">
+			<line1>This is my first time going there,  beginning a new chapter of life.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

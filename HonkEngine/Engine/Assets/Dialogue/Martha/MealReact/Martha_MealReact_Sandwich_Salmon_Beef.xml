@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="1MD55">
+		<Speaker name="Martha_Disappoint">
+			<line1>Oh, the sandwich doesn't appear as  light and creamy as I expected.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD55">
+		<Speaker name="Martha_Sad">
+			<line1>It might be a slight inconvenience  for me, you know, at my age.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD56">
+		<Speaker name="Martha_Disappoint">
+			<line1>But never mind... let's take a  look at pastry.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

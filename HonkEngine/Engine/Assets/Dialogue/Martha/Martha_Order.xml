@@ -79,12 +79,12 @@
 			<line1>but it’s ever so crumbly and  buttery with a spoonful of jam.</line1>
 		</Speaker>
 		<Choices/>
-		  <Order>
-      <RoomNumber>1</RoomNumber>
-      <Tea>Floral Tea</Tea>
-      <Sandwich>Creamy Sandwich</Sandwich>
-      <Pastry>Crumbly Pastry with Jam</Pastry>
-    </Order>
+			<Order>
+				<RoomNumber>1</RoomNumber>
+				<Tea>Floral Tea</Tea>
+				<Sandwich>Creamy Sandwich</Sandwich>
+				<Pastry>Crumbly Pastry with Jam</Pastry>
+			</Order>
 	</Dialogue>
 	<Dialogue id="1WD06">
 		<Speaker name="Waiter">
