@@ -1,6 +1,5 @@
 #pragma once
 
-
 enum Sandwhich { SALMON, EGG, CUCUMBER, BEEF, SANDWHICH_EMPTY };
 
 enum Dessert { ECLAIR, MACARON, TART, SCONE, DESSERT_EMPTY };

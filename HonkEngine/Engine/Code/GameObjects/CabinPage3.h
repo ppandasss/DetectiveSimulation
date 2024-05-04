@@ -71,6 +71,7 @@ public:
 		ClueData* cabin22_clue1 = new ClueData();
 		cabin22_clue1->showText = true;
 		cabin22_clue1->clueText = E_Clue1;
+		cabin22_clue1->isEvidence = true;
 
 		ClueData* cabin22_clue2 = new ClueData();
 		cabin22_clue2->showText = true;
@@ -113,6 +114,7 @@ public:
 		ClueData* cabin22_clue6 = new ClueData();
 		cabin22_clue6->showText = true;
 		cabin22_clue6->clueText = E_LA2;
+		cabin22_clue6->isEvidence = true;
 
 		textClues.push_back(cabin22_clue1);
 		textClues.push_back(cabin22_clue2);
@@ -122,13 +124,13 @@ public:
 		textClues.push_back(cabin22_clue5);
 		textClues.push_back(cabin22_clue6);
 
-		m_journalData->addClueToJournalData(CLUE_CABIN22, cabin22_clue1);
-		m_journalData->addClueToJournalData(CLUE_CABIN22, cabin22_clue2);
-		m_journalData->addClueToJournalData(CLUE_CABIN22, cabin22_clue3);
-		m_journalData->addClueToJournalData(CLUE_CABIN22, cabin22_clue4);
+		m_journalData->addClueToJournalData(CABIN22, cabin22_clue1);
+		m_journalData->addClueToJournalData(CABIN22, cabin22_clue2);
+		m_journalData->addClueToJournalData(CABIN22, cabin22_clue3);
+		m_journalData->addClueToJournalData(CABIN22, cabin22_clue4);
 
-		m_journalData->addClueToJournalData(CLUE_CABIN22, cabin22_clue5);
-		m_journalData->addClueToJournalData(CLUE_CABIN22, cabin22_clue6);
+		m_journalData->addClueToJournalData(CABIN22, cabin22_clue5);
+		m_journalData->addClueToJournalData(CABIN22, cabin22_clue6);
 
 
 		// DIVIDER 2
@@ -208,7 +210,7 @@ public:
 
 		Page::Update(dt, frame);
 
-		CabinPageData cabinData = m_journalData->GetCabinPageData(Cabin::CLUE_CABIN22);
+		CabinPageData cabinData = m_journalData->GetCabinPageData(Cabin::CABIN22);
 
 		if (!cabinData.ShowLastActivity) {
 

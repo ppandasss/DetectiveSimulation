@@ -80,6 +80,7 @@ public:
 		ClueData* cabin3_clue2 = new ClueData();
 		cabin3_clue2->showText = true;
 		cabin3_clue2->clueText = A_Clue2;
+		cabin3_clue2->isEvidence = true;
 
 		ClueData* cabin3_clue3 = new ClueData();
 		cabin3_clue3->showText = true;
@@ -100,11 +101,11 @@ public:
 		textClues.push_back(cabin3_clue4);
 		textClues.push_back(cabin3_clue5);
 
-		m_journalData->addClueToJournalData(CLUE_CABIN3, cabin3_clue1);
-		m_journalData->addClueToJournalData(CLUE_CABIN3, cabin3_clue2);
-		m_journalData->addClueToJournalData(CLUE_CABIN3, cabin3_clue3);
-		m_journalData->addClueToJournalData(CLUE_CABIN3, cabin3_clue4);
-		m_journalData->addClueToJournalData(CLUE_CABIN3, cabin3_clue5);
+		m_journalData->addClueToJournalData(CABIN3, cabin3_clue1);
+		m_journalData->addClueToJournalData(CABIN3, cabin3_clue2);
+		m_journalData->addClueToJournalData(CABIN3, cabin3_clue3);
+		m_journalData->addClueToJournalData(CABIN3, cabin3_clue4);
+		m_journalData->addClueToJournalData(CABIN3, cabin3_clue5);
 
 		// DIVIDER 1
 		GameObject* Divider1 = new UIObject("Divider1", "Assets/Images/Journal/Line_1.png", true);
@@ -149,6 +150,7 @@ public:
 		ClueData* cabin3_clue8 = new ClueData();
 		cabin3_clue8->showText = true;
 		cabin3_clue8->clueText = A_LA2_1;
+		cabin3_clue8->isEvidence = true;
 
 		ClueData* cabin3_clue9 = new ClueData();
 		cabin3_clue9->showText = true;
@@ -159,10 +161,10 @@ public:
 		textClues.push_back(cabin3_clue8);
 		textClues.push_back(cabin3_clue9);
 
-		m_journalData->addClueToJournalData(CLUE_CABIN3, cabin3_clue6);
-		m_journalData->addClueToJournalData(CLUE_CABIN3, cabin3_clue7);
-		m_journalData->addClueToJournalData(CLUE_CABIN3, cabin3_clue8);
-		m_journalData->addClueToJournalData(CLUE_CABIN3, cabin3_clue9);
+		m_journalData->addClueToJournalData(CABIN3, cabin3_clue6);
+		m_journalData->addClueToJournalData(CABIN3, cabin3_clue7);
+		m_journalData->addClueToJournalData(CABIN3, cabin3_clue8);
+		m_journalData->addClueToJournalData(CABIN3, cabin3_clue9);
 
 
 		// DIVIDER 2
@@ -238,7 +240,7 @@ public:
 
 		Page::Update(dt, frame);
 
-		CabinPageData cabinData = m_journalData->GetCabinPageData(Cabin::CLUE_CABIN3);
+		CabinPageData cabinData = m_journalData->GetCabinPageData(Cabin::CABIN3);
 
 		if (!cabinData.ShowLastActivity) {
 

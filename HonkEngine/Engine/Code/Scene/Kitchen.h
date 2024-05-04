@@ -90,6 +90,7 @@ public:
 		//m_gameObjects.push_back(timerText); // Add the timer text to the game object list
 
 		
+		orderData.AddObserver([this]() { this->UpdateOrderDisplay(); });	
 
 
 		/*--------------------------------------------------------------CREATE BUTTONS------------------------------------------------------------------------------------------------------- */
