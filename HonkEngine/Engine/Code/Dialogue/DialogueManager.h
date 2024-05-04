@@ -20,9 +20,15 @@ struct TempOrderData {
 };
 
 
+struct ClueActivation {
+    string clueID;
+    int index;
+};
+
 struct DialogueChoice {
     string text;
     string nextDialogueId;
+    vector<ClueActivation> clueActivations;
 };
 
 struct Dialogue {
@@ -64,8 +70,6 @@ public:
         }
     }
 
-
-
     void LoadDialogues(const string& filePath) {
         tinyxml2::XMLDocument doc;
         if (doc.LoadFile(filePath.c_str()) == tinyxml2::XML_SUCCESS) {
@@ -89,7 +93,22 @@ public:
                         DialogueChoice choice;
                         choice.text = choiceElement->GetText();
                         choice.nextDialogueId = choiceElement->Attribute("next");
-                        dialogue.choices.push_back(choice);
+
+                        for(tinyxml2::XMLElement * choiceElement = choicesElement->FirstChildElement(); choiceElement != nullptr; choiceElement = choiceElement->NextSiblingElement()) {
+                            DialogueChoice choice;
+                            choice.text = choiceElement->GetText();
+                            choice.nextDialogueId = choiceElement->Attribute("next");
+
+                            // Parse clue activations
+                            for (tinyxml2::XMLElement* clueElement = choiceElement->FirstChildElement("ClueActivation"); clueElement != nullptr; clueElement = clueElement->NextSiblingElement("ClueActivation")) {
+                                ClueActivation activation;
+                                activation.clueID = clueElement->Attribute("clueID");
+                                activation.index = std::stoi(clueElement->Attribute("index"));
+                                choice.clueActivations.push_back(activation);
+                            }
+
+                            dialogue.choices.push_back(choice);
+                        }
                     }
                 }
 
@@ -143,15 +162,20 @@ public:
     void HandleChoice(int choiceIndex) {
         if (choiceIndex >= 0 && choiceIndex < dialogues[currentDialogueIndex].choices.size()) {
             const auto& choice = dialogues[currentDialogueIndex].choices[choiceIndex];
-            std::cout << "Player has chosen: " << choice.text << std::endl; // Add this line to print the chosen choice
-            // Find the dialogue with the corresponding nextDialogueId
+
+
+            // Activate clues associated with the choice
+            for (const auto& activation : choice.clueActivations) {
+                JournalData::GetInstance()->ActivateClue(activation.clueID, activation.index);
+            }
+
+            // Proceed to the next dialogue as before
             auto it = std::find_if(dialogues.begin(), dialogues.end(), [&](const Dialogue& d) {
                 return d.id == choice.nextDialogueId;
                 });
             if (it != dialogues.end()) {
                 currentDialogueIndex = std::distance(dialogues.begin(), it);
                 currentLineIndex = 0; // Start from the first line of the next dialogue
-                // Update the dialogue button text
                 currentDialogueButton->SetButtonText(dialogues[currentDialogueIndex].text[currentLineIndex]);
                 HideChoices(); // Hide choices for the next dialogue
                 choiceMade = true;
@@ -269,6 +293,7 @@ public:
                 if (dialogues[currentDialogueIndex].hasOrderData) {
                     // Apply the order data
                     SetOrderDataForCurrentDialogue();
+                    JournalData::GetInstance()->ActivateClue(CLUE_CABIN1, 0);
                 }
                 currentDialogueIndex = nextDialogueIndex;
                 currentLineIndex = 0;

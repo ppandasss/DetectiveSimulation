@@ -70,19 +70,19 @@ public:
 		M_C4->SetScale(0.65f);
 
 		ClueData* cabin1_clue1 = new ClueData();
-		cabin1_clue1->showText = true;
+		cabin1_clue1->showText = false;
 		cabin1_clue1->clueText = M_C1;
 
 		ClueData* cabin1_clue2 = new ClueData();
-		cabin1_clue2->showText = true;
+		cabin1_clue2->showText = false;
 		cabin1_clue2->clueText = M_C2;
 
 		ClueData* cabin1_clue3 = new ClueData();
-		cabin1_clue3->showText = true;
+		cabin1_clue3->showText = false;
 		cabin1_clue3->clueText = M_C3;
 
 		ClueData* cabin1_clue4 = new ClueData();
-		cabin1_clue4->showText = true;
+		cabin1_clue4->showText = false;
 		cabin1_clue4->clueText = M_C4;
 
 		//	DIVIDER 1
