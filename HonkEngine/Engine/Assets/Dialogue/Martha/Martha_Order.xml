@@ -31,6 +31,7 @@
 	<Dialogue id="1WD02" next="1MD02">
 		<Speaker name="Waiter">
 			<line1>This is my very first trip.</line1>
+      <ClueActivation clueID="CABIN1" index="0"/>
 		</Speaker>
 		<Choices/>
 	</Dialogue>

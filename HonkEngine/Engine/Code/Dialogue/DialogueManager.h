@@ -22,7 +22,7 @@ struct TempOrderData {
 
 struct ClueActivation {
     string clueID;
-    int index;
+    string index;
 };
 
 struct DialogueChoice {
@@ -41,6 +41,42 @@ struct Dialogue {
     bool hasOrderData = false;  // Add this line
     TempOrderData* tempOrderData = nullptr;
 };
+
+Cabin stringToCabin(const std::string& cabinString) {
+    if (cabinString == "CABIN1") return CABIN1;
+    else if (cabinString == "CABIN21") return CABIN21;
+    else if (cabinString == "CABIN22") return CABIN22;
+    else if (cabinString == "CABIN3") return CABIN3;
+    else if (cabinString == "CABIN4") return CABIN4;
+    else return CABIN_EMPTY; // Default or error case
+}
+
+int stringToInt(const std::string& str) {
+	if(str == "0") return 0;
+    if(str == "1") return 1;
+    if(str == "2") return 2;
+    if(str == "3") return 3;
+    if(str == "4") return 4;
+    if(str == "5") return 5;
+    if(str == "6") return 6;
+    if(str == "7") return 7;
+    if(str == "8") return 8;
+    if(str == "9") return 9;
+    if(str == "10") return 10;
+    if(str == "11") return 11;
+    if(str == "12") return 12;
+}
+
+int safeStoi(const std::string& str, int defaultValue = 0) {
+    try {
+        return std::stoi(str);
+    }
+    catch (const std::exception& e) {  // Catching all standard exceptions
+        std::cerr << "Exception converting string to int: " << e.what() << '\n';
+        return defaultValue;
+    }
+}
+
 
 
 
@@ -99,15 +135,23 @@ public:
                             choice.text = choiceElement->GetText();
                             choice.nextDialogueId = choiceElement->Attribute("next");
 
-                            // Parse clue activations
-                            for (tinyxml2::XMLElement* clueElement = choiceElement->FirstChildElement("ClueActivation"); clueElement != nullptr; clueElement = clueElement->NextSiblingElement("ClueActivation")) {
-                                ClueActivation activation;
-                                activation.clueID = clueElement->Attribute("clueID");
-                                activation.index = std::stoi(clueElement->Attribute("index"));
-                                choice.clueActivations.push_back(activation);
-                            }
+                            // Parsing clue activations with safety
+                            for (tinyxml2::XMLElement* clueElement = choiceElement->FirstChildElement("ClueActivation");
+                                clueElement != nullptr;
+                                clueElement = clueElement->NextSiblingElement("ClueActivation")) {
 
+                                const char* clueID = clueElement->Attribute("clueID");
+                                const char* indexStr = clueElement->Attribute("index");
+
+                                if (clueID && indexStr) {  // Ensure both attributes are not null
+                                    ClueActivation activation;
+                                    activation.clueID = clueID;
+                                    activation.index = safeStoi(indexStr);  // Convert index to integer safely
+                                    choice.clueActivations.push_back(activation);
+                                }
+                            }
                             dialogue.choices.push_back(choice);
+
                         }
                     }
                 }
@@ -162,11 +206,10 @@ public:
     void HandleChoice(int choiceIndex) {
         if (choiceIndex >= 0 && choiceIndex < dialogues[currentDialogueIndex].choices.size()) {
             const auto& choice = dialogues[currentDialogueIndex].choices[choiceIndex];
-
-
-            // Activate clues associated with the choice
+            //Clue activation
             for (const auto& activation : choice.clueActivations) {
-                JournalData::GetInstance()->ActivateClue(activation.clueID, activation.index);
+                int index = stringToInt(activation.index);
+                JournalData::GetInstance()->ActivateClue(stringToCabin(activation.clueID),index);
             }
 
             // Proceed to the next dialogue as before
@@ -293,7 +336,6 @@ public:
                 if (dialogues[currentDialogueIndex].hasOrderData) {
                     // Apply the order data
                     SetOrderDataForCurrentDialogue();
-                    JournalData::GetInstance()->ActivateClue(CLUE_CABIN1, 0);
                 }
                 currentDialogueIndex = nextDialogueIndex;
                 currentLineIndex = 0;
