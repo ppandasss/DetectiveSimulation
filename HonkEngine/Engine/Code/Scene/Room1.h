@@ -209,9 +209,7 @@ public:
     void OnEnter() override {
         //Scene::OnEnter();  // Call base class if there's relevant logic  
         audioManager.PlaySound("cabinMusic", true);
-        audioManager.PlaySound("knockDoor");
-        audioManager.StopSound("Player_footsteps");
-        audioManager.StopSound("bellRing");
+        
         
     }
 

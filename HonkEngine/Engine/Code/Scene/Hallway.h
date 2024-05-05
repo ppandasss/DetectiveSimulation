@@ -297,8 +297,13 @@ public:
 							instructionText->SetContent("Press [E] to enter");
 							if (input.Get().GetKeyDown(GLFW_KEY_E))
 							{
+
 								bellManager.StopAllRinging();
-								Application::Get().SetScene(door->GetSceneName());
+								audioManager.PlaySound("knockDoor");
+								player->StopMovement();
+
+								Application::Get().SetTimer(2000, [this, door]() {Application::Get().SetScene(door->GetSceneName()); player->ResumeMovement(); }, false);
+								
 							}
 						}
 						else if (!door->getPermission()) {

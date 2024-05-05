@@ -16,6 +16,7 @@
 
 class Player : public AnimateGameObject
 {
+    bool canMove = true;
     Book* m_journal;
 public:
     Player(const std::string& name, const std::string& texturePath, int p_row, int p_col, Book* journal)
@@ -26,6 +27,15 @@ public:
         m_animator.AddAnimation("walk_left", 2, 8, 8.0f, Animator::LoopType::Loop, []() {});
         m_animator.AddAnimation("walk_right", 1, 8, 8.0f, Animator::LoopType::Loop, []() {});
         audioManager.LoadSound("Player_footsteps", "Assets/Sounds/footstep.mp3", 0.8f);
+    }
+
+    void StopMovement() {
+        canMove = false;
+        audioManager.StopSound("Player_footsteps");
+    }
+
+    void ResumeMovement() {
+        canMove = true;
     }
 
     void Update(float dt, long frame) override
@@ -41,14 +51,14 @@ public:
         const float leftBound = -20.52f;
         const float rightBound = 21.0f;
 
-        if (input.Get().GetKey(GLFW_KEY_A))
+        if (input.Get().GetKey(GLFW_KEY_A) && canMove)
         {
             isWalking = true;
             float newPos = m_position.x - speed * dt;
             m_position.x = std::max(newPos, leftBound); // Ensure player doesn't move past left bound
             currentAnimation = "walk_left";
         }
-        if (input.Get().GetKey(GLFW_KEY_D))
+        if (input.Get().GetKey(GLFW_KEY_D) && canMove)
         {
             isWalking = true;
             float newPos = m_position.x + speed * dt;
