@@ -212,6 +212,9 @@
     <ClInclude Include="Code\Scene\Room2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Code\GameStateManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\text.vs" />

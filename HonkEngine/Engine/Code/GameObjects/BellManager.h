@@ -5,6 +5,7 @@
 #include "DoorManager.h"
 #include <functional>
 #include <iostream>
+#include <string>
 
 class BellManager {
 public:
@@ -17,6 +18,26 @@ public:
         bells.push_back(bell);
         linkedDoors.push_back(linkedDoor);
     }
+
+    void StartRinging(std::string bellName) {
+
+        for (size_t i = 0; i < bells.size(); i++) {
+			Bell* bell = bells[i];
+			if (bell->getName() == bellName) {
+				bell->startRinging();
+			}
+		}
+
+	}
+
+    Bell getBell(std::string bellName) {
+		for (size_t i = 0; i < bells.size(); i++) {
+			Bell* bell = bells[i];
+			if (bell->getName() == bellName) {
+				return *bell;
+			}
+		}
+	}
 
     void Update(float dt,float frame) {
         for (size_t i = 0; i < bells.size(); i++) {

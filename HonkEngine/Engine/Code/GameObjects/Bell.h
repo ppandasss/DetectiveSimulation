@@ -10,7 +10,7 @@
 class Bell : public AnimateGameObject {
 public:
     Bell(const std::string& name, const std::string& texturePath, float row, float col)
-        : AnimateGameObject(name, texturePath, row, col), animating(false)
+        : AnimateGameObject(name, texturePath, row, col), animating(false), isRinging(false),m_name(name)
     {
         m_animator.AddAnimation("bell_ring", 1, 3, 5.0f, Animator::LoopType::Once, std::bind(&Bell::onRingComplete, this));
     }
@@ -42,16 +42,21 @@ public:
     }
 
     void stopRinging() {
+        currentAnimation = "idle";
         animating = false;
         isRinging = false;
         AudioManager::GetInstance().StopSound("bellRing");  // Ensure this method stops the sound immediately.
-        currentAnimation = "idle";
         m_animator.SetAnimation(currentAnimation);
     }
 
     bool isBellRinging() const {
         return isRinging;
     }
+
+    std::string getName()
+    {
+		return m_name;
+	} 
 
 
 private:
@@ -66,12 +71,9 @@ private:
         }
     }
 
-    void onHoldComplete() {
-       
-    }
-
+    std::string m_name;
     Animator m_animator;
     bool animating;
-    bool isRinging = false;
+    bool isRinging;
     std::string currentAnimation;
 };

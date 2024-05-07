@@ -122,8 +122,9 @@ public:
         UIElement* archibaldIcon = new UINormal("ArchibaldIcon", "Assets/Images/UI/Speaker_icon_Archibald.png", glm::vec3(4.18f, 3.5f, 0.0f), glm::vec3(1.4f, 1.57f, 0.0f), true);
         UIElement* waiterIcon = new UINormal("WaiterIcon", "Assets/Images/UI/Speaker_icon_Waiter.png", glm::vec3(4.18f, 3.43f, 0.0f), glm::vec3(1.23f, 1.4f, 0.0f), true);
 
-        dialogueManager = make_unique<DialogueManager>("ArchibaldDialogue", dialogueBox,
-            "Assets/Dialogue/Archibald/Archibald_Order.xml", "Archibald_Normal");
+        dialogueManager = make_unique<DialogueManager>("ArchibaldDialogue", dialogueBox, "Archibald_Normal");
+
+        dialogueManager->LoadDialogues("Assets/Dialogue/Archibald/Archibald_Order.xml");
 
         //Text
         instructionText = new Text("dialogueinstruction", "Use [Left-click] or [Space] to continue dialogue", "Assets/Fonts/mvboli.ttf", true);
@@ -226,7 +227,6 @@ public:
     void OnEnter() override {
         //Scene::OnEnter();  // Call base class if there's relevant logic  
         audioManager.PlaySound("cabinMusic", true);
-        audioManager.PlaySound("knockDoor");
         audioManager.StopSound("Player_footsteps");
     }
 

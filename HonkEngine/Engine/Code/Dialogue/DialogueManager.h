@@ -1,14 +1,13 @@
 #pragma once
 
 #include "tinyxml2.h"
-#include "../GameObjects/GameObject.h"
-#include "../UI/UIButton.h"
 #include <string>
 #include <vector>
 #include <memory>
+#include <map>
 #include <iostream>
-#include <optional>
-#include "../GameObjects/JournalData.h"
+#include "../UI/UIButton.h"
+#include "../UI/UIElement.h"
 
 using namespace std;
 
@@ -68,13 +67,9 @@ Cabin GetCabinFromString(const string& cabinStr) {
 
 class DialogueManager {
 public:
-    DialogueManager(const string& name, UIButton* dialogueBox, const string& filePath, const string& defaultSprite)
+
+    DialogueManager(const string& name, UIButton* dialogueBox, const string& defaultSprite)
         : currentDialogueIndex(0), currentLineIndex(0), currentDialogueButton(dialogueBox), choiceMade(false), defaultSpriteName(defaultSprite) {
-        LoadDialogues(filePath);
-        if (!dialogues.empty() && !dialogues[0].text.empty()) {
-            currentDialogueButton->SetButtonText(dialogues[0].text[0]);
-            currentDialogueButton->SetTextSize(0.55f); // Set text size if needed
-        }
 
     }
 
@@ -155,6 +150,12 @@ public:
                 }
                 dialogues.push_back(dialogue);
             }
+        }
+
+        if (!dialogues.empty() && !dialogues[0].text.empty()) {
+            currentDialogueButton->SetButtonText(dialogues[0].text[0]);
+            currentDialogueButton->SetTextSize(0.55f); // Set text size if needed
+
         }
     }
 
@@ -430,6 +431,20 @@ public:
             std::cout << "Pastry Order set to: " << currentDialogue.tempOrderData->pastryOrder << std::endl;
         }
     }
+
+    void HideAllDialogueUI() {
+        if (currentDialogueButton) {
+            currentDialogueButton->setActiveStatus(false);  // Hide the main dialogue box
+        }
+        for (auto& choiceButton : choiceButtons) {
+            choiceButton->setActiveStatus(false);  // Hide all choice buttons
+        }
+        for (auto& pair : speakerIcons) {
+            pair.second->setActiveStatus(false);  // Hide all speaker icons
+        }
+
+    }
+
 
 
 

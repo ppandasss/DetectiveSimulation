@@ -22,12 +22,14 @@
 #include "../GameObjects/Timer.h"
 #include "../Effects/BackgroundParallax.h"
 #include "../GameObjects/Bell.h"
+#include "../GameStateManager.h"
 
 class Hallway : public Scene
 {
 
 private:
 
+	GameStateManager& gameStateManager = GameStateManager::GetInstance();
 	std::unique_ptr<TextRenderer> textRenderer;
 	std::unique_ptr<BackgroundParallax> BackgroundparallaxManager;
 	AudioManager& audioManager;
@@ -63,10 +65,11 @@ private:
 public:
 	Hallway() :audioManager(AudioManager::GetInstance())
 	{
+
 		/*--------------------------------------------------------------🔊LOAD AUDDIO🔊------------------------------------------------------------------------------------------------------- */
 		audioManager.LoadSound("hallwayMusic", "Assets/Sounds/Music/BGmusic_Corridor_NoTimer.mp3", 0.1f);
 		audioManager.LoadSound("trainAmbience", "Assets/Sounds/Ambience/Ambience_Train.mp3", 0.1f);
-		audioManager.LoadSound("bellRing", "Assets/Sounds/SFX_CallingBell.mp3", 0.1f);
+		audioManager.LoadSound("bellRing", "Assets/Sounds/SFX_CallingBell.mp3", 0.5f);
 
 		/*--------------------------------------------------------------📦CREATE GAMEOBJECT📦------------------------------------------------------------------------------------------------------- */
 		/*-------------------------------------------------------------🌲CREATE ENVIRONMENT🌲------------------------------------------------------------------------------------------------------- */
@@ -97,7 +100,7 @@ public:
 		GameObject* kitchendoorHighlight = new RenderGameObject("KitchendoorHighlight", "Assets/Images/Corridor/KitchenDoor_Highlight.png");
 
 		DoorManager& doorManager = DoorManager::GetInstance();
-		room1Door = new Door("Room1Door", roomdoor1Highlight, glm::vec3(-17.58f, -0.632f, 0.0f), glm::vec3(2.29f * 1.2f, 4.65f * 1.2f, 0.0f), "Room3");
+		room1Door = new Door("Room1Door", roomdoor1Highlight, glm::vec3(-17.58f, -0.632f, 0.0f), glm::vec3(2.29f * 1.2f, 4.65f * 1.2f, 0.0f), "Room1");
 		doorManager.AddDoor(room1Door);
 
 		room2Door = new Door("Room2Door", roomdoor2Highlight, glm::vec3(-8.588f, -0.632f, 0.0f), glm::vec3(2.29f * 1.2f, 4.65f * 1.2f, 0.0f), "Room2");
@@ -268,12 +271,36 @@ public:
 		audioManager.PlaySound("hallwayMusic", true);
 		audioManager.PlaySound("trainAmbience", true);
 
-		Application::Get().SetTimer(5000, [this]() { bellCabin1->startRinging();  }, false);
+
+		//Set each state's order phrase behavior
+
+		if (gameStateManager.getRoomState() == RoomState::Order)
+		{
+			if (gameStateManager.getGameState() == GameState::Room1)
+			{
+				Application::Get().SetTimer(5000, [this]() { bellCabin1->startRinging(); }, false);
+			}
+			else if(gameStateManager.getGameState() == GameState::Room2)
+			{
+				Application::Get().SetTimer(5000, [this]() { bellCabin2->startRinging(); }, false);
+			}
+			else if (gameStateManager.getGameState() == GameState::Room3)
+			{
+				Application::Get().SetTimer(5000, [this]() { bellCabin3->startRinging(); }, false);
+			}
+			else if (gameStateManager.getGameState() == GameState::Room4)
+			{
+				Application::Get().SetTimer(5000, [this]() { bellCabin4->startRinging(); }, false);
+			}
+			
+		}
+
 	}
 
 	void Update(float dt, long frame) {
 
 		Scene::Update(dt, frame);
+		gameStateManager.Update(dt, frame);
 		BackgroundparallaxManager->Update(dt);
 
 		Timer& timer = Timer::GetInstance();
@@ -293,17 +320,21 @@ public:
 				[this, &bellManager](Door* door) {  // Capture bellManager by reference
 					Input& input = Application::GetInput();
 					if (door) {
-						if (door->getPermission()  ) {
+						if (door->getPermission() ) {
 							instructionText->SetContent("Press [E] to enter");
 							if (input.Get().GetKeyDown(GLFW_KEY_E))
 							{
-
-								bellManager.StopAllRinging();
-								audioManager.PlaySound("knockDoor");
-								player->StopMovement();
-
-								Application::Get().SetTimer(2000, [this, door]() {Application::Get().SetScene(door->GetSceneName()); player->ResumeMovement(); }, false);
-								
+								if (door->GetName() == "kitchenDoor")
+								{
+									Application::Get().SetScene(door->GetSceneName());
+								}
+								else
+								{
+									bellManager.StopAllRinging();
+									audioManager.PlaySound("knockDoor");
+									player->StopMovement();
+									Application::Get().SetTimer(2000, [this, door]() {Application::Get().SetScene(door->GetSceneName()); player->ResumeMovement(); }, false);
+								}	
 							}
 						}
 						else if (!door->getPermission()) {
@@ -311,7 +342,6 @@ public:
 						}
 					}
 				});
-
 			instructionText->setActiveStatus(isNearDoor);
 		}
 	}

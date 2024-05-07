@@ -12,6 +12,7 @@
 #include "../Effects/ObjectsParallax.h"
 #include "../Effects/BackgroundParallax.h"
 #include "../GameObjects/Timer.h"
+#include "../GameStateManager.h"
 #include <memory>
 
 using namespace std;
@@ -21,17 +22,11 @@ class Room1 : public Scene {
 
 private:
     AudioManager& audioManager;
-
-    enum class RoomPhase {
-        TakeOrderPhase,
-        ServePhase,
-        InspectionPhase
-    };
-
-    RoomPhase currentPhase = RoomPhase::TakeOrderPhase;
-
     Timer* timer;
     Text* instructionText;
+    GameStateManager& gameStateManager = GameStateManager::GetInstance();
+    Door* door = DoorManager::GetInstance().GetDoorByName("Room1Door");
+    Door* kichenDoor = DoorManager::GetInstance().GetDoorByName("KitchenDoor");
 
 public:
     Room1() :audioManager(AudioManager::GetInstance()) {
@@ -120,8 +115,8 @@ public:
         UIElement* marthaIcon = new UINormal("MarthaIcon", "Assets/Images/UI/Speaker_icon_Martha.png", glm::vec3(4.18f, 3.5f, 0.0f), glm::vec3(2.19f, 1.57f, 0.0f), true);
         UIElement* waiterIcon = new UINormal("WaiterIcon", "Assets/Images/UI/Speaker_icon_Waiter.png", glm::vec3(4.18f, 3.43f, 0.0f), glm::vec3(1.23f, 1.4f, 0.0f), true);
 
-        dialogueManager = make_unique<DialogueManager>("MarthaDialogue", dialogueBox,
-            "Assets/Dialogue/Martha/Martha_Order.xml", "Martha_Normal");
+        dialogueManager = make_unique<DialogueManager>("MarthaDialogue", dialogueBox,"Martha_Normal");
+        dialogueManager->LoadDialogues("Assets/Dialogue/Martha/Martha_Order.xml");
 
         //Text
         instructionText = new Text("dialogueinstruction", "Use [Left-click] or [Space] to continue dialogue", "Assets/Fonts/mvboli.ttf", true);
@@ -230,35 +225,30 @@ public:
 
         Scene::Update(dt, frame);
         backgroundParallaxManager->Update(dt);
-        switch (currentPhase) {
-        case RoomPhase::TakeOrderPhase:
-            // Handle TakeOrderPhase logic
-            dialogueManager->Update(dt, frame);
-            if (dialogueManager->IsDialogueFinished()) {
-                instructionText->SetContent("Press [E] to leave");
-                currentPhase = RoomPhase::ServePhase;
+
+        
+        
+        if (gameStateManager.getGameState() == GameState::Room1)
+        {
+            if (gameStateManager.getRoomState() == RoomState::Order)
+            {
+                dialogueManager->Update(dt, frame);
+                if (dialogueManager->IsDialogueFinished()) {
+                    instructionText->SetContent("Press [E] to leave");
+                    dialogueManager->HideAllDialogueUI();
+                    if (input.Get().GetKeyDown(GLFW_KEY_E))
+                    {
+
+                        timer->start(300);
+                        gameStateManager.setRoomState(RoomState::Prepare);
+                        Application::Get().SetScene("Hallway");
+                        door->setPermission(false);
+                        kichenDoor->setPermission(true);
+                        
+                    }
+
+                }
             }
-            break;
-
-        case RoomPhase::ServePhase:
-            // Handle ServePhase logic
-            // For now, leave blank as per the instructions 
-            break;
-
-        case RoomPhase::InspectionPhase:
-            // Handle InspectionPhase logic
-            // For now, leave blank as per the instructions
-            break;
-        }
-
-        // Allow leaving the room only in phases other than TakeOrderPhase
-        if (currentPhase != RoomPhase::TakeOrderPhase && input.Get().GetKeyDown(GLFW_KEY_E)) {
-
-            Application::Get().SetScene("Hallway");
-
-            //Start timer
-            timer->start(300);
-            
         }
 
         // Handle dialogue progression
@@ -267,6 +257,7 @@ public:
         }
 
     }
+
 
     void Render() override {
         Scene::Render(); // Renders GameObjects
