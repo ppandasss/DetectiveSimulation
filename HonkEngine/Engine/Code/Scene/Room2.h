@@ -2,6 +2,7 @@
 
 #include "Scene.h"
 #include "../UI/UINormal.h"  
+#include "../UI/UIButton.h" 
 #include "../UI/UIElement.h"  
 #include "../Input/Input.h"
 #include "../Engine.h"
@@ -74,23 +75,29 @@ public:
         float sm = 1.23f;
 
         //Objects     
-        UIElement* room = new UINormal("cabin1", "Assets/Images/Archibald/Archibald_Cabin.png", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(19.0f * sm, 10.55f * sm, 0.0f), true);
-        UIElement* lamp = new UINormal("Lamp", "Assets/Images/Archibald/Archibald_Lamp.png", glm::vec3(1.3f, -0.5f, 0.0f), glm::vec3(0.84f * sm, 1.94f * sm, 0.0f), true);
-        UIElement* luggage = new UINormal("Luggage", "Assets/Images/Archibald/Item_Archibald_Luggage.png", glm::vec3(6.2f, -1.9f, 0.0f), glm::vec3(1.59f * sm * 1.2f, 2.32f * sm * 1.2f, 0.0f), true);
-        
+        UIElement* room = new UINormal("cabin2", "Assets/Images/Twins/Twin_Cabin.png", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(19.0f * sm, 10.55f * sm, 0.0f), true);
+
         //Inspection Items
-        UIElement* movingLuggage = new UINormal("MovingLuggage", "Assets/Images/Archibald/Inspection_Archibald_MovingLuggage.png", glm::vec3(1.7f, -4.6f, 0.0f), glm::vec3(3.78f * sm * 1.2f, 2.38f * sm * 1.2f, 0.0f), true);
-        //UIElement* archibaldInspect = new UINormal("ArchibaldInspect", "Assets/Images/Martha/Inspection_Cane.png", glm::vec3(-4.0f, -3.72f, 0.0f), glm::vec3(1.07f * sm * 1.2f, 3.7f * sm * 1.2f, 0.0f), true);
-        //UIElement* newspaper = new UINormal("Newspaper", "Assets/Images/Martha/Inspection_Letter.png", glm::vec3(-2.15f, -5.9f, 0.0f), glm::vec3(1.13f * sm * 1.2f, 0.73f * sm * 1.2f, 0.0f), true);
+        UIElement* medicine = new UINormal("MovingLuggage", "Assets/Images/Archibald/Archibald_Inspection_MovingLuggage.png", glm::vec3(1.7f, -4.6f, 0.0f), glm::vec3(3.78f * sm * 1.2f, 2.38f * sm * 1.2f, 0.0f), true);
+        UIElement* hat = new UINormal("Newspaper", "Assets/Images/Archibald/Archibald_Inspection_Newspaper.png", glm::vec3(-3.139f, 0.224f, 0.0f), glm::vec3(1.09f * sm, 2.22f * sm, 0.0f), true);
+
+
+        //Inspection Item Buttons
+        /*UIButton* movingLuggageInspect = new UIButton("MovingLuggage", "Assets/Images/Archibald/Archibald_Inspection_MovingLuggage.png", glm::vec3(1.7f, -4.6f, 0.0f), glm::vec3(3.78f * sm * 1.2f, 2.38f * sm * 1.2f, 0.0f), true, false, "");
+        movingLuggageInspect->SetHoverTexture("Assets/Images/Archibald/Archibald_Inspection_MovingLuggage_Highlight.png");
+
+        UIButton* newspaperInspect = new UIButton("Newspaper", "Assets/Images/Archibald/Archibald_Inspection_Newspaper.png", glm::vec3(-3.139f, 0.224f, 0.0f), glm::vec3(1.09f * sm, 2.22f * sm, 0.0f), true, false, "");
+        newspaperInspect->SetHoverTexture("Assets/Images/Archibald/Archibald_Inspection_Newspaper_Highlight.png");*/
+
 
         //UIs
         //Speaker Sprite emotion
-        UIElement* archibaldNormal = new UINormal("Archibald_Normal", "Assets/Images/Archibald/Archibald_Normal.png", glm::vec3(-3.58f, -1.99f, 0.0f), glm::vec3(6.46f * sm, 7.32f * sm, 0.0f), true);
-        UIElement* archibaldHappy = new UINormal("Archibald_Happy", "Assets/Images/Archibald/Archibald_Happy.png", glm::vec3(-3.58f, -1.99f, 0.0f), glm::vec3(6.46f * sm, 7.32f * sm, 0.0f), true);
-        UIElement* archibaldDisappoint = new UINormal("Archibald_Disappoint", "Assets/Images/Archibald/Archibald_Disappoint.png", glm::vec3(-3.58f, -1.99f, 0.0f), glm::vec3(6.46f * sm, 7.32f * sm, 0.0f), true);
-        UIElement* archibaldUpset = new UINormal("Archibald_Upset", "Assets/Images/Archibald/Archibald_Upset.png", glm::vec3(-3.58f, -1.99f, 0.0f), glm::vec3(6.46f * sm, 7.32f * sm, 0.0f), true);
-        UIElement* archibaldSad = new UINormal("Archibald_Sad", "Assets/Images/Archibald/Archibald_Sad.png", glm::vec3(-3.58f, -1.99f, 0.0f), glm::vec3(6.46f * sm, 7.32f * sm, 0.0f), true);
-        UIElement* archibaldShy = new UINormal("Archibald_Shy", "Assets/Images/Archibald/Archibald_Shy.png", glm::vec3(-3.58f, -1.99f, 0.0f), glm::vec3(6.46f * sm, 7.32f * sm, 0.0f), true);
+        UIElement* archibaldNormal = new UINormal("Archibald_Normal", "Assets/Images/Twins/Nathaniel_Normal.png",              glm::vec3(-5.0f, -1.5f, 0.0f), glm::vec3(4.72f * sm, 6.19f * sm, 0.0f), true);
+        UIElement* archibaldHappy = new UINormal("Archibald_Happy", "Assets/Images/Twins/Nathaniel_Happy.png",                 glm::vec3(-3.58f, -1.99f, 0.0f), glm::vec3(4.72f * sm, 6.19f * sm, 0.0f), true);
+        UIElement* archibaldDisappoint = new UINormal("Archibald_Disappoint", "Assets/Images/Twins/Nathaniel_Disappoint.png",  glm::vec3(-3.58f, -1.99f, 0.0f), glm::vec3(4.72f * sm, 6.19f * sm, 0.0f), true);
+        UIElement* archibaldUpset = new UINormal("Archibald_Upset", "Assets/Images/Twins/Nathaniel_Upset.png",                 glm::vec3(-3.58f, -1.99f, 0.0f), glm::vec3(4.72f * sm, 6.19f * sm, 0.0f), true);
+        UIElement* archibaldSad = new UINormal("Archibald_Sad", "Assets/Images/Twins/Nathaniel_Sad.png",                       glm::vec3(-3.58f, -1.99f, 0.0f), glm::vec3(4.72f * sm, 6.19f * sm, 0.0f), true);
+        UIElement* archibaldShy = new UINormal("Archibald_Shy", "Assets/Images/Twins/Nathaniel_Shy.png",                       glm::vec3(-3.58f, -1.99f, 0.0f), glm::vec3(4.72f * sm, 6.19f * sm, 0.0f), true);
 
         //Dialogue Box
         UIButton* dialogueBox = new UIButton("DialogueBox", "Assets/Images/UI/DialogueBox.png",
@@ -106,8 +113,9 @@ public:
         UIButton* dialogueChoice3 = new UIButton("DialogueChoiceBox3", "Assets/Images/UI/DialogueChoiceBox.png",
             glm::vec3(0.0f, -1.8f, 0.0f), glm::vec3(7.47f * 0.9f, 1.07f * 0.9f, 0.0f),
             true, true, "Assets/Fonts/OverpassMono-SemiBold.ttf");
+
         //Speak Icons
-        UIElement* archibaldIcon = new UINormal("ArchibaldIcon", "Assets/Images/UI/Speaker_icon_Archibald.png", glm::vec3(4.18f, 3.5f, 0.0f), glm::vec3(1.4f, 1.57f, 0.0f), true);
+        UIElement* archibaldIcon = new UINormal("ArchibaldIcon", "Assets/Images/UI/Speaker_icon_Nathaniel.png", glm::vec3(4.18f, 3.5f, 0.0f), glm::vec3(1.45f, 1.51f, 0.0f), true);
         UIElement* waiterIcon = new UINormal("WaiterIcon", "Assets/Images/UI/Speaker_icon_Waiter.png", glm::vec3(4.18f, 3.43f, 0.0f), glm::vec3(1.23f, 1.4f, 0.0f), true);
 
         dialogueManager = make_unique<DialogueManager>("ArchibaldDialogue", dialogueBox,
@@ -126,6 +134,7 @@ public:
         dialogueManager->AddSpeakerSprite("Archibald_Upset", archibaldUpset);
         dialogueManager->AddSpeakerSprite("Archibald_Sad", archibaldSad);
         dialogueManager->AddSpeakerSprite("Archibald_Shy", archibaldShy);
+
         //Add SpeakerIcon
         dialogueManager->AddSpeakerIcon("A", archibaldIcon);
         dialogueManager->AddSpeakerIcon("W", waiterIcon);
@@ -154,17 +163,18 @@ public:
         m_gameObjects.push_back(background6a);
         m_gameObjects.push_back(background6b);
         m_gameObjects.push_back(room);
-        //m_gameObjects.push_back(archibaldInspect);
-        m_gameObjects.push_back(movingLuggage);
-        //m_gameObjects.push_back(newspaper);
+
+
+        m_gameObjects.push_back(medicine);
+
         m_gameObjects.push_back(archibaldNormal);
         m_gameObjects.push_back(archibaldHappy);
         m_gameObjects.push_back(archibaldDisappoint);
         m_gameObjects.push_back(archibaldUpset);
         m_gameObjects.push_back(archibaldSad);
         m_gameObjects.push_back(archibaldShy);
-        m_gameObjects.push_back(lamp);
-        m_gameObjects.push_back(luggage);
+
+
         m_gameObjects.push_back(dialogueBox);
         m_gameObjects.push_back(dialogueChoice1);
         m_gameObjects.push_back(dialogueChoice2);
@@ -182,7 +192,6 @@ public:
 
         // Add objects to different layers
         ObjectsparallaxManager->AddObjectToLayer(room, defaultLayer);   // Layer 1
-        ObjectsparallaxManager->AddObjectToLayer(lamp, defaultLayer);   // Layer 1.5
         //ObjectsparallaxManager->AddObjectToLayer(hat, objectLayerOne);    // Layer 2
         //ObjectsparallaxManager->AddObjectToLayer(bag, objectLayerOne);    // Layer 2
         //ObjectsparallaxManager->AddObjectToLayer(cane, objectLayerOne);   // Layer 2

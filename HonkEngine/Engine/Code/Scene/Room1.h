@@ -2,6 +2,7 @@
 
 #include "Scene.h"
 #include "../UI/UINormal.h"  
+#include "../UI/UIButton.h"  
 #include "../UI/UIElement.h"  
 #include "../Input/Input.h"
 #include "../Engine.h"
@@ -81,8 +82,16 @@ public:
         UIElement* bag = new UINormal("Bag", "Assets/Images/Martha/Bag.png", glm::vec3(-0.25f, -5.25f, 0.0f), glm::vec3(2.59f * sm * 1.2f, 1.64f * sm * 1.2f, 0.0f), true);
         
         //Inspection Items
-        UIElement* cane = new UINormal("Cane", "Assets/Images/Martha/Martharoom_Canex3.png", glm::vec3(-4.0f, -3.72f, 0.0f), glm::vec3(1.07f * sm * 1.2f, 3.7f * sm * 1.2f, 0.0f), true);
-        UIElement* letter = new UINormal("Letter", "Assets/Images/Martha/Inspection_Letter.png", glm::vec3(-2.15f, -5.9f, 0.0f), glm::vec3(1.13f * sm * 1.2f, 0.73f * sm * 1.2f, 0.0f), true);
+        UIElement* cane = new UINormal("Cane", "Assets/Images/Martha/Martha_Inspection_Cane.png", glm::vec3(-4.0f, -3.72f, 0.0f), glm::vec3(1.07f * sm * 1.2f, 3.7f * sm * 1.2f, 0.0f), true);
+        UIElement* letter = new UINormal("Letter", "Assets/Images/Martha/Martha_Inspection_Letter.png", glm::vec3(-2.15f, -5.9f, 0.0f), glm::vec3(1.13f * sm * 1.2f, 0.73f * sm * 1.2f, 0.0f), true);
+
+        //Inspection Item Buttons
+        UIButton* caneInspect = new UIButton("Cane", "Assets/Images/Martha/Martha_Inspection_Cane.png", glm::vec3(-4.0f, -3.72f, 0.0f), glm::vec3(1.07f * sm * 1.2f, 3.7f * sm * 1.2f, 0.0f), true, false, "");
+        caneInspect->SetHoverTexture("Assets/Images/Martha/Martha_Inspection_Cane_Highlight.png");
+
+        UIButton* letterInspect = new UIButton("Letter", "Assets/Images/Martha/Martha_Inspection_Letter.png", glm::vec3(-2.15f, -5.9f, 0.0f), glm::vec3(1.13f * sm * 1.2f, 0.73f * sm * 1.2f, 0.0f), true, false, "");
+        letterInspect->SetHoverTexture("Assets/Images/Martha/Martha_Inspection_Letter_Highlight.png");
+
 
         //UIs
         //Speaker Sprite emotion
@@ -166,6 +175,10 @@ public:
         m_gameObjects.push_back(bag);
         m_gameObjects.push_back(cane);
         m_gameObjects.push_back(letter);
+
+        m_gameObjects.push_back(caneInspect);
+        m_gameObjects.push_back(letterInspect);
+
         m_gameObjects.push_back(dialogueBox);
         m_gameObjects.push_back(dialogueChoice1);
         m_gameObjects.push_back(dialogueChoice2);

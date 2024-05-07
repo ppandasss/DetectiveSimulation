@@ -90,23 +90,23 @@ public:
 		GameObject* hallwaylights = new RenderGameObject("CabinLights", "Assets/Images/Corridor/Corridor_Light.png");
 
 		/*-------------------------------------------------------------🚪CREATE DOORS🚪------------------------------------------------------------------------------------------------------- */
-		GameObject* roomdoor1Highlight = new RenderGameObject("RoomdoorHighlight", "Assets/Images/Corridor/PassengerDoor_Highlight.png");
-		GameObject* roomdoor2Highlight = new RenderGameObject("RoomdoorHighlight", "Assets/Images/Corridor/PassengerDoor_Highlight.png");
-		GameObject* roomdoor3Highlight = new RenderGameObject("RoomdoorHighlight", "Assets/Images/Corridor/PassengerDoor_Highlight.png");
-		GameObject* roomdoor4Highlight = new RenderGameObject("RoomdoorHighlight", "Assets/Images/Corridor/PassengerDoor_Highlight.png");
+		GameObject* roomdoor1Highlight = new RenderGameObject("RoomdoorHighlight1", "Assets/Images/Corridor/PassengerDoor_Highlight.png");
+		GameObject* roomdoor2Highlight = new RenderGameObject("RoomdoorHighlight1", "Assets/Images/Corridor/PassengerDoor_Highlight.png");
+		GameObject* roomdoor3Highlight = new RenderGameObject("RoomdoorHighlight2", "Assets/Images/Corridor/PassengerDoor_Highlight.png");
+		GameObject* roomdoor4Highlight = new RenderGameObject("RoomdoorHighlight2", "Assets/Images/Corridor/PassengerDoor_Highlight.png");
 		GameObject* kitchendoorHighlight = new RenderGameObject("KitchendoorHighlight", "Assets/Images/Corridor/KitchenDoor_Highlight.png");
 
 		DoorManager& doorManager = DoorManager::GetInstance();
-		room1Door = new Door("Room1Door", roomdoor1Highlight, glm::vec3(-17.58f, -0.632f, 0.0f), glm::vec3(2.29f * 1.2f, 4.65f * 1.2f, 0.0f), "Room1");
+		room1Door = new Door("Room1Door", roomdoor1Highlight, glm::vec3(-17.58f, -0.632f, 0.0f), glm::vec3(2.29f * 1.2f, 4.65f * 1.2f, 0.0f), "Room3");
 		doorManager.AddDoor(room1Door);
 
-		room2Door = new Door("Room2Door", roomdoor2Highlight, glm::vec3(-8.588f, -0.632f, 0.0f), glm::vec3(2.29f * 1.2f, 4.65f * 1.2f, 0.0f), "Room1");
+		room2Door = new Door("Room2Door", roomdoor2Highlight, glm::vec3(-8.588f, -0.632f, 0.0f), glm::vec3(2.29f * 1.2f, 4.65f * 1.2f, 0.0f), "Room2");
 		doorManager.AddDoor(room2Door);
 
-		room3Door = new Door("Room3Door", roomdoor3Highlight, glm::vec3(0.38f, -0.632f, 0.0f), glm::vec3(2.29f * 1.2f, 4.65f * 1.2f, 0.0f), "Room2");
+		room3Door = new Door("Room3Door", roomdoor3Highlight, glm::vec3(0.38f, -0.632f, 0.0f), glm::vec3(2.29f * 1.2f, 4.65f * 1.2f, 0.0f), "Room3");
 		doorManager.AddDoor(room3Door);
 
-		room4Door = new Door("Room4Door", roomdoor4Highlight, glm::vec3(9.358f, -0.632f, 0.0f), glm::vec3(2.29f * 1.2f, 4.65f * 1.2f, 0.0f), "Room1");
+		room4Door = new Door("Room4Door", roomdoor4Highlight, glm::vec3(9.358f, -0.632f, 0.0f), glm::vec3(2.29f * 1.2f, 4.65f * 1.2f, 0.0f), "Room4");
 		doorManager.AddDoor(room4Door);
 
 		kitchenDoor = new Door("KitchenDoor", kitchendoorHighlight, glm::vec3(18.31f, -0.629f, 0.0f), glm::vec3(2.29f * 1.2f, 4.65f * 1.2f, 0.0f), "Kitchen");
@@ -307,7 +307,7 @@ public:
 							}
 						}
 						else if (!door->getPermission()) {
-							instructionText->SetContent("You do not have permission.");
+							instructionText->SetContent("Locked. Permission required.");
 						}
 					}
 				});

@@ -66,7 +66,7 @@ public:
 		BlankPage->SetScale(glm::vec3(12.68f, 7.45f, 1.0f));
 		BlankPage->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
-		UIButton* CloseJournalButton = new UIButton("Tab6", "Assets/Images/Journal/Bookmark_TeaGuide.png", glm::vec3(6.7f, 3.5f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, false, "");
+		UIButton* CloseJournalButton = new UIButton("CloseButton", "Assets/Images/Journal/Journal_CloseButton.png", glm::vec3(5.25f, 4.0f, 0.0f), glm::vec3(1.04f, 1.70f, 0.0f), true, false, "");
 		CloseJournalButton->SetOnClickAction([this]() { closeJournal(); });
 
 		m_gameObjects.push_back(BackGround);
@@ -78,8 +78,8 @@ public:
 		m_gameObjects.push_back(Tab5);
 		m_gameObjects.push_back(Tab6);
 		m_gameObjects.push_back(Tab7);
-		m_gameObjects.push_back(BlankPage);
 		m_gameObjects.push_back(CloseJournalButton);
+		m_gameObjects.push_back(BlankPage);
 
 		Page* mainPage = new MainPage();
 		Page* cabinPage1 = new CabinPage1();

@@ -14,6 +14,7 @@
 #include "Scene/Hallway.h"
 #include "Scene/Room1.h"
 #include "Scene/Room2.h"
+#include "Scene/Room3.h"
 #include "Scene/Kitchen.h"
 #include "Scene/LoadScene.h"
 #include <iostream>
@@ -37,6 +38,7 @@ int main()
     game.AddScene("Hallway", new Hallway());
     game.AddScene("Room1", new Room1());
     game.AddScene("Room2", new Room2());
+    game.AddScene("Room3", new Room3());
     game.AddScene("Kitchen", new Kitchen());
     game.SetScene("LoadScene");
 

@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="2WD26">
+		<Speaker name="Waiter">
+			<line1>(Is that luggage... moving???)</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD27">
+		<Speaker name="Waiter">
+			<line1>Sir, I believe your...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD29">
+		<Speaker name="Archibald_Upset">
+			<line1>Oh shoot! Bring it to me.</line1>
+			<line2>Quick!</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD30">
+		<Speaker name="Archibald_Upset">
+			<line1>AND BE CAREFUL.</line1>
+			<line2>This is the %latest% %prototype% from  my business.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD30">
+		<Speaker name="Archibald_Upset">
+			<line1>[CLINK! CLANK! POW! BOOM!]</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AQ08">
+		<Speaker name="Archibald_Upset">
+			<line1>[The luggage finally comes to a halt.]</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="2WD28">What a skillful method  to fix something</Choice1>
+			<Choice2 next="2WD29">What an unconventional  way to fix something</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="2WD28" next="2AD32">
+		<Speaker name="Waiter">
+			<line1>Such a... skillful method to fix  something, sir.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD29" next="2AD33">
+		<Speaker name="Waiter">
+			<line1>What an... unconventional way  to fix something, sir.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD32" next="2AD34">
+		<Speaker name="Archibald_Happy">
+			<line1>Of course, skill is a must given</line1>
+			<line2>when you're the owner of the top  mechanical technology business.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD33">
+		<Speaker name="Archibald_Happy">
+			<line1>Well, a unique product like this  requires a unique method of repair.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD34">
+		<Speaker name="Archibald_Happy">
+			<line1>This bad boy just aced its debut  in my first official %business% %meeting.%</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WQ01">
+		<Speaker name="Waiter">
+			<line1>Congratulations, sir.</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="2WD30">Ask who was the buyer</Choice1>
+			<Choice2 next="2WD31">Ask is that why he travelled  to Eastside</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="2WD30" next="2AD35">
+		<Speaker name="Waiter">
+			<line1>May I ask who is the keen customer?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD31" next="2AD36">
+		<Speaker name="Waiter">
+			<line1>Is that the reason for your trip  to Eastside?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD35" next="2AQ09">
+		<Speaker name="Archibald_Normal">
+			<line1>Use your head, waiter.</line1>
+			<line2>I travelled all this way, so obviously  the buyer must be from Eastside!</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD36">
+		<Speaker name="Archibald_Normal">
+			<line1>Why else would I bother coming here?</line1>
+			<line2>Use your head, waiter.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AQ09">
+		<Speaker name="Archibald_Normal">
+			<line1>Have you ever been to the Council?</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="2WD33">I have</Choice1>
+			<Choice2 next="2WD34">I used to work there</Choice2>
+			<Choice3 next="2WD32">Never</Choice3>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="2WD32" next="2AD37">
+		<Speaker name="Waiter">
+			<line1>Never, sir.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD33" next="2AD40">
+		<Speaker name="Waiter">
+			<line1>I have, sir.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD34" next="2AD40">
+		<Speaker name="Waiter">
+			<line1>I used to work there, sir.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD37">
+		<Speaker name="Archibald_Normal">
+			<line1>That is where my meeting was held.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD38">
+		<Speaker name="Archibald_Happy">
+			<line1>Pretty impressive, huh?</line1>
+			<line2>My business is so renowned</line2>
+			<line3>that it attracts the interest of the  Eastside elite.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD39" next="2AD43">
+		<Speaker name="Archibald_Happy">
+			<line1>You wouldn't be able to imagine how  it feels to be invited there.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD40">
+		<Speaker name="Archibald_Normal">
+			<line1>Really? Then you would know how  great it feels to be there.</line1>
+			<line2>Even though we were invited for  utterly different purposes, obviously.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD41">
+		<Speaker name="Archibald_Normal">
+			<line1>That is where my meeting was held.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD42" next="2AD43">
+		<Speaker name="Archibald_Happy">
+			<line1>Pretty impressive, huh?</line1>
+			<line2>My business is so renowned</line2>
+			<line3>that it attracts the interest of the  Eastside elite.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD43">
+		<Speaker name="Archibald_Normal">
+			<line1>...</line1>
+			<line2>Oh, and I also came here for another  big client.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AQ10">
+		<Speaker name="Archibald_Happy">
+			<line1>What a successful business trip  I've had.</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="2WD35">Ask if it was at the Council</Choice1>
+			<Choice2 next="2WD36">Ask if it was another  Eastside client</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="2WD35" next="2AD44">
+		<Speaker name="Waiter">
+			<line1>Another meeting at the Council, sir?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD36" next="2AD46">
+		<Speaker name="Waiter">
+			<line1>Another Eastside client, sir?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD44">
+		<Speaker name="Archibald_Normal">
+			<line1>I would hope so!</line1>
+			<line2>It was right at the place where they  celebrate the National day thing.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD45" next="2AD48">
+		<Speaker name="Archibald_Upset">
+			<line1>So crowded, so many uncultured  individuals.</line1>
+			<line2>Just the thought of it makes me  feel so gross.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD46">
+		<Speaker name="Archibald_Normal">
+			<line1>They mentioned nothing about their race.</line1>
+			<line2>Only told me to meet at the event.</line2>
+			<line3>What was the name....</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD47">
+		<Speaker name="Archibald_Normal">
+			<line1>Oh right.</line1>
+			<line2>The National day thing of Eastside.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD47_2">
+		<Speaker name="Archibald_Upset">
+			<line1>So crowded, so many uncultured  individuals.</line1>
+			<line2>Just the thought of it makes me  feel so gross.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD48">
+		<Speaker name="Archibald_Normal">
+			<line1>And what an odd client, though.</line1>
+			<line2>Brought their entire family to  a bustling event-</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AQ11">
+		<Speaker name="Archibald_Normal">
+			<line1>just to %receive% %the% %product% with  them.</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="2WD37">Ask if it the same product  in his luggage</Choice1>
+			<Choice2 next="2WD38">Ask what kind of product  did they buy</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="2WD37" next="2AD49">
+		<Speaker name="Waiter">
+			<line1>Oh, is it the same one as in  your luggage?</line1>
+			<line2>Perhaps that explains their reason.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD38" next="2AD49">
+		<Speaker name="Waiter">
+			<line1>What kind of product did they  buy, sir?</line1>
+			<line2>Perhaps that explains their reason.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD49">
+		<Speaker name="Archibald_Normal">
+			<line1>Well, it’s....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD49_2">
+		<Speaker name="Archibald_Upset">
+			<line1>HEY! It's none of your business  to know!</line1>
+			<line2>I've already told you too much,  stop prying for more!</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>
