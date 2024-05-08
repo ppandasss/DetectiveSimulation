@@ -320,11 +320,11 @@ public:
 				[this, &bellManager](Door* door) {  // Capture bellManager by reference
 					Input& input = Application::GetInput();
 					if (door) {
-						if (door->getPermission() ) {
+						if (door->getPermission()) {
 							instructionText->SetContent("Press [E] to enter");
 							if (input.Get().GetKeyDown(GLFW_KEY_E))
 							{
-								if (door->GetName() == "kitchenDoor")
+								if (door->GetName() == "KitchenDoor")
 								{
 									Application::Get().SetScene(door->GetSceneName());
 								}
@@ -334,11 +334,20 @@ public:
 									audioManager.PlaySound("knockDoor");
 									player->StopMovement();
 									Application::Get().SetTimer(2000, [this, door]() {Application::Get().SetScene(door->GetSceneName()); player->ResumeMovement(); }, false);
-								}	
+								}
 							}
 						}
-						else if (!door->getPermission()) {
-							instructionText->SetContent("Locked. Permission required.");
+						else {
+							GameState currentGameState = gameStateManager.getGameState();
+							RoomState currentRoomState = gameStateManager.getRoomState();
+
+							// Check if the room state is Prepare and if the current door matches the game state room
+							if (currentRoomState == RoomState::Prepare && door->GetName() == gameStateNameToDoorName(currentGameState)) {
+								instructionText->SetContent("You need food to serve.");
+							}
+							else {
+								instructionText->SetContent("Locked. Permission required.");
+							}
 						}
 					}
 				});
@@ -354,5 +363,19 @@ public:
 		
 	}
 
+	std::string gameStateNameToDoorName(GameState state) {
+		switch (state) {
+		case GameState::Room1:
+			return "Room1Door";
+		case GameState::Room2:
+			return "Room2Door";
+		case GameState::Room3:
+			return "Room3Door";
+		case GameState::Room4:
+			return "Room4Door";
+		default:
+			return ""; // Default empty if no match found
+		}
+	}
 
 };
