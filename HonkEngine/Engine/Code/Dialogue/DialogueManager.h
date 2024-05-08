@@ -272,11 +272,9 @@ public:
 
     void Update(float dt, long frame) {
         UpdateSpeakerSprite();
-    }
 
-    void Render() {
         if (currentDialogueButton) {
-            currentDialogueButton->Render();
+            currentDialogueButton->setActiveStatus(true);
         }
 
         // Get the speaker code for the current dialogue
@@ -284,8 +282,15 @@ public:
 
         // Render speaker icons
         if (speakerIcons.find(speakerCode) != speakerIcons.end()) {
-            speakerIcons[speakerCode]->Render();
+            speakerIcons[speakerCode]->setActiveStatus(true);
         }
+
+    }
+
+    void Render() {
+       
+
+       
     }
 
 
@@ -360,7 +365,14 @@ public:
     }
 
     bool IsDialogueFinished() const {
-        return currentDialogueIndex + 1 >= dialogues.size();
+        // Check if the current dialogue index is the last one in the list
+        bool isLastDialogue = currentDialogueIndex + 1 >= dialogues.size();
+
+        // Check if the current line index is the last line in the current dialogue
+        bool isLastLine = currentLineIndex + 1 >= dialogues[currentDialogueIndex].text.size();
+
+        // Dialogue is finished if both the dialogue and line indices are at the end
+        return isLastDialogue && isLastLine;
     }
 
 
@@ -446,31 +458,20 @@ public:
     }
 
 
-
-
-
-
-
 private:
 
 
     void UpdateSpeakerSprite() {
-        string speakerName = dialogues[currentDialogueIndex].speakerName;
         string speakerCode = GetSpeakerCodeFromId(dialogues[currentDialogueIndex].id);
 
-        // If the speaker code is "W", keep the previous sprite active
-        if (speakerCode == "W") {
-            return;
+        // Deactivate all speaker icons first
+        for (auto& pair : speakerIcons) {
+            pair.second->setActiveStatus(false); // Set all to inactive
         }
 
-        // Deactivate all sprites
-        for (auto& pair : speakerSprites) {
-            pair.second->setActiveStatus(false);
-        }
-
-        // Activate the sprite for the current speaker
-        if (speakerSprites.find(speakerName) != speakerSprites.end()) {
-            speakerSprites[speakerName]->setActiveStatus(true);
+        // Then activate only the current speaker's icon
+        if (speakerIcons.find(speakerCode) != speakerIcons.end()) {
+            speakerIcons[speakerCode]->setActiveStatus(true);
         }
     }
 

@@ -23,7 +23,7 @@
 #include "../Effects/BackgroundParallax.h"
 #include "../GameObjects/Bell.h"
 #include "../GameStateManager.h"
-
+#include "KitchenData.h"
 class Hallway : public Scene
 {
 
@@ -309,6 +309,8 @@ public:
 		BellManager& bellManager = BellManager::GetInstance();
 		bellManager.Update(dt, frame);
 
+		KitchenData* foodData = KitchenData::GetInstance();
+
 		if (player) {
 			glm::vec3 playerPos = player->GetPosition();
 			Camera& camera = Application::GetCamera();
@@ -342,7 +344,7 @@ public:
 							RoomState currentRoomState = gameStateManager.getRoomState();
 
 							// Check if the room state is Prepare and if the current door matches the game state room
-							if (currentRoomState == RoomState::Prepare && door->GetName() == gameStateNameToDoorName(currentGameState)) {
+							if (currentRoomState == RoomState::Prepare && door->GetName() == gameStateNameToDoorName(currentGameState) ) {
 								instructionText->SetContent("You need food to serve.");
 							}
 							else {

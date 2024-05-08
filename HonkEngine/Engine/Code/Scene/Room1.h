@@ -235,7 +235,6 @@ public:
                 dialogueManager->Update(dt, frame);
                 if (dialogueManager->IsDialogueFinished()) {
                     instructionText->SetContent("Press [E] to leave");
-                    dialogueManager->HideAllDialogueUI();
                     if (input.Get().GetKeyDown(GLFW_KEY_E))
                     {
 
