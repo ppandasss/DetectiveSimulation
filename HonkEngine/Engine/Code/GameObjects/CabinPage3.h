@@ -69,21 +69,21 @@ public:
 		E_Clue4->SetScale(0.62f);
 
 		ClueData* cabin22_clue1 = new ClueData();
-		cabin22_clue1->showText = true;
-		cabin22_clue1->clueText = E_Clue1;
+		cabin22_clue1->showClue = true;
+		cabin22_clue1->clueObject = E_Clue1;
 		cabin22_clue1->isEvidence = true;
 
 		ClueData* cabin22_clue2 = new ClueData();
-		cabin22_clue2->showText = true;
-		cabin22_clue2->clueText = E_Clue2;
+		cabin22_clue2->showClue = true;
+		cabin22_clue2->clueObject = E_Clue2;
 
 		ClueData* cabin22_clue3 = new ClueData();
-		cabin22_clue3->showText = true;
-		cabin22_clue3->clueText = E_Clue3;
+		cabin22_clue3->showClue = true;
+		cabin22_clue3->clueObject = E_Clue3;
 
 		ClueData* cabin22_clue4 = new ClueData();
-		cabin22_clue4->showText = true;
-		cabin22_clue4->clueText = E_Clue4;
+		cabin22_clue4->showClue = true;
+		cabin22_clue4->clueObject = E_Clue4;
 
 		// DIVIDER 1
 		GameObject* Divider1 = new UIObject("Divider1", "Assets/Images/Journal/Line_1.png", true);
@@ -108,12 +108,12 @@ public:
 		E_LA2->SetScale(0.48f);
 
 		ClueData* cabin22_clue5 = new ClueData();
-		cabin22_clue5->showText = true;
-		cabin22_clue5->clueText = E_LA1;
+		cabin22_clue5->showClue = true;
+		cabin22_clue5->clueObject = E_LA1;
 
 		ClueData* cabin22_clue6 = new ClueData();
-		cabin22_clue6->showText = true;
-		cabin22_clue6->clueText = E_LA2;
+		cabin22_clue6->showClue = true;
+		cabin22_clue6->clueObject = E_LA2;
 		cabin22_clue6->isEvidence = true;
 
 		textClues.push_back(cabin22_clue1);
@@ -170,6 +170,13 @@ public:
 		RedUnderline_Cabin3->SetScale(glm::vec3(1.7f, 0.1f, 0.0f));
 		RedUnderline_Cabin3->SetPosition(glm::vec3(1.1f, -2.0f, 0.0f));
 
+		ClueData* cabin22_clue7 = new ClueData();
+		cabin22_clue7->showClue = false;
+		cabin22_clue7->clueObject = RedUnderline_Cabin3;
+
+		textClues.push_back(cabin22_clue7);
+		m_journalData->addClueToJournalData(CABIN22, cabin22_clue7);
+
 
 		m_gameObjects.push_back(P1Picture);
 		m_gameObjects.push_back(PaperClip);
@@ -200,28 +207,6 @@ public:
 		m_gameObjects.push_back(TheCouncil);
 		m_gameObjects.push_back(SupremeCourt);
 
-		m_gameObjects.push_back(RedUnderline_Cabin3);
-
-
-	}
-
-
-	virtual void Update(float dt, long frame) override {
-
-		Page::Update(dt, frame);
-
-		CabinPageData cabinData = m_journalData->GetCabinPageData(Cabin::CABIN22);
-
-		if (!cabinData.ShowLastActivity) {
-
-			RedUnderline_Cabin3->setActiveStatus(false);
-
-		}
-		else {
-
-			RedUnderline_Cabin3->setActiveStatus(true);
-
-		}
 
 	}
 

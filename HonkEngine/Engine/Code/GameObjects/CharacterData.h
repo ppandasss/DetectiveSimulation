@@ -43,7 +43,6 @@ public:
 	}
 
 	
-	
 
 	int calculateScore(Cabin cabin) { //with meal score and timer
 

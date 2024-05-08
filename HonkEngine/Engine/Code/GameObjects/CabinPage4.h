@@ -74,25 +74,25 @@ public:
 		A_Clue5->SetScale(0.6f);
 
 		ClueData* cabin3_clue1 = new ClueData();
-		cabin3_clue1->showText = true;
-		cabin3_clue1->clueText = A_Clue1;
+		cabin3_clue1->showClue = true;
+		cabin3_clue1->clueObject = A_Clue1;
 
 		ClueData* cabin3_clue2 = new ClueData();
-		cabin3_clue2->showText = true;
-		cabin3_clue2->clueText = A_Clue2;
+		cabin3_clue2->showClue = true;
+		cabin3_clue2->clueObject = A_Clue2;
 		cabin3_clue2->isEvidence = true;
 
 		ClueData* cabin3_clue3 = new ClueData();
-		cabin3_clue3->showText = true;
-		cabin3_clue3->clueText = A_Clue3;
+		cabin3_clue3->showClue = true;
+		cabin3_clue3->clueObject = A_Clue3;
 
 		ClueData* cabin3_clue4 = new ClueData();
-		cabin3_clue4->showText = true;
-		cabin3_clue4->clueText = A_Clue4;
+		cabin3_clue4->showClue = true;
+		cabin3_clue4->clueObject = A_Clue4;
 
 		ClueData* cabin3_clue5 = new ClueData();
-		cabin3_clue5->showText = true;
-		cabin3_clue5->clueText = A_Clue5;
+		cabin3_clue5->showClue = true;
+		cabin3_clue5->clueObject = A_Clue5;
 
 
 		textClues.push_back(cabin3_clue1);
@@ -140,21 +140,21 @@ public:
 		A_LA2_2->SetScale(0.62f);
 
 		ClueData* cabin3_clue6 = new ClueData();
-		cabin3_clue6->showText = true;
-		cabin3_clue6->clueText = A_LA1_1;
+		cabin3_clue6->showClue = true;
+		cabin3_clue6->clueObject = A_LA1_1;
 
 		ClueData* cabin3_clue7 = new ClueData();
-		cabin3_clue7->showText = true;
-		cabin3_clue7->clueText = A_LA1_2;
+		cabin3_clue7->showClue = true;
+		cabin3_clue7->clueObject = A_LA1_2;
 
 		ClueData* cabin3_clue8 = new ClueData();
-		cabin3_clue8->showText = true;
-		cabin3_clue8->clueText = A_LA2_1;
+		cabin3_clue8->showClue = true;
+		cabin3_clue8->clueObject = A_LA2_1;
 		cabin3_clue8->isEvidence = true;
 
 		ClueData* cabin3_clue9 = new ClueData();
-		cabin3_clue9->showText = true;
-		cabin3_clue9->clueText = A_LA2_2;
+		cabin3_clue9->showClue = true;
+		cabin3_clue9->clueObject = A_LA2_2;
 
 		textClues.push_back(cabin3_clue6);
 		textClues.push_back(cabin3_clue7);
@@ -204,6 +204,14 @@ public:
 		RedUnderline_Cabin4->SetScale(glm::vec3(1.7f, 0.1f, 0.0f));
 		RedUnderline_Cabin4->SetPosition(glm::vec3(1.1f, -2.0f, 0.0f));
 
+		ClueData* cabin3_clue10 = new ClueData();
+		cabin3_clue10->showClue = false;
+		cabin3_clue10->clueObject = RedUnderline_Cabin4;
+
+		textClues.push_back(cabin3_clue10);
+		m_journalData->addClueToJournalData(CABIN3, cabin3_clue10);
+
+
 		m_gameObjects.push_back(P1Picture);
 		m_gameObjects.push_back(PaperClip);
 		m_gameObjects.push_back(InfoPaper);
@@ -231,29 +239,8 @@ public:
 		m_gameObjects.push_back(TheCouncil);
 		m_gameObjects.push_back(SupremeCourt);
 
-		m_gameObjects.push_back(RedUnderline_Cabin4);
-
-
 	}
 
-	virtual void Update(float dt, long frame) override {
-
-		Page::Update(dt, frame);
-
-		CabinPageData cabinData = m_journalData->GetCabinPageData(Cabin::CABIN3);
-
-		if (!cabinData.ShowLastActivity) {
-
-			RedUnderline_Cabin4->setActiveStatus(false);
-
-		}
-		else {
-
-			RedUnderline_Cabin4->setActiveStatus(true);
-
-		}
-
-	}
 
 private:
 

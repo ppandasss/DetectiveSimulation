@@ -37,9 +37,9 @@ public:
 
 		for (auto& object : textClues) {
 
-			if (object->showText) { //CHECK ACTIVE STATUS
+			if (object->showClue) { //CHECK ACTIVE STATUS
 
-				object->clueText->Render();
+				object->clueObject->Render();
 
 			}
 
@@ -74,7 +74,7 @@ public:
 
 		for (auto& object : textClues) {
 
-			object->clueText->Update(dt, frame);
+			object->clueObject->Update(dt, frame);
 
 		}
 
@@ -97,13 +97,13 @@ public:
 
 		for (auto& object : textClues) {
 
-			if (object->clueText) { //checks for nullptr
+			if (object->clueObject) { //checks for nullptr
 
-				if (object->showText) {
-					object->clueText->setActiveStatus(status); //sets status accordingly if clue is active
+				if (object->showClue) {
+					object->clueObject->setActiveStatus(status); //sets status accordingly if clue is active
 				}
 				else {
-					object->clueText->setActiveStatus(false); //if inactive always set as false
+					object->clueObject->setActiveStatus(false); //if inactive always set as false
 				}
 
 			}

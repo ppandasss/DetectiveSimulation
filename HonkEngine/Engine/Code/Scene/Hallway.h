@@ -52,8 +52,8 @@ public:
 	
 
 		//activate clue in journal
-		/*JournalData::GetInstance()->ActivateClue(CLUE_CABIN1, 0);
-		JournalData::GetInstance()->ActivateClue(CLUE_CABIN1, 1);*/
+		/*JournalData::GetInstance()->ActivateClue(CABIN1, 0);
+		JournalData::GetInstance()->ActivateClue(CABIN1, 1);*/
 
 		/*-------------------------------------------------------------🎮CREATE PLAYER🎮------------------------------------------------------------------------------------------------------- */
 

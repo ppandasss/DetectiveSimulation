@@ -173,6 +173,8 @@ public:
 		deffered_m_gameObjects.push_back(redUnderline);
 		deffered_m_gameObjects.push_back(redCircle);
 
+		//make evidence button deffered and set active with evidence no.
+
 	}
 
 	//--------------------- SUSPECT BUTTON FUNCTIONS -----------------------

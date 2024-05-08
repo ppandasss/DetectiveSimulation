@@ -2,6 +2,8 @@
 
 #include "../Text/Text.h"
 
+using namespace std;
+
 enum Location { TOWNSQUARE, HOLYCHURCH, COUNCIL, SUPREMECOURT, LOCATION_EMPTY };
 
 //used for clues and character data
@@ -13,8 +15,8 @@ enum Ending {END1, END2, END3, END4, END5, END6};
 
 struct ClueData {
 
-	bool showText;
-	Text* clueText = nullptr;
+	bool showClue;
+	GameObject* clueObject = nullptr;
 	bool isEvidence = false;
 
 };
@@ -28,17 +30,16 @@ struct DeferredRenderObject {
 
 struct MainPageData {
 
-	Cabin player_Spy;
-	Location player_BombLocation;  
-	std::string player_Evidence;
+	Cabin player_Spy = CABIN_EMPTY;
+	Location player_BombLocation = LOCATION_EMPTY;  
+	int player_Evidence = -1;
 
 };
 
 struct CabinPageData {
 
 	std::vector<ClueData*> textClues;
-	bool ShowLastActivity = false;
-
+	std::vector<std::string> activeEvidence;
 };
 
 //SINGLETON CLASS
@@ -70,15 +71,40 @@ class JournalData {
 		//EVIDENCE BUTTON FUNCTIONS
 
 		void incrementEvidence() {
+
 			// Increment index and wrap around if needed
-			//main_page.player_Evidence = (main_page.player_Evidence + 1) % 2;
+			main_page.player_Evidence = (main_page.player_Evidence + 1) % evidenceNo;
+
 		}
 
 		std::string getEvidenceText() {
-			return main_page.player_Evidence;
-		}
+			
+			if (main_page.player_Evidence != -1) {
 
+				return " string";
+				
+			}
+		}
 		
+		void resetEvidenceChoices() {
+
+			mainPageEvidence[0] = " - ";
+			mainPageEvidence[1] = " - ";
+	
+
+			Cabin spy_choice = main_page.player_Spy;
+			vector<string> activeEvidence = allCabinData[spy_choice].activeEvidence;
+
+			evidenceNo = allCabinData[spy_choice].activeEvidence.size();
+
+			if (evidenceNo == 0) {
+
+
+			}
+
+
+		}
+	
 
 		//------------------CABIN PAGE FUNCTIONS--------------------------
 	
@@ -89,10 +115,15 @@ class JournalData {
 			if (index >= 0 && index < allCabinData[cabin].textClues.size()) {
 
 				ClueData* activatedClue = allCabinData[cabin].textClues[index];
-				activatedClue->showText = true;
+				activatedClue->showClue = true;
 
 				if (activatedClue->isEvidence) {
-					allCabinEvidenceChoices[cabin].push_back(activatedClue->clueText->GetContent());
+
+					Text* textObject = dynamic_cast<Text*>(activatedClue->clueObject);
+					std::string evidencetext = textObject->GetContent();
+
+					allCabinData[cabin].activeEvidence.push_back(evidencetext);
+
 				}
 
 			}
@@ -104,25 +135,15 @@ class JournalData {
 
 			if (index >= 0 && index < allCabinData[cabin].textClues.size()) {
 
-				allCabinData[cabin].textClues[index]->showText = false;
+				allCabinData[cabin].textClues[index]->showClue = false;
 
 			}
-
-		}
-
-		void activateLastActivity(Cabin cabin) {
-
-			allCabinData[cabin].ShowLastActivity = true;
 
 		}
 
 		void addClueToJournalData(Cabin cabin, ClueData *newClue){
 
 			allCabinData[cabin].textClues.push_back(newClue);
-
-			if (newClue->showText && newClue->isEvidence) {
-				allCabinEvidenceChoices[cabin].push_back(newClue->clueText->GetContent());
-			}
 
 		}
 	
@@ -141,7 +162,7 @@ class JournalData {
 
 			Cabin spy_choice = main_page.player_Spy;
 			Location location_choice = main_page.player_BombLocation;
-			std::string evidence_choice = main_page.player_Evidence;
+			int evidence_choice = main_page.player_Evidence;
 
 			//----------CHECK IF CHOICES ARE CORRECT HERE AND SET BOOL BELOW----------------
 
@@ -151,7 +172,7 @@ class JournalData {
 
 			if (spy_choice == CABIN21) spyCorrect = true;
 			if (location_choice == TOWNSQUARE) locationCorrect = true;
-			if (evidence_choice == "After visiting National Day Event with his sister") evidenceCorrect = true;
+			if (mainPageEvidence[evidence_choice] == "After visiting National Day Event with his sister") evidenceCorrect = true;
 
 			if (spyCorrect) {
 
@@ -180,8 +201,6 @@ class JournalData {
 			}
 
 		}
-
-		
 	
 
 
@@ -194,7 +213,7 @@ class JournalData {
 
 			main_page.player_Spy = CABIN_EMPTY;
 			main_page.player_BombLocation = Location::LOCATION_EMPTY;
-			main_page.player_Evidence = "";
+			main_page.player_Evidence = 0;
 
 		}
 
@@ -202,11 +221,11 @@ class JournalData {
 
 		std::map<Cabin, CabinPageData> allCabinData;
 
-		std::map<Cabin,std::vector<std::string>> allCabinEvidenceChoices;
+		std::map<Cabin, std::vector<std::string>> allCabinEvidenceChoices;
 
-		std::string mainPageEvidence[2] = { "Evidence 1","Evidence 2" };
+		std::string mainPageEvidence[2] = { " - ", " - " };
 
-
+		int evidenceNo = 0;
 
 };
 
