@@ -124,8 +124,10 @@ public:
 
         dialogueManager = make_unique<DialogueManager>("ArchibaldDialogue", dialogueBox, "Archibald_Normal");
 
-        dialogueManager->LoadDialogues("Assets/Dialogue/Archibald/Informative/Archibald_Informative_MovingLuggage.xml");
+       
         dialogueManager->LoadDialogues("Order","Assets/Dialogue/Archibald/Archibald_Order.xml");
+
+        dialogueManager->LoadDialogues("Informative_MovingLuggage","Assets/Dialogue/Archibald/Informative/Archibald_Informative_MovingLuggage.xml");
         
 
         //Text
@@ -240,7 +242,7 @@ public:
         case RoomPhase::TakeOrderPhase:
             // Handle TakeOrderPhase logic
             dialogueManager->Update(dt, frame);
-            if (dialogueManager->IsDialogueFinished()) {
+            if (dialogueManager->IsDialogueFinished("Order")) {
                 instructionText->SetContent("Press [E] to leave");
                 currentPhase = RoomPhase::ServePhase;
             }

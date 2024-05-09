@@ -56,14 +56,9 @@ Cabin GetCabinFromString(const string& cabinStr) {
         {"CABIN4", CABIN4},
         {"CABIN_EMPTY", CABIN_EMPTY}
     };
-
     auto it = cabinMap.find(cabinStr);
-    if (it != cabinMap.end()) {
-        return it->second;
-    }
-    return CABIN_EMPTY;  // Default return if not found
+    return it != cabinMap.end() ? it->second : CABIN_EMPTY;
 }
-
 
 class DialogueManager {
 public:
@@ -86,76 +81,81 @@ public:
 
 
 
-    void LoadDialogues( const string& filePath) {
+    void LoadDialogues(const string& key, const string& filePath) {
         tinyxml2::XMLDocument doc;
-        if (doc.LoadFile(filePath.c_str()) == tinyxml2::XML_SUCCESS) {
-            tinyxml2::XMLElement* root = doc.FirstChildElement("Dialogues");
-            for (tinyxml2::XMLElement* element = root->FirstChildElement("Dialogue"); element != nullptr; element = element->NextSiblingElement("Dialogue")) {
-                Dialogue dialogue;
-                dialogue.id = element->Attribute("id");
-
-                tinyxml2::XMLElement* speakerElement = element->FirstChildElement("Speaker");
-                if (speakerElement) {
-                    dialogue.speakerName = speakerElement->Attribute("name");
-                    for (tinyxml2::XMLElement* lineElement = speakerElement->FirstChildElement(); lineElement != nullptr; lineElement = lineElement->NextSiblingElement()) {
-                        dialogue.text.push_back(lineElement->GetText());
-                    }
-                }
-
-                // Read choices
-                tinyxml2::XMLElement* choicesElement = element->FirstChildElement("Choices");
-                if (choicesElement) {
-                    for (tinyxml2::XMLElement* choiceElement = choicesElement->FirstChildElement(); choiceElement != nullptr; choiceElement = choiceElement->NextSiblingElement()) {
-                        DialogueChoice choice;
-                        choice.text = choiceElement->GetText();
-                        choice.nextDialogueId = choiceElement->Attribute("next");
-
-                        const char* clueIDAttr = choiceElement->Attribute("clueID");
-                        if (clueIDAttr) {
-                            stringstream ss(clueIDAttr);
-                            string clueID;
-                            while (getline(ss, clueID, ',')) { // Splitting clues by semicolon
-                                choice.clueIDs.push_back(clueID);
-                            }
-                        }
-
-                        dialogue.choices.push_back(choice);
-                    }
-                }
-
-                // Read next attribute
-                const char* nextAttr = element->Attribute("next");
-                if (nextAttr) {
-                    dialogue.next = nextAttr;
-                }
-
-                // Read order data
-                tinyxml2::XMLElement* orderElement = element->FirstChildElement("Order");
-                if (orderElement) {
-                    dialogue.orderElement = orderElement;
-                    dialogue.hasOrderData = true;
-
-                    // Allocate memory for tempOrderData
-                    dialogue.tempOrderData = new TempOrderData();
-
-                    // Parse and store the order data
-                    tinyxml2::XMLElement* roomNumberElement = orderElement->FirstChildElement("RoomNumber");
-                    if (roomNumberElement) dialogue.tempOrderData->roomNumber = roomNumberElement->GetText();
-                    tinyxml2::XMLElement* teaElement = orderElement->FirstChildElement("Tea");
-                    if (teaElement) dialogue.tempOrderData->teaOrder = teaElement->GetText();
-                    tinyxml2::XMLElement* sandwichElement = orderElement->FirstChildElement("Sandwich");
-                    if (sandwichElement) dialogue.tempOrderData->sandwichOrder = sandwichElement->GetText();
-                    tinyxml2::XMLElement* pastryElement = orderElement->FirstChildElement("Pastry");
-                    if (pastryElement) dialogue.tempOrderData->pastryOrder = pastryElement->GetText();
-                }
-                dialogues.push_back(dialogue);
-            }
+        if (doc.LoadFile(filePath.c_str()) != tinyxml2::XML_SUCCESS) {
+            cerr << "Failed to load dialogue file: " << filePath << endl;
+            return;
         }
 
-        if (!dialogues.empty() && !dialogues[0].text.empty()) {
-            currentDialogueButton->SetButtonText(dialogues[0].text[0]);
-            currentDialogueButton->SetTextSize(0.55f); // Set text size if needed
+        tinyxml2::XMLElement* root = doc.FirstChildElement("Dialogues");
+        vector<Dialogue> loadedDialogues;
+        for (tinyxml2::XMLElement* element = root->FirstChildElement("Dialogue"); element != nullptr; element = element->NextSiblingElement("Dialogue")) {
+            Dialogue dialogue;
+            dialogue.id = element->Attribute("id");
+            tinyxml2::XMLElement* speakerElement = element->FirstChildElement("Speaker");
+            if (speakerElement) {
+                dialogue.speakerName = speakerElement->Attribute("name");
+                for (tinyxml2::XMLElement* lineElement = speakerElement->FirstChildElement(); lineElement != nullptr; lineElement = lineElement->NextSiblingElement()) {
+                    dialogue.text.push_back(lineElement->GetText());
+                }
+            }
 
+            tinyxml2::XMLElement* choicesElement = element->FirstChildElement("Choices");
+            if (choicesElement) {
+                for (tinyxml2::XMLElement* choiceElement = choicesElement->FirstChildElement(); choiceElement != nullptr; choiceElement = choiceElement->NextSiblingElement()) {
+                    DialogueChoice choice;
+                    choice.text = choiceElement->GetText();
+                    choice.nextDialogueId = choiceElement->Attribute("next");
+                    const char* clueIDAttr = choiceElement->Attribute("clueID");
+                    if (clueIDAttr) {
+                        stringstream ss(clueIDAttr);
+                        string clueID;
+                        while (getline(ss, clueID, ',')) {
+                            choice.clueIDs.push_back(clueID);
+                        }
+                    }
+                    dialogue.choices.push_back(choice);
+                }
+            }
+
+            const char* nextAttr = element->Attribute("next");
+            if (nextAttr) {
+                dialogue.next = nextAttr;
+            }
+
+            tinyxml2::XMLElement* orderElement = element->FirstChildElement("Order");
+            if (orderElement) {
+                dialogue.orderElement = orderElement;
+                dialogue.hasOrderData = true;
+                dialogue.tempOrderData = new TempOrderData();
+                tinyxml2::XMLElement* roomNumberElement = orderElement->FirstChildElement("RoomNumber");
+                if (roomNumberElement) dialogue.tempOrderData->roomNumber = roomNumberElement->GetText();
+                tinyxml2::XMLElement* teaElement = orderElement->FirstChildElement("Tea");
+                if (teaElement) dialogue.tempOrderData->teaOrder = teaElement->GetText();
+                tinyxml2::XMLElement* sandwichElement = orderElement->FirstChildElement("Sandwich");
+                if (sandwichElement) dialogue.tempOrderData->sandwichOrder = sandwichElement->GetText();
+                tinyxml2::XMLElement* pastryElement = orderElement->FirstChildElement("Pastry");
+                if (pastryElement) dialogue.tempOrderData->pastryOrder = pastryElement->GetText();
+            }
+            loadedDialogues.push_back(dialogue);
+        }
+
+        dialogueSets[key] = loadedDialogues;  // Store loaded dialogues under the provided key
+    }
+
+    void SetDialogueSet(const string& key) {
+        auto it = dialogueSets.find(key);
+        if (it != dialogueSets.end()) {
+            dialogues = it->second;
+            currentDialogueIndex = 0;  // Reset to start of new dialogue set
+            currentLineIndex = 0;
+            if (!dialogues.empty() && !dialogues[0].text.empty()) {
+                currentDialogueButton->SetButtonText(dialogues[0].text[0]);
+            }
+        }
+        else {
+            cerr << "Dialogue set with key '" << key << "' not found." << endl;
         }
     }
 
@@ -364,15 +364,28 @@ public:
         }
     }
 
-    bool IsDialogueFinished() const {
-        // Check if the current dialogue index is the last one in the list
-        bool isLastDialogue = currentDialogueIndex + 1 >= dialogues.size();
+    bool IsDialogueFinished(const string& key) const {
+        auto it = dialogueSets.find(key);
+        if (it != dialogueSets.end() && !it->second.empty()) {
+            // Access the specific dialogue set by key to ensure correct dialogue set is checked
+            const auto& currentSet = it->second;
+            // Check if the current dialogue index is the last one
+            bool isLastDialogue = currentDialogueIndex >= currentSet.size() - 1;
+            // Check if the current line index is the last line in the current dialogue
+            bool isLastLine = currentLineIndex >= currentSet[currentDialogueIndex].text.size() - 1;
+            // Dialogue is finished if both conditions are true
+            return isLastDialogue && isLastLine;
+        }
+        return true; // Consider finished if key is not found or set is empty
+    }
 
-        // Check if the current line index is the last line in the current dialogue
-        bool isLastLine = currentLineIndex + 1 >= dialogues[currentDialogueIndex].text.size();
 
-        // Dialogue is finished if both the dialogue and line indices are at the end
-        return isLastDialogue && isLastLine;
+
+
+    void PlayNextDialogueSet(const string& nextSetKey) {
+        if (IsDialogueFinished(nextSetKey)) {
+            SetDialogueSet(nextSetKey);
+        }
     }
 
 

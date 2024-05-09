@@ -119,9 +119,11 @@ public:
 
         dialogueManager = make_unique<DialogueManager>("MarthaDialogue", dialogueBox,"Martha_Normal");
         dialogueManager->LoadDialogues("Order", "Assets/Dialogue/Martha/Martha_Order.xml");
-       // dialogueManager->LoadDialogues("Serve_OnTime", "Assets/Dialogue/Martha/Martha_Serve_OnTime.xml");
-        //dialogueManager->LoadDialogues("Serve_Late", "Assets/Dialogue/Martha/Martha_Serve_Late.xml");
+        dialogueManager->LoadDialogues("Serve_OnTime", "Assets/Dialogue/Martha/Martha_Serve_OnTime.xml");
+        dialogueManager->LoadDialogues("Serve_Late", "Assets/Dialogue/Martha/Martha_Serve_Late.xml");
 
+       
+       
         //Text
         instructionText = new Text("dialogueinstruction", "Use [Left-click] or [Space] to continue dialogue", "Assets/Fonts/mvboli.ttf", true);
         instructionText->SetScale(0.6f);
@@ -221,7 +223,10 @@ public:
     void OnEnter() override {
         //Scene::OnEnter();  // Call base class if there's relevant logic  
         audioManager.PlaySound("cabinMusic", true);
-       
+        if (gameStateManager.getRoomState() == RoomState::Prepare && KitchenData::GetInstance()->checkCompletePlate())
+        {
+            GameStateManager::GetInstance().SetRoomState(RoomState::Serve);
+        }
         SetSequencesDialogue();
     }
 
@@ -229,35 +234,194 @@ public:
     {
         switch (gameStateManager.getRoomState()) {
         case RoomState::Order:
-            dialogueManager->SwitchToDialogueSet("Order");
+            dialogueManager->SetDialogueSet("Order");
             break;
         case RoomState::Serve:
-            // Handle other states
+            SetServeDialogue();
+            SetMealReactionDialogue();
+            //SetScoredDialogue();    
             break;
         }
     }
+
+    void SetServeDialogue() {
+        if (timer->getRemainingTime() >= 0) {
+            serveDialogueKey = "Serve_OnTime";
+        }
+        else {
+            serveDialogueKey = "Serve_Late";
+        }
+        dialogueManager->SetDialogueSet(serveDialogueKey);
+        std::cout << "Setting serve dialogue: " << serveDialogueKey << std::endl;
+
+        // Reset flags
+        teaDialogueSet = false;
+        sandwichDialogueSet = false;
+        dessertDialogueSet = false;
+       
+    }
+
+    void SetMealReactionDialogue() {
+
+        // Get instance of KitchenData to access the player's choices
+        KitchenData* kitchen = KitchenData::GetInstance();
+
+        // Determine the dialogue key based on the tea choice as an example
+        switch (kitchen->getTea()) {
+
+            case Tea::EARLGREYTEA:
+				dialogueManager->LoadDialogues("MealReact_Tea_EarlGray", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Tea_Assam_EarlGray.xml");
+				teaDialogueKey = "MealReact_Tea_EarlGray";
+				break;
+            case Tea::ASSAMTEA:
+                dialogueManager->LoadDialogues("MealReact_Tea_Assam", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Tea_Assam_EarlGray.xml");
+                teaDialogueKey ="MealReact_Tea_Assam";
+                break;
+            case Tea::CHAMOMILETEA:
+                dialogueManager->LoadDialogues("MealReact_Tea_Charmomile", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Tea_Chamomile.xml");
+                teaDialogueKey = "MealReact_Tea_Charmomile";
+                break;
+            case Tea::GREENTEA:
+                dialogueManager->LoadDialogues("MealReact_Tea_GreenTea", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Tea_GreenTea.xml");
+                teaDialogueKey = "MealReact_Tea_GreenTea";
+                break;
+        }
+        
+        switch (kitchen->getSandwich()){
+            case Sandwich::SALMON:
+			    dialogueManager->LoadDialogues("MealReact_Sandwich_Salmon", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Sandwich_Salmon_Beef.xml");
+			    sandwichDialogueKey = "MealReact_Sandwich_Salmon";
+			    break; 
+            case Sandwich::BEEF:
+                dialogueManager->LoadDialogues("MealReact_Sandwich_Salmon", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Sandwich_Salmon_Beef.xml");
+                sandwichDialogueKey = "MealReact_Sandwich_Salmon";
+                break;
+            case Sandwich::EGG:
+                dialogueManager->LoadDialogues("MealReact_Sandwich_Egg", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Sandwich_Egg.xml");
+				sandwichDialogueKey = "MealReact_Sandwich_Egg";
+				break;
+            case Sandwich::CUCUMBER:
+                dialogueManager->LoadDialogues("MealReact_Sandwich_Cucumber", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Sandwich_Cucumber.xml");
+                sandwichDialogueKey = "MealReact_Sandwich_Cucumber";
+                break;
+        }
+
+        switch (kitchen->getDessert()) {
+			case Dessert::ECLAIR:
+				dialogueManager->LoadDialogues("MealReact_Dessert_Eclair", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Pastry_Eclair_Macaron_Tart.xml");
+				dessertDialogueKey = "MealReact_Dessert_Eclair";
+				break;
+			case Dessert::MACARON:
+                dialogueManager->LoadDialogues("MealReact_Dessert_Macaron", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Pastry_Eclair_Macaron_Tart.xml");
+                dessertDialogueKey = "MealReact_Dessert_Macaron";
+				break;
+			case Dessert::TART:
+                dialogueManager->LoadDialogues("MealReact_Dessert_Tart", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Pastry_Eclair_Macaron_Tart.xml");
+                dessertDialogueKey = "MealReact_Dessert_Tart";
+				break;
+            case Dessert::SCONE:
+				dialogueManager->LoadDialogues("MealReact_Dessert_Scone", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Pastry_Scone.xml");
+				dessertDialogueKey = "MealReact_Dessert_Scone";
+				break;
+		}
+
+        std::cout << "Tea Dialogue Key set to: " << teaDialogueKey << std::endl;
+        std::cout << "Sandwich Dialogue Key set to: " << sandwichDialogueKey << std::endl;
+        std::cout << "Dessert Dialogue Key set to: " << dessertDialogueKey << std::endl;
+    }
+
+
+    void SetScoredDialogue() {
+        std::cout << "Setting scored dialogue..." << std::endl;
+
+        CharacterData* characterData = CharacterData::GetInstance();
+        if (!characterData) {
+            std::cerr << "CharacterData instance is null." << std::endl;
+            return;
+        }
+        else {
+            std::cout << "CharacterData instance is valid." << std::endl;
+        }
+
+        InteractionLevel level = characterData->getInteractionLevel(Cabin::CABIN1);
+        std::cout << "Retrieved interaction level: " << static_cast<int>(level) << std::endl;
+
+        std::cout << "About to load dialogues based on interaction level." << std::endl;
+        switch (level) {
+        case InteractionLevel::LOW:
+            std::cout << "Interaction level is LOW." << std::endl;
+           /* dialogueManager->LoadDialogues("Score_Low_Start", "Assets/Dialogue/Martha/Average/Martha_Average_Start.xml");
+            dialogueManager->LoadDialogues("Score_Low_Letter", "Assets/Dialogue/Martha/Average/Martha_Average_Letter.xml");
+            dialogueManager->LoadDialogues("Score_Low_Cane", "Assets/Dialogue/Martha/Average/Martha_Average_Cane.xml");
+            dialogueManager->LoadDialogues("Score_Low_End", "Assets/Dialogue/Martha/Average/Martha_Average_End.xml");*/
+            break;
+        case InteractionLevel::AVERAGE:
+            std::cout << "Loading AVERAGE interaction level dialogues." << std::endl;
+           /* dialogueManager->LoadDialogues("Score_Average_Start", "Assets/Dialogue/Martha/Average/Martha_Average_Start.xml");
+            dialogueManager->LoadDialogues("Score_Average_Letter", "Assets/Dialogue/Martha/Average/Martha_Average_Letter.xml");
+            dialogueManager->LoadDialogues("Score_Average_Cane", "Assets/Dialogue/Martha/Average/Martha_Average_Cane.xml");
+            dialogueManager->LoadDialogues("Score_Average_End", "Assets/Dialogue/Martha/Average/Martha_Average_End.xml");*/
+            break;
+        case InteractionLevel::INFORMATIVE:
+            std::cout << "Loading INFORMATIVE interaction level dialogues." << std::endl;
+          /*  dialogueManager->LoadDialogues("Score_Informative_Start", "Assets/Dialogue/Martha/Informative/Martha_Informative_Start.xml");
+            dialogueManager->LoadDialogues("Score_Informative_Letter", "Assets/Dialogue/Martha/Informative/Martha_Informative_Letter.xml");
+            dialogueManager->LoadDialogues("Score_Informative_Cane", "Assets/Dialogue/Martha/Informative/Martha_Informative_Cane.xml");
+            dialogueManager->LoadDialogues("Score_Informative_End", "Assets/Dialogue/Martha/Informative/Martha_Informative_End.xml");*/
+            break;
+        }
+
+        std::cout << "Dialogues loaded successfully." << std::endl;
+    }
+
+
+
 
     void Update(float dt, long frame) override {
 
         Scene::Update(dt, frame);
         backgroundParallaxManager->Update(dt);
+        //ObjectsparallaxManager->UpdateLayers();
+        dialogueManager->Update(dt,frame);
 
-        
-        
-        if (gameStateManager.getGameState() == GameState::Room1)
-        {
-            if (gameStateManager.getRoomState() == RoomState::Order)
-            {
-                dialogueManager->Update(dt, frame);
-                if (dialogueManager->IsDialogueFinished()) {
+        // Ensure dialogues are updated correctly
+        if (gameStateManager.getGameState() == GameState::Room1) {
+            switch (gameStateManager.getRoomState()) {
+            case RoomState::Order:
+                if (dialogueManager->IsDialogueFinished("Order")) {
                     instructionText->SetContent("Press [E] to leave");
-                    if (input.Get().GetKeyDown(GLFW_KEY_E))
-                    { 
-                      gameStateManager.SetRoomState(RoomState::Prepare);
+                    if (input.Get().GetKeyDown(GLFW_KEY_E)) {
+                        gameStateManager.SetRoomState(RoomState::Prepare);
                     }
                 }
+                else {
+                    instructionText->SetContent("Press [Space] or [Mouse] to continue");
+                }
+                break;
+            case RoomState::Serve:
+                if (!teaDialogueSet && dialogueManager->IsDialogueFinished(serveDialogueKey)) {
+                    dialogueManager->SetDialogueSet(teaDialogueKey);
+                    teaDialogueSet = true;
+                }
+                else if (teaDialogueSet && !sandwichDialogueSet && dialogueManager->IsDialogueFinished(teaDialogueKey)) {
+                    dialogueManager->SetDialogueSet(sandwichDialogueKey);
+                    sandwichDialogueSet = true;
+                }
+                else if (sandwichDialogueSet && !dessertDialogueSet && dialogueManager->IsDialogueFinished(sandwichDialogueKey)) {
+                    dialogueManager->SetDialogueSet(dessertDialogueKey);
+                    dessertDialogueSet = true;
+                }
+                else if (dessertDialogueSet && dialogueManager->IsDialogueFinished(dessertDialogueKey)) {
+                    instructionText->SetContent("Press [E] to leave");
+                    if (input.Get().GetKeyDown(GLFW_KEY_E)) {
+                        gameStateManager.SetRoomState(RoomState::Score); // Adjust this to your next state
+                    }
+                }
+                else {
+                    instructionText->SetContent("Press [Space] or [Mouse] to continue");
+                }
+                break;
             }
-            
         }
 
         // Handle dialogue progression
@@ -290,6 +454,16 @@ private:
     unique_ptr<DialogueManager> dialogueManager;
     unique_ptr<ObjectsParallax> ObjectsparallaxManager;
     unique_ptr<BackgroundParallax> backgroundParallaxManager;
+    string serveDialogueKey;
+    string teaDialogueKey;
+    string sandwichDialogueKey;
+    string dessertDialogueKey;
+    string scoreStartDialogueKey;
+    bool serveDialogueSet = false;
+    bool teaDialogueSet = false;
+    bool sandwichDialogueSet = false;
+    bool dessertDialogueSet = false;
+    bool scoreStartDialogueSet = false;
 
 
 };

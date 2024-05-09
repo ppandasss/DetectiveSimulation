@@ -61,9 +61,7 @@ public:
     void stop() {
         if (isRunning) {
             isRunning = false;
-            if (timerUI) {
-                timerUI->setActiveStatus(false);  // Directly set to false when stopping
-            }
+           
             NotifyObservers();
             audioManager.StopSound("timerTicking");
         }

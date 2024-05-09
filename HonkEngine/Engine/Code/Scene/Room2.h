@@ -228,7 +228,7 @@ public:
         case RoomPhase::TakeOrderPhase:
             // Handle TakeOrderPhase logic
             dialogueManager->Update(dt, frame);
-            if (dialogueManager->IsDialogueFinished()) {
+            if (dialogueManager->IsDialogueFinished("Order")) {
                 instructionText->SetContent("Press [E] to leave");
                 currentPhase = RoomPhase::ServePhase;
             }

@@ -11,7 +11,7 @@ enum PrepTime {ONTIME, LATE};
 
 struct characterFoodScores {
 
-	std::map<Sandwhich, int> SandwhichScores;
+	std::map<Sandwich, int> SandwichScores;
 	std::map<Tea, int> TeaScores;
 	std::map<Dessert, int> DessertScores;
 	std::map<Tea, int> TeaMilkScores;
@@ -52,7 +52,7 @@ public:
 		characterFoodScores currentCabin = allCharacterData[cabin];
 
 		int dessertScore = currentCabin.DessertScores[kitchen_instance->getDessert()];
-		int sandwhichScore = currentCabin.SandwhichScores[kitchen_instance->getSandwhich()];
+		int SandwichScore = currentCabin.SandwichScores[kitchen_instance->getSandwich()];
 
 		int teaScore;
 
@@ -63,7 +63,7 @@ public:
 			teaScore = currentCabin.TeaScores[kitchen_instance->getTea()];
 		}	
 
-		totalScore = dessertScore + sandwhichScore + teaScore;
+		totalScore = dessertScore + SandwichScore + teaScore;
 
 		return totalScore;
 
@@ -78,6 +78,9 @@ public:
 		else { return INFORMATIVE;  }
 
 	}
+
+
+
 	
 private:
 
@@ -87,10 +90,10 @@ private:
 
 		characterFoodScores cabin1Scores;
 
-		cabin1Scores.SandwhichScores[Sandwhich::SALMON] = 1;
-		cabin1Scores.SandwhichScores[Sandwhich::EGG] = 1;
-		cabin1Scores.SandwhichScores[Sandwhich::CUCUMBER] = 0;
-		cabin1Scores.SandwhichScores[Sandwhich::BEEF] = 3;
+		cabin1Scores.SandwichScores[Sandwich::SALMON] = 1;
+		cabin1Scores.SandwichScores[Sandwich::EGG] = 1;
+		cabin1Scores.SandwichScores[Sandwich::CUCUMBER] = 0;
+		cabin1Scores.SandwichScores[Sandwich::BEEF] = 3;
 
 		cabin1Scores.TeaScores[Tea::EARLGREYTEA] = 0;
 		cabin1Scores.TeaScores[Tea::CHAMOMILETEA] = 2;
@@ -111,10 +114,10 @@ private:
 
 		characterFoodScores cabin21Scores;
 
-		cabin21Scores.SandwhichScores[Sandwhich::SALMON] = 1;
-		cabin21Scores.SandwhichScores[Sandwhich::EGG] = 1;
-		cabin21Scores.SandwhichScores[Sandwhich::CUCUMBER] = 0;
-		cabin21Scores.SandwhichScores[Sandwhich::BEEF] = 3;
+		cabin21Scores.SandwichScores[Sandwich::SALMON] = 1;
+		cabin21Scores.SandwichScores[Sandwich::EGG] = 1;
+		cabin21Scores.SandwichScores[Sandwich::CUCUMBER] = 0;
+		cabin21Scores.SandwichScores[Sandwich::BEEF] = 3;
 
 		cabin21Scores.TeaScores[Tea::EARLGREYTEA] = 0;
 		cabin21Scores.TeaScores[Tea::CHAMOMILETEA] = 2;
@@ -135,10 +138,10 @@ private:
 
 		characterFoodScores cabin22Scores;
 
-		cabin22Scores.SandwhichScores[Sandwhich::SALMON] = 0;
-		cabin22Scores.SandwhichScores[Sandwhich::EGG] = 1;
-		cabin22Scores.SandwhichScores[Sandwhich::CUCUMBER] = 0;
-		cabin22Scores.SandwhichScores[Sandwhich::BEEF] = 0;
+		cabin22Scores.SandwichScores[Sandwich::SALMON] = 0;
+		cabin22Scores.SandwichScores[Sandwich::EGG] = 1;
+		cabin22Scores.SandwichScores[Sandwich::CUCUMBER] = 0;
+		cabin22Scores.SandwichScores[Sandwich::BEEF] = 0;
 
 		cabin22Scores.TeaScores[Tea::EARLGREYTEA] = 0;
 		cabin22Scores.TeaScores[Tea::CHAMOMILETEA] = 0;
@@ -159,10 +162,10 @@ private:
 
 		characterFoodScores cabin3Scores;
 
-		cabin3Scores.SandwhichScores[Sandwhich::SALMON] = 3;
-		cabin3Scores.SandwhichScores[Sandwhich::CUCUMBER] = 1;
-		cabin3Scores.SandwhichScores[Sandwhich::EGG] = 0;
-		cabin3Scores.SandwhichScores[Sandwhich::BEEF] = 0;
+		cabin3Scores.SandwichScores[Sandwich::SALMON] = 3;
+		cabin3Scores.SandwichScores[Sandwich::CUCUMBER] = 1;
+		cabin3Scores.SandwichScores[Sandwich::EGG] = 0;
+		cabin3Scores.SandwichScores[Sandwich::BEEF] = 0;
 
 		cabin3Scores.TeaScores[Tea::EARLGREYTEA] = 2;
 		cabin3Scores.TeaScores[Tea::CHAMOMILETEA] = 0;
@@ -183,10 +186,10 @@ private:
 
 		characterFoodScores cabin4Scores;
 
-		cabin4Scores.SandwhichScores[Sandwhich::SALMON] = 0;
-		cabin4Scores.SandwhichScores[Sandwhich::CUCUMBER] = 3;
-		cabin4Scores.SandwhichScores[Sandwhich::EGG] = 1;
-		cabin4Scores.SandwhichScores[Sandwhich::BEEF] = 0;
+		cabin4Scores.SandwichScores[Sandwich::SALMON] = 0;
+		cabin4Scores.SandwichScores[Sandwich::CUCUMBER] = 3;
+		cabin4Scores.SandwichScores[Sandwich::EGG] = 1;
+		cabin4Scores.SandwichScores[Sandwich::BEEF] = 0;
 
 		cabin4Scores.TeaScores[Tea::EARLGREYTEA] = 0;
 		cabin4Scores.TeaScores[Tea::CHAMOMILETEA] = 2;

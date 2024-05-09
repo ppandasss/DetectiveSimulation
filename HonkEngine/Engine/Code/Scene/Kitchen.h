@@ -19,7 +19,7 @@ public:
 	Book* Journal;
 
 	UIButtonEmpty* teaDropArea = new UIButtonEmpty("teaDropArea", glm::vec3(-3.4f, -0.5f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
-	UIButtonEmpty* sandwhichDropArea = new UIButtonEmpty("sandwhichDropArea", glm::vec3(-6.35f, -0.6f, 0.0f) , glm::vec3(1.0f, 1.0f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
+	UIButtonEmpty* SandwichDropArea = new UIButtonEmpty("SandwichDropArea", glm::vec3(-6.35f, -0.6f, 0.0f) , glm::vec3(1.0f, 1.0f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
 	UIButtonEmpty* dessertDropArea = new UIButtonEmpty("dessertDropArea", glm::vec3(-4.85f, 1.57f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
 	UIButtonEmpty* optionalDropArea = new UIButtonEmpty("optionalDropArea", glm::vec3(-4.5f, -0.4f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
 
@@ -105,7 +105,7 @@ public:
 		ServeBellGrey->SetScale(glm::vec3(2.02f * 0.85f, 1.45f * 0.85f, 0.0f));
 
 		teaDropArea->SetButtonText("TeaDrop");
-		sandwhichDropArea->SetButtonText("Sandwhich");
+		SandwichDropArea->SetButtonText("Sandwich");
 		dessertDropArea->SetButtonText("Dessert");
 		optionalDropArea->SetButtonText("Optional");
 
@@ -122,10 +122,10 @@ public:
 		EarlGreyTea = new UIDraggable("EarlGreyTea", "Assets/Images/Kitchen/Food/Tea/TeaBox_Earl.png",			glm::vec3(4.05f, 0.25f, 0.0f),	glm::vec3(6.02f * tsm, 7.58f * tsm, 0.0f), true);
 		GreenTea = new UIDraggable("GreenTea", "Assets/Images/Kitchen/Food/Tea/TeaBox_Green.png",				glm::vec3(5.45f, 0.23f, -0.1f),	glm::vec3(6.04f * tsm, 7.36f * tsm, 0.0f), true);
 
-		SalmonSandwhich = new UIDraggable("SalmonSandwhich", "Assets/Images/Kitchen/Food/Sandwich/Sandwich_Icon_Salmon.png",		glm::vec3(1.62f, -2.17f, 0.0f),		glm::vec3(2.08f, 1.15f, 0.0f), true);
-		EggSandwhich = new UIDraggable("EggSandwhich", "Assets/Images/Kitchen/Food/Sandwich/Sandwich_Icon_Egg.png",					glm::vec3(3.75f, -2.3f, 0.0f),		glm::vec3(1.375f * 0.95f, 0.9f * 0.95f, 0.0f), true);
-		CucumberSandwhich = new UIDraggable("CucumberSandwhich", "Assets/Images/Kitchen/Food/Sandwich/Sandwich_Icon_Cucumber.png",	glm::vec3(5.65f, -2.28f, 0.0f),		glm::vec3(1.86f * 0.9f, 1.03f * 0.9f, 0.0f), true);
-		BeefSandwhich = new UIDraggable("BeefSandwhich", "Assets/Images/Kitchen/Food/Sandwich/Sandwich_Icon_Beef.png",				glm::vec3(7.8f, -2.3f, 0.0f),		glm::vec3(2.0f, 0.9f, 0.0f), true);
+		SalmonSandwich = new UIDraggable("SalmonSandwich", "Assets/Images/Kitchen/Food/Sandwich/Sandwich_Icon_Salmon.png",		glm::vec3(1.62f, -2.17f, 0.0f),		glm::vec3(2.08f, 1.15f, 0.0f), true);
+		EggSandwich = new UIDraggable("EggSandwich", "Assets/Images/Kitchen/Food/Sandwich/Sandwich_Icon_Egg.png",					glm::vec3(3.75f, -2.3f, 0.0f),		glm::vec3(1.375f * 0.95f, 0.9f * 0.95f, 0.0f), true);
+		CucumberSandwich = new UIDraggable("CucumberSandwich", "Assets/Images/Kitchen/Food/Sandwich/Sandwich_Icon_Cucumber.png",	glm::vec3(5.65f, -2.28f, 0.0f),		glm::vec3(1.86f * 0.9f, 1.03f * 0.9f, 0.0f), true);
+		BeefSandwich = new UIDraggable("BeefSandwich", "Assets/Images/Kitchen/Food/Sandwich/Sandwich_Icon_Beef.png",				glm::vec3(7.8f, -2.3f, 0.0f),		glm::vec3(2.0f, 0.9f, 0.0f), true);
 
 		Eclair = new UIDraggable("Eclair", "Assets/Images/Kitchen/Food/Dessert/Dessert_Icon_Eclair.png",			glm::vec3(1.6f, -4.22f, 0.0f),	glm::vec3(2.0f * 0.85f, 0.7f * 0.85f, 0.0f), true);
 		LemonTart = new UIDraggable("LemonTart", "Assets/Images/Kitchen/Food/Dessert/Dessert_Icon_LemonTart.png",	glm::vec3(3.67f, -4.17f, 0.0f),	glm::vec3(1.45f, 0.83f, 0.0f), true);
@@ -143,10 +143,10 @@ public:
 		GreenTea->SetOnReleaseAction([this]() { releaseGreenTea(); });
 		ChamomileTea->SetOnReleaseAction([this]() { releaseChamomileTea(); });
 
-		SalmonSandwhich->SetOnReleaseAction([this]() { releaseSalmonSandwhich(); });
-		EggSandwhich->SetOnReleaseAction([this]() { releaseEggSandwhich(); });
-		CucumberSandwhich->SetOnReleaseAction([this]() { releaseCucumberSandwhich(); });
-		BeefSandwhich->SetOnReleaseAction([this]() { releaseBeefSandwhich(); });
+		SalmonSandwich->SetOnReleaseAction([this]() { releaseSalmonSandwich(); });
+		EggSandwich->SetOnReleaseAction([this]() { releaseEggSandwich(); });
+		CucumberSandwich->SetOnReleaseAction([this]() { releaseCucumberSandwich(); });
+		BeefSandwich->SetOnReleaseAction([this]() { releaseBeefSandwich(); });
 
 		Eclair->SetOnReleaseAction([this]() { releaseEclair(); });
 		LemonTart->SetOnReleaseAction([this]() { releaseLemonTart(); });
@@ -177,19 +177,19 @@ public:
 		ChamomileTea_dish->SetScale(glm::vec3(1.462f * sm_tea, 0.689f * sm_tea, 0.0f));
 
 		GameObject* SalmonDish = new UIObject("SalmonDish", "Assets/Images/Kitchen/Food/Sandwich/Sandwich_Salmon.png", true);
-		SalmonDish->SetPosition(SandwhichDishPosition);
+		SalmonDish->SetPosition(SandwichDishPosition);
 		SalmonDish->SetScale(glm::vec3(2.35f * sm, 1.28f * sm, 0.0f));
 
 		GameObject* EggDish = new UIObject("EggDish", "Assets/Images/Kitchen/Food/Sandwich/Sandwich_Egg.png", true);
-		EggDish->SetPosition(SandwhichDishPosition);
+		EggDish->SetPosition(SandwichDishPosition);
 		EggDish->SetScale(glm::vec3(2.61f * sm, 1.14f * sm, 0.0f));
 
 		GameObject* CucumberDish = new UIObject("CucumberDish", "Assets/Images/Kitchen/Food/Sandwich/Sandwich_Cucumber.png", true);
-		CucumberDish->SetPosition(SandwhichDishPosition);
+		CucumberDish->SetPosition(SandwichDishPosition);
 		CucumberDish->SetScale(glm::vec3(2.23f, 1.25f, 0.0f));
 
 		GameObject* BeefDish = new UIObject("BeefDish", "Assets/Images/Kitchen/Food/Sandwich/Sandwich_Beef.png", true);
-		BeefDish->SetPosition(SandwhichDishPosition);
+		BeefDish->SetPosition(SandwichDishPosition);
 		BeefDish->SetScale(glm::vec3(2.21f * sm, 1.02f * sm, 0.0f));
 
 		GameObject* EclairDish = new UIObject("EclairDish", "Assets/Images/Kitchen/Food/Dessert/Dessert_Eclair.png", true);
@@ -230,7 +230,7 @@ public:
 
 		//drop area
 		m_gameObjects.push_back(teaDropArea);
-		m_gameObjects.push_back(sandwhichDropArea);
+		m_gameObjects.push_back(SandwichDropArea);
 		m_gameObjects.push_back(dessertDropArea);
 		m_gameObjects.push_back(optionalDropArea);
 
@@ -241,10 +241,10 @@ public:
 		platedTea[GREENTEA] = GreenTea_dish;
 		platedTea[CHAMOMILETEA] = ChamomileTea_dish;
 
-		platedSandwhich[SALMON] = SalmonDish;
-		platedSandwhich[EGG] = EggDish;
-		platedSandwhich[CUCUMBER] = CucumberDish;
-		platedSandwhich[BEEF] = BeefDish;
+		platedSandwich[SALMON] = SalmonDish;
+		platedSandwich[EGG] = EggDish;
+		platedSandwich[CUCUMBER] = CucumberDish;
+		platedSandwich[BEEF] = BeefDish;
 
 		platedDessert[ECLAIR] = EclairDish;
 		platedDessert[TART] = LemonTartDish;
@@ -278,10 +278,10 @@ public:
 		m_gameObjects.push_back(GreenTea);
 		m_gameObjects.push_back(ChamomileTea);
 
-		m_gameObjects.push_back(SalmonSandwhich);
-		m_gameObjects.push_back(EggSandwhich);
-		m_gameObjects.push_back(CucumberSandwhich);
-		m_gameObjects.push_back(BeefSandwhich);
+		m_gameObjects.push_back(SalmonSandwich);
+		m_gameObjects.push_back(EggSandwich);
+		m_gameObjects.push_back(CucumberSandwich);
+		m_gameObjects.push_back(BeefSandwich);
 
 		m_gameObjects.push_back(Eclair);
 		m_gameObjects.push_back(LemonTart);
@@ -312,10 +312,6 @@ public:
 
 		Timer& timer = Timer::GetInstance();
 		timer.Update(dt);
-
-		if (input.Get().GetKeyDown(GLFW_KEY_E)) {
-			Application::Get().SetScene("Hallway");
-		}
 
 		if (input.Get().GetKeyDown(GLFW_KEY_R)) { //RESET KITCHEN
 			clearPlate();
@@ -371,7 +367,7 @@ public:
 			platedTea[i]->setActiveStatus(false);
 		}
 		for (int i = 0; i < 4; i++) {
-			platedSandwhich[i]->setActiveStatus(false);
+			platedSandwich[i]->setActiveStatus(false);
 		}
 		for (int i = 0; i < 4; i++) {
 			platedDessert[i]->setActiveStatus(false);
@@ -383,14 +379,14 @@ public:
 
 	}
 
-	void updateSandwhichObjects() {
+	void updateSandwichObjects() {
 
 		for (int i = 0; i < 4; i++) {
-			if (i == Kitchen_Data->getSandwhich()) {
-				platedSandwhich[i]->setActiveStatus(true);
+			if (i == Kitchen_Data->getSandwich()) {
+				platedSandwich[i]->setActiveStatus(true);
 			}
 			else {
-				platedSandwhich[i]->setActiveStatus(false);
+				platedSandwich[i]->setActiveStatus(false);
 			}
 		}
 		audioManager.PlaySound("plateSound4", false);
@@ -478,39 +474,39 @@ public:
 		}
 	}
 
-	void releaseSalmonSandwhich() {
+	void releaseSalmonSandwich() {
 
-		//std::cout << "SALMON SANDWHICH RELEASED" << std::endl;
-		if (SalmonSandwhich->withinRage(sandwhichDropArea->GetOnscreenPosition(), snapThreshold)) {
-			Kitchen_Data->setSandwhich(SALMON);
-			updateSandwhichObjects();
+		//std::cout << "SALMON Sandwich RELEASED" << std::endl;
+		if (SalmonSandwich->withinRage(SandwichDropArea->GetOnscreenPosition(), snapThreshold)) {
+			Kitchen_Data->setSandwich(SALMON);
+			updateSandwichObjects();
 		}
 	}
 
-	void releaseEggSandwhich() {
+	void releaseEggSandwich() {
 
-		//std::cout << "EGG SANDWHICH RELEASED" << std::endl;
-		if (EggSandwhich->withinRage(sandwhichDropArea->GetOnscreenPosition(), snapThreshold)) {
-			Kitchen_Data->setSandwhich(EGG);
-			updateSandwhichObjects();
+		//std::cout << "EGG Sandwich RELEASED" << std::endl;
+		if (EggSandwich->withinRage(SandwichDropArea->GetOnscreenPosition(), snapThreshold)) {
+			Kitchen_Data->setSandwich(EGG);
+			updateSandwichObjects();
 		}
 	}
 
-	void releaseCucumberSandwhich() {
+	void releaseCucumberSandwich() {
 
-		//std::cout << "CUCUMBER SANDWHICH RELEASED" << std::endl;
-		if (CucumberSandwhich->withinRage(sandwhichDropArea->GetOnscreenPosition(), snapThreshold)) {
-			Kitchen_Data->setSandwhich(CUCUMBER);
-			updateSandwhichObjects();
+		//std::cout << "CUCUMBER Sandwich RELEASED" << std::endl;
+		if (CucumberSandwich->withinRage(SandwichDropArea->GetOnscreenPosition(), snapThreshold)) {
+			Kitchen_Data->setSandwich(CUCUMBER);
+			updateSandwichObjects();
 		}
 	}
 
-	void releaseBeefSandwhich() {
+	void releaseBeefSandwich() {
 
-		//std::cout << "BEEF SANDWHICH RELEASED" << std::endl;
-		if (BeefSandwhich->withinRage(sandwhichDropArea->GetOnscreenPosition(), snapThreshold)) {
-			Kitchen_Data->setSandwhich(BEEF);
-			updateSandwhichObjects();
+		//std::cout << "BEEF Sandwich RELEASED" << std::endl;
+		if (BeefSandwich->withinRage(SandwichDropArea->GetOnscreenPosition(), snapThreshold)) {
+			Kitchen_Data->setSandwich(BEEF);
+			updateSandwichObjects();
 		}
 	}
 
@@ -565,7 +561,7 @@ public:
 	void Serve() {
 		std::cout << "SERVE FOOD" << std::endl;
 		audioManager.PlaySound("servingBellRing");
-		GameStateManager::GetInstance().SetRoomState(RoomState::Serve);
+
 
 		Application::Get().SetTimer(2000, []() {Application::Get().SetScene("Hallway"); }, false);
 		// Assuming GameStateManager and DoorManager are accessible globally or passed to this scene.
@@ -617,7 +613,7 @@ private:
 	KitchenData *Kitchen_Data = KitchenData::GetInstance();
 
 	const glm::vec3 tea_platePos;
-	const glm::vec3 sandwhich_platePos;
+	const glm::vec3 Sandwich_platePos;
 	const glm::vec3 dessert_platePos;
 
 	UIDraggable* AssamBlackTea;
@@ -625,10 +621,10 @@ private:
 	UIDraggable* GreenTea;
 	UIDraggable* ChamomileTea;
 
-	UIDraggable* SalmonSandwhich;
-	UIDraggable* EggSandwhich;
-	UIDraggable* CucumberSandwhich;
-	UIDraggable* BeefSandwhich;
+	UIDraggable* SalmonSandwich;
+	UIDraggable* EggSandwich;
+	UIDraggable* CucumberSandwich;
+	UIDraggable* BeefSandwich;
 
 	UIDraggable* Eclair;
 	UIDraggable* LemonTart;
@@ -643,7 +639,7 @@ private:
 
 
 	//Array of plated game objects
-	GameObject* platedSandwhich[4];
+	GameObject* platedSandwich[4];
 	GameObject* platedDessert[4];
 	GameObject* platedTea[4];
 	GameObject* platedMilk;
@@ -651,7 +647,7 @@ private:
 
 	//Plated dish positions
 	const glm::vec3 TeaDishPosition = glm::vec3(-3.4f, -0.5f, 0.0f);
-	const glm::vec3 SandwhichDishPosition = glm::vec3(-6.35f, -0.6f, 0.0f);
+	const glm::vec3 SandwichDishPosition = glm::vec3(-6.35f, -0.6f, 0.0f);
 	const glm::vec3 DessertDishPosition = glm::vec3(-4.85f, 1.57f, 0.0f);
 	const glm::vec3 OptionalDishPosition = glm::vec3(-4.5f, -0.4f, 0.0f);
 

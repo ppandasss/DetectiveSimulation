@@ -1,6 +1,6 @@
 #pragma once
 
-enum Sandwhich { SALMON, EGG, CUCUMBER, BEEF, SANDWHICH_EMPTY };
+enum Sandwich { SALMON, EGG, CUCUMBER, BEEF, SANDWICH_EMPTY };
 
 enum Dessert { ECLAIR, MACARON, TART, SCONE, DESSERT_EMPTY };
 
@@ -22,26 +22,26 @@ public:
 
 	void clearPlate() {
 
-		sandwhichChoice = SANDWHICH_EMPTY;
+		SandwichChoice = SANDWICH_EMPTY;
 		dessertChoice = DESSERT_EMPTY;
 		teaChoice = TEA_EMPTY;
 		optionalChoice = OPTIONAL_EMPTY;
 
 	}
 
-	void setSandwhich(Sandwhich choice) { sandwhichChoice = choice; }
+	void setSandwich(Sandwich choice) { SandwichChoice = choice; }
 	void setDessert(Dessert choice) { dessertChoice = choice; }
 	void setTea(Tea choice) { teaChoice = choice; }
 	void setOptional(Optional choice) { optionalChoice = choice; }
 
-	Sandwhich getSandwhich() { return sandwhichChoice; }
+	Sandwich getSandwich() { return SandwichChoice; }
 	Tea getTea() { return teaChoice; }
 	Dessert getDessert() { return dessertChoice; }
 	Optional getOptional() { return optionalChoice; }
 
 	bool checkCompletePlate() { //RETURNS TRUE IF 3 CATEGORIES ON PLATE
 
-		if ((sandwhichChoice != SANDWHICH_EMPTY) && (teaChoice != TEA_EMPTY) && (dessertChoice != DESSERT_EMPTY)) {
+		if ((SandwichChoice != SANDWICH_EMPTY) && (teaChoice != TEA_EMPTY) && (dessertChoice != DESSERT_EMPTY)) {
 			return true;
 		}
 		return false;
@@ -53,14 +53,14 @@ private:
 
 	KitchenData() {
 
-		sandwhichChoice = SANDWHICH_EMPTY;
+		SandwichChoice = SANDWICH_EMPTY;
 		dessertChoice = DESSERT_EMPTY;
 		teaChoice = TEA_EMPTY;
 		optionalChoice = OPTIONAL_EMPTY;
 
 	}
 
-	Sandwhich sandwhichChoice;
+	Sandwich SandwichChoice;
 	Dessert dessertChoice;
 	Tea teaChoice;
 	Optional optionalChoice;

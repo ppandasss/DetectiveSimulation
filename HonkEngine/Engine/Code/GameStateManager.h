@@ -19,6 +19,8 @@ enum struct RoomState {
     Order,
     Prepare,
     Serve,
+    MealReact,
+    Score,
     Inspection
 };
 
@@ -58,6 +60,11 @@ private:
             std::cout << "Transition to Room1 Prepare state." << std::endl;
          };
         // Add more state transitions as necessary
+        stateActions[std::make_pair(GameState::Room1, RoomState::Serve)] = []() {
+            Timer::GetInstance().stop();
+		};
+
+
  
     }
 
