@@ -86,7 +86,7 @@ public:
 
 
 
-    void LoadDialogues(const string& filePath) {
+    void LoadDialogues( const string& filePath) {
         tinyxml2::XMLDocument doc;
         if (doc.LoadFile(filePath.c_str()) == tinyxml2::XML_SUCCESS) {
             tinyxml2::XMLElement* root = doc.FirstChildElement("Dialogues");
@@ -202,7 +202,7 @@ public:
         if (choiceIndex >= 0 && choiceIndex < dialogues[currentDialogueIndex].choices.size()) {
             const auto& choice = dialogues[currentDialogueIndex].choices[choiceIndex];
             std::cout << "Player has chosen: " << choice.text << std::endl; // Add this line to print the chosen choice
-           
+
             // Activating each clue
             for (const auto& clueID : choice.clueIDs) {
                 HandleClue(clueID);
@@ -288,9 +288,9 @@ public:
     }
 
     void Render() {
-       
 
-       
+
+
     }
 
 
@@ -475,6 +475,7 @@ private:
         }
     }
 
+    map<string, vector<Dialogue>> dialogueSets;
     string defaultSpriteName;
     vector<Dialogue> dialogues;
     UIButton* currentDialogueButton;
