@@ -111,12 +111,12 @@ public:
 		M_LA2->SetScale(0.54f);
 
 		ClueData* cabin1_clue5 = new ClueData();
-		cabin1_clue5->showText = true;
+		cabin1_clue5->showText = false;
 		cabin1_clue5->clueText = M_LA1;
 		cabin1_clue5->isEvidence = true;
 
 		ClueData* cabin1_clue6 = new ClueData();
-		cabin1_clue6->showText = true;
+		cabin1_clue6->showText = false;
 		cabin1_clue6->clueText = M_LA2;
 
 		textClues.push_back(cabin1_clue1);

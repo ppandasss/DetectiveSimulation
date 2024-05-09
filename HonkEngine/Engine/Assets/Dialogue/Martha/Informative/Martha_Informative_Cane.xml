@@ -58,8 +58,8 @@
 			<line1>Thanks to this cane, I can still  bring myself to wherever I need to.</line1>
 		</Speaker>
 		<Choices>
-			<Choice1 next="1WD23">Reply with care</Choice1>
-			<Choice2 next="1WD24">Reply neutrally</Choice2>
+			<Choice1 next="1WD23" clueID="CABIN1_1">Reply with care</Choice1>
+			<Choice2 next="1WD24" clueID="CABIN1_1">Reply neutrally</Choice2>
 		</Choices>
 	</Dialogue>
 	<Dialogue id="1WD23" next="1MD17">
@@ -89,7 +89,7 @@
 	</Dialogue>
 	<Dialogue id="1MD17_2">
 		<Speaker name="Martha_Sad">
-			<line1>It was... a tragic accident,  you know.</line1>
+			<line1>It was... a %tragic% %accident%,  you know.</line1>
 			<line2>I managed to survive fortunately.</line2>
 		</Speaker>
 		<Choices/>

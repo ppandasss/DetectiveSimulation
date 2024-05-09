@@ -182,7 +182,8 @@ public:
 		timer.SetTimerUI(this->timerUI);
 
 		UIElement* screenUI = new UINormal("ScreenUI", "Assets/Images/ScreenUI.png", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(16.0f * 1.19f, 9.0f * 1.19f, 0.0f), true);
-		UIButton* journalButton = new UIButton("JournalButton", "Assets/Images/JournalButton.png", glm::vec3(-8.32f, -4.8f, 0.0f), glm::vec3(3.0f, 3.0f, 0.0f), true, false, "");
+		UIButton* journalButton = new UIButton("JournalButton", "Assets/Images/UI/JournalButton.png", glm::vec3(-8.32f, -4.8f, 0.0f), glm::vec3(3.0f, 3.0f, 0.0f), true, false, "");
+		journalButton->SetHoverTexture("Assets/Images/UI/JournalButton_Highlight.png");
 		journalButton->SetOnClickAction([this]() { Journal->drawBook(); });
 		//journalButton->SetHoverTexture("Assets/Images/Timer.png");
 
@@ -271,6 +272,7 @@ public:
 		audioManager.PlaySound("hallwayMusic", true);
 		audioManager.PlaySound("trainAmbience", true);
 
+		room3Door->setPermission(true);
 
 		//Set each state's order phrase behavior
 

@@ -37,8 +37,8 @@
 			<line1>[The luggage finally comes to a halt.]</line1>
 		</Speaker>
 		<Choices>
-			<Choice1 next="2WD28">What a skillful method  to fix something</Choice1>
-			<Choice2 next="2WD29">What an unconventional  way to fix something</Choice2>
+			<Choice1 next="2WD28" clueID="CABIN3_4">What a skillful method  to fix something</Choice1>
+			<Choice2 next="2WD29" clueID="CABIN3_4">What an unconventional  way to fix something</Choice2>
 		</Choices>
 	</Dialogue>
 	<Dialogue id="2WD28" next="2AD32">
@@ -77,8 +77,8 @@
 			<line1>Congratulations, sir.</line1>
 		</Speaker>
 		<Choices>
-			<Choice1 next="2WD30">Ask who was the buyer</Choice1>
-			<Choice2 next="2WD31">Ask is that why he travelled  to Eastside</Choice2>
+			<Choice1 next="2WD30" clueID="CABIN3_5">Ask who was the buyer</Choice1>
+			<Choice2 next="2WD31" clueID="CABIN3_5">Ask is that why he travelled  to Eastside</Choice2>
 		</Choices>
 	</Dialogue>
 	<Dialogue id="2WD30" next="2AD35">
@@ -112,9 +112,9 @@
 			<line1>Have you ever been to the Council?</line1>
 		</Speaker>
 		<Choices>
-			<Choice1 next="2WD33">I have</Choice1>
-			<Choice2 next="2WD34">I used to work there</Choice2>
-			<Choice3 next="2WD32">Never</Choice3>
+			<Choice1 next="2WD33" clueID="CABIN3_9">I have</Choice1>
+			<Choice2 next="2WD34" clueID="CABIN3_9">I used to work there</Choice2>
+			<Choice3 next="2WD32" clueID="CABIN3_9">Never</Choice3>
 		</Choices>
 	</Dialogue>
 	<Dialogue id="2WD32" next="2AD37">
@@ -188,8 +188,8 @@
 			<line1>What a successful business trip  I've had.</line1>
 		</Speaker>
 		<Choices>
-			<Choice1 next="2WD35">Ask if it was at the Council</Choice1>
-			<Choice2 next="2WD36">Ask if it was another  Eastside client</Choice2>
+			<Choice1 next="2WD35" clueID="CABIN3_6">Ask if it was at the Council</Choice1>
+			<Choice2 next="2WD36" clueID="CABIN3_6">Ask if it was another  Eastside client</Choice2>
 		</Choices>
 	</Dialogue>
 	<Dialogue id="2WD35" next="2AD44">
@@ -252,8 +252,8 @@
 			<line1>just to %receive% %the% %product% with  them.</line1>
 		</Speaker>
 		<Choices>
-			<Choice1 next="2WD37">Ask if it the same product  in his luggage</Choice1>
-			<Choice2 next="2WD38">Ask what kind of product  did they buy</Choice2>
+			<Choice1 next="2WD37" clueID="CABIN3_7">Ask if it the same product  in his luggage</Choice1>
+			<Choice2 next="2WD38" clueID="CABIN3_7">Ask what kind of product  did they buy</Choice2>
 		</Choices>
 	</Dialogue>
 	<Dialogue id="2WD37" next="2AD49">

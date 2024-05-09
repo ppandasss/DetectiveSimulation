@@ -74,24 +74,24 @@ public:
 		A_Clue5->SetScale(0.6f);
 
 		ClueData* cabin3_clue1 = new ClueData();
-		cabin3_clue1->showText = true;
+		cabin3_clue1->showText = false;
 		cabin3_clue1->clueText = A_Clue1;
 
 		ClueData* cabin3_clue2 = new ClueData();
-		cabin3_clue2->showText = true;
+		cabin3_clue2->showText = false;
 		cabin3_clue2->clueText = A_Clue2;
 		cabin3_clue2->isEvidence = true;
 
 		ClueData* cabin3_clue3 = new ClueData();
-		cabin3_clue3->showText = true;
+		cabin3_clue3->showText = false;
 		cabin3_clue3->clueText = A_Clue3;
 
 		ClueData* cabin3_clue4 = new ClueData();
-		cabin3_clue4->showText = true;
+		cabin3_clue4->showText = false;
 		cabin3_clue4->clueText = A_Clue4;
 
 		ClueData* cabin3_clue5 = new ClueData();
-		cabin3_clue5->showText = true;
+		cabin3_clue5->showText = false;
 		cabin3_clue5->clueText = A_Clue5;
 
 
@@ -140,20 +140,20 @@ public:
 		A_LA2_2->SetScale(0.62f);
 
 		ClueData* cabin3_clue6 = new ClueData();
-		cabin3_clue6->showText = true;
+		cabin3_clue6->showText = false;
 		cabin3_clue6->clueText = A_LA1_1;
 
 		ClueData* cabin3_clue7 = new ClueData();
-		cabin3_clue7->showText = true;
+		cabin3_clue7->showText = false;
 		cabin3_clue7->clueText = A_LA1_2;
 
 		ClueData* cabin3_clue8 = new ClueData();
-		cabin3_clue8->showText = true;
+		cabin3_clue8->showText = false;
 		cabin3_clue8->clueText = A_LA2_1;
 		cabin3_clue8->isEvidence = true;
 
 		ClueData* cabin3_clue9 = new ClueData();
-		cabin3_clue9->showText = true;
+		cabin3_clue9->showText = false;
 		cabin3_clue9->clueText = A_LA2_2;
 
 		textClues.push_back(cabin3_clue6);

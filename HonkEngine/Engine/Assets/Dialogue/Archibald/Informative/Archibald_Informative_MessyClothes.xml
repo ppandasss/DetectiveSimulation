@@ -11,9 +11,9 @@
 			<line1>(His clothes are very messy.)</line1>
 		</Speaker>
 		<Choices>
-			<Choice1 next="2WD19">Ask what happened directly</Choice1>
-			<Choice2 next="2WD21">Decide not to ask</Choice2>
-			<Choice3 next="2WD20">Ask if he's feeling uncomfortable</Choice3>
+			<Choice1 next="2WD19" clueID="CABIN3_2">Ask what happened directly</Choice1>
+			<Choice2 next="2WD21" clueID="CABIN3_2">Decide not to ask</Choice2>
+			<Choice3 next="2WD20" clueID="CABIN3_2">Ask if he's feeling uncomfortable</Choice3>
 		</Choices>
 	</Dialogue>
 	<Dialogue id="2WD19" next="2AD20">
