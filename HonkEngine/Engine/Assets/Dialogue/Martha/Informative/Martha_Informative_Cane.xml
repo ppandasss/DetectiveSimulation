@@ -12,8 +12,8 @@
 			<line1>You seem to be interested in my  cane, dear.</line1>
 		</Speaker>
 		<Choices>
-			<Choice1 next="1WD21">Admit directly</Choice1>
-			<Choice2 next="1WD22">Try to refuse</Choice2>
+			<Choice1 next="1WD21" clueID="CABIN1_6">Admit directly</Choice1>
+			<Choice2 next="1WD22" clueID="CABIN1_6">Try to refuse</Choice2>
 		</Choices>
 	</Dialogue>
 	<Dialogue id="1WD21" next="1MD27">
@@ -89,7 +89,7 @@
 	</Dialogue>
 	<Dialogue id="1MD17_2">
 		<Speaker name="Martha_Sad">
-			<line1>It was... a %tragic% %accident%,  you know.</line1>
+			<line1>It was... a %tragic% %accident% ,  you know.</line1>
 			<line2>I managed to survive fortunately.</line2>
 		</Speaker>
 		<Choices/>
@@ -107,9 +107,9 @@
 			<line1>Do not make the same horrible  mistake like my former husband did.</line1>
 		</Speaker>
 		<Choices>
-			<Choice1 next="1WD25">Express empathy</Choice1>
-			<Choice2 next="1WD26">Promise Martha</Choice2>
-			<Choice3 next="1WD27">Remain silent</Choice3>
+			<Choice1 next="1WD25" clueID="CABIN1_2">Express empathy</Choice1>
+			<Choice2 next="1WD26" clueID="CABIN1_2">Promise Martha</Choice2>
+			<Choice3 next="1WD27" clueID="CABIN1_2">Remain silent</Choice3>
 		</Choices>
 	</Dialogue>
 	<Dialogue id="1WD25" next="1MD30">

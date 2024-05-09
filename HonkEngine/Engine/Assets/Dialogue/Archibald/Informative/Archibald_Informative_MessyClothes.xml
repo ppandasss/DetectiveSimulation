@@ -8,7 +8,7 @@
 	</Dialogue>
 	<Dialogue id="2WQ01">
 		<Speaker name="Waiter">
-			<line1>(His clothes are very messy.)</line1>
+			<line1>(His clothes are very %messy% .)</line1>
 		</Speaker>
 		<Choices>
 			<Choice1 next="2WD19" clueID="CABIN3_2">Ask what happened directly</Choice1>
@@ -153,7 +153,7 @@
 	</Dialogue>
 	<Dialogue id="2AD28">
 		<Speaker name="Archibald_Normal">
-			<line1>Once I arrive home, I'll simply toss  this %mess% %of% %a% %suit% to my maid,</line1>
+			<line1>Once I arrive home, I'll simply toss  this mess of a suit to my maid,</line1>
 			<line2>and they'll take care of everything.</line2>
 		</Speaker>
 		<Choices/>

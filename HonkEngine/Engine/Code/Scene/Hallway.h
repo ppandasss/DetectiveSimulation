@@ -214,7 +214,7 @@ public:
 		sandwichOrderText->SetPosition(glm::vec3(-7.63f, 3.95f, 0.0f));	sandwichOrderText->SetScale(0.55f);
 		pastryOrderText->SetPosition(glm::vec3(-7.63f, 3.32f, 0.0f));	pastryOrderText->SetScale(0.55f);
 
-		timerText->SetPosition(glm::vec3(6.7f, 4.22f, 0.0f));
+		timerText->SetPosition(glm::vec3(6.8f, 4.22f, 0.0f));
 		timerText->SetColor(glm::vec3(0.78039, 0.72549, 0.44314));
 		timerText->SetScale(1.45f);
 
@@ -275,6 +275,7 @@ public:
 		audioManager.PlaySound("trainAmbience", true);
 
 		room3Door->setPermission(true);
+		kitchenDoor->setPermission(true);
 
 		//Set each state's order phrase behavior
 

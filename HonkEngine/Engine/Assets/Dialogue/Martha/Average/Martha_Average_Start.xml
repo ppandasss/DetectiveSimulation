@@ -25,9 +25,9 @@
 			<line1>Eastsiders surely know how to make  an afternoon pleasing.</line1>
 		</Speaker>
 		<Choices>
-			<Choice1 next="1WD11">Agree with Martha</Choice1>
-			<Choice2 next="1WD12">Agree as an Eastsider</Choice2>
-			<Choice3 next="1WD13">Imply to be a Westsider</Choice3>
+			<Choice1 next="1WD11" clueID="CABIN1_0">Agree with Martha</Choice1>
+			<Choice2 next="1WD12" clueID="CABIN1_0">Agree as an Eastsider</Choice2>
+			<Choice3 next="1WD13" clueID="CABIN1_0">Imply to be a Westsider</Choice3>
 		</Choices>
 	</Dialogue>
 	<Dialogue id="1WD11" next="1MD13">
@@ -96,7 +96,7 @@
 	</Dialogue>
 	<Dialogue id="1MD16_2">
 		<Speaker name="Martha_Happy">
-			<line1>This is my first time going there,  beginning a new chapter of life.</line1>
+			<line1>This is my %first% %time% going there,  beginning a new chapter of life.</line1>
 		</Speaker>
 		<Choices/>
 	</Dialogue>

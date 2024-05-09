@@ -25,8 +25,8 @@
 			<line1>At the station, I heard some rather  terrifying news in the newspaper.</line1>
 		</Speaker>
 		<Choices>
-			<Choice1 next="1WD29">Ask which news</Choice1>
-			<Choice2 next="1WD30">Ask if it's the bomb news</Choice2>
+			<Choice1 next="1WD29" clueID="CABIN1_3">Ask which news</Choice1>
+			<Choice2 next="1WD30" clueID="CABIN1_3">Ask if it's the bomb news</Choice2>
 		</Choices>
 	</Dialogue>
 	<Dialogue id="1WD29" next="1MD39">

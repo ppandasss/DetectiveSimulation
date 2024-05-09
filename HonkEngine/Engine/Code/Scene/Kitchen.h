@@ -46,8 +46,30 @@ public:
 		Tray->SetScale(glm::vec3(7.13f * 0.8f, 3.45f * 0.8f, 0.0f));
 		Tray->SetPosition(glm::vec3(-4.9f, -0.2f, 0.0f));
 
+		GameObject* Note = new UIObject("Note", "Assets/Images/Kitchen/Kitchen_Note.png", true);
+		Note->SetScale(glm::vec3(4.01f, 1.5f, 0.0f));
+		Note->SetPosition(glm::vec3(2.46f, 4.18f, 0.0f));
+
+		float sd = 0.85f;
+
+		GameObject* TeaSign = new UIObject("TeaSign", "Assets/Images/Kitchen/Kitchen_Sign_Tea.png", true);
+		TeaSign->SetScale(glm::vec3(2.16f * sd, 0.65f * sd, 0.0f));
+		TeaSign->SetPosition(glm::vec3(1.85f, 1.95f, 0.0f));
+
+		GameObject* OptionalSign = new UIObject("OptionalSign", "Assets/Images/Kitchen/Kitchen_Sign_Optional.png", true);
+		OptionalSign->SetScale(glm::vec3(2.16f * sd, 0.65f * sd, 0.0f));
+		OptionalSign->SetPosition(glm::vec3(7.8f, 1.95f, 0.0f));
+
+		GameObject* SandwichSign = new UIObject("SandwichSign", "Assets/Images/Kitchen/Kitchen_Sign_Sandwich.png", true);
+		SandwichSign->SetScale(glm::vec3(2.16f * sd, 0.65f * sd, 0.0f));
+		SandwichSign->SetPosition(glm::vec3(4.7f, -0.4f, 0.0f));
+
+		GameObject* PastrySign = new UIObject("PastrySign", "Assets/Images/Kitchen/Kitchen_Sign_Pastry.png", true);
+		PastrySign->SetScale(glm::vec3(2.16f * sd, 0.65f * sd, 0.0f));
+		PastrySign->SetPosition(glm::vec3(4.7f, -2.44f, 0.0f));
+
 		orderPaper  = new UINormal("OrderPaper", "Assets/Images/UI/OrderPaper.png", glm::vec3(-7.72f, 4.1f, 0.0f), glm::vec3(3.55f, 2.54f, 0.0f), true);
-		timerUI = new UINormal("TimerUI", "Assets/Images/UI/Timer.png", glm::vec3(6.8f, 4.9f, 0.0f), glm::vec3(4.37f, 3.13f, 0.0f), true);
+		timerUI = new UINormal("TimerUI", "Assets/Images/UI/Timer.png", glm::vec3(6.85f, 4.9f, 0.0f), glm::vec3(4.37f, 3.13f, 0.0f), true);
 
 		Journal = new Book();
 		
@@ -75,7 +97,7 @@ public:
 		Timer& timer = Timer::GetInstance();
 		timerText = new Text("timerText", "", "Assets/Fonts/Jibril.ttf", true); 
 		
-		timerText->SetPosition(glm::vec3(6.2f, 3.9f, 0.0f));
+		timerText->SetPosition(glm::vec3(6.35f, 3.9f, 0.0f));
 		timerText->SetColor(glm::vec3(0.78039, 0.72549, 0.44314));
 		timerText->SetScale(1.45f);
 
@@ -109,30 +131,31 @@ public:
 		dessertDropArea->SetButtonText("Dessert");
 		optionalDropArea->SetButtonText("Optional");
 
-		UIButton* journalButton = new UIButton("JournalButton", "Assets/Images/JournalButton.png", glm::vec3(-8.32f, -4.8f, 0.0f), glm::vec3(3.0f, 3.0f, 0.0f), true, false, "");
+		UIButton* journalButton = new UIButton("JournalButton", "Assets/Images/UI/JournalButton.png", glm::vec3(-8.32f, -4.8f, 0.0f), glm::vec3(3.0f, 3.0f, 0.0f), true, false, "");
+		journalButton->SetHoverTexture("Assets/Images/UI/JournalButton_Highlight.png");
 		journalButton->SetOnClickAction([this]() { Journal->drawBook(); });
 
 
 		/*--------------------------------------------------------------CREATE FOOD DRAGGABLES------------------------------------------------------------------------------------------------------- */
 
-		float tsm = 0.22;
+		float tsm = 0.19;
 
-		AssamBlackTea = new UIDraggable("AssamBlackTea", "Assets/Images/Kitchen/Food/Tea/TeaBox_Assam.png",		glm::vec3(1.2f, 0.2f, 0.0f),	glm::vec3(5.56f * tsm, 7.04f * tsm, 0.0f), true);
-		ChamomileTea = new UIDraggable("ChamomileTea", "Assets/Images/Kitchen/Food/Tea/TeaBox_Chamomile.png",	glm::vec3(2.65f, 0.32f, 0.0f),	glm::vec3(4.78f * tsm, 8.32f * tsm, 0.0f), true);
-		EarlGreyTea = new UIDraggable("EarlGreyTea", "Assets/Images/Kitchen/Food/Tea/TeaBox_Earl.png",			glm::vec3(4.05f, 0.25f, 0.0f),	glm::vec3(6.02f * tsm, 7.58f * tsm, 0.0f), true);
-		GreenTea = new UIDraggable("GreenTea", "Assets/Images/Kitchen/Food/Tea/TeaBox_Green.png",				glm::vec3(5.45f, 0.23f, -0.1f),	glm::vec3(6.04f * tsm, 7.36f * tsm, 0.0f), true);
+		AssamBlackTea = new UIDraggable("AssamBlackTea", "Assets/Images/Kitchen/Food/Tea/TeaBox_Assam.png",		glm::vec3(1.2f, 0.59f, 0.0f),	glm::vec3(5.56f * tsm, 7.04f * tsm, 0.0f), true);
+		ChamomileTea = new UIDraggable("ChamomileTea", "Assets/Images/Kitchen/Food/Tea/TeaBox_Chamomile.png",	glm::vec3(2.5f, 0.695f, 0.0f),	glm::vec3(4.78f * tsm, 8.32f * tsm, 0.0f), true);
+		EarlGreyTea = new UIDraggable("EarlGreyTea", "Assets/Images/Kitchen/Food/Tea/TeaBox_Earl.png",			glm::vec3(3.82f, 0.65f, 0.0f),	glm::vec3(6.02f * tsm, 7.58f * tsm, 0.0f), true);
+		GreenTea = new UIDraggable("GreenTea", "Assets/Images/Kitchen/Food/Tea/TeaBox_Green.png",				glm::vec3(5.2f, 0.625f, -0.1f),	glm::vec3(6.04f * tsm, 7.36f * tsm, 0.0f), true);
 
-		SalmonSandwich = new UIDraggable("SalmonSandwich", "Assets/Images/Kitchen/Food/Sandwich/Sandwich_Icon_Salmon.png",		glm::vec3(1.62f, -2.17f, 0.0f),		glm::vec3(2.08f, 1.15f, 0.0f), true);
-		EggSandwich = new UIDraggable("EggSandwich", "Assets/Images/Kitchen/Food/Sandwich/Sandwich_Icon_Egg.png",					glm::vec3(3.75f, -2.3f, 0.0f),		glm::vec3(1.375f * 0.95f, 0.9f * 0.95f, 0.0f), true);
-		CucumberSandwich = new UIDraggable("CucumberSandwich", "Assets/Images/Kitchen/Food/Sandwich/Sandwich_Icon_Cucumber.png",	glm::vec3(5.65f, -2.28f, 0.0f),		glm::vec3(1.86f * 0.9f, 1.03f * 0.9f, 0.0f), true);
-		BeefSandwich = new UIDraggable("BeefSandwich", "Assets/Images/Kitchen/Food/Sandwich/Sandwich_Icon_Beef.png",				glm::vec3(7.8f, -2.3f, 0.0f),		glm::vec3(2.0f, 0.9f, 0.0f), true);
+		SalmonSandwich = new UIDraggable("SalmonSandwich", "Assets/Images/Kitchen/Food/Sandwich/Sandwich_Icon_Salmon.png",		glm::vec3(1.62f, -1.56f, 0.0f),		glm::vec3(2.08f, 1.15f, 0.0f), true);
+		EggSandwich = new UIDraggable("EggSandwich", "Assets/Images/Kitchen/Food/Sandwich/Sandwich_Icon_Egg.png",					glm::vec3(3.75f, -1.7f, 0.0f),		glm::vec3(1.375f * 0.95f, 0.9f * 0.95f, 0.0f), true);
+		CucumberSandwich = new UIDraggable("CucumberSandwich", "Assets/Images/Kitchen/Food/Sandwich/Sandwich_Icon_Cucumber.png",	glm::vec3(5.65f, -1.65f, 0.0f),		glm::vec3(1.86f * 0.9f, 1.03f * 0.9f, 0.0f), true);
+		BeefSandwich = new UIDraggable("BeefSandwich", "Assets/Images/Kitchen/Food/Sandwich/Sandwich_Icon_Beef.png",				glm::vec3(7.8f, -1.67f, 0.0f),		glm::vec3(2.0f, 0.9f, 0.0f), true);
 
-		Eclair = new UIDraggable("Eclair", "Assets/Images/Kitchen/Food/Dessert/Dessert_Icon_Eclair.png",			glm::vec3(1.6f, -4.22f, 0.0f),	glm::vec3(2.0f * 0.85f, 0.7f * 0.85f, 0.0f), true);
-		LemonTart = new UIDraggable("LemonTart", "Assets/Images/Kitchen/Food/Dessert/Dessert_Icon_LemonTart.png",	glm::vec3(3.67f, -4.17f, 0.0f),	glm::vec3(1.45f, 0.83f, 0.0f), true);
-		Scone = new UIDraggable("Scone", "Assets/Images/Kitchen/Food/Dessert/Dessert_Icon_Scone.png",				glm::vec3(5.46f, -4.2f, 0.0f),	glm::vec3(1.46f, 0.7f, 0.0f), true);
-		Macaron = new UIDraggable("Macaron", "Assets/Images/Kitchen/Food/Dessert/Dessert_Icon_Macaron.png",			glm::vec3(7.6f, -4.18f, 0.0f),	glm::vec3(2.0f * 0.9f, 0.77f * 0.9f, 0.0f), true);
+		Eclair = new UIDraggable("Eclair", "Assets/Images/Kitchen/Food/Dessert/Dessert_Icon_Eclair.png",			glm::vec3(1.6f, -3.78f, 0.0f),	glm::vec3(2.0f * 0.85f, 0.7f * 0.85f, 0.0f), true);
+		LemonTart = new UIDraggable("LemonTart", "Assets/Images/Kitchen/Food/Dessert/Dessert_Icon_LemonTart.png",	glm::vec3(3.67f, -3.67f, 0.0f),	glm::vec3(1.45f, 0.83f, 0.0f), true);
+		Scone = new UIDraggable("Scone", "Assets/Images/Kitchen/Food/Dessert/Dessert_Icon_Scone.png",				glm::vec3(5.46f, -3.73f, 0.0f),	glm::vec3(1.46f, 0.7f, 0.0f), true);
+		Macaron = new UIDraggable("Macaron", "Assets/Images/Kitchen/Food/Dessert/Dessert_Icon_Macaron.png",			glm::vec3(7.6f, -3.74f, 0.0f),	glm::vec3(2.0f * 0.9f, 0.77f * 0.9f, 0.0f), true);
 
-		Milk = new UIDraggable("Milk", "Assets/Images/Kitchen/Food/Tea/TeaBox_Assam.png", glm::vec3(7.8f, 0.22f, 0.0f), glm::vec3(1.2f, 1.6f, 0.0f), true);
+		Milk = new UIDraggable("Milk", "Assets/Images/Kitchen/Food/Tea/TeaBox_Assam.png", glm::vec3(7.8f, 0.63f, 0.0f), glm::vec3(1.2f * 0.85f, 1.6f * 0.85f, 0.0f), true);
 		//Champagne = new UIDraggable("Champagne", "Assets/Images/Kitchen/Food/Tea/TeaBox_Assam.png", glm::vec3(7.2f, 0.2f, 0.0f), glm::vec3(1.2f, 1.6f, 0.0f), true);
 
 
@@ -269,6 +292,7 @@ public:
 		m_gameObjects.push_back(BeefDish);
 
 		m_gameObjects.push_back(Tray);
+		m_gameObjects.push_back(Note);
 
 		m_gameObjects.push_back(MilkDish);
 
@@ -290,6 +314,11 @@ public:
 
 		m_gameObjects.push_back(Milk);
 
+		// Signs
+		m_gameObjects.push_back(TeaSign);
+		m_gameObjects.push_back(OptionalSign);
+		m_gameObjects.push_back(SandwichSign);
+		m_gameObjects.push_back(PastrySign);
 
 		//Journal
 		m_gameObjects.push_back(journalButton);

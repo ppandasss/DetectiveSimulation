@@ -179,7 +179,7 @@
 	<Dialogue id="2AD43">
 		<Speaker name="Archibald_Normal">
 			<line1>...</line1>
-			<line2>Oh, and I also came here for another  big client.</line2>
+			<line2>Oh, and I also came here for %another%  %big% %client.%</line2>
 		</Speaker>
 		<Choices/>
 	</Dialogue>

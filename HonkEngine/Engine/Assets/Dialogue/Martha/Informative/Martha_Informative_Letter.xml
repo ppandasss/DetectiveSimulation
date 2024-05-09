@@ -11,8 +11,8 @@
 			<line2>(Perhaps I can pick it up for her.)</line2>
 		</Speaker>
 		<Choices>
-			<Choice1 next="1WD14">Pick the letter up</Choice1>
-			<Choice2 next="1WD14_1">Inform Matha</Choice2>
+			<Choice1 next="1WD14" clueID="CABIN1_4">Pick the letter up</Choice1>
+			<Choice2 next="1WD14_1" clueID="CABIN1_4">Inform Matha</Choice2>
 		</Choices>
 	</Dialogue>
 	<Dialogue id="1WD14" next="1WD16">
@@ -127,7 +127,7 @@
 	</Dialogue>
 	<Dialogue id="1MD19_3" next="1MD20">
 		<Speaker name="Martha_Sad">
-			<line1>The letter you glimpsed... is from  my important one on Westside.</line1>
+			<line1>The letter you glimpsed... is from  my %important% %one% %on% %Westside.%</line1>
 			<line2>This is why I am very protective  of it.</line2>
 		</Speaker>
 		<Choices/>
@@ -144,9 +144,9 @@
 			<line2>(I wonder what she is up to)</line2>
 		</Speaker>
 		<Choices>
-			<Choice1 next="1WD17">Ask about Townsquare</Choice1>
-			<Choice2 next="1WD18">Decide not to ask</Choice2>
-			<Choice3 next="1WD19">The post office is very  far from there</Choice3>
+			<Choice1 next="1WD17" clueID="CABIN1_5">Ask about Townsquare</Choice1>
+			<Choice2 next="1WD18" clueID="CABIN1_5">Decide not to ask</Choice2>
+			<Choice3 next="1WD19" clueID="CABIN1_5">The post office is very  far from there</Choice3>
 		</Choices>
 	</Dialogue>
 	<Dialogue id="1WD17" next="1MD22">
@@ -179,7 +179,7 @@
 	<Dialogue id="1MD22">
 		<Speaker name="Martha_Normal">
 			<line1>Well, I've learned that Townsquare  doesn't have a post office,</line1>
-			<line2>but there are faster means and methods.</line2>
+			<line2>but there are %faster% %means% %and% %methods.%</line2>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
@@ -192,7 +192,7 @@
 	</Dialogue>
 	<Dialogue id="1MD23_2">
 		<Speaker name="Martha_Happy">
-			<line1>So, I've paid extra there for the  service.</line1>
+			<line1>So, I've %paid% %extra% there for the  service.</line1>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
