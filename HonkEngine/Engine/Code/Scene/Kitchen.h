@@ -15,6 +15,7 @@ class Kitchen : public Scene {
 
 public:
 
+
 	Book* Journal;
 
 	UIButtonEmpty* teaDropArea = new UIButtonEmpty("teaDropArea", glm::vec3(-3.4f, -0.5f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
@@ -33,7 +34,7 @@ public:
 		audioManager.LoadSound("plateSound3", "Assets/Sounds/Kitchen/SFX_MealSelect3.mp3", 1.0f);
 		audioManager.LoadSound("plateSound4", "Assets/Sounds/Kitchen/SFX_MealSelect4.mp3", 1.0f);
 		audioManager.LoadSound("slideDoor", "Assets/Sounds/SFX_SlideDoor.mp3", 2.5f);
-
+		audioManager.LoadSound("servingBellRing", "Assets/Sounds/Kitchen/SFX_ServingBell.mp3", 0.5f);
 
 		/*--------------------------------------------------------------CREATE GAMEOBJECT------------------------------------------------------------------------------------------------------- */
 
@@ -563,6 +564,29 @@ public:
 
 	void Serve() {
 		std::cout << "SERVE FOOD" << std::endl;
+		audioManager.PlaySound("servingBellRing");
+		GameStateManager::GetInstance().SetRoomState(RoomState::Serve);
+
+		Application::Get().SetTimer(2000, []() {Application::Get().SetScene("Hallway"); }, false);
+		// Assuming GameStateManager and DoorManager are accessible globally or passed to this scene.
+		GameState currentGameState = gameStateManager.getGameState();
+		RoomState currentRoomState = gameStateManager.getRoomState();
+		std::string doorName = gameStateNameToDoorName(currentGameState);
+
+		if (!doorName.empty()) {
+			Door* door = DoorManager::GetInstance().GetDoorByName(doorName);
+			if (door != nullptr) {
+				door->setPermission(true);
+				std::cout << doorName << " unlocked." << std::endl;
+			}
+			else {
+				std::cout << "Door not found: " << doorName << std::endl;
+			}
+		}
+		else {
+			std::cout << "No valid door associated with current game state." << std::endl;
+		}
+
 	}
 
 	void updateServeButton() { 
@@ -586,6 +610,7 @@ public:
 
 private:
 
+	GameStateManager& gameStateManager = GameStateManager::GetInstance();
 	AudioManager& audioManager;
 	Input& input = Application::GetInput();
 

@@ -119,7 +119,7 @@ public:
         UIElement* waiterIcon = new UINormal("WaiterIcon", "Assets/Images/UI/Speaker_icon_Waiter.png", glm::vec3(4.18f, 3.43f, 0.0f), glm::vec3(1.23f, 1.4f, 0.0f), true);
 
         dialogueManager = make_unique<DialogueManager>("ArchibaldDialogue", dialogueBox,"Archibald_Normal");
-        dialogueManager->LoadDialogues("Assets/Dialogue/Archibald/Archibald_Order.xml");
+        dialogueManager->LoadDialogues("Order","Assets/Dialogue/Archibald/Archibald_Order.xml");
         //Text
         instructionText = new Text("dialogueinstruction", "Use [Left-click] or [Space] to continue dialogue", "Assets/Fonts/mvboli.ttf", true);
         instructionText->SetScale(0.6f);

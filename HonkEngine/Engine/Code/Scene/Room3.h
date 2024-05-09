@@ -125,6 +125,8 @@ public:
         dialogueManager = make_unique<DialogueManager>("ArchibaldDialogue", dialogueBox, "Archibald_Normal");
 
         dialogueManager->LoadDialogues("Assets/Dialogue/Archibald/Informative/Archibald_Informative_MovingLuggage.xml");
+        dialogueManager->LoadDialogues("Order","Assets/Dialogue/Archibald/Archibald_Order.xml");
+        
 
         //Text
         instructionText = new Text("dialogueinstruction", "Use [Left-click] or [Space] to continue dialogue", "Assets/Fonts/mvboli.ttf", true);

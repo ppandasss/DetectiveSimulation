@@ -265,6 +265,8 @@ public:
 		m_gameObjects.push_back(Journal);
 		//Journal->closeBook();
 
+		
+
 	}
 
 	void OnEnter() override {
@@ -302,7 +304,6 @@ public:
 	void Update(float dt, long frame) {
 
 		Scene::Update(dt, frame);
-		gameStateManager.Update(dt, frame);
 		BackgroundparallaxManager->Update(dt);
 
 		Timer& timer = Timer::GetInstance();
@@ -367,19 +368,6 @@ public:
 		
 	}
 
-	std::string gameStateNameToDoorName(GameState state) {
-		switch (state) {
-		case GameState::Room1:
-			return "Room1Door";
-		case GameState::Room2:
-			return "Room2Door";
-		case GameState::Room3:
-			return "Room3Door";
-		case GameState::Room4:
-			return "Room4Door";
-		default:
-			return ""; // Default empty if no match found
-		}
-	}
+	
 
 };

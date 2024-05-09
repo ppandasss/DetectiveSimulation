@@ -14,6 +14,7 @@
 #include "../GameObjects/Timer.h"
 #include "../GameStateManager.h"
 #include <memory>
+#include "../GameObjects/CharacterData.h"
 
 using namespace std;
 
@@ -36,6 +37,7 @@ public:
         audioManager.LoadSound("cabinMusic", "Assets/Sounds/Music/BGmusic_Cabin.mp3", 4.0f);
         audioManager.LoadSound("knockDoor", "Assets/Sounds/SFX_KnockDoor.mp3", 2.0f);
         audioManager.LoadSound("slideDoor", "Assets/Sounds/SFX_SlideDoor.mp3", 2.5f);
+
 
 
         GameObject* background1a = new RenderGameObject("BG1", "Assets/Images/BG/Cabin_Background_01.png");
@@ -116,7 +118,9 @@ public:
         UIElement* waiterIcon = new UINormal("WaiterIcon", "Assets/Images/UI/Speaker_icon_Waiter.png", glm::vec3(4.18f, 3.43f, 0.0f), glm::vec3(1.23f, 1.4f, 0.0f), true);
 
         dialogueManager = make_unique<DialogueManager>("MarthaDialogue", dialogueBox,"Martha_Normal");
-        dialogueManager->LoadDialogues("Assets/Dialogue/Martha/Martha_Order.xml");
+        dialogueManager->LoadDialogues("Order", "Assets/Dialogue/Martha/Martha_Order.xml");
+       // dialogueManager->LoadDialogues("Serve_OnTime", "Assets/Dialogue/Martha/Martha_Serve_OnTime.xml");
+        //dialogueManager->LoadDialogues("Serve_Late", "Assets/Dialogue/Martha/Martha_Serve_Late.xml");
 
         //Text
         instructionText = new Text("dialogueinstruction", "Use [Left-click] or [Space] to continue dialogue", "Assets/Fonts/mvboli.ttf", true);
@@ -217,8 +221,20 @@ public:
     void OnEnter() override {
         //Scene::OnEnter();  // Call base class if there's relevant logic  
         audioManager.PlaySound("cabinMusic", true);
-        
-        
+       
+        SetSequencesDialogue();
+    }
+
+    void SetSequencesDialogue()
+    {
+        switch (gameStateManager.getRoomState()) {
+        case RoomState::Order:
+            dialogueManager->SwitchToDialogueSet("Order");
+            break;
+        case RoomState::Serve:
+            // Handle other states
+            break;
+        }
     }
 
     void Update(float dt, long frame) override {
@@ -236,18 +252,12 @@ public:
                 if (dialogueManager->IsDialogueFinished()) {
                     instructionText->SetContent("Press [E] to leave");
                     if (input.Get().GetKeyDown(GLFW_KEY_E))
-                    {
-
-                        timer->start(300);
-                        gameStateManager.setRoomState(RoomState::Prepare);
-                        Application::Get().SetScene("Hallway");
-                        door->setPermission(false);
-                        kichenDoor->setPermission(true);
-                        
+                    { 
+                      gameStateManager.SetRoomState(RoomState::Prepare);
                     }
-
                 }
             }
+            
         }
 
         // Handle dialogue progression
