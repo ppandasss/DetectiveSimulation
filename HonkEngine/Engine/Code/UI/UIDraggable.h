@@ -37,6 +37,12 @@ public:
         }
     }
 
+    void onDrag() {
+        if (onDragAction) {
+            onDragAction();
+        }
+    }
+
     bool withinRage(glm::vec3 targetPosition, float threshold) {
 
         glm::vec2 releasePosition = Application::Get().MousetoWorld();
@@ -118,7 +124,6 @@ public:
         }
 
         UIElement::Render(); 
- 
 
     }
 
@@ -129,10 +134,7 @@ public:
         Input& input = Application::GetInput();
         UIElement::Update(dt, frame);
 
-        //mousePos = Application::Get().CursorPos();
         mouseWorldPos = Application::Get().MousetoWorld();
-
-        //std::cout << "DRAGGABLE CLICK" << std::endl;
 
         if (IsClickable() && IsPointInside(mouseWorldPos.x, mouseWorldPos.y)) {
 
@@ -170,6 +172,7 @@ public:
                 m_position = snapToBoundaries(newPosition);
             }
 
+            onDrag();
 
             //Mouse click released
             if (input.Get().GetMouseButtonUp(GLFW_MOUSE_BUTTON_1)) {
@@ -177,9 +180,7 @@ public:
                 isDragging = false;
                 std::cout << "DRAGGABLE RELEASED" << std::endl;
 
-                //snapUIPosition(m_position);
                 snapBack();
-
                 onRelease();
 
             }
@@ -204,6 +205,7 @@ private:
     float snapThreshold = 8.0f;
 
     std::function<void()> onReleaseAction;
+    std::function<void()> onDragAction;
 
     glm::vec2 minBound = glm::vec2(-10.0f, -6.0f); //top - left corner
     glm::vec2 maxBound = glm::vec2(10.0f, 6.0f); //bottom - right corner
