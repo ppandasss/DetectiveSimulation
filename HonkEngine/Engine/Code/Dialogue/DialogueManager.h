@@ -244,6 +244,7 @@ public:
         return ""; // Return empty string if the ID is too short
     }
 
+
     void DisplayChoices() {
         choiceMade = false;
         std::cout << "Displaying choices for dialogue " << dialogues[currentDialogueIndex].id << std::endl;
@@ -272,6 +273,7 @@ public:
 
     void Update(float dt, long frame) {
         UpdateSpeakerSprite();
+        UpdateSpeakerIcon();
 
         if (currentDialogueButton) {
             currentDialogueButton->setActiveStatus(true);
@@ -474,7 +476,7 @@ public:
 private:
 
 
-    void UpdateSpeakerSprite() {
+    void UpdateSpeakerIcon() {
         string speakerCode = GetSpeakerCodeFromId(dialogues[currentDialogueIndex].id);
 
         // Deactivate all speaker icons first
@@ -487,6 +489,30 @@ private:
             speakerIcons[speakerCode]->setActiveStatus(true);
         }
     }
+
+    void UpdateSpeakerSprite() {
+        string currentSpeaker = dialogues[currentDialogueIndex].speakerName;
+
+        // Log current action for debugging
+        cout << "Updating speaker sprite for: " << currentSpeaker << endl;
+
+        // Deactivate all sprites first
+        for (auto& pair : speakerSprites) {
+            pair.second->setActiveStatus(false);
+            cout << "Deactivating sprite for: " << pair.first << endl;
+        }
+
+        // Activate the sprite for the current speaker
+        if (speakerSprites.find(currentSpeaker) != speakerSprites.end()) {
+            speakerSprites[currentSpeaker]->setActiveStatus(true);
+            cout << "Activating sprite for: " << currentSpeaker << endl;
+        }
+        else {
+            cout << "No sprite found for: " << currentSpeaker << endl;
+        }
+    }
+
+
 
     map<string, vector<Dialogue>> dialogueSets;
     string defaultSpriteName;
