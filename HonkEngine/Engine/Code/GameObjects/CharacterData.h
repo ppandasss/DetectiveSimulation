@@ -49,7 +49,7 @@ public:
 		characterFoodScores currentCabin = allCharacterData[cabin];
 
 		int dessertScore = currentCabin.DessertScores[kitchen_instance->getDessert()];
-		int SandwichScore = currentCabin.SandwichScores[kitchen_instance->getSandwich()];
+		int sandwichScore = currentCabin.SandwichScores[kitchen_instance->getSandwich()];
 
 		int teaScore;
 
@@ -60,7 +60,7 @@ public:
 			teaScore = currentCabin.TeaScores[kitchen_instance->getTea()];
 		}	
 
-		totalScore = dessertScore + SandwichScore + teaScore;
+		totalScore = dessertScore + sandwichScore + teaScore;
 
 		return totalScore;
 
@@ -218,7 +218,6 @@ private:
 	std::vector<characterFoodScores> allCharacterData;
 
 	KitchenData* kitchen_instance = KitchenData::GetInstance();
-
 	
 };
 

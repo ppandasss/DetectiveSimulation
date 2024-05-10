@@ -22,26 +22,26 @@ public:
 
 	void clearPlate() {
 
-		SandwichChoice = SANDWICH_EMPTY;
+		sandwichChoice = SANDWICH_EMPTY;
 		dessertChoice = DESSERT_EMPTY;
 		teaChoice = TEA_EMPTY;
 		optionalChoice = OPTIONAL_EMPTY;
 
 	}
 
-	void setSandwich(Sandwich choice) { SandwichChoice = choice; }
+	void setSandwich(Sandwich choice) { sandwichChoice = choice; }
 	void setDessert(Dessert choice) { dessertChoice = choice; }
 	void setTea(Tea choice) { teaChoice = choice; }
 	void setOptional(Optional choice) { optionalChoice = choice; }
 
-	Sandwich getSandwich() { return SandwichChoice; }
+	Sandwich getSandwich() { return sandwichChoice; }
 	Tea getTea() { return teaChoice; }
 	Dessert getDessert() { return dessertChoice; }
 	Optional getOptional() { return optionalChoice; }
 
 	bool checkCompletePlate() { //RETURNS TRUE IF 3 CATEGORIES ON PLATE
 
-		if ((SandwichChoice != SANDWICH_EMPTY) && (teaChoice != TEA_EMPTY) && (dessertChoice != DESSERT_EMPTY)) {
+		if ((sandwichChoice != SANDWICH_EMPTY) && (teaChoice != TEA_EMPTY) && (dessertChoice != DESSERT_EMPTY)) {
 			return true;
 		}
 		return false;
@@ -53,14 +53,14 @@ private:
 
 	KitchenData() {
 
-		SandwichChoice = SANDWICH_EMPTY;
+		sandwichChoice = SANDWICH_EMPTY;
 		dessertChoice = DESSERT_EMPTY;
 		teaChoice = TEA_EMPTY;
 		optionalChoice = OPTIONAL_EMPTY;
 
 	}
 
-	Sandwich SandwichChoice;
+	Sandwich sandwichChoice;
 	Dessert dessertChoice;
 	Tea teaChoice;
 	Optional optionalChoice;
