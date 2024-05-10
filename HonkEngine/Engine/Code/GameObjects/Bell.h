@@ -12,7 +12,8 @@ public:
     Bell(const std::string& name, const std::string& texturePath, float row, float col)
         : AnimateGameObject(name, texturePath, row, col), animating(false), isRinging(false),m_name(name)
     {
-        m_animator.AddAnimation("bell_ring", 1, 3, 5.0f, Animator::LoopType::Once, std::bind(&Bell::onRingComplete, this));
+        m_animator.AddAnimation("bell_ring", 1, 3, 3.0f, Animator::LoopType::PingPong, std::bind(&Bell::onRingComplete, this));
+        m_animator.AddAnimation("idle", 0, 1, 5.0f, Animator::LoopType::Once,[]() {});
     }
 
     virtual void Update(float dt, long frame) override {
@@ -33,20 +34,29 @@ public:
     void startRinging() {
         if (!animating) {
             animating = true;
-            //std::cout << "Starting to ring." << std::endl;
             currentAnimation = "bell_ring";
             AudioManager::GetInstance().PlaySound("bellRing", false);
             isRinging = true;
+            timerID = Application::Get().SetTimer(2000, [this]() { this->onTimerComplete(); }, false);
+            timerActive = true;
         }
-
     }
 
+
     void stopRinging() {
-        currentAnimation = "idle";
-        animating = false;
-        isRinging = false;
-        AudioManager::GetInstance().StopSound("bellRing");  // Ensure this method stops the sound immediately.
-        m_animator.SetAnimation(currentAnimation);
+        if (timerActive) {
+            Application::Get().CancelTimer(timerID);
+            timerActive = false;
+        }
+        if (isRinging) {
+            animating = false;
+            isRinging = false;
+            if (currentAnimation != "idle") {  // Change only if needed
+                currentAnimation = "idle";
+                m_animator.SetAnimation(currentAnimation);
+            }
+            AudioManager::GetInstance().StopSound("bellRing");
+        }
     }
 
     bool isBellRinging() const {
@@ -61,13 +71,16 @@ public:
 
 private:
     void onRingComplete() {
-
-        //std::cout << "Ring complete. Will ring again in 2 seconds." << std::endl;
         if (animating) {
             currentAnimation = "idle";
-            m_animator.SetAnimation(currentAnimation);  // Set idle animation immediately
-            animating = false;  // Reset animating state
-            Application::Get().SetTimer(2000, [this]() { this->startRinging(); }, false);  // Set timer to restart ringing
+            m_animator.SetAnimation(currentAnimation);
+            animating = false;
+        }
+    }
+
+    void onTimerComplete() {
+        if (isRinging) {
+            startRinging();
         }
     }
 
@@ -75,5 +88,7 @@ private:
     Animator m_animator;
     bool animating;
     bool isRinging;
+    bool timerActive;
+    int timerID; // Timer identifier if you need to reference it
     std::string currentAnimation;
 };

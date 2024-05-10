@@ -239,7 +239,7 @@ public:
         case RoomState::Serve:
             SetServeDialogue();
             SetMealReactionDialogue();
-            //SetScoredDialogue();    
+            SetScoredDialogue();    
             break;
         }
     }
@@ -335,41 +335,41 @@ public:
         std::cout << "Setting scored dialogue..." << std::endl;
 
         CharacterData* characterData = CharacterData::GetInstance();
-        if (!characterData) {
-            std::cerr << "CharacterData instance is null." << std::endl;
-            return;
-        }
-        else {
-            std::cout << "CharacterData instance is valid." << std::endl;
-        }
+        //if (!characterData) {
+        //    std::cerr << "CharacterData instance is null." << std::endl;
+        //    return;
+        //}
+        //else {
+        //    std::cout << "CharacterData instance is valid." << std::endl;
+        //}
 
-        InteractionLevel level = characterData->getInteractionLevel(Cabin::CABIN1);
-        std::cout << "Retrieved interaction level: " << static_cast<int>(level) << std::endl;
+        //InteractionLevel level = characterData->getInteractionLevel(Cabin::CABIN1);
+        //std::cout << "Retrieved interaction level: " << static_cast<int>(level) << std::endl;
 
-        std::cout << "About to load dialogues based on interaction level." << std::endl;
-        switch (level) {
-        case InteractionLevel::LOW:
-            std::cout << "Interaction level is LOW." << std::endl;
-           /* dialogueManager->LoadDialogues("Score_Low_Start", "Assets/Dialogue/Martha/Average/Martha_Average_Start.xml");
-            dialogueManager->LoadDialogues("Score_Low_Letter", "Assets/Dialogue/Martha/Average/Martha_Average_Letter.xml");
-            dialogueManager->LoadDialogues("Score_Low_Cane", "Assets/Dialogue/Martha/Average/Martha_Average_Cane.xml");
-            dialogueManager->LoadDialogues("Score_Low_End", "Assets/Dialogue/Martha/Average/Martha_Average_End.xml");*/
-            break;
-        case InteractionLevel::AVERAGE:
-            std::cout << "Loading AVERAGE interaction level dialogues." << std::endl;
-           /* dialogueManager->LoadDialogues("Score_Average_Start", "Assets/Dialogue/Martha/Average/Martha_Average_Start.xml");
-            dialogueManager->LoadDialogues("Score_Average_Letter", "Assets/Dialogue/Martha/Average/Martha_Average_Letter.xml");
-            dialogueManager->LoadDialogues("Score_Average_Cane", "Assets/Dialogue/Martha/Average/Martha_Average_Cane.xml");
-            dialogueManager->LoadDialogues("Score_Average_End", "Assets/Dialogue/Martha/Average/Martha_Average_End.xml");*/
-            break;
-        case InteractionLevel::INFORMATIVE:
-            std::cout << "Loading INFORMATIVE interaction level dialogues." << std::endl;
-          /*  dialogueManager->LoadDialogues("Score_Informative_Start", "Assets/Dialogue/Martha/Informative/Martha_Informative_Start.xml");
-            dialogueManager->LoadDialogues("Score_Informative_Letter", "Assets/Dialogue/Martha/Informative/Martha_Informative_Letter.xml");
-            dialogueManager->LoadDialogues("Score_Informative_Cane", "Assets/Dialogue/Martha/Informative/Martha_Informative_Cane.xml");
-            dialogueManager->LoadDialogues("Score_Informative_End", "Assets/Dialogue/Martha/Informative/Martha_Informative_End.xml");*/
-            break;
-        }
+        //std::cout << "About to load dialogues based on interaction level." << std::endl;
+        //switch (level) {
+        //case InteractionLevel::LOW:
+        //    std::cout << "Interaction level is LOW." << std::endl;
+        //   /* dialogueManager->LoadDialogues("Score_Low_Start", "Assets/Dialogue/Martha/Average/Martha_Average_Start.xml");
+        //    dialogueManager->LoadDialogues("Score_Low_Letter", "Assets/Dialogue/Martha/Average/Martha_Average_Letter.xml");
+        //    dialogueManager->LoadDialogues("Score_Low_Cane", "Assets/Dialogue/Martha/Average/Martha_Average_Cane.xml");
+        //    dialogueManager->LoadDialogues("Score_Low_End", "Assets/Dialogue/Martha/Average/Martha_Average_End.xml");*/
+        //    break;
+        //case InteractionLevel::AVERAGE:
+        //    std::cout << "Loading AVERAGE interaction level dialogues." << std::endl;
+        //   /* dialogueManager->LoadDialogues("Score_Average_Start", "Assets/Dialogue/Martha/Average/Martha_Average_Start.xml");
+        //    dialogueManager->LoadDialogues("Score_Average_Letter", "Assets/Dialogue/Martha/Average/Martha_Average_Letter.xml");
+        //    dialogueManager->LoadDialogues("Score_Average_Cane", "Assets/Dialogue/Martha/Average/Martha_Average_Cane.xml");
+        //    dialogueManager->LoadDialogues("Score_Average_End", "Assets/Dialogue/Martha/Average/Martha_Average_End.xml");*/
+        //    break;
+        //case InteractionLevel::INFORMATIVE:
+        //    std::cout << "Loading INFORMATIVE interaction level dialogues." << std::endl;
+        //  /*  dialogueManager->LoadDialogues("Score_Informative_Start", "Assets/Dialogue/Martha/Informative/Martha_Informative_Start.xml");
+        //    dialogueManager->LoadDialogues("Score_Informative_Letter", "Assets/Dialogue/Martha/Informative/Martha_Informative_Letter.xml");
+        //    dialogueManager->LoadDialogues("Score_Informative_Cane", "Assets/Dialogue/Martha/Informative/Martha_Informative_Cane.xml");
+        //    dialogueManager->LoadDialogues("Score_Informative_End", "Assets/Dialogue/Martha/Informative/Martha_Informative_End.xml");*/
+        //    break;
+        //}
 
         std::cout << "Dialogues loaded successfully." << std::endl;
     }

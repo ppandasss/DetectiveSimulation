@@ -61,6 +61,7 @@ private:
 
 	bool firstEntry = true;
 	bool inDoorCollision = false;
+	bool entering = false;
 
 public:
 	Hallway() :audioManager(AudioManager::GetInstance())
@@ -300,6 +301,8 @@ public:
 			
 		}
 
+		entering = false;
+
 	}
 
 	void Update(float dt, long frame) {
@@ -328,11 +331,13 @@ public:
 					if (door) {
 						if (door->getPermission()) {
 							instructionText->SetContent("Press [E] to enter");
-							if (input.Get().GetKeyDown(GLFW_KEY_E))
+							
+							if (input.Get().GetKeyDown(GLFW_KEY_E) && !entering)
 							{
 								if (door->GetName() == "KitchenDoor")
 								{
 									Application::Get().SetScene(door->GetSceneName());
+									entering = true;
 								}
 								else
 								{
@@ -340,6 +345,7 @@ public:
 									audioManager.PlaySound("knockDoor");
 									player->StopMovement();
 									Application::Get().SetTimer(2000, [this, door]() {Application::Get().SetScene(door->GetSceneName()); player->ResumeMovement(); }, false);
+									entering = true;
 								}
 							}
 						}

@@ -75,31 +75,40 @@ Application::~Application() {
     glfwTerminate();
 }
 
-void Application::SetTimer(long long duration, std::function<void()> callback, bool repeat) {
-    GlobalTimer timer;
-    timer.duration = duration;
-    timer.callback = callback;
-    timer.endTime = std::chrono::steady_clock::now() + std::chrono::milliseconds(duration);
-    timer.repeat = repeat;
-    timers.push(timer);
-    //std::cout << "Timer set for " << duration << " ms\n";
+int Application::SetTimer(long long duration, std::function<void()> callback, bool repeat) {
+    auto timer = std::make_unique<GlobalTimer>();
+    timer->duration = duration;
+    timer->callback = callback;
+    timer->endTime = std::chrono::steady_clock::now() + std::chrono::milliseconds(duration);
+    timer->repeat = repeat;
+    int timerId = nextTimerId++;  // Increment and assign a unique ID
+    activeTimers[timerId] = std::move(timer);
+    return timerId;  // Return this ID
+}
+
+void Application::CancelTimer(int timerId) {
+    auto it = activeTimers.find(timerId);
+    if (it != activeTimers.end()) {
+        activeTimers.erase(it);
+    }
 }
 
 void Application::processTimers() {
     auto now = std::chrono::steady_clock::now();
-    while (!timers.empty()) {
-        const auto& timer = timers.top();
-        if (now >= timer.endTime) {
-            //std::cout << "Timer triggered\n";
-            timer.callback();
-            timers.pop();
-            if (timer.repeat) {
-                std::cout << "Re-setting repeating timer\n";
-                SetTimer(timer.duration, timer.callback, true);  // Re-set the timer
+    for (auto it = activeTimers.begin(); it != activeTimers.end(); ) {
+        auto& timer = it->second;
+        if (now >= timer->endTime) {
+            timer->callback();
+            if (timer->repeat) {
+                timer->endTime = now + std::chrono::milliseconds(timer->duration);  // Re-set the timer
+                ++it;
+            }
+            else {
+                it = activeTimers.erase(it);  // Remove non-repeating timers
             }
         }
         else {
-            break;  // All upcoming timers are not due yet
+            ++it;
         }
     }
 }

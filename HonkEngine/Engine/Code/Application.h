@@ -63,7 +63,9 @@ public:
 
 	}
 
-	void SetTimer(long long duration, std::function<void()> callback, bool repeat = false);
+	int SetTimer(long long duration, std::function<void()> callback, bool repeat);
+
+	void CancelTimer(int timerId);
 
 	void Run();
 
@@ -123,6 +125,8 @@ private:
 
 	void processTimers();
 	std::priority_queue<GlobalTimer> timers;
+	std::unordered_map<int, std::unique_ptr<GlobalTimer>> activeTimers;
+	int nextTimerId = 0;
 	std::string baseTitle;
 	Shader m_shader;
 	Camera m_camera;
