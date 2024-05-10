@@ -494,21 +494,30 @@ private:
         string currentSpeaker = dialogues[currentDialogueIndex].speakerName;
 
         // Log current action for debugging
-        cout << "Updating speaker sprite for: " << currentSpeaker << endl;
+       // cout << "Updating speaker sprite for: " << currentSpeaker << endl;
 
         // Deactivate all sprites first
         for (auto& pair : speakerSprites) {
             pair.second->setActiveStatus(false);
-            cout << "Deactivating sprite for: " << pair.first << endl;
+            //cout << "Deactivating sprite for: " << pair.first << endl;
         }
 
-        // Activate the sprite for the current speaker
-        if (speakerSprites.find(currentSpeaker) != speakerSprites.end()) {
-            speakerSprites[currentSpeaker]->setActiveStatus(true);
+        auto spriteIt = speakerSprites.find(currentSpeaker);
+        if (spriteIt != speakerSprites.end()) {
+            // If found, activate the sprite for the current speaker
+            spriteIt->second->setActiveStatus(true);
             cout << "Activating sprite for: " << currentSpeaker << endl;
         }
         else {
-            cout << "No sprite found for: " << currentSpeaker << endl;
+            // If not found, fall back to the default sprite if it exists
+            auto defaultSpriteIt = speakerSprites.find(defaultSpriteName);
+            if (defaultSpriteIt != speakerSprites.end()) {
+                defaultSpriteIt->second->setActiveStatus(true);
+                cout << "Default sprite activated: " << defaultSpriteName << endl;
+            }
+            else {
+                cout << "No sprite found for: " << currentSpeaker << " and no default sprite available." << endl;
+            }
         }
     }
 
