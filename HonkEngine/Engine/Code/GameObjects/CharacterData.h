@@ -6,8 +6,8 @@
 
 #include <map>
 
-enum InteractionLevel {LOW, AVERAGE, INFORMATIVE};
-enum PrepTime {ONTIME, LATE};
+enum InteractionLevel { LOW, AVERAGE, INFORMATIVE };
+enum PrepTime { ONTIME, LATE };
 
 struct characterFoodScores {
 
@@ -58,7 +58,7 @@ public:
 		}
 		else {
 			teaScore = currentCabin.TeaScores[kitchen_instance->getTea()];
-		}	
+		}
 
 		totalScore = dessertScore + sandwichScore + teaScore;
 
@@ -72,13 +72,10 @@ public:
 
 		if (score >= 0 && score <= 3) { return LOW; }
 		else if (score >= 4 && score <= 7) { return AVERAGE; }
-		else { return INFORMATIVE;  }
+		else { return INFORMATIVE; }
 
 	}
 
-
-
-	
 private:
 
 	CharacterData() {
@@ -218,6 +215,5 @@ private:
 	std::vector<characterFoodScores> allCharacterData;
 
 	KitchenData* kitchen_instance = KitchenData::GetInstance();
-	
-};
 
+};

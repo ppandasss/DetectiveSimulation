@@ -70,26 +70,26 @@ public:
 		M_C4->SetScale(0.65f);
 
 		ClueData* cabin1_clue1 = new ClueData();
-		cabin1_clue1->showText = false;
-		cabin1_clue1->clueText = M_C1;
+		cabin1_clue1->showClue = false;
+		cabin1_clue1->clueObject = M_C1;
 
 		ClueData* cabin1_clue2 = new ClueData();
-		cabin1_clue2->showText = false;
-		cabin1_clue2->clueText = M_C2;
+		cabin1_clue2->showClue = false;
+		cabin1_clue2->clueObject = M_C2;
 
 		ClueData* cabin1_clue3 = new ClueData();
-		cabin1_clue3->showText = false;
-		cabin1_clue3->clueText = M_C3;
+		cabin1_clue3->showClue = false;
+		cabin1_clue3->clueObject = M_C3;
 
 		ClueData* cabin1_clue4 = new ClueData();
-		cabin1_clue4->showText = false;
-		cabin1_clue4->clueText = M_C4;
+		cabin1_clue4->showClue = false;
+		cabin1_clue4->clueObject = M_C4;
 		cabin1_clue4->isEvidence = true;
 
-		//	DIVIDER 1
+
 		GameObject* Divider1 = new UIObject("Divider1", "Assets/Images/Journal/Line_1.png", true);
-		Divider1->SetScale(glm::vec3(4.78f, 0.08f, 0.0f));
-		Divider1->SetPosition(glm::vec3(3.2f, 0.7f, 0.0f));
+		Divider1->SetScale(glm::vec3(4.71f, 0.15f, 0.0f));
+		Divider1->SetPosition(glm::vec3(3.2f, 1.0f, 0.0f));
 
 
 		// LAST ACTIVITY	[M = Martha, LA = Last Activity]
@@ -111,13 +111,13 @@ public:
 		M_LA2->SetScale(0.54f);
 
 		ClueData* cabin1_clue5 = new ClueData();
-		cabin1_clue5->showText = false;
-		cabin1_clue5->clueText = M_LA1;
+		cabin1_clue5->showClue = false;
+		cabin1_clue5->clueObject = M_LA1;
 		cabin1_clue5->isEvidence = true;
 
 		ClueData* cabin1_clue6 = new ClueData();
-		cabin1_clue6->showText = false;
-		cabin1_clue6->clueText = M_LA2;
+		cabin1_clue6->showClue = false;
+		cabin1_clue6->clueObject = M_LA2;
 
 		textClues.push_back(cabin1_clue1);
 		textClues.push_back(cabin1_clue2);
@@ -135,7 +135,7 @@ public:
 		m_journalData->addClueToJournalData(CABIN1, cabin1_clue5);
 		m_journalData->addClueToJournalData(CABIN1, cabin1_clue6);
 
-		
+
 		// DIVIDER 2
 		GameObject* Divider2 = new UIObject("Divider2", "Assets/Images/Journal/Line_2.png", true);
 		Divider2->SetScale(glm::vec3(4.8f, 0.06f, 0.0f));

@@ -25,7 +25,7 @@
 #include "../GameStateManager.h"
 #include "KitchenData.h"
 
-#include "../GameObjects/CharacterData.h";
+
 
 class Hallway : public Scene
 {
@@ -66,8 +66,6 @@ private:
 	bool inDoorCollision = false;
 	bool entering = false;
 
-
-	CharacterData* char_data;
 	
 public:
 	Hallway() :audioManager(AudioManager::GetInstance())
@@ -139,8 +137,6 @@ public:
 
 		Journal = new Book();
 		// Inside the Hallway constructor
-
-		char_data = CharacterData::GetInstance();
 	
 
 		//activate clue in journal

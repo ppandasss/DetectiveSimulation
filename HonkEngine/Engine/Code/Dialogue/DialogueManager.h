@@ -344,9 +344,11 @@ public:
                 currentDialogueIndex = nextDialogueIndex;
                 currentLineIndex = 0;
                 choiceMade = false;
+                
             }
             else {
                 std::cout << "No more dialogues available." << std::endl;
+                
                 return;
             }
         }
@@ -379,8 +381,30 @@ public:
             return isLastDialogue && isLastLine;
         }
         return true; // Consider finished if key is not found or set is empty
+    
     }
 
+
+    bool IsDialogueSequenceFinished(const string& key) {
+        if (waitingForPlayerToAcknowledgeEnd) {
+            return true;
+        }
+        auto it = dialogueSets.find(key);
+        if (it != dialogueSets.end() && !it->second.empty()) {
+            const auto& dialogues = it->second;
+            // Check if we are on the last dialogue and the last line of that dialogue
+            if (currentDialogueIndex == dialogues.size() - 1 &&
+                currentLineIndex == dialogues[currentDialogueIndex].text.size() - 1) {
+                waitingForPlayerToAcknowledgeEnd = true;  // Set the flag when end is reached
+                return false;
+            }
+        }
+        return false;
+    }
+
+    void PlayerAcknowledgedDialogueEnd() {
+        waitingForPlayerToAcknowledgeEnd = false;  // Reset flag when player moves to next dialogue set
+    }
 
 
 
@@ -491,38 +515,33 @@ private:
     }
 
     void UpdateSpeakerSprite() {
-        string currentSpeaker = dialogues[currentDialogueIndex].speakerName;
+        if (dialogues.empty() || currentDialogueIndex >= dialogues.size()) return; // Safeguard against empty dialogues or invalid index
 
-        // Log current action for debugging
-       // cout << "Updating speaker sprite for: " << currentSpeaker << endl;
+        const string& currentSpeaker = dialogues[currentDialogueIndex].speakerName;
 
-        // Deactivate all sprites first
-        for (auto& pair : speakerSprites) {
-            pair.second->setActiveStatus(false);
-            //cout << "Deactivating sprite for: " << pair.first << endl;
-        }
 
+        // Check if the current speaker has a specific sprite
         auto spriteIt = speakerSprites.find(currentSpeaker);
+
         if (spriteIt != speakerSprites.end()) {
+            // Deactivate all sprites first
+            for (auto& pair : speakerSprites) {
+                pair.second->setActiveStatus(false); // Set all to inactive
+            }
             // If found, activate the sprite for the current speaker
             spriteIt->second->setActiveStatus(true);
-            cout << "Activating sprite for: " << currentSpeaker << endl;
+            lastActiveSpeakerSprite = spriteIt->second; // Update last active sprite
         }
-        else {
-            // If not found, fall back to the default sprite if it exists
-            auto defaultSpriteIt = speakerSprites.find(defaultSpriteName);
-            if (defaultSpriteIt != speakerSprites.end()) {
-                defaultSpriteIt->second->setActiveStatus(true);
-                cout << "Default sprite activated: " << defaultSpriteName << endl;
-            }
-            else {
-                cout << "No sprite found for: " << currentSpeaker << " and no default sprite available." << endl;
-            }
+        else if (lastActiveSpeakerSprite) {
+            // If no new speaker sprite is found, continue using the last active sprite
+            lastActiveSpeakerSprite->setActiveStatus(true);
         }
     }
 
 
 
+
+    UIElement* lastActiveSpeakerSprite = nullptr; // Pointer to the last active speaker sprite
     map<string, vector<Dialogue>> dialogueSets;
     string defaultSpriteName;
     vector<Dialogue> dialogues;
@@ -534,5 +553,5 @@ private:
     size_t currentDialogueIndex;
     size_t currentLineIndex;
     string fontPath;
-
+    bool waitingForPlayerToAcknowledgeEnd = false;
 };

@@ -20,8 +20,8 @@ enum struct RoomState {
     Prepare,
     Serve,
     MealReact,
-    Score,
-    Inspection
+    Inspection,
+    End,
 };
 
 std::string gameStateNameToDoorName(GameState state) {
@@ -49,7 +49,12 @@ private:
     std::map<std::pair<GameState, RoomState>, std::function<void()>> stateActions;
 
     GameStateManager() {
-        // Define actions for each state transition
+
+        // Define actions for each state transition 
+
+        //ROOM1
+        // 
+        //Prepare
         stateActions[std::make_pair(GameState::Room1, RoomState::Prepare)] = []() {
 
             DoorManager::GetInstance().GetDoorByName("Room1Door")->setPermission(false);
@@ -59,11 +64,16 @@ private:
             AudioManager::GetInstance().PlaySound("slideDoor");
             std::cout << "Transition to Room1 Prepare state." << std::endl;
          };
-        // Add more state transitions as necessary
+        
+        //Serve
         stateActions[std::make_pair(GameState::Room1, RoomState::Serve)] = []() {
             Timer::GetInstance().stop();
 		};
 
+        stateActions[std::make_pair(GameState::Room1, RoomState::Inspection)] = []() {
+            Application::Get().SetScene("Hallway");
+            AudioManager::GetInstance().PlaySound("slideDoor");
+         };
 
  
     }

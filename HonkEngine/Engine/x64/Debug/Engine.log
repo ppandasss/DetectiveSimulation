@@ -15,6 +15,9 @@ C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Text\TextRenderer.h(12,7): wa
   C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8):
   see declaration of 'Mesh'
   
+C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\JournalData.h(98,61): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Code/Main.cpp')
+  
 C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Player.h(23,55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   (compiling source file 'Code/Main.cpp')
   
@@ -31,7 +34,7 @@ C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Timer.h(88,20): w
 C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Timer.h(88,20): warning C4244:         ]
   (compiling source file 'Code/Main.cpp')
   
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Hallway.h(317,26): warning C4244: 'argument': conversion from 'long' to 'float', possible loss of data
+C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Hallway.h(321,26): warning C4244: 'argument': conversion from 'long' to 'float', possible loss of data
   (compiling source file 'Code/Main.cpp')
   
 C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Dialogue\Dialoguemanager.h(227,25): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
@@ -40,4 +43,5 @@ C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Dialogue\Dialoguemanager.h(22
 C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Kitchen.h(141,13): warning C4305: 'initializing': truncation from 'double' to 'float'
   (compiling source file 'Code/Main.cpp')
   
+C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\JournalData.h(87,1): warning C4715: 'JournalData::getEvidenceText': not all control paths return a value
   Engine.vcxproj -> C:\Capt\DetectiveSimulation\HonkEngine\x64\Debug\Engine.exe
