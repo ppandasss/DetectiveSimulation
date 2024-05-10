@@ -24,10 +24,9 @@ public:
 
 	static CharacterData* GetInstance() {
 
-		if (instance == nullptr) {
-			instance = new CharacterData();
-		}
-		return instance;
+		static CharacterData instance;
+		return &instance;
+
 	}
 
 	//get score based on food choices
@@ -42,8 +41,6 @@ public:
 		return 0;
 	}
 
-	
-	
 
 	int calculateScore(Cabin cabin) { //with meal score and timer
 
@@ -206,15 +203,17 @@ private:
 		cabin4Scores.TeaMilkScores[Tea::ASSAMTEA] = 0;
 		cabin4Scores.TeaMilkScores[Tea::GREENTEA] = 0;
 
-		allCharacterData[CABIN1] = cabin1Scores;
-		allCharacterData[CABIN21] = cabin21Scores;
-		allCharacterData[CABIN22] = cabin22Scores;
-		allCharacterData[CABIN3] = cabin3Scores;
-		allCharacterData[CABIN4] = cabin4Scores;
+		allCharacterData.push_back(cabin1Scores);
+		allCharacterData.push_back(cabin21Scores);
+		allCharacterData.push_back(cabin22Scores);
+		allCharacterData.push_back(cabin3Scores);
+		allCharacterData.push_back(cabin4Scores);
+
 	}
 
 
-	static CharacterData* instance;
+	CharacterData(const CharacterData&) = delete;
+	CharacterData& operator=(const CharacterData&) = delete;
 
 	std::vector<characterFoodScores> allCharacterData;
 
@@ -223,5 +222,3 @@ private:
 	
 };
 
-
-CharacterData* CharacterData::instance = nullptr;

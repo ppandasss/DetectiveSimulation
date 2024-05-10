@@ -69,21 +69,21 @@ public:
 		O_Clue4->SetScale(0.58f);
 
 		ClueData* cabin4_clue1 = new ClueData();
-		cabin4_clue1->showText = true;
-		cabin4_clue1->clueText = O_Clue1;
+		cabin4_clue1->showClue = true;
+		cabin4_clue1->clueObject = O_Clue1;
 
 		ClueData* cabin4_clue2 = new ClueData();
-		cabin4_clue2->showText = true;
-		cabin4_clue2->clueText = O_Clue2;
+		cabin4_clue2->showClue = true;
+		cabin4_clue2->clueObject = O_Clue2;
 		cabin4_clue2->isEvidence = true;
 
 		ClueData* cabin4_clue3 = new ClueData();
-		cabin4_clue3->showText = true;
-		cabin4_clue3->clueText = O_Clue3;
+		cabin4_clue3->showClue = true;
+		cabin4_clue3->clueObject = O_Clue3;
 
 		ClueData* cabin4_clue4 = new ClueData();
-		cabin4_clue4->showText = true;
-		cabin4_clue4->clueText = O_Clue4;
+		cabin4_clue4->showClue = true;
+		cabin4_clue4->clueObject = O_Clue4;
 		cabin4_clue4->isEvidence = true;
 
 		textClues.push_back(cabin4_clue1);
@@ -121,12 +121,12 @@ public:
 		O_LA2->SetScale(0.52f);
 
 		ClueData* cabin4_clue5 = new ClueData();
-		cabin4_clue5->showText = true;
-		cabin4_clue5->clueText = O_LA1;
+		cabin4_clue5->showClue = true;
+		cabin4_clue5->clueObject = O_LA1;
 
 		ClueData* cabin4_clue6 = new ClueData();
-		cabin4_clue6->showText = true;
-		cabin4_clue6->clueText = O_LA2;
+		cabin4_clue6->showClue = true;
+		cabin4_clue6->clueObject = O_LA2;
 
 		textClues.push_back(cabin4_clue5);
 		textClues.push_back(cabin4_clue6);
@@ -172,7 +172,12 @@ public:
 		RedUnderline_Cabin5->SetScale(glm::vec3(1.7f, 0.1f, 0.0f));
 		RedUnderline_Cabin5->SetPosition(glm::vec3(1.1f, -2.0f, 0.0f));
 
+		ClueData* cabin4_clue7 = new ClueData();
+		cabin4_clue7->showClue = false;
+		cabin4_clue7->clueObject = RedUnderline_Cabin5;
 
+		textClues.push_back(cabin4_clue7);
+		m_journalData->addClueToJournalData(CABIN4, cabin4_clue7);
 
 		m_gameObjects.push_back(P1Picture);
 		m_gameObjects.push_back(PaperClip);
@@ -196,30 +201,9 @@ public:
 		m_gameObjects.push_back(TheCouncil);
 		m_gameObjects.push_back(SupremeCourt);
 
-		m_gameObjects.push_back(RedUnderline_Cabin5);
-
-
 
 	}
 
-	virtual void Update(float dt, long frame) override {
-
-		Page::Update(dt, frame);
-
-		CabinPageData cabinData = m_journalData->GetCabinPageData(Cabin::CABIN4);
-
-		if (!cabinData.ShowLastActivity) {
-
-			RedUnderline_Cabin5->setActiveStatus(false);
-
-		}
-		else {
-
-			RedUnderline_Cabin5->setActiveStatus(true);
-
-		}
-
-	}
 
 
 private:

@@ -108,7 +108,6 @@ public:
 		N_LA2->SetColor(glm::vec3(0.5, 0, 0));
 		N_LA2->SetScale(0.5f);
 
-
 		ClueData* cabin21_clue5 = new ClueData();
 		cabin21_clue5->showText = false;
 		cabin21_clue5->clueText = N_LA1;
@@ -172,6 +171,14 @@ public:
 		RedUnderline_Cabin2->SetScale(glm::vec3(1.7f, 0.1f, 0.0f));
 		RedUnderline_Cabin2->SetPosition(glm::vec3(1.1f, -2.0f, 0.0f));
 
+
+		ClueData* cabin21_clue7 = new ClueData();
+		cabin21_clue7->showClue = false;
+		cabin21_clue7->clueObject = RedUnderline_Cabin2;
+
+		textClues.push_back(cabin21_clue7);
+		m_journalData->addClueToJournalData(CABIN21, cabin21_clue7);
+
 		m_gameObjects.push_back(P1Picture);
 		m_gameObjects.push_back(PaperClip);
 		m_gameObjects.push_back(InfoPaper);
@@ -194,30 +201,8 @@ public:
 		m_gameObjects.push_back(TheCouncil);
 		m_gameObjects.push_back(SupremeCourt);
 
-		m_gameObjects.push_back(RedUnderline_Cabin2);
-
-
-
 	}
 
-	virtual void Update(float dt, long frame) override {
-
-		Page::Update(dt, frame);
-
-		CabinPageData cabinData = m_journalData->GetCabinPageData(Cabin::CABIN21);
-
-		if (!cabinData.ShowLastActivity) {
-
-			RedUnderline_Cabin2->setActiveStatus(false);
-
-		}
-		else {
-
-			RedUnderline_Cabin2->setActiveStatus(true);
-
-		}
-
-	}
 
 
 private:

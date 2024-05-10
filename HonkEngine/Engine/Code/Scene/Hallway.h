@@ -24,6 +24,9 @@
 #include "../GameObjects/Bell.h"
 #include "../GameStateManager.h"
 #include "KitchenData.h"
+
+#include "../GameObjects/CharacterData.h";
+
 class Hallway : public Scene
 {
 
@@ -63,6 +66,9 @@ private:
 	bool inDoorCollision = false;
 	bool entering = false;
 
+
+	CharacterData* char_data;
+	
 public:
 	Hallway() :audioManager(AudioManager::GetInstance())
 	{
@@ -132,11 +138,14 @@ public:
 
 
 		Journal = new Book();
-		
+		// Inside the Hallway constructor
+
+		char_data = CharacterData::GetInstance();
+	
 
 		//activate clue in journal
-		/*JournalData::GetInstance()->ActivateClue(CLUE_CABIN1, 0);
-		JournalData::GetInstance()->ActivateClue(CLUE_CABIN1, 1);*/
+		/*JournalData::GetInstance()->ActivateClue(CABIN1, 0);
+		JournalData::GetInstance()->ActivateClue(CABIN1, 1);*/
 
 		/*-------------------------------------------------------------🎮CREATE PLAYER🎮------------------------------------------------------------------------------------------------------- */
 
@@ -264,7 +273,6 @@ public:
 
 		//Journal
 		m_gameObjects.push_back(Journal);
-		//Journal->closeBook();
 
 		
 
