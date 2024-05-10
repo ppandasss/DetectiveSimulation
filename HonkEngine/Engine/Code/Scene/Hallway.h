@@ -19,6 +19,8 @@
 #include "../GameObjects/OrderData.h"
 #include "../GameObjects/Timer.h"
 
+#include "../GameObjects/CharacterData.h";
+
 class Hallway : public Scene
 {
 
@@ -33,6 +35,8 @@ private:
 	Text* pastryOrderText;
 
 	Text* timerText;
+
+	CharacterData* char_data;
 	
 public:
 	Hallway() :audioManager(AudioManager::GetInstance())
@@ -49,6 +53,8 @@ public:
 		GameObject* hallwaylights = new RenderGameObject("CabinLights", "Assets/Images/Environment_Corridor_Light.png");
 		Journal = new Book();
 		// Inside the Hallway constructor
+
+		char_data = CharacterData::GetInstance();
 	
 
 		//activate clue in journal
@@ -155,7 +161,6 @@ public:
 
 		//Journal
 		m_gameObjects.push_back(Journal);
-		//Journal->closeBook();
 
 	}
 

@@ -73,7 +73,7 @@ class JournalData {
 		void incrementEvidence() {
 
 			// Increment index and wrap around if needed
-			main_page.player_Evidence = (main_page.player_Evidence + 1) % evidenceNo;
+			//main_page.player_Evidence = (main_page.player_Evidence + 1) % evidenceNo;
 
 		}
 
