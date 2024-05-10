@@ -30,6 +30,10 @@ public:
         onReleaseAction = action;
     }
 
+    virtual void SetOnDragAction(const std::function<void()>& action) {
+        onDragAction = action;
+    }
+
 
     void onRelease() {
         if (onReleaseAction) {

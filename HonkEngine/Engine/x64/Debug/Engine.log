@@ -5,7 +5,8 @@ C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Engine
 C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): message : see declaration of 'Mesh'
 C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Text\TextRenderer.h(12,11): warning C4099: 'Mesh': type name first seen using 'struct' now seen using 'class'
 C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): message : see declaration of 'Mesh'
-C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\JournalData.h(98,1): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\JournalData.h(68,1): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\JournalData.h(107,1): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Player.h(23,55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Player.h(23,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Timer.h(61,20): warning C4244: 'return': conversion from '_Rep' to 'int', possible loss of data
@@ -15,5 +16,5 @@ C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\GameOb
           ]
 C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Hallway.h(22,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Dialogue\Dialoguemanager.h(163,1): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\JournalData.h(87): warning C4715: 'JournalData::getEvidenceText': not all control paths return a value
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Kitchen.h(128,1): warning C4305: 'initializing': truncation from 'double' to 'float'
   Engine.vcxproj -> C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\x64\Debug\Engine.exe

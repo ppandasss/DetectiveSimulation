@@ -2,6 +2,8 @@
 
 #include "../Text/Text.h"
 
+#include "../UI/UIButtonEmpty.h"
+
 using namespace std;
 
 enum Location { TOWNSQUARE, HOLYCHURCH, COUNCIL, SUPREMECOURT, LOCATION_EMPTY };
@@ -32,7 +34,7 @@ struct MainPageData {
 
 	Cabin player_Spy = CABIN_EMPTY;
 	Location player_BombLocation = LOCATION_EMPTY;  
-	int player_Evidence = -1;
+	int player_Evidence = 0;
 
 };
 
@@ -58,51 +60,83 @@ class JournalData {
 
 		//------------------MAIN PAGE FUNCTIONS--------------------------
 
+
+		void incrementEvidence() { 
+			//Increment index and wrap around if needed
+
+			//std::cout << "INCREMENT CALLED" << std::endl;
+			no_of_Evidence = allCabinData[main_page.player_Spy].activeEvidence.size();
+
+			if (no_of_Evidence == 2) {
+				//std::cout << "INDEX INCREMENTED" << std::endl;
+				main_page.player_Evidence = (main_page.player_Evidence + 1) % 2;
+				//std::cout << main_page.player_Evidence << std::endl;
+
+			}
+
+		}
+
+		void setCurrentEvidencetext(UIButtonEmpty* evidenceButton) {
+
+			if (no_of_Evidence == 0) {
+				evidenceButton->SetButtonText("EMPTY");
+				return;
+			}
+			
+			if (no_of_Evidence == 1) {
+				evidenceButton->SetButtonText(mainPageEvidence[0]);
+			}
+
+			else {
+				evidenceButton->SetButtonText(mainPageEvidence[main_page.player_Evidence]);
+			}
+
+		}
+		
 		//SER PLAYER CHOICES
 
 		void SetPlayerSpyChoice(Cabin spyChoice) {
+
 			main_page.player_Spy = spyChoice;
+
+		}
+
+		void resetCurrentEvidenceOptions(DeferredRenderObject* buttonObj) {
+
+			Cabin spy_choice = main_page.player_Spy;
+			no_of_Evidence = allCabinData[spy_choice].activeEvidence.size();
+
+			if (no_of_Evidence == 0) {
+
+				buttonObj->showObject = false;
+				buttonObj->gameObj->setActiveStatus(false);
+
+				mainPageEvidence[0] = " - ";
+				mainPageEvidence[1] = " - ";
+
+			}
+			else if (no_of_Evidence == 1) {
+
+				buttonObj->showObject = true;
+				buttonObj->gameObj->setActiveStatus(true);
+
+				mainPageEvidence[0] = allCabinData[spy_choice].activeEvidence.at(0);
+				mainPageEvidence[1] = " - ";
+			}
+			else {
+
+				buttonObj->showObject = true;
+				buttonObj->gameObj->setActiveStatus(true);
+
+				mainPageEvidence[0] = allCabinData[spy_choice].activeEvidence.at(0);
+				mainPageEvidence[1] = allCabinData[spy_choice].activeEvidence.at(1);
+
+			}
+
 		}
 
 		void SetPlayerBombLocation(Location bombLocation) {
 			main_page.player_BombLocation = bombLocation;
-		}
-
-		//EVIDENCE BUTTON FUNCTIONS
-
-		void incrementEvidence() {
-
-			// Increment index and wrap around if needed
-			//main_page.player_Evidence = (main_page.player_Evidence + 1) % evidenceNo;
-
-		}
-
-		std::string getEvidenceText() {
-			
-			if (main_page.player_Evidence != -1) {
-
-				return " string";
-				
-			}
-		}
-		
-		void resetEvidenceChoices() {
-
-			mainPageEvidence[0] = " - ";
-			mainPageEvidence[1] = " - ";
-	
-
-			Cabin spy_choice = main_page.player_Spy;
-			vector<string> activeEvidence = allCabinData[spy_choice].activeEvidence;
-
-			evidenceNo = allCabinData[spy_choice].activeEvidence.size();
-
-			if (evidenceNo == 0) {
-
-
-			}
-
-
 		}
 	
 
@@ -121,7 +155,6 @@ class JournalData {
 
 					Text* textObject = dynamic_cast<Text*>(activatedClue->clueObject);
 					std::string evidencetext = textObject->GetContent();
-
 					allCabinData[cabin].activeEvidence.push_back(evidencetext);
 
 				}
@@ -225,7 +258,7 @@ class JournalData {
 
 		std::string mainPageEvidence[2] = { " - ", " - " };
 
-		int evidenceNo = 0;
+		int no_of_Evidence = 0;
 
 };
 

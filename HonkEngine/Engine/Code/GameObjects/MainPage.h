@@ -130,9 +130,12 @@ public:
 		// EVIDENCE TEXT
 
 		EvidenceButton = new UIButtonEmpty("EvidenceText", glm::vec3(3.2f, -1.0f, 0.0f), glm::vec3(5.0f, 0.5f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
-		EvidenceButton->SetButtonText(m_journalData->getEvidenceText());
 		EvidenceButton->SetTextSize(0.6f);
-		EvidenceButton->SetOnClickAction([this]() { updateEvidence(); });
+		EvidenceButton->SetOnClickAction([this]() { clickEvidenceButton(); });
+
+		evidenceButtonDeferred = new DeferredRenderObject();
+		evidenceButtonDeferred->showObject = false;
+		evidenceButtonDeferred->gameObj = EvidenceButton;
 
 		m_gameObjects.push_back(TheSpy);
 
@@ -152,7 +155,6 @@ public:
 		m_gameObjects.push_back(Suspect5);
 
 		m_gameObjects.push_back(Evidence);
-		m_gameObjects.push_back(EvidenceButton);
 
 		m_gameObjects.push_back(BombLocation);
 
@@ -172,6 +174,7 @@ public:
 
 		deffered_m_gameObjects.push_back(redUnderline);
 		deffered_m_gameObjects.push_back(redCircle);
+		deffered_m_gameObjects.push_back(evidenceButtonDeferred);
 
 		//make evidence button deffered and set active with evidence no.
 
@@ -179,8 +182,22 @@ public:
 
 	//--------------------- SUSPECT BUTTON FUNCTIONS -----------------------
 
+	void updateEvidenceButtonText() {
+
+		//every time spy is rechosen
+		//reset the options
+		//reset button text
+
+		m_journalData->resetCurrentEvidenceOptions(evidenceButtonDeferred);
+		m_journalData->setCurrentEvidencetext(EvidenceButton);
+
+	}
+
 	void setSpy1() {
+
 		m_journalData->SetPlayerSpyChoice(CABIN1);
+
+		updateEvidenceButtonText();
 
 		if (redCircle->showObject == false) {
 			redCircle->showObject = true;
@@ -191,6 +208,8 @@ public:
 	void setSpy21() {
 		m_journalData->SetPlayerSpyChoice(CABIN21);
 
+		updateEvidenceButtonText();
+
 		if (redCircle->showObject == false) {
 			redCircle->showObject = true;
 		}
@@ -199,7 +218,10 @@ public:
 	};
 
 	void setSpy22() {
+
 		m_journalData->SetPlayerSpyChoice(CABIN22);
+
+		updateEvidenceButtonText();
 
 		if (redCircle->showObject == false) {
 			redCircle->showObject = true;
@@ -209,7 +231,10 @@ public:
 	};
 
 	void setSpy3() {
+
 		m_journalData->SetPlayerSpyChoice(CABIN3);
+
+		updateEvidenceButtonText();
 
 		if (redCircle->showObject == false) {
 			redCircle->showObject = true;
@@ -219,13 +244,30 @@ public:
 	};
 
 	void setSpy4() {
+
 		m_journalData->SetPlayerSpyChoice(CABIN3);
+
+		//sets button text to current spys evidence
+		updateEvidenceButtonText();
 
 		if (redCircle->showObject == false) {
 			redCircle->showObject = true;
 		}
 		redCircle->gameObj->SetPosition(glm::vec3(2.65f, 0.25f, 0.0f));
 	};
+
+	void clickEvidenceButton() {
+
+		//increment choice
+		//set new text for button
+
+		std::cout << "CLICKING BUTTON" << std::endl;
+
+		m_journalData->incrementEvidence();
+		m_journalData->setCurrentEvidencetext(EvidenceButton);
+
+		
+	}
 
 	////--------------------- BOMB LOCATION FUNCTIONS ------------------------
 
@@ -265,21 +307,12 @@ public:
 		}
 		redUnderline->gameObj->SetPosition(glm::vec3(3.5f, -2.95f, 0.0f));
 	};
-	
-	//------------------------EVIDENCE FUNCTIONS--------------------
 
-	void updateEvidence() {
-
-		m_journalData->incrementEvidence();
-		EvidenceButton->SetButtonText(m_journalData->getEvidenceText());
-
-	}
 
 
 	virtual void Update(float dt, long frame) override {
-
 		Page::Update(dt, frame);
-		
+	
 	}
 
 
@@ -290,6 +323,7 @@ private:
 
 	DeferredRenderObject* redUnderline;
 	DeferredRenderObject* redCircle;
+	DeferredRenderObject* evidenceButtonDeferred;
 
 	UIButtonEmpty* EvidenceButton;
 
