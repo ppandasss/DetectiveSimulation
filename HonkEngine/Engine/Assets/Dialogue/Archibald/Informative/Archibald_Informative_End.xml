@@ -19,7 +19,7 @@
 			<line1>I'm surprised you still managed to do  your job right.</line1>
 		</Speaker>
 		<Choices>
-			<Choice1 next="2WD69">Thank him for acknowledging  the effort</Choice1>
+			<Choice1 next="2WD69">Thank him for acknowledging  your effort</Choice1>
 			<Choice2 next="2WD70">Accept and amplify the praise</Choice2>
 		</Choices>
 	</Dialogue>

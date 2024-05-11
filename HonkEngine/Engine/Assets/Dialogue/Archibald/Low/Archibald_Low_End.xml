@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="2AD82">
+		<Speaker name="Archibald_Normal">
+			<line1>Hmm, I believe the tea is ready.</line1>
+			<line2>FINALLY.</line2>
+			<line3>You're no longer needed here.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD83">
+		<Speaker name="Archibald_Normal">
+			<line1>....</line1>
+			<line2>How could a meal look so pathetic  every time I glance at it?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AQ22">
+		<Speaker name="Archibald_Upset">
+			<line1>I shall definitely report you to  the highest manager!</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="2WD69">Say nothing</Choice1>
+			<Choice2 next="2WD70">Apologize</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="2WD69" next="2AD86">
+		<Speaker name="Waiter">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD70" next="2AD84">
+		<Speaker name="Waiter">
+			<line1>I must apologize for my incompetence,  sir.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD89">
+		<Speaker name="Archibald_Upset">
+			<line1>Leave. Now.</line1>
+			<line2>Don't you dare appear in my sight again!</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

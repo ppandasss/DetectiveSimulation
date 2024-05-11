@@ -35,38 +35,11 @@
 		</Speaker>
 		<Choices/>
 	</Dialogue>
-	<Dialogue id="2AD20">
+	<Dialogue id="2AD20" next="2AQ07">
 		<Speaker name="Archibald_Normal">
 			<line1>Huh?</line1>
-		</Speaker>
-		<Choices/>
-	</Dialogue>
-	<Dialogue id="2AQ06">
-		<Speaker name="Archibald_Upset">
-			<line1>Why on earth do you want to know?</line1>
-		</Speaker>
-		<Choices>
-			<Choice1 next="2WD22">I want to assure your convenience</Choice1>
-			<Choice2 next="2WD23">Just my curiosity, sir</Choice2>
-		</Choices>
-	</Dialogue>
-	<Dialogue id="2WD22" next="2AD21">
-		<Speaker name="Waiter">
-			<line1>I want to assure you're feeling  comfortable during your trip here.</line1>
-		</Speaker>
-		<Choices/>
-	</Dialogue>
-	<Dialogue id="2WD23" next="2AQ07">
-		<Speaker name="Waiter">
-			<line1>Just my curiosity getting the best  of me, sir.</line1>
-		</Speaker>
-		<Choices/>
-	</Dialogue>
-	<Dialogue id="2AD21" next="2AD28">
-		<Speaker name="Archibald_Normal">
-			<line1>Nice to know you care,</line1>
-			<line2>but it was just a %business% %matter%  of mine.</line2>
-			<line2>Which clearly, has nothing to do  with you.</line2>
+			<line2>....</line2>
+			<line3>You do know what?</line3>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
@@ -77,9 +50,10 @@
 		</Speaker>
 		<Choices/>
 	</Dialogue>
-	<Dialogue id="2AD23" next="2AD21">
-		<Speaker name="Archibald_Happy">
+	<Dialogue id="2AD23" next="2AQ07">
+		<Speaker name="Archibald_Normal">
 			<line1>Ohh, are you referring to my outfit?</line1>
+			<line2>You do know what?</line2>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
@@ -105,7 +79,7 @@
 		<Speaker name="Archibald_Happy">
 			<line1>Ohh, I get it.</line1>
 			<line2>It must be my outfit.</line2>
-			<line3>And you do know what?</line3>
+			<line3>You do know what?</line3>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
@@ -124,7 +98,7 @@
 		</Speaker>
 		<Choices/>
 	</Dialogue>
-	<Dialogue id="2WD25" next="2AD26">
+	<Dialogue id="2WD25" next="2AD27">
 		<Speaker name="Waiter">
 			<line1>....</line1>
 		</Speaker>
@@ -132,22 +106,15 @@
 	</Dialogue>
 	<Dialogue id="2AD26">
 		<Speaker name="Archibald_Upset">
-			<line1>....</line1>
-		</Speaker>
-		<Choices/>
-	</Dialogue>
-	<Dialogue id="2AD26_2">
-		<Speaker name="Archibald_Upset">
-			<line1>Ugh, fine.</line1>
-			<line2>If you're that interested in poking  your nose into other people's affairs.</line2>
+			<line1>It's because I'm working a ‘real job’.</line1>
+			<line2>Unlike someone who always sticking  their nose in my business.</line2>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
 	<Dialogue id="2AD27">
 		<Speaker name="Archibald_Upset">
-			<line1>It was just a %business% %matter% of mine.</line1>
-			<line2>Which I do not give a single care.</line2>
-			<line3>And neither should you.</line3>
+			<line1>I do not give a single care about  my clothes.</line1>
+			<line2>And neither should you!</line2>
 		</Speaker>
 		<Choices/>
 	</Dialogue>

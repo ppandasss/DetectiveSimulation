@@ -84,4 +84,10 @@
 		</Speaker>
 		<Choices/>
 	</Dialogue>
+	<Dialogue id="2WD11_2">
+		<Speaker name="Waiter">
+			<line1>[You serve the meal to Sir Archibald  and start brewing the tea.]</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
 </Dialogues>

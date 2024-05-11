@@ -38,14 +38,14 @@
 	</Dialogue>
 	<Dialogue id="2AD51" next="2AQ13">
 		<Speaker name="Archibald_Normal">
-			<line1>This?</line1>
-			<line2>The kind that's only %reserved% %for%  %high-class% %elites%, like ME.</line2>
+			<line1>This? This one is not for sale.</line1>
+			<line2>It's a special, reserved for special  people, like ME.</line2>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
 	<Dialogue id="2AD51_2" next="2AQ12">
 		<Speaker name="Archibald_Normal">
-			<line1>But as it's made for %special% %elites%  like me,</line1>
+			<line1>But being a special elite like me,</line1>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
@@ -54,19 +54,19 @@
 			<line1>I need to keep up with these boring  news.</line1>
 		</Speaker>
 		<Choices>
-			<Choice1 next="2WD43" clueID="CABIN3_3">Ask for an example of news</Choice1>
-			<Choice2 next="2WD44" clueID="CABIN3_3">Ask if there's anything  about the bomb</Choice2>
-			<Choice3 next="2WD42" clueID="CABIN3_3">Understand plainly</Choice3>
+			<Choice1 next="2WD43">Ask for an example of news</Choice1>
+			<Choice2 next="2WD44">Ask if there's anything  about the bomb</Choice2>
+			<Choice3 next="2WD42">Understand plainly</Choice3>
 		</Choices>
 	</Dialogue>
 	<Dialogue id="2AQ13">
-		<Speaker name="Archibald_Normal">
-			<line1>There's nothing here that would  interest a middle-class like you.</line1>
+		<Speaker name="Archibald_Upset">
+			<line1>And also none of your concern!</line1>
 		</Speaker>
 		<Choices>
-			<Choice1 next="2WD43" clueID="CABIN3_3">Ask for an example of news</Choice1>
-			<Choice2 next="2WD44" clueID="CABIN3_3">Ask if there's anything  about the bomb</Choice2>
-			<Choice3 next="2WD42" clueID="CABIN3_3">Understand plainly</Choice3>
+			<Choice1 next="2WD43">Ask for an example of news</Choice1>
+			<Choice2 next="2WD44">Ask if there's anything  about the bomb</Choice2>
+			<Choice3 next="2WD42">Understand plainly</Choice3>
 		</Choices>
 	</Dialogue>
 	<Dialogue id="2WD42" next="2AQ14">
@@ -94,8 +94,8 @@
 			<line1>Really? You're not interested at all?</line1>
 		</Speaker>
 		<Choices>
-			<Choice1 next="2WD45">Yes, because you said so</Choice1>
-			<Choice2 next="2WD46">I do, but it's not my business  to ask</Choice2>
+			<Choice1 next="2WD45" clueID="CABIN3_3">Yes, because you said so</Choice1>
+			<Choice2 next="2WD46" clueID="CABIN3_3">I do, but it's not my business  to ask</Choice2>
 		</Choices>
 	</Dialogue>
 	<Dialogue id="2WD45" next="2AD54">
@@ -171,8 +171,7 @@
 	<Dialogue id="2AD55_2">
 		<Speaker name="Archibald_Normal">
 			<line1>Really? I can't tell you much then.</line1>
-			<line2>Or actually...</line2>
-			<line3>You're the one I should tell the most.</line3>
+			<line2>Hmm, or maybe I should spare you hopeless a little.</line2>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
@@ -351,7 +350,7 @@
 	<Dialogue id="2AD65" next="2AD80">
 		<Speaker name="Archibald_Upset">
 			<line1>How else would I know the name of  that bomb?</line1>
-			<line2>Use your head a bit more, waiter!</line2>
+			<line2>Use your head, waiter!</line2>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
