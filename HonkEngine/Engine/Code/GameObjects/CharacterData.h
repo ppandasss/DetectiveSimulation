@@ -31,7 +31,7 @@ public:
 
 	//get score based on food choices
 
-	int calculateStage1Score() { //NO MEAL SCORE JUST TIME TO SERVE
+	int calculateTimeScore() { //NO MEAL SCORE JUST TIME TO SERVE
 
 		int remainingTime = Timer::GetInstance().getRemainingTime();
 
@@ -66,7 +66,19 @@ public:
 
 	}
 
-	InteractionLevel getInteractionLevel(Cabin cabin) {
+	//GET INTERACTION LEVEL FUNCTIONS
+
+	PrepTime getStage1InteractionLevel(Cabin cabin) { //STAGE 1
+
+		if (calculateStage1Score() == 0) {
+			return PrepTime::ONTIME;
+		}
+
+		return PrepTime::LATE;
+
+	}
+
+	InteractionLevel getStage2InteractionLevel(Cabin cabin) { // STAGE 2
 
 		int score = calculateScore(cabin);
 
@@ -75,6 +87,18 @@ public:
 		else { return INFORMATIVE; }
 
 	}
+
+	InteractionLevel getStage3InteractionLevel(Cabin cabin) { // STAGE 3
+
+		int score = calculateScore(cabin) + calculateStage1Score();
+
+		if (score >= 0 && score <= 3) { return LOW; }
+		else if (score >= 4 && score <= 7) { return AVERAGE; }
+		else { return INFORMATIVE; }
+
+	}
+
+
 
 private:
 

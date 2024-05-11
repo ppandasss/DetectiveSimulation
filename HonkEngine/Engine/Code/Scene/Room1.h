@@ -239,7 +239,7 @@ public:
             orderDialogueKey = "Order";
             break;
         case RoomState::Serve:
-            if (timer->getRemainingTime() >= 0) {
+            if (timer->getRemainingTime() > 0) {
                 serveDialogueKey = "Serve_OnTime";
             }
             else {
