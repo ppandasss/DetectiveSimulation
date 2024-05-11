@@ -407,54 +407,91 @@ public:
     }
 
     void UpdateDialogueProgress() {
+        // Manage different room states
         if (gameStateManager.getGameState() != GameState::ROOM1_STATE) return;
 
-        SetInstruction("Press [Space] or [Mouse] to continue");
-
         switch (gameStateManager.getRoomState()) {
-        case Order:
-            if (dialogueManager->IsDialogueFinished("Order")) {
-                SetInstruction("Press [E] to leave");
-                if (input.Get().GetKeyDown(GLFW_KEY_E)) {
-                    gameStateManager.SetRoomState(Prepare);
-                }
-            }
+        case RoomState::Order:
+            UpdateRoomState("Order", RoomState::Prepare);
             break;
-        case Serve:
-            if (!teaDialogueSet && dialogueManager->IsDialogueSequenceFinished(serveDialogueKey)) {
-                PromptForNextDialogue("Press [Space] or [Mouse] to continue.", teaDialogueKey, teaDialogueSet);
-            }
-            else if (teaDialogueSet && !sandwichDialogueSet) {
-                PromptForNextDialogue("Press [Space] or [Mouse] to continue.", sandwichDialogueKey, sandwichDialogueSet);
-            }
-            else if (sandwichDialogueSet && !dessertDialogueSet) {
-                PromptForNextDialogue("Press [Space] or [Mouse] to continue.", dessertDialogueKey, dessertDialogueSet);
-            }
-            else if (dessertDialogueSet && !scoreDialogueSet) {
-                gameStateManager.SetRoomState(RoomState::Score);
-            }
+        case RoomState::Serve:
+            ManageServeState();
             break;
-        case Score:
-			if (dessertDialogueSet && !scoreDialogueSet) {
-				PromptForNextDialogue("Press [Space] or [Mouse] to continue.", scoreDialogueKey, scoreDialogueSet);
-			}
-			else if (scoreDialogueSet && !inspectStartDialogueSet) {
-                gameStateManager.SetRoomState(RoomState::Inspection);
-			}
+        case RoomState::Score:
+            ManageScoreState();
+            break;
+        case RoomState::MealReact:
+            ManageMealReactions();
 			break;
-        case Inspection:
-			
-			break;
+        case RoomState::Inspection:
+            ManageInspectionState();
+            break;
+        }
+    }
+
+   void UpdateRoomState(const string& currentDialogueKey, RoomState nextState) {
+        if (dialogueManager->IsDialogueFinished(currentDialogueKey)) {
+            SetInstruction("Press [E] to leave");
+            if (input.Get().GetKeyDown(GLFW_KEY_E)) {
+                gameStateManager.SetRoomState(nextState);
+            }
+        }
+    }
+
+    void ManageServeState() {
+        
+        if (!serveDialogueSet ) {
+            PromptForNextDialogue("Press [Space] or [Mouse] to continue.", serveDialogueKey, serveDialogueSet);
+        }
+        else if (serveDialogueSet && dialogueManager->IsDialogueFinished(serveDialogueKey)) {
+            gameStateManager.SetRoomState(RoomState::MealReact);
+        }
+    }
+
+    void ManageMealReactions() {
+ 
+        if (!teaDialogueSet && dialogueManager->IsDialogueFinished(serveDialogueKey) && !dessertDialogueSet) {
+            PromptForNextDialogue("Press [Space] or [Mouse] to continue", teaDialogueKey, teaDialogueSet);
+        }
+        else if (teaDialogueSet && !sandwichDialogueSet && dialogueManager->IsDialogueFinished(teaDialogueKey) && !dessertDialogueSet) {
+            PromptForNextDialogue("Press [Space] or [Mouse] to continue.", sandwichDialogueKey, sandwichDialogueSet);
+        }
+        else if (sandwichDialogueSet && !dessertDialogueSet && dialogueManager->IsDialogueFinished(sandwichDialogueKey)) {
+            PromptForNextDialogue("Press [Space] or [Mouse] to continue.", dessertDialogueKey, dessertDialogueSet);
         }
 
+       
+        if (teaDialogueSet && sandwichDialogueSet && dessertDialogueSet && dialogueManager->IsDialogueFinished(dessertDialogueKey)) {
+
+            gameStateManager.SetRoomState(RoomState::Score);
+        }
+    }
+
+
+    void ManageScoreState() {
+        // Begin scoring dialogue
+        if (!scoreDialogueSet) {
+            PromptForNextDialogue("Press [Space] or [Mouse] to continue.", scoreDialogueKey, scoreDialogueSet);
+        }
+        else if (scoreDialogueSet && dialogueManager->IsDialogueFinished(dessertDialogueKey)){
+            gameStateManager.SetRoomState(RoomState::Inspection); // Transition to Inspection state
+        }
+    }
+
+    void ManageInspectionState() {
+        // Begin inspection dialogue
+        if (!inspectStartDialogueSet) {
+            PromptForNextDialogue("Press [Space] or [Mouse] to continue.", inspectStartDialogueKey, inspectStartDialogueSet);
+        } 
+           
     }
 
     void PromptForNextDialogue(const string& instruction, const string& nextKey, bool& flag) {
         SetInstruction(instruction);
         if (input.Get().GetKeyDown(GLFW_KEY_SPACE) || input.Get().GetMouseButtonDown(0)) {
-            std::cout << "Switching to next dialogue." << std::endl;
+            std::cout << "Switching to next dialogue." << nextKey << std::endl;
             dialogueManager->SetDialogueSet(nextKey);
-            dialogueManager->PlayerAcknowledgedDialogueEnd();  // Reset the end dialogue flag
+            dialogueManager->PlayerAcknowledgedDialogueEnd(); 
             flag = true;
         }
     }

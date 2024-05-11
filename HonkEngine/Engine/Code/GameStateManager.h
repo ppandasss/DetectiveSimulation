@@ -72,8 +72,8 @@ private:
 		};
 
         stateActions[std::make_pair(GameState::ROOM1_STATE, RoomState::Inspection)] = []() {
-            Application::Get().SetScene("Hallway");
-            AudioManager::GetInstance().PlaySound("slideDoor");
+            //Application::Get().SetScene("Hallway");
+            //AudioManager::GetInstance().PlaySound("slideDoor");
          };
 
  
