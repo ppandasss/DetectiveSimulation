@@ -31,9 +31,12 @@ public:
 
 	//get score based on food choices
 
-	int calculateTimeScore() { //NO MEAL SCORE JUST TIME TO SERVE
+	int calculateTimeServe() { //NO MEAL SCORE JUST TIME TO SERVE
 
 		int remainingTime = Timer::GetInstance().getRemainingTime();
+
+
+		cout << "Remaining time: " << remainingTime << endl;
 
 		if (remainingTime == 0) {
 			return -2;
@@ -42,7 +45,7 @@ public:
 	}
 
 
-	int calculateScore(Cabin cabin) { //with meal score and timer
+	int calculateMealScore(Cabin cabin) { //with meal score and timer
 
 		int totalScore;
 
@@ -68,9 +71,9 @@ public:
 
 	//GET INTERACTION LEVEL FUNCTIONS
 
-	PrepTime getStage1InteractionLevel(Cabin cabin) { //STAGE 1
+	PrepTime getServeTimeLevel(Cabin cabin) { //STAGE 1
 
-		if (calculateStage1Score() == 0) {
+		if (calculateTimeServe() == 0) {
 			return PrepTime::ONTIME;
 		}
 
@@ -78,9 +81,9 @@ public:
 
 	}
 
-	InteractionLevel getStage2InteractionLevel(Cabin cabin) { // STAGE 2
+	InteractionLevel getServeScoreLevel(Cabin cabin) { // STAGE 2
 
-		int score = calculateScore(cabin);
+		int score = calculateMealScore(cabin);
 
 		if (score >= 0 && score <= 3) { return LOW; }
 		else if (score >= 4 && score <= 7) { return AVERAGE; }
@@ -88,13 +91,15 @@ public:
 
 	}
 
-	InteractionLevel getStage3InteractionLevel(Cabin cabin) { // STAGE 3
+	InteractionLevel getInteractionLevel(Cabin cabin) { // STAGE 3
 
-		int score = calculateScore(cabin) + calculateStage1Score();
+		int score = calculateMealScore(cabin) + calculateTimeServe();
 
+		Timer::GetInstance().stop();
 		if (score >= 0 && score <= 3) { return LOW; }
 		else if (score >= 4 && score <= 7) { return AVERAGE; }
 		else { return INFORMATIVE; }
+
 
 	}
 

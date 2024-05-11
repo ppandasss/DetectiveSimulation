@@ -7,18 +7,19 @@
 #include "GameObjects/BellManager.h"
 #include "Audio/AudioManager.h"
 
-enum struct GameState {
-    Room1,
-    Room2,
-    Room3,
-    Room4,
-    End
+enum GameState {
+    ROOM1_STATE,
+    ROOM2_STATE,
+    ROOM3_STATE,
+    ROOM4_STATE,
+    Ending
 };
 
-enum struct RoomState {
+enum RoomState {
     Order,
     Prepare,
     Serve,
+    Score,
     MealReact,
     Inspection,
     End,
@@ -26,13 +27,13 @@ enum struct RoomState {
 
 std::string gameStateNameToDoorName(GameState state) {
     switch (state) {
-    case GameState::Room1:
+    case GameState::ROOM1_STATE:
         return "Room1Door";
-    case GameState::Room2:
+    case GameState::ROOM2_STATE:
         return "Room2Door";
-    case GameState::Room3:
+    case GameState::ROOM3_STATE:
         return "Room3Door";
-    case GameState::Room4:
+    case GameState::ROOM4_STATE:
         return "Room4Door";
     default:
         return ""; // Default empty if no match found
@@ -43,7 +44,7 @@ class GameStateManager {
 
 private:
     static GameStateManager* instance;
-    GameState currentGameState = GameState::Room1;
+    GameState currentGameState = GameState::ROOM1_STATE;
     RoomState currentRoomState = RoomState::Order;
 
     std::map<std::pair<GameState, RoomState>, std::function<void()>> stateActions;
@@ -55,7 +56,7 @@ private:
         //ROOM1
         // 
         //Prepare
-        stateActions[std::make_pair(GameState::Room1, RoomState::Prepare)] = []() {
+        stateActions[std::make_pair(GameState::ROOM1_STATE, RoomState::Prepare)] = []() {
 
             DoorManager::GetInstance().GetDoorByName("Room1Door")->setPermission(false);
             DoorManager::GetInstance().GetDoorByName("KitchenDoor")->setPermission(true);
@@ -66,11 +67,11 @@ private:
          };
         
         //Serve
-        stateActions[std::make_pair(GameState::Room1, RoomState::Serve)] = []() {
-            Timer::GetInstance().stop();
+        stateActions[std::make_pair(GameState::ROOM1_STATE, RoomState::Serve)] = []() {
+           
 		};
 
-        stateActions[std::make_pair(GameState::Room1, RoomState::Inspection)] = []() {
+        stateActions[std::make_pair(GameState::ROOM1_STATE, RoomState::Inspection)] = []() {
             Application::Get().SetScene("Hallway");
             AudioManager::GetInstance().PlaySound("slideDoor");
          };
