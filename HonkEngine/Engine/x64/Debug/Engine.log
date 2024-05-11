@@ -15,7 +15,10 @@ C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Text\TextRenderer.h(12,7): wa
   C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8):
   see declaration of 'Mesh'
   
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\JournalData.h(98,61): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\JournalData.h(68,74): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Code/Main.cpp')
+  
+C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\JournalData.h(107,64): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'Code/Main.cpp')
   
 C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Player.h(23,55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
@@ -40,8 +43,22 @@ C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Hallway.h(321,26): warn
 C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Dialogue\Dialoguemanager.h(227,25): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'Code/Main.cpp')
   
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Kitchen.h(141,13): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Kitchen.h(157,13): warning C4305: 'initializing': truncation from 'double' to 'float'
   (compiling source file 'Code/Main.cpp')
   
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\JournalData.h(87,1): warning C4715: 'JournalData::getEvidenceText': not all control paths return a value
+glfw3.lib(init.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(init.obj)' or at ''; linking object as if no debug info
+glfw3.lib(monitor.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(monitor.obj)' or at ''; linking object as if no debug info
+glfw3.lib(window.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(window.obj)' or at ''; linking object as if no debug info
+glfw3.lib(input.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(input.obj)' or at ''; linking object as if no debug info
+glfw3.lib(context.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(context.obj)' or at ''; linking object as if no debug info
+glfw3.lib(win32_init.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(win32_init.obj)' or at ''; linking object as if no debug info
+glfw3.lib(win32_monitor.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(win32_monitor.obj)' or at ''; linking object as if no debug info
+glfw3.lib(win32_time.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(win32_time.obj)' or at ''; linking object as if no debug info
+glfw3.lib(win32_thread.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(win32_thread.obj)' or at ''; linking object as if no debug info
+glfw3.lib(vulkan.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(vulkan.obj)' or at ''; linking object as if no debug info
+glfw3.lib(win32_window.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(win32_window.obj)' or at ''; linking object as if no debug info
+glfw3.lib(win32_joystick.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(win32_joystick.obj)' or at ''; linking object as if no debug info
+glfw3.lib(wgl_context.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(wgl_context.obj)' or at ''; linking object as if no debug info
+glfw3.lib(egl_context.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(egl_context.obj)' or at ''; linking object as if no debug info
+glfw3.lib(osmesa_context.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(osmesa_context.obj)' or at ''; linking object as if no debug info
   Engine.vcxproj -> C:\Capt\DetectiveSimulation\HonkEngine\x64\Debug\Engine.exe

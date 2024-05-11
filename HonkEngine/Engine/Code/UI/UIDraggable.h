@@ -30,6 +30,10 @@ public:
         onReleaseAction = action;
     }
 
+    virtual void SetOnDragAction(const std::function<void()>& action) {
+        onDragAction = action;
+    }
+
 
     void onRelease() {
         if (onReleaseAction) {
@@ -123,7 +127,7 @@ public:
 
         }
 
-        UIElement::Render(); 
+        UIElement::Render();
 
     }
 
@@ -167,7 +171,8 @@ public:
             // Check if the new position is within the boundaries
             if (isWithinDragBounds(newPosition)) {
                 m_position = newPosition;
-            } else {
+            }
+            else {
                 // If the new position is outside the boundaries, snap it back
                 m_position = snapToBoundaries(newPosition);
             }

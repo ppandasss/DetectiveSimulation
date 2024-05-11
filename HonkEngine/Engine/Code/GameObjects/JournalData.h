@@ -2,15 +2,17 @@
 
 #include "../Text/Text.h"
 
+#include "../UI/UIButtonEmpty.h"
+
 using namespace std;
 
 enum Location { TOWNSQUARE, HOLYCHURCH, COUNCIL, SUPREMECOURT, LOCATION_EMPTY };
 
 //used for clues and character data
 
-enum Cabin {CABIN1, CABIN21, CABIN22, CABIN3, CABIN4, CABIN_EMPTY };
+enum Cabin { CABIN1, CABIN21, CABIN22, CABIN3, CABIN4, CABIN_EMPTY };
 
-enum Ending {END1, END2, END3, END4, END5, END6};
+enum Ending { END1, END2, END3, END4, END5, END6 };
 
 
 struct ClueData {
@@ -31,8 +33,8 @@ struct DeferredRenderObject {
 struct MainPageData {
 
 	Cabin player_Spy = CABIN_EMPTY;
-	Location player_BombLocation = LOCATION_EMPTY;  
-	int player_Evidence = -1;
+	Location player_BombLocation = LOCATION_EMPTY;
+	int player_Evidence = 0;
 
 };
 
@@ -46,189 +48,219 @@ struct CabinPageData {
 
 class JournalData {
 
-	public:
+public:
 
-		static JournalData* GetInstance() {
+	static JournalData* GetInstance() {
 
-			if (instance == nullptr) {
-				instance = new JournalData();
-			}
-			return instance;
+		if (instance == nullptr) {
+			instance = new JournalData();
 		}
+		return instance;
+	}
 
-		//------------------MAIN PAGE FUNCTIONS--------------------------
+	//------------------MAIN PAGE FUNCTIONS--------------------------
 
-		//SER PLAYER CHOICES
 
-		void SetPlayerSpyChoice(Cabin spyChoice) {
-			main_page.player_Spy = spyChoice;
-		}
+	void incrementEvidence() {
+		//Increment index and wrap around if needed
 
-		void SetPlayerBombLocation(Location bombLocation) {
-			main_page.player_BombLocation = bombLocation;
-		}
+		//std::cout << "INCREMENT CALLED" << std::endl;
+		no_of_Evidence = allCabinData[main_page.player_Spy].activeEvidence.size();
 
-		//EVIDENCE BUTTON FUNCTIONS
-
-		void incrementEvidence() {
-
-			// Increment index and wrap around if needed
-			//main_page.player_Evidence = (main_page.player_Evidence + 1) % evidenceNo;
+		if (no_of_Evidence == 2) {
+			//std::cout << "INDEX INCREMENTED" << std::endl;
+			main_page.player_Evidence = (main_page.player_Evidence + 1) % 2;
+			//std::cout << main_page.player_Evidence << std::endl;
 
 		}
 
-		std::string getEvidenceText() {
-			
-			if (main_page.player_Evidence != -1) {
+	}
 
-				return " string";
-				
-			}
+	void setCurrentEvidencetext(UIButtonEmpty* evidenceButton) {
+
+		if (no_of_Evidence == 0) {
+			evidenceButton->SetButtonText("EMPTY");
+			return;
 		}
-		
-		void resetEvidenceChoices() {
+
+		if (no_of_Evidence == 1) {
+			evidenceButton->SetButtonText(mainPageEvidence[0]);
+		}
+
+		else {
+			evidenceButton->SetButtonText(mainPageEvidence[main_page.player_Evidence]);
+		}
+
+	}
+
+	//SER PLAYER CHOICES
+
+	void SetPlayerSpyChoice(Cabin spyChoice) {
+
+		main_page.player_Spy = spyChoice;
+
+	}
+
+	void resetCurrentEvidenceOptions(DeferredRenderObject* buttonObj) {
+
+		Cabin spy_choice = main_page.player_Spy;
+		no_of_Evidence = allCabinData[spy_choice].activeEvidence.size();
+
+		if (no_of_Evidence == 0) {
+
+			buttonObj->showObject = false;
+			buttonObj->gameObj->setActiveStatus(false);
 
 			mainPageEvidence[0] = " - ";
 			mainPageEvidence[1] = " - ";
-	
-
-			Cabin spy_choice = main_page.player_Spy;
-			vector<string> activeEvidence = allCabinData[spy_choice].activeEvidence;
-
-			evidenceNo = allCabinData[spy_choice].activeEvidence.size();
-
-			if (evidenceNo == 0) {
-
-
-			}
-
 
 		}
-	
+		else if (no_of_Evidence == 1) {
 
-		//------------------CABIN PAGE FUNCTIONS--------------------------
-	
+			buttonObj->showObject = true;
+			buttonObj->gameObj->setActiveStatus(true);
 
-		// Function to activate a clue for a specific page
-		void ActivateClue(Cabin cabin, int index) {
+			mainPageEvidence[0] = allCabinData[spy_choice].activeEvidence.at(0);
+			mainPageEvidence[1] = " - ";
+		}
+		else {
 
-			if (index >= 0 && index < allCabinData[cabin].textClues.size()) {
+			buttonObj->showObject = true;
+			buttonObj->gameObj->setActiveStatus(true);
 
-				ClueData* activatedClue = allCabinData[cabin].textClues[index];
-				activatedClue->showClue = true;
-
-				if (activatedClue->isEvidence) {
-
-					Text* textObject = dynamic_cast<Text*>(activatedClue->clueObject);
-					std::string evidencetext = textObject->GetContent();
-
-					allCabinData[cabin].activeEvidence.push_back(evidencetext);
-
-				}
-
-			}
+			mainPageEvidence[0] = allCabinData[spy_choice].activeEvidence.at(0);
+			mainPageEvidence[1] = allCabinData[spy_choice].activeEvidence.at(1);
 
 		}
 
-		// Function to deactivate a clue for a specific page
-		void DeactivateClue(Cabin cabin, int index) {
+	}
 
-			if (index >= 0 && index < allCabinData[cabin].textClues.size()) {
+	void SetPlayerBombLocation(Location bombLocation) {
+		main_page.player_BombLocation = bombLocation;
+	}
 
-				allCabinData[cabin].textClues[index]->showClue = false;
+
+	//------------------CABIN PAGE FUNCTIONS--------------------------
+
+
+	// Function to activate a clue for a specific page
+	void ActivateClue(Cabin cabin, int index) {
+
+		if (index >= 0 && index < allCabinData[cabin].textClues.size()) {
+
+			ClueData* activatedClue = allCabinData[cabin].textClues[index];
+			activatedClue->showClue = true;
+
+			if (activatedClue->isEvidence) {
+
+				Text* textObject = dynamic_cast<Text*>(activatedClue->clueObject);
+				std::string evidencetext = textObject->GetContent();
+				allCabinData[cabin].activeEvidence.push_back(evidencetext);
 
 			}
 
 		}
 
-		void addClueToJournalData(Cabin cabin, ClueData *newClue){
+	}
 
-			allCabinData[cabin].textClues.push_back(newClue);
+	// Function to deactivate a clue for a specific page
+	void DeactivateClue(Cabin cabin, int index) {
+
+		if (index >= 0 && index < allCabinData[cabin].textClues.size()) {
+
+			allCabinData[cabin].textClues[index]->showClue = false;
 
 		}
-	
 
-		//GET PAGE INFO FUNCTIONS
+	}
 
-		MainPageData& GetMainPageData() {return main_page;}
+	void addClueToJournalData(Cabin cabin, ClueData* newClue) {
 
-		CabinPageData& GetCabinPageData(Cabin cabin) {
-			return allCabinData[cabin];
+		allCabinData[cabin].textClues.push_back(newClue);
+
+	}
+
+
+	//GET PAGE INFO FUNCTIONS
+
+	MainPageData& GetMainPageData() { return main_page; }
+
+	CabinPageData& GetCabinPageData(Cabin cabin) {
+		return allCabinData[cabin];
+	}
+
+	//CHECK FINAL ENTRY
+
+	Ending checkMainPageEntry() {
+
+		Cabin spy_choice = main_page.player_Spy;
+		Location location_choice = main_page.player_BombLocation;
+		int evidence_choice = main_page.player_Evidence;
+
+		//----------CHECK IF CHOICES ARE CORRECT HERE AND SET BOOL BELOW----------------
+
+		bool spyCorrect = false;
+		bool locationCorrect = false;
+		bool evidenceCorrect = false;
+
+		if (spy_choice == CABIN21) spyCorrect = true;
+		if (location_choice == TOWNSQUARE) locationCorrect = true;
+		if (mainPageEvidence[evidence_choice] == "After visiting National Day Event with his sister") evidenceCorrect = true;
+
+		if (spyCorrect) {
+
+			if (evidenceCorrect && locationCorrect)
+				return END1;
+
+			if (evidenceCorrect && !locationCorrect)
+				return END2;
+
+			if (!evidenceCorrect && locationCorrect)
+				return END3;
+
+			if (!evidenceCorrect && !locationCorrect)
+				return END4;
+
 		}
+		else {
 
-		//CHECK FINAL ENTRY
-
-		Ending checkMainPageEntry() {
-
-			Cabin spy_choice = main_page.player_Spy;
-			Location location_choice = main_page.player_BombLocation;
-			int evidence_choice = main_page.player_Evidence;
-
-			//----------CHECK IF CHOICES ARE CORRECT HERE AND SET BOOL BELOW----------------
-
-			bool spyCorrect = false;
-			bool locationCorrect = false;
-			bool evidenceCorrect = false;
-
-			if (spy_choice == CABIN21) spyCorrect = true;
-			if (location_choice == TOWNSQUARE) locationCorrect = true;
-			if (mainPageEvidence[evidence_choice] == "After visiting National Day Event with his sister") evidenceCorrect = true;
-
-			if (spyCorrect) {
-
-				if (evidenceCorrect && locationCorrect)
-					return END1;	
-
-				if (evidenceCorrect && !locationCorrect)
-					return END2;
-				
-				if (!evidenceCorrect && locationCorrect)
-					return END3;
-
-				if (!evidenceCorrect && !locationCorrect) 
-					return END4;
-				
+			if (locationCorrect) {
+				return END5;
 			}
 			else {
-
-				if (locationCorrect) {
-					return END5;
-				}
-				else {
-					return END6;
-				}
-
+				return END6;
 			}
 
 		}
-	
+
+	}
 
 
-	private:
 
-		static JournalData* instance;
+private:
+
+	static JournalData* instance;
 
 
-		JournalData() {
+	JournalData() {
 
-			main_page.player_Spy = CABIN_EMPTY;
-			main_page.player_BombLocation = Location::LOCATION_EMPTY;
-			main_page.player_Evidence = 0;
+		main_page.player_Spy = CABIN_EMPTY;
+		main_page.player_BombLocation = Location::LOCATION_EMPTY;
+		main_page.player_Evidence = 0;
 
-		}
+	}
 
-		MainPageData main_page;
+	MainPageData main_page;
 
-		std::map<Cabin, CabinPageData> allCabinData;
+	std::map<Cabin, CabinPageData> allCabinData;
 
-		std::map<Cabin, std::vector<std::string>> allCabinEvidenceChoices;
+	std::map<Cabin, std::vector<std::string>> allCabinEvidenceChoices;
 
-		std::string mainPageEvidence[2] = { " - ", " - " };
+	std::string mainPageEvidence[2] = { " - ", " - " };
 
-		int evidenceNo = 0;
+	int no_of_Evidence = 0;
 
 };
 
 
 JournalData* JournalData::instance = nullptr;
-
