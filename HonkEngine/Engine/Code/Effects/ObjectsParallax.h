@@ -7,6 +7,8 @@
 
 class ObjectsParallax {
 public:
+    ObjectsParallax() : enabled(false) {}
+
     void AddObjectToLayer(GameObject* object, float layerMultiplier) {
         if (object) {
             layerObjects[layerMultiplier].push_back(object);
@@ -14,11 +16,22 @@ public:
     }
 
     void UpdateLayers() {
-        UpdateLayeredObjects();
+        if (enabled) {
+            UpdateLayeredObjects();
+        }
+    }
+
+    void EnableParallaxEffect() {
+        enabled = true;
+    }
+
+    void DisableParallaxEffect() {
+        enabled = false;
     }
 
 private:
     std::unordered_map<float, std::vector<GameObject*>> layerObjects;
+    bool enabled;
 
     void UpdateLayeredObjects() {
         static glm::vec2 previousMousePos = glm::vec2(SCR_WIDTH / 2.0f, SCR_HEIGHT / 2.0f);

@@ -30,6 +30,13 @@ private:
     Door* door = DoorManager::GetInstance().GetDoorByName("Room1Door");
     Door* kichenDoor = DoorManager::GetInstance().GetDoorByName("KitchenDoor");
 
+
+    //Inspect beject with highlight and no
+    UIElement* cane;
+    UIButton* caneInspect;
+    UIElement* letter;
+    UIButton* letterInspect;
+
 public:
     Room1() :audioManager(AudioManager::GetInstance()) {
 
@@ -80,15 +87,19 @@ public:
         UIElement* bag = new UINormal("Bag", "Assets/Images/Martha/Bag.png", glm::vec3(-0.25f, -5.25f, 0.0f), glm::vec3(2.59f * sm * 1.2f, 1.64f * sm * 1.2f, 0.0f), true);
         
         //Inspection Items
-        UIElement* cane = new UINormal("Cane", "Assets/Images/Martha/Martha_Inspection_Cane.png", glm::vec3(-4.0f, -3.72f, 0.0f), glm::vec3(1.07f * sm * 1.2f, 3.7f * sm * 1.2f, 0.0f), true);
-        UIElement* letter = new UINormal("Letter", "Assets/Images/Martha/Martha_Inspection_Letter.png", glm::vec3(-2.15f, -5.9f, 0.0f), glm::vec3(1.13f * sm * 1.2f, 0.73f * sm * 1.2f, 0.0f), true);
+        cane = new UINormal("Cane", "Assets/Images/Martha/Martha_Inspection_Cane.png", glm::vec3(-4.0f, -3.72f, 0.0f), glm::vec3(1.07f * sm * 1.2f, 3.7f * sm * 1.2f, 0.0f), true);
+        letter = new UINormal("Letter", "Assets/Images/Martha/Martha_Inspection_Letter.png", glm::vec3(-2.15f, -5.9f, 0.0f), glm::vec3(1.13f * sm * 1.2f, 0.73f * sm * 1.2f, 0.0f), true);
 
         //Inspection Item Buttons
-        UIButton* caneInspect = new UIButton("Cane", "Assets/Images/Martha/Martha_Inspection_Cane.png", glm::vec3(-4.0f, -3.72f, 0.0f), glm::vec3(1.07f * sm * 1.2f, 3.7f * sm * 1.2f, 0.0f), true, false, "");
+        caneInspect = new UIButton("Cane", "Assets/Images/Martha/Martha_Inspection_Cane.png", glm::vec3(-4.0f, -3.72f, 0.0f), glm::vec3(1.07f * sm * 1.2f, 3.7f * sm * 1.2f, 0.0f), true, false, "");
         caneInspect->SetHoverTexture("Assets/Images/Martha/Martha_Inspection_Cane_Highlight.png");
+        caneInspect->SetOnClickAction([this]() { InspectCaneDialogue(); });
 
-        UIButton* letterInspect = new UIButton("Letter", "Assets/Images/Martha/Martha_Inspection_Letter.png", glm::vec3(-2.15f, -5.9f, 0.0f), glm::vec3(1.13f * sm * 1.2f, 0.73f * sm * 1.2f, 0.0f), true, false, "");
+        letterInspect = new UIButton("Letter", "Assets/Images/Martha/Martha_Inspection_Letter.png", glm::vec3(-2.15f, -5.9f, 0.0f), glm::vec3(1.13f * sm * 1.2f, 0.73f * sm * 1.2f, 0.0f), true, false, "");
         letterInspect->SetHoverTexture("Assets/Images/Martha/Martha_Inspection_Letter_Highlight.png");
+        letterInspect->SetOnClickAction([this]() { InspectLetterDialogue(); });
+        caneInspect->setActiveStatus(false);
+    	letterInspect->setActiveStatus(false);
 
 
         //UIs
@@ -201,8 +212,8 @@ public:
         ObjectsparallaxManager->AddObjectToLayer(lamp, defaultLayer);   // Layer 1.5
         ObjectsparallaxManager->AddObjectToLayer(hat, objectLayerOne);    // Layer 2
         ObjectsparallaxManager->AddObjectToLayer(bag, objectLayerOne);    // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(cane, objectLayerOne);   // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(letter, objectLayerOne); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(caneInspect, objectLayerOne);   // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(letterInspect, objectLayerOne); // Layer 2
         ObjectsparallaxManager->AddObjectToLayer(marthaNormal, objectLayerOne); // Layer 2
         ObjectsparallaxManager->AddObjectToLayer(marthaHappy, objectLayerOne); // Layer 2
         ObjectsparallaxManager->AddObjectToLayer(marthaDisappoint, objectLayerOne); // Layer 2
@@ -400,6 +411,7 @@ public:
     void Update(float dt, long frame) {
         Scene::Update(dt, frame);
         backgroundParallaxManager->Update(dt);
+        ObjectsparallaxManager->UpdateLayers();
         dialogueManager->Update(dt, frame);
 
         UpdateDialogueProgress();
@@ -473,7 +485,7 @@ public:
         if (!scoreDialogueSet) {
             PromptForNextDialogue("Press [Space] or [Mouse] to continue.", scoreDialogueKey, scoreDialogueSet);
         }
-        else if (scoreDialogueSet && dialogueManager->IsDialogueFinished(dessertDialogueKey)){
+        else if (scoreDialogueSet && dialogueManager->IsDialogueFinished(scoreDialogueKey)){
             gameStateManager.SetRoomState(RoomState::Inspection); // Transition to Inspection state
         }
     }
@@ -482,9 +494,46 @@ public:
         // Begin inspection dialogue
         if (!inspectStartDialogueSet) {
             PromptForNextDialogue("Press [Space] or [Mouse] to continue.", inspectStartDialogueKey, inspectStartDialogueSet);
-        } 
-           
+        }
+        else if (inspectStartDialogueSet && dialogueManager->IsDialogueFinished(inspectStartDialogueKey))
+        {
+            ObjectsparallaxManager->EnableParallaxEffect();
+            cane->setActiveStatus(false);
+            letter->setActiveStatus(false);
+            caneInspect->setActiveStatus(true);
+            letterInspect->setActiveStatus(true);
+
+        }
     }
+
+    void InspectCaneDialogue()
+    {
+        cout << "Inspecting Cane" << endl;
+        if (!inspectCaneDialogueSet)
+        {
+            PromptForNextDialogue("Press [Space] or [Mouse] to continue.", inspectCaneDialogueKey, inspectCaneDialogueSet);
+        }
+        else if (inspectCaneDialogueSet && dialogueManager->IsDialogueFinished(inspectCaneDialogueKey))
+        {
+			caneInspect->setActiveStatus(false);
+			letterInspect->setActiveStatus(true);
+        }
+    }
+
+    void InspectLetterDialogue()
+    {
+        cout << "Inspecting Letter" << endl;
+        if (!inspectLetterDialogueSet) 
+        {
+            PromptForNextDialogue("Press [Space] or [Mouse] to continue.", inspectLetterDialogueKey, inspectLetterDialogueSet);
+        }
+        else if (inspectLetterDialogueSet && dialogueManager->IsDialogueFinished(inspectLetterDialogueKey))
+        {
+            letterInspect->setActiveStatus(false);
+            letter->setActiveStatus(true);
+        }
+    }
+
 
     void PromptForNextDialogue(const string& instruction, const string& nextKey, bool& flag) {
         SetInstruction(instruction);
@@ -494,6 +543,7 @@ public:
             dialogueManager->PlayerAcknowledgedDialogueEnd(); 
             flag = true;
         }
+        
     }
 
     void CheckDialogueEnd(const string& key) {
@@ -544,9 +594,10 @@ private:
     string dessertDialogueKey;
     string scoreDialogueKey;
     string inspectStartDialogueKey;
-    string inspectEndDialogueKey;
     string inspectLetterDialogueKey;
     string inspectCaneDialogueKey;
+    string inspectEndDialogueKey;
+
     bool orderDialogueSet = false;
     bool serveDialogueSet = false;
     bool teaDialogueSet = false;
@@ -554,6 +605,9 @@ private:
     bool dessertDialogueSet = false;
     bool scoreDialogueSet = false;
     bool inspectStartDialogueSet = false;
+    bool inspectEndDialogueSet = false;
+    bool inspectLetterDialogueSet = false;
+    bool inspectCaneDialogueSet = false;
 
 
 };
