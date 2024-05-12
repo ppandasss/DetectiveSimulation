@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="2AD113">
+		<Speaker name="Archibald_Normal">
+			<line1>....</line1>
+			<line2>Well...</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD114">
+		<Speaker name="Archibald_Normal">
+			<line1>The pastry doesn't look so bad.</line1>
+			<line2>But it’s obviously missing the  fragrant.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD115">
+		<Speaker name="Archibald_Upset">
+			<line1>....</line1>
+			<line2>I can still smell the dirty grass  outside.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD116">
+		<Speaker name="Archibald_Upset">
+			<line2>I guess I'll have to tolerate it.</line2>
+			<line3>It's a rare chance that I could rely  on a middle-class like you anyway.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

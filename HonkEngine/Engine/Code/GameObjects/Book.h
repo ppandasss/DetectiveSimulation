@@ -58,11 +58,11 @@ public:
 		Tab6->SetOnClickAction([this]() { setActiveTab6(); });
 		Tab7->SetOnClickAction([this]() { setActiveTab7(); });
 
-		GameObject* BackGround = new UIObject("JournalBG", "Assets/Images/Journal/BlackAlpha.png", true);
+		GameObject* BackGround = new UIObject("JournalBG", "Assets/Images/BlackAlpha.png", true);
 		BackGround->SetScale(glm::vec3(19.2f, 10.8f, 0.0f));
 		BackGround->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
-		GameObject* BlankPage = new UIObject("BlankPage", "Assets/Images/Journal/BlankPage.png", true);
+		GameObject* BlankPage = new UIObject("BlankPage", "Assets/Images/Journal/Journal_BlankPage.png", true);
 		BlankPage->SetScale(glm::vec3(12.68f, 7.45f, 1.0f));
 		BlankPage->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 

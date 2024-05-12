@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="2AD103">
+		<Speaker name="Archibald_Normal">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD104">
+		<Speaker name="Archibald_Upset">
+			<line1>Ehh.</line1>
+			<line2>The sandwich looks... fine?  I suppose so.</line2>
+			<line3>But it's missing the strong smell  I requested.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD105">
+		<Speaker name="Archibald_Upset">
+			<line1>Whatever, this will do.</line1>
+			<line2>Couldn't expect much from a commoner  like you anyway.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

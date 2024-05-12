@@ -97,22 +97,22 @@ public:
 
 		// BOMB LOCATIONS
 
-		UIButtonEmpty* TownSquare = new UIButtonEmpty("TownSquare", glm::vec3(1.4f, -2.25f, 0.0f), glm::vec3(1.4f, 0.4f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
+		UIButtonEmpty* TownSquare = new UIButtonEmpty("TownSquare", glm::vec3(1.6f, -2.25f, 0.0f), glm::vec3(1.4f, 0.4f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
 		TownSquare->SetButtonText("Town Square");
 		TownSquare->SetTextSize(0.6f);
 		TownSquare->SetOnClickAction([this]() { setLocationTownSquare(); });
 
-		UIButtonEmpty* TheHolyChurch = new UIButtonEmpty("TheHolyChurch", glm::vec3(3.5f, -2.25f, 0.0f), glm::vec3(1.4f, 0.4f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
+		UIButtonEmpty* TheHolyChurch = new UIButtonEmpty("TheHolyChurch", glm::vec3(3.8f, -2.25f, 0.0f), glm::vec3(1.4f, 0.4f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
 		TheHolyChurch->SetButtonText("The Holy Church");
 		TheHolyChurch->SetTextSize(0.6f);
 		TheHolyChurch->SetOnClickAction([this]() { setLocationHolyChurch(); });
 
-		UIButtonEmpty* TheCouncil = new UIButtonEmpty("TheCouncil", glm::vec3(1.4f, -2.75f, 0.0f), glm::vec3(1.4f, 0.4f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
+		UIButtonEmpty* TheCouncil = new UIButtonEmpty("TheCouncil", glm::vec3(1.53f, -2.75f, 0.0f), glm::vec3(1.4f, 0.4f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
 		TheCouncil->SetButtonText("The Council");
 		TheCouncil->SetTextSize(0.6f);
 		TheCouncil->SetOnClickAction([this]() { setLocationCouncil(); });
 
-		UIButtonEmpty* SupremeCourt = new UIButtonEmpty("SupremeCourt", glm::vec3(3.5f, -2.75f, 0.0f), glm::vec3(1.4f, 0.4f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
+		UIButtonEmpty* SupremeCourt = new UIButtonEmpty("SupremeCourt", glm::vec3(3.7f, -2.75f, 0.0f), glm::vec3(1.4f, 0.4f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
 		SupremeCourt->SetButtonText("Supreme Court");
 		SupremeCourt->SetTextSize(0.6f);
 		SupremeCourt->SetOnClickAction([this]() { setLocationSupremeCourt(); });
@@ -120,7 +120,7 @@ public:
 		RedUnderline = new UIObject("RedUnderline", "Assets/Images/Journal/CaseSummary_Icon_Red_Underline.png", true);
 		RedUnderline->setActiveStatus(false);
 		RedUnderline->SetScale(glm::vec3(1.7f, 0.1f, 0.0f));
-		RedUnderline->SetPosition(glm::vec3(1.1f, -2.0f, 0.0f));
+		RedUnderline->SetPosition(glm::vec3(3.0f, 0.0f, 0.0f));
 
 		redUnderline = new DeferredRenderObject();
 		redUnderline->showObject = false;
@@ -162,12 +162,6 @@ public:
 		m_gameObjects.push_back(TheCouncil);
 		m_gameObjects.push_back(SupremeCourt);
 
-		m_gameObjects.push_back(CaseNews);
-
-		m_gameObjects.push_back(Ticket);
-
-		m_gameObjects.push_back(JournalSleeve);
-
 
 		//push back deferred rendering
 
@@ -177,6 +171,10 @@ public:
 
 		//make evidence button deffered and set active with evidence no.
 
+		m_gameObjects.push_back(CaseNews);
+		m_gameObjects.push_back(Ticket);
+
+		m_gameObjects.push_back(JournalSleeve);
 	}
 
 	//--------------------- SUSPECT BUTTON FUNCTIONS -----------------------
@@ -276,7 +274,7 @@ public:
 		if (redUnderline->showObject == false) {
 			redUnderline->showObject = true;
 		}
-		redUnderline->gameObj->SetPosition(glm::vec3(1.4f, -2.45f, 0.0f));
+		redUnderline->gameObj->SetPosition(glm::vec3(1.66f, -2.36f, 0.0f));
 	};
 
 	void setLocationHolyChurch() {
@@ -285,7 +283,7 @@ public:
 		if (redUnderline->showObject == false) {
 			redUnderline->showObject = true;
 		}
-		redUnderline->gameObj->SetPosition(glm::vec3(3.5f, -2.45f, 0.0f));
+		redUnderline->gameObj->SetPosition(glm::vec3(3.75f, -2.36f, 0.0f));
 	};
 
 	void setLocationCouncil() {
@@ -295,7 +293,7 @@ public:
 		if (redUnderline->showObject == false) {
 			redUnderline->showObject = true;
 		}
-		redUnderline->gameObj->SetPosition(glm::vec3(1.4f, -2.95f, 0.0f));
+		redUnderline->gameObj->SetPosition(glm::vec3(1.65f, -2.84f, 0.0f));
 	};
 
 	void setLocationSupremeCourt() {
@@ -304,7 +302,7 @@ public:
 		if (redUnderline->showObject == false) {
 			redUnderline->showObject = true;
 		}
-		redUnderline->gameObj->SetPosition(glm::vec3(3.5f, -2.95f, 0.0f));
+		redUnderline->gameObj->SetPosition(glm::vec3(3.7f, -2.85f, 0.0f));
 	};
 
 

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="2AD100">
+		<Speaker name="Archibald_Normal">
+			<line1>Let's see what you've chose to  serve me.</line1>
+			<line2>I hope they're all edible, at  least.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD100_2">
+		<Speaker name="Archibald_Upset">
+			<line1>...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD101">
+		<Speaker name="Archibald_Upset">
+			<line1>Waiter!</line1>
+			<line2>Which country considers this as  black tea?!</line2>
+			<line3>Your country, huh?</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD102">
+		<Speaker name="Archibald_Upset">
+			<line1>....</line1>
+			<line2>I completely run out of word to say.</line2>
+			<line3>You are definitely going to be  reported!!</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

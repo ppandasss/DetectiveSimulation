@@ -10,7 +10,7 @@ public:
 
 	FoodGuidePage() :Page() {
 
-		TeaGuidePage1 = new UIObject("TeaGuidePage1", "Assets/Images/Journal/TeaGuide_Page1_Mockup.png", true);
+		TeaGuidePage1 = new UIObject("TeaGuidePage1", "Assets/Images/Journal/TeaGuide_Page1.png", true);
 		TeaGuidePage1->SetScale(glm::vec3(12.27f, 7.48f, 0.0f));
 		TeaGuidePage1->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
@@ -18,12 +18,17 @@ public:
 		TeaGuidePage2->SetScale(glm::vec3(12.27f, 7.48f, 0.0f));
 		TeaGuidePage2->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
+		/*TeaGuidePage3 = new UIObject("TeaGuidePage3", "Assets/Images/Journal/TeaGuide_Page3.png", true);
+		TeaGuidePage3->SetScale(glm::vec3(12.27f, 7.48f, 0.0f));
+		TeaGuidePage3->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));*/
+
 
 		UIButtonEmpty* flipPageButton = new UIButtonEmpty("FlipPageButton", glm::vec3(5.6f, -2.8f, 0.0f), glm::vec3(1.4f, 0.5f, 0.0f), true, false);
 		flipPageButton->SetOnClickAction([this]() { flipFoodPage(); });
 
 		m_gameObjects.push_back(TeaGuidePage1);
 		m_gameObjects.push_back(TeaGuidePage2);
+		//m_gameObjects.push_back(TeaGuidePage3);
 		m_gameObjects.push_back(flipPageButton);
 
 

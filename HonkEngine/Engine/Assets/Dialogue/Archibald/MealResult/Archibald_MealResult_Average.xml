@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="2AD119">
+		<Speaker name="Archibald_Normal">
+			<line1>Judging from the meal you've  served me</line1>
+			<line2>The tea service here is not as  special as they advertised.</line2>
+			<line3>Is it because of the food</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD120">
+		<Speaker name="Archibald_Upset">
+			<line1>or it’s just you?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD121">
+		<Speaker name="Archibald_Upset">
+			<line1>I didn't pay a year's worth of your  salary to get this half-assed meal.</line1>
+			<line2>It could've been much better to my  liking!</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

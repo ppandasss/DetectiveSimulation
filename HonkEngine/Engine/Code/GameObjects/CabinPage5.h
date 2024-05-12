@@ -13,9 +13,9 @@ public:
 		P1Picture->SetScale(glm::vec3(5.50f, 3.19f, 0.0f));
 		P1Picture->SetPosition(glm::vec3(-3.1f, 1.65f, 0.0f));
 
-		GameObject* PaperClip = new UIObject("PaperClip", "Assets/Images/Journal/PaperClip.png", true);
+		GameObject* PaperClip = new UIObject("PaperClip", "Assets/Images/Journal/Journal_Paperclip04.png", true);
 		PaperClip->SetScale(glm::vec3(0.51f, 0.92f, 0.0f));
-		PaperClip->SetPosition(glm::vec3(-3.75f, 3.31f, 0.0f));
+		PaperClip->SetPosition(glm::vec3(-3.75f, 3.01f, 0.0f));
 
 		GameObject* InfoPaper = new UIObject("InfoPaper", "Assets/Images/Journal/Passenger_InfoPaper.png", true);
 		InfoPaper->SetScale(glm::vec3(5.41f, 3.30f, 0.0f));
