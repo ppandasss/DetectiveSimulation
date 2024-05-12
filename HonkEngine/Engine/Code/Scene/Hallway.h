@@ -288,7 +288,7 @@ public:
 		{
 			if (gameStateManager.getGameState() == GameState::ROOM1_STATE)
 			{
-				Application::Get().SetTimer(5000, [this]() { bellCabin1->startRinging(); }, false);
+				Application::Get().SetTimer(1000, [this]() { bellCabin1->startRinging(); }, false);
 			}
 			else if(gameStateManager.getGameState() == GameState::ROOM2_STATE)
 			{

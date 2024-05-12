@@ -309,6 +309,12 @@ public:
     }
 
     void PlayNextDialogue() {
+
+        if (currentDialogueIndex >= dialogues.size()) {
+            std::cerr << "No more dialogues available at index: " << currentDialogueIndex << std::endl;
+            return; // Safely handle end of dialogues
+        }
+
         // Check if the current dialogue is a question and if a choice has been made
         if (IsCurrentDialogueQuestion() && !choiceMade) {
             std::cout << "Please make a choice before continuing." << std::endl;
@@ -371,18 +377,14 @@ public:
     bool IsDialogueFinished(const string& key) const {
         auto it = dialogueSets.find(key);
         if (it != dialogueSets.end() && !it->second.empty()) {
-            // Access the specific dialogue set by key to ensure correct dialogue set is checked
-            const auto& currentSet = it->second;
-            // Check if the current dialogue index is the last one
-            bool isLastDialogue = currentDialogueIndex >= currentSet.size() - 1;
-            // Check if the current line index is the last line in the current dialogue
-            bool isLastLine = currentLineIndex >= currentSet[currentDialogueIndex].text.size() - 1;
-            // Dialogue is finished if both conditions are true
-            return isLastDialogue && isLastLine;
+            const auto& dialogues = it->second;
+            bool atLastDialogue = currentDialogueIndex >= dialogues.size() - 1;
+            bool atLastLine = currentLineIndex >= dialogues[currentDialogueIndex].text.size() - 1;
+            return atLastDialogue && atLastLine;
         }
-        return true; // Consider finished if key is not found or set is empty
-    
+        return false; // Safely default to false if the dialogue set is not found
     }
+
 
 
     bool IsDialogueSequenceFinished(const string& key) {

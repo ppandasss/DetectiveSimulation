@@ -93,11 +93,18 @@ public:
         //Inspection Item Buttons
         caneInspect = new UIButton("Cane", "Assets/Images/Martha/Martha_Inspection_Cane.png", glm::vec3(-4.0f, -3.72f, 0.0f), glm::vec3(1.07f * sm * 1.2f, 3.7f * sm * 1.2f, 0.0f), true, false, "");
         caneInspect->SetHoverTexture("Assets/Images/Martha/Martha_Inspection_Cane_Highlight.png");
-        caneInspect->SetOnClickAction([this]() { InspectCaneDialogue(); });
+        caneInspect->SetOnClickAction([this]() {
+            std::cout << "Cane button clicked." << std::endl;
+            inspectingObject = "Cane";
+            });
+
 
         letterInspect = new UIButton("Letter", "Assets/Images/Martha/Martha_Inspection_Letter.png", glm::vec3(-2.15f, -5.9f, 0.0f), glm::vec3(1.13f * sm * 1.2f, 0.73f * sm * 1.2f, 0.0f), true, false, "");
         letterInspect->SetHoverTexture("Assets/Images/Martha/Martha_Inspection_Letter_Highlight.png");
-        letterInspect->SetOnClickAction([this]() { InspectLetterDialogue(); });
+        letterInspect->SetOnClickAction([this]() {
+            std::cout << "Letter button clicked." << std::endl;
+            inspectingObject = "Letter";
+            });
         caneInspect->setActiveStatus(false);
     	letterInspect->setActiveStatus(false);
 
@@ -214,6 +221,8 @@ public:
         ObjectsparallaxManager->AddObjectToLayer(bag, objectLayerOne);    // Layer 2
         ObjectsparallaxManager->AddObjectToLayer(caneInspect, objectLayerOne);   // Layer 2
         ObjectsparallaxManager->AddObjectToLayer(letterInspect, objectLayerOne); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(cane, objectLayerOne);   // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(letter, objectLayerOne); // Layer 2
         ObjectsparallaxManager->AddObjectToLayer(marthaNormal, objectLayerOne); // Layer 2
         ObjectsparallaxManager->AddObjectToLayer(marthaHappy, objectLayerOne); // Layer 2
         ObjectsparallaxManager->AddObjectToLayer(marthaDisappoint, objectLayerOne); // Layer 2
@@ -437,6 +446,9 @@ public:
 			break;
         case RoomState::Inspection:
             ManageInspectionState();
+            InspectCaneDialogue();
+            InspectLetterDialogue();
+
             break;
         }
     }
@@ -453,7 +465,7 @@ public:
     void ManageServeState() {
         
         if (!serveDialogueSet ) {
-            PromptForNextDialogue("Press [Space] or [Mouse] to continue.", serveDialogueKey, serveDialogueSet);
+            PromptForNextDialogue(serveDialogueKey, serveDialogueSet);
         }
         else if (serveDialogueSet && dialogueManager->IsDialogueFinished(serveDialogueKey)) {
             gameStateManager.SetRoomState(RoomState::MealReact);
@@ -463,13 +475,13 @@ public:
     void ManageMealReactions() {
  
         if (!teaDialogueSet && dialogueManager->IsDialogueFinished(serveDialogueKey) && !dessertDialogueSet) {
-            PromptForNextDialogue("Press [Space] or [Mouse] to continue", teaDialogueKey, teaDialogueSet);
+            PromptForNextDialogue(teaDialogueKey, teaDialogueSet);
         }
         else if (teaDialogueSet && !sandwichDialogueSet && dialogueManager->IsDialogueFinished(teaDialogueKey) && !dessertDialogueSet) {
-            PromptForNextDialogue("Press [Space] or [Mouse] to continue.", sandwichDialogueKey, sandwichDialogueSet);
+            PromptForNextDialogue(sandwichDialogueKey, sandwichDialogueSet);
         }
         else if (sandwichDialogueSet && !dessertDialogueSet && dialogueManager->IsDialogueFinished(sandwichDialogueKey)) {
-            PromptForNextDialogue("Press [Space] or [Mouse] to continue.", dessertDialogueKey, dessertDialogueSet);
+            PromptForNextDialogue(dessertDialogueKey, dessertDialogueSet);
         }
 
        
@@ -483,75 +495,75 @@ public:
     void ManageScoreState() {
         // Begin scoring dialogue
         if (!scoreDialogueSet) {
-            PromptForNextDialogue("Press [Space] or [Mouse] to continue.", scoreDialogueKey, scoreDialogueSet);
+            PromptForNextDialogue(scoreDialogueKey, scoreDialogueSet);
         }
         else if (scoreDialogueSet && dialogueManager->IsDialogueFinished(scoreDialogueKey)){
             gameStateManager.SetRoomState(RoomState::Inspection); // Transition to Inspection state
         }
     }
 
+
     void ManageInspectionState() {
-        // Begin inspection dialogue
+        // Check if initial inspection dialogue is ready to start or has finished
         if (!inspectStartDialogueSet) {
-            PromptForNextDialogue("Press [Space] or [Mouse] to continue.", inspectStartDialogueKey, inspectStartDialogueSet);
+           PromptForNextDialogue(inspectStartDialogueKey, inspectStartDialogueSet);
         }
-        else if (inspectStartDialogueSet && dialogueManager->IsDialogueFinished(inspectStartDialogueKey))
+        else if (!inspectCaneDialogueSet && dialogueManager->IsDialogueFinished(inspectStartDialogueKey))
+        {
+            SetInspectionObjectActive(true);
+            SetInstruction("Use [Mouse] to search for clues.");
+        }
+    }
+    void SetInspectionObjectActive(bool active) {
+        if (active)
         {
             ObjectsparallaxManager->EnableParallaxEffect();
-            cane->setActiveStatus(false);
-            letter->setActiveStatus(false);
-            caneInspect->setActiveStatus(true);
-            letterInspect->setActiveStatus(true);
+        }
+		else
+		{
+			ObjectsparallaxManager->DisableParallaxEffect();
+		}
+        caneInspect->setActiveStatus(active);
+        letterInspect->setActiveStatus(active);
 
+        cane->setActiveStatus(!active);
+        letter->setActiveStatus(!active);
+    }
+
+    void InspectCaneDialogue() {
+        if (inspectingObject == "Cane" && !inspectCaneDialogueSet && inspectStartDialogueSet) {
+            std::cout << "Inspecting Cane." << std::endl;
+            PromptForNextDialogue(inspectCaneDialogueKey, inspectCaneDialogueSet);
+            if (inspectCaneDialogueSet) {
+                inspectingObject = ""; // Reset only after triggering dialogue
+                caneInspect->setActiveStatus(false);
+                cane->setActiveStatus(true);
+            }
         }
     }
 
-    void InspectCaneDialogue()
-    {
-        cout << "Inspecting Cane" << endl;
-        if (!inspectCaneDialogueSet)
-        {
-            PromptForNextDialogue("Press [Space] or [Mouse] to continue.", inspectCaneDialogueKey, inspectCaneDialogueSet);
-        }
-        else if (inspectCaneDialogueSet && dialogueManager->IsDialogueFinished(inspectCaneDialogueKey))
-        {
-			caneInspect->setActiveStatus(false);
-			letterInspect->setActiveStatus(true);
-        }
-    }
-
-    void InspectLetterDialogue()
-    {
-        cout << "Inspecting Letter" << endl;
-        if (!inspectLetterDialogueSet) 
-        {
-            PromptForNextDialogue("Press [Space] or [Mouse] to continue.", inspectLetterDialogueKey, inspectLetterDialogueSet);
-        }
-        else if (inspectLetterDialogueSet && dialogueManager->IsDialogueFinished(inspectLetterDialogueKey))
-        {
-            letterInspect->setActiveStatus(false);
-            letter->setActiveStatus(true);
+    void InspectLetterDialogue() {
+        if (inspectingObject == "Letter" && !inspectLetterDialogueSet && inspectStartDialogueSet) {
+            std::cout << "Inspecting Letter." << std::endl;
+            PromptForNextDialogue(inspectLetterDialogueKey, inspectLetterDialogueSet);
+            if (inspectLetterDialogueSet) {
+                inspectingObject = ""; // Reset only after triggering dialogue
+                letterInspect->setActiveStatus(false);
+                letter->setActiveStatus(true);
+            }
         }
     }
 
 
-    void PromptForNextDialogue(const string& instruction, const string& nextKey, bool& flag) {
-        SetInstruction(instruction);
-        if (input.Get().GetKeyDown(GLFW_KEY_SPACE) || input.Get().GetMouseButtonDown(0)) {
-            std::cout << "Switching to next dialogue." << nextKey << std::endl;
+
+    void PromptForNextDialogue(const string& nextKey, bool& flag) {
+        SetInstruction("Press [Space] or [Mouse] to continue.");
+        if (!flag && (input.Get().GetKeyDown(GLFW_KEY_SPACE) || input.Get().GetMouseButtonDown(0))) {
+            std::cout << "Switching to next dialogue: " << nextKey << std::endl;
             dialogueManager->SetDialogueSet(nextKey);
-            dialogueManager->PlayerAcknowledgedDialogueEnd(); 
-            flag = true;
+            flag = true;  // Mark this dialogue as initiated
         }
         
-    }
-
-    void CheckDialogueEnd(const string& key) {
-        SetInstruction("Press [Space] or [Mouse] to continue.");
-        if (input.Get().GetKeyDown(GLFW_KEY_E)) {
-            gameStateManager.SetRoomState(RoomState::End); // Transition to the next state
-            dialogueManager->PlayerAcknowledgedDialogueEnd();
-        }
     }
 
     void SetInstruction(const string& message) {
@@ -593,7 +605,7 @@ private:
     string sandwichDialogueKey;
     string dessertDialogueKey;
     string scoreDialogueKey;
-    string inspectStartDialogueKey;
+    string inspectStartDialogueKey; 
     string inspectLetterDialogueKey;
     string inspectCaneDialogueKey;
     string inspectEndDialogueKey;
@@ -609,5 +621,6 @@ private:
     bool inspectLetterDialogueSet = false;
     bool inspectCaneDialogueSet = false;
 
+    string inspectingObject;
 
 };
