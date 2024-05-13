@@ -43,7 +43,7 @@ C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Hallway.h(321,26): warn
 C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Dialogue\Dialoguemanager.h(227,25): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'Code/Main.cpp')
   
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Kitchen.h(157,13): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Kitchen.h(159,13): warning C4305: 'initializing': truncation from 'double' to 'float'
   (compiling source file 'Code/Main.cpp')
   
   Engine.vcxproj -> C:\Capt\DetectiveSimulation\HonkEngine\x64\Debug\Engine.exe

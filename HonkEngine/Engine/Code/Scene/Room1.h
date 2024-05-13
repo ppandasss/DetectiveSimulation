@@ -531,26 +531,31 @@ public:
     }
 
     void InspectCaneDialogue() {
-        if (inspectingObject == "Cane" && !inspectCaneDialogueSet && inspectStartDialogueSet) {
-            std::cout << "Inspecting Cane." << std::endl;
-            PromptForNextDialogue(inspectCaneDialogueKey, inspectCaneDialogueSet);
-            if (inspectCaneDialogueSet) {
-                inspectingObject = ""; // Reset only after triggering dialogue
-                caneInspect->setActiveStatus(false);
-                cane->setActiveStatus(true);
+        std::cout << "InspectCaneDialogue called. inspectingObject: " << inspectingObject << ", inspectCaneDialogueSet: " << inspectCaneDialogueSet << std::endl;
+
+        // Directly trigger dialogue without conditions to test stability
+        if (inspectingObject == "Cane") {
+            if (!inspectCaneDialogueSet) {
+                std::cout << "Triggering Cane dialogue." << std::endl;
+                dialogueManager->SetDialogueSet(inspectCaneDialogueKey);
+                inspectCaneDialogueSet = true;  // Prevent re-triggering
+            }
+            else {
+                std::cout << "Cane dialogue already triggered." << std::endl;
             }
         }
     }
 
     void InspectLetterDialogue() {
-        if (inspectingObject == "Letter" && !inspectLetterDialogueSet && inspectStartDialogueSet) {
-            std::cout << "Inspecting Letter." << std::endl;
-            PromptForNextDialogue(inspectLetterDialogueKey, inspectLetterDialogueSet);
-            if (inspectLetterDialogueSet) {
-                inspectingObject = ""; // Reset only after triggering dialogue
-                letterInspect->setActiveStatus(false);
-                letter->setActiveStatus(true);
-            }
+        std::cout << "InspectLetterDialogue called. inspectingObject: " << inspectingObject
+            << ", inspectLetterDialogueSet: " << inspectLetterDialogueSet << std::endl;
+
+        // Simplified logic to trigger letter dialogue
+        if (inspectingObject == "Letter" && !inspectLetterDialogueSet) {
+            std::cout << "Triggering Letter dialogue now." << std::endl;
+            dialogueManager->SetDialogueSet(inspectLetterDialogueKey);
+            inspectLetterDialogueSet = true; // Mark as triggered to prevent re-entry
+            inspectingObject = ""; // Reset inspecting object to avoid re-triggering
         }
     }
 
@@ -562,9 +567,13 @@ public:
             std::cout << "Switching to next dialogue: " << nextKey << std::endl;
             dialogueManager->SetDialogueSet(nextKey);
             flag = true;  // Mark this dialogue as initiated
+            if (nextKey == inspectLetterDialogueKey) {
+                // Reset inspectingObject only after the dialogue is set to start
+                inspectingObject = "";  // Reset here to ensure dialogue is triggerable
+            }
         }
-        
     }
+
 
     void SetInstruction(const string& message) {
         instructionText->SetContent(message);
