@@ -1,49 +1,49 @@
 ﻿  Main.cpp
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(111,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(111,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Code/Main.cpp')
   
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(112,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(112,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Code/Main.cpp')
   
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): warning C4099: 'Mesh': type name first seen using 'class' now seen using 'struct'
+C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): warning C4099: 'Mesh': type name first seen using 'class' now seen using 'struct'
   (compiling source file 'Code/Main.cpp')
-  C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8):
+  C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8):
   see declaration of 'Mesh'
   
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Text\TextRenderer.h(12,7): warning C4099: 'Mesh': type name first seen using 'struct' now seen using 'class'
+C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Text\TextRenderer.h(12,7): warning C4099: 'Mesh': type name first seen using 'struct' now seen using 'class'
   (compiling source file 'Code/Main.cpp')
-  C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8):
+  C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8):
   see declaration of 'Mesh'
   
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\JournalData.h(68,74): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\JournalData.h(68,74): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'Code/Main.cpp')
   
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\JournalData.h(107,64): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\JournalData.h(107,64): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'Code/Main.cpp')
   
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Player.h(23,55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Player.h(23,55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   (compiling source file 'Code/Main.cpp')
   
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Player.h(23,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Player.h(23,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   (compiling source file 'Code/Main.cpp')
   
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\BellManager.h(46,29): warning C4244: 'argument': conversion from 'float' to 'long', possible loss of data
+C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\BellManager.h(46,29): warning C4244: 'argument': conversion from 'float' to 'long', possible loss of data
   (compiling source file 'Code/Main.cpp')
   
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Timer.h(88,20): warning C4244: 'return': conversion from '_Rep' to 'int', possible loss of data
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Timer.h(88,20): warning C4244:         with
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Timer.h(88,20): warning C4244:         [
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Timer.h(88,20): warning C4244:             _Rep=__int64
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Timer.h(88,20): warning C4244:         ]
+C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Timer.h(88,20): warning C4244: 'return': conversion from '_Rep' to 'int', possible loss of data
+C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Timer.h(88,20): warning C4244:         with
+C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Timer.h(88,20): warning C4244:         [
+C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Timer.h(88,20): warning C4244:             _Rep=__int64
+C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Timer.h(88,20): warning C4244:         ]
   (compiling source file 'Code/Main.cpp')
   
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Hallway.h(321,26): warning C4244: 'argument': conversion from 'long' to 'float', possible loss of data
+C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Hallway.h(321,26): warning C4244: 'argument': conversion from 'long' to 'float', possible loss of data
   (compiling source file 'Code/Main.cpp')
   
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Dialogue\Dialoguemanager.h(227,25): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Dialogue\Dialoguemanager.h(227,25): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'Code/Main.cpp')
   
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Kitchen.h(159,13): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Kitchen.h(159,13): warning C4305: 'initializing': truncation from 'double' to 'float'
   (compiling source file 'Code/Main.cpp')
   
-  Engine.vcxproj -> C:\Capt\DetectiveSimulation\HonkEngine\x64\Debug\Engine.exe
+  Engine.vcxproj -> C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\x64\Debug\Engine.exe

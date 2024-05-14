@@ -446,8 +446,9 @@ public:
 			break;
         case RoomState::Inspection:
             ManageInspectionState();
-            InspectCaneDialogue();
             InspectLetterDialogue();
+            InspectCaneDialogue();
+            
 
             break;
         }
@@ -508,11 +509,14 @@ public:
         if (!inspectStartDialogueSet) {
            PromptForNextDialogue(inspectStartDialogueKey, inspectStartDialogueSet);
         }
-        else if (!inspectCaneDialogueSet && dialogueManager->IsDialogueFinished(inspectStartDialogueKey))
+        else if (!inspectCaneDialogueSet && !inspectLetterDialogueSet && dialogueManager->IsDialogueFinished(inspectStartDialogueKey))
         {
             SetInspectionObjectActive(true);
             SetInstruction("Use [Mouse] to search for clues.");
         }
+		else if (!inspectEndDialogueSet && inspectCaneDialogueSet && inspectLetterDialogueSet && dialogueManager->IsDialogueFinished(inspectCaneDialogueKey) && dialogueManager->IsDialogueFinished(inspectLetterDialogueKey)) {
+            PromptForNextDialogue(inspectEndDialogueKey, inspectEndDialogueSet);
+		}
     }
     void SetInspectionObjectActive(bool active) {
         if (active)
@@ -536,26 +540,23 @@ public:
         // Directly trigger dialogue without conditions to test stability
         if (inspectingObject == "Cane") {
             if (!inspectCaneDialogueSet) {
-                std::cout << "Triggering Cane dialogue." << std::endl;
+               // std::cout << "Triggering Cane dialogue." << std::endl;
                 dialogueManager->SetDialogueSet(inspectCaneDialogueKey);
                 inspectCaneDialogueSet = true;  // Prevent re-triggering
-            }
-            else {
-                std::cout << "Cane dialogue already triggered." << std::endl;
             }
         }
     }
 
     void InspectLetterDialogue() {
-        std::cout << "InspectLetterDialogue called. inspectingObject: " << inspectingObject
-            << ", inspectLetterDialogueSet: " << inspectLetterDialogueSet << std::endl;
+        std::cout << "InspectLetterDialogue called. inspectingObject: " << inspectingObject << ", inspectLetterDialogueSet: " << inspectLetterDialogueSet << std::endl;
 
-        // Simplified logic to trigger letter dialogue
-        if (inspectingObject == "Letter" && !inspectLetterDialogueSet) {
-            std::cout << "Triggering Letter dialogue now." << std::endl;
-            dialogueManager->SetDialogueSet(inspectLetterDialogueKey);
-            inspectLetterDialogueSet = true; // Mark as triggered to prevent re-entry
-            inspectingObject = ""; // Reset inspecting object to avoid re-triggering
+        // Directly trigger dialogue without conditions to test stability
+        if (inspectingObject == "Letter") {
+            if (!inspectLetterDialogueSet) {
+              
+                dialogueManager->SetDialogueSet(inspectLetterDialogueKey);
+                inspectLetterDialogueSet = true;  // Prevent re-triggering
+            } 
         }
     }
 
@@ -567,10 +568,7 @@ public:
             std::cout << "Switching to next dialogue: " << nextKey << std::endl;
             dialogueManager->SetDialogueSet(nextKey);
             flag = true;  // Mark this dialogue as initiated
-            if (nextKey == inspectLetterDialogueKey) {
-                // Reset inspectingObject only after the dialogue is set to start
-                inspectingObject = "";  // Reset here to ensure dialogue is triggerable
-            }
+
         }
     }
 
@@ -629,6 +627,7 @@ private:
     bool inspectEndDialogueSet = false;
     bool inspectLetterDialogueSet = false;
     bool inspectCaneDialogueSet = false;
+
 
     string inspectingObject;
 
