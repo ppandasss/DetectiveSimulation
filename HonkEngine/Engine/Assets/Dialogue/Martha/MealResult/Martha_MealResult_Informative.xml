@@ -2,8 +2,9 @@
 <Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<Dialogue id="1MD09">
 		<Speaker name="Martha_Happy">
-			<line1>I must say, the meal is excellent!</line1>
-			<line2>Your understanding of what I  wanted is truly impressive.</line2>
+			<line1>Well, I must say.</line1>
+			<line2>The meal is pleasant!</line2>
+			<line3>Your understanding of what I  wanted is truly impressive.</line3>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
@@ -23,14 +24,15 @@
 	</Dialogue>
 	<Dialogue id="1MD62">
 		<Speaker name="Martha_Normal">
-			<line1>Oh, really? What a considerate  service!</line1>
+			<line1>Oh, really?</line1>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
 	<Dialogue id="1MD62">
 		<Speaker name="Martha_Happy">
-			<line1>I hope you wouldn't mind continuing  our conversation for a while longer.</line1>
-		</Speaker>
+			<line1>What a considerate service!</line1>
+			<line2>I hope you wouldn't mind continuing  our conversation for a while longer.</line2>
+	</Speaker>
 		<Choices/>
 	</Dialogue>
 </Dialogues>

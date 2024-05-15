@@ -2,7 +2,8 @@
 <Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<Dialogue id="1MD10" next="1MD10_2">
 		<Speaker name="Martha_Disappoint">
-			<line1>I must admit that I'm slightly  disappointed with the meal.</line1>
+			<line1>Well.</line1>
+			<line2>I must admit that I'm slightly  disappointed with the meal.</line2>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
@@ -27,8 +28,14 @@
 		<Choices/>
 	</Dialogue>
 	<Dialogue id="1MD62">
+		<Speaker name="Martha_Normal">
+			<line1>Oh, really?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD62">
 		<Speaker name="Martha_Happy">
-			<line1>Oh, really? What a considerate  service.</line1>
+			<line1>What a considerate service!</line1>
 			<line2>I hope you wouldn't mind continuing  our conversation for a while longer.</line2>
 		</Speaker>
 		<Choices/>

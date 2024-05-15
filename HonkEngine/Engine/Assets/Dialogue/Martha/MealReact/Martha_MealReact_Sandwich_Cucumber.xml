@@ -3,7 +3,13 @@
 	<Dialogue id="1MD54">
 		<Speaker name="Martha_Normal">
 			<line1>A classic one, indeed! Cucumber  sandwich, isn't it?</line1>
-			<line2>Not as savory as I expected,  but I quite like it nonetheless.</line2>
+			<line2>The filling might not be as soft as I expected.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD55">
+		<Speaker name="Martha_Happy">
+			<line1>But I quite like it nonetheless.</line1>
 		</Speaker>
 		<Choices/>
 	</Dialogue>

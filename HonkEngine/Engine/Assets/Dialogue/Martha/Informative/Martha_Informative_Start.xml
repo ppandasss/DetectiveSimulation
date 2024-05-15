@@ -2,7 +2,9 @@
 <Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<Dialogue id="1MD11">
 		<Speaker name="Martha_Happy">
-			<line1>Hmm, the tea indeed smells nice.</line1>
+			<line1>....</line1>
+			<line2>Hmm.</line2>
+			<line3>The tea indeed smells nice.</line3>
 		</Speaker>
 		<Choices/>
 	</Dialogue>

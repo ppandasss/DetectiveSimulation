@@ -4,6 +4,7 @@
 		<Speaker name="Waiter">
 			<line1>(Nice cane.)</line1>
 			<line2>(Hope I don’t need one after this  mission.)</line2>
+			<line3>(Wonder what caused her to use it.  Age? Injury?)</line3>
 		</Speaker>
 		<Choices/>
 	</Dialogue>

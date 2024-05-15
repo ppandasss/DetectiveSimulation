@@ -4,13 +4,13 @@
 		<Speaker name="Martha_Normal">
 			<line1>Oh, the tea looks pleasant!</line1>
 			<line2>This scent... it must green tea.</line2>
-			<line3>Although it's not the floral one  I asked for,</line3>
+			<line3>Although it's not the floral one  I asked for.</line3>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
 	<Dialogue id="1MD46" next="1MD52">
 		<Speaker name="Martha_Happy">
-			<line1>It smells so refreshing. I quite  favor it.</line1>
+			<line1>It smells very refreshing. I quite  like it.</line1>
 			<line2>Exploring something different could  be worthwhile in this new chapter  of my journey.</line2>
 		</Speaker>
 		<Choices/>
