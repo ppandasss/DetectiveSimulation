@@ -70,7 +70,9 @@ public:
                     fadeState = FullyTransparent;
                     currentTime = 0.0f;
                     engineLogo->SetAlpha(0.0f); // Ensure it's fully transparent
-                    Application::Get().SetScene("Hallway"); // Change scene when fully faded out
+
+                    Application::Get().SetScene("MainMenu");
+                    //Application::Get().SetScene("Hallway"); // Change scene when fully faded out
                 }
                 break;
             }
@@ -87,7 +89,8 @@ public:
         Input& input = Application::GetInput();
         if (input.Get().GetKey(GLFW_KEY_SPACE))
         {
-            Application::Get().SetScene("Hallway");
+            Application::Get().SetScene("MainMenu");
+            //Application::Get().SetScene("Hallway");
         }
     }
 
