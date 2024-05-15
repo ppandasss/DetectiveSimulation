@@ -37,22 +37,29 @@ public:
 
     void UpdateTimerUIVisibility() {
         if (timerUI) {
-            std::cout << "Timer UI update: isRunning = " << isRunning << ", activeStatus = " << timerUI->getActiveStatus() << std::endl;
             timerUI->setActiveStatus(isRunning);
+            std::cout << "Timer UI visibility updated: " << isRunning << std::endl;
         }
         else {
             std::cout << "Timer UI is not set." << std::endl;
         }
+
+        if (countdownText) {
+            countdownText->setActiveStatus(isRunning); // This line assumes that setActiveStatus method correctly sets the visibility
+            std::cout << "Timer Text visibility updated: " << isRunning << std::endl;
+        }
+        else {
+            std::cout << "Countdown text is not set." << std::endl;
+        }
     }
+
 
     void start(int durationInSeconds) {
         if (!isRunning) {
             endTime = std::chrono::steady_clock::now() + std::chrono::seconds(durationInSeconds);
             lastUpdateTime = std::chrono::steady_clock::now();
             isRunning = true;
-            if (timerUI) {
-                timerUI->setActiveStatus(true);  // Directly set to true when starting
-            }
+            UpdateTimerUIVisibility(); // Update UI visibility when starting
             NotifyObservers();
             audioManager.PlaySound("timerTicking", true);
         }
@@ -61,11 +68,12 @@ public:
     void stop() {
         if (isRunning) {
             isRunning = false;
-           
+            UpdateTimerUIVisibility(); // Update UI visibility when stopping
             NotifyObservers();
             audioManager.StopSound("timerTicking");
         }
     }
+
 
 
     void Update(float dt) {
@@ -76,10 +84,16 @@ public:
                 if (getRemainingTime() <= 0) {
                     stop();
                 }
-                NotifyObservers();
+                else {
+                    NotifyObservers();
+                }
             }
         }
+        else {
+            UpdateTimerUIVisibility(); // Ensure visibility is correct even when not running
+        }
     }
+
 
     int getRemainingTime() const {
         if (isRunning) {

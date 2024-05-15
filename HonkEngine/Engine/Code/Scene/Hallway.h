@@ -169,9 +169,11 @@ public:
 		timerText = new Text("timerText", "", "Assets/Fonts/Jibril.ttf", true);
 		timer.Initialize(timerText);
 
-		timer.AddObserver([this, &timer]() {
-			this->timerText->SetContent(timer.GetTime());
-		});
+		timer.AddObserver([&](){
+    timerText->SetContent(timer.GetTime());
+    timerText->setActiveStatus(timer.isTimerRunning());
+});
+
 
 		instructionText = new Text("instruction", "Press [E] to enter","Assets/Fonts/mvboli.ttf", true);
 		instructionText->SetScale(0.6f);
@@ -359,7 +361,7 @@ public:
 
 							// Check if the room state is Prepare and if the current door matches the game state room
 							if (currentRoomState == RoomState::Prepare && door->GetName() == gameStateNameToDoorName(currentGameState) ) {
-								instructionText->SetContent("You need food to serve.");
+								instructionText->SetContent("A set of meal is required before serving.");
 							}
 							else {
 								instructionText->SetContent("Locked. Permission required.");

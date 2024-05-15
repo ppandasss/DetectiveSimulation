@@ -27,17 +27,17 @@ C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Ga
 C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Player.h(23,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   (compiling source file 'Code/Main.cpp')
   
-C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\BellManager.h(46,29): warning C4244: 'argument': conversion from 'float' to 'long', possible loss of data
+C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\BellManager.h(47,29): warning C4244: 'argument': conversion from 'float' to 'long', possible loss of data
   (compiling source file 'Code/Main.cpp')
   
-C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Timer.h(88,20): warning C4244: 'return': conversion from '_Rep' to 'int', possible loss of data
-C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Timer.h(88,20): warning C4244:         with
-C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Timer.h(88,20): warning C4244:         [
-C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Timer.h(88,20): warning C4244:             _Rep=__int64
-C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Timer.h(88,20): warning C4244:         ]
+C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Timer.h(102,20): warning C4244: 'return': conversion from '_Rep' to 'int', possible loss of data
+C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Timer.h(102,20): warning C4244:         with
+C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Timer.h(102,20): warning C4244:         [
+C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Timer.h(102,20): warning C4244:             _Rep=__int64
+C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Timer.h(102,20): warning C4244:         ]
   (compiling source file 'Code/Main.cpp')
   
-C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Hallway.h(321,26): warning C4244: 'argument': conversion from 'long' to 'float', possible loss of data
+C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Hallway.h(323,26): warning C4244: 'argument': conversion from 'long' to 'float', possible loss of data
   (compiling source file 'Code/Main.cpp')
   
 C:\Users\orangeduck\Documents\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Dialogue\Dialoguemanager.h(227,25): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data

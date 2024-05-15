@@ -505,58 +505,76 @@ public:
 
 
     void ManageInspectionState() {
-        // Check if initial inspection dialogue is ready to start or has finished
         if (!inspectStartDialogueSet) {
-           PromptForNextDialogue(inspectStartDialogueKey, inspectStartDialogueSet);
+            PromptForNextDialogue(inspectStartDialogueKey, inspectStartDialogueSet);
         }
-        else if (!inspectCaneDialogueSet && !inspectLetterDialogueSet && dialogueManager->IsDialogueFinished(inspectStartDialogueKey))
-        {
+        else if (inspectStartDialogueSet && !inspectCaneDialogueSet && !inspectLetterDialogueSet && dialogueManager->IsDialogueFinished(inspectStartDialogueKey)) {
             SetInspectionObjectActive(true);
             SetInstruction("Use [Mouse] to search for clues.");
         }
-		else if (!inspectEndDialogueSet && inspectCaneDialogueSet && inspectLetterDialogueSet && dialogueManager->IsDialogueFinished(inspectCaneDialogueKey) && dialogueManager->IsDialogueFinished(inspectLetterDialogueKey)) {
+
+        // Check if both objects have been inspected
+        if (isCaneInspected && isLetterInspected && !inspectEndDialogueSet) {
+            SetInspectionObjectActive(false);  // Optionally disable object interaction here
             PromptForNextDialogue(inspectEndDialogueKey, inspectEndDialogueSet);
-		}
-    }
-    void SetInspectionObjectActive(bool active) {
-        if (active)
-        {
-            ObjectsparallaxManager->EnableParallaxEffect();
         }
-		else
-		{
-			ObjectsparallaxManager->DisableParallaxEffect();
-		}
+
+        // Check if end dialogue has finished
+        if (inspectEndDialogueSet && dialogueManager->IsDialogueFinished(inspectEndDialogueKey)) {
+            SetInstruction("Press [Space] or [Mouse] to continue.");
+            gameStateManager.SetRoomState(RoomState::End);  // Example state transition
+        }
+    }
+
+    void SetInspectionObjectActive(bool active) {
+        // Toggle the active status of the inspection buttons
         caneInspect->setActiveStatus(active);
         letterInspect->setActiveStatus(active);
 
+        // Toggle the visibility of the actual items inversely to the inspection buttons
         cane->setActiveStatus(!active);
         letter->setActiveStatus(!active);
+
+        if (active) {
+            // Enable parallax effect for the objects
+            ObjectsparallaxManager->EnableParallaxEffect();
+        }
+        else {
+            // Disable parallax effect when the items are not in inspection mode
+            ObjectsparallaxManager->DisableParallaxEffect();
+        }
     }
 
     void InspectCaneDialogue() {
-        std::cout << "InspectCaneDialogue called. inspectingObject: " << inspectingObject << ", inspectCaneDialogueSet: " << inspectCaneDialogueSet << std::endl;
-
-        // Directly trigger dialogue without conditions to test stability
-        if (inspectingObject == "Cane") {
-            if (!inspectCaneDialogueSet) {
-               // std::cout << "Triggering Cane dialogue." << std::endl;
-                dialogueManager->SetDialogueSet(inspectCaneDialogueKey);
-                inspectCaneDialogueSet = true;  // Prevent re-triggering
-            }
+        if (inspectingObject == "Cane" && !inspectCaneDialogueSet) {
+            dialogueManager->SetDialogueSet(inspectCaneDialogueKey);
+            inspectCaneDialogueSet = true;
+            caneInspect->setActiveStatus(false);
+            cane->setActiveStatus(true);
+        }
+        if (inspectCaneDialogueSet && dialogueManager->IsDialogueFinished(inspectCaneDialogueKey)) {
+            isCaneInspected = true;
+            CheckForEndDialogue();
         }
     }
 
     void InspectLetterDialogue() {
-        std::cout << "InspectLetterDialogue called. inspectingObject: " << inspectingObject << ", inspectLetterDialogueSet: " << inspectLetterDialogueSet << std::endl;
+        if (inspectingObject == "Letter" && !inspectLetterDialogueSet) {
+            dialogueManager->SetDialogueSet(inspectLetterDialogueKey);
+            inspectLetterDialogueSet = true;
+    		letterInspect->setActiveStatus(false);
+			letter->setActiveStatus(true);
+        }
+        if (inspectLetterDialogueSet && dialogueManager->IsDialogueFinished(inspectLetterDialogueKey)) {
+            isLetterInspected = true;
+            CheckForEndDialogue();
+        }
+    }
 
-        // Directly trigger dialogue without conditions to test stability
-        if (inspectingObject == "Letter") {
-            if (!inspectLetterDialogueSet) {
-              
-                dialogueManager->SetDialogueSet(inspectLetterDialogueKey);
-                inspectLetterDialogueSet = true;  // Prevent re-triggering
-            } 
+    void CheckForEndDialogue() {
+        if (isCaneInspected && isLetterInspected && !inspectEndDialogueSet) {
+            dialogueManager->SetDialogueSet(inspectEndDialogueKey);
+            inspectEndDialogueSet = true;  // Ensure the end dialogue is not triggered multiple times
         }
     }
 
@@ -627,6 +645,10 @@ private:
     bool inspectEndDialogueSet = false;
     bool inspectLetterDialogueSet = false;
     bool inspectCaneDialogueSet = false;
+
+    bool isCaneInspected = false;
+    bool isLetterInspected = false;
+
 
 
     string inspectingObject;

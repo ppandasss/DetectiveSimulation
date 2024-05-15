@@ -30,14 +30,15 @@ public:
 
 	}
 
-    Bell getBell(std::string bellName) {
-		for (size_t i = 0; i < bells.size(); i++) {
-			Bell* bell = bells[i];
-			if (bell->getName() == bellName) {
-				return *bell;
-			}
-		}
-	}
+    Bell* getBell(const std::string& bellName) {
+        for (size_t i = 0; i < bells.size(); i++) {
+            Bell* bell = bells[i];
+            if (bell->getName() == bellName) {
+                return bell;
+            }
+        }
+        return nullptr;  // Return nullptr if no bell found
+    }
 
     void Update(float dt,float frame) {
         for (size_t i = 0; i < bells.size(); i++) {

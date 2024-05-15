@@ -6,6 +6,9 @@
 #include "Application.h"
 #include "GameObjects/BellManager.h"
 #include "Audio/AudioManager.h"
+#include "GameObjects/DoorManager.h"
+#include "GameObjects/Timer.h"
+#include "GameObjects/BellManager.h"
 
 enum GameState {
     ROOM1_STATE,
@@ -53,8 +56,8 @@ private:
 
         // Define actions for each state transition 
 
-        //ROOM1
-        // 
+        //ROOM1   
+        
         //Prepare
         stateActions[std::make_pair(GameState::ROOM1_STATE, RoomState::Prepare)] = []() {
 
@@ -64,17 +67,32 @@ private:
             Application::Get().SetScene("Hallway");
             AudioManager::GetInstance().PlaySound("slideDoor");
             std::cout << "Transition to Room1 Prepare state." << std::endl;
-         };
-        
+            };
+
         //Serve
         stateActions[std::make_pair(GameState::ROOM1_STATE, RoomState::Serve)] = []() {
-           
-		};
+            Timer::GetInstance().stop();
+            };
 
-        stateActions[std::make_pair(GameState::ROOM1_STATE, RoomState::Inspection)] = []() {
-            //Application::Get().SetScene("Hallway");
-            //AudioManager::GetInstance().PlaySound("slideDoor");
-         };
+        //End   
+        stateActions[std::make_pair(GameState::ROOM1_STATE, RoomState::End)] = []() {
+            DoorManager::GetInstance().GetDoorByName("Room1Door")->setPermission(true);  // Allow exit
+            AudioManager::GetInstance().PlaySound("slideDoor");
+            // Optionally stop room-specific music
+            Application::Get().SetTimer(3000, []() {
+                Application::Get().SetScene("Hallway");  // Transition to another scene
+                }, false);
+            GameStateManager::GetInstance().SetGameState(GameState::ROOM2_STATE);  // Move to the next game state if applicable
+            GameStateManager::GetInstance().SetRoomState(RoomState::Order);  // Move to the next room state if applicable
+            };
+
+      //ROOM2
+
+        
+        
+        
+        
+        
 
  
     }
@@ -89,13 +107,34 @@ public:
         return *instance;
     }
 
+    void setupOrderStateActions() {
+     
+    }
+
+
+    void setupPrepareStateActions() {
+        //Room 1
+        
+    }
+
+    void setupServeStateActions() {
+        //Room 1
+        
+    }
+
+    void setupEndStateActions() {
+        //Room 1
+       
+
+    }
+
     ~GameStateManager() {
         delete instance;
     }
 
     void SetGameState(GameState state) {
         currentGameState = state;
-        ExecuteStateAction();
+        ExecuteStateAction();                                                  
     }
 
     void SetRoomState(RoomState state) {
