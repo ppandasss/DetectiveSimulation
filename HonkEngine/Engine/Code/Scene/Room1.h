@@ -45,7 +45,7 @@ public:
         audioManager.LoadSound("cabinMusic", "Assets/Sounds/Music/BGmusic_Cabin.mp3", 4.0f);
         audioManager.LoadSound("knockDoor", "Assets/Sounds/SFX_KnockDoor.mp3", 2.0f);
         audioManager.LoadSound("slideDoor", "Assets/Sounds/SFX_SlideDoor.mp3", 2.5f);
-
+      
 
 
         GameObject* background1a = new RenderGameObject("BG1", "Assets/Images/BG/Cabin_Background_01.png");
@@ -85,7 +85,7 @@ public:
         UIElement* lamp = new UINormal("Lamp", "Assets/Images/Martha/Lamp.png", glm::vec3(-1.3f, -0.3f, 0.0f), glm::vec3(1.62f * sm, 2.25f * sm, 0.0f), true);
         UIElement* hat = new UINormal("Hat", "Assets/Images/Martha/Hat.png", glm::vec3(-1.1f, -1.22f, 0.0f), glm::vec3(3.12f * sm, 0.92f * sm, 0.0f), true);
         UIElement* bag = new UINormal("Bag", "Assets/Images/Martha/Bag.png", glm::vec3(-0.25f, -5.25f, 0.0f), glm::vec3(2.59f * sm * 1.2f, 1.64f * sm * 1.2f, 0.0f), true);
-        
+
         //Inspection Items
         cane = new UINormal("Cane", "Assets/Images/Martha/Martha_Inspection_Cane.png", glm::vec3(-4.0f, -3.72f, 0.0f), glm::vec3(1.07f * sm * 1.2f, 3.7f * sm * 1.2f, 0.0f), true);
         letter = new UINormal("Letter", "Assets/Images/Martha/Martha_Inspection_Letter.png", glm::vec3(-2.15f, -5.9f, 0.0f), glm::vec3(1.13f * sm * 1.2f, 0.73f * sm * 1.2f, 0.0f), true);
@@ -106,7 +106,7 @@ public:
             inspectingObject = "Letter";
             });
         caneInspect->setActiveStatus(false);
-    	letterInspect->setActiveStatus(false);
+        letterInspect->setActiveStatus(false);
 
 
         //UIs
@@ -132,17 +132,22 @@ public:
         UIButton* dialogueChoice3 = new UIButton("DialogueChoiceBox3", "Assets/Images/UI/DialogueChoiceBox.png",
             glm::vec3(0.0f, -1.8f, 0.0f), glm::vec3(7.47f * 0.9f, 1.07f * 0.9f, 0.0f),
             true, true, "Assets/Fonts/OverpassMono-SemiBold.ttf");
+
+        dialogueChoice1->SetHoverTexture("Assets/Images/DialogueChoiceBox.png");
+        dialogueChoice2->SetHoverTexture("Assets/Images/DialogueChoiceBox.png");
+        dialogueChoice3->SetHoverTexture("Assets/Images/DialogueChoiceBox.png");
+
         //Speak Icons
         UIElement* marthaIcon = new UINormal("MarthaIcon", "Assets/Images/UI/Speaker_icon_Martha.png", glm::vec3(4.18f, 3.5f, 0.0f), glm::vec3(2.19f, 1.57f, 0.0f), true);
         UIElement* waiterIcon = new UINormal("WaiterIcon", "Assets/Images/UI/Speaker_icon_Waiter.png", glm::vec3(4.18f, 3.43f, 0.0f), glm::vec3(1.23f, 1.4f, 0.0f), true);
 
-        dialogueManager = make_unique<DialogueManager>("MarthaDialogue", dialogueBox,"Martha_Normal");
+        dialogueManager = make_unique<DialogueManager>("MarthaDialogue", dialogueBox, "Martha_Normal");
         dialogueManager->LoadDialogues("Order", "Assets/Dialogue/Martha/Martha_Order.xml");
         dialogueManager->LoadDialogues("Serve_OnTime", "Assets/Dialogue/Martha/Martha_Serve_OnTime.xml");
         dialogueManager->LoadDialogues("Serve_Late", "Assets/Dialogue/Martha/Martha_Serve_Late.xml");
 
-       
-       
+
+
         //Text
         instructionText = new Text("dialogueinstruction", "Use [Left-click] or [Space] to continue dialogue", "Assets/Fonts/mvboli.ttf", true);
         instructionText->SetScale(0.6f);
@@ -238,7 +243,7 @@ public:
         backgroundParallaxManager->AddBackgroundPair(4, background5a, background5b, 2.5f); // Layer 4, fastest
         backgroundParallaxManager->AddBackgroundPair(5, background6a, background6b, 3.0f); // Layer 5, fastest
 
-    
+
     }
 
     void OnEnter() override {
@@ -259,7 +264,7 @@ public:
             orderDialogueKey = "Order";
             break;
         case RoomState::Serve:
-            
+
             if (characterData->getServeTimeLevel(CABIN1) == ONTIME) {
                 serveDialogueKey = "Serve_OnTime";
             }
@@ -274,9 +279,9 @@ public:
             sandwichDialogueSet = false;
             dessertDialogueSet = false;
             SetMealReactionDialogue();
-            SetScoredDialogue();    
+            SetScoredDialogue();
             SetInteractDialogue();
-            
+
             break;
         }
     }
@@ -289,61 +294,61 @@ public:
         // Determine the dialogue key based on the tea choice as an example
         switch (kitchen->getTea()) {
 
-            case EARLGREYTEA:
-				dialogueManager->LoadDialogues("MealReact_Tea_EarlGray", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Tea_Assam_EarlGray.xml");
-				teaDialogueKey = "MealReact_Tea_EarlGray";
-				break;
-            case ASSAMTEA:
-                dialogueManager->LoadDialogues("MealReact_Tea_Assam", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Tea_Assam_EarlGray.xml");
-                teaDialogueKey ="MealReact_Tea_Assam";
-                break;
-            case CHAMOMILETEA:
-                dialogueManager->LoadDialogues("MealReact_Tea_Charmomile", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Tea_Chamomile.xml");
-                teaDialogueKey = "MealReact_Tea_Charmomile";
-                break;
-            case GREENTEA:
-                dialogueManager->LoadDialogues("MealReact_Tea_GreenTea", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Tea_GreenTea.xml");
-                teaDialogueKey = "MealReact_Tea_GreenTea";
-                break;
+        case EARLGREYTEA:
+            dialogueManager->LoadDialogues("MealReact_Tea_EarlGray", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Tea_Assam_EarlGray.xml");
+            teaDialogueKey = "MealReact_Tea_EarlGray";
+            break;
+        case ASSAMTEA:
+            dialogueManager->LoadDialogues("MealReact_Tea_Assam", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Tea_Assam_EarlGray.xml");
+            teaDialogueKey = "MealReact_Tea_Assam";
+            break;
+        case CHAMOMILETEA:
+            dialogueManager->LoadDialogues("MealReact_Tea_Charmomile", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Tea_Chamomile.xml");
+            teaDialogueKey = "MealReact_Tea_Charmomile";
+            break;
+        case GREENTEA:
+            dialogueManager->LoadDialogues("MealReact_Tea_GreenTea", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Tea_GreenTea.xml");
+            teaDialogueKey = "MealReact_Tea_GreenTea";
+            break;
         }
-        
-        switch (kitchen->getSandwich()){
-            case SALMON:
-			    dialogueManager->LoadDialogues("MealReact_Sandwich_Salmon", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Sandwich_Salmon_Beef.xml");
-			    sandwichDialogueKey = "MealReact_Sandwich_Salmon";
-			    break; 
-            case BEEF:
-                dialogueManager->LoadDialogues("MealReact_Sandwich_Salmon", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Sandwich_Salmon_Beef.xml");
-                sandwichDialogueKey = "MealReact_Sandwich_Salmon";
-                break;
-            case EGG:
-                dialogueManager->LoadDialogues("MealReact_Sandwich_Egg", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Sandwich_Egg.xml");
-				sandwichDialogueKey = "MealReact_Sandwich_Egg";
-				break;
-            case CUCUMBER:
-                dialogueManager->LoadDialogues("MealReact_Sandwich_Cucumber", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Sandwich_Cucumber.xml");
-                sandwichDialogueKey = "MealReact_Sandwich_Cucumber";
-                break;
+
+        switch (kitchen->getSandwich()) {
+        case SALMON:
+            dialogueManager->LoadDialogues("MealReact_Sandwich_Salmon", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Sandwich_Salmon_Beef.xml");
+            sandwichDialogueKey = "MealReact_Sandwich_Salmon";
+            break;
+        case BEEF:
+            dialogueManager->LoadDialogues("MealReact_Sandwich_Salmon", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Sandwich_Salmon_Beef.xml");
+            sandwichDialogueKey = "MealReact_Sandwich_Salmon";
+            break;
+        case EGG:
+            dialogueManager->LoadDialogues("MealReact_Sandwich_Egg", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Sandwich_Egg.xml");
+            sandwichDialogueKey = "MealReact_Sandwich_Egg";
+            break;
+        case CUCUMBER:
+            dialogueManager->LoadDialogues("MealReact_Sandwich_Cucumber", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Sandwich_Cucumber.xml");
+            sandwichDialogueKey = "MealReact_Sandwich_Cucumber";
+            break;
         }
 
         switch (kitchen->getDessert()) {
-			case ECLAIR:
-				dialogueManager->LoadDialogues("MealReact_Dessert_Eclair", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Pastry_Eclair_Macaron_Tart.xml");
-				dessertDialogueKey = "MealReact_Dessert_Eclair";
-				break;
-			case MACARON:
-                dialogueManager->LoadDialogues("MealReact_Dessert_Macaron", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Pastry_Eclair_Macaron_Tart.xml");
-                dessertDialogueKey = "MealReact_Dessert_Macaron";
-				break;
-			case TART:
-                dialogueManager->LoadDialogues("MealReact_Dessert_Tart", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Pastry_Eclair_Macaron_Tart.xml");
-                dessertDialogueKey = "MealReact_Dessert_Tart";
-				break;
-            case SCONE:
-				dialogueManager->LoadDialogues("MealReact_Dessert_Scone", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Pastry_Scone.xml");
-				dessertDialogueKey = "MealReact_Dessert_Scone";
-				break;
-		}
+        case ECLAIR:
+            dialogueManager->LoadDialogues("MealReact_Dessert_Eclair", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Pastry_Eclair_Macaron_Tart.xml");
+            dessertDialogueKey = "MealReact_Dessert_Eclair";
+            break;
+        case MACARON:
+            dialogueManager->LoadDialogues("MealReact_Dessert_Macaron", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Pastry_Eclair_Macaron_Tart.xml");
+            dessertDialogueKey = "MealReact_Dessert_Macaron";
+            break;
+        case TART:
+            dialogueManager->LoadDialogues("MealReact_Dessert_Tart", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Pastry_Eclair_Macaron_Tart.xml");
+            dessertDialogueKey = "MealReact_Dessert_Tart";
+            break;
+        case SCONE:
+            dialogueManager->LoadDialogues("MealReact_Dessert_Scone", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Pastry_Scone.xml");
+            dessertDialogueKey = "MealReact_Dessert_Scone";
+            break;
+        }
 
         std::cout << "Tea Dialogue Key set to: " << teaDialogueKey << std::endl;
         std::cout << "Sandwich Dialogue Key set to: " << sandwichDialogueKey << std::endl;
@@ -361,16 +366,16 @@ public:
             break;
         case AVERAGE:
             dialogueManager->LoadDialogues("Score_Average_Start", "Assets/Dialogue/Martha/MealResult/Martha_MealResult_Average.xml");
-			scoreDialogueKey = "Score_Average_Start";
+            scoreDialogueKey = "Score_Average_Start";
             break;
         case INFORMATIVE:
             dialogueManager->LoadDialogues("Score_Informative_Start", "Assets/Dialogue/Martha/MealResult/Martha_MealResult_Informative.xml");
-			scoreDialogueKey = "Score_Informative_Start";
+            scoreDialogueKey = "Score_Informative_Start";
             break;
         default:
-            break;  
+            break;
         }
-	}
+    }
     void SetInteractDialogue() {
 
 
@@ -443,18 +448,21 @@ public:
             break;
         case RoomState::MealReact:
             ManageMealReactions();
-			break;
+            break;
+        case RoomState::InspectionStart:
+            ManageInspectionStartState();
+            break;
         case RoomState::Inspection:
             ManageInspectionState();
-            InspectLetterDialogue();
-            InspectCaneDialogue();
-            
-
             break;
+        case RoomState::InspectionEnd:
+		    ManageInspectionEndState();
+			
+			break;
         }
     }
 
-   void UpdateRoomState(const string& currentDialogueKey, RoomState nextState) {
+    void UpdateRoomState(const string& currentDialogueKey, RoomState nextState) {
         if (dialogueManager->IsDialogueFinished(currentDialogueKey)) {
             SetInstruction("Press [E] to leave");
             if (input.Get().GetKeyDown(GLFW_KEY_E)) {
@@ -464,17 +472,18 @@ public:
     }
 
     void ManageServeState() {
-        
-        if (!serveDialogueSet ) {
+        //Set Serve Dialogue
+        if (!serveDialogueSet) {
             PromptForNextDialogue(serveDialogueKey, serveDialogueSet);
         }
         else if (serveDialogueSet && dialogueManager->IsDialogueFinished(serveDialogueKey)) {
+            //If serve end dialogue is finished, set the room state to MealReact
             gameStateManager.SetRoomState(RoomState::MealReact);
         }
     }
 
     void ManageMealReactions() {
- 
+
         if (!teaDialogueSet && dialogueManager->IsDialogueFinished(serveDialogueKey) && !dessertDialogueSet) {
             PromptForNextDialogue(teaDialogueKey, teaDialogueSet);
         }
@@ -485,7 +494,7 @@ public:
             PromptForNextDialogue(dessertDialogueKey, dessertDialogueSet);
         }
 
-       
+
         if (teaDialogueSet && sandwichDialogueSet && dessertDialogueSet && dialogueManager->IsDialogueFinished(dessertDialogueKey)) {
 
             gameStateManager.SetRoomState(RoomState::Score);
@@ -498,95 +507,113 @@ public:
         if (!scoreDialogueSet) {
             PromptForNextDialogue(scoreDialogueKey, scoreDialogueSet);
         }
-        else if (scoreDialogueSet && dialogueManager->IsDialogueFinished(scoreDialogueKey)){
-            gameStateManager.SetRoomState(RoomState::Inspection); // Transition to Inspection state
+        else if (scoreDialogueSet && dialogueManager->IsDialogueFinished(scoreDialogueKey)) {
+            gameStateManager.SetRoomState(RoomState::InspectionStart); // Transition to Inspection state
         }
     }
 
 
-    void ManageInspectionState() {
+    void ManageInspectionStartState() {
+        //Play InspectStartDialogue
         if (!inspectStartDialogueSet) {
             PromptForNextDialogue(inspectStartDialogueKey, inspectStartDialogueSet);
         }
-        else if (inspectStartDialogueSet && !inspectCaneDialogueSet && !inspectLetterDialogueSet && dialogueManager->IsDialogueFinished(inspectStartDialogueKey)) {
-            SetInspectionObjectActive(true);
-            SetInstruction("Use [Mouse] to search for clues.");
+        else if (inspectStartDialogueSet && dialogueManager->IsDialogueFinished(inspectStartDialogueKey)) {
+           gameStateManager.SetRoomState(RoomState::Inspection);
         }
 
-        // Check if both objects have been inspected
-        if (isCaneInspected && isLetterInspected && !inspectEndDialogueSet) {
-            SetInspectionObjectActive(false);  // Optionally disable object interaction here
-            PromptForNextDialogue(inspectEndDialogueKey, inspectEndDialogueSet);
-        }
-
-        // Check if end dialogue has finished
-        if (inspectEndDialogueSet && dialogueManager->IsDialogueFinished(inspectEndDialogueKey)) {
-            SetInstruction("Press [Space] or [Mouse] to continue.");
-            gameStateManager.SetRoomState(RoomState::End);  // Example state transition
-        }
+      
     }
 
-    void SetInspectionObjectActive(bool active) {
-        // Toggle the active status of the inspection buttons
-        caneInspect->setActiveStatus(active);
-        letterInspect->setActiveStatus(active);
-
-        // Toggle the visibility of the actual items inversely to the inspection buttons
-        cane->setActiveStatus(!active);
-        letter->setActiveStatus(!active);
-
-        if (active) {
-            // Enable parallax effect for the objects
-            ObjectsparallaxManager->EnableParallaxEffect();
+    void ManageInspectionState()
+    {
+        // Check if both objects have been inspected
+        if (!isCaneInspected || !isLetterInspected) {
+            InspectCaneDialogue();
+            InspectLetterDialogue();
+            NormalObjectToggle();
+            SetInspectionObject();
         }
-        else {
-            // Disable parallax effect when the items are not in inspection mode
+       
+    }
+
+
+    void NormalObjectToggle() {
+        cane->setActiveStatus(!caneInspect->getActiveStatus());
+        letter->setActiveStatus(!letterInspect->getActiveStatus());
+    }
+
+    void SetInspectionObject() {
+
+        if (inspectingObject != "")
+        {
+           
+            caneInspect->setActiveStatus(false);
+            letterInspect->setActiveStatus(false);  
             ObjectsparallaxManager->DisableParallaxEffect();
         }
+        else
+        {
+            caneInspect->setActiveStatus(!isCaneInspected);
+			letterInspect->setActiveStatus(!isLetterInspected);
+			ObjectsparallaxManager->EnableParallaxEffect();
+        }
+     
     }
 
     void InspectCaneDialogue() {
-        if (inspectingObject == "Cane" && !inspectCaneDialogueSet) {
-            dialogueManager->SetDialogueSet(inspectCaneDialogueKey);
-            inspectCaneDialogueSet = true;
-            caneInspect->setActiveStatus(false);
-            cane->setActiveStatus(true);
+        if (!inspectCaneDialogueSet && inspectingObject == "Cane") {
+          dialogueManager->SetDialogueSet(inspectCaneDialogueKey);
+          inspectCaneDialogueSet = true;
         }
         if (inspectCaneDialogueSet && dialogueManager->IsDialogueFinished(inspectCaneDialogueKey)) {
-            isCaneInspected = true;
+            std::cout << "Cane Inspection Completed" << std::endl;
+            inspectCaneDialogueSet = false; // Reset the flag
+            inspectingObject = ""; // Correct the assignment
+            isCaneInspected = true; // Mark the cane as inspected
             CheckForEndDialogue();
         }
+
     }
 
     void InspectLetterDialogue() {
-        if (inspectingObject == "Letter" && !inspectLetterDialogueSet) {
-            dialogueManager->SetDialogueSet(inspectLetterDialogueKey);
-            inspectLetterDialogueSet = true;
-    		letterInspect->setActiveStatus(false);
-			letter->setActiveStatus(true);
-        }
-        if (inspectLetterDialogueSet && dialogueManager->IsDialogueFinished(inspectLetterDialogueKey)) {
-            isLetterInspected = true;
-            CheckForEndDialogue();
-        }
+        if(!inspectLetterDialogueSet && inspectingObject == "Letter") {
+			dialogueManager->SetDialogueSet(inspectLetterDialogueKey);
+			inspectLetterDialogueSet = true;
+		}
+        if(inspectLetterDialogueSet && dialogueManager->IsDialogueFinished(inspectLetterDialogueKey)) {
+            std::cout << "Letter Inspection Completed" << std::endl;
+			inspectLetterDialogueSet = false; // Reset the flag
+			inspectingObject = ""; // Correct the assignment
+			isLetterInspected = true; // Mark the letter as inspected
+			CheckForEndDialogue();
+		}
+  
     }
 
     void CheckForEndDialogue() {
         if (isCaneInspected && isLetterInspected && !inspectEndDialogueSet) {
-            dialogueManager->SetDialogueSet(inspectEndDialogueKey);
-            inspectEndDialogueSet = true;  // Ensure the end dialogue is not triggered multiple times
+            std::cout << "Both items inspaddaected, moving to final dialogue." << std::endl;
+            gameStateManager.SetRoomState(RoomState::InspectionEnd);
+            
         }
     }
 
-
-
+        void ManageInspectionEndState() {
+		if (!inspectEndDialogueSet) {
+            ObjectsparallaxManager->DisableParallaxEffect();
+			PromptForNextDialogue(inspectEndDialogueKey, inspectEndDialogueSet);
+		}
+		else if (inspectEndDialogueSet && dialogueManager->IsDialogueFinished(inspectEndDialogueKey)) {
+			gameStateManager.SetRoomState(RoomState::End);
+		}
+	}
+  
     void PromptForNextDialogue(const string& nextKey, bool& flag) {
         SetInstruction("Press [Space] or [Mouse] to continue.");
         if (!flag && (input.Get().GetKeyDown(GLFW_KEY_SPACE) || input.Get().GetMouseButtonDown(0))) {
-            std::cout << "Switching to next dialogue: " << nextKey << std::endl;
             dialogueManager->SetDialogueSet(nextKey);
-            flag = true;  // Mark this dialogue as initiated
-
+            flag = true;
         }
     }
 
@@ -609,7 +636,7 @@ public:
     }
 
     void OnExit() override {
-       // Scene::OnExit();  // Call base class if there's relevant logic
+        // Scene::OnExit();  // Call base class if there's relevant logic
         audioManager.PlaySound("slideDoor");
         audioManager.PauseSound("cabinMusic");
         BellManager::GetInstance().StopAllRinging();
@@ -618,7 +645,7 @@ public:
 
 
 private:
-    Input& input = Application::GetInput(); 
+    Input& input = Application::GetInput();
     Camera& camera = Application::GetCamera();
     unique_ptr<DialogueManager> dialogueManager;
     unique_ptr<ObjectsParallax> ObjectsparallaxManager;
@@ -630,7 +657,7 @@ private:
     string sandwichDialogueKey;
     string dessertDialogueKey;
     string scoreDialogueKey;
-    string inspectStartDialogueKey; 
+    string inspectStartDialogueKey;
     string inspectLetterDialogueKey;
     string inspectCaneDialogueKey;
     string inspectEndDialogueKey;

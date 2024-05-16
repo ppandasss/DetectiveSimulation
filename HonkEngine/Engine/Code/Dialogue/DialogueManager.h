@@ -8,6 +8,7 @@
 #include <iostream>
 #include "../UI/UIButton.h"
 #include "../UI/UIElement.h"
+#include "../Audio/AudioManager.h"
 
 using namespace std;
 
@@ -45,6 +46,7 @@ struct Dialogue {
     tinyxml2::XMLElement* orderElement = nullptr;
     bool hasOrderData = false;  // Add this line
     TempOrderData* tempOrderData = nullptr;
+    
 };
 
 Cabin GetCabinFromString(const string& cabinStr) {
@@ -65,7 +67,7 @@ public:
 
     DialogueManager(const string& name, UIButton* dialogueBox, const string& defaultSprite)
         : currentDialogueIndex(0), currentLineIndex(0), currentDialogueButton(dialogueBox), choiceMade(false), defaultSpriteName(defaultSprite) {
-
+       
     }
 
     ~DialogueManager() {
@@ -201,8 +203,8 @@ public:
     void HandleChoice(int choiceIndex) {
         if (choiceIndex >= 0 && choiceIndex < dialogues[currentDialogueIndex].choices.size()) {
             const auto& choice = dialogues[currentDialogueIndex].choices[choiceIndex];
+            audioManager.PlaySound("buttonClick" , false);
             std::cout << "Player has chosen: " << choice.text << std::endl; // Add this line to print the chosen choice
-
             // Activating each clue
             for (const auto& clueID : choice.clueIDs) {
                 HandleClue(clueID);
@@ -556,4 +558,5 @@ private:
     size_t currentLineIndex;
     string fontPath;
     bool waitingForPlayerToAcknowledgeEnd = false;
+    AudioManager& audioManager = AudioManager::GetInstance();
 };

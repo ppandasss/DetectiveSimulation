@@ -9,6 +9,7 @@
 #include "GameObjects/DoorManager.h"
 #include "GameObjects/Timer.h"
 #include "GameObjects/BellManager.h"
+#include "GameObjects/OrderData.h"
 
 enum GameState {
     ROOM1_STATE,
@@ -24,7 +25,9 @@ enum RoomState {
     Serve,
     Score,
     MealReact,
+    InspectionStart,
     Inspection,
+    InspectionEnd,
     End,
 };
 
@@ -72,6 +75,7 @@ private:
         //Serve
         stateActions[std::make_pair(GameState::ROOM1_STATE, RoomState::Serve)] = []() {
             Timer::GetInstance().stop();
+            OrderData::GetInstance().ClearOrder();
             };
 
         //End   

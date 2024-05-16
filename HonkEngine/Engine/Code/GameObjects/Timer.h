@@ -38,18 +38,18 @@ public:
     void UpdateTimerUIVisibility() {
         if (timerUI) {
             timerUI->setActiveStatus(isRunning);
-            std::cout << "Timer UI visibility updated: " << isRunning << std::endl;
+            //std::cout << "Timer UI visibility updated: " << isRunning << std::endl;
         }
         else {
-            std::cout << "Timer UI is not set." << std::endl;
+            //std::cout << "Timer UI is not set." << std::endl;
         }
 
         if (countdownText) {
             countdownText->setActiveStatus(isRunning); // This line assumes that setActiveStatus method correctly sets the visibility
-            std::cout << "Timer Text visibility updated: " << isRunning << std::endl;
+            //std::cout << "Timer Text visibility updated: " << isRunning << std::endl;
         }
         else {
-            std::cout << "Countdown text is not set." << std::endl;
+            //std::cout << "Countdown text is not set." << std::endl;
         }
     }
 
