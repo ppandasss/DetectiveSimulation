@@ -265,7 +265,7 @@ public:
             break;
         case RoomState::Serve:
 
-            if (characterData->getServeTimeLevel(CABIN1) == ONTIME) {
+            if (characterData->getServeTimeLevel(Cabin::CABIN1) == ONTIME) {
                 serveDialogueKey = "Serve_OnTime";
             }
             else {
@@ -599,7 +599,7 @@ public:
         }
     }
 
-        void ManageInspectionEndState() {
+    void ManageInspectionEndState() {
 		if (!inspectEndDialogueSet) {
             ObjectsparallaxManager->DisableParallaxEffect();
 			PromptForNextDialogue(inspectEndDialogueKey, inspectEndDialogueSet);

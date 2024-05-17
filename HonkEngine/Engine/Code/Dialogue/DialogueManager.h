@@ -65,8 +65,8 @@ Cabin GetCabinFromString(const string& cabinStr) {
 class DialogueManager {
 public:
 
-    DialogueManager(const string& name, UIButton* dialogueBox, const string& defaultSprite)
-        : currentDialogueIndex(0), currentLineIndex(0), currentDialogueButton(dialogueBox), choiceMade(false), defaultSpriteName(defaultSprite) {
+    DialogueManager(const string& name, UIButton* dialogueBox, const string& defaultSprite, const string& defaultSprite2 = "")
+        : currentDialogueIndex(0), currentLineIndex(0), currentDialogueButton(dialogueBox), choiceMade(false), defaultSpriteName(defaultSprite),defaultSpriteName2(defaultSprite2) {
        
     }
 
@@ -178,6 +178,17 @@ public:
         }
     }
 
+    void AddSpeakerSprite2(const string& speakerCode, UIElement* sprite) {
+        speakerSprites2[speakerCode] = sprite;
+        // Activate the sprite if its name matches the default sprite name
+        if (speakerCode == defaultSpriteName2) {
+            speakerSprites2[speakerCode]->setActiveStatus(true);
+        }
+        else {
+            speakerSprites2[speakerCode]->setActiveStatus(false);
+        }
+    }
+
     void HandleClue(const string& clueID) {
         size_t underscorePos = clueID.find('_');
         if (underscorePos != string::npos) {
@@ -275,6 +286,7 @@ public:
 
     void Update(float dt, long frame) {
         UpdateSpeakerSprite();
+        UpdateSpeakerSprite2();
         UpdateSpeakerIcon();
 
         if (currentDialogueButton) {
@@ -542,16 +554,42 @@ private:
         }
     }
 
+    void UpdateSpeakerSprite2() {
+        if (dialogues.empty() || currentDialogueIndex >= dialogues.size()) return; // Safeguard against empty dialogues or invalid index
+
+        const string& currentSpeaker = dialogues[currentDialogueIndex].speakerName;
+
+
+        // Check if the current speaker has a specific sprite
+        auto spriteIt = speakerSprites2.find(currentSpeaker);
+
+        if (spriteIt != speakerSprites2.end()) {
+            // Deactivate all sprites first
+            for (auto& pair : speakerSprites2) {
+                pair.second->setActiveStatus(false); // Set all to inactive
+            }
+            // If found, activate the sprite for the current speaker
+            spriteIt->second->setActiveStatus(true);
+            lastActiveSpeakerSprite = spriteIt->second; // Update last active sprite
+        }
+        else if (lastActiveSpeakerSprite) {
+            // If no new speaker sprite is found, continue using the last active sprite
+            lastActiveSpeakerSprite->setActiveStatus(true);
+        }
+    }
+
 
 
 
     UIElement* lastActiveSpeakerSprite = nullptr; // Pointer to the last active speaker sprite
     map<string, vector<Dialogue>> dialogueSets;
     string defaultSpriteName;
+    string defaultSpriteName2;
     vector<Dialogue> dialogues;
     UIButton* currentDialogueButton;
     map<string, UIElement*> speakerIcons;
     map<string, UIElement*> speakerSprites;
+    map<string, UIElement*> speakerSprites2;
     vector<UIButton*> choiceButtons;
     bool choiceMade;
     size_t currentDialogueIndex;

@@ -75,7 +75,7 @@ public:
 		audioManager.LoadSound("hallwayMusic", "Assets/Sounds/Music/BGmusic_Corridor_NoTimer.mp3", 0.1f);
 		audioManager.LoadSound("trainAmbience", "Assets/Sounds/Ambience/Ambience_Train.mp3", 0.1f);
 		audioManager.LoadSound("bellRing", "Assets/Sounds/SFX_CallingBell.mp3", 0.5f);
-		audioManager.LoadSound("buttonClick", "Assets/Sounds/SFX_KnockDoor.mp3", 5.0f);
+		//audioManager.LoadSound("buttonClick", "Assets/Sounds/SFX_KnockDoor.mp3", 5.0f);
 
 		/*--------------------------------------------------------------📦CREATE GAMEOBJECT📦------------------------------------------------------------------------------------------------------- */
 		/*-------------------------------------------------------------🌲CREATE ENVIRONMENT🌲------------------------------------------------------------------------------------------------------- */
@@ -295,7 +295,7 @@ public:
 			}
 			else if(gameStateManager.getGameState() == GameState::ROOM2_STATE)
 			{
-				Application::Get().SetTimer(5000, [this]() { bellCabin2->startRinging(); }, false);
+				Application::Get().SetTimer(1000, [this]() { bellCabin2->startRinging(); }, false);
 			}
 			else if (gameStateManager.getGameState() == GameState::ROOM3_STATE)
 			{

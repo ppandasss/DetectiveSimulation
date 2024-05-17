@@ -16,7 +16,7 @@ enum GameState {
     ROOM2_STATE,
     ROOM3_STATE,
     ROOM4_STATE,
-    Ending
+    END_STATE
 };
 
 enum RoomState {

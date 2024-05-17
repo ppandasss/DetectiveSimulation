@@ -12,6 +12,7 @@
 #include "../Effects/ObjectsParallax.h"
 #include "../Effects/BackgroundParallax.h"
 #include "../GameObjects/Timer.h"
+#include "../GameObjects/CharacterData.h"
 #include <memory>
 
 using namespace std;
@@ -20,18 +21,21 @@ using namespace std;
 class Room2 : public Scene {
 
 private:
+    CharacterData* characterData = CharacterData::GetInstance();
     AudioManager& audioManager;
-
-    enum class RoomPhase {
-        TakeOrderPhase,
-        ServePhase,
-        InspectionPhase
-    };
-
-    RoomPhase currentPhase = RoomPhase::TakeOrderPhase;
-
     Timer* timer;
     Text* instructionText;
+    GameStateManager& gameStateManager = GameStateManager::GetInstance();
+    Door* door = DoorManager::GetInstance().GetDoorByName("Room2Door");
+    Door* kichenDoor = DoorManager::GetInstance().GetDoorByName("KitchenDoor");
+
+
+    UIElement* medicineFront;
+    UIButton* medicineFrontInspect;
+    UIElement* hat;
+    UIButton* hatInspect;
+    UIElement* bag;
+    UIButton* bagInspect;
 
 public:
     Room2() :audioManager(AudioManager::GetInstance()) {
@@ -80,20 +84,34 @@ public:
 
 
         //Inspection Items
-        UIElement* medicineFront = new UINormal("MedicineFront", "Assets/Images/Twins/Twin_Inspection_MedicineFront.png", glm::vec3(1.7f, -4.6f, 0.0f), glm::vec3(4.56f / 3 * sm, 1.76f / 3 * sm, 0.0f), true);
-        UIElement* hat = new UINormal("Hat", "Assets/Images/Twins/Twin_Inspection_Hat.png", glm::vec3(3.0f, 0.0f, 0.0f), glm::vec3(4.89f / 4 * sm, 4.05f / 4 * sm, 0.0f), true);
-        UIElement* bag = new UINormal("Bag", "Assets/Images/Twins/Twin_Inspection_Bag.png", glm::vec3(-3.139f, 0.224f, 0.0f), glm::vec3(5.58f / 3 * sm, 4.92f / 3 * sm, 0.0f), true);
+        medicineFront = new UINormal("MedicineFront", "Assets/Images/Twins/Twin_Inspection_MedicineFront.png", glm::vec3(1.7f, -4.6f, 0.0f), glm::vec3(4.56f / 3 * sm, 1.76f / 3 * sm, 0.0f), true);
+        hat = new UINormal("Hat", "Assets/Images/Twins/Twin_Inspection_Hat.png", glm::vec3(3.0f, 0.0f, 0.0f), glm::vec3(4.89f / 4 * sm, 4.05f / 4 * sm, 0.0f), true);
+        bag = new UINormal("Bag", "Assets/Images/Twins/Twin_Inspection_Bag.png", glm::vec3(-3.139f, 0.224f, 0.0f), glm::vec3(5.58f / 3 * sm, 4.92f / 3 * sm, 0.0f), true);
 
 
         //Inspection Item Buttons
-        UIButton* medicineFrontInspect = new UIButton("MedicineFront", "Assets/Images/Twins/Twin_Inspection_MedicineFront.png", glm::vec3(1.7f, -4.6f, 0.0f), glm::vec3(4.56f / 3 * sm, 1.76f / 3 * sm, 0.0f), true, false, "");
+        medicineFrontInspect = new UIButton("MedicineFront", "Assets/Images/Twins/Twin_Inspection_MedicineFront.png", glm::vec3(1.7f, -4.6f, 0.0f), glm::vec3(4.56f / 3 * sm, 1.76f / 3 * sm, 0.0f), true, false, "");
         medicineFrontInspect->SetHoverTexture("Assets/Images/Twins/Twin_Inspection_MedicineFront_Highlight.png");
-
-        UIButton* hatInspect = new UIButton("HatInspect", "Assets/Images/Twins/Twin_Inspection_Hat.png", glm::vec3(3.0f, 0.0f, 0.0f), glm::vec3(4.89f / 4 * sm, 4.05f / 4 * sm, 0.0f), true, false, "");
+        medicineFrontInspect->SetOnClickAction([this]() {
+            std::cout << "MedicineFront button clicked." << std::endl;
+            inspectingObject = "medicineFront";
+            });
+        hatInspect = new UIButton("HatInspect", "Assets/Images/Twins/Twin_Inspection_Hat.png", glm::vec3(3.0f, 0.0f, 0.0f), glm::vec3(4.89f / 4 * sm, 4.05f / 4 * sm, 0.0f), true, false, "");
         hatInspect->SetHoverTexture("Assets/Images/Twins/Twin_Inspection_Hat_Highlight.png");
-
-        UIButton* bagInspect = new UIButton("BagInspect", "Assets/Images/Twins/Twin_Inspection_Bag.png", glm::vec3(-3.139f, 0.224f, 0.0f), glm::vec3(5.58f / 3 * sm, 4.92f / 3 * sm, 0.0f), true, false, "");
+        hatInspect->SetOnClickAction([this]() {
+            std::cout << "Hat button clicked." << std::endl;
+            inspectingObject = "Hat";
+            });
+        bagInspect = new UIButton("BagInspect", "Assets/Images/Twins/Twin_Inspection_Bag.png", glm::vec3(-3.139f, 0.224f, 0.0f), glm::vec3(5.58f / 3 * sm, 4.92f / 3 * sm, 0.0f), true, false, "");
         bagInspect->SetHoverTexture("Assets/Images/Twins/Twin_Inspection_Bag_Highlight.png");
+        bagInspect->SetOnClickAction([this]() {
+            std::cout << "Bag button clicked." << std::endl;
+            inspectingObject = "Bag";
+            });
+
+        medicineFrontInspect->setActiveStatus(false);
+        hatInspect->setActiveStatus(false);
+        bagInspect->setActiveStatus(false);
 
         //UIs
         //Speaker Sprite emotion
@@ -131,7 +149,7 @@ public:
         UIElement* eyelynIcon = new UINormal("EvelynIcon", "Assets/Images/UI/Speaker_icon_Evelyn.png", glm::vec3(4.18f, 3.5f, 0.0f), glm::vec3(1.57f, 1.5f, 0.0f), true);
         UIElement* waiterIcon = new UINormal("WaiterIcon", "Assets/Images/UI/Speaker_icon_Waiter.png", glm::vec3(4.18f, 3.43f, 0.0f), glm::vec3(1.23f, 1.4f, 0.0f), true);
 
-        dialogueManager = make_unique<DialogueManager>("TwinDialogue", dialogueBox, "Nathaniel_Normal");
+        dialogueManager = make_unique<DialogueManager>("TwinDialogue", dialogueBox, "Nathaniel_Normal","Evelyn_Normal");
         dialogueManager->LoadDialogues("Order", "Assets/Dialogue/Twin/Twin_Order.xml");
         //Text
         instructionText = new Text("dialogueinstruction", "Use [Left-click] or [Space] to continue dialogue", "Assets/Fonts/mvboli.ttf", true);
@@ -139,7 +157,7 @@ public:
         instructionText->SetPosition(glm::vec3(5.9f, -4.8f, 0.0f));
         instructionText->SetColor(glm::vec3(1, 1, 1));
 
-        //Add SpeakSprite
+        //Add SpeakSprite1
         dialogueManager->AddSpeakerSprite("Nathaniel_Normal", nathanielNormal);
         dialogueManager->AddSpeakerSprite("Nathaniel_Happy", nathanielHappy);
         dialogueManager->AddSpeakerSprite("Nathaniel_Disappoint", nathanielDisappoint);
@@ -147,12 +165,13 @@ public:
         dialogueManager->AddSpeakerSprite("Nathaniel_Sad", nathanielSad);
         dialogueManager->AddSpeakerSprite("Nathaniel_Shy", nathanielShy);
 
-        dialogueManager->AddSpeakerSprite("Evelyn_Normal", evelynNormal);
-        dialogueManager->AddSpeakerSprite("Evelyn_Happy", evelynHappy);
-        dialogueManager->AddSpeakerSprite("Evelyn_Disappoint", evelynDisappoint);
-        dialogueManager->AddSpeakerSprite("Evelyn_Upset", evelynUpset);
-        dialogueManager->AddSpeakerSprite("Evelyn_Sad", evelynSad);
-        dialogueManager->AddSpeakerSprite("Evelyn_Shy", evelynShy);
+        //Add SpeakSprite2
+        dialogueManager->AddSpeakerSprite2("Evelyn_Normal", evelynNormal);
+        dialogueManager->AddSpeakerSprite2("Evelyn_Happy", evelynHappy);
+        dialogueManager->AddSpeakerSprite2("Evelyn_Disappoint", evelynDisappoint);
+        dialogueManager->AddSpeakerSprite2("Evelyn_Upset", evelynUpset);
+        dialogueManager->AddSpeakerSprite2("Evelyn_Sad", evelynSad);
+        dialogueManager->AddSpeakerSprite2("Evelyn_Shy", evelynShy);
 
         //Add SpeakerIcon
         dialogueManager->AddSpeakerIcon("N", nathanielIcon);
@@ -259,50 +278,182 @@ public:
     void OnEnter() override {
         //Scene::OnEnter();  // Call base class if there's relevant logic  
         audioManager.PlaySound("cabinMusic", true);
-        audioManager.PlaySound("knockDoor");
-        audioManager.StopSound("Player_footsteps");
+        if (gameStateManager.getRoomState() == RoomState::Prepare && KitchenData::GetInstance()->checkCompletePlate())
+        {
+            GameStateManager::GetInstance().SetRoomState(RoomState::Serve);
+        }
+        SetSequencesDialogue();
     }
+
+
+    void SetSequencesDialogue()
+    {
+        switch (gameStateManager.getRoomState()) {
+        case RoomState::Order:
+            dialogueManager->SetDialogueSet("Order");
+            orderDialogueKey = "Order";
+            break;
+        case RoomState::Serve:
+
+            if (characterData->getServeTimeLevel(Cabin::CABIN21) == ONTIME) {
+                serveDialogueKey = "Serve_OnTime";
+            }
+            else {
+                serveDialogueKey = "Serve_Late";
+            }
+            dialogueManager->SetDialogueSet(serveDialogueKey);
+            std::cout << "Setting serve dialogue: " << serveDialogueKey << std::endl;
+
+            // Reset flags
+            teaDialogueSet = false;
+            sandwichDialogueSet = false;
+            dessertDialogueSet = false;
+            SetMealReactionDialogue();
+            //SetScoredDialogue();
+            //SetInteractDialogue();
+
+            break;
+        }
+    }
+
+    void SetMealReactionDialogue() {
+
+        // Get instance of KitchenData to access the player's choices
+        KitchenData* kitchen = KitchenData::GetInstance();
+
+        // Determine the dialogue key based on the tea choice as an example
+        switch (kitchen->getTea()) {
+
+        case EARLGREYTEA:
+            dialogueManager->LoadDialogues("MealReact_Tea_EarlGray", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Tea_Assam_EarlGray.xml");
+            teaDialogueKey = "MealReact_Tea_EarlGray";
+            break;
+        case ASSAMTEA:
+            dialogueManager->LoadDialogues("MealReact_Tea_Assam", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Tea_Assam_EarlGray.xml");
+            teaDialogueKey = "MealReact_Tea_Assam";
+            break;
+        case CHAMOMILETEA:
+            dialogueManager->LoadDialogues("MealReact_Tea_Charmomile", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Tea_Chamomile.xml");
+            teaDialogueKey = "MealReact_Tea_Charmomile";
+            break;
+        case GREENTEA:
+            dialogueManager->LoadDialogues("MealReact_Tea_GreenTea", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Tea_GreenTea.xml");
+            teaDialogueKey = "MealReact_Tea_GreenTea";
+            break;
+        }
+
+        switch (kitchen->getSandwich()) {
+        case SALMON:
+            dialogueManager->LoadDialogues("MealReact_Sandwich_Salmon", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Sandwich_Salmon_Beef.xml");
+            sandwichDialogueKey = "MealReact_Sandwich_Salmon";
+            break;
+        case BEEF:
+            dialogueManager->LoadDialogues("MealReact_Sandwich_Salmon", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Sandwich_Salmon_Beef.xml");
+            sandwichDialogueKey = "MealReact_Sandwich_Salmon";
+            break;
+        case EGG:
+            dialogueManager->LoadDialogues("MealReact_Sandwich_Egg", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Sandwich_Egg.xml");
+            sandwichDialogueKey = "MealReact_Sandwich_Egg";
+            break;
+        case CUCUMBER:
+            dialogueManager->LoadDialogues("MealReact_Sandwich_Cucumber", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Sandwich_Cucumber.xml");
+            sandwichDialogueKey = "MealReact_Sandwich_Cucumber";
+            break;
+        }
+
+        switch (kitchen->getDessert()) {
+        case ECLAIR:
+            dialogueManager->LoadDialogues("MealReact_Dessert_Eclair", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Pastry_Eclair_Macaron_Tart.xml");
+            dessertDialogueKey = "MealReact_Dessert_Eclair";
+            break;
+        case MACARON:
+            dialogueManager->LoadDialogues("MealReact_Dessert_Macaron", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Pastry_Eclair_Macaron_Tart.xml");
+            dessertDialogueKey = "MealReact_Dessert_Macaron";
+            break;
+        case TART:
+            dialogueManager->LoadDialogues("MealReact_Dessert_Tart", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Pastry_Eclair_Macaron_Tart.xml");
+            dessertDialogueKey = "MealReact_Dessert_Tart";
+            break;
+        case SCONE:
+            dialogueManager->LoadDialogues("MealReact_Dessert_Scone", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Pastry_Scone.xml");
+            dessertDialogueKey = "MealReact_Dessert_Scone";
+            break;
+        }
+
+        std::cout << "Tea Dialogue Key set to: " << teaDialogueKey << std::endl;
+        std::cout << "Sandwich Dialogue Key set to: " << sandwichDialogueKey << std::endl;
+        std::cout << "Dessert Dialogue Key set to: " << dessertDialogueKey << std::endl;
+    }
+
 
     void Update(float dt, long frame) override {
 
         Scene::Update(dt, frame);
         backgroundParallaxManager->Update(dt);
-        switch (currentPhase) {
-        case RoomPhase::TakeOrderPhase:
-            // Handle TakeOrderPhase logic
-            dialogueManager->Update(dt, frame);
-            if (dialogueManager->IsDialogueFinished("Order")) {
-                instructionText->SetContent("Press [E] to leave");
-                currentPhase = RoomPhase::ServePhase;
+        ObjectsparallaxManager->UpdateLayers();
+        dialogueManager->Update(dt, frame);
+
+        UpdateDialogueProgress();
+        HandleKeyInputs();
+
+
+    }
+
+     void UpdateDialogueProgress() {
+            // Manage different room states
+            if (gameStateManager.getGameState() != GameState::ROOM1_STATE) return;
+
+            switch (gameStateManager.getRoomState()) {
+            case RoomState::Order:
+                UpdateRoomState("Order", RoomState::Prepare);
+                break;
+            case RoomState::Serve:
+                //ManageServeState();
+                break;
+            case RoomState::Score:
+                //ManageScoreState();
+                break;
+            case RoomState::MealReact:
+                //ManageMealReactions();
+                break;
+            case RoomState::InspectionStart:
+                //ManageInspectionStartState();
+                break;
+            case RoomState::Inspection:
+                //ManageInspectionState();
+                break;
+            case RoomState::InspectionEnd:
+                //ManageInspectionEndState();
+
+                break;
             }
-            break;
+     }
 
-        case RoomPhase::ServePhase:
-            // Handle ServePhase logic
-            // For now, leave blank as per the instructions 
-            break;
+     void UpdateRoomState(const string& currentDialogueKey, RoomState nextState) {
+         if (dialogueManager->IsDialogueFinished(currentDialogueKey)) {
+             SetInstruction("Press [E] to leave");
+             if (input.Get().GetKeyDown(GLFW_KEY_E)) {
+                 gameStateManager.SetRoomState(nextState);
+             }
+         }
+     }
 
-        case RoomPhase::InspectionPhase:
-            // Handle InspectionPhase logic
-            // For now, leave blank as per the instructions
-            break;
+    void PromptForNextDialogue(const string& nextKey, bool& flag) {
+        SetInstruction("Press [Space] or [Mouse] to continue.");
+        if (!flag && (input.Get().GetKeyDown(GLFW_KEY_SPACE) || input.Get().GetMouseButtonDown(0))) {
+            dialogueManager->SetDialogueSet(nextKey);
+            flag = true;
         }
+    }
 
-        // Allow leaving the room only in phases other than TakeOrderPhase
-        if (currentPhase != RoomPhase::TakeOrderPhase && input.Get().GetKeyDown(GLFW_KEY_E)) {
+    void SetInstruction(const string& message) {
+        instructionText->SetContent(message);
+    }
 
-            Application::Get().SetScene("Hallway");
-
-            //Start timer
-            timer->start(300);
-
-        }
-
-        // Handle dialogue progression
+    void HandleKeyInputs() {
         if (input.Get().GetKeyDown(GLFW_KEY_SPACE) || input.Get().GetMouseButtonDown(0)) {
             dialogueManager->PlayNextDialogue();
         }
-
     }
 
     void Render() override {
@@ -316,6 +467,7 @@ public:
         // Scene::OnExit();  // Call base class if there's relevant logic
         audioManager.PlaySound("slideDoor");
         audioManager.PauseSound("cabinMusic");
+        BellManager::GetInstance().StopAllRinging();
     }
 
 private:
@@ -324,6 +476,35 @@ private:
     unique_ptr<DialogueManager> dialogueManager;
     unique_ptr<ObjectsParallax> ObjectsparallaxManager;
     unique_ptr<BackgroundParallax> backgroundParallaxManager;
+    string orderDialogueKey;
+    string currentDialogueKey;
+    string serveDialogueKey;
+    string teaDialogueKey;
+    string sandwichDialogueKey;
+    string dessertDialogueKey;
+    string scoreDialogueKey;
+    string inspectStartDialogueKey;
+    string inspectMedicineFrontDialogueKey;
+    string inspectHatDialogueKey;
+    string inspectBagDialogueKey;
+    string inspectEndDialogueKey;
 
+    bool orderDialogueSet = false;
+    bool serveDialogueSet = false;
+    bool teaDialogueSet = false;
+    bool sandwichDialogueSet = false;
+    bool dessertDialogueSet = false;
+    bool scoreDialogueSet = false;
+    bool inspectStartDialogueSet = false;
+    bool inspectEndDialogueSet = false;
+    bool inspectMedicineFrontDialogueSet = false;
+    bool inspectHatDialogueSet = false;
+    bool inspectBagDialogueSet = false;
+
+    bool isMedicineFrontInspected = false;
+    bool isHatInspected = false;
+    bool isBagInspected = false;
+
+    string inspectingObject;
 
 };

@@ -339,5 +339,6 @@
     <Xml Include="Assets\Dialogue\Martha\Martha_Order.xml" />
     <Xml Include="Assets\Dialogue\Martha\Martha_Serve_Late.xml" />
     <Xml Include="Assets\Dialogue\Martha\Martha_Serve_OnTime.xml" />
+    <Xml Include="Assets\Dialogue\Twin\Twin_Order.xml" />
   </ItemGroup>
 </Project>

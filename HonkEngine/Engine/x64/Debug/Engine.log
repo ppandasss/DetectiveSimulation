@@ -40,7 +40,7 @@ C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Timer.h(102,20): 
 C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Hallway.h(324,26): warning C4244: 'argument': conversion from 'long' to 'float', possible loss of data
   (compiling source file 'Code/Main.cpp')
   
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Dialogue\Dialoguemanager.h(229,25): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Dialogue\Dialoguemanager.h(240,25): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'Code/Main.cpp')
   
 C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Kitchen.h(159,13): warning C4305: 'initializing': truncation from 'double' to 'float'
