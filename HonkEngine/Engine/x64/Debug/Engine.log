@@ -1,6 +1,15 @@
-﻿  Main.cpp
-C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(111,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(112,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+﻿  Application.cpp
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(113,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(114,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Application.cpp(216,36): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Engine.cpp
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(113,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(114,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,13): warning C4099: 'Mesh': type name first seen using 'class' now seen using 'struct'
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): message : see declaration of 'Mesh'
+  Main.cpp
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(113,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(114,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,13): warning C4099: 'Mesh': type name first seen using 'class' now seen using 'struct'
 C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): message : see declaration of 'Mesh'
 C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Text\TextRenderer.h(12,11): warning C4099: 'Mesh': type name first seen using 'struct' now seen using 'class'
@@ -18,4 +27,14 @@ C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\GameOb
 C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Hallway.h(321,26): warning C4244: 'argument': conversion from 'long' to 'float', possible loss of data
 C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Dialogue\Dialoguemanager.h(227,1): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Kitchen.h(157,1): warning C4305: 'initializing': truncation from 'double' to 'float'
+  Renderer.cpp
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(113,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(114,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,13): warning C4099: 'Mesh': type name first seen using 'class' now seen using 'struct'
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): message : see declaration of 'Mesh'
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Renderer\Renderer.cpp(63,53): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  TextRenderer.cpp
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(113,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(114,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
   Engine.vcxproj -> C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\x64\Debug\Engine.exe

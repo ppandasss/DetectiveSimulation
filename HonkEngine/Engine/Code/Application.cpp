@@ -30,12 +30,15 @@ void Application::ToggleFullscreen(GLFWwindow* window) {
     }
 }
 
+
+
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
 // ---------------------------------------------------------------------------------------------------------
 void processInput(GLFWwindow* window)
 {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-        glfwSetWindowShouldClose(window, true);
+        Application::Get().exitGame();
+        //glfwSetWindowShouldClose(window, true);
 
     static bool fsTogglePressedLastFrame = false;
     bool fsToggle = glfwGetKey(window, GLFW_KEY_F11) == GLFW_PRESS;
@@ -61,6 +64,17 @@ void processInput(GLFWwindow* window)
         camera.ZoomOut(0.01f);  // Zoom in by 0.1 units
     }
 
+    static bool mousePressed = false;
+
+    if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS && !mousePressed) {
+        Application::Get().SetClickedCursor();  // Change to clicked cursor
+        mousePressed = true;
+    }
+    else if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_RELEASE && mousePressed) {
+        Application::Get().SetNormalCursor();  // Revert to normal cursor
+        mousePressed = false;
+    }
+
 }
 
 Application* Application::s_instance = nullptr;
@@ -72,6 +86,16 @@ Application::~Application() {
     for (auto& scene : m_sceneMap) {
         delete scene.second;
     }
+
+    if (normalCursor) {
+        glfwDestroyCursor(normalCursor);
+        normalCursor = nullptr;
+    }
+    if (clickedCursor) {
+        glfwDestroyCursor(clickedCursor);
+        clickedCursor = nullptr;
+    }
+
     glfwTerminate();
 }
 
@@ -143,6 +167,9 @@ Application::Application(int win_width, int win_height, const char* title)
 
     }
     glfwMakeContextCurrent(m_window);
+
+    LoadCursors();
+
     glfwSetFramebufferSizeCallback(m_window, framebuffer_size_callback);
 
     // glad: load all OpenGL function pointers

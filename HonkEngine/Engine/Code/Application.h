@@ -18,6 +18,8 @@
 #include "Renderer/Renderer.h"
 #include "Camera/Camera.h"
 #include "Audio/AudioManager.h"
+#include "stb_image.h"
+
 
 // settings
 const unsigned int SCR_WIDTH = 1920;
@@ -114,11 +116,52 @@ public:
 		return glm::vec2(xpos, ypos);
 	}
 
+	void exitGame() {
+		if (m_window) {
+			glfwSetWindowShouldClose(m_window, true);
+		}
+	}
+
 	static Renderer& GetRenderer() { return s_instance->m_renderer; }
 	static Input& GetInput() { return s_instance->m_input; }
 	static Camera& GetCamera() { return s_instance->m_camera; }
 
 	void ToggleFullscreen(GLFWwindow* window);
+
+	//CURSOR FUNCTIONS
+
+	GLFWcursor* LoadCursor(const char* imagePath, int xhot, int yhot) {
+		int width, height, channels;
+		unsigned char* data = stbi_load(imagePath, &width, &height, &channels, 4);
+		if (!data) {
+			std::cerr << "Cursor image load failed: " << imagePath << std::endl;
+			return nullptr;
+		}
+
+		GLFWimage cursorImg;
+		cursorImg.width = width;
+		cursorImg.height = height;
+		cursorImg.pixels = data;
+
+		GLFWcursor* cursor = glfwCreateCursor(&cursorImg, xhot, yhot);
+		stbi_image_free(data);
+		return cursor;
+
+	}
+
+
+	void LoadCursors() {
+		normalCursor = LoadCursor("Assets/Images/normal_cursor.png", 8, 8);
+		clickedCursor = LoadCursor("Assets/Images/clicked_cursor.png", 8, 8); 
+
+		if (normalCursor) {
+			glfwSetCursor(m_window, normalCursor);  // Set the normal cursor as default
+		}
+
+	}
+
+	void SetNormalCursor() { glfwSetCursor(m_window, normalCursor); }
+	void SetClickedCursor() { glfwSetCursor(m_window, clickedCursor); }
 
 
 private:
@@ -136,5 +179,8 @@ private:
 	Input m_input;
 	Scene* m_currentScene = nullptr;
 	std::map<std::string, Scene*> m_sceneMap;
+
+	GLFWcursor* normalCursor = nullptr;
+	GLFWcursor* clickedCursor = nullptr;
 
 };

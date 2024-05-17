@@ -71,8 +71,8 @@ public:
                     currentTime = 0.0f;
                     engineLogo->SetAlpha(0.0f); // Ensure it's fully transparent
 
-                    Application::Get().SetScene("MainMenu");
-                    //Application::Get().SetScene("Hallway"); // Change scene when fully faded out
+                    Application::Get().SetScene("MainMenu");// Change scene when fully faded out
+                     
                 }
                 break;
             }

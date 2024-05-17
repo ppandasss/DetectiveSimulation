@@ -170,6 +170,7 @@ public:
 			return;
 
 		}
+
 		for (auto& object : m_gameObjects) {
 
 			if (object->getActiveStatus()) { //CHECK ACTIVE STATUS
