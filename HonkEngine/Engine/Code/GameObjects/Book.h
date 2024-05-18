@@ -68,6 +68,8 @@ public:
 
 		UIButton* CloseJournalButton = new UIButton("CloseButton", "Assets/Images/Journal/Journal_CloseButton.png", glm::vec3(5.25f, 4.0f, 0.0f), glm::vec3(1.04f, 1.70f, 0.0f), true, false, "");
 		CloseJournalButton->SetOnClickAction([this]() { closeJournal(); });
+		CloseJournalButton->SetHoverTexture("Assets/Images/Journal/Journal_CloseButton.png");
+
 
 		m_gameObjects.push_back(BackGround);
 		m_gameObjects.push_back(JournalCover);

@@ -1,12 +1,23 @@
 #pragma once
 
 #include "Page.h"
+#include"../Audio/AudioManager.h"	
+
 
 class MainPage : public Page {
 
+private:
+
+	AudioManager& audioManager;
+
 public:
 
-	MainPage() :Page() {
+	MainPage() :Page() , audioManager(AudioManager::GetInstance())
+	{
+
+		audioManager.LoadSound("EvidenceWrite", "Assets/Sounds/Journal/SFX_EvidenceWrite1.mp3", 2.0f);
+		audioManager.LoadSound("BombUnderline", "Assets/Sounds/Journal/SFX_BombUnderline3.mp3", 4.0f);
+		audioManager.LoadSound("SpyCircle", "Assets/Sounds/Journal/SFX_SpyCircle.mp3", 2.0f);
 
 
 		// DRAGGABLE PAPERS
@@ -42,7 +53,7 @@ public:
 
 		UIButton* Suspect1 = new UIButton("Suspect1", "Assets/Images/Journal/CaseSummary_Icon_Martha.png", glm::vec3(1.25f, 2.15f, 0.0f), glm::vec3(0.864f, 0.81f, 0.0f), true, false, "");
 		Suspect1->SetOnClickAction([this]() { setSpy1(); });
-		Suspect1->SetHoverTexture("Assets/Images/Journal/CaseSummary_Icon_Nathaniel.png");
+		//Suspect1->SetHoverTexture("Assets/Images/Journal/CaseSummary_Icon_Nathaniel.png");
 
 		Text* Cabin1 = new Text("Cabin1", "Cabin 1", "Assets/Fonts/ESA-m.ttf");
 		Cabin1->SetPosition(glm::vec3(0.85f, 1.5f, 0.0f));
@@ -200,6 +211,7 @@ public:
 			redCircle->showObject = true;
 		}
 		redCircle->gameObj->SetPosition(glm::vec3(1.15f, 1.55f, 0.0f));
+		audioManager.PlaySound("SpyCircle");
 	};
 
 	void setSpy21() {
@@ -211,7 +223,7 @@ public:
 			redCircle->showObject = true;
 		}
 		redCircle->gameObj->SetPosition(glm::vec3(2.65f, 1.55f, 0.0f));
-
+		audioManager.PlaySound("SpyCircle");
 	};
 
 	void setSpy22() {
@@ -224,7 +236,7 @@ public:
 			redCircle->showObject = true;
 		}
 		redCircle->gameObj->SetPosition(glm::vec3(4.15f, 1.55f, 0.0f));
-
+		audioManager.PlaySound("SpyCircle");
 	};
 
 	void setSpy3() {
@@ -237,7 +249,7 @@ public:
 			redCircle->showObject = true;
 		}
 		redCircle->gameObj->SetPosition(glm::vec3(1.15f, 0.25f, 0.0f));
-
+		audioManager.PlaySound("SpyCircle");
 	};
 
 	void setSpy4() {
@@ -251,6 +263,9 @@ public:
 			redCircle->showObject = true;
 		}
 		redCircle->gameObj->SetPosition(glm::vec3(2.65f, 0.25f, 0.0f));
+
+		audioManager.PlaySound("SpyCircle");
+
 	};
 
 	void clickEvidenceButton() {
@@ -262,8 +277,7 @@ public:
 
 		m_journalData->incrementEvidence();
 		m_journalData->setCurrentEvidencetext(EvidenceButton);
-
-
+		audioManager.PlaySound("EvidenceWrite");
 	}
 
 	////--------------------- BOMB LOCATION FUNCTIONS ------------------------
@@ -275,6 +289,7 @@ public:
 			redUnderline->showObject = true;
 		}
 		redUnderline->gameObj->SetPosition(glm::vec3(1.66f, -2.36f, 0.0f));
+		audioManager.PlaySound("BombUnderline");
 	};
 
 	void setLocationHolyChurch() {
@@ -284,6 +299,7 @@ public:
 			redUnderline->showObject = true;
 		}
 		redUnderline->gameObj->SetPosition(glm::vec3(3.75f, -2.36f, 0.0f));
+		audioManager.PlaySound("BombUnderline");
 	};
 
 	void setLocationCouncil() {
@@ -294,6 +310,7 @@ public:
 			redUnderline->showObject = true;
 		}
 		redUnderline->gameObj->SetPosition(glm::vec3(1.65f, -2.84f, 0.0f));
+		audioManager.PlaySound("BombUnderline");
 	};
 
 	void setLocationSupremeCourt() {
@@ -303,6 +320,7 @@ public:
 			redUnderline->showObject = true;
 		}
 		redUnderline->gameObj->SetPosition(glm::vec3(3.7f, -2.85f, 0.0f));
+		audioManager.PlaySound("BombUnderline");
 	};
 
 

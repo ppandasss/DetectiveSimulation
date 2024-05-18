@@ -21,7 +21,7 @@ public:
 	UIButtonEmpty* teaDropArea = new UIButtonEmpty("teaDropArea", glm::vec3(-3.4f, -0.5f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
 	UIButtonEmpty* sandwichDropArea = new UIButtonEmpty("sandwichDropArea", glm::vec3(-6.35f, -0.6f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
 	UIButtonEmpty* dessertDropArea = new UIButtonEmpty("dessertDropArea", glm::vec3(-4.85f, 1.57f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
-	UIButtonEmpty* optionalDropArea = new UIButtonEmpty("optionalDropArea", glm::vec3(-4.5f, -0.4f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
+	UIButtonEmpty* optionalDropArea = new UIButtonEmpty("optionalDropArea", glm::vec3(-4.6f, -0.85f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
 
 	Kitchen() :audioManager(AudioManager::GetInstance()) {
 		//platePositionArea->SetButtonText("Drop Area");
@@ -36,7 +36,7 @@ public:
 		audioManager.LoadSound("plateSound4", "Assets/Sounds/Kitchen/SFX_MealSelect4.mp3", 1.0f);
 		audioManager.LoadSound("slideDoor", "Assets/Sounds/SFX_SlideDoor.mp3", 2.5f);
 
-		audioManager.LoadSound("servingBellRing", "Assets/Sounds/Kitchen/SFX_ServingBell.mp3", 0.5f);
+		audioManager.LoadSound("servingBellRing", "Assets/Sounds/Kitchen/SFX_ServingBell.mp3", 0.8f);
 
 		/*--------------------------------------------------------------CREATE GAMEOBJECT------------------------------------------------------------------------------------------------------- */
 
@@ -265,7 +265,7 @@ public:
 
 		GameObject* MilkDish = new UIObject("MilkDish", "Assets/Images/Kitchen/Food/Tea/Tea_MilkCup.png", true);		
 		MilkDish->SetPosition(OptionalDishPosition);
-		MilkDish->SetScale(glm::vec3(2.42f * 0.45f, 1.98f * 0.45f, 0.0f));
+		MilkDish->SetScale(glm::vec3(2.42f * 0.35f, 1.98f * 0.35f, 0.0f));
 
 		/*--------------------------------------------------------------PUSH BACK------------------------------------------------------------------------------------------------------- */
 
@@ -313,7 +313,6 @@ public:
 		m_gameObjects.push_back(SconeDish);
 		m_gameObjects.push_back(MacaronDish);
 
-		m_gameObjects.push_back(MilkDish);
 		m_gameObjects.push_back(AssamBlack_dish);
 		m_gameObjects.push_back(EarlGreyTea_dish);
 		m_gameObjects.push_back(GreenTea_dish);
@@ -325,6 +324,7 @@ public:
 		m_gameObjects.push_back(BeefDish);
 
 		m_gameObjects.push_back(Tray);
+		m_gameObjects.push_back(MilkDish);
 		m_gameObjects.push_back(Note);
 
 
@@ -743,7 +743,7 @@ private:
 	const glm::vec3 TeaDishPosition = glm::vec3(-3.4f, -0.35f, 0.0f);
 	const glm::vec3 SandwichDishPosition = glm::vec3(-6.35f, -0.6f, 0.0f);
 	const glm::vec3 DessertDishPosition = glm::vec3(-4.85f, 1.57f, 0.0f);
-	const glm::vec3 OptionalDishPosition = glm::vec3(-4.6f, -0.8f, 0.0f);
+	const glm::vec3 OptionalDishPosition = glm::vec3(-4.6f, -0.87f, 0.0f);
 
 	const float snapThreshold = 2.0f;
 

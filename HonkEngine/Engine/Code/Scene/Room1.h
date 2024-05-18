@@ -42,7 +42,7 @@ public:
 
         timer = &Timer::GetInstance();
 
-        audioManager.LoadSound("cabinMusic", "Assets/Sounds/Music/BGmusic_Cabin.mp3", 4.0f);
+        audioManager.LoadSound("cabinMusic", "Assets/Sounds/Music/BGmusic_Cabin.mp3", 5.0f);
         audioManager.LoadSound("knockDoor", "Assets/Sounds/SFX_KnockDoor.mp3", 2.0f);
         audioManager.LoadSound("slideDoor", "Assets/Sounds/SFX_SlideDoor.mp3", 2.5f);
       
@@ -133,9 +133,9 @@ public:
             glm::vec3(0.0f, -1.8f, 0.0f), glm::vec3(7.47f * 0.9f, 1.07f * 0.9f, 0.0f),
             true, true, "Assets/Fonts/OverpassMono-SemiBold.ttf");
 
-        dialogueChoice1->SetHoverTexture("Assets/Images/DialogueChoiceBox.png");
-        dialogueChoice2->SetHoverTexture("Assets/Images/DialogueChoiceBox.png");
-        dialogueChoice3->SetHoverTexture("Assets/Images/DialogueChoiceBox.png");
+        dialogueChoice1->SetHoverTexture("Assets/Images/UI/DialogueChoiceBox_Hover.png");
+        dialogueChoice2->SetHoverTexture("Assets/Images/UI/DialogueChoiceBox_Hover.png");
+        dialogueChoice3->SetHoverTexture("Assets/Images/UI/DialogueChoiceBox_Hover.png");
 
         //Speak Icons
         UIElement* marthaIcon = new UINormal("MarthaIcon", "Assets/Images/UI/Speaker_icon_Martha.png", glm::vec3(4.18f, 3.5f, 0.0f), glm::vec3(2.19f, 1.57f, 0.0f), true);

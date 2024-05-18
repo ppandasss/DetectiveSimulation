@@ -74,8 +74,8 @@ public:
 		/*--------------------------------------------------------------🔊LOAD AUDDIO🔊------------------------------------------------------------------------------------------------------- */
 		audioManager.LoadSound("hallwayMusic", "Assets/Sounds/Music/BGmusic_Corridor_NoTimer.mp3", 0.1f);
 		audioManager.LoadSound("trainAmbience", "Assets/Sounds/Ambience/Ambience_Train.mp3", 0.1f);
-		audioManager.LoadSound("bellRing", "Assets/Sounds/SFX_CallingBell.mp3", 0.5f);
-		//audioManager.LoadSound("buttonClick", "Assets/Sounds/SFX_KnockDoor.mp3", 5.0f);
+		audioManager.LoadSound("bellRing", "Assets/Sounds/SFX_CallingBell.mp3", 0.4f);
+		audioManager.LoadSound("buttonClick", "Assets/Sounds/SFX_DialogueChoice.mp3", 0.45f);
 
 		/*--------------------------------------------------------------📦CREATE GAMEOBJECT📦------------------------------------------------------------------------------------------------------- */
 		/*-------------------------------------------------------------🌲CREATE ENVIRONMENT🌲------------------------------------------------------------------------------------------------------- */
@@ -282,7 +282,8 @@ public:
 		audioManager.PlaySound("hallwayMusic", true);
 		audioManager.PlaySound("trainAmbience", true);
 
-		room3Door->setPermission(true);
+		//room3Door->setPermission(true);
+		//room4Door->setPermission(true);
 		kitchenDoor->setPermission(true);
 
 		//Set each state's order phrase behavior

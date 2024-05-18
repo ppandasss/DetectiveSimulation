@@ -38,7 +38,7 @@ public:
 
         timer = &Timer::GetInstance();
 
-        audioManager.LoadSound("cabinMusic", "Assets/Sounds/Music/BGmusic_Cabin.mp3", 4.0f);
+        audioManager.LoadSound("cabinMusic", "Assets/Sounds/Music/BGmusic_Cabin.mp3", 5.0f);
         audioManager.LoadSound("knockDoor", "Assets/Sounds/SFX_KnockDoor.mp3", 2.0f);
         audioManager.LoadSound("slideDoor", "Assets/Sounds/SFX_SlideDoor.mp3", 2.5f);
 
@@ -93,7 +93,7 @@ public:
         UIButton* messyClothesInspect = new UIButton("MessyClothesInspect", "Assets/Images/Archibald/Archibald_Inspection_MessyClothes.png", glm::vec3(-3.58f, -1.99f, 0.0f), glm::vec3(6.6f * sm, 7.6f * sm, 0.0f), true, false, "");
         messyClothesInspect->SetHoverTexture("Assets/Images/Archibald/Archibald_Inspection_MessyClothes_Highlight.png");
 
-
+         
 
         //UIs
         //Speaker Sprite emotion
@@ -108,6 +108,7 @@ public:
         UIButton* dialogueBox = new UIButton("DialogueBox", "Assets/Images/UI/DialogueBox.png",
             glm::vec3(0.0f, 3.5f, 0.0f), glm::vec3(10.96f, 2.05f, 0.0f),
             true, true, "Assets/Fonts/OverpassMono.ttf");
+
         //Choices
         UIButton* dialogueChoice1 = new UIButton("DialogueChoiceBox1", "Assets/Images/UI/DialogueChoiceBox.png",
             glm::vec3(0.0f, -2.8f, 0.0f), glm::vec3(7.47f * 0.9f, 1.07f * 0.9f, 0.0f),
@@ -118,6 +119,11 @@ public:
         UIButton* dialogueChoice3 = new UIButton("DialogueChoiceBox3", "Assets/Images/UI/DialogueChoiceBox.png",
             glm::vec3(0.0f, -1.8f, 0.0f), glm::vec3(7.47f * 0.9f, 1.07f * 0.9f, 0.0f),
             true, true, "Assets/Fonts/OverpassMono-SemiBold.ttf");
+
+        dialogueChoice1->SetHoverTexture("Assets/Images/UI/DialogueChoiceBox_Hover.png");
+        dialogueChoice2->SetHoverTexture("Assets/Images/UI/DialogueChoiceBox_Hover.png");
+        dialogueChoice3->SetHoverTexture("Assets/Images/UI/DialogueChoiceBox_Hover.png");
+
         //Speak Icons
         UIElement* archibaldIcon = new UINormal("ArchibaldIcon", "Assets/Images/UI/Speaker_icon_Archibald.png", glm::vec3(4.18f, 3.5f, 0.0f), glm::vec3(1.4f, 1.57f, 0.0f), true);
         UIElement* waiterIcon = new UINormal("WaiterIcon", "Assets/Images/UI/Speaker_icon_Waiter.png", glm::vec3(4.18f, 3.43f, 0.0f), glm::vec3(1.23f, 1.4f, 0.0f), true);
