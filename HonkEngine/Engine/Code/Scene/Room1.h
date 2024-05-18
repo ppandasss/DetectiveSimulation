@@ -363,14 +363,17 @@ public:
         case LOW:
             dialogueManager->LoadDialogues("Score_Low_Start", "Assets/Dialogue/Martha/MealResult/Martha_MealResult_Low.xml");
             scoreDialogueKey = "Score_Low_Start";
+            cout << "Score Low" << endl;
             break;
         case AVERAGE:
             dialogueManager->LoadDialogues("Score_Average_Start", "Assets/Dialogue/Martha/MealResult/Martha_MealResult_Average.xml");
             scoreDialogueKey = "Score_Average_Start";
+            cout << "Score Average" << endl;    
             break;
         case INFORMATIVE:
             dialogueManager->LoadDialogues("Score_Informative_Start", "Assets/Dialogue/Martha/MealResult/Martha_MealResult_Informative.xml");
             scoreDialogueKey = "Score_Informative_Start";
+            cout << "Score Informative" << endl;
             break;
         default:
             break;
@@ -393,6 +396,8 @@ public:
             inspectLetterDialogueKey = "Inspect_Low_Letter";
             inspectCaneDialogueKey = "Inspect_Low_Cane";
             inspectEndDialogueKey = "Inspect_Low_End";
+
+            cout << "Interaction Low" << endl;
             break;
         case InteractionLevel::AVERAGE:
             std::cout << "Loading AVERAGE interaction level dialogues." << std::endl;
@@ -404,6 +409,8 @@ public:
             inspectLetterDialogueKey = "Inspect_Average_Letter";
             inspectCaneDialogueKey = "Inspect_Average_Cane";
             inspectEndDialogueKey = "Inspect_Average_End";
+
+            cout << "Interaction Average" << endl;
             break;
         case InteractionLevel::INFORMATIVE:
             std::cout << "Loading INFORMATIVE interaction level dialogues." << std::endl;
@@ -415,6 +422,8 @@ public:
             inspectLetterDialogueKey = "Inspect_Informative_Letter";
             inspectCaneDialogueKey = "Inspect_Informative_Cane";
             inspectEndDialogueKey = "Inspect_Informative_End";
+
+            cout << "Interaction Informative" << endl;
             break;
         }
 

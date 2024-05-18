@@ -31,8 +31,8 @@ public:
         int currentRow = m_animator.GetCurrentRow();
 
         // Debugging output
-        std::cout << "Current Frame: " << currentFrame << std::endl;
-        std::cout << "Current Row: " << currentRow << std::endl;
+        //std::cout << "Current Frame: " << currentFrame << std::endl;
+       // std::cout << "Current Row: " << currentRow << std::endl;
 
         // Use the current frame and row for your sprite sheet
         animY = static_cast<float>(currentRow);
@@ -61,7 +61,7 @@ public:
             isRinging = false;
             currentAnimation = "idle";
             m_animator.SetAnimation(currentAnimation);
-            AudioManager::GetInstance().StopSound("bellRing");
+           // AudioManager::GetInstance().StopSound("bellRing");
         }
     }
 

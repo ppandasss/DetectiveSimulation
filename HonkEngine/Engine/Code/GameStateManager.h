@@ -57,9 +57,9 @@ private:
 
     GameStateManager() {
 
-        // Define actions for each state transition 
+       
 
-        //ROOM1   
+        //--------------------------------ROOM1---------------------------   
         
         //Prepare
         stateActions[std::make_pair(GameState::ROOM1_STATE, RoomState::Prepare)] = []() {
@@ -76,27 +76,128 @@ private:
         stateActions[std::make_pair(GameState::ROOM1_STATE, RoomState::Serve)] = []() {
             Timer::GetInstance().stop();
             OrderData::GetInstance().ClearOrder();
+            std::cout << "Transition to Room1 Serve state." << std::endl;
             };
 
         //End   
         stateActions[std::make_pair(GameState::ROOM1_STATE, RoomState::End)] = []() {
-            DoorManager::GetInstance().GetDoorByName("Room1Door")->setPermission(true);  // Allow exit
+            DoorManager::GetInstance().GetDoorByName("Room1Door")->setPermission(false);  // Allow exit
             AudioManager::GetInstance().PlaySound("slideDoor");
             // Optionally stop room-specific music
             Application::Get().SetTimer(3000, []() {
                 Application::Get().SetScene("Hallway");  // Transition to another scene
                 }, false);
             GameStateManager::GetInstance().SetGameState(GameState::ROOM2_STATE);  // Move to the next game state if applicable
+            GameStateManager::GetInstance().SetRoomState(RoomState::Order);
+            std::cout << "Transition to Room1 End state." << std::endl;
+            };
+
+        //-----------------------------ROOM2-------------------------------   
+        
+        //Prepare
+        stateActions[std::make_pair(GameState::ROOM2_STATE, RoomState::Prepare)] = []() {
+
+            DoorManager::GetInstance().GetDoorByName("Room3Door")->setPermission(false);
+            DoorManager::GetInstance().GetDoorByName("KitchenDoor")->setPermission(true);
+            Timer::GetInstance().start(120);
+            Application::Get().SetScene("Hallway");
+            AudioManager::GetInstance().PlaySound("slideDoor");
+            std::cout << "Transition to Room2 Prepare state." << std::endl;
+            };
+
+        //Serve
+        stateActions[std::make_pair(GameState::ROOM2_STATE, RoomState::Serve)] = []() {
+            Timer::GetInstance().stop();
+            OrderData::GetInstance().ClearOrder();
+            std::cout << "Transition to Room1 Serve state." << std::endl;
+         };
+
+
+        //End
+        stateActions[std::make_pair(GameState::ROOM2_STATE, RoomState::End)] = []() {
+            DoorManager::GetInstance().GetDoorByName("Room3Door")->setPermission(false);  // Allow exit
+            AudioManager::GetInstance().PlaySound("slideDoor");
+            // Optionally stop room-specific music
+            Application::Get().SetTimer(3000, []() {
+                Application::Get().SetScene("Hallway");  // Transition to another scene
+                }, false);
+            GameStateManager::GetInstance().SetGameState(GameState::ROOM3_STATE);  // Move to the next game state if applicable
             GameStateManager::GetInstance().SetRoomState(RoomState::Order);  // Move to the next room state if applicable
             };
 
-      //ROOM2
+        //-----------------------------ROOM3---------------------------   
+        
+        //Prepare
+        stateActions[std::make_pair(GameState::ROOM3_STATE, RoomState::Prepare)] = []() {
 
+            DoorManager::GetInstance().GetDoorByName("Room2Door")->setPermission(false);
+            DoorManager::GetInstance().GetDoorByName("KitchenDoor")->setPermission(true);
+            Timer::GetInstance().start(120);
+            Application::Get().SetScene("Hallway");
+            AudioManager::GetInstance().PlaySound("slideDoor");
+            std::cout << "Transition to Room3 Prepare state." << std::endl;
+            };
+
+        //Serve
+        stateActions[std::make_pair(GameState::ROOM3_STATE, RoomState::Serve)] = []() {
+            Timer::GetInstance().stop();
+            OrderData::GetInstance().ClearOrder();
+            std::cout << "Transition to Room3 Serve state." << std::endl;
+         };
+
+         //End
+        stateActions[std::make_pair(GameState::ROOM3_STATE, RoomState::End)] = []() {
+            DoorManager::GetInstance().GetDoorByName("Room2Door")->setPermission(false);  // Allow exit
+            AudioManager::GetInstance().PlaySound("slideDoor");
+            // Optionally stop room-specific music
+            Application::Get().SetTimer(3000, []() {
+                Application::Get().SetScene("Hallway");  // Transition to another scene
+                }, false);
+            GameStateManager::GetInstance().SetGameState(GameState::ROOM4_STATE); 
+            GameStateManager::GetInstance().SetRoomState(RoomState::Order);
+            };
+      
+        //-----------------------------ROOM4---------------------------   
+
+        //Prepare
+        stateActions[std::make_pair(GameState::ROOM4_STATE, RoomState::Prepare)] = []() {
+
+            DoorManager::GetInstance().GetDoorByName("Room4Door")->setPermission(false);
+            DoorManager::GetInstance().GetDoorByName("KitchenDoor")->setPermission(true);
+            Timer::GetInstance().start(120);
+            Application::Get().SetScene("Hallway");
+            AudioManager::GetInstance().PlaySound("slideDoor");
+            std::cout << "Transition to Room4 Prepare state." << std::endl;
+            };
+
+        //Serve
+        stateActions[std::make_pair(GameState::ROOM4_STATE, RoomState::Serve)] = []() {
+            Timer::GetInstance().stop();
+            OrderData::GetInstance().ClearOrder();
+            std::cout << "Transition to Room4 Serve state." << std::endl;
+            };
+
+        //End
+        stateActions[std::make_pair(GameState::ROOM4_STATE, RoomState::End)] = []() {
+            DoorManager::GetInstance().GetDoorByName("Room4Door")->setPermission(false);  // Allow exit
+            AudioManager::GetInstance().PlaySound("slideDoor");
+            // Optionally stop room-specific music
+            Application::Get().SetTimer(3000, []() {
+                Application::Get().SetScene("Hallway");  // Transition to another scene
+                }, false);
+            GameStateManager::GetInstance().SetGameState(GameState::END_STATE);
+            GameStateManager::GetInstance().SetRoomState(RoomState::End);  // Move to the next room state if applicable
+
+           };
         
-        
-        
-        
-        
+
+        //-----------------------------END---------------------------
+
+        stateActions[std::make_pair(GameState::END_STATE, RoomState::End)] = []() {
+ 
+            //End cutscene 
+
+        };
 
  
     }

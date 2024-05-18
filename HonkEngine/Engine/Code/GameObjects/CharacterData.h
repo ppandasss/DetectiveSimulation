@@ -35,8 +35,9 @@ public:
 
 		int remainingTime = Timer::GetInstance().getRemainingTime();
 
-
 		cout << "Remaining time: " << remainingTime << endl;
+
+		
 
 		if (remainingTime == 0) {
 			return -2;
@@ -114,23 +115,23 @@ private:
 		characterFoodScores cabin1Scores;
 
 		cabin1Scores.SandwichScores[Sandwich::SALMON] = 1;
-		cabin1Scores.SandwichScores[Sandwich::EGG] = 1;
-		cabin1Scores.SandwichScores[Sandwich::CUCUMBER] = 0;
-		cabin1Scores.SandwichScores[Sandwich::BEEF] = 3;
+		cabin1Scores.SandwichScores[Sandwich::EGG] = 3;
+		cabin1Scores.SandwichScores[Sandwich::CUCUMBER] = 1;
+		cabin1Scores.SandwichScores[Sandwich::BEEF] = 1;
 
-		cabin1Scores.TeaScores[Tea::EARLGREYTEA] = 0;
-		cabin1Scores.TeaScores[Tea::CHAMOMILETEA] = 2;
+		cabin1Scores.TeaScores[Tea::EARLGREYTEA] = 2;
+		cabin1Scores.TeaScores[Tea::CHAMOMILETEA] = 4;
 		cabin1Scores.TeaScores[Tea::ASSAMTEA] = 0;
 		cabin1Scores.TeaScores[Tea::GREENTEA] = 2;
 
-		cabin1Scores.DessertScores[Dessert::ECLAIR] = 3;
-		cabin1Scores.DessertScores[Dessert::MACARON] = 3;
+		cabin1Scores.DessertScores[Dessert::ECLAIR] = 1;
+		cabin1Scores.DessertScores[Dessert::MACARON] = 1;
 		cabin1Scores.DessertScores[Dessert::TART] = 1;
-		cabin1Scores.DessertScores[Dessert::SCONE] = 1;
+		cabin1Scores.DessertScores[Dessert::SCONE] = 3;
 
 		cabin1Scores.TeaMilkScores[Tea::EARLGREYTEA] = 2;
-		cabin1Scores.TeaMilkScores[Tea::CHAMOMILETEA] = 2;
-		cabin1Scores.TeaMilkScores[Tea::ASSAMTEA] = 4;
+		cabin1Scores.TeaMilkScores[Tea::CHAMOMILETEA] = 4;
+		cabin1Scores.TeaMilkScores[Tea::ASSAMTEA] = 0;
 		cabin1Scores.TeaMilkScores[Tea::GREENTEA] = 2;
 
 		//--------------------CABIN 2-1  - NATHANIEL - FOOD SCORES--------------------
@@ -138,8 +139,8 @@ private:
 		characterFoodScores cabin21Scores;
 
 		cabin21Scores.SandwichScores[Sandwich::SALMON] = 1;
-		cabin21Scores.SandwichScores[Sandwich::EGG] = 1;
-		cabin21Scores.SandwichScores[Sandwich::CUCUMBER] = 0;
+		cabin21Scores.SandwichScores[Sandwich::EGG] = 0;
+		cabin21Scores.SandwichScores[Sandwich::CUCUMBER] = 1;
 		cabin21Scores.SandwichScores[Sandwich::BEEF] = 3;
 
 		cabin21Scores.TeaScores[Tea::EARLGREYTEA] = 0;
@@ -155,7 +156,7 @@ private:
 		cabin21Scores.TeaMilkScores[Tea::EARLGREYTEA] = 2;
 		cabin21Scores.TeaMilkScores[Tea::CHAMOMILETEA] = 2;
 		cabin21Scores.TeaMilkScores[Tea::ASSAMTEA] = 4;
-		cabin21Scores.TeaMilkScores[Tea::GREENTEA] = 4;
+		cabin21Scores.TeaMilkScores[Tea::GREENTEA] = 2;
 
 		//--------------------CABIN 2-2  - EVELYN - FOOD SCORES--------------------
 
@@ -163,7 +164,7 @@ private:
 
 		cabin22Scores.SandwichScores[Sandwich::SALMON] = 0;
 		cabin22Scores.SandwichScores[Sandwich::EGG] = 1;
-		cabin22Scores.SandwichScores[Sandwich::CUCUMBER] = 0;
+		cabin22Scores.SandwichScores[Sandwich::CUCUMBER] = 1;
 		cabin22Scores.SandwichScores[Sandwich::BEEF] = 0;
 
 		cabin22Scores.TeaScores[Tea::EARLGREYTEA] = 0;
@@ -186,11 +187,11 @@ private:
 		characterFoodScores cabin3Scores;
 
 		cabin3Scores.SandwichScores[Sandwich::SALMON] = 3;
-		cabin3Scores.SandwichScores[Sandwich::CUCUMBER] = 1;
+		cabin3Scores.SandwichScores[Sandwich::CUCUMBER] = 0;
 		cabin3Scores.SandwichScores[Sandwich::EGG] = 0;
 		cabin3Scores.SandwichScores[Sandwich::BEEF] = 0;
 
-		cabin3Scores.TeaScores[Tea::EARLGREYTEA] = 2;
+		cabin3Scores.TeaScores[Tea::EARLGREYTEA] = 4;
 		cabin3Scores.TeaScores[Tea::CHAMOMILETEA] = 0;
 		cabin3Scores.TeaScores[Tea::ASSAMTEA] = 4;
 		cabin3Scores.TeaScores[Tea::GREENTEA] = 0;
@@ -200,7 +201,7 @@ private:
 		cabin3Scores.DessertScores[Dessert::TART] = 3;
 		cabin3Scores.DessertScores[Dessert::SCONE] = 1;
 
-		cabin3Scores.TeaMilkScores[Tea::EARLGREYTEA] = 0;
+		cabin3Scores.TeaMilkScores[Tea::EARLGREYTEA] = 2;
 		cabin3Scores.TeaMilkScores[Tea::CHAMOMILETEA] = 0;
 		cabin3Scores.TeaMilkScores[Tea::ASSAMTEA] = 2;
 		cabin3Scores.TeaMilkScores[Tea::GREENTEA] = 0;

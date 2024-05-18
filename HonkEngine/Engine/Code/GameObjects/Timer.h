@@ -67,13 +67,13 @@ public:
 
     void stop() {
         if (isRunning) {
+            remainingTimeOnStop = getRemainingTime(); // Save the remaining time before stopping
             isRunning = false;
             UpdateTimerUIVisibility(); // Update UI visibility when stopping
             NotifyObservers();
             audioManager.StopSound("timerTicking");
         }
     }
-
 
 
     void Update(float dt) {
@@ -101,7 +101,7 @@ public:
             auto remainingTime = std::chrono::duration_cast<std::chrono::seconds>(endTime - now).count();
             return remainingTime;
         }
-        return 0;
+        return remainingTimeOnStop; // Return the last remaining time when the timer was stopped
     }
 
     void updateCountdownDisplay() {
@@ -142,6 +142,7 @@ private:
     std::vector<TimerObserver> observers;
     std::chrono::time_point<std::chrono::steady_clock> endTime, lastUpdateTime;
     bool isRunning = false;
+    int remainingTimeOnStop = 0;
     Text* countdownText = nullptr;
     UIElement* timerUI = nullptr; // UI Element to show/hide based on the timer status
     AudioManager& audioManager;
