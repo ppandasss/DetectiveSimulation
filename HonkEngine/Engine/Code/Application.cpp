@@ -117,8 +117,6 @@ void Application::processTimers() {
 Application::Application(int win_width, int win_height, const char* title)
     : baseTitle(title)
 {
-
-
     std::cout << "Application Constructor\n";
 
     s_instance = this;
@@ -133,15 +131,20 @@ Application::Application(int win_width, int win_height, const char* title)
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
 
-    // glfw window creation
+    // Get the primary monitor and the video mode
+    GLFWmonitor* primaryMonitor = glfwGetPrimaryMonitor();
+    const GLFWvidmode* mode = glfwGetVideoMode(primaryMonitor);
+
+    // glfw window creation for fullscreen
     // --------------------
-    m_window = glfwCreateWindow(win_width, win_height, title, NULL, NULL);
+    m_window = glfwCreateWindow(mode->width, mode->height, title, primaryMonitor, NULL);
     if (m_window == NULL)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
-
+        return;
     }
+
     glfwMakeContextCurrent(m_window);
     glfwSetFramebufferSizeCallback(m_window, framebuffer_size_callback);
 
@@ -152,14 +155,10 @@ Application::Application(int win_width, int win_height, const char* title)
         std::cout << "Failed to initialize GLAD" << std::endl;
     }
 
-
-    //Initialize(SCR_WIDTH, SCR_HEIGHT);
-
+    // Initialize other components
     m_input.Initialize(m_window);
-    m_renderer.Initialize(win_width, win_height);
-    m_camera.Init(win_width, win_height);
-
-
+    m_renderer.Initialize(mode->width, mode->height);
+    m_camera.Init(mode->width, mode->height);
 }
 
 void Application::Run()
