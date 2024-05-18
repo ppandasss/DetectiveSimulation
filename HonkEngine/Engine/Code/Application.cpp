@@ -11,33 +11,43 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 }
 
 void Application::ToggleFullscreen(GLFWwindow* window) {
-    static int windowedWidth = 800, windowedHeight = 600, windowedPosX, windowedPosY;
+    static int windowedWidth = 1920;  // Desired windowed mode width
+    static int windowedHeight = 1080; // Desired windowed mode height
+    static int windowedPosX = 0;   // Default position x
+    static int windowedPosY = 50;   // Default position y
 
-    if (glfwGetWindowMonitor(window) == NULL) { // If currently windowed
-        // Get the primary monitor
+    if (!glfwGetWindowMonitor(window)) { // If currently windowed
         GLFWmonitor* primaryMonitor = glfwGetPrimaryMonitor();
-        // Get the video mode of the primary monitor
         const GLFWvidmode* mode = glfwGetVideoMode(primaryMonitor);
+
         // Store windowed mode position and size
         glfwGetWindowPos(window, &windowedPosX, &windowedPosY);
         glfwGetWindowSize(window, &windowedWidth, &windowedHeight);
+
         // Switch to fullscreen
         glfwSetWindowMonitor(window, primaryMonitor, 0, 0, mode->width, mode->height, mode->refreshRate);
     }
     else { // If currently fullscreen
         // Switch back to windowed mode
         glfwSetWindowMonitor(window, NULL, windowedPosX, windowedPosY, windowedWidth, windowedHeight, 0);
+
+        // Ensure the window decoration and size are restored properly
+        glfwSetWindowSize(window, windowedWidth, windowedHeight);
+        glfwSetWindowPos(window, windowedPosX, windowedPosY);
     }
 }
+
+
 
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
 // ---------------------------------------------------------------------------------------------------------
 void processInput(GLFWwindow* window)
 {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-        glfwSetWindowShouldClose(window, true);
+        Application::Get().exitGame();
+    //glfwSetWindowShouldClose(window, true);
 
-    static bool fsTogglePressedLastFrame = false;
+    static bool fsTogglePressedLastFrame = true;
     bool fsToggle = glfwGetKey(window, GLFW_KEY_F11) == GLFW_PRESS;
 
     if (fsToggle && !fsTogglePressedLastFrame) {
@@ -61,6 +71,17 @@ void processInput(GLFWwindow* window)
         camera.ZoomOut(0.01f);  // Zoom in by 0.1 units
     }
 
+    static bool mousePressed = false;
+
+    if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS && !mousePressed) {
+        Application::Get().SetClickedCursor();  // Change to clicked cursor
+        mousePressed = true;
+    }
+    else if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_RELEASE && mousePressed) {
+        Application::Get().SetNormalCursor();  // Revert to normal cursor
+        mousePressed = false;
+    }
+
 }
 
 Application* Application::s_instance = nullptr;
@@ -72,6 +93,16 @@ Application::~Application() {
     for (auto& scene : m_sceneMap) {
         delete scene.second;
     }
+
+    if (normalCursor) {
+        glfwDestroyCursor(normalCursor);
+        normalCursor = nullptr;
+    }
+    if (clickedCursor) {
+        glfwDestroyCursor(clickedCursor);
+        clickedCursor = nullptr;
+    }
+
     glfwTerminate();
 }
 
@@ -117,6 +148,8 @@ void Application::processTimers() {
 Application::Application(int win_width, int win_height, const char* title)
     : baseTitle(title)
 {
+
+
     std::cout << "Application Constructor\n";
 
     s_instance = this;
@@ -131,21 +164,24 @@ Application::Application(int win_width, int win_height, const char* title)
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
 
-    // Get the primary monitor and the video mode
+    // glfw window creation
+    // --------------------
+
     GLFWmonitor* primaryMonitor = glfwGetPrimaryMonitor();
     const GLFWvidmode* mode = glfwGetVideoMode(primaryMonitor);
 
-    // glfw window creation for fullscreen
-    // --------------------
     m_window = glfwCreateWindow(mode->width, mode->height, title, primaryMonitor, NULL);
     if (m_window == NULL)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
         return;
-    }
 
+    }
     glfwMakeContextCurrent(m_window);
+
+    LoadCursors();
+
     glfwSetFramebufferSizeCallback(m_window, framebuffer_size_callback);
 
     // glad: load all OpenGL function pointers
@@ -155,10 +191,14 @@ Application::Application(int win_width, int win_height, const char* title)
         std::cout << "Failed to initialize GLAD" << std::endl;
     }
 
-    // Initialize other components
+
+    //Initialize(SCR_WIDTH, SCR_HEIGHT);
+
     m_input.Initialize(m_window);
-    m_renderer.Initialize(mode->width, mode->height);
-    m_camera.Init(mode->width, mode->height);
+    m_renderer.Initialize(win_width, win_height);
+    m_camera.Init(win_width, win_height);
+
+
 }
 
 void Application::Run()
