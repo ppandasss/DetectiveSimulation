@@ -412,11 +412,11 @@ public:
         switch (level) {
         case InteractionLevel::LOW:
             std::cout << "Interaction level is LOW." << std::endl;
-            dialogueManager->LoadDialogues("Inspect_Low_Start", "Assets/Dialogue/Archibald/Low/Archibald_Average_Start.xml");
-            dialogueManager->LoadDialogues("Inspect_Low_MovingLuggage", "Assets/Dialogue/Archibald/Low/Archibald_Average_MovingLuggage.xml");
-            dialogueManager->LoadDialogues("Inspect_Low_Newspaper", "Assets/Dialogue/Archibald/Low/Archibald_Average_Newspaper.xml");
-            dialogueManager->LoadDialogues("Inspect_Low_MessyClothes", "Assets/Dialogue/Archibald/Low/Archibald_Average_MessyClothes.xml");
-            dialogueManager->LoadDialogues("Inspect_Low_End", "Assets/Dialogue/Archibald/Low/Archibald_Average_End.xml");
+            dialogueManager->LoadDialogues("Inspect_Low_Start", "Assets/Dialogue/Archibald/Low/Archibald_Low_Start.xml");
+            dialogueManager->LoadDialogues("Inspect_Low_MovingLuggage", "Assets/Dialogue/Archibald/Low/Archibald_Low_MovingLuggage.xml");
+            dialogueManager->LoadDialogues("Inspect_Low_Newspaper", "Assets/Dialogue/Archibald/Low/Archibald_Low_Newspaper.xml");
+            dialogueManager->LoadDialogues("Inspect_Low_MessyClothes", "Assets/Dialogue/Archibald/Low/Archibald_Low_MessyClothes.xml");
+            dialogueManager->LoadDialogues("Inspect_Low_End", "Assets/Dialogue/Archibald/Low/Archibald_Low_End.xml");
             inspectStartDialogueKey = "Inspect_Low_Start";
             inspectMovingLuggageDialogueKey = "Inspect_Low_MovingLuggage";
             inspectNewspaperDialogueKey = "Inspect_Low_Newspaper";
