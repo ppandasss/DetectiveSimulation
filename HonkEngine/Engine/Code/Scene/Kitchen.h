@@ -20,7 +20,7 @@ public:
 	UIButtonEmpty* teaDropArea = new UIButtonEmpty("teaDropArea", glm::vec3(-3.4f, -0.5f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, false, "");
 	UIButtonEmpty* sandwichDropArea = new UIButtonEmpty("sandwichDropArea", glm::vec3(-6.35f, -0.6f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, false, "");
 	UIButtonEmpty* dessertDropArea = new UIButtonEmpty("dessertDropArea", glm::vec3(-4.85f, 1.57f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, false, "");
-	UIButtonEmpty* optionalDropArea = new UIButtonEmpty("optionalDropArea", glm::vec3(-4.5f, -0.4f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, false, "");
+	UIButtonEmpty* optionalDropArea = new UIButtonEmpty("optionalDropArea", glm::vec3(-4.5f, -0.87f, 0.0f), glm::vec3(0.5f, 0.5f, 0.0f), true, false, "");
 
 	Kitchen() :audioManager(AudioManager::GetInstance()) {
 		//platePositionArea->SetButtonText("Drop Area");
@@ -79,6 +79,11 @@ public:
 		TeaArrow->SetScale(glm::vec3(1.58f/2, 1.35f/2, 0.0f));
 		TeaArrow->SetPosition(glm::vec3(-2.1f, 0.9f, 0.0f));
 		TeaArrow->setActiveStatus(false);
+
+		OptionalArrow = new UIObject("OptionalArrow", "Assets/Images/Kitchen/Kitchen_Arrow_Tea.png", true);
+		OptionalArrow->SetScale(glm::vec3(1.58f / 2, 1.35f / 2, 0.0f));
+		OptionalArrow->SetPosition(glm::vec3(-3.6f, 0.0f, 0.0f));
+		OptionalArrow->setActiveStatus(false);
 
 		DessertArrow = new UIObject("DessertArrow", "Assets/Images/Kitchen/Kitchen_Arrow_Pastry.png", true);
 		DessertArrow->SetScale(glm::vec3(1.74f/2, 1.63f/2, 0.0f));
@@ -204,6 +209,7 @@ public:
 		Macaron->SetOnDragAction([this]() { dragDessert(); });
 
 		Milk->SetOnReleaseAction([this]() { releaseMilk(); });
+		Milk->SetOnDragAction([this]() { dragOptional(); });
 
 		/*-------------------------------------------------------------- CREATE PLATED FOOD ------------------------------------------------------------------------------------------------------- */
 
@@ -350,6 +356,7 @@ public:
 		//visual clues
 		m_gameObjects.push_back(SandwichArrow);
 		m_gameObjects.push_back(TeaArrow);
+		m_gameObjects.push_back(OptionalArrow);
 		m_gameObjects.push_back(DessertArrow);
 
 		//Journal
@@ -509,6 +516,10 @@ public:
 		DessertArrow->setActiveStatus(true);
 	}
 
+	void dragOptional() {
+		OptionalArrow->setActiveStatus(true);
+	}
+
 	//ON RELEASE FUNCTIONS
 
 	void releaseAssam() {
@@ -638,6 +649,8 @@ public:
 
 	void releaseMilk() {
 
+		OptionalArrow->setActiveStatus(false);
+
 		if (Milk->withinRage(dessertDropArea->GetOnscreenPosition(), snapThreshold)) {
 			Kitchen_Data->setOptional(MILK);
 			updateOptionalObjects();
@@ -755,5 +768,6 @@ private:
 
 	GameObject* SandwichArrow;
 	GameObject* TeaArrow;
+	GameObject* OptionalArrow;
 	GameObject* DessertArrow;
 };

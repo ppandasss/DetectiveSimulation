@@ -174,7 +174,7 @@
 	</Dialogue>
 	<Dialogue id="3WD31" next="3ED12">
 		<Speaker name="Waiter">
-			<line1>You must have taken care of Mr. Hartington  a lot when you were all younger.</line1>
+			<line1>You must have taken care a lot of Mr.  Hartington when you were younger.</line1>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
