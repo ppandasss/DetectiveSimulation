@@ -19,7 +19,7 @@ public:
 
         //DRAG OBJECT HERE 
 
-        std::cout << "Draggable Clicked" << std::endl;
+        //std::cout << "Draggable Clicked" << std::endl;
         isDragging = true;
 
 
@@ -183,7 +183,7 @@ public:
             if (input.Get().GetMouseButtonUp(GLFW_MOUSE_BUTTON_1)) {
 
                 isDragging = false;
-                std::cout << "DRAGGABLE RELEASED" << std::endl;
+                //std::cout << "DRAGGABLE RELEASED" << std::endl;
 
                 snapBack();
                 onRelease();

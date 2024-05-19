@@ -6,6 +6,8 @@
 #include <iostream>
 #include "../Application.h"
 
+#include "../GameObjects/JournalData.h"
+
 class PopUp: public GameObject {	
 
 public:
@@ -22,6 +24,17 @@ public:
 				object->Render();
 
 			}
+
+		}
+
+		for (auto& object : deffered_m_gameObjects) {
+
+			if (object->showObject) {
+
+				object->gameObj->Render();
+
+			}
+
 		}
 	}
 
@@ -30,15 +43,16 @@ public:
 		//Update from last object to first (top layer to bottom)
 
 		for (auto it = m_gameObjects.rbegin(); it != m_gameObjects.rend(); ++it) {
-
 			GameObject* object = *it;
-
 			if (object->getActiveStatus()) { // CHECK ACTIVE STATUS
-
 				object->Update(dt, frame);
-
 			}
+		}
 
+		for (auto& object : deffered_m_gameObjects) {
+			if (object->showObject) {
+				object->gameObj->Update(dt, frame);
+			}
 		}
 
 	}
@@ -46,9 +60,21 @@ public:
 	virtual void setActiveStatus(bool status) {
 
 		for (auto& object : m_gameObjects) {
-
 			object->setActiveStatus(status);
+		}
 
+		for (auto& object : deffered_m_gameObjects) {
+
+			if (object->gameObj) { //checks for nullptr
+
+				if (object->showObject) {
+					object->gameObj->setActiveStatus(status); //sets status accordingly if clue is active
+				}
+				else {
+					object->gameObj->setActiveStatus(false); //if inactive always set as false
+				}
+
+			}
 		}
 
 		active = status;
@@ -59,5 +85,6 @@ public:
 protected:
 
 	std::vector<GameObject*> m_gameObjects;
+	std::vector<DeferredRenderObject*> deffered_m_gameObjects;
 
 };
