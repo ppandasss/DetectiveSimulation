@@ -24,7 +24,7 @@ public:
 		UIDraggable* CaseNews = new UIDraggable("CaseNews", "Assets/Images/Journal/CaseSummary_News.png", glm::vec3(-3.2f, 0.0f, 0.0f), glm::vec3(5.34f, 6.85f, 0.0f), true);
 		CaseNews->setDragBoundsByObject(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(12.68f, 7.45f, 1.0f));
 
-		UIDraggable* Ticket = new UIDraggable("Ticket", "Assets/Images/Journal/CaseSummary_Ticket.png", glm::vec3(-3.7f, 0.75f, 1.0f), glm::vec3(4.18f, 1.65f, 0.0f), true);
+		UIDraggable* Ticket = new UIDraggable("Ticket", "Assets/Images/Journal/CaseSummary_Ticket.png", glm::vec3(-3.7f, 0.75f, 1.0f), glm::vec3(4.24f, 1.81f, 0.0f), true);
 		Ticket->setDragBoundsByObject(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(12.68f, 7.45f, 1.0f));
 
 		//JOURNAL PART

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="3ND48">
+		<Speaker name="Nathaniel_Normal">
+			<line1>Well, overall, the meal is... average.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND49">
+		<Speaker name="Nathaniel_Sad">
+			<line1>The only reason I can think of</line1>
+			<line2>is that you must have had a poor  childhood.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND50">
+		<Speaker name="Nathaniel_Sad">
+			<line1>That must be why you couldn't get  what I ask for.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

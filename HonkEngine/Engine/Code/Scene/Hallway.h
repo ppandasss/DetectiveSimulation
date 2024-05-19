@@ -178,7 +178,7 @@ public:
 
 		instructionText = new Text("instruction", "Press [E] to enter","Assets/Fonts/mvboli.ttf", true);
 		instructionText->SetScale(0.6f);
-		instructionText->SetPosition(glm::vec3(7.30f, -4.3f, 0.0f));
+		instructionText->SetPosition(glm::vec3(7.30f, -4.5f, 0.0f));
 		instructionText->SetColor(glm::vec3(1, 1, 1));
 		
 

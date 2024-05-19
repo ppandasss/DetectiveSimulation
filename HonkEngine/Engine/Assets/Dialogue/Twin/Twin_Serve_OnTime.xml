@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="3ED03">
+		<Speaker name="Evelyn_Sad">
+			<line1>But....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND10">
+		<Speaker name="Nathaniel_Upset">
+			<line1>No but, I will be the one who-</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND11">
+		<Speaker name="Nathaniel_Happy">
+			<line1>Oh, hi Mr. Waiter!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND12">
+		<Speaker name="Nathaniel_Normal">
+			<line1>You are right on time. Nice!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3NQ02">
+		<Speaker name="Nathaniel_Normal">
+			<line1>Mother was right, this train really  has the best service.</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="3WD10">Thank you Nathaniel</Choice1>
+			<Choice2 next="3WD11">Ask if he want to become a waiter</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="3WD10" next="3ND15">
+		<Speaker name="Waiter">
+			<line1>Thank you! Mr. Hartington.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD11" next="3ND14">
+		<Speaker name="Waiter">
+			<line1>If that so,</line1>
+			<line2>Would you also like to become a  professional waiter, like me?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND14">
+		<Speaker name="Nathaniel_Disappoint">
+			<line1>That sounds boring.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND14_2">
+		<Speaker name="Nathaniel_Happy">
+			<line1>I want to do something exciting,  like an athlete!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND15">
+		<Speaker name="Nathaniel_Normal">
+			<line1>Well, we are already hungry.</line1>
+			<line2>Please give us our meal!</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND15_2">
+		<Speaker name="Nathaniel_Happy">
+			<line1>I wonder what we will get.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+		<Dialogue id="3ND20_2">
+		<Speaker name="Nathaniel_Happy">
+			<line1>Right, Eve?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED03">
+		<Speaker name="Evelyn_Normal">
+			<line1>Yes...</line1>
+			<line2>I wonder too.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND20_3">
+		<Speaker name="Nathaniel_Happy">
+			<line2>Then please set the tray down, Mr.  Waiter!</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD15">
+		<Speaker name="Waiter">
+			<line1>[You serve the meal to Mr. and Mrs.  Hartington and start brewing the tea.]</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

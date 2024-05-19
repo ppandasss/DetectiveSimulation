@@ -245,4 +245,10 @@
 		</Speaker>
 		<Choices/>
 	</Dialogue>
+	<Dialogue id="2AD99">
+		<Speaker name="Archibald_Upset">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
 </Dialogues>

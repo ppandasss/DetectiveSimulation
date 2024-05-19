@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="3ND21">
+		<Speaker name="Nathaniel_Normal">
+			<line1>Wow...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND21_2">
+		<Speaker name="Nathaniel_Happy">
+			<line1>You really brought us a night in  the cup.</line1>
+			<line2>And you've added some clouds too!</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND22">
+		<Speaker name="Nathaniel_Normal">
+			<line1>I was just messing with you, actually,  but you really got it right!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

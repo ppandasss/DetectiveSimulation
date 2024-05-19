@@ -59,4 +59,10 @@
 		</Speaker>
 		<Choices/>
 	</Dialogue>
+	<Dialogue id="2AD99">
+		<Speaker name="Archibald_Normal">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
 </Dialogues>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="3ED03">
+		<Speaker name="Evelyn_Sad">
+			<line1>But....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND10">
+		<Speaker name="Nathaniel_Upset">
+			<line1>No but, I will be the one who-</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND11">
+		<Speaker name="Nathaniel_Normal">
+			<line1>Oh, hi Mr. Waiter!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND16">
+		<Speaker name="Nathaniel_Disappoint">
+			<line1>Finally, you've arrived.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND16_2">
+		<Speaker name="Nathaniel_Disappoint">
+			<line1>We're almost starving!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3NQ03">
+		<Speaker name="Nathaniel_Sad">
+			<line1>What took you so late, Mr. Waiter?</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="3WD13">I was preparing the best for you</Choice1>
+			<Choice2 next="3WD12">Apologize</Choice2>
+			<Choice3 next="3WD14">Remain silent</Choice3>
+		</Choices>
+	</Dialogue>
+	_<Dialogue id="3WD12" next="3ND17_3">
+		<Speaker name="Waiter">
+			<line1>I apologize for the delay, Mr.  Hartington.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD13" next="3ND17">
+		<Speaker name="Waiter">
+			<line1>I was preparing the best for you.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD14" next="3ND18">
+		<Speaker name="Waiter">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND17_3" next="3ND20">
+		<Speaker name="Nathaniel_Happy">
+			<line1>That's how you properly say sorry!</line1>
+			<line2>I'll let you go this time.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND17">
+		<Speaker name="Nathaniel_Normal">
+			<line1>Oh, that's actually nice.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND17_2" next="3ND20">
+		<Speaker name="Nathaniel_Happy">
+			<line1>I'll let you go this time.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND18">
+		<Speaker name="Nathaniel_Disappoint">
+			<line1>Where is my 'Sorry, Mr. Hartington'?</line1>
+			<line2>....</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND18_2">
+		<Speaker name="Nathaniel_Upset">
+			<line1>Well, I guess not.</line1>
+			<line2>I'll try to become a bigger person  then.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND19">
+		<Speaker name="Nathaniel_Happy">
+			<line1>So one day, you will owe me your  apology!</line1>
+			<line2>Hehe.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND20">
+		<Speaker name="Nathaniel_Normal">
+			<line1>I wonder what our meal will be like.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND20_2">
+		<Speaker name="Nathaniel_Happy">
+			<line1>Right, Eve?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED03">
+		<Speaker name="Evelyn_Normal">
+			<line1>Yes...</line1>
+			<line2>I wonder too.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND20_3">
+		<Speaker name="Nathaniel_Happy">
+			<line2>Then please set the tray down, Mr.  Waiter!</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD15">
+		<Speaker name="Waiter">
+			<line1>[You serve the meal to Mr. and Mrs.  Hartington and start brewing the tea.]</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

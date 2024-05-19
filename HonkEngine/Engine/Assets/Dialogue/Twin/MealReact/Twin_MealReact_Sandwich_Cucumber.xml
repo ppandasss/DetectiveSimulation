@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="3ND29">
+		<Speaker name="Nathaniel_Normal">
+			<line1>What about the sandwich!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND34">
+		<Speaker name="Nathaniel_Sad">
+			<line1>....</line1>
+			<line2>There is nothing here but vegetables.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND35">
+		<Speaker name="Nathaniel_Upset">
+			<line1>I already said I want none of them!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3NQ04">
+		<Speaker name="Nathaniel_Upset">
+			<line1>What's wrong with this Express?</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="3WD16">This is all we have</Choice1>
+			<Choice2 next="3WD17">It's good for your health</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="3WD16" next="3ND36">
+		<Speaker name="Waiter">
+			<line1>I'm afraid...</line1>
+			<line2>This is all we have.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD17" next="3ND37">
+		<Speaker name="Waiter">
+			<line1>It's actually good for your health.</line1>
+			<line2>Especially for children like you.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND36" next="3ND38">
+		<Speaker name="Nathaniel_Disappoint">
+			<line1>I don't believe you!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND37">
+		<Speaker name="Nathaniel_Upset">
+			<line1>Hmph!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND38">
+		<Speaker name="Nathaniel_Upset">
+			<line1>You know what, I'm not going to eat  this!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="3ND27">
+		<Speaker name="Nathaniel_Disappoint">
+			<line1>Yuck!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND27_2">
+		<Speaker name="Nathaniel_Disappoint">
+			<line1>The smell is too strong!</line1>
+			<line2>I don't think I can drink this...</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND28">
+		<Speaker name="Nathaniel_Sad">
+			<line1>This is not a night!</line1>
+			<line2>And there is no cloud either.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

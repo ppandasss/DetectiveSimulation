@@ -8,7 +8,7 @@
 	</Dialogue>
 	<Dialogue id="3ND02">
 		<Speaker name="Nathaniel_Normal">
-			<line1>You are the one who’s here to  serve us afternoon tea, right?</line1>
+			<line1>You are the one who's here to  serve us afternoon tea, right?</line1>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
@@ -87,7 +87,7 @@
 		<Speaker name="Nathaniel_Happy">
 			<line1>I want the tea I once had at my  grandfather's house!</line1>
 			<line2>I can't remember the name,</line2>
-			<line3>But it's similar to a night in  the cup with some clouds in there!</line3>
+			<line3>But it's similar to %a% %night% %in%  %the% %cup% %with% %some% %clouds% in there!</line3>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
@@ -167,7 +167,7 @@
 	<Dialogue id="3ND08">
 		<Speaker name="Nathaniel_Normal">
 			<line1>Then...</line1>
-			<line2>Can I please- please get something  that a child like us would like?</line2>
+			<line2>Can I please- please get something  that %a% %child% %like% %us% %would% %like?%</line2>
 		</Speaker>
 		<Choices/>
 	</Dialogue>

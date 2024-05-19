@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="3ND23">
+		<Speaker name="Nathaniel_Normal">
+			<line1>Oh.</line1>
+			<line2>The cloud is there...</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND24">
+		<Speaker name="Nathaniel_Sad">
+			<line1>But this is not a night in the cup!</line1>
+			<line2>More like another time of the day.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND25">
+		<Speaker name="Nathaniel_Normal">
+			<line1>I was just messing with you, actually,  when I ordered.</line1>
+			<line2>But you got the clouds right!</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND25_2">
+		<Speaker name="Nathaniel_Happy">
+			<line1>I like it though.</line1>
+			<line2>At least it's not just tasteless tea  without milk!</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

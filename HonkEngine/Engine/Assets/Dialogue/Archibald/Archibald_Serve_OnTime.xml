@@ -18,7 +18,7 @@
 		</Speaker>
 		<Choices>
 			<Choice1 next="2WD11">Thank you politely</Choice1>
-			<Choice2 next="2WD12">Ensure that he can trust in your service</Choice2>
+			<Choice2 next="2WD12">Ensure that he can trust in  your service</Choice2>
 		</Choices>
 	</Dialogue>
 	<Dialogue id="2WD11" next="2AD12_2">

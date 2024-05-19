@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="3ND39">
+		<Speaker name="Nathaniel_Normal">
+			<line1>What about the pastry...</line1>
+			<line2>It better be something my sister  likes.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND40">
+		<Speaker name="Nathaniel_Happy">
+			<line1>Wow! Eve, look at this!</line1>
+			<line2>It's chocolate eclair, your favorite!</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED04">
+		<Speaker name="Evelyn_Happy">
+			<line1>Oh...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED05">
+		<Speaker name="Evelyn_Normal">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>
