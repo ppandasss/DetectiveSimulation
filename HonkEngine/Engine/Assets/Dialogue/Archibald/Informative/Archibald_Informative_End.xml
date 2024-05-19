@@ -19,8 +19,8 @@
 			<line1>I'm surprised you still managed to do  your job right.</line1>
 		</Speaker>
 		<Choices>
-			<Choice1 next="2WD69">Thank him for acknowledging  your effort</Choice1>
-			<Choice2 next="2WD70">Accept and amplify the praise</Choice2>
+			<Choice1 next="2WD69" clueID="CABIN3_8">Thank him for acknowledging  your effort</Choice1>
+			<Choice2 next="2WD70" clueID="CABIN3_8">Accept and amplify the praise</Choice2>
 		</Choices>
 	</Dialogue>
 	<Dialogue id="2WD69" next="2AD86">
@@ -46,6 +46,7 @@
 	<Dialogue id="2AD85">
 		<Speaker name="Archibald_Normal">
 			<line1>Be more humble, will you?</line1>
+			<line2>....</line2>
 		</Speaker>
 		<Choices/>
 	</Dialogue>

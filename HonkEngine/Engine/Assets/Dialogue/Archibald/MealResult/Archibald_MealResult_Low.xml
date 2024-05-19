@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<Dialogue id="2AD122">
-		<Speaker name="Archibald_Normal">
+		<Speaker name="Archibald_Upset">
 			<line1>[Sigh.]</line1>
 			<line2>THIS is the first-class of the  Express.</line2>
 		</Speaker>

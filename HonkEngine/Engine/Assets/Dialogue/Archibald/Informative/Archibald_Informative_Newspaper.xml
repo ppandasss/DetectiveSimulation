@@ -39,7 +39,7 @@
 	<Dialogue id="2AD51" next="2AQ13">
 		<Speaker name="Archibald_Normal">
 			<line1>This?</line1>
-			<line2>The kind that's only %reserved% %for%  %high-class% %elites%, like ME.</line2>
+			<line2>The kind that's only %reserved% %for%  %high-class% %elites,% like ME.</line2>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
@@ -391,7 +391,7 @@
 	</Dialogue>
 	<Dialogue id="2AD68">
 		<Speaker name="Archibald_Normal">
-			<line1>Of course, they even got the name.</line1>
+			<line1>Of course, they even got the %name.%</line1>
 		</Speaker>
 		<Choices/>
 	</Dialogue>

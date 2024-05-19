@@ -125,7 +125,7 @@
 	</Dialogue>
 	<Dialogue id="3WD15">
 		<Speaker name="Waiter">
-			<line1>[You serve the meal to Mr. and Mrs.  Hartington and start brewing the tea.]</line1>
+			<line1>[You serve the meal to Mr. and Miss  Hartington and start brewing the tea.]</line1>
 		</Speaker>
 		<Choices/>
 	</Dialogue>

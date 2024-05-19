@@ -2,7 +2,8 @@
 <Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<Dialogue id="2AD16">
 		<Speaker name="Archibald_Normal">
-			<line1>Well, get out already.</line1>
+			<line1>....</line1>
+			<line2>Well, get out already.</line2>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
