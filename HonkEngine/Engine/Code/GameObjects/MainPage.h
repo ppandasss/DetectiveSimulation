@@ -173,6 +173,10 @@ public:
 		m_gameObjects.push_back(TheCouncil);
 		m_gameObjects.push_back(SupremeCourt);
 
+		m_gameObjects.push_back(CaseNews);
+		m_gameObjects.push_back(Ticket);
+		m_gameObjects.push_back(JournalSleeve);
+
 
 		//push back deferred rendering
 

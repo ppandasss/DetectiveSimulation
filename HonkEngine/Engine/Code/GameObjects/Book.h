@@ -172,6 +172,7 @@ public:
 			return;
 
 		}
+
 		for (auto& object : m_gameObjects) {
 
 			if (object->getActiveStatus()) { //CHECK ACTIVE STATUS
@@ -217,6 +218,12 @@ public:
 		if (openStatus == true) {
 			closeBook();
 		}
+	}
+
+	void activateDeferredClue() {
+
+		std::cout << "Activate Deferred general clue\n";
+
 	}
 
 

@@ -80,7 +80,9 @@ public:
 
 		for (auto& object : deffered_m_gameObjects) {
 
-			object->gameObj->Update(dt, frame);
+			if (object->showObject) {
+				object->gameObj->Update(dt, frame);
+			}
 
 		}
 
@@ -122,7 +124,6 @@ public:
 
 			}
 		}
-
 
 		active = status;
 

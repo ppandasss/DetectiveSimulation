@@ -15,13 +15,12 @@ class Kitchen : public Scene {
 
 public:
 
-
 	Book* Journal;
 
-	UIButtonEmpty* teaDropArea = new UIButtonEmpty("teaDropArea", glm::vec3(-3.4f, -0.5f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
-	UIButtonEmpty* sandwichDropArea = new UIButtonEmpty("sandwichDropArea", glm::vec3(-6.35f, -0.6f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
-	UIButtonEmpty* dessertDropArea = new UIButtonEmpty("dessertDropArea", glm::vec3(-4.85f, 1.57f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
-	UIButtonEmpty* optionalDropArea = new UIButtonEmpty("optionalDropArea", glm::vec3(-4.6f, -0.85f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
+	UIButtonEmpty* teaDropArea = new UIButtonEmpty("teaDropArea", glm::vec3(-3.4f, -0.5f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, false, "");
+	UIButtonEmpty* sandwichDropArea = new UIButtonEmpty("sandwichDropArea", glm::vec3(-6.35f, -0.6f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, false, "");
+	UIButtonEmpty* dessertDropArea = new UIButtonEmpty("dessertDropArea", glm::vec3(-4.85f, 1.57f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, false, "");
+	UIButtonEmpty* optionalDropArea = new UIButtonEmpty("optionalDropArea", glm::vec3(-4.5f, -0.4f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, false, "");
 
 	Kitchen() :audioManager(AudioManager::GetInstance()) {
 		//platePositionArea->SetButtonText("Drop Area");
@@ -144,10 +143,6 @@ public:
 		ServeBellGrey->SetPosition(glm::vec3(-4.9f, -2.6f, 0.0f));
 		ServeBellGrey->SetScale(glm::vec3(2.02f * 0.85f, 1.45f * 0.85f, 0.0f));
 
-		teaDropArea->SetButtonText("T");
-		sandwichDropArea->SetButtonText("S");
-		dessertDropArea->SetButtonText("D");
-		optionalDropArea->SetButtonText("O");
 
 		UIButton* journalButton = new UIButton("JournalButton", "Assets/Images/UI/JournalButton.png", glm::vec3(-8.32f, -4.8f, 0.0f), glm::vec3(3.0f, 3.0f, 0.0f), true, false, "");
 		journalButton->SetHoverTexture("Assets/Images/UI/JournalButton_Highlight.png");

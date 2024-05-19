@@ -215,7 +215,14 @@
     <ClInclude Include="Code\GameStateManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="Code\Scene\Room4.h">
+=======
+    <ClInclude Include="Code\Scene\MainMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\PopupWidget\PopUp.h">
+>>>>>>> origin/MainMenu&Pause-Aisha
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

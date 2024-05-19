@@ -16,8 +16,6 @@ int m_windowHeight;
 Shader m_shader;
 Tex m_blankTex;
 
-
-
 Mesh CreateMesh(std::vector<Vertex> in_vertices)
 {
     Mesh mesh;
