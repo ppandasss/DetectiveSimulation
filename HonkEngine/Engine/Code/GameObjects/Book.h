@@ -218,6 +218,12 @@ public:
 		}
 	}
 
+	void activateDeferredClue() {
+
+		std::cout << "Activate Deferred general clue\n";
+
+	}
+
 
 protected:
 

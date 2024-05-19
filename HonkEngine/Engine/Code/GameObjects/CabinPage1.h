@@ -135,7 +135,6 @@ public:
 		m_journalData->addClueToJournalData(CABIN1, cabin1_clue5);
 		m_journalData->addClueToJournalData(CABIN1, cabin1_clue6);
 
-
 		// DIVIDER 2
 		GameObject* Divider2 = new UIObject("Divider2", "Assets/Images/Journal/Line_2.png", true);
 		Divider2->SetScale(glm::vec3(4.8f, 0.06f, 0.0f));

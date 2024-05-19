@@ -161,6 +161,7 @@ public:
 
 		}
 
+
 	}
 
 	// Function to deactivate a clue for a specific page
@@ -191,7 +192,7 @@ public:
 
 	//CHECK FINAL ENTRY
 
-	Ending checkMainPageEntry() {
+	int checkMainPageEntry() {
 
 		Cabin spy_choice = main_page.player_Spy;
 		Location location_choice = main_page.player_BombLocation;
