@@ -15,7 +15,7 @@ C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\GameOb
           [
               _Rep=__int64
           ]
-C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Hallway.h(321,26): warning C4244: 'argument': conversion from 'long' to 'float', possible loss of data
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Hallway.h(323,26): warning C4244: 'argument': conversion from 'long' to 'float', possible loss of data
 C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Dialogue\Dialoguemanager.h(227,1): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Kitchen.h(152,1): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Kitchen.h(151,1): warning C4305: 'initializing': truncation from 'double' to 'float'
   Engine.vcxproj -> C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\x64\Debug\Engine.exe

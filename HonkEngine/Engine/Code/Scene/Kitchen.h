@@ -23,7 +23,6 @@ public:
 	UIButtonEmpty* optionalDropArea = new UIButtonEmpty("optionalDropArea", glm::vec3(-4.5f, -0.4f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, false, "");
 
 	Kitchen() :audioManager(AudioManager::GetInstance()) {
-		//platePositionArea->SetButtonText("Drop Area");
 
 		/*--------------------------------------------------------------LOAD AUDDIO------------------------------------------------------------------------------------------------------- */
 		audioManager.LoadSound("kitchenAmbience", "Assets/Sounds/Ambience/Ambience_Kitchen.mp3", 0.65f);

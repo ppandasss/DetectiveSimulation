@@ -69,6 +69,13 @@ public:
 		UIButton* CloseJournalButton = new UIButton("CloseButton", "Assets/Images/Journal/Journal_CloseButton.png", glm::vec3(5.25f, 4.0f, 0.0f), glm::vec3(1.04f, 1.70f, 0.0f), true, false, "");
 		CloseJournalButton->SetOnClickAction([this]() { closeJournal(); });
 
+		UIDraggable* draggable1 = new UIDraggable("CaseNews2", "Assets/Images/Journal/CaseSummary_News.png", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(2.0f, 2.0f, 0.0f), true);
+		draggable1->setDragBoundsByObject(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(22.0f, 13.0f, 0.0f));
+
+		UIDraggable* draggable2 = new UIDraggable("CaseNews3", "Assets/Images/Journal/CaseSummary_News.png", glm::vec3(4.2f, 2.0f, 0.0f), glm::vec3(2.0f, 2.0f, 0.0f), true);
+		draggable2->setDragBoundsByObject(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(22.0f, 13.0f, 0.0f));
+
+
 		m_gameObjects.push_back(BackGround);
 		m_gameObjects.push_back(JournalCover);
 		m_gameObjects.push_back(Tab1);
@@ -97,6 +104,8 @@ public:
 		allPages.push_back(cabinPage5);
 		allPages.push_back(foodGuide);
 
+		draggableClues.push_back(draggable1);
+		draggableClues.push_back(draggable2);
 
 	}
 
@@ -119,8 +128,14 @@ public:
 		}
 
 		for (auto& object : allPages) {
-
 			object->setActiveStatus(true);
+		}
+
+		for (int i = 0; i < 2; i++) {
+
+			if (m_journal->getBookClueState(i)) {
+				draggableClues[i]->setActiveStatus(true);
+			}
 
 		}
 
@@ -137,17 +152,17 @@ public:
 		activePage = currentPage::MAIN_PAGE;
 
 		for (auto& object : m_gameObjects) {
-
 			if (object->getActiveStatus()) { //IF ACTIVE SET AS INACTIVE
-
 				object->setActiveStatus(false);
-
 			}
-
 		}
 
-
 		for (auto& object : allPages)
+		{
+			object->setActiveStatus(false);
+		}
+
+		for (auto& object : draggableClues)
 		{
 			object->setActiveStatus(false);
 		}
@@ -172,16 +187,21 @@ public:
 		}
 
 		for (auto& object : m_gameObjects) {
-
 			if (object->getActiveStatus()) { //CHECK ACTIVE STATUS
-
 				object->Render();
+			}
+		}
 
+
+		allPages[activePage]->Render();
+
+		for (int i = 0; i < 2; i++) {
+
+			if (m_journal->getBookClueState(i)) {
+				draggableClues[i]->Render();
 			}
 
 		}
-
-		allPages[activePage]->Render();
 
 	}
 
@@ -197,6 +217,22 @@ public:
 				object->Update(dt, frame);
 			}
 		}
+
+		for (int i = 0; i < 2; i++) {
+
+			if (m_journal->getBookClueState(i)) {
+
+				if (draggableClues[i]->getActiveStatus()) { //CHECK ACTIVE STATUS
+
+					draggableClues[i]->Update(dt, frame);
+
+				}
+				
+			}
+
+		}
+
+
 
 		allPages[activePage]->Update(dt, frame);
 
@@ -218,22 +254,20 @@ public:
 		}
 	}
 
-	void activateDeferredClue() {
-
-		std::cout << "Activate Deferred general clue\n";
-
-	}
-
 
 protected:
 
 	std::vector<GameObject*> m_gameObjects;
+	std::vector<GameObject*> draggableClues;
+
 	std::vector<Page*> allPages;
 
 	currentPage activePage = currentPage::MAIN_PAGE;
 
-	bool openStatus = false; //true - open, false - closed
+	bool openStatus = false; //true - open, false - closed 
 
 	glm::vec2 mousePos;
+
+	JournalData* m_journal = JournalData::GetInstance();
 
 };
