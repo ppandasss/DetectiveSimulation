@@ -334,6 +334,14 @@
     <Media Include="Assets\Sounds\footstep.mp3" />
     <Media Include="Assets\Sounds\MembersOnly.mp3" />
     <Media Include="Assets\Sounds\Train_Ambience.mp3" />
+    <Media Include="Assets\Sounds\SFX_CallingBell.mp3" />
+    <Media Include="Assets\Sounds\SFX_DialogueChoice.mp3" />
+    <Media Include="Assets\Sounds\SFX_DialoguePlay.mp3" />
+    <Media Include="Assets\Sounds\SFX_KnockDoor.mp3" />
+    <Media Include="Assets\Sounds\SFX_SlideDoor.mp3" />
+    <Media Include="Assets\Sounds\SFX_TimerTicking.mp3" />
+    <Media Include="Assets\Sounds\Music\BGmusic_Cabin.mp3" />
+    <Media Include="Assets\Sounds\Music\BGmusic_Corridor_NoTimer.mp3" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Assets\Dialogue\Martha\Martha_MealReact_Tea_Assam_EarlGray.xml" />
@@ -343,5 +351,49 @@
     <Xml Include="Assets\Dialogue\Martha\Martha_Serve_Late.xml" />
     <Xml Include="Assets\Dialogue\Martha\Martha_Serve_OnTime.xml" />
     <Xml Include="Assets\Dialogue\Twin\Twin_Order.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\MealReact\Archibald_MealReact_Pastry_LemonTart.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\MealReact\Archibald_MealReact_Pastry_Other.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\MealReact\Archibald_MealReact_Sandwich_Other.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\MealReact\Archibald_MealReact_Sandwich_Salmon.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\MealReact\Archibald_MealReact_Tea_Assam_EarlGrey.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\MealReact\Archibald_MealReact_Tea_Assam_EarlGrey_WithMilk.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\MealReact\Archibald_MealReact_Tea_Other.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Low\Archibald_Low_End.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Low\Archibald_Low_MessyClothes.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Low\Archibald_Low_MovingLuggage.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Low\Archibald_Low_Newspaper.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Low\Archibald_Low_Start.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Archibald_Serve_OnTime.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Archibald_Order.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Archibald_Serve_Late.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Informative\Archibald_Informative_End.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Informative\Archibald_Informative_MessyClothes.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Informative\Archibald_Informative_MovingLuggage.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Informative\Archibald_Informative_Newspaper.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Informative\Archibald_Informative_Start.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Average\Archibald_Average_End.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Average\Archibald_Average_MessyClothes.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Average\Archibald_Average_MovingLuggage.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Average\Archibald_Average_Newspaper.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Average\Archibald_Average_Start.xml" />
+    <Xml Include="Assets\Dialogue\Martha\Average\Martha_Average_Cane.xml" />
+    <Xml Include="Assets\Dialogue\Martha\Average\Martha_Average_End.xml" />
+    <Xml Include="Assets\Dialogue\Martha\Average\Martha_Average_Letter.xml" />
+    <Xml Include="Assets\Dialogue\Martha\Average\Martha_Average_Start.xml" />
+    <Xml Include="Assets\Dialogue\Martha\Informative\Martha_Informative_Cane.xml" />
+    <Xml Include="Assets\Dialogue\Martha\Informative\Martha_Informative_End.xml" />
+    <Xml Include="Assets\Dialogue\Martha\Informative\Martha_Informative_Letter.xml" />
+    <Xml Include="Assets\Dialogue\Martha\Informative\Martha_Informative_Start.xml" />
+    <Xml Include="Assets\Dialogue\Martha\MealReact\Martha_MealReact_Pastry_Eclair_Macaron_Tart.xml" />
+    <Xml Include="Assets\Dialogue\Martha\MealReact\Martha_MealReact_Pastry_Scone.xml" />
+    <Xml Include="Assets\Dialogue\Martha\MealReact\Martha_MealReact_Sandwich_Cucumber.xml" />
+    <Xml Include="Assets\Dialogue\Martha\MealReact\Martha_MealReact_Sandwich_Egg.xml" />
+    <Xml Include="Assets\Dialogue\Martha\MealReact\Martha_MealReact_Sandwich_Salmon_Beef.xml" />
+    <Xml Include="Assets\Dialogue\Martha\MealReact\Martha_MealReact_Tea_Assam_EarlGrey.xml" />
+    <Xml Include="Assets\Dialogue\Martha\MealReact\Martha_MealReact_Tea_Chamomile.xml" />
+    <Xml Include="Assets\Dialogue\Martha\MealReact\Martha_MealReact_Tea_GreenTea.xml" />
+    <Xml Include="Assets\Dialogue\Martha\MealResult\Martha_MealResult_Average.xml" />
+    <Xml Include="Assets\Dialogue\Martha\MealResult\Martha_MealResult_Informative.xml" />
+    <Xml Include="Assets\Dialogue\Martha\MealResult\Martha_MealResult_Low.xml" />
   </ItemGroup>
 </Project>

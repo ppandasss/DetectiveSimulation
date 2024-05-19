@@ -69,20 +69,20 @@ public:
 		E_Clue4->SetScale(0.62f);
 
 		ClueData* cabin22_clue1 = new ClueData();
-		cabin22_clue1->showClue = true;
+		cabin22_clue1->showClue = false;
 		cabin22_clue1->clueObject = E_Clue1;
-		cabin22_clue1->isEvidence = true;
+		cabin22_clue1->isEvidence = false;
 
 		ClueData* cabin22_clue2 = new ClueData();
-		cabin22_clue2->showClue = true;
+		cabin22_clue2->showClue = false;
 		cabin22_clue2->clueObject = E_Clue2;
 
 		ClueData* cabin22_clue3 = new ClueData();
-		cabin22_clue3->showClue = true;
+		cabin22_clue3->showClue = false;
 		cabin22_clue3->clueObject = E_Clue3;
 
 		ClueData* cabin22_clue4 = new ClueData();
-		cabin22_clue4->showClue = true;
+		cabin22_clue4->showClue = false;
 		cabin22_clue4->clueObject = E_Clue4;
 
 		// DIVIDER 1
@@ -108,13 +108,13 @@ public:
 		E_LA2->SetScale(0.48f);
 
 		ClueData* cabin22_clue5 = new ClueData();
-		cabin22_clue5->showClue = true;
+		cabin22_clue5->showClue = false;
 		cabin22_clue5->clueObject = E_LA1;
 
 		ClueData* cabin22_clue6 = new ClueData();
-		cabin22_clue6->showClue = true;
+		cabin22_clue6->showClue = false;
 		cabin22_clue6->clueObject = E_LA2;
-		cabin22_clue6->isEvidence = true;
+		cabin22_clue6->isEvidence = false;
 
 		textClues.push_back(cabin22_clue1);
 		textClues.push_back(cabin22_clue2);

@@ -296,15 +296,15 @@ public:
 			}
 			else if(gameStateManager.getGameState() == GameState::ROOM2_STATE)
 			{
-				Application::Get().SetTimer(1000, [this]() { bellCabin3->startRinging(); }, false);
+				Application::Get().SetTimer(1000, [this]() { bellCabin2->startRinging(); }, false);
 			}
 			else if (gameStateManager.getGameState() == GameState::ROOM3_STATE)
 			{
-				Application::Get().SetTimer(5000, [this]() { bellCabin2->startRinging(); }, false);
+				Application::Get().SetTimer(1000, [this]() { bellCabin3->startRinging(); }, false);
 			}
 			else if (gameStateManager.getGameState() == GameState::ROOM4_STATE)
 			{
-				Application::Get().SetTimer(5000, [this]() { bellCabin4->startRinging(); }, false);
+				Application::Get().SetTimer(1000, [this]() { bellCabin4->startRinging(); }, false);
 			}
 			
 		}

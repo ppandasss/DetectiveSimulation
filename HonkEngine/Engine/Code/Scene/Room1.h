@@ -295,11 +295,11 @@ public:
         switch (kitchen->getTea()) {
 
         case EARLGREYTEA:
-            dialogueManager->LoadDialogues("MealReact_Tea_EarlGray", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Tea_Assam_EarlGray.xml");
+            dialogueManager->LoadDialogues("MealReact_Tea_EarlGrey", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Tea_Assam_EarlGrey.xml");
             teaDialogueKey = "MealReact_Tea_EarlGray";
             break;
         case ASSAMTEA:
-            dialogueManager->LoadDialogues("MealReact_Tea_Assam", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Tea_Assam_EarlGray.xml");
+            dialogueManager->LoadDialogues("MealReact_Tea_Assam", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Tea_Assam_EarlGrey.xml");
             teaDialogueKey = "MealReact_Tea_Assam";
             break;
         case CHAMOMILETEA:
@@ -602,7 +602,7 @@ public:
 
     void CheckForEndDialogue() {
         if (isCaneInspected && isLetterInspected && !inspectEndDialogueSet) {
-            std::cout << "Both items inspaddaected, moving to final dialogue." << std::endl;
+            std::cout << "Both items inspected, moving to final dialogue." << std::endl;
             gameStateManager.SetRoomState(RoomState::InspectionEnd);
             
         }
