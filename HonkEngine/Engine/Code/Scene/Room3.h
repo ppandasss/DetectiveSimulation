@@ -1,18 +1,20 @@
 #pragma once
 
 #include "Scene.h"
+#include <glm/glm.hpp>
+#include <iostream>
+#include <memory>
+#include <cstdlib> 
+#include <ctime> 
+#include "../Dialogue/Dialoguemanager.h"
+#include "../Effects/ObjectsParallax.h"
+#include "../Effects/BackgroundParallax.h"
+#include "../GameObjects/Timer.h"
 #include "../UI/UINormal.h"  
 #include "../UI/UIButton.h" 
 #include "../UI/UIElement.h"  
 #include "../Input/Input.h"
 #include "../Engine.h"
-#include <glm/glm.hpp>
-#include <iostream>
-#include "../Dialogue/Dialoguemanager.h"
-#include "../Effects/ObjectsParallax.h"
-#include "../Effects/BackgroundParallax.h"
-#include "../GameObjects/Timer.h"
-#include <memory>
 
 using namespace std;
 
@@ -22,9 +24,21 @@ class Room3 : public Scene {
     CharacterData* characterData = CharacterData::GetInstance();
     AudioManager& audioManager;
     Timer* timer;
+    int shakeDirection = 1;  // 1 for right, -1 for left
+    int shakeCount = 0;
+    int shakeCycleCount = 0;  // Count of how many full shake cycles have been completed
+    float shakeMagnitude = 0.1f;
+    bool isPausing = false;
+    const int shakeInterval = 100; // Time in ms for each shake
+    int pauseDuration = 4000; // Initial time in ms for pauses
+    const float pauseIncreaseFactor = 4.0;// Multiplier to increase the pause duration each cycle
+    int timerId = -1;
+    glm::vec3 movingLuggageInitialPos;
+
+
     Text* instructionText;
     GameStateManager& gameStateManager = GameStateManager::GetInstance();
-    Door* door = DoorManager::GetInstance().GetDoorByName("Room-Door");
+    Door* door = DoorManager::GetInstance().GetDoorByName("Room3Door");
     Door* kichenDoor = DoorManager::GetInstance().GetDoorByName("KitchenDoor");
 
     UIElement* movingLuggage;
@@ -37,6 +51,7 @@ class Room3 : public Scene {
 public:
     Room3() :audioManager(AudioManager::GetInstance()) {
 
+        srand(time(NULL));
         timer = &Timer::GetInstance();
 
         audioManager.LoadSound("cabinMusic", "Assets/Sounds/Music/BGmusic_Cabin.mp3", 5.0f);
@@ -83,6 +98,10 @@ public:
         //Inspection Items
         movingLuggage = new UINormal("MovingLuggage", "Assets/Images/Archibald/Archibald_Inspection_MovingLuggage.png", glm::vec3(1.7f, -4.6f, 0.0f), glm::vec3(3.78f * sm * 1.2f, 2.38f * sm * 1.2f, 0.0f), true);
         newspaper = new UINormal("Newspaper", "Assets/Images/Archibald/Archibald_Inspection_Newspaper.png", glm::vec3(-3.139f, 0.224f, 0.0f), glm::vec3(1.09f * sm , 2.22f * sm, 0.0f), true);
+        StartShakeCycle();
+        movingLuggageInitialPos = movingLuggage->GetPosition();
+        shakeDirection = 1;  // Start by moving right
+        timerId = Application::Get().SetTimer(500, std::bind(&Room3::ShakeLuggage, this), true);
 
         //Inspection Item Buttons
         movingLuggageInspect = new UIButton("MovingLuggageInspect", "Assets/Images/Archibald/Archibald_Inspection_MovingLuggage.png", glm::vec3(1.7f, -4.6f, 0.0f), glm::vec3(3.78f * sm * 1.2f, 2.38f * sm * 1.2f, 0.0f), true, false, "");
@@ -463,17 +482,50 @@ public:
         ObjectsparallaxManager->UpdateLayers();
         dialogueManager->Update(dt, frame);
 
-        UpdateMovingLuggage();
         UpdateDialogueProgress();
         HandleKeyInputs();
 
 
     }
 
-    void UpdateMovingLuggage()
-    {
+    void StartShakeCycle() {
+        Application::Get().CancelTimer(timerId); // Cancel any existing timer
+        std::cout << "StartShakeCycle called. isPausing: " << isPausing << std::endl;
 
+        if (!isPausing) {
+            timerId = Application::Get().SetTimer(shakeInterval, std::bind(&Room3::ShakeLuggage, this), true);
+            std::cout << "Starting shake timer." << std::endl;
+        }
+        else {
+            timerId = Application::Get().SetTimer(pauseDuration, std::bind(&Room3::EndPause, this), false);
+            std::cout << "Starting pause timer for duration: " << pauseDuration << "ms." << std::endl;
+        }
     }
+
+    void ShakeLuggage() {
+        if (shakeCount < 2) {
+            float newX = movingLuggageInitialPos.x + (shakeDirection * shakeMagnitude);
+            movingLuggage->SetPosition(glm::vec3(newX, movingLuggageInitialPos.y, movingLuggageInitialPos.z));
+            shakeDirection *= -1; // Toggle direction
+            shakeCount++;
+            std::cout << "Shaking. shakeCount: " << shakeCount << std::endl;
+        }
+        else {
+            std::cout << "Maximum shakes reached. Transitioning to pause." << std::endl;
+            isPausing = true;
+            shakeCount = 0; // Reset shake count for next cycle
+            StartShakeCycle();
+        }
+    }
+
+    void EndPause() {
+        std::cout << "Ending pause." << std::endl;
+        shakeCycleCount++;
+        pauseDuration *= pauseIncreaseFactor; // Increase the pause duration for the next cycle
+        isPausing = false;
+        StartShakeCycle(); // Restart shaking after the pause
+    }
+
 
     void UpdateDialogueProgress() {
         // Manage different room states
@@ -564,8 +616,6 @@ public:
         else if (inspectStartDialogueSet && dialogueManager->IsDialogueFinished(inspectStartDialogueKey)) {
             gameStateManager.SetRoomState(RoomState::Inspection);
         }
-
-
     }
 
     void ManageInspectionState()
@@ -585,8 +635,6 @@ public:
     void NormalObjectToggle() {
         movingLuggage->setActiveStatus(!movingLuggageInspect->getActiveStatus());
         newspaper->setActiveStatus(!newspaperInspect->getActiveStatus());
-
-
     }
 
     void SetInspectionObject() {
@@ -691,14 +739,11 @@ public:
     }
 
     void Render() override {
-        Scene::Render(); // Renders GameObjects
-
-        // Manually call DialogueManager's render function
+        Scene::Render(); 
         dialogueManager->Render();
     }
 
     void OnExit() override {
-        // Scene::OnExit();  // Call base class if there's relevant logic
         audioManager.PlaySound("slideDoor");
         audioManager.PauseSound("cabinMusic");
         BellManager::GetInstance().StopAllRinging();
