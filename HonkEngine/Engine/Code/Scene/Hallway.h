@@ -143,6 +143,10 @@ public:
 		/*JournalData::GetInstance()->ActivateClue(CABIN1, 0);
 		JournalData::GetInstance()->ActivateClue(CABIN1, 1);*/
 
+		//test draggable clues
+		/*JournalData::GetInstance()->ActivateClue(CABIN3, 10); 
+		JournalData::GetInstance()->ActivateClue(CABIN4, 7);*/
+
 		/*-------------------------------------------------------------🎮CREATE PLAYER🎮------------------------------------------------------------------------------------------------------- */
 
 		player = new Player("waiter", "Assets/Images/Waiter_Sprite_Walk.png", 2, 8, Journal);

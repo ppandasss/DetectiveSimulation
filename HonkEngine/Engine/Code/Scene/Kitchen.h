@@ -145,8 +145,8 @@ public:
 		journalButton->SetHoverTexture("Assets/Images/UI/JournalButton_Highlight.png");
 		journalButton->SetOnClickAction([this]() { Journal->drawBook(); });
 
-		UIButton* ResetButton = new UIButton("PlayButton", "Assets/Images/MainMenu/MainMenu_Button_Play.png", glm::vec3(-3.5f, 4.18f, 0.0f), glm::vec3(3.5f, 1.0f, 0.0f), true, true, "Assets/Fonts/mvboli.ttf");
-		ResetButton->SetHoverTexture("Assets/Images/MainMenu/MainMenu_Button_Start_Hover.png");
+		UIButton* ResetButton = new UIButton("PlayButton", "Assets/Images/Kitchen/Button_ResetMeal.png", glm::vec3(-3.5f, 4.18f, 0.0f), glm::vec3(3.5f, 1.0f, 0.0f), true, true, "Assets/Fonts/mvboli.ttf");
+		ResetButton->SetHoverTexture("Assets/Images/Kitchen/Button_ResetMeal_Highlight.png");
 		ResetButton->SetButtonText("Reset");
 		ResetButton->SetTextPosition(glm::vec3(-3.5f, 4.0f, 0.0f));
 		ResetButton->SetOnClickAction([this]() { clearPlate(); });

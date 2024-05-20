@@ -69,12 +69,11 @@ public:
 		UIButton* CloseJournalButton = new UIButton("CloseButton", "Assets/Images/Journal/Journal_CloseButton.png", glm::vec3(5.25f, 4.0f, 0.0f), glm::vec3(1.04f, 1.70f, 0.0f), true, false, "");
 		CloseJournalButton->SetOnClickAction([this]() { closeJournal(); });
 
-		UIDraggable* draggable1 = new UIDraggable("CaseNews2", "Assets/Images/Journal/CaseSummary_News.png", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(2.0f, 2.0f, 0.0f), true);
-		draggable1->setDragBoundsByObject(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(22.0f, 13.0f, 0.0f));
+		UIDraggable* Cabin3Newspaper = new UIDraggable("Cabin3Newspaper", "Assets/Images/PaperClues/Archibald_Cabin3_Newspaper.png", glm::vec3(11.7f, 2.2f, 0.0f), glm::vec3(7.31f, 10.12f, 0.0f), true);
+		Cabin3Newspaper->setDragBoundsByObject(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(30.0f, 20.0f, 0.0f));
 
-		UIDraggable* draggable2 = new UIDraggable("CaseNews3", "Assets/Images/Journal/CaseSummary_News.png", glm::vec3(4.2f, 2.0f, 0.0f), glm::vec3(2.0f, 2.0f, 0.0f), true);
-		draggable2->setDragBoundsByObject(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(22.0f, 13.0f, 0.0f));
-
+		UIDraggable* Cabin4Pamphlet = new UIDraggable("Cabin4Pamphlet", "Assets/Images/PaperClues/Octavia_Cabin4_Pamphlet.png", glm::vec3(-10.2f, -3.5f, 0.0f), glm::vec3(5.34f, 7.37f, 0.0f), true);
+		Cabin4Pamphlet->setDragBoundsByObject(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(30.0f, 20.0f, 0.0f));
 
 		m_gameObjects.push_back(BackGround);
 		m_gameObjects.push_back(JournalCover);
@@ -104,8 +103,8 @@ public:
 		allPages.push_back(cabinPage5);
 		allPages.push_back(foodGuide);
 
-		draggableClues.push_back(draggable1);
-		draggableClues.push_back(draggable2);
+		draggableClues.push_back(Cabin3Newspaper);
+		draggableClues.push_back(Cabin4Pamphlet);
 
 	}
 
