@@ -38,6 +38,11 @@ public:
 		audioManager.LoadSound("openJournal", "Assets/Sounds/Journal/SFX_OpenJournal.mp3", 0.3f);
 		audioManager.LoadSound("pageSwitch", "Assets/Sounds/Journal/SFX_PageSwitch.mp3", 0.2f);
 
+		// DRAGGABLE CLUES
+		UIDraggable* Cabin3Newspaper = new UIDraggable("Cabin3Newspaper", "Assets/Images/PaperClues/Archibald_Cabin3_Newspaper.png", glm::vec3(11.7f, 2.2f, 0.0f), glm::vec3(7.31f, 10.12f, 0.0f), true);
+		UIDraggable* Cabin4Pamphlet = new UIDraggable("Cabin4Pamphlet", "Assets/Images/PaperClues/Octavia_Cabin4_Pamphlet.png", glm::vec3(-10.2f, -3.5f, 0.0f), glm::vec3(5.34f, 7.37f, 0.0f), true);
+
+
 		JournalCover = new UIObject("JournalCover", "Assets/Images/Journal/Cover.png", true);
 		JournalCover->SetScale(glm::vec3(14.36f, 8.24f, 0.0f));
 		JournalCover->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
@@ -95,6 +100,9 @@ public:
 		m_gameObjects.push_back(Tab7);
 		m_gameObjects.push_back(CloseJournalButton);
 		m_gameObjects.push_back(BlankPage);
+
+		m_gameObjects.push_back(Cabin3Newspaper);
+		m_gameObjects.push_back(Cabin4Pamphlet);
 
 		Page* mainPage = new MainPage();
 		Page* cabinPage1 = new CabinPage1();
