@@ -90,7 +90,11 @@ public:
         if (input.Get().GetKey(GLFW_KEY_SPACE))
         {
             Application::Get().SetScene("MainMenu");
-            //Application::Get().SetScene("Hallway");
+        }
+
+        if(input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1))
+        {
+            Application::Get().SetScene("MainMenu");
         }
     }
 
