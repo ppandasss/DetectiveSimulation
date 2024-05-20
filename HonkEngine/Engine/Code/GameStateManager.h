@@ -109,7 +109,7 @@ private:
         stateActions[std::make_pair(GameState::ROOM2_STATE, RoomState::Serve)] = []() {
             Timer::GetInstance().stop();
             OrderData::GetInstance().ClearOrder();
-            std::cout << "Transition to Room1 Serve state." << std::endl;
+            std::cout << "Transition to Room2 Serve state." << std::endl;
          };
 
 

@@ -373,6 +373,10 @@ public:
 				});
 			instructionText->setActiveStatus(isNearDoor);
 		}
+
+
+		
+
 	}
 
 

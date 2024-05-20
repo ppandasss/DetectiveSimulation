@@ -319,7 +319,7 @@ public:
             break;
         case BEEF:
             dialogueManager->LoadDialogues("MealReact_Sandwich_Salmon", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Sandwich_Salmon_Beef.xml");
-            sandwichDialogueKey = "MealReact_Sandwich_Salmon";
+            sandwichDialogueKey = "MealReact_Sandwich_Beef";
             break;
         case EGG:
             dialogueManager->LoadDialogues("MealReact_Sandwich_Egg", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Sandwich_Egg.xml");
@@ -361,18 +361,18 @@ public:
         switch (level)
         {
         case LOW:
-            dialogueManager->LoadDialogues("Score_Low_Start", "Assets/Dialogue/Martha/MealResult/Martha_MealResult_Low.xml");
-            scoreDialogueKey = "Score_Low_Start";
+            dialogueManager->LoadDialogues("Score_Low", "Assets/Dialogue/Martha/MealResult/Martha_MealResult_Low.xml");
+            scoreDialogueKey = "Score_Low";
             cout << "Score Low" << endl;
             break;
         case AVERAGE:
-            dialogueManager->LoadDialogues("Score_Average_Start", "Assets/Dialogue/Martha/MealResult/Martha_MealResult_Average.xml");
-            scoreDialogueKey = "Score_Average_Start";
+            dialogueManager->LoadDialogues("Score_Average", "Assets/Dialogue/Martha/MealResult/Martha_MealResult_Average.xml");
+            scoreDialogueKey = "Score_Average";
             cout << "Score Average" << endl;    
             break;
         case INFORMATIVE:
-            dialogueManager->LoadDialogues("Score_Informative_Start", "Assets/Dialogue/Martha/MealResult/Martha_MealResult_Informative.xml");
-            scoreDialogueKey = "Score_Informative_Start";
+            dialogueManager->LoadDialogues("Score_Informative", "Assets/Dialogue/Martha/MealResult/Martha_MealResult_Informative.xml");
+            scoreDialogueKey = "Score_Informative";
             cout << "Score Informative" << endl;
             break;
         default:
@@ -400,7 +400,7 @@ public:
             cout << "Interaction Low" << endl;
             break;
         case InteractionLevel::AVERAGE:
-            std::cout << "Loading AVERAGE interaction level dialogues." << std::endl;
+            std::cout << "Interaction level is AVERAGE." << std::endl;
             dialogueManager->LoadDialogues("Inspect_Average_Start", "Assets/Dialogue/Martha/Average/Martha_Average_Start.xml");
             dialogueManager->LoadDialogues("Inspect_Average_Letter", "Assets/Dialogue/Martha/Average/Martha_Average_Letter.xml");
             dialogueManager->LoadDialogues("Inspect_Average_Cane", "Assets/Dialogue/Martha/Average/Martha_Average_Cane.xml");
@@ -413,7 +413,7 @@ public:
             cout << "Interaction Average" << endl;
             break;
         case InteractionLevel::INFORMATIVE:
-            std::cout << "Loading INFORMATIVE interaction level dialogues." << std::endl;
+            std::cout << "Interaction level is INFORMATIVE." << std::endl;
             dialogueManager->LoadDialogues("Inspect_Informative_Start", "Assets/Dialogue/Martha/Informative/Martha_Informative_Start.xml");
             dialogueManager->LoadDialogues("Inspect_Informative_Letter", "Assets/Dialogue/Martha/Informative/Martha_Informative_Letter.xml");
             dialogueManager->LoadDialogues("Inspect_Informative_Cane", "Assets/Dialogue/Martha/Informative/Martha_Informative_Cane.xml");

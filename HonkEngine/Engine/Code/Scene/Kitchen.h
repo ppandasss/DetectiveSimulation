@@ -382,8 +382,18 @@ public:
 		Timer& timer = Timer::GetInstance();
 		timer.Update(dt);
 
-		if (input.Get().GetKeyDown(GLFW_KEY_R)) { //RESET KITCHEN
+		if (input.Get().GetKeyDown(GLFW_KEY_R)) { 
 			clearPlate();
+		}
+
+		if (input.Get().GetKeyDown(GLFW_KEY_TAB)) {
+
+			if (Journal->isOpen()) {
+				Journal->closeBook();
+			}
+			else {
+				Journal->drawBook();
+			}
 		}
 
 		updateServeButton();

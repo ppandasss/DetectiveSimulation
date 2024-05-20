@@ -73,7 +73,6 @@ public:
             else {
                 m_journal->drawBook();
             }
-
         }
 
         // Set the animation
