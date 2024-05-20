@@ -161,7 +161,6 @@ public:
         dialogueManager->LoadDialogues("Serve_Late","Assets/Dialogue/Archibald/Archibald_Serve_Late.xml");
 
         
-        
 
         //Text
         instructionText = new Text("dialogueinstruction", "Use [Left-click] or [Space] to continue dialogue", "Assets/Fonts/mvboli.ttf", true);
@@ -208,6 +207,7 @@ public:
         m_gameObjects.push_back(movingLuggage);
         m_gameObjects.push_back(movingLuggageInspect);
 
+        m_gameObjects.push_back(messyClothesInspect);
         m_gameObjects.push_back(archibaldNormal);
         m_gameObjects.push_back(archibaldHappy);
         m_gameObjects.push_back(archibaldDisappoint);
@@ -215,7 +215,6 @@ public:
         m_gameObjects.push_back(archibaldSad);
         m_gameObjects.push_back(archibaldShy);
 
-        m_gameObjects.push_back(messyClothesInspect);
         m_gameObjects.push_back(newspaper);
         m_gameObjects.push_back(newspaperInspect);
 
@@ -234,12 +233,12 @@ public:
         backgroundParallaxManager = std::make_unique<BackgroundParallax>();
 
         float defaultLayer = 0.8f;
-        float objectLayerOne = 0.83f;
+        float objectLayerOne = 0.85f;
 
         // Add objects to different layers
         ObjectsparallaxManager->AddObjectToLayer(room, defaultLayer);   // Layer 1
-        ObjectsparallaxManager->AddObjectToLayer(lamp, defaultLayer);   // Layer 1.5
-        ObjectsparallaxManager->AddObjectToLayer(luggage, defaultLayer);   // Layer 1.5
+        ObjectsparallaxManager->AddObjectToLayer(lamp, objectLayerOne);   // Layer 1.5
+        ObjectsparallaxManager->AddObjectToLayer(luggage, objectLayerOne);   // Layer 1.5
         ObjectsparallaxManager->AddObjectToLayer(movingLuggageInspect, objectLayerOne);   // Layer 2
         ObjectsparallaxManager->AddObjectToLayer(newspaperInspect, objectLayerOne); // Layer 2
         ObjectsparallaxManager->AddObjectToLayer(movingLuggage, objectLayerOne);   // Layer 2
@@ -260,7 +259,7 @@ public:
         backgroundParallaxManager->AddBackgroundPair(4, background5a, background5b, 2.5f); // Layer 4, fastest
         backgroundParallaxManager->AddBackgroundPair(5, background6a, background6b, 3.0f); // Layer 5, fastest
 
-        shakingEffect = std::make_unique<ShakingEffect>(0.1f, 100, 500, 4000);
+        shakingEffect = std::make_unique<ShakingEffect>(0.05f, 100, 400, 6500);
 
         shakingEffect->AddObject(movingLuggage);
         shakingEffect->AddObject(movingLuggageInspect);

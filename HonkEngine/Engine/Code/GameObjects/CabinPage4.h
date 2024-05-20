@@ -8,6 +8,10 @@ public:
 
 	CabinPage4() :Page() {
 
+		GameObject* BlankPage2 = new UIObject("BlankPage2", "Assets/Images/Journal/Journal_BlankPage2.png", true);
+		BlankPage2->SetScale(glm::vec3(12.68f, 7.45f, 1.0f));
+		BlankPage2->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
+
 		// LEFT PAGE
 		GameObject* P1Picture = new UIObject("P1Picture", "Assets/Images/Journal/PassengerPicture_Archibald.png", true);
 		P1Picture->SetScale(glm::vec3(5.50f, 3.19f, 0.0f));
@@ -107,11 +111,6 @@ public:
 		m_journalData->addClueToJournalData(CABIN3, cabin3_clue4);
 		m_journalData->addClueToJournalData(CABIN3, cabin3_clue5);
 
-		// DIVIDER 1
-		GameObject* Divider1 = new UIObject("Divider1", "Assets/Images/Journal/Line_1.png", true);
-		Divider1->SetScale(glm::vec3(4.78f, 0.08f, 0.0f));
-		Divider1->SetPosition(glm::vec3(3.2f, 0.7f, 0.0f));
-
 
 		// LAST ACTIVITY	[A = Archibald, LA = Last Activity]
 		Text* LastActivity = new Text("LastActivity", "Last Activity", "Assets/Fonts/mvboli.ttf");
@@ -167,11 +166,6 @@ public:
 		m_journalData->addClueToJournalData(CABIN3, cabin3_clue9);
 
 
-		// DIVIDER 2
-		GameObject* Divider2 = new UIObject("Divider2", "Assets/Images/Journal/Line_2.png", true);
-		Divider2->SetScale(glm::vec3(4.8f, 0.06f, 0.0f));
-		Divider2->SetPosition(glm::vec3(3.2f, -1.25f, 0.0f));
-
 
 		// LAST VISIT
 		Text* LastVisit = new Text("LastVisit", "Last Visit", "Assets/Fonts/mvboli.ttf");
@@ -212,6 +206,7 @@ public:
 		m_journalData->addClueToJournalData(CABIN3, cabin3_clue10);
 
 
+		m_gameObjects.push_back(BlankPage2);
 		m_gameObjects.push_back(P1Picture);
 		m_gameObjects.push_back(PaperClip);
 		m_gameObjects.push_back(InfoPaper);
@@ -222,8 +217,6 @@ public:
 		m_gameObjects.push_back(Occupation);
 		m_gameObjects.push_back(CabinStamp);
 
-		m_gameObjects.push_back(Divider1);
-
 
 		m_gameObjects.push_back(LastActivity);
 		m_gameObjects.push_back(A_LA1_1);
@@ -231,7 +224,6 @@ public:
 		m_gameObjects.push_back(A_LA2_1);
 		m_gameObjects.push_back(A_LA2_2);
 
-		m_gameObjects.push_back(Divider2);
 		m_gameObjects.push_back(LastVisit);
 
 		m_gameObjects.push_back(TownSquare);

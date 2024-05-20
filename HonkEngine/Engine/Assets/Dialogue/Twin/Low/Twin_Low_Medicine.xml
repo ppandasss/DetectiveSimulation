@@ -105,13 +105,6 @@
 		</Speaker>
 		<Choices/>
 	</Dialogue>
-	<Dialogue id="3ND67">
-		<Speaker name="Nathaniel_Sad">
-			<line1>But it's so boring, though!</line1>
-			<line2>I've had to eat these since I was  a toddler.</line2>
-		</Speaker>
-		<Choices/>
-	</Dialogue>
 	<Dialogue id="3WD29" next="3EQ02">
 		<Speaker name="Waiter">
 			<line1>And that will help you get better.</line1>
@@ -127,20 +120,13 @@
 	</Dialogue>
 	<Dialogue id="3ND68_2" next="3ND71">
 		<Speaker name="Nathaniel_Sad">
-			<line1>I forgot to eat them once when I was  about five,</line1>
-			<line2>and my mother freaked out!</line2>
+			<line1>But my mother will freak out if I do!</line1>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
-	<Dialogue id="3ND69">
-		<Speaker name="Nathaniel_Disappoint">
-			<line1>Right? And I've had to eat these  since I was a toddler.</line1>
-		</Speaker>
-		<Choices/>
-	</Dialogue>
-	<Dialogue id="3ND70" next="3ND71">
+	<Dialogue id="3ND69" next="3ND71">
 		<Speaker name="Nathaniel_Sad">
-			<line1>It's so boring that some days I  almost forgot.</line1>
+			<line1>Right? It's so boring that some  days I almost forgot.</line1>
 		</Speaker>
 		<Choices/>
 	</Dialogue>

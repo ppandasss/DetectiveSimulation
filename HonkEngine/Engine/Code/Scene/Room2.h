@@ -155,7 +155,7 @@ public:
         UIElement* waiterIcon = new UINormal("WaiterIcon", "Assets/Images/UI/Speaker_icon_Waiter.png", glm::vec3(4.18f, 3.43f, 0.0f), glm::vec3(1.23f, 1.4f, 0.0f), true);
 
         dialogueManager = make_unique<DialogueManager>("TwinDialogue", dialogueBox, "Nathaniel_Normal","Evelyn_Normal");
-        dialogueManager->LoadDialogues("Order", "Assets/Dialogue/Twin/Informative/Twin_Informative_Medicine.xml");
+        dialogueManager->LoadDialogues("Order", "Assets/Dialogue/Twin/Informative/Twin_Informative_Bag.xml");
 
         //Text
         instructionText = new Text("dialogueinstruction", "Use [Left-click] or [Space] to continue dialogue", "Assets/Fonts/mvboli.ttf", true);
@@ -210,9 +210,6 @@ public:
         m_gameObjects.push_back(room);
         m_gameObjects.push_back(medicineBack);
 
-        m_gameObjects.push_back(hat);
-        m_gameObjects.push_back(hatInspect);
-
         m_gameObjects.push_back(bag);
         m_gameObjects.push_back(bagInspect);
 
@@ -233,6 +230,8 @@ public:
         m_gameObjects.push_back(evelynSad);
         m_gameObjects.push_back(evelynShy);
 
+        m_gameObjects.push_back(hat);
+        m_gameObjects.push_back(hatInspect);
 
         m_gameObjects.push_back(dialogueBox);
         m_gameObjects.push_back(dialogueChoice1);
@@ -248,14 +247,17 @@ public:
         backgroundParallaxManager = std::make_unique<BackgroundParallax>();
 
         float defaultLayer = 0.8f;
-        float objectLayerOne = 0.83f;
+        float objectLayerOne = 0.85f;
 
         // Add objects to different layers
         ObjectsparallaxManager->AddObjectToLayer(room, defaultLayer);   // Layer 1
         ObjectsparallaxManager->AddObjectToLayer(hat, objectLayerOne);    // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(hatInspect, objectLayerOne);    // Layer 2
         ObjectsparallaxManager->AddObjectToLayer(bag, objectLayerOne);    // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(bagInspect, objectLayerOne);    // Layer 2
         ObjectsparallaxManager->AddObjectToLayer(medicineBack, objectLayerOne);   // Layer 2
         ObjectsparallaxManager->AddObjectToLayer(medicineFront, objectLayerOne);   // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(medicineFrontInspect, objectLayerOne);   // Layer 2
         ObjectsparallaxManager->AddObjectToLayer(nathanielNormal, objectLayerOne); // Layer 2
         ObjectsparallaxManager->AddObjectToLayer(nathanielHappy, objectLayerOne); // Layer 2
         ObjectsparallaxManager->AddObjectToLayer(nathanielDisappoint, objectLayerOne); // Layer 2
