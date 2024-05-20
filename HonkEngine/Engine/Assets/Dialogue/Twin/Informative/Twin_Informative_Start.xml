@@ -51,9 +51,9 @@
 			<line1>Of course, I will try...</line1>
 		</Speaker>
 		<Choices>
-			<Choice1 next="3WD20">Tell a waiter joke</Choice1>
-			<Choice2 next="3WD21">Tell a spy joke</Choice2>
-			<Choice3 next="3WD19">Tell a train joke</Choice3>
+			<Choice1 next="3WD20" clueID="CABIN21_2">Tell a waiter joke</Choice1>
+			<Choice2 next="3WD21" clueID="CABIN21_2">Tell a spy joke</Choice2>
+			<Choice3 next="3WD19" clueID="CABIN21_2">Tell a train joke</Choice3>
 		</Choices>
 	</Dialogue>
 	<Dialogue id="3WD19" next="3ND58">

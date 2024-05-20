@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="3ND106">
+		<Speaker name="Nathaniel_Normal">
+			<line1>This smell...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND107">
+		<Speaker name="Nathaniel_Happy">
+			<line1>I think the tea is ready!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND107_2">
+		<Speaker name="Nathaniel_Normal">
+			<line1>Thank you, Mr. Waiter!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD70">
+		<Speaker name="Waiter">
+			<line1>I believe so.</line1>
+			<line2>My pleasure, Mr. and Miss Hartington.</line2>
+			<line3>Good luck with your adventure.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD70_2">
+		<Speaker name="Waiter">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WQ08">
+		<Speaker name="Waiter">
+			<line1>(Should I warn them about the bomb  before leaving?)</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="3WD71" clueID="CABIN22_3">Warn them about the bomb</Choice1>
+			<Choice2 next="3WD74" clueID="CABIN22_3">Only tell them to be careful</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="3WD71" next="3WD72">
+		<Speaker name="Waiter">
+			<line1>Oh, before I leave,</line1>
+			<line2>I heard about a bomb threat from  the news.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD72" next="3ED43">
+		<Speaker name="Waiter">
+			<line1>Please be careful, both of you.</line1>
+			<line2>Especially since you're traveling  without adult supervision.</line2>
+			<line3>You might become targets for bad  people.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD74">
+		<Speaker name="Waiter">
+			<line1>(Let's not alarm them too specifically.)</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD72">
+		<Speaker name="Waiter">
+			<line1>You two should be cautious when  traveling off the Express.</line1>
+			<line2>There's a lot happening in the  country right now.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND108" next="3ED43">
+		<Speaker name="Nathaniel_Normal">
+			<line1>Oh?</line1>
+			<line2>You are talking about the bomb threat?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED43">
+		<Speaker name="Evelyn_Sad">
+			<line1>The- The bomb..?</line1>
+			<line2>%I-I...% %Um...%</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND109">
+		<Speaker name="Nathaniel_Happy">
+			<line1>Nah, %I% %don't% %really% %care% about adult  stuff.</line1>
+			<line2>We have nothing to do with them anyway.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND110">
+		<Speaker name="Nathaniel_Normal">
+			<line1>You can leave now, Mr. Waiter.</line1>
+			<line2>Eve must be hungry by now.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND110_2">
+		<Speaker name="Nathaniel_Happy">
+			<line1>Thank you!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>
