@@ -69,20 +69,20 @@ public:
 		N_Clue4->SetScale(0.62f);
 
 		ClueData* cabin21_clue1 = new ClueData();
-		cabin21_clue1->showClue = true;
+		cabin21_clue1->showClue = false;
 		cabin21_clue1->clueObject = N_Clue1;
 		cabin21_clue1->isEvidence = true;
 
 		ClueData* cabin21_clue2 = new ClueData();
-		cabin21_clue2->showClue = true;
+		cabin21_clue2->showClue = false;
 		cabin21_clue2->clueObject = N_Clue2;
 
 		ClueData* cabin21_clue3 = new ClueData();
-		cabin21_clue3->showClue = true;
+		cabin21_clue3->showClue = false;
 		cabin21_clue3->clueObject = N_Clue3;
 
 		ClueData* cabin21_clue4 = new ClueData();
-		cabin21_clue4->showClue = true;
+		cabin21_clue4->showClue = false;
 		cabin21_clue4->clueObject = N_Clue4;
 
 
@@ -109,11 +109,11 @@ public:
 		N_LA2->SetScale(0.5f);
 
 		ClueData* cabin21_clue5 = new ClueData();
-		cabin21_clue5->showClue = true;
+		cabin21_clue5->showClue = false;
 		cabin21_clue5->clueObject = N_LA1;
 
 		ClueData* cabin21_clue6 = new ClueData();
-		cabin21_clue6->showClue = true;
+		cabin21_clue6->showClue = false;
 		cabin21_clue6->clueObject = N_LA2;
 		cabin21_clue6->isEvidence = true;
 

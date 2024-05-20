@@ -25,7 +25,7 @@
 		<Speaker name="Waiter">
 			<line1>Yes, indeed.</line1>
 			<line2>Good afternoon and welcome to  Hesperia Express.</line2>
-			<line3>Mr. and Ms. Hartington.</line3>
+			<line3>Mr. and Miss Hartington.</line3>
 		</Speaker>
 		<Choices/>
 	</Dialogue>

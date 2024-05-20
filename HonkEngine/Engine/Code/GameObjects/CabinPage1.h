@@ -86,10 +86,10 @@ public:
 		cabin1_clue4->clueObject = M_C4;
 		cabin1_clue4->isEvidence = true;
 
-
+		// DIVIDER 1
 		GameObject* Divider1 = new UIObject("Divider1", "Assets/Images/Journal/Line_1.png", true);
-		Divider1->SetScale(glm::vec3(4.71f, 0.15f, 0.0f));
-		Divider1->SetPosition(glm::vec3(3.2f, 1.0f, 0.0f));
+		Divider1->SetScale(glm::vec3(4.78f, 0.08f, 0.0f));
+		Divider1->SetPosition(glm::vec3(3.2f, 0.7f, 0.0f));
 
 
 		// LAST ACTIVITY	[M = Martha, LA = Last Activity]
