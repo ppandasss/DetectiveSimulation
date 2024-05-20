@@ -124,6 +124,12 @@ void Application::CancelTimer(int timerId) {
     }
 }
 
+int Application::ResetTimer(int timerId, long long duration, std::function<void()> callback, bool repeat) {
+    CancelTimer(timerId); // Cancel the existing timer
+    return SetTimer(duration, callback, repeat); // Set a new timer and return the new timer ID
+}
+
+
 void Application::processTimers() {
     auto now = std::chrono::steady_clock::now();
     for (auto it = activeTimers.begin(); it != activeTimers.end(); ) {
@@ -222,6 +228,7 @@ void Application::Run()
 
         // Input handling
         processInput(m_window);
+        processTimers();
 
         // Scene management
         if (m_currentScene) {
@@ -244,7 +251,7 @@ void Application::Run()
             frameRateTimer = 0.0;
             frameCount = 0;
         }
-        processTimers();
+        
     }
 
     if (m_currentScene) {

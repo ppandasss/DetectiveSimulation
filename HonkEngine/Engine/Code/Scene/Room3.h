@@ -6,6 +6,7 @@
 #include <memory>
 #include <cstdlib> 
 #include <ctime> 
+#include <functional>
 #include "../Dialogue/Dialoguemanager.h"
 #include "../Effects/ObjectsParallax.h"
 #include "../Effects/BackgroundParallax.h"
@@ -15,6 +16,7 @@
 #include "../UI/UIElement.h"  
 #include "../Input/Input.h"
 #include "../Engine.h"
+#include "../Effects/ShakingEffect.h"
 
 using namespace std;
 
@@ -23,18 +25,6 @@ class Room3 : public Scene {
 
     CharacterData* characterData = CharacterData::GetInstance();
     AudioManager& audioManager;
-    Timer* timer;
-    int shakeDirection = 1;  // 1 for right, -1 for left
-    int shakeCount = 0;
-    int shakeCycleCount = 0;  // Count of how many full shake cycles have been completed
-    float shakeMagnitude = 0.1f;
-    bool isPausing = false;
-    const int shakeInterval = 100; // Time in ms for each shake
-    int pauseDuration = 4000; // Initial time in ms for pauses
-    const float pauseIncreaseFactor = 4.0;// Multiplier to increase the pause duration each cycle
-    int timerId = -1;
-    glm::vec3 movingLuggageInitialPos;
-
 
     Text* instructionText;
     GameStateManager& gameStateManager = GameStateManager::GetInstance();
@@ -48,11 +38,13 @@ class Room3 : public Scene {
     UIElement* messyClothes;
     UIButton* messyClothesInspect;
 
+    unique_ptr<ShakingEffect> shakingEffect;
+
 public:
     Room3() :audioManager(AudioManager::GetInstance()) {
 
         srand(time(NULL));
-        timer = &Timer::GetInstance();
+
 
         audioManager.LoadSound("cabinMusic", "Assets/Sounds/Music/BGmusic_Cabin.mp3", 5.0f);
         audioManager.LoadSound("knockDoor", "Assets/Sounds/SFX_KnockDoor.mp3", 2.0f);
@@ -98,10 +90,7 @@ public:
         //Inspection Items
         movingLuggage = new UINormal("MovingLuggage", "Assets/Images/Archibald/Archibald_Inspection_MovingLuggage.png", glm::vec3(1.7f, -4.6f, 0.0f), glm::vec3(3.78f * sm * 1.2f, 2.38f * sm * 1.2f, 0.0f), true);
         newspaper = new UINormal("Newspaper", "Assets/Images/Archibald/Archibald_Inspection_Newspaper.png", glm::vec3(-3.139f, 0.224f, 0.0f), glm::vec3(1.09f * sm , 2.22f * sm, 0.0f), true);
-        StartShakeCycle();
-        movingLuggageInitialPos = movingLuggage->GetPosition();
-        shakeDirection = 1;  // Start by moving right
-        timerId = Application::Get().SetTimer(500, std::bind(&Room3::ShakeLuggage, this), true);
+       
 
         //Inspection Item Buttons
         movingLuggageInspect = new UIButton("MovingLuggageInspect", "Assets/Images/Archibald/Archibald_Inspection_MovingLuggage.png", glm::vec3(1.7f, -4.6f, 0.0f), glm::vec3(3.78f * sm * 1.2f, 2.38f * sm * 1.2f, 0.0f), true, false, "");
@@ -271,7 +260,10 @@ public:
         backgroundParallaxManager->AddBackgroundPair(4, background5a, background5b, 2.5f); // Layer 4, fastest
         backgroundParallaxManager->AddBackgroundPair(5, background6a, background6b, 3.0f); // Layer 5, fastest
 
+        shakingEffect = std::make_unique<ShakingEffect>(0.1f, 100, 500, 4000);
 
+        shakingEffect->AddObject(movingLuggage);
+        shakingEffect->AddObject(movingLuggageInspect);
     }
 
     void OnEnter() override {
@@ -282,6 +274,9 @@ public:
             GameStateManager::GetInstance().SetRoomState(RoomState::Serve);
         }
         SetSequencesDialogue();
+        shakingEffect->StartShaking();
+
+       
     }
     void SetSequencesDialogue()
     {
@@ -480,52 +475,14 @@ public:
         Scene::Update(dt, frame);
         backgroundParallaxManager->Update(dt);
         ObjectsparallaxManager->UpdateLayers();
+        shakingEffect->Update(dt);        
         dialogueManager->Update(dt, frame);
+
+        
 
         UpdateDialogueProgress();
         HandleKeyInputs();
-
-
     }
-
-    void StartShakeCycle() {
-        Application::Get().CancelTimer(timerId); // Cancel any existing timer
-        std::cout << "StartShakeCycle called. isPausing: " << isPausing << std::endl;
-
-        if (!isPausing) {
-            timerId = Application::Get().SetTimer(shakeInterval, std::bind(&Room3::ShakeLuggage, this), true);
-            std::cout << "Starting shake timer." << std::endl;
-        }
-        else {
-            timerId = Application::Get().SetTimer(pauseDuration, std::bind(&Room3::EndPause, this), false);
-            std::cout << "Starting pause timer for duration: " << pauseDuration << "ms." << std::endl;
-        }
-    }
-
-    void ShakeLuggage() {
-        if (shakeCount < 2) {
-            float newX = movingLuggageInitialPos.x + (shakeDirection * shakeMagnitude);
-            movingLuggage->SetPosition(glm::vec3(newX, movingLuggageInitialPos.y, movingLuggageInitialPos.z));
-            shakeDirection *= -1; // Toggle direction
-            shakeCount++;
-            std::cout << "Shaking. shakeCount: " << shakeCount << std::endl;
-        }
-        else {
-            std::cout << "Maximum shakes reached. Transitioning to pause." << std::endl;
-            isPausing = true;
-            shakeCount = 0; // Reset shake count for next cycle
-            StartShakeCycle();
-        }
-    }
-
-    void EndPause() {
-        std::cout << "Ending pause." << std::endl;
-        shakeCycleCount++;
-        pauseDuration *= pauseIncreaseFactor; // Increase the pause duration for the next cycle
-        isPausing = false;
-        StartShakeCycle(); // Restart shaking after the pause
-    }
-
 
     void UpdateDialogueProgress() {
         // Manage different room states
@@ -667,6 +624,7 @@ public:
             inspectMovingLuggageDialogueSet = false; 
             inspectingObject = ""; 
             isMovingLuggageInspected = true; 
+            shakingEffect->StopShaking();
             CheckForEndDialogue();
         }
 
@@ -747,6 +705,7 @@ public:
         audioManager.PlaySound("slideDoor");
         audioManager.PauseSound("cabinMusic");
         BellManager::GetInstance().StopAllRinging();
+        shakingEffect->StopShaking();
     }
 
 private:
