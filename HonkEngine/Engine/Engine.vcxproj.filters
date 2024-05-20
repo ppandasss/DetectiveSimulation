@@ -218,7 +218,10 @@
     <ClInclude Include="Code\Scene\MainMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\PopupWidget\PopUp.h">
+    <ClInclude Include="Code\PopupWidget\Interface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\PopupWidget\OptionsInterface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
