@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="4OD50">
+		<Speaker name="Octavia_Surprise">
+			<line1>Oh, dear.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD42_2">
+		<Speaker name="Octavia_Sad">
+			<line1>I'm afraid this isn't the tea I wanted.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OQ06">
+		<Speaker name="Octavia_Disappoint">
+			<line1>Didn't I order something light?</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="4WD23">Lie that light tea options ran out</Choice1>
+			<Choice2 next="4WD25">Present as personal recommendation</Choice2>
+			<Choice3 next="4WD24">Apologize for misunderstanding</Choice3>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="4WD23">
+		<Speaker name="Waiter">
+			<line1>Unfortunately, we've run out of the  lighter tea options.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD51">
+		<Speaker name="Octavia_Sad">
+			<line1>Oh, my.</line1>
+			<line2>That couldn't be helped.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD52" next="4OD58">
+		<Speaker name="Octavia_Sad">
+			<line1>But I do expect a high-class Express  like this to be more prepared.</line1>
+			<line2>....</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD24">
+		<Speaker name="Waiter">
+			<line1>I misunderstood your order, ma'am.</line1>
+			<line2>I must apologize.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD53">
+		<Speaker name="Octavia_Upset">
+			<line1>Well, this is indeed far from what  I ordered.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD54" next="4OD58">
+		<Speaker name="Octavia_Sad">
+			<line1>I did not expect this big of a mistake  from a high-class waiter like you.</line1>
+			<line2>....</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD25">
+		<Speaker name="Waiter">
+			<line1>This is my personal recommendation  for you, ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD55">
+		<Speaker name="Octavia_Sad">
+			<line1>I appreciate your recommendation.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD56">
+		<Speaker name="Octavia_Sad">
+			<line1>But I did request something light.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD57" next="4OD58">
+		<Speaker name="Octavia_Sad">
+			<line1>You should simply follow my order, dear.</line1>
+			<line2>....</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD58">
+		<Speaker name="Octavia_Disappoint">
+			<line1>Well, let's see the sandwich.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

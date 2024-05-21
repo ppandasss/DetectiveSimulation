@@ -337,13 +337,13 @@ public:
         case EARLGREYTEA:
             if (kitchen->getOptional() == MILK)
             {
-                dialogueManager->LoadDialogues("MealReact_Tea_EarlGray_WithMilk", "Assets/Dialogue/Twin/MealReact/Twin_MealReact_Tea_EarlGray_Chamomile_Green_WithMilk.xml");
-                teaDialogueKey = "MealReact_Tea_EarlGray_WithMilk";
+                dialogueManager->LoadDialogues("MealReact_Tea_EarlGrey_WithMilk", "Assets/Dialogue/Twin/MealReact/Twin_MealReact_Tea_EarlGrey_Chamomile_Green_WithMilk.xml");
+                teaDialogueKey = "MealReact_Tea_EarlGrey_WithMilk";
             }
             else
             {
-                dialogueManager->LoadDialogues("MealReact_Tea_EarlGray", "Assets/Dialogue/Twin/MealReact/Twin_MealReact_Tea_Assam_EarlGray.xml");
-                teaDialogueKey = "MealReact_Tea_EarlGray";
+                dialogueManager->LoadDialogues("MealReact_Tea_EarlGrey", "Assets/Dialogue/Twin/MealReact/Twin_MealReact_Tea_Assam_EarlGrey.xml");
+                teaDialogueKey = "MealReact_Tea_EarlGrey";
             }
             
             break;
@@ -355,14 +355,14 @@ public:
             }
             else
             {
-                dialogueManager->LoadDialogues("MealReact_Tea_Assam", "Assets/Dialogue/Twin/MealReact/Twin_MealReact_Tea_Assam_EarlGray.xml");
+                dialogueManager->LoadDialogues("MealReact_Tea_Assam", "Assets/Dialogue/Twin/MealReact/Twin_MealReact_Tea_Assam_EarlGrey.xml");
                 teaDialogueKey = "MealReact_Tea_Assam";
             }
             break;
         case CHAMOMILETEA:
             if (kitchen->getOptional() == MILK)
             {
-                dialogueManager->LoadDialogues("MealReact_Tea_Charmomile_WithMilk", "Assets/Dialogue/Twin/MealReact/Twin_MealReact_Tea_EarlGray_Chamomile_Green_WithMilk.xml");
+                dialogueManager->LoadDialogues("MealReact_Tea_Charmomile_WithMilk", "Assets/Dialogue/Twin/MealReact/Twin_MealReact_Tea_EarlGrey_Chamomile_Green_WithMilk.xml");
                 teaDialogueKey = "MealReact_Tea_Charmomile_WithMilk";
             }
             else
