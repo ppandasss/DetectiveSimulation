@@ -128,8 +128,7 @@ public:
 		timer.Initialize(timerText);
 		//timer.SetTimerUI(this->timerUI);
 
-		orderData.AddObserver([this]() { this->UpdateTimerDisplay(); });
-		timer.AddObserver([this, &timer]() {this->UpdateOrderDisplay(); });
+		timer.AddObserver([this, &timer]() {this->UpdateTimerDisplay(); });
 
 		//m_gameObjects.push_back(timerUI); // Add the timer UI to the game object list
 		//m_gameObjects.push_back(timerText); // Add the timer text to the game object list
@@ -378,9 +377,13 @@ public:
 	void Update(float dt, long frame) override {
 
 		Scene::Update(dt, frame);
+		gameStateManager.Update();
 
 		Timer& timer = Timer::GetInstance();
 		timer.Update(dt);
+
+		BellManager& bellManager = BellManager::GetInstance();
+		bellManager.Update(dt, frame);
 
 		if (input.Get().GetKeyDown(GLFW_KEY_R)) { 
 			clearPlate();
@@ -429,7 +432,7 @@ public:
 		Timer& timer = Timer::GetInstance();
 		if (timerText && timerUI) {
 			timerText->SetContent(timer.GetTime());
-			timerUI->setActiveStatus(!timer.GetTimerUIVisibility());
+			timerUI->setActiveStatus(timer.GetTimerUIVisibility());
 		}
 		else {
 			std::cout << "One or more text objects are null." << std::endl;

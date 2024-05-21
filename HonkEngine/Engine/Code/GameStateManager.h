@@ -11,6 +11,9 @@
 #include "GameObjects/BellManager.h"
 #include "GameObjects/OrderData.h"
 
+#define PREPARE_DURATION 5  //in seconds
+
+
 enum GameState {
     ROOM1_STATE,
     ROOM2_STATE,
@@ -50,7 +53,7 @@ class GameStateManager {
 
 private:
     static GameStateManager* instance;
-    GameState currentGameState = GameState::ROOM1_STATE;
+    GameState currentGameState = GameState::ROOM3_STATE;
     RoomState currentRoomState = RoomState::Order;
 
     std::map<std::pair<GameState, RoomState>, std::function<void()>> stateActions;
@@ -66,7 +69,7 @@ private:
 
             DoorManager::GetInstance().GetDoorByName("Room1Door")->setPermission(false);
             DoorManager::GetInstance().GetDoorByName("KitchenDoor")->setPermission(true);
-            Timer::GetInstance().start(5);
+            Timer::GetInstance().start(PREPARE_DURATION);
             Application::Get().SetScene("Hallway");
             AudioManager::GetInstance().PlaySound("slideDoor");
             std::cout << "Transition to Room1 Prepare state." << std::endl;
@@ -99,7 +102,7 @@ private:
 
             DoorManager::GetInstance().GetDoorByName("Room2Door")->setPermission(false);
             DoorManager::GetInstance().GetDoorByName("KitchenDoor")->setPermission(true);
-            Timer::GetInstance().start(120);
+            Timer::GetInstance().start(PREPARE_DURATION);
             Application::Get().SetScene("Hallway");
             AudioManager::GetInstance().PlaySound("slideDoor");
             std::cout << "Transition to Room2 Prepare state." << std::endl;
@@ -132,7 +135,7 @@ private:
 
             DoorManager::GetInstance().GetDoorByName("Room3Door")->setPermission(false);
             DoorManager::GetInstance().GetDoorByName("KitchenDoor")->setPermission(true);
-            Timer::GetInstance().start(120);
+            Timer::GetInstance().start(PREPARE_DURATION);
             Application::Get().SetScene("Hallway");
             AudioManager::GetInstance().PlaySound("slideDoor");
             std::cout << "Transition to Room3 Prepare state." << std::endl;
@@ -164,7 +167,7 @@ private:
 
             DoorManager::GetInstance().GetDoorByName("Room4Door")->setPermission(false);
             DoorManager::GetInstance().GetDoorByName("KitchenDoor")->setPermission(true);
-            Timer::GetInstance().start(120);
+            Timer::GetInstance().start(PREPARE_DURATION);
             Application::Get().SetScene("Hallway");
             AudioManager::GetInstance().PlaySound("slideDoor");
             std::cout << "Transition to Room4 Prepare state." << std::endl;
@@ -212,7 +215,7 @@ public:
         return *instance;
     }
     void Update() {
-       // HandleTimerExpiration();
+       HandleTimerExpiration();
 	}
 
     void HandleTimerExpiration() {

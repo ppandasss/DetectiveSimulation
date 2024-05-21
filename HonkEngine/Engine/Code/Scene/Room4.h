@@ -93,13 +93,13 @@ public:
         pamphletInspect->SetHoverTexture("Assets/Images/Octavia/Octavia_Inspection_Pamphlet_Highlight.png");
         pamphletInspect->SetOnClickAction([this]() {
             std::cout << "OperaPamphlet button clicked." << std::endl;
-            inspectingObject = "pamphlet";
+            inspectingObject = "Pamphlet";
             });
         daggerInspect = new UIButton("HatInspect", "Assets/Images/Octavia/Octavia_Inspection_Dagger.png", glm::vec3(-5.925f, 2.95f, 0.0f), glm::vec3(2.72f / 4 * sm, 4.44f / 4 * sm, 0.0f), true, false, "");
         daggerInspect->SetHoverTexture("Assets/Images/Octavia/Octavia_Inspection_Dagger_Highlight.png");
         daggerInspect->SetOnClickAction([this]() {
             std::cout << "Dagger button clicked." << std::endl;
-            inspectingObject = "dagger";
+            inspectingObject = "Dagger";
             });
 
         pamphletInspect->setActiveStatus(false);
@@ -142,7 +142,9 @@ public:
         UIElement* waiterIcon = new UINormal("WaiterIcon", "Assets/Images/UI/Speaker_icon_Waiter.png", glm::vec3(4.18f, 3.43f, 0.0f), glm::vec3(1.23f, 1.4f, 0.0f), true);
 
         dialogueManager = make_unique<DialogueManager>("OctaviaDialogue", dialogueBox, "Octavia_Normal");
-        dialogueManager->LoadDialogues("Order", "Assets/Dialogue/Octavia/MealResult/Octavia_MealResult_Low.xml");
+        dialogueManager->LoadDialogues("Order", "Assets/Dialogue/Octavia/Octavia_Order.xml");
+        dialogueManager->LoadDialogues("Serve_OnTime", "Assets/Dialogue/Octavia/Octavia_Serve_OnTime.xml");
+        dialogueManager->LoadDialogues("Serve_Late", "Assets/Dialogue/Octavia/Octavia_Serve_Late.xml");
 
         //Text
         instructionText = new Text("dialogueinstruction", "Use [Left-click] or [Space] to continue dialogue", "Assets/Fonts/mvboli.ttf", true);
@@ -225,7 +227,6 @@ public:
         ObjectsparallaxManager->AddObjectToLayer(room, defaultLayer);   // Layer 1
         ObjectsparallaxManager->AddObjectToLayer(dagger, objectLayerOne);    // Layer 2
         ObjectsparallaxManager->AddObjectToLayer(bag, objectLayerOne);    // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(bag, objectLayerOne);   // Layer 2
         ObjectsparallaxManager->AddObjectToLayer(pamphlet, objectLayerOne);   // Layer 2
         ObjectsparallaxManager->AddObjectToLayer(octaviaNormal, objectLayerOne); // Layer 2
         ObjectsparallaxManager->AddObjectToLayer(octaviaHappy, objectLayerOne); // Layer 2
@@ -267,7 +268,7 @@ public:
             break;
         case RoomState::Serve:
 
-            if (characterData->getServeTimeLevel(Cabin::CABIN21) == ONTIME) {
+            if (characterData->getServeTimeLevel(Cabin::CABIN4) == ONTIME) {
                 serveDialogueKey = "Serve_OnTime";
             }
             else {
@@ -281,8 +282,8 @@ public:
             sandwichDialogueSet = false;
             dessertDialogueSet = false;
             SetMealReactionDialogue();
-            //SetScoredDialogue();
-            //SetInteractDialogue();
+            SetScoredDialogue();
+            SetInteractDialogue();
 
             break;
         }
@@ -297,57 +298,63 @@ public:
         switch (kitchen->getTea()) {
 
         case EARLGREYTEA:
-            dialogueManager->LoadDialogues("MealReact_Tea_EarlGray", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Tea_Assam_EarlGray.xml");
+            dialogueManager->LoadDialogues("MealReact_Tea_EarlGrey", "Assets/Dialogue/Octavia/MealReact/Octavia_MealReact_Tea_EarlGrey_Assam.xml");
             teaDialogueKey = "MealReact_Tea_EarlGray";
             break;
         case ASSAMTEA:
-            dialogueManager->LoadDialogues("MealReact_Tea_Assam", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Tea_Assam_EarlGray.xml");
+            dialogueManager->LoadDialogues("MealReact_Tea_Assam", "Assets/Dialogue/Octavia/MealReact/Octavia_MealReact_Tea_EarlGrey_Assam.xml");
             teaDialogueKey = "MealReact_Tea_Assam";
             break;
         case CHAMOMILETEA:
-            dialogueManager->LoadDialogues("MealReact_Tea_Charmomile", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Tea_Chamomile.xml");
+
+            if (kitchen->getOptional() == MILK)
+            {
+                dialogueManager->LoadDialogues("MealReact_Tea_Charmomile_WithMilk", "Assets/Dialogue/Octavia/MealReact/Octavia_MealReact_Tea_Chamomile_WithMilk.xml");
+                teaDialogueKey = "MealReact_Tea_Charmomile_WithMilk";
+            }
+            dialogueManager->LoadDialogues("MealReact_Tea_Charmomile", "Assets/Dialogue/Octavia/MealReact/Octavia_MealReact_Tea_Chamomile.xml");
             teaDialogueKey = "MealReact_Tea_Charmomile";
             break;
         case GREENTEA:
-            dialogueManager->LoadDialogues("MealReact_Tea_GreenTea", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Tea_GreenTea.xml");
+            dialogueManager->LoadDialogues("MealReact_Tea_GreenTea", "Assets/Dialogue/Octavia/MealReact/Octavia_MealReact_Tea_GreenTea.xml");
             teaDialogueKey = "MealReact_Tea_GreenTea";
             break;
         }
 
         switch (kitchen->getSandwich()) {
         case SALMON:
-            dialogueManager->LoadDialogues("MealReact_Sandwich_Salmon", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Sandwich_Salmon_Beef.xml");
+            dialogueManager->LoadDialogues("MealReact_Sandwich_Salmon", "Assets/Dialogue/Octavia/MealReact/Octavia_MealReact_Sandwich_Salmon_Beef.xml");
             sandwichDialogueKey = "MealReact_Sandwich_Salmon";
             break;
         case BEEF:
-            dialogueManager->LoadDialogues("MealReact_Sandwich_Salmon", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Sandwich_Salmon_Beef.xml");
-            sandwichDialogueKey = "MealReact_Sandwich_Salmon";
+            dialogueManager->LoadDialogues("MealReact_Sandwich_Beef", "Assets/Dialogue/Octavia/MealReact/Octavia_MealReact_Sandwich_Salmon_Beef.xml");
+            sandwichDialogueKey = "MealReact_Sandwich_Beef";
             break;
         case EGG:
-            dialogueManager->LoadDialogues("MealReact_Sandwich_Egg", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Sandwich_Egg.xml");
+            dialogueManager->LoadDialogues("MealReact_Sandwich_Egg", "Assets/Dialogue/Octavia/MealReact/Octavia_MealReact_Sandwich_Egg.xml");
             sandwichDialogueKey = "MealReact_Sandwich_Egg";
             break;
         case CUCUMBER:
-            dialogueManager->LoadDialogues("MealReact_Sandwich_Cucumber", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Sandwich_Cucumber.xml");
+            dialogueManager->LoadDialogues("MealReact_Sandwich_Cucumber", "Assets/Dialogue/Octavia/MealReact/Octavia_MealReact_Sandwich_Cucumber.xml");
             sandwichDialogueKey = "MealReact_Sandwich_Cucumber";
             break;
         }
 
         switch (kitchen->getDessert()) {
         case ECLAIR:
-            dialogueManager->LoadDialogues("MealReact_Dessert_Eclair", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Pastry_Eclair_Macaron_Tart.xml");
+            dialogueManager->LoadDialogues("MealReact_Dessert_Eclair", "Assets/Dialogue/Octavia/MealReact/Octavia_MealReact_Pastry_Macaron_Eclair_.xml");
             dessertDialogueKey = "MealReact_Dessert_Eclair";
             break;
         case MACARON:
-            dialogueManager->LoadDialogues("MealReact_Dessert_Macaron", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Pastry_Eclair_Macaron_Tart.xml");
+            dialogueManager->LoadDialogues("MealReact_Dessert_Macaron", "Assets/Dialogue/Octavia/MealReact/Octavia_MealReact_Pastry_Macaron_Eclair_.xml");
             dessertDialogueKey = "MealReact_Dessert_Macaron";
             break;
         case TART:
-            dialogueManager->LoadDialogues("MealReact_Dessert_Tart", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Pastry_Eclair_Macaron_Tart.xml");
+            dialogueManager->LoadDialogues("MealReact_Dessert_Tart", "Assets/Dialogue/Octavia/MealReact/Octavia_MealReact_Pastry_Tart.xml");
             dessertDialogueKey = "MealReact_Dessert_Tart";
             break;
         case SCONE:
-            dialogueManager->LoadDialogues("MealReact_Dessert_Scone", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Pastry_Scone.xml");
+            dialogueManager->LoadDialogues("MealReact_Dessert_Scone", "Assets/Dialogue/Octavia/MealReact/Octavia_MealReact_Pastry_Scone.xml");
             dessertDialogueKey = "MealReact_Dessert_Scone";
             break;
         }
@@ -357,9 +364,83 @@ public:
         std::cout << "Dessert Dialogue Key set to: " << dessertDialogueKey << std::endl;
     }
 
+    void SetScoredDialogue() {
+        InteractionLevel level = characterData->getServeScoreLevel(Cabin::CABIN4);
 
-    void Update(float dt, long frame) override {
+        switch (level)
+        {
+        case LOW:
+            dialogueManager->LoadDialogues("Score_Low", "Assets/Dialogue/Octavia/MealResult/Octavia_MealResult_Low.xml");
+            scoreDialogueKey = "Score_Low";
+            cout << "Score Low" << endl;
+            break;
+        case AVERAGE:
+            dialogueManager->LoadDialogues("Score_Average", "Assets/Dialogue/Octavia/MealResult/Octavia_MealResult_Average.xml");
+            scoreDialogueKey = "Score_Average";
+            cout << "Score Average" << endl;
+            break;
+        case INFORMATIVE:
+            dialogueManager->LoadDialogues("Score_Informative", "Assets/Dialogue/Octavia/MealResult/Octavia_MealResult_Informative.xml");
+            scoreDialogueKey = "Score_Informative";
+            cout << "Score Informative" << endl;
+            break;
+        default:
+            break;
+        }
+    }
+    void SetInteractDialogue() {
 
+
+        InteractionLevel level = characterData->getInteractionLevel(Cabin::CABIN4);
+        std::cout << "Retrieved interaction level: " << static_cast<int>(level) << std::endl;
+
+        switch (level) {
+        case InteractionLevel::LOW:
+            std::cout << "Interaction level is LOW." << std::endl;
+            dialogueManager->LoadDialogues("Inspect_Low_Start", "Assets/Dialogue/Octavia/Average/Octavia_Average_Start.xml");
+            dialogueManager->LoadDialogues("Inspect_Low_Dagger", "Assets/Dialogue/Octavia/Average/Octavia_Average_Dagger.xml");
+            dialogueManager->LoadDialogues("Inspect_Low_Pamphlet", "Assets/Dialogue/Octavia/Average/Octavia_Average_Pamphlet.xml");
+            dialogueManager->LoadDialogues("Inspect_Low_End", "Assets/Dialogue/Octavia/Average/Octavia_Average_End.xml");
+            inspectStartDialogueKey = "Inspect_Low_Start";
+            inspectDaggerDialogueKey = "Inspect_Low_Dagger";
+            inspectPamphletDialogueKey = "Inspect_Low_Pamphlet";
+            inspectEndDialogueKey = "Inspect_Low_End";
+
+            cout << "Interaction Low" << endl;
+            break;
+        case InteractionLevel::AVERAGE:
+            std::cout << "Interaction level is AVERAGE." << std::endl;
+            dialogueManager->LoadDialogues("Inspect_Average_Start", "Assets/Dialogue/Octavia/Average/Octavia_Average_Start.xml");
+            dialogueManager->LoadDialogues("Inspect_Average_Dagger", "Assets/Dialogue/Octavia/Average/Octavia_Average_Dagger.xml");
+            dialogueManager->LoadDialogues("Inspect_Average_Pamphlet", "Assets/Dialogue/Octavia/Average/Octavia_Average_Pamphlet.xml");
+            dialogueManager->LoadDialogues("Inspect_Average_End", "Assets/Dialogue/Octavia/Average/Octavia_Average_End.xml");
+            inspectStartDialogueKey = "Inspect_Average_Start";
+            inspectDaggerDialogueKey = "Inspect_Average_Dagger";
+            inspectPamphletDialogueKey = "Inspect_Average_Pamphlet";
+            inspectEndDialogueKey = "Inspect_Average_End";
+
+            cout << "Interaction Average" << endl;
+            break;
+        case InteractionLevel::INFORMATIVE:
+            std::cout << "Interaction level is INFORMATIVE." << std::endl;
+            dialogueManager->LoadDialogues("Inspect_Informative_Start", "Assets/Dialogue/Octavia/Informative/Octavia_Informative_Start.xml");
+            dialogueManager->LoadDialogues("Inspect_Informative_Dagger", "Assets/Dialogue/Octavia/Informative/Octavia_Informative_Dagger.xml");
+            dialogueManager->LoadDialogues("Inspect_Informative_Pamphlet", "Assets/Dialogue/Octavia/Informative/Octavia_Informative_Pamphlet.xml");
+            dialogueManager->LoadDialogues("Inspect_Informative_End", "Assets/Dialogue/Octavia/Informative/Octavia_Informative_End.xml");
+            inspectStartDialogueKey = "Inspect_Informative_Start";
+            inspectDaggerDialogueKey = "Inspect_Informative_Dagger";
+            inspectPamphletDialogueKey = "Inspect_Informative_Pamphlet";
+            inspectEndDialogueKey = "Inspect_Informative_End";
+
+            cout << "Interaction Informative" << endl;
+            break;
+        }
+
+    }
+
+
+
+    void Update(float dt, long frame) {
         Scene::Update(dt, frame);
         backgroundParallaxManager->Update(dt);
         ObjectsparallaxManager->UpdateLayers();
@@ -367,48 +448,184 @@ public:
 
         UpdateDialogueProgress();
         HandleKeyInputs();
+    }
+
+    void UpdateDialogueProgress() {
+        // Manage different room states
+        if (gameStateManager.getGameState() != GameState::ROOM4_STATE) return;
+
+        switch (gameStateManager.getRoomState()) {
+        case RoomState::Order:
+            UpdateRoomState("Order", RoomState::Prepare);
+            break;
+        case RoomState::Serve:
+            ManageServeState();
+            break;
+        case RoomState::Score:
+            ManageScoreState();
+            break;
+        case RoomState::MealReact:
+            ManageMealReactions();
+            break;
+        case RoomState::InspectionStart:
+            ManageInspectionStartState();
+            break;
+        case RoomState::Inspection:
+            ManageInspectionState();
+            break;
+        case RoomState::InspectionEnd:
+            ManageInspectionEndState();
+
+            break;
+        }
+    }
+
+    void UpdateRoomState(const string& currentDialogueKey, RoomState nextState) {
+        if (dialogueManager->IsDialogueFinished(currentDialogueKey)) {
+            SetInstruction("Press [E] to leave");
+            if (input.Get().GetKeyDown(GLFW_KEY_E)) {
+                gameStateManager.SetRoomState(nextState);
+            }
+        }
+    }
+
+    void ManageServeState() {
+        //Set Serve Dialogue
+        if (!serveDialogueSet) {
+            PromptForNextDialogue(serveDialogueKey, serveDialogueSet);
+        }
+        else if (serveDialogueSet && dialogueManager->IsDialogueFinished(serveDialogueKey)) {
+            //If serve end dialogue is finished, set the room state to MealReact
+            gameStateManager.SetRoomState(RoomState::MealReact);
+        }
+    }
+
+    void ManageMealReactions() {
+
+        if (!teaDialogueSet && dialogueManager->IsDialogueFinished(serveDialogueKey) && !dessertDialogueSet) {
+            PromptForNextDialogue(teaDialogueKey, teaDialogueSet);
+        }
+        else if (teaDialogueSet && !sandwichDialogueSet && dialogueManager->IsDialogueFinished(teaDialogueKey) && !dessertDialogueSet) {
+            PromptForNextDialogue(sandwichDialogueKey, sandwichDialogueSet);
+        }
+        else if (sandwichDialogueSet && !dessertDialogueSet && dialogueManager->IsDialogueFinished(sandwichDialogueKey)) {
+            PromptForNextDialogue(dessertDialogueKey, dessertDialogueSet);
+        }
+
+
+        if (teaDialogueSet && sandwichDialogueSet && dessertDialogueSet && dialogueManager->IsDialogueFinished(dessertDialogueKey)) {
+
+            gameStateManager.SetRoomState(RoomState::Score);
+        }
+    }
+
+
+    void ManageScoreState() {
+        // Begin scoring dialogue
+        if (!scoreDialogueSet) {
+            PromptForNextDialogue(scoreDialogueKey, scoreDialogueSet);
+        }
+        else if (scoreDialogueSet && dialogueManager->IsDialogueFinished(scoreDialogueKey)) {
+            gameStateManager.SetRoomState(RoomState::InspectionStart); // Transition to Inspection state
+        }
+    }
+
+
+    void ManageInspectionStartState() {
+        //Play InspectStartDialogue
+        if (!inspectStartDialogueSet) {
+            PromptForNextDialogue(inspectStartDialogueKey, inspectStartDialogueSet);
+        }
+        else if (inspectStartDialogueSet && dialogueManager->IsDialogueFinished(inspectStartDialogueKey)) {
+            gameStateManager.SetRoomState(RoomState::Inspection);
+        }
 
 
     }
 
-     void UpdateDialogueProgress() {
-            // Manage different room states
-            if (gameStateManager.getGameState() != GameState::ROOM1_STATE) return;
+    void ManageInspectionState()
+    {
+        // Check if both objects have been inspected
+        if (!isPamphletInspected || !isDaggerInspected) {
+            InspectPamphletDialogue();
+            InspectDaggerDialogue();
+            NormalObjectToggle();
+            SetInspectionObject();
+        }
 
-            switch (gameStateManager.getRoomState()) {
-            case RoomState::Order:
-                UpdateRoomState("Order", RoomState::Prepare);
-                break;
-            case RoomState::Serve:
-                //ManageServeState();
-                break;
-            case RoomState::Score:
-                //ManageScoreState();
-                break;
-            case RoomState::MealReact:
-                //ManageMealReactions();
-                break;
-            case RoomState::InspectionStart:
-                //ManageInspectionStartState();
-                break;
-            case RoomState::Inspection:
-                //ManageInspectionState();
-                break;
-            case RoomState::InspectionEnd:
-                //ManageInspectionEndState();
+    }
 
-                break;
-            }
-     }
 
-     void UpdateRoomState(const string& currentDialogueKey, RoomState nextState) {
-         if (dialogueManager->IsDialogueFinished(currentDialogueKey)) {
-             SetInstruction("Press [E] to leave");
-             if (input.Get().GetKeyDown(GLFW_KEY_E)) {
-                 gameStateManager.SetRoomState(nextState);
-             }
-         }
-     }
+    void NormalObjectToggle() {
+        pamphlet->setActiveStatus(!pamphletInspect->getActiveStatus());
+        dagger->setActiveStatus(!daggerInspect->getActiveStatus());
+    }
+
+    void SetInspectionObject() {
+
+        if (inspectingObject != "")
+        {
+
+            pamphletInspect->setActiveStatus(false);
+            daggerInspect->setActiveStatus(false);
+            ObjectsparallaxManager->DisableParallaxEffect();
+        }
+        else
+        {
+            pamphletInspect->setActiveStatus(!isPamphletInspected);
+            daggerInspect->setActiveStatus(!isDaggerInspected);
+            ObjectsparallaxManager->EnableParallaxEffect();
+        }
+
+    }
+
+    void InspectPamphletDialogue() {
+        if (!inspectPamphletDialogueSet && inspectingObject == "Pamphlet") {
+            dialogueManager->SetDialogueSet(inspectPamphletDialogueKey);
+            inspectPamphletDialogueSet = true;
+        }
+        if (inspectPamphletDialogueSet && dialogueManager->IsDialogueFinished(inspectPamphletDialogueKey)) {
+            std::cout << "Pamphlet Inspection Completed" << std::endl;
+            inspectPamphletDialogueSet = false; // Reset the flag
+            inspectingObject = ""; // Correct the assignment
+            isPamphletInspected = true; // Mark the Pamphlet as inspected
+            CheckForEndDialogue();
+        }
+
+    }
+
+    void InspectDaggerDialogue() {
+        if (!inspectDaggerDialogueSet && inspectingObject == "Dagger") {
+            dialogueManager->SetDialogueSet(inspectDaggerDialogueKey);
+            inspectDaggerDialogueSet = true;
+        }
+        if (inspectDaggerDialogueSet && dialogueManager->IsDialogueFinished(inspectDaggerDialogueKey)) {
+            std::cout << "Dagger Inspection Completed" << std::endl;
+            inspectDaggerDialogueSet = false; // Reset the flag
+            inspectingObject = ""; // Correct the assignment
+            isDaggerInspected = true; // Mark the Dagger as inspected
+            CheckForEndDialogue();
+        }
+
+    }
+
+    void CheckForEndDialogue() {
+        if (isPamphletInspected && isDaggerInspected && !inspectEndDialogueSet) {
+            std::cout << "Both items inspected, moving to final dialogue." << std::endl;
+            gameStateManager.SetRoomState(RoomState::InspectionEnd);
+
+        }
+    }
+
+    void ManageInspectionEndState() {
+        if (!inspectEndDialogueSet) {
+            ObjectsparallaxManager->DisableParallaxEffect();
+            PromptForNextDialogue(inspectEndDialogueKey, inspectEndDialogueSet);
+        }
+        else if (inspectEndDialogueSet && dialogueManager->IsDialogueFinished(inspectEndDialogueKey)) {
+            gameStateManager.SetRoomState(RoomState::End);
+        }
+    }
 
     void PromptForNextDialogue(const string& nextKey, bool& flag) {
         SetInstruction("Press [Space] or [Mouse] to continue.");
@@ -417,6 +634,7 @@ public:
             flag = true;
         }
     }
+
 
     void SetInstruction(const string& message) {
         instructionText->SetContent(message);
@@ -430,13 +648,10 @@ public:
 
     void Render() override {
         Scene::Render(); // Renders GameObjects
-
-        // Manually call DialogueManager's render function
         dialogueManager->Render();
     }
 
     void OnExit() override {
-        // Scene::OnExit();  // Call base class if there's relevant logic
         audioManager.PlaySound("slideDoor");
         audioManager.PauseSound("cabinMusic");
         BellManager::GetInstance().StopAllRinging();
@@ -456,9 +671,8 @@ private:
     string dessertDialogueKey;
     string scoreDialogueKey;
     string inspectStartDialogueKey;
-    string inspectMedicineFrontDialogueKey;
-    string inspectHatDialogueKey;
-    string inspectBagDialogueKey;
+    string inspectPamphletDialogueKey;
+    string inspectDaggerDialogueKey;
     string inspectEndDialogueKey;
 
     bool orderDialogueSet = false;
@@ -469,13 +683,13 @@ private:
     bool scoreDialogueSet = false;
     bool inspectStartDialogueSet = false;
     bool inspectEndDialogueSet = false;
-    bool inspectMedicineFrontDialogueSet = false;
-    bool inspectHatDialogueSet = false;
-    bool inspectBagDialogueSet = false;
+    bool inspectPamphletDialogueSet = false;
+    bool inspectDaggerDialogueSet = false;
 
-    bool isMedicineFrontInspected = false;
-    bool isHatInspected = false;
-    bool isBagInspected = false;
+
+    bool isPamphletInspected = false;
+    bool isDaggerInspected = false;
+
 
     string inspectingObject;
 

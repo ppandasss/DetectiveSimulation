@@ -318,7 +318,7 @@ public:
             sandwichDialogueKey = "MealReact_Sandwich_Salmon";
             break;
         case BEEF:
-            dialogueManager->LoadDialogues("MealReact_Sandwich_Salmon", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Sandwich_Salmon_Beef.xml");
+            dialogueManager->LoadDialogues("MealReact_Sandwich_Beef", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Sandwich_Salmon_Beef.xml");
             sandwichDialogueKey = "MealReact_Sandwich_Beef";
             break;
         case EGG:
