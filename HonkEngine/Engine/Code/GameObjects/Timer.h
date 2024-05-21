@@ -75,13 +75,12 @@ public:
         }
     }
 
-
     void Update(float dt) {
         if (isRunning) {
             auto now = std::chrono::steady_clock::now();
             if (std::chrono::duration_cast<std::chrono::seconds>(now - lastUpdateTime).count() > 0) {
                 lastUpdateTime = now;
-                if (getRemainingTime() <= 0) {
+                if (getRemainingTime() == 0) {
                     stop();
                 }
                 else {
@@ -94,6 +93,9 @@ public:
         }
     }
 
+    bool isTimesUp() {
+		return getRemainingTime() == 0;
+	}
 
     int getRemainingTime() const {
         if (isRunning) {

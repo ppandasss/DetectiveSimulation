@@ -292,19 +292,19 @@ public:
 		{
 			if (gameStateManager.getGameState() == GameState::ROOM1_STATE)
 			{
-				Application::Get().SetTimer(1000, [this]() { bellCabin1->startRinging(); }, false);
+				Application::Get().SetTimer(1000, [this]() { bellCabin1->startRinging(); room1Door->setPermission(true); }, false);
 			}
 			else if(gameStateManager.getGameState() == GameState::ROOM2_STATE)
 			{
-				Application::Get().SetTimer(1000, [this]() { bellCabin2->startRinging(); }, false);
+				Application::Get().SetTimer(1000, [this]() { bellCabin2->startRinging(); room2Door->setPermission(true); }, false);
 			}
 			else if (gameStateManager.getGameState() == GameState::ROOM3_STATE)
 			{
-				Application::Get().SetTimer(1000, [this]() { bellCabin3->startRinging(); }, false);
+				Application::Get().SetTimer(1000, [this]() { bellCabin3->startRinging(); room3Door->setPermission(true); }, false);
 			}
 			else if (gameStateManager.getGameState() == GameState::ROOM4_STATE)
 			{
-				Application::Get().SetTimer(1000, [this]() { bellCabin4->startRinging(); }, false);
+				Application::Get().SetTimer(1000, [this]() { bellCabin4->startRinging(); room4Door->setPermission(true); }, false);
 			}
 			
 		}
@@ -320,6 +320,8 @@ public:
 
 		Timer& timer = Timer::GetInstance();
 		timer.Update(dt);
+
+		gameStateManager.Update();
 
 		BellManager& bellManager = BellManager::GetInstance();
 		bellManager.Update(dt, frame);

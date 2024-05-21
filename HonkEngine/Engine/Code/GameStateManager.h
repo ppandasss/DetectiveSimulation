@@ -50,7 +50,7 @@ class GameStateManager {
 
 private:
     static GameStateManager* instance;
-    GameState currentGameState = GameState::ROOM4_STATE;
+    GameState currentGameState = GameState::ROOM1_STATE;
     RoomState currentRoomState = RoomState::Order;
 
     std::map<std::pair<GameState, RoomState>, std::function<void()>> stateActions;
@@ -66,7 +66,7 @@ private:
 
             DoorManager::GetInstance().GetDoorByName("Room1Door")->setPermission(false);
             DoorManager::GetInstance().GetDoorByName("KitchenDoor")->setPermission(true);
-            Timer::GetInstance().start(120);
+            Timer::GetInstance().start(5);
             Application::Get().SetScene("Hallway");
             AudioManager::GetInstance().PlaySound("slideDoor");
             std::cout << "Transition to Room1 Prepare state." << std::endl;
@@ -210,6 +210,30 @@ public:
             instance = new GameStateManager();
         }
         return *instance;
+    }
+    void Update() {
+       // HandleTimerExpiration();
+	}
+
+    void HandleTimerExpiration() {
+        if (currentRoomState == RoomState::Prepare && Timer::GetInstance().isTimesUp() && !BellManager::GetInstance().isAnyBellRinging()) {
+            switch (currentGameState) {
+            case GameState::ROOM1_STATE:
+                BellManager::GetInstance().getBell("bellCabin1")->startRinging();
+                break;
+            case GameState::ROOM2_STATE:
+                BellManager::GetInstance().getBell("bellCabin2")->startRinging();
+                break;
+            case GameState::ROOM3_STATE:
+                BellManager::GetInstance().getBell("bellCabin3")->startRinging();
+                break;
+            case GameState::ROOM4_STATE:
+                BellManager::GetInstance().getBell("bellCabin4")->startRinging();
+                break;
+            default:
+                break;
+            }
+        }
     }
 
     void setupOrderStateActions() {

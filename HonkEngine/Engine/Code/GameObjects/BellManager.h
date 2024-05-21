@@ -20,15 +20,13 @@ public:
     }
 
     void StartRinging(std::string bellName) {
-
         for (size_t i = 0; i < bells.size(); i++) {
-			Bell* bell = bells[i];
-			if (bell->getName() == bellName) {
-				bell->startRinging();
-			}
-		}
-
-	}
+            Bell* bell = bells[i];
+            if (bell->getName() == bellName) {
+                bell->startRinging();
+            }
+        }
+    }
 
     Bell* getBell(const std::string& bellName) {
         for (size_t i = 0; i < bells.size(); i++) {
@@ -37,27 +35,30 @@ public:
                 return bell;
             }
         }
-        return nullptr;  // Return nullptr if no bell found
+        return nullptr;
     }
 
-    void Update(float dt,float frame) {
+    void Update(float dt, float frame) {
         for (size_t i = 0; i < bells.size(); i++) {
             Bell* bell = bells[i];
-            Door* door = linkedDoors[i];
-            bell->Update(dt,frame);
-            if (bell->isBellRinging() && door) {
-                door->setPermission(true);
+            bell->Update(dt, frame);
+        }
+    }
+
+    bool isAnyBellRinging() {
+        for (auto* bell : bells) {
+            if (bell->isBellRinging()) {
+                return true;
             }
         }
+        return false;
     }
 
     void StopAllRinging() {
         for (auto* bell : bells) {
-          bell->stopRinging();
+            bell->stopRinging();
         }
     }
-
-
 
 private:
     std::vector<Bell*> bells;
