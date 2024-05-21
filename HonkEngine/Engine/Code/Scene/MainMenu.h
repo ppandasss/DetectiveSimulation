@@ -14,7 +14,9 @@ class MainMenu : public Scene {
 
 public:
 
-	MainMenu() {
+	MainMenu() :audioManager(AudioManager::GetInstance()) {
+
+		audioManager.LoadSound("menuMusic", "Assets/Sounds/Music/BGmusic_Cabin2.mp3", 0.2f);
 
 		GameObject* MainMenuBackground = new UIObject("MainMenuBackground", "Assets/Images/MainMenu/MainMenu_BG.jpg", true);
 		MainMenuBackground->SetScale(glm::vec3(19.2f, 10.8f, 0.0f));
@@ -43,7 +45,17 @@ public:
 
 	}
 
+	void OnEnter() override {
+		audioManager.PlaySound("menuMusic", true);
+	}
+
+    void OnExit() override {
+		audioManager.StopSound("menuMusic");
+	}
+
 private:
+
+	AudioManager& audioManager;
 
 	//BUTTON FUNCTIONS
 
