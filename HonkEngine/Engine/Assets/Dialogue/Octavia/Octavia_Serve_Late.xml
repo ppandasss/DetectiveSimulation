@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="4OD23">
+		<Speaker name="Octavia_Surprise">
+			<line1>Oh.</line1>
+			<line2>You finally arrived.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD24">
+		<Speaker name="Octavia_Sad">
+			<line1>What possibly take you so long, dear?</line1>
+			<line2>I was so immersed in prayer that I  almost forgot about you.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD25">
+		<Speaker name="Octavia_Normal">
+			<line1>Have you ever heard this?</line1>
+			<line2>'Negative feelings only serve to  weaken the connection to the Divine.'</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OQ04">
+		<Speaker name="Octavia_Normal">
+			<line1>For its sake, I will refrain myself  from getting upset with your delay.</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="4WD16">Play along to agree with her</Choice1>
+			<Choice2 next="4WD19">Remain calm and silent</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="4WD16">
+		<Speaker name="Waiter">
+			<line1>That is such divine preaching.</line1>
+			<line2>I'm grateful for your kindness, ma'am.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD26">
+		<Speaker name="Octavia_Normal">
+			<line1>Oh, no need for that.</line1>
+			<line2>You are a good man, indeed.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD27">
+		<Speaker name="Octavia_Normal">
+			<line1>Dear waiter...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OQ05">
+		<Speaker name="Octavia_Happy2">
+			<line1>Do you think what you've chosen will  be to my liking?</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="4WD17">Certainly</Choice1>
+			<Choice2 next="4WD18">Not quite sure</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="4WD17">
+		<Speaker name="Waiter">
+			<line1>Yes, ma'am. I'm sure they will.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD28" next="4OD30">
+		<Speaker name="Octavia_Happy">
+			<line1>You seem confident.</line1>
+			<line2>That's what I like in men.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD18">
+		<Speaker name="Waiter">
+			<line1>I'm not entirely sure, ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD29" next="4OD30">
+		<Speaker name="Octavia_Sad">
+			<line1>Really?</line1>
+			<line2>I must say I have high expectations  for you.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD30">
+		<Speaker name="Octavia_Normal">
+			<line1>Please set the tray here, and I will  be the judge.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD31" next="4WD20">
+		<Speaker name="Octavia_Normal">
+			<line1>I hope this will be worth the time  you've spent.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD19">
+		<Speaker name="Waiter">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD32">
+		<Speaker name="Octavia_Normal">
+			<line1>....</line1>
+			<line2>......</line2>
+			<line3>My time is valuable, dear waiter.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD33">
+		<Speaker name="Octavia_Sad">
+			<line1>Let's not waste any more of it.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD34" next="4WD20">
+		<Speaker name="Octavia_Normal">
+			<line1>Please set the tray down.</line1>
+			<line2>I hope this will be worth the time  you've spent.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD20">
+		<Speaker name="Waiter">
+			<line1>[You served the meal and begin brewing  the tea for Lady Octavia.]</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

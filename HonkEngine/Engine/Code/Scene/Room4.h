@@ -140,7 +140,8 @@ public:
         UIElement* waiterIcon = new UINormal("WaiterIcon", "Assets/Images/UI/Speaker_icon_Waiter.png", glm::vec3(4.18f, 3.43f, 0.0f), glm::vec3(1.23f, 1.4f, 0.0f), true);
 
         dialogueManager = make_unique<DialogueManager>("OctaviaDialogue", dialogueBox, "Octavia_Normal");
-        dialogueManager->LoadDialogues("Order", "Assets/Dialogue/Octavia/Octavia_Order.xml");
+        dialogueManager->LoadDialogues("Order", "Assets/Dialogue/Octavia/Octavia_Serve_Late.xml");
+
         //Text
         instructionText = new Text("dialogueinstruction", "Use [Left-click] or [Space] to continue dialogue", "Assets/Fonts/mvboli.ttf", true);
         instructionText->SetScale(0.6f);
@@ -154,7 +155,7 @@ public:
         dialogueManager->AddSpeakerSprite("Octavia_Disappoint", octaviaDisappoint);
         dialogueManager->AddSpeakerSprite("Octavia_Upset", octaviaUpset);
         dialogueManager->AddSpeakerSprite("Octavia_Sad", octaviaSad);
-        dialogueManager->AddSpeakerSprite("Octavia_Shy", octaviaSurprise);
+        dialogueManager->AddSpeakerSprite("Octavia_Surprise", octaviaSurprise);
 
 
         //Add SpeakerIcon
