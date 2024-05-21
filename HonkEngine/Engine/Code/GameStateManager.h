@@ -50,7 +50,7 @@ class GameStateManager {
 
 private:
     static GameStateManager* instance;
-    GameState currentGameState = GameState::ROOM2_STATE;
+    GameState currentGameState = GameState::ROOM4_STATE;
     RoomState currentRoomState = RoomState::Order;
 
     std::map<std::pair<GameState, RoomState>, std::function<void()>> stateActions;

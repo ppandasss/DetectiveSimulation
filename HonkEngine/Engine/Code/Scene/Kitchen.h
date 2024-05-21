@@ -711,6 +711,7 @@ public:
 
 	void OnExit() override {
 		Scene::OnExit();  // Call base class if there's relevant logic
+		audioManager.PauseSound("hallwayMusic");
 		audioManager.PlaySound("slideDoor");
 		audioManager.StopSound("kitchenAmbience");
 	}
