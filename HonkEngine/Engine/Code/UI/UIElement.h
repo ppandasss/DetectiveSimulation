@@ -60,6 +60,13 @@ public:
 
     }
 
+
+    void setActiveStatus(bool status) override {
+        active = status;
+        isClickable = status;
+    }
+
+
     //Implement cleanup logic for UI elements
     //virtual void Clear() override {}
 

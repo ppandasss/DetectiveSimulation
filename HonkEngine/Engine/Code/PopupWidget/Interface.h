@@ -14,15 +14,12 @@ public:
 
 	Interface() : GameObject("Interface") {}
 
-
 	virtual void Render() override
 	{
 		for (auto& object : m_gameObjects) {
 
 			if (object->getActiveStatus()) { //CHECK ACTIVE STATUS
-
 				object->Render();
-
 			}
 
 		}
@@ -57,10 +54,12 @@ public:
 
 	}
 
-	virtual void setActiveStatus(bool status) {
+	virtual void setActiveStatus(bool status) override {
 
 		for (auto& object : m_gameObjects) {
+
 			object->setActiveStatus(status);
+
 		}
 
 		for (auto& object : deffered_m_gameObjects) {
@@ -80,6 +79,33 @@ public:
 		active = status;
 
 	}
+
+	void setClickableState(bool status) { 
+
+		for (auto& object : m_gameObjects) {
+
+			UIElement* uiElement = dynamic_cast<UIElement*>(object);
+			if (uiElement) {  // Check if the cast was successful
+				uiElement->SetClickable(status);
+			}
+			
+		}
+
+		for (auto& object : deffered_m_gameObjects) {
+
+			if (object->gameObj && object->showObject) {  // Check for nullptr and if the object is supposed to be shown
+
+				UIElement* uiElement = dynamic_cast<UIElement*>(object->gameObj);
+
+				if (uiElement) {  // Check if the cast was successful
+					uiElement->SetClickable(status);
+				}
+
+			}
+		}
+
+	}
+
 
 
 protected:

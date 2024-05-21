@@ -224,6 +224,12 @@
     <ClInclude Include="Code\PopupWidget\OptionsInterface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Code\PopupWidget\InterfaceManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\PopupWidget\ExitInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\text.vs" />
