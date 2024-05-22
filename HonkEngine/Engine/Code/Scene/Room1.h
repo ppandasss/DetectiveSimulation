@@ -42,9 +42,9 @@ public:
 
         timer = &Timer::GetInstance();
 
-        audioManager.LoadSound("cabinMusic", "Assets/Sounds/Music/BGmusic_Cabin.mp3", 5.0f);
-        audioManager.LoadSound("knockDoor", "Assets/Sounds/SFX_KnockDoor.mp3", 2.0f);
-        audioManager.LoadSound("slideDoor", "Assets/Sounds/SFX_SlideDoor.mp3", 2.5f);
+        audioManager.LoadSound("cabinMusic", "Assets/Sounds/Music/BGmusic_Cabin.mp3",Music,5.0f);
+        audioManager.LoadSound("knockDoor", "Assets/Sounds/SFX_KnockDoor.mp3",SFX, 2.0f);
+        audioManager.LoadSound("slideDoor", "Assets/Sounds/SFX_SlideDoor.mp3",SFX, 2.5f);
       
 
 

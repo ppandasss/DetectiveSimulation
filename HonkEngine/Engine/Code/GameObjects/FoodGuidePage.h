@@ -13,7 +13,7 @@ public:
 
 	FoodGuidePage() :Page(), audioManager(AudioManager::GetInstance()) {
 
-		audioManager.LoadSound("pageSwitch", "Assets/Sounds/Journal/SFX_PageSwitch.mp3", 0.2f);
+		audioManager.LoadSound("pageSwitch", "Assets/Sounds/Journal/SFX_PageSwitch.mp3",SFX, 0.2f);
 
 		TeaGuidePage1 = new UIObject("TeaGuidePage1", "Assets/Images/Journal/TeaGuide_Page1.png", true);
 		TeaGuidePage1->SetScale(glm::vec3(12.27f, 7.48f, 0.0f));

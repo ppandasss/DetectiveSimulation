@@ -35,8 +35,8 @@ public:
 
 	Book() : GameObject("Book"), audioManager(AudioManager::GetInstance()) {
 
-		audioManager.LoadSound("openJournal", "Assets/Sounds/Journal/SFX_OpenJournal.mp3", 0.3f);
-		audioManager.LoadSound("pageSwitch", "Assets/Sounds/Journal/SFX_PageSwitch.mp3", 0.2f);
+		audioManager.LoadSound("openJournal", "Assets/Sounds/Journal/SFX_OpenJournal.mp3",SFX,0.3f);
+		audioManager.LoadSound("pageSwitch", "Assets/Sounds/Journal/SFX_PageSwitch.mp3",SFX, 0.2f);
 
 		// DRAGGABLE CLUES
 		UIDraggable* Cabin3Newspaper = new UIDraggable("Cabin3Newspaper", "Assets/Images/PaperClues/Archibald_Cabin3_Newspaper.png", glm::vec3(11.7f, 2.2f, 0.0f), glm::vec3(7.31f, 10.12f, 0.0f), true);

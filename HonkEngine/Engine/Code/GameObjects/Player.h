@@ -26,7 +26,7 @@ public:
         m_position = glm::vec3(0.0f, -0.9f, 0.0f);
         m_animator.AddAnimation("walk_left", 2, 8, 8.0f, Animator::LoopType::Loop, []() {});
         m_animator.AddAnimation("walk_right", 1, 8, 8.0f, Animator::LoopType::Loop, []() {});
-        audioManager.LoadSound("Player_footsteps", "Assets/Sounds/footstep.mp3", 0.8f);
+        audioManager.LoadSound("Player_footsteps", "Assets/Sounds/footstep.mp3",SFX, 0.8f);
     }
 
     void StopMovement() {

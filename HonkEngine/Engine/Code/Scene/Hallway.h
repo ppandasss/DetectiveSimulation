@@ -72,10 +72,10 @@ public:
 	{
 
 		/*--------------------------------------------------------------🔊LOAD AUDDIO🔊------------------------------------------------------------------------------------------------------- */
-		audioManager.LoadSound("hallwayMusic", "Assets/Sounds/Music/BGmusic_Corridor_NoTimer.mp3", 0.1f);
-		audioManager.LoadSound("trainAmbience", "Assets/Sounds/Ambience/Ambience_Train.mp3", 0.1f);
-		audioManager.LoadSound("bellRing", "Assets/Sounds/SFX_CallingBell.mp3", 0.4f);
-		audioManager.LoadSound("buttonClick", "Assets/Sounds/SFX_DialogueChoice.mp3", 0.45f);
+		audioManager.LoadSound("hallwayMusic", "Assets/Sounds/Music/BGmusic_Corridor_NoTimer.mp3", Music, 0.1f);
+		audioManager.LoadSound("trainAmbience", "Assets/Sounds/Ambience/Ambience_Train.mp3", SFX, 0.1f);
+		audioManager.LoadSound("bellRing", "Assets/Sounds/SFX_CallingBell.mp3",SFX ,0.4f);
+		audioManager.LoadSound("buttonClick", "Assets/Sounds/SFX_DialogueChoice.mp3", SFX, 0.45f);
 
 		/*--------------------------------------------------------------📦CREATE GAMEOBJECT📦------------------------------------------------------------------------------------------------------- */
 		/*-------------------------------------------------------------🌲CREATE ENVIRONMENT🌲------------------------------------------------------------------------------------------------------- */
