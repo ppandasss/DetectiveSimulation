@@ -10,7 +10,7 @@
 #include "GameObjects/OrderData.h"
 #include "Scene/KitchenData.h"
 
-#define PREPARE_DURATION 120  // in seconds
+#define PREPARE_DURATION 210  // in seconds
 #define INITIAL_ROOM GameState::ROOM4_STATE // start room
 
 enum GameState {
@@ -161,7 +161,7 @@ private:
             AudioManager::GetInstance().PlaySound("slideDoor");
             KitchenData::GetInstance()->clearPlate();
             Application::Get().SetTimer(3000, []() {
-                GameStateManager::GetInstance().SetGameState(GameState::END_STATE);
+                GameStateManager::GetInstance().SetGameState(GameState::ROOM1_STATE);
                 GameStateManager::GetInstance().SetRoomState(RoomState::End);
                 Application::Get().SetScene("Hallway");
                 }, false);

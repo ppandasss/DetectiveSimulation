@@ -119,7 +119,7 @@ public:
 		RedUnderline = new UIObject("RedUnderline", "Assets/Images/Journal/CaseSummary_Icon_Red_Underline.png", true);
 		RedUnderline->setActiveStatus(false);
 		RedUnderline->SetScale(glm::vec3(1.7f, 0.1f, 0.0f));
-		RedUnderline->SetPosition(glm::vec3(1.1f, -2.0f, 0.0f));
+		RedUnderline->SetPosition(glm::vec3(1.45f, -1.7f, 0.0f));
 
 		redUnderline = new DeferredRenderObject();
 		redUnderline->showObject = false;
@@ -273,7 +273,7 @@ public:
 		if (redUnderline->showObject == false) {
 			redUnderline->showObject = true;
 		}
-		redUnderline->gameObj->SetPosition(glm::vec3(1.4f, -2.45f, 0.0f));
+		redUnderline->gameObj->SetPosition(glm::vec3(1.65f, -2.35f, 0.0f));
 	};
 
 	void setLocationHolyChurch() {
@@ -282,7 +282,7 @@ public:
 		if (redUnderline->showObject == false) {
 			redUnderline->showObject = true;
 		}
-		redUnderline->gameObj->SetPosition(glm::vec3(3.5f, -2.45f, 0.0f));
+		redUnderline->gameObj->SetPosition(glm::vec3(3.6f, -2.36f, 0.0f));
 	};
 
 	void setLocationCouncil() {
@@ -292,7 +292,7 @@ public:
 		if (redUnderline->showObject == false) {
 			redUnderline->showObject = true;
 		}
-		redUnderline->gameObj->SetPosition(glm::vec3(1.4f, -2.95f, 0.0f));
+		redUnderline->gameObj->SetPosition(glm::vec3(1.64f, -2.83f, 0.0f));
 	};
 
 	void setLocationSupremeCourt() {
@@ -301,7 +301,7 @@ public:
 		if (redUnderline->showObject == false) {
 			redUnderline->showObject = true;
 		}
-		redUnderline->gameObj->SetPosition(glm::vec3(3.5f, -2.95f, 0.0f));
+		redUnderline->gameObj->SetPosition(glm::vec3(3.62f, -2.85f, 0.0f));
 	};
 
 
