@@ -8,14 +8,18 @@ public:
 
 	CabinPage2() :Page() {
 
+		GameObject* BlankPage2 = new UIObject("BlankPage2", "Assets/Images/Journal/Journal_BlankPage2.png", true);
+		BlankPage2->SetScale(glm::vec3(12.68f, 7.45f, 1.0f));
+		BlankPage2->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
+
 		// LEFT PAGE
 		GameObject* P1Picture = new UIObject("P1Picture", "Assets/Images/Journal/PassengerPicture_Nathaniel.png", true);
 		P1Picture->SetScale(glm::vec3(5.50f, 3.19f, 0.0f));
 		P1Picture->SetPosition(glm::vec3(-3.1f, 1.65f, 0.0f));
 
-		GameObject* PaperClip = new UIObject("PaperClip", "Assets/Images/Journal/PaperClip.png", true);
+		GameObject* PaperClip = new UIObject("PaperClip", "Assets/Images/Journal/Journal_Paperclip04.png", true);
 		PaperClip->SetScale(glm::vec3(0.51f, 0.92f, 0.0f));
-		PaperClip->SetPosition(glm::vec3(-5.0f, 3.31f, 0.0f));
+		PaperClip->SetPosition(glm::vec3(-5.0f, 3.46f, 0.0f));
 
 		GameObject* InfoPaper = new UIObject("InfoPaper", "Assets/Images/Journal/Passenger_InfoPaper.png", true);
 		InfoPaper->SetScale(glm::vec3(5.41f, 3.30f, 0.0f));
@@ -49,7 +53,7 @@ public:
 		// RIGHT PAGE
 		// CLUES	[N = Nathaniel, C = Clue]
 		Text* N_Clue1 = new Text("N_Clue1", "Moving to Westside to stay with his mother", "Assets/Fonts/ESA-smb.ttf");
-		N_Clue1->SetPosition(glm::vec3(0.87f, 2.7f, 0.0f));
+		N_Clue1->SetPosition(glm::vec3(0.87f, 2.65f, 0.0f));
 		N_Clue1->SetColor(glm::vec3(0.5, 0, 0));
 		N_Clue1->SetScale(0.55f);
 
@@ -59,36 +63,31 @@ public:
 		N_Clue2->SetScale(0.58f);
 
 		Text* N_Clue3 = new Text("N_Clue3", "Doesn't care about the bomb situation", "Assets/Fonts/ESA-m.ttf");
-		N_Clue3->SetPosition(glm::vec3(0.87f, 1.7f, 0.0f));
+		N_Clue3->SetPosition(glm::vec3(0.87f, 1.75f, 0.0f));
 		N_Clue3->SetColor(glm::vec3(0, 0, 0));
 		N_Clue3->SetScale(0.58f);
 
 		Text* N_Clue4 = new Text("N_Clue4", "Take medicine daily Chronic illness?", "Assets/Fonts/ESA-smb.ttf");
-		N_Clue4->SetPosition(glm::vec3(0.85f, 1.2f, 0.0f));
+		N_Clue4->SetPosition(glm::vec3(0.85f, 1.27f, 0.0f));
 		N_Clue4->SetColor(glm::vec3(0, 0, 0));
 		N_Clue4->SetScale(0.62f);
 
 		ClueData* cabin21_clue1 = new ClueData();
-		cabin21_clue1->showText = true;
-		cabin21_clue1->clueText = N_Clue1;
+		cabin21_clue1->showClue = false;
+		cabin21_clue1->clueObject = N_Clue1;
+		cabin21_clue1->isEvidence = true;
 
 		ClueData* cabin21_clue2 = new ClueData();
-		cabin21_clue2->showText = true;
-		cabin21_clue2->clueText = N_Clue2;
+		cabin21_clue2->showClue = false;
+		cabin21_clue2->clueObject = N_Clue2;
 
 		ClueData* cabin21_clue3 = new ClueData();
-		cabin21_clue3->showText = true;
-		cabin21_clue3->clueText = N_Clue3;
+		cabin21_clue3->showClue = false;
+		cabin21_clue3->clueObject = N_Clue3;
 
 		ClueData* cabin21_clue4 = new ClueData();
-		cabin21_clue4->showText = true;
-		cabin21_clue4->clueText = N_Clue4;
-
-
-		// DIVIDER 1
-		GameObject* Divider1 = new UIObject("Divider1", "Assets/Images/Journal/Line_1.png", true);
-		Divider1->SetScale(glm::vec3(4.78f, 0.08f, 0.0f));
-		Divider1->SetPosition(glm::vec3(3.2f, 0.7f, 0.0f));
+		cabin21_clue4->showClue = false;
+		cabin21_clue4->clueObject = N_Clue4;
 
 
 		// LAST ACTIVITY	[N = Nathaniel, LA = Last Activity]
@@ -107,14 +106,14 @@ public:
 		N_LA2->SetColor(glm::vec3(0.5, 0, 0));
 		N_LA2->SetScale(0.5f);
 
-
 		ClueData* cabin21_clue5 = new ClueData();
-		cabin21_clue5->showText = true;
-		cabin21_clue5->clueText = N_LA1;
+		cabin21_clue5->showClue = false;
+		cabin21_clue5->clueObject = N_LA1;
 
 		ClueData* cabin21_clue6 = new ClueData();
-		cabin21_clue6->showText = true;
-		cabin21_clue6->clueText = N_LA2;
+		cabin21_clue6->showClue = false;
+		cabin21_clue6->clueObject = N_LA2;
+		cabin21_clue6->isEvidence = true;
 
 		textClues.push_back(cabin21_clue1);
 		textClues.push_back(cabin21_clue2);
@@ -124,19 +123,14 @@ public:
 		textClues.push_back(cabin21_clue5);
 		textClues.push_back(cabin21_clue6);
 
-		m_journalData->addClueToJournalData(CLUE_CABIN21, cabin21_clue1);
-		m_journalData->addClueToJournalData(CLUE_CABIN21, cabin21_clue2);
-		m_journalData->addClueToJournalData(CLUE_CABIN21, cabin21_clue3);
-		m_journalData->addClueToJournalData(CLUE_CABIN21, cabin21_clue4);
+		m_journalData->addClueToJournalData(CABIN21, cabin21_clue1);
+		m_journalData->addClueToJournalData(CABIN21, cabin21_clue2);
+		m_journalData->addClueToJournalData(CABIN21, cabin21_clue3);
+		m_journalData->addClueToJournalData(CABIN21, cabin21_clue4);
 
-		m_journalData->addClueToJournalData(CLUE_CABIN21, cabin21_clue5);
-		m_journalData->addClueToJournalData(CLUE_CABIN21, cabin21_clue6);
+		m_journalData->addClueToJournalData(CABIN21, cabin21_clue5);
+		m_journalData->addClueToJournalData(CABIN21, cabin21_clue6);
 
-
-		// DIVIDER 2
-		GameObject* Divider2 = new UIObject("Divider2", "Assets/Images/Journal/Line_2.png", true);
-		Divider2->SetScale(glm::vec3(4.8f, 0.06f, 0.0f));
-		Divider2->SetPosition(glm::vec3(3.2f, -1.25f, 0.0f));
 
 
 		// LAST VISIT
@@ -168,8 +162,17 @@ public:
 		RedUnderline_Cabin2 = new UIObject("UnderlineCabin2", "Assets/Images/Journal/CaseSummary_Icon_Red_Underline.png", true);
 		RedUnderline_Cabin2->setActiveStatus(false);
 		RedUnderline_Cabin2->SetScale(glm::vec3(1.7f, 0.1f, 0.0f));
-		RedUnderline_Cabin2->SetPosition(glm::vec3(1.1f, -2.0f, 0.0f));
+		RedUnderline_Cabin2->SetPosition(glm::vec3(3.72f, -3.05f, 0.0f));
 
+
+		ClueData* cabin21_clue7 = new ClueData();
+		cabin21_clue7->showClue = false;
+		cabin21_clue7->clueObject = RedUnderline_Cabin2;
+
+		textClues.push_back(cabin21_clue7);
+		m_journalData->addClueToJournalData(CABIN21, cabin21_clue7);
+
+		m_gameObjects.push_back(BlankPage2);
 		m_gameObjects.push_back(P1Picture);
 		m_gameObjects.push_back(PaperClip);
 		m_gameObjects.push_back(InfoPaper);
@@ -180,11 +183,7 @@ public:
 		m_gameObjects.push_back(Occupation);
 		m_gameObjects.push_back(CabinStamp);
 
-		m_gameObjects.push_back(Divider1);
-
 		m_gameObjects.push_back(LastActivity);
-
-		m_gameObjects.push_back(Divider2);
 		m_gameObjects.push_back(LastVisit);
 
 		m_gameObjects.push_back(TownSquare);
@@ -192,36 +191,14 @@ public:
 		m_gameObjects.push_back(TheCouncil);
 		m_gameObjects.push_back(SupremeCourt);
 
-		m_gameObjects.push_back(RedUnderline_Cabin2);
-
-
-
 	}
 
-	virtual void Update(float dt, long frame) override {
-
-		Page::Update(dt, frame);
-
-		CabinPageData cabinData = m_journalData->GetCabinPageData(Cabin::CLUE_CABIN21);
-
-		if (!cabinData.ShowLastActivity) {
-
-			RedUnderline_Cabin2->setActiveStatus(false);
-
-		}
-		else {
-
-			RedUnderline_Cabin2->setActiveStatus(true);
-
-		}
-
-	}
 
 
 private:
 
 	UIObject* RedUnderline_Cabin2;
-	
+
 
 
 };

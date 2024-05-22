@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="3ND54">
+		<Speaker name="Nathaniel_Normal">
+			<line1>But anyway, thank you, Mr. Waiter!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND54_2">
+		<Speaker name="Nathaniel_Sad">
+			<line1>It's nice to know you, sadly you  must go so soon.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND54_3">
+		<Speaker name="Nathaniel_Normal">
+			<line1>Goodbye!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD18">
+		<Speaker name="Waiter">
+			<line1>Oh, I haven't told you yet.</line1>
+			<line2>I must stay until the tea is ready.</line2>
+			<line3>It's part of my duty.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND55">
+		<Speaker name="Nathaniel_Disappoint">
+			<line1>Oh, really?</line1>
+			<line2>That's... good.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND56">
+		<Speaker name="Nathaniel_Normal">
+			<line2>Alright then.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND57">
+		<Speaker name="Nathaniel_Happy">
+			<line1>Can you entertain us while we wait?</line1>
+			<line2>Tell us one joke as an appetizer!</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WQ01">
+		<Speaker name="Waiter">
+			<line1>Of course, I will try...</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="3WD20" clueID="CABIN21_2">Tell a waiter joke</Choice1>
+			<Choice2 next="3WD21" clueID="CABIN21_2">Tell a spy joke</Choice2>
+			<Choice3 next="3WD19" clueID="CABIN21_2">Tell a train joke</Choice3>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="3WD19" next="3ND58">
+		<Speaker name="Waiter">
+			<line1>What do you call a locomotive that  keeps sneezing?</line1>
+			<line2>...</line2>
+			<line3>Achoo choo train.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD20" next="3ND58">
+		<Speaker name="Waiter">
+			<line1>Why should a waiter get promoted?</line1>
+			<line2>...</line2>
+			<line3>Because he brought a lot to the table.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD21" next="3ND58">
+		<Speaker name="Waiter">
+			<line1>Why did the spy cross the road?</line1>
+			<line2>...</line2>
+			<line3>Because they were never on your side.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND58">
+		<Speaker name="Nathaniel_Disappoint">
+			<line1>...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD22">
+		<Speaker name="Waiter">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED08">
+		<Speaker name="Evelyn_Disappoint">
+			<line1>.....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD23">
+		<Speaker name="Waiter">
+			<line1>(Dealing with kids is harder than  I thought.)</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND59">
+		<Speaker name="Nathaniel_Disappoint">
+			<line1>Well...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND60">
+		<Speaker name="Nathaniel_Normal">
+			<line1>At least you've tried!</line1>
+			<line2>....</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED09">
+		<Speaker name="Evelyn_Normal">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

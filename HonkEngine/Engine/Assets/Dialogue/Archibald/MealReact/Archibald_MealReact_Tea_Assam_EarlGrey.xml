@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="2AD93">
+		<Speaker name="Archibald_Normal">
+			<line1>This.</line1>
+			<line2>This is exactly what I want.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD94">
+		<Speaker name="Archibald_Happy">
+			<line1>It smells quite good though.</line1>
+			<line2>I like it.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

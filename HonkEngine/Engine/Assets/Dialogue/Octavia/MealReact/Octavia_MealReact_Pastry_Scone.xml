@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="4OD73">
+		<Speaker name="Octavia_Surprise">
+			<line1>Oh, you brought me scones?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD74">
+		<Speaker name="Octavia_Happy">
+			<line1>The jam looks very appetizing.</line1>
+			<line2>I have high hopes for its taste.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD75">
+		<Speaker name="Octavia_Normal">
+			<line1>I haven't had these in a while.</line1>
+			<line2>Thank you, dear waiter.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

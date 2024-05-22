@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="4OD79">
+		<Speaker name="Octavia_Normal">
+			<line1>I don't mind having your company for  a moment.</line1>
+			<line2>...</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD80">
+		<Speaker name="Octavia_Normal">
+			<line1>.....</line1>
+			<line2>Could I ask you something?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OQ08">
+		<Speaker name="Octavia_Happy2">
+			<line1>How would you prove that your belief  is true beyond any doubt?</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="4WD29">Answer neutrally with caution</Choice1>
+			<Choice2 next="4WD28">Answer radically</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="4WD28">
+		<Speaker name="Waiter">
+			<line1>I think...</line1>
+			<line2>My trust and belief are the proof  themselves, ma'am.</line2>
+			<line3>If I believe it, then it must be  the truest for myself.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD81">
+		<Speaker name="Octavia_Happy">
+			<line1>That's a very good answer.</line1>
+			<line2>I completely agree with you.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD82" next="4OD86">
+		<Speaker name="Octavia_Normal">
+			<line1>I'm sure we'll have a pleasant  time together.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD29">
+		<Speaker name="Waiter">
+			<line1>I think it's more of a personal  preference, ma'am.</line1>
+			<line2>Everyone has their own way.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD83">
+		<Speaker name="Octavia_Disappoint">
+			<line1>....</line1>
+			<line2>I believe there's more on your mind,  isn't there?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD84">
+		<Speaker name="Octavia_Normal">
+			<line1>At least more than what you just  answered.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD85" next="4OD86">
+		<Speaker name="Octavia_Normal">
+			<line1>Feel free to open up. Do not  hesitate to share with me.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD86">
+		<Speaker name="Octavia_Normal">
+			<line1>It's been a while since I've had  afternoon tea like this.</line1>
+			<line2>....</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

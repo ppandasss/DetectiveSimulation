@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="2AD103">
+		<Speaker name="Archibald_Normal">
+			<line1>....</line1>
+			<line2>Oh.</line2>
+			<line3>Salmon sandwich?</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD104">
+		<Speaker name="Archibald_Happy">
+			<line1>And such a strong fragrant one too!</line1>
+			<line2>It completely covers the smell of  that hideous grass outside.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD105">
+		<Speaker name="Archibald_Normal">
+			<line1>Good job for not messing this one up.</line1>
+			<line2>I thought everything you brought  would be all such a mess.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

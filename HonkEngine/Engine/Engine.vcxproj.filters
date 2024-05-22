@@ -1,317 +1,202 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
+    <ClCompile Include="Code\Animation\Animator.cpp" />
+    <ClCompile Include="Code\Application.cpp" />
+    <ClCompile Include="Code\Camera\Camera.cpp" />
+    <ClCompile Include="Code\Dialogue\tinyxml2.cpp" />
+    <ClCompile Include="Code\Engine.cpp" />
+    <ClCompile Include="Code\Input\Input.cpp" />
+    <ClCompile Include="Code\Main.cpp" />
+    <ClCompile Include="Code\Renderer\Renderer.cpp" />
+    <ClCompile Include="Code\Text\TextRenderer.cpp" />
+    <ClCompile Include="External\Include\glad\glad.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="External\Include\glad\glad.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Animation\Animator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Application.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Camera\Camera.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Engine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Input\Input.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Renderer\Renderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Text\TextRenderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Dialogue\tinyxml2.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="External\Include\GLFW\glfw3.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="External\Include\GLFW\glfw3native.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="External\Include\stb_image.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Text\TextRenderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Text\Text.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Renderer\Shader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Scene\Hallway.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Scene\Room1.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\GameObjects\AnimateGameObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Animation\Animator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Application.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Camera\Camera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Engine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\GameObjects\GameObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Input\Input.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\GameObjects\Player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Renderer\Renderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\GameObjects\RenderGameObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Scene\Scene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Audio\AudioManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\UI\UIButton.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\UI\Book.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\GameObjects\Journal\JournalData.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\GameObjects\Page.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\GameObjects\MainPage.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\UI\UINormal.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\UI\UIObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\UI\UIElement.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\UI\UIDraggable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\GameObjects\CabinPage1.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\GameObjects\CabinPage2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\GameObjects\CabinPage3.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\GameObjects\CabinPage4.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\GameObjects\CabinPage5.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\GameObjects\FoodGuidePage.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\EventManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\GameObjects\JournalData.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\GameObjects\Book.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Dialogue\DialogueManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Effects\ParallaxManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Scene\Kitchen.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Scene\KitchenData.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\UI\UIButtonEmpty.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\GameObjects\Door.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\GameObjects\DoorsManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Scene\LoadScene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Dialogue\tinyxml2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\GameObjects\OrderData.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\GameObjects\Timer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\Shaders\text.vs" />
-    <None Include="Assets\Shaders\color_tex_transparency.frag" />
-    <None Include="Assets\Shaders\color_tex_transparency.vert" />
-    <None Include="Assets\Shaders\fragment.shd" />
-    <None Include="Assets\Shaders\vertext.shd" />
-    <None Include="Assets\Shaders\text.fs" />
-    <None Include="freetype.dll" />
-    <None Include="ikpFlac.dll" />
-    <None Include="ikpMP3.dll" />
-    <None Include="irrKlang.dll" />
+    <ClInclude Include="Code\Audio\AudioManager.h" />
+    <ClInclude Include="Code\Dialogue\DialogueManager.h" />
+    <ClInclude Include="Code\Dialogue\tinyxml2.h" />
+    <ClInclude Include="Code\Effects\BackgroundParallax.h" />
+    <ClInclude Include="Code\EventManager.h" />
+    <ClInclude Include="Code\GameObjects\AnimateGameObject.h" />
+    <ClInclude Include="Code\Animation\Animator.h" />
+    <ClInclude Include="Code\Application.h" />
+    <ClInclude Include="Code\Camera\Camera.h" />
+    <ClInclude Include="Code\Engine.h" />
+    <ClInclude Include="Code\GameObjects\Bell.h" />
+    <ClInclude Include="Code\GameObjects\BellManager.h" />
+    <ClInclude Include="Code\GameObjects\Book.h" />
+    <ClInclude Include="Code\GameObjects\CabinPage1.h" />
+    <ClInclude Include="Code\GameObjects\CabinPage2.h" />
+    <ClInclude Include="Code\GameObjects\CabinPage3.h" />
+    <ClInclude Include="Code\GameObjects\CabinPage4.h" />
+    <ClInclude Include="Code\GameObjects\CabinPage5.h" />
+    <ClInclude Include="Code\GameObjects\CharacterData.h" />
+    <ClInclude Include="Code\GameObjects\Door.h" />
+    <ClInclude Include="Code\GameObjects\DoorManager.h" />
+    <ClInclude Include="Code\GameObjects\FoodGuidePage.h" />
+    <ClInclude Include="Code\GameObjects\GameObject.h" />
+    <ClInclude Include="Code\GameObjects\JournalData.h" />
+    <ClInclude Include="Code\GameObjects\Journal\JournalData.h" />
+    <ClInclude Include="Code\GameObjects\MainPage.h" />
+    <ClInclude Include="Code\GameObjects\OrderData.h" />
+    <ClInclude Include="Code\GameObjects\Page.h" />
+    <ClInclude Include="Code\GameObjects\Timer.h" />
+    <ClInclude Include="Code\PopupWidget\PopUp.h" />
+    <ClInclude Include="Code\Scene\Hallway.h" />
+    <ClInclude Include="Code\Scene\Kitchen.h" />
+    <ClInclude Include="Code\Scene\KitchenData.h" />
+    <ClInclude Include="Code\Scene\LoadScene.h" />
+    <ClInclude Include="Code\Scene\MainMenu.h" />
+    <ClInclude Include="Code\Scene\Room1.h" />
+    <ClInclude Include="Code\Input\Input.h" />
+    <ClInclude Include="Code\GameObjects\Player.h" />
+    <ClInclude Include="Code\Renderer\Renderer.h" />
+    <ClInclude Include="Code\GameObjects\RenderGameObject.h" />
+    <ClInclude Include="Code\Scene\Room2.h" />
+    <ClInclude Include="Code\Scene\Room3.h" />
+    <ClInclude Include="Code\Scene\Room4.h" />
+    <ClInclude Include="Code\Scene\Scene.h" />
+    <ClInclude Include="Code\Renderer\Shader.h" />
+    <ClInclude Include="Code\Text\Text.h" />
+    <ClInclude Include="Code\Text\TextRenderer.h" />
+    <ClInclude Include="Code\UI\Book.h" />
+    <ClInclude Include="Code\GameStateManager.h" />
+    <ClInclude Include="Code\UI\UIButton.h" />
+    <ClInclude Include="Code\UI\UIButtonEmpty.h" />
+    <ClInclude Include="Code\UI\UIDraggable.h" />
+    <ClInclude Include="Code\UI\UIElement.h" />
+    <ClInclude Include="Code\UI\UINormal.h" />
+    <ClInclude Include="Code\UI\UIObject.h" />
+    <ClInclude Include="External\Include\GLFW\glfw3.h" />
+    <ClInclude Include="External\Include\GLFW\glfw3native.h" />
+    <ClInclude Include="External\Include\stb_image.h" />
+    <ClInclude Include="Code\Effects\ObjectsParallax.h" />
+    <ClInclude Include="Code\Effects\ShakingEffect.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="External\Library\freetype.lib" />
     <Library Include="External\Library\glfw3.lib" />
   </ItemGroup>
   <ItemGroup>
-    <Font Include="Assets\Fonts\WD.ttf" />
-    <Font Include="Assets\Fonts\EI.ttf" />
-    <Font Include="Assets\Fonts\mvboli.ttf" />
-    <Font Include="Assets\Fonts\CourierPrime-Regular.ttf" />
-    <Font Include="Assets\Fonts\CourierPrime-Bold.ttf" />
-    <Font Include="Assets\Fonts\ESA-m.ttf" />
-    <Font Include="Assets\Fonts\JMH.ttf" />
-    <Font Include="Assets\Fonts\JibrilRegular.ttf" />
-    <Font Include="Assets\Fonts\ESA-smb.ttf" />
-    <Font Include="Assets\Fonts\segoepr.ttf" />
-    <Font Include="Assets\Fonts\OverpassMono.ttf" />
+    <Xml Include="Assets\Dialogue\Archibald\Archibald_Order.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Archibald_Serve_Late.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Archibald_Serve_OnTime.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Average\Archibald_Average_End.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Average\Archibald_Average_MessyClothes.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Average\Archibald_Average_MovingLuggage.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Average\Archibald_Average_Newspaper.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Average\Archibald_Average_Start.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Informative\Archibald_Informative_End.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Informative\Archibald_Informative_MessyClothes.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Informative\Archibald_Informative_MovingLuggage.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Informative\Archibald_Informative_Newspaper.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Informative\Archibald_Informative_Start.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Low\Archibald_Low_End.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Low\Archibald_Low_MessyClothes.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Low\Archibald_Low_MovingLuggage.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Low\Archibald_Low_Newspaper.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\Low\Archibald_Low_Start.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\MealReact\Archibald_MealReact_Pastry_LemonTart.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\MealReact\Archibald_MealReact_Pastry_Other.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\MealReact\Archibald_MealReact_Sandwich_Other.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\MealReact\Archibald_MealReact_Sandwich_Salmon.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\MealReact\Archibald_MealReact_Tea_Assam_EarlGrey.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\MealReact\Archibald_MealReact_Tea_Assam_EarlGrey_WithMilk.xml" />
+    <Xml Include="Assets\Dialogue\Archibald\MealReact\Archibald_MealReact_Tea_Other.xml" />
+    <Xml Include="Assets\Dialogue\Martha\Average\Martha_Average_Cane.xml" />
+    <Xml Include="Assets\Dialogue\Martha\Average\Martha_Average_End.xml" />
+    <Xml Include="Assets\Dialogue\Martha\Average\Martha_Average_Letter.xml" />
+    <Xml Include="Assets\Dialogue\Martha\Average\Martha_Average_Start.xml" />
+    <Xml Include="Assets\Dialogue\Martha\Informative\Martha_Informative_Cane.xml" />
+    <Xml Include="Assets\Dialogue\Martha\Informative\Martha_Informative_End.xml" />
+    <Xml Include="Assets\Dialogue\Martha\Informative\Martha_Informative_Letter.xml" />
+    <Xml Include="Assets\Dialogue\Martha\Informative\Martha_Informative_Start.xml" />
+    <Xml Include="Assets\Dialogue\Martha\Martha_MealReact_Tea_Assam_EarlGray.xml" />
+    <Xml Include="Assets\Dialogue\Martha\Martha_MealReact_Tea_Chamomile.xml" />
+    <Xml Include="Assets\Dialogue\Martha\Martha_MealReact_Tea_GreenTea.xml" />
+    <Xml Include="Assets\Dialogue\Martha\Martha_Order.xml" />
+    <Xml Include="Assets\Dialogue\Martha\Martha_Serve_Late.xml" />
+    <Xml Include="Assets\Dialogue\Martha\Martha_Serve_OnTime.xml" />
+    <Xml Include="Assets\Dialogue\Martha\MealReact\Martha_MealReact_Pastry_Eclair_Macaron_Tart.xml" />
+    <Xml Include="Assets\Dialogue\Martha\MealReact\Martha_MealReact_Pastry_Scone.xml" />
+    <Xml Include="Assets\Dialogue\Martha\MealReact\Martha_MealReact_Sandwich_Cucumber.xml" />
+    <Xml Include="Assets\Dialogue\Martha\MealReact\Martha_MealReact_Sandwich_Egg.xml" />
+    <Xml Include="Assets\Dialogue\Martha\MealReact\Martha_MealReact_Sandwich_Salmon_Beef.xml" />
+    <Xml Include="Assets\Dialogue\Martha\MealReact\Martha_MealReact_Tea_Assam_EarlGrey.xml" />
+    <Xml Include="Assets\Dialogue\Martha\MealReact\Martha_MealReact_Tea_Chamomile.xml" />
+    <Xml Include="Assets\Dialogue\Martha\MealReact\Martha_MealReact_Tea_GreenTea.xml" />
+    <Xml Include="Assets\Dialogue\Martha\MealResult\Martha_MealResult_Average.xml" />
+    <Xml Include="Assets\Dialogue\Martha\MealResult\Martha_MealResult_Informative.xml" />
+    <Xml Include="Assets\Dialogue\Martha\MealResult\Martha_MealResult_Low.xml" />
+    <Xml Include="Assets\Dialogue\Twin\Twin_Order.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Assets\Images\awesomeface.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\Images\Cabin.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\Images\konrai.jpg">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\Images\spritesheet_test.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\Images\spritesheet_test2.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\Images\waiter_test.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\Images\wardrobe.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\Images\Cabin_Background.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\Images\DialogueBox.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\Images\DialogueChoiceBox.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\Images\Environment_Corridor_Hallway.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\Images\Environment_Corridor_Light.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\Images\Journal_CaseSummary_Ticket_WithText.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\Images\JournalButton.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\Images\logo.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\Images\MainCharacter_WithTray_Walk.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\Images\Martha.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\Images\Martha_Cabin.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\Images\Martha1.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\Images\OrderPaper.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\Images\passenger_room1.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\Images\ScreenUI.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\Images\Square_Border.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\Images\Timer.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\Images\train_corridorpng.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Assets\Images\waiter_spritesheet.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <Media Include="Assets\Sounds\ophelia.mp3" />
-    <Media Include="Assets\Sounds\footsteps.mp3" />
     <Media Include="Assets\Sounds\footstep.mp3" />
+    <Media Include="Assets\Sounds\footsteps.mp3" />
     <Media Include="Assets\Sounds\MembersOnly.mp3" />
+    <Media Include="Assets\Sounds\Music\BGmusic_Cabin.mp3" />
+    <Media Include="Assets\Sounds\Music\BGmusic_Corridor_NoTimer.mp3" />
+    <Media Include="Assets\Sounds\ophelia.mp3" />
+    <Media Include="Assets\Sounds\SFX_CallingBell.mp3" />
+    <Media Include="Assets\Sounds\SFX_DialogueChoice.mp3" />
+    <Media Include="Assets\Sounds\SFX_DialoguePlay.mp3" />
+    <Media Include="Assets\Sounds\SFX_KnockDoor.mp3" />
+    <Media Include="Assets\Sounds\SFX_SlideDoor.mp3" />
+    <Media Include="Assets\Sounds\SFX_TimerTicking.mp3" />
     <Media Include="Assets\Sounds\Train_Ambience.mp3" />
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="Assets\Dialogue\Dialogue_Martha_OrderPhase.xml" />
+    <Image Include="Assets\Images\awesomeface.png" />
+    <Image Include="Assets\Images\Cabin.png" />
+    <Image Include="Assets\Images\Cabin_Background.png" />
+    <Image Include="Assets\Images\DialogueBox.png" />
+    <Image Include="Assets\Images\DialogueChoiceBox.png" />
+    <Image Include="Assets\Images\Environment_Corridor_Hallway.png" />
+    <Image Include="Assets\Images\Environment_Corridor_Light.png" />
+    <Image Include="Assets\Images\JournalButton.png" />
+    <Image Include="Assets\Images\Journal_CaseSummary_Ticket_WithText.png" />
+    <Image Include="Assets\Images\konrai.jpg" />
+    <Image Include="Assets\Images\logo.png" />
+    <Image Include="Assets\Images\MainCharacter_WithTray_Walk.png" />
+    <Image Include="Assets\Images\Martha.png" />
+    <Image Include="Assets\Images\Martha1.png" />
+    <Image Include="Assets\Images\Martha_Cabin.png" />
+    <Image Include="Assets\Images\OrderPaper.png" />
+    <Image Include="Assets\Images\passenger_room1.png" />
+    <Image Include="Assets\Images\ScreenUI.png" />
+    <Image Include="Assets\Images\spritesheet_test.png" />
+    <Image Include="Assets\Images\spritesheet_test2.png" />
+    <Image Include="Assets\Images\Square_Border.png" />
+    <Image Include="Assets\Images\Timer.png" />
+    <Image Include="Assets\Images\train_corridorpng.png" />
+    <Image Include="Assets\Images\waiter_spritesheet.png" />
+    <Image Include="Assets\Images\waiter_test.png" />
+    <Image Include="Assets\Images\wardrobe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Assets\Fonts\CourierPrime-Bold.ttf" />
+    <Font Include="Assets\Fonts\CourierPrime-Regular.ttf" />
+    <Font Include="Assets\Fonts\EI.ttf" />
+    <Font Include="Assets\Fonts\ESA-m.ttf" />
+    <Font Include="Assets\Fonts\ESA-smb.ttf" />
+    <Font Include="Assets\Fonts\JibrilRegular.ttf" />
+    <Font Include="Assets\Fonts\JMH.ttf" />
+    <Font Include="Assets\Fonts\mvboli.ttf" />
+    <Font Include="Assets\Fonts\OverpassMono.ttf" />
+    <Font Include="Assets\Fonts\segoepr.ttf" />
+    <Font Include="Assets\Fonts\WD.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Shaders\color_tex_transparency.frag" />
+    <None Include="Assets\Shaders\color_tex_transparency.vert" />
+    <None Include="Assets\Shaders\fragment.shd" />
+    <None Include="Assets\Shaders\text.fs" />
+    <None Include="Assets\Shaders\text.vs" />
+    <None Include="Assets\Shaders\vertext.shd" />
+    <None Include="freetype.dll" />
+    <None Include="ikpFlac.dll" />
+    <None Include="ikpMP3.dll" />
+    <None Include="irrKlang.dll" />
   </ItemGroup>
 </Project>

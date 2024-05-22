@@ -20,7 +20,7 @@
 #include "FoodGuidePage.h"
 
 
-enum currentPage { MAIN, CABIN1, CABIN2, CABIN3, CABIN4, CABIN5, FOODGUIDE };
+enum currentPage { MAIN_PAGE, CABIN1_PAGE, CABIN2_PAGE, CABIN3_PAGE, CABIN4_PAGE, CABIN5_PAGE, FOODGUIDE_PAGE };
 
 //FIGURE OUT A DATA STRUCTURE TO STORE PAGE DATA
 
@@ -33,24 +33,35 @@ public:
 
 	GameObject* JournalCover;
 
-	//UIObject* JournalCoverUI;
-
 	Book() : GameObject("Book"), audioManager(AudioManager::GetInstance()) {
 
-		audioManager.LoadSound("openJournal", "Assets/Sounds/SFX_OpenJournal.mp3", 0.55f);
-		audioManager.LoadSound("pageSwitch", "Assets/Sounds/SFX_PageSwitch.mp3", 0.5f);
+		audioManager.LoadSound("openJournal", "Assets/Sounds/Journal/SFX_OpenJournal.mp3",SFX, 0.3f);
+		audioManager.LoadSound("pageSwitch", "Assets/Sounds/Journal/SFX_PageSwitch.mp3",SFX, 0.2f);
 
 		JournalCover = new UIObject("JournalCover", "Assets/Images/Journal/Cover.png", true);
 		JournalCover->SetScale(glm::vec3(14.36f, 8.24f, 0.0f));
 		JournalCover->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
 		UIButton* Tab1 = new UIButton("Tab1", "Assets/Images/Journal/Bookmark_CaseSummary.png", glm::vec3(6.57f, 2.87f, 0.0f), glm::vec3(2.25f, 0.96f, 0.0f), true, false, "");
+		Tab1->SetHoverTexture("Assets/Images/Journal/Bookmark_CaseSummary_Highlight.png");
+
 		UIButton* Tab2 = new UIButton("Tab2", "Assets/Images/Journal/Bookmark_P1.png", glm::vec3(6.57f, 1.85f, 0.0f), glm::vec3(2.13f, 0.91f, 0.0f), true, false, "");
-		UIButton* Tab3 = new UIButton("Tab3", "Assets/Images/Journal/Bookmark_P2.png", glm::vec3(6.55f, 0.92f, 0.0f), glm::vec3(2.13f, 0.91f, 0.0f), true, false, "");
+		Tab2->SetHoverTexture("Assets/Images/Journal/Bookmark_P1_Highlight.png");
+
+		UIButton* Tab3 = new UIButton("Tab3", "Assets/Images/Journal/Bookmark_P2_1.png", glm::vec3(6.55f, 0.92f, 0.0f), glm::vec3(2.13f, 0.91f, 0.0f), true, false, "");
+		Tab3->SetHoverTexture("Assets/Images/Journal/Bookmark_P2_1_Highlight.png");
+
 		UIButton* Tab4 = new UIButton("Tab4", "Assets/Images/Journal/Bookmark_P2_2.png", glm::vec3(6.61f, 0.0f, 0.0f), glm::vec3(2.13f, 0.91f, 0.0f), true, false, "");
+		Tab4->SetHoverTexture("Assets/Images/Journal/Bookmark_P2_2_Highlight.png");
+
 		UIButton* Tab5 = new UIButton("Tab5", "Assets/Images/Journal/Bookmark_P3.png", glm::vec3(6.55f, -0.93f, 0.0f), glm::vec3(2.13f, 0.91f, 0.0f), true, false, "");
+		Tab5->SetHoverTexture("Assets/Images/Journal/Bookmark_P3_Highlight.png");
+
 		UIButton* Tab6 = new UIButton("Tab6", "Assets/Images/Journal/Bookmark_P4.png", glm::vec3(6.55f, -1.85f, 0.0f), glm::vec3(2.13f, 0.91f, 0.0f), true, false, "");
+		Tab6->SetHoverTexture("Assets/Images/Journal/Bookmark_P4_Highlight.png");
+
 		UIButton* Tab7 = new UIButton("Tab6", "Assets/Images/Journal/Bookmark_TeaGuide.png", glm::vec3(6.49f, -2.8f, 0.0f), glm::vec3(2.13f, 0.91f, 0.0f), true, false, "");
+		Tab7->SetHoverTexture("Assets/Images/Journal/Bookmark_TeaGuide_Highlight.png");
 
 		Tab1->SetOnClickAction([this]() { setActiveTab1(); });
 		Tab2->SetOnClickAction([this]() { setActiveTab2(); });
@@ -68,6 +79,11 @@ public:
 		BlankPage->SetScale(glm::vec3(12.68f, 7.45f, 1.0f));
 		BlankPage->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
+		UIButton* CloseJournalButton = new UIButton("CloseButton", "Assets/Images/Journal/Journal_CloseButton.png", glm::vec3(5.25f, 4.0f, 0.0f), glm::vec3(1.04f, 1.70f, 0.0f), true, false, "");
+		CloseJournalButton->SetOnClickAction([this]() { closeJournal(); });
+		CloseJournalButton->SetHoverTexture("Assets/Images/Journal/Journal_CloseButton_Highlight.png");
+
+
 		m_gameObjects.push_back(BackGround);
 		m_gameObjects.push_back(JournalCover);
 		m_gameObjects.push_back(Tab1);
@@ -77,6 +93,7 @@ public:
 		m_gameObjects.push_back(Tab5);
 		m_gameObjects.push_back(Tab6);
 		m_gameObjects.push_back(Tab7);
+		m_gameObjects.push_back(CloseJournalButton);
 		m_gameObjects.push_back(BlankPage);
 
 		Page* mainPage = new MainPage();
@@ -95,6 +112,8 @@ public:
 		allPages.push_back(cabinPage5);
 		allPages.push_back(foodGuide);
 
+		//draggableClues.push_back(Cabin3Newspaper);
+		//draggableClues.push_back(Cabin4Pamphlet);
 
 	}
 
@@ -117,8 +136,14 @@ public:
 		}
 
 		for (auto& object : allPages) {
-
 			object->setActiveStatus(true);
+		}
+
+		for (int i = 0; i < 2; i++) {
+
+			if (m_journal->getBookClueState(i)) {
+				draggableClues[i]->setActiveStatus(true);
+			}
 
 		}
 
@@ -132,20 +157,20 @@ public:
 		audioManager.PlaySound("openJournal", false);
 
 		openStatus = false;
-		activePage = currentPage::MAIN;
+		activePage = currentPage::MAIN_PAGE;
 
 		for (auto& object : m_gameObjects) {
-
 			if (object->getActiveStatus()) { //IF ACTIVE SET AS INACTIVE
-
 				object->setActiveStatus(false);
-
 			}
-
 		}
 
-
 		for (auto& object : allPages)
+		{
+			object->setActiveStatus(false);
+		}
+
+		for (auto& object : draggableClues)
 		{
 			object->setActiveStatus(false);
 		}
@@ -159,23 +184,9 @@ public:
 		return openStatus;
 	}
 
-	bool clickOutOfJournal(glm::vec2 mousePos) {
-
-		glm::vec2 newPos = Application::Get().MousetoWorld();
-
-		glm::vec3 journalPos = JournalCover->GetPosition();
-		glm::vec3 journalScale = JournalCover->GetScale();
-
-		float minX = journalPos.x - (journalScale.x / 2.0f);
-		float maxX = journalPos.x + (journalScale.x / 2.0f);
-		float minY = journalPos.y - (journalScale.y / 2.0f);
-		float maxY = journalPos.y + (journalScale.y / 2.0f);
-
-		//returns true if click inside of book
-		return ((newPos.x >= minX && newPos.x <= maxX) && (newPos.y >= minY && newPos.y <= maxY));
-
+	void EmptyFunction() {
+		return;
 	}
-
 
 
 	//--------------------------------UPDATE & RENDER-----------------------------------------------------
@@ -186,17 +197,23 @@ public:
 			return;
 
 		}
+
 		for (auto& object : m_gameObjects) {
-
 			if (object->getActiveStatus()) { //CHECK ACTIVE STATUS
-
 				object->Render();
+			}
+		}
 
+
+		allPages[activePage]->Render();
+
+		for (int i = 0; i < 2; i++) {
+
+			if (m_journal->getBookClueState(i)) {
+				draggableClues[i]->Render();
 			}
 
 		}
-
-		allPages[activePage]->Render();
 
 	}
 
@@ -206,53 +223,73 @@ public:
 			return;
 		}
 
-		Input& input = Application::GetInput();
 
-		for (auto& object : m_gameObjects) {
+		//for (auto& object : m_gameObjects) {
+		//	if (object->getActiveStatus()) { //CHECK ACTIVE STATUS
+		//		object->Update(dt, frame);
+		//	}
+		//}
+
+		for (auto it = m_gameObjects.rbegin(); it != m_gameObjects.rend(); ++it) {
+			GameObject* object = *it;
 			if (object->getActiveStatus()) { //CHECK ACTIVE STATUS
 				object->Update(dt, frame);
 			}
 		}
 
-		allPages[activePage]->Update(dt, frame);
+		for (int i = 0; i < 2; i++) {
 
-		//BUTTON CLICKS OUTSIDE OF JOURNAL -> CLOSE BOOK
+			if (m_journal->getBookClueState(i)) {
 
-		mousePos = Application::Get().CursorPos();
+				if (draggableClues[i]->getActiveStatus()) { //CHECK ACTIVE STATUS
 
+					draggableClues[i]->Update(dt, frame);
 
-
-		if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1)) {
-			if (!clickOutOfJournal(mousePos)) {
-				if (openStatus == true) {
-					closeBook();
 				}
+
 			}
+
 		}
 
+
+
+		allPages[activePage]->Update(dt, frame);
 
 	}
 
 	//-----------------------BOOK UI BUTTON FUNCTIONS-----------------------------------
 
-	void setActiveTab1() { if (activePage != MAIN) { activePage = currentPage::MAIN; } audioManager.PlaySound("pageSwitch", false);};
-	void setActiveTab2() { if (activePage != CABIN1) { activePage = currentPage::CABIN1; } audioManager.PlaySound("pageSwitch", false); };
-	void setActiveTab3() { if (activePage != CABIN2) { activePage = currentPage::CABIN2; } audioManager.PlaySound("pageSwitch", false);};
-	void setActiveTab4() { if (activePage != CABIN3) { activePage = currentPage::CABIN3; } audioManager.PlaySound("pageSwitch", false);};
-	void setActiveTab5() { if (activePage != CABIN4) { activePage = currentPage::CABIN4; } audioManager.PlaySound("pageSwitch", false);};
-	void setActiveTab6() { if (activePage != CABIN5) { activePage = currentPage::CABIN5; } audioManager.PlaySound("pageSwitch", false);};
-	void setActiveTab7() { if (activePage != FOODGUIDE) { activePage = currentPage::FOODGUIDE; } audioManager.PlaySound("pageSwitch", false); };
+	void setActiveTab1() { if (activePage != MAIN_PAGE) { activePage = currentPage::MAIN_PAGE; } audioManager.PlaySound("pageSwitch", false); };
+	void setActiveTab2() { if (activePage != CABIN1_PAGE) { activePage = currentPage::CABIN1_PAGE; } audioManager.PlaySound("pageSwitch", false); };
+	void setActiveTab3() { if (activePage != CABIN2_PAGE) { activePage = currentPage::CABIN2_PAGE; } audioManager.PlaySound("pageSwitch", false); };
+	void setActiveTab4() { if (activePage != CABIN3_PAGE) { activePage = currentPage::CABIN3_PAGE; } audioManager.PlaySound("pageSwitch", false); };
+	void setActiveTab5() { if (activePage != CABIN4_PAGE) { activePage = currentPage::CABIN4_PAGE; } audioManager.PlaySound("pageSwitch", false); };
+	void setActiveTab6() { if (activePage != CABIN5_PAGE) { activePage = currentPage::CABIN5_PAGE; } audioManager.PlaySound("pageSwitch", false); };
+	void setActiveTab7() { if (activePage != FOODGUIDE_PAGE) { activePage = currentPage::FOODGUIDE_PAGE; } audioManager.PlaySound("pageSwitch", false); };
+
+	void closeJournal() {
+		if (openStatus == true) {
+			if (!m_journal->GetBookState()) { //If book is not locked
+				closeBook();
+			}
+		}
+	}
+
 
 
 protected:
 
 	std::vector<GameObject*> m_gameObjects;
+	std::vector<GameObject*> draggableClues;
+
 	std::vector<Page*> allPages;
 
-	currentPage activePage = currentPage::MAIN;
+	currentPage activePage = currentPage::MAIN_PAGE;
 
-	bool openStatus = false; //true - open, false - closed
+	bool openStatus = false; //true - open, false - closed 
 
 	glm::vec2 mousePos;
+
+	JournalData* m_journal = JournalData::GetInstance();
 
 };

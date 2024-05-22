@@ -1,0 +1,714 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="4WD30">
+		<Speaker name="Waiter">
+			<line1>(That dagger...)</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WQ01">
+		<Speaker name="Waiter">
+			<line1>(It's decorated like a religious relic,  but is it an actual weapon?)</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="4WD31">Ask if it's a weapon</Choice1>
+			<Choice2 next="4WD32">Ask if it's a religious relic</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="4WD31">
+		<Speaker name="Waiter">
+			<line1>Ma'am, is that an actual weapon?</line1>
+			<line2>It might be dangerous for you to have  it hanging in a moving cabin.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD87">
+		<Speaker name="Octavia_Surprise">
+			<line1>Oh.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD88">
+		<Speaker name="Octavia_Happy2">
+			<line1>There's no need to worry, my dear.</line1>
+			<line2>This is not a real weapon.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD89">
+		<Speaker name="Octavia_Normal">
+			<line1>But well, I suppose it could become  handy if needed.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD90" next="4OD97">
+		<Speaker name="Octavia_Normal">
+			<line1>But most of the time, it's a sacred  relic of mine.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD32">
+		<Speaker name="Waiter">
+			<line1>I couldn't help but notice, ma'am.</line1>
+			<line2>Is that dagger your religious relic?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD91">
+		<Speaker name="Octavia_Happy2">
+			<line1>You have sharp eyes, indeed.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OQ09">
+		<Speaker name="Octavia_Happy">
+			<line1>What do you think it represents?</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="4WD34">The danger</Choice1>
+			<Choice2 next="4WD35">No idea</Choice2>
+			<Choice3 next="4WD33">The protection</Choice3>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="4WD33">
+		<Speaker name="Waiter">
+			<line1>Is it for protection?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD92" next="4OD97">
+		<Speaker name="Octavia_Surprise">
+			<line1>Oh, you've got it right.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD34">
+		<Speaker name="Waiter">
+			<line1>It represents danger, perhaps?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD93">
+		<Speaker name="Octavia_Surprise">
+			<line1>Oh.</line1>
+			<line2>No one has ever perceived it that  way before.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD94" next="4OD97">
+		<Speaker name="Octavia_Happy">
+			<line1>You do have a unique way of thinking.</line1>
+			<line2>Allow me to reveal the true meaning  of it.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD35">
+		<Speaker name="Waiter">
+			<line1>I have no idea, ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD95">
+		<Speaker name="Octavia_Normal">
+			<line1>That's alright.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD96" next="4OD97">
+		<Speaker name="Octavia_Normal">
+			<line1>Allow me to reveal the true meaning  of it.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD97">
+		<Speaker name="Octavia_Happy">
+			<line1>It actually represents the protection  that the divine bestows upon me.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD98">
+		<Speaker name="Octavia_Normal">
+			<line1>....</line1>
+			<line2>My dear waiter,</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD98_2">
+		<Speaker name="Octavia_Happy2">
+			<line1>do you believe in god?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OQ10">
+		<Speaker name="Octavia_Happy2">
+			<line1>Any kind at all.</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="4WD37">I do</Choice1>
+			<Choice2 next="4WD42">Depends on what kind of god</Choice2>
+			<Choice3 next="4WD36">I don't</Choice3>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="4WD36">
+		<Speaker name="Waiter">
+			<line1>I don't, ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD99">
+		<Speaker name="Octavia_Sad">
+			<line1>Oh, poor one...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD100">
+		<Speaker name="Octavia_Sad">
+			<line1>But that's alright, your faith might  not have emerged yet.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD101" next="4OD107">
+		<Speaker name="Octavia_Normal">
+			<line1>Many followers nowadays had initial  doubt in us at first.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD37">
+		<Speaker name="Waiter">
+			<line1>I do, ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD100">
+		<Speaker name="Octavia_Happy2">
+			<line1>Ah, a fellow believer.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OQ11">
+		<Speaker name="Octavia_Happy">
+			<line1>Which kind of god do you believe in?</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="4WD39">The kind that I look up to</Choice1>
+			<Choice2 next="4WD40">The kind that makes me feel safe</Choice2>
+			<Choice3 next="4WD38">Any kind</Choice3>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="4WD38">
+		<Speaker name="Waiter">
+			<line1>Any kind of god, ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD103">
+		<Speaker name="Octavia_Surprise">
+			<line1>Any kind?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD103_2" next="4OD107">
+		<Speaker name="Octavia_Happy2">
+			<line1>You're truly open-minded, dear waiter.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD39">
+		<Speaker name="Waiter">
+			<line1>The kind that I admire their teachings,  ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD104" next="4OD107">
+		<Speaker name="Octavia_Normal">
+			<line1>That's interesting...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD40">
+		<Speaker name="Waiter">
+			<line1>The kind that makes me feel safe  when believing, ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD105">
+		<Speaker name="Octavia_Surprise">
+			<line1>Oh, my.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD106">
+		<Speaker name="Octavia_Happy2">
+			<line1>I feel the same way.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD106_2" next="4OD107">
+		<Speaker name="Octavia_Happy">
+			<line1>After all, we all need reassurance  in times like this.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD37">
+		<Speaker name="Waiter">
+			<line1>For me, it depends on what kind of god.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD108">
+		<Speaker name="Octavia_Normal">
+			<line1>A clever stance, indeed.</line1>
+			<line2>Those who rely solely on their physical  sight may miss the deeper truths of faith.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD109">
+		<Speaker name="Octavia_Happy2">
+			<line1>True faith arises from within, not from  what we see outwardly.</line1>
+			<line2>This is what mine has taught me.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OQ12">
+		<Speaker name="Octavia_Happy2">
+			<line1>Do you agree with that?</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="4WD43">Play along to agree</Choice1>
+			<Choice2 next="4WD44">Remain silent</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="4WD43">
+		<Speaker name="Waiter">
+			<line1>Certainly.</line1>
+			<line2>That is indeed a good teaching.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD44">
+		<Speaker name="Waiter">
+			<line1>.....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD110">
+		<Speaker name="Octavia_Happy2">
+			<line1>.....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD110_2">
+		<Speaker name="Octavia_Happy2">
+			<line1>It's alright.</line1>
+			<line2>You may not understand this now.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD111" next="4OD112">
+		<Speaker name="Octavia_Happy">
+			<line1>But what if I tell you...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD107">
+		<Speaker name="Octavia_Normal">
+			<line1>Well then,</line1>
+			<line2>allow me to introduce something that  could entirely change your life.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD41">
+		<Speaker name="Waiter">
+			<line1>(I think I know where she's leading  to...)</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD112">
+		<Speaker name="Octavia_Happy">
+			<line1>If there's a god out there.</line1>
+			<line2>The one that grants you ultimate  protection...</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OQ13">
+		<Speaker name="Octavia_Happy2">
+			<line1>Would you be interested?</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="4WD46" clueID="CABIN4_2,CABIN4_4,CABIN4_6">I need to know more to decide</Choice1>
+			<Choice2 next="4WD47" clueID="CABIN4_2,CABIN4_4,CABIN4_6">Not really</Choice2>
+			<Choice3 next="4WD45" clueID="CABIN4_2,CABIN4_4,CABIN4_6">I would</Choice3>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="4WD45">
+		<Speaker name="Waiter">
+			<line1>I would, ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD113">
+		<Speaker name="Octavia_Happy">
+			<line1>Good man.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD113_2" next="4OD116">
+		<Speaker name="Octavia_Normal">
+			<line1>You won't regret this. I assure you.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD46">
+		<Speaker name="Waiter">
+			<line1>I'd like to know more before I  decide, ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD114" next="4OD116">
+		<Speaker name="Octavia_Happy">
+			<line1>Then I will gladly tell you more,  my good man.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD47">
+		<Speaker name="Waiter">
+			<line1>I'm afraid... not exactly, ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD115" next="4OD116">
+		<Speaker name="Octavia_Normal">
+			<line1>You have all the time in the world.</line1>
+			<line2>There's no need to rush your decision.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD116">
+		<Speaker name="Octavia_Normal">
+			<line1>But please, try not to be confused  at this point.</line1>
+			<line2>I am the %official% %missionary% of the  Defendor.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD117">
+		<Speaker name="Octavia_Normal">
+			<line1>My duty is to %spread% %Defendor's%  %ideology,%</line1>
+			<line2>not to impose it upon anyone.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD118">
+		<Speaker name="Octavia_Happy">
+			<line1>Just like what I did today at the  Eastside's %Holy% %Church.%</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD119">
+		<Speaker name="Octavia_Happy">
+			<line1>Many new and familiar faces from both  sides came together to join us.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	
+		
+			
+	<Dialogue id="4OD119">
+		<Speaker name="Octavia_Normal">
+			<line1>....</line1>
+			<line2>Speaking of which, my dear waiter,</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD119">
+		<Speaker name="Octavia_Happy2">
+			<line1>which citizen are you?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WQ02">
+		<Speaker name="Waiter">
+			<line1>(I must choose carefully...)</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="4WD53" clueID="CABIN4_3">Westside</Choice1>
+			<Choice2 next="4WD48" clueID="CABIN4_3">Prefer not to answer</Choice2>
+			<Choice3 next="4WD49" clueID="CABIN4_3">Eastside</Choice3>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="4WD48">
+		<Speaker name="Waiter">
+			<line1>My apologies, ma'am.</line1>
+			<line2>I prefer not to reveal this information.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD121" next="4OD123">
+		<Speaker name="Octavia_Normal">
+			<line1>Oh, that's alright.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD49">
+		<Speaker name="Waiter">
+			<line1>I am a citizen of Eastside, ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD122" next="4OD123">
+		<Speaker name="Octavia_Normal">
+			<line1>Well, you can rest assured.</line1>
+			<line2>Many who joined us today were also  from the East.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD123">
+		<Speaker name="Octavia_Normal">
+			<line1>Our welcoming doesn't limit by one's  origin.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD124">
+		<Speaker name="Octavia_Happy2">
+			<line1>Especially you, dear waiter.</line1>
+			<line2>I see you as my exception.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD125">
+		<Speaker name="Octavia_Normal">
+			<line1>I would like to share more about our  beliefs with you.</line1>
+			<line2>What we believe,</line2>
+			<line3>is that the above will safeguard and  bestow upon us all that is finest.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD126">
+		<Speaker name="Octavia_Normal">
+			<line1>However, the above isn't necessarily  present on all sides.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD127">
+		<Speaker name="Octavia_Happy">
+			<line1>If you've been keeping up with the  news, you'd have realized.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD50">
+		<Speaker name="Waiter">
+			<line1>(She must be referring to the bomb  news.)</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD128">
+		<Speaker name="Octavia_Happy">
+			<line1>Only the West has the capability to  protect us all</line1>
+			<line2>, and it's up to us to dedicate  ourselves to %West% %supremacy.%</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD129">
+		<Speaker name="Octavia_Happy">
+			<line1>After learning about this...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OQ14">
+		<Speaker name="Octavia_Happy2">
+			<line1>Does it pique your interest, dear?</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="4WD51">Not interested</Choice1>
+			<Choice2 next="4WD52" clueID="CABIN4_7,CABIN4_5">Play along and agree  to be interested</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="4WD51">
+		<Speaker name="Waiter">
+			<line1>It still doesn't, ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD130">
+		<Speaker name="Octavia_Sad">
+			<line1>Oh, that's unfortunate...</line1>
+			<line2>I'm very sorry to hear that.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD131">
+		<Speaker name="Octavia_Disappoint">
+			<line1>....</line1>
+			<line2>You should have more faith to hold  on, dear.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD132" next="4OD151">
+		<Speaker name="Octavia_Normal">
+			<line1>You'll understand what I mean in  the near future.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD52">
+		<Speaker name="Waiter">
+			<line1>It does interest me, ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD133">
+		<Speaker name="Octavia_Happy2">
+			<line1>Excellent!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD134" next="4OD146">
+		<Speaker name="Octavia_Happy2">
+			<line1>Here, take this %pamphlet.%</line1>
+			<line2>It will provide you with further  insight.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD53">
+		<Speaker name="Waiter">
+			<line1>I am a citizen of Westside, ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD135">
+		<Speaker name="Octavia_Surprise">
+			<line1>Oh, my good man.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD136">
+		<Speaker name="Octavia_Happy2">
+			<line1>You are a perfect candidate, indeed.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD137">
+		<Speaker name="Octavia_Normal">
+			<line1>You must be intrigued by this  matter.</line1>
+			<line2>What we believe,</line2>
+			<line3>is that the above will safeguard and  bestow upon us all that is finest.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD138">
+		<Speaker name="Octavia_Normal">
+			<line1>Indeed, our faith and dedication will  serve to strengthen it even further.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD139">
+		<Speaker name="Octavia_Happy">
+			<line1>If you've been keeping up with the  news, you'd have notice %our% %supremacy.%</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD53">
+		<Speaker name="Waiter">
+			<line1>(She must be referring to the bomb  news.)</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD140">
+		<Speaker name="Octavia_Happy">
+			<line1>After learning about this...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OQ15">
+		<Speaker name="Octavia_Happy2">
+			<line1>Does it pique your interest, dear?</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="4WD55">Not interested</Choice1>
+			<Choice2 next="4WD54" clueID="CABIN4_7,CABIN4_5">Play along and agree  to be interested</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="4WD55">
+		<Speaker name="Waiter">
+			<line1>It still doesn't, ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD143">
+		<Speaker name="Octavia_Sad">
+			<line1>Oh, that's unfortunate...</line1>
+			<line2>I'm very sorry to hear that.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD144">
+		<Speaker name="Octavia_Disappoint">
+			<line1>....</line1>
+			<line2>You should have more faith to hold  on, dear.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD145" next="4OD151">
+		<Speaker name="Octavia_Normal">
+			<line1>Even though we, the West, need not  to worry as such.</line1>
+			<line2>You'll understand what I mean in  the near future.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD54">
+		<Speaker name="Waiter">
+			<line1>It does interest me, ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD141">
+		<Speaker name="Octavia_Happy2">
+			<line1>Excellent!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD142" next="4OD146">
+		<Speaker name="Octavia_Happy2">
+			<line1>Here, take this %pamphlet.%</line1>
+			<line2>It will provide you with further  insight.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD146">
+		<Speaker name="Octavia_Happy2">
+			<line1>[Lady Octavia hands you a pamphlet.]</line1>
+			<line2>If you're interested, reach out to  our gathering.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD147">
+		<Speaker name="Octavia_Normal">
+			<line1>The last one was at the Townsquare,  after the session ended.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD148">
+		<Speaker name="Octavia_Normal">
+			<line1>There were individuals of various ages  and races,</line1>
+			<line2>both from the West and East,</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD149">
+		<Speaker name="Octavia_Happy">
+			<line1>old and young.</line1>
+			<line2>But they all share the same dedication.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD150">
+		<Speaker name="Octavia_Normal">
+			<line1>Isn't it captivating?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD151">
+		<Speaker name="Octavia_Normal">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

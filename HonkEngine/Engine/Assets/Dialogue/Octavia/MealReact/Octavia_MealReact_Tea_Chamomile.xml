@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="4OD38">
+		<Speaker name="Octavia_Happy">
+			<line1>Such a delightful smell.</line1>
+			<line2>Is that chamomile tea?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD39">
+		<Speaker name="Octavia_Normal">
+			<line1>It's not as refreshing as I expected,  though.</line1>
+			<line2>But at least you managed to fulfill  one of my requests.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD40">
+		<Speaker name="Octavia_Normal">
+			<line1>Good choice, waiter.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD41">
+		<Speaker name="Octavia_Normal">
+			<line1>I have high hopes for the sandwich,  then.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

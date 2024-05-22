@@ -1,3 +1,5 @@
+#pragma once
+
 #include <unordered_map>
 #include <functional>
 #include <string>
@@ -29,6 +31,8 @@ public:
     int GetCurrentFrame() const;
 
     int GetCurrentRow() const;
+
+    std::string GetCurrentAnimation() const { return m_currentAnimation; } 
 private:
     float m_currentFrame;
     std::string m_currentAnimation;

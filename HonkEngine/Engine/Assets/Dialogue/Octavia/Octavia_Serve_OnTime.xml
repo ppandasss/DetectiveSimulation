@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="4OD17">
+		<Speaker name="Octavia_Normal">
+			<line1>[The murmur of prayer comes from afar.]</line1>
+			<line2>...Guide us in harnessing the energy of  the Westside for the greater good-</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD18">
+		<Speaker name="Octavia_Surprise">
+			<line1>Oh.</line1>
+			<line2>You came back early.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD19">
+		<Speaker name="Octavia_Normal">
+			<line1>Let's see what you've brought for me.</line1>
+			<line2>But before that, dear waiter...</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OQ03">
+		<Speaker name="Octavia_Happy2">
+			<line1>Do you think what you've chosen will  be to my liking?</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="4WD13">Certainly</Choice1>
+			<Choice2 next="4WD14">Not quite sure</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="4WD13">
+		<Speaker name="Waiter">
+			<line1>Yes, ma'am. I'm sure they will.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD20" next="4OD22">
+		<Speaker name="Octavia_Happy">
+			<line1>You seem confident.</line1>
+			<line2>That's what I like in men.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD14">
+		<Speaker name="Waiter">
+			<line1>I'm not entirely sure, ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD21" next="4OD22">
+		<Speaker name="Octavia_Sad">
+			<line1>Really?</line1>
+			<line2>I must say I have high expectations  for you.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD22">
+		<Speaker name="Octavia_Normal">
+			<line1>Please set the tray here, and I will  be the judge.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD15">
+		<Speaker name="Waiter">
+			<line1>[You served the meal and begin brewing  the tea for Lady Octavia.]</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

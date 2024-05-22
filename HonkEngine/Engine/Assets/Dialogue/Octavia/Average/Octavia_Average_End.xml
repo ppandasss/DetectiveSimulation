@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="4OD181">
+		<Speaker name="Octavia_Normal">
+			<line1>That smells nice...</line1>
+			<line2>The tea seems to be ready to me.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD182">
+		<Speaker name="Octavia_Happy">
+			<line1>I appreciate your company, dear waiter.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD182">
+		<Speaker name="Octavia_Happy">
+			<line1>Considering you've given me such  a considerate service...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OQ21">
+		<Speaker name="Octavia_Happy">
+			<line1>Is there any question left you wish  to ask?</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="4WD73">Ask why the gathering was held  at Eastside</Choice1>
+			<Choice2 next="4WD74">Ask about her hometown</Choice2>
+			<Choice3 next="4WD72">Ask about being a missionary</Choice3>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="4WD72">
+		<Speaker name="Waiter">
+			<line1>I wonder,</line1>
+			<line2>how is being a missionary, ma'am?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD184">
+		<Speaker name="Octavia_Normal">
+			<line1>Oh, dear.</line1>
+			<line2>It's a duty of honor, you could say.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD185">
+		<Speaker name="Octavia_Normal">
+			<line1>Apart from my main career, I have the  opportunity to spread goodwill to many.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD185_2" next="4OD193">
+		<Speaker name="Octavia_Sad">
+			<line1>Even though I must travel extensively  between East and West.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD73">
+		<Speaker name="Waiter">
+			<line1>I'm actually curious, ma'am.</line1>
+			<line2>Why the gathering was also held at  Eastside?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD187">
+		<Speaker name="Octavia_Happy2">
+			<line1>Oh, good question.</line1>
+			<line2>The reason is...</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD187">
+		<Speaker name="Octavia_Disappoint">
+			<line1>We want to rescue the poor lambs  from such a sinister town.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD188">
+		<Speaker name="Octavia_Normal">
+			<line1>And...</line1>
+			<line2>.....</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD189" next="4OD193">
+		<Speaker name="Octavia_Happy">
+			<line1>We also came to celebrate our small  'success'.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD74">
+		<Speaker name="Waiter">
+			<line1>I would like to know more about your  hometown, ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD190">
+		<Speaker name="Octavia_Happy2">
+			<line1>About that?</line1>
+			<line2>Oh, dear. I was born and raise in  Eastside.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD191">
+		<Speaker name="Octavia_Happy">
+			<line1>But after tying the knot, I relocated  to the West to my beloved husband.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD192" next="4OD193">
+		<Speaker name="Octavia_Normal">
+			<line1>Where I found not only my belief,</line1>
+			<line2>But also my truest sense of fulfillment.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD193">
+		<Speaker name="Octavia_Normal">
+			<line1>....</line1>
+			<line2>You must surely be tired already.</line2>
+			<line3>Please, take a rest.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD75">
+		<Speaker name="Waiter">
+			<line1>Thank you, ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD194">
+		<Speaker name="Octavia_Happy">
+			<line1>You're welcome.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD195">
+		<Speaker name="Octavia_Happy2">
+			<line1>I hope you will consider joining us,</line1>
+			<line2>dear waiter.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

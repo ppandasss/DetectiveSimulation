@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="2AD82">
+		<Speaker name="Archibald_Normal">
+			<line1>Hmm, I believe the tea is ready.</line1>
+			<line2>FINALLY.</line2>
+			<line3>You're no longer needed here.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD83">
+		<Speaker name="Archibald_Normal">
+			<line1>....</line1>
+			<line2>I'll spare your pathetic effort.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AQ22">
+		<Speaker name="Archibald_Normal">
+			<line1>Despite how annoying you've been.</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="2WD69">Thank him for acknowledging  your effort</Choice1>
+			<Choice2 next="2WD70">Apologize and promise to improve</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="2WD69" next="2AD86">
+		<Speaker name="Waiter">
+			<line1>Thank you, sir.</line1>
+			<line2>That means a lot to me.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD70" next="2AD84">
+		<Speaker name="Waiter">
+			<line1>I must apologize for my incompetence,  sir.</line1>
+			<line2>I promise to improve better.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD89">
+		<Speaker name="Archibald_Normal">
+			<line1>Whatever, I don't care.</line1>
+			<line2>Now it is time you must leave.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD90">
+		<Speaker name="Archibald_Upset">
+			<line1>Hurry up and disappear from my sight!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

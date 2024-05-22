@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="3WD50">
+		<Speaker name="Waiter">
+			<line1>(That... is a lot of hats.)</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WQ06">
+		<Speaker name="Waiter">
+			<line1>(Are they all hers or do they belong  to someone else?)</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="3WD51">Ask if she likes hat</Choice1>
+			<Choice2 next="3WD52">Compliment her hats</Choice2>
+			<Choice3 next="3WD51_2">Ask about the owner of hats</Choice3>
+		</Choices>
+	</Dialogue>
+		<Dialogue id="3WD51_2" next="3ED21">
+		<Speaker name="Waiter">
+			<line1>Miss Hartington, I noticed you have  many beautiful hats with you.</line1>
+			<line2>Are they all yours?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD51" next="3ED21">
+		<Speaker name="Waiter">
+			<line1>Miss Hartington, I noticed you have  many beautiful hats with you.</line1>
+			<line2>Do you like wearing them?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD52" next="3ED22">
+		<Speaker name="Waiter">
+			<line1>I like your hats, Miss Hartington.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED21">
+		<Speaker name="Evelyn_Normal">
+			<line1>Y-yes.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED21_2">
+		<Speaker name="Evelyn_Happy">
+			<line1>You could say it's my hobby.</line1>
+			<line2>I like collecting beautiful hats.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND87">
+		<Speaker name="Nathaniel_Happy">
+			<line1>Oh, right.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND87_2" next="3WQ07">
+		<Speaker name="Nathaniel_Normal">
+			<line1>You should see her room, TONS of hat.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED22">
+		<Speaker name="Evelyn_Happy">
+			<line1>R-really?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED22_2">
+		<Speaker name="Evelyn_Happy">
+			<line1>Finally! Someone appreciates them.</line1>
+			<line2>Thank you, I picked them out carefully.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD53">
+		<Speaker name="Waiter">
+			<line1>They're indeed beautiful.</line1>
+			<line2>Are you collecting them?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED23" next="3WQ07">
+		<Speaker name="Evelyn_Happy">
+			<line1>I guess you could say that.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WQ07">
+		<Speaker name="Waiter">
+			<line1>You have a very interesting hobby.</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="3WD54" clueID="CABIN22_5">Why are you interested in hats?</Choice1>
+			<Choice2 next="3WD55" clueID="CABIN22_5">Can you try one on?</Choice2>
+			<Choice3 next="3WD56" clueID="CABIN22_5">And also uncommon one</Choice3>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="3WD54" next="3ED24">
+		<Speaker name="Waiter">
+			<line1>What made you interested in hats?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD55" next="3ED27">
+		<Speaker name="Waiter">
+			<line1>Can you try one on?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD56" next="3ED29">
+		<Speaker name="Waiter">
+			<line1>And also an uncommon one as well.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED24">
+		<Speaker name="Evelyn_Happy">
+			<line1>I think all hats are so unique...</line1>
+			<line2>I like the story behind each of them.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED25">
+		<Speaker name="Evelyn_Happy">
+			<line1>Like this one, my mother bought it for  me on the first day of school!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED26" next="3ED32">
+		<Speaker name="Evelyn_Happy">
+			<line1>Wearing it makes me feel a bit more  confident.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED27">
+		<Speaker name="Evelyn_Normal">
+			<line1>I appreciate your eagerness... but  it's against etiquette.</line1>
+			<line2>You shouldn't wear a hat while in  the vehicle.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED28">
+		<Speaker name="Evelyn_Upset">
+			<line1>I take that seriously.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND88">
+		<Speaker name="Nathaniel_Happy">
+			<line1>Hey! No need for the sudden attack!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD57" next="3ED32">
+		<Speaker name="Waiter">
+			<line1>(Is she... attacking me too?)</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED29">
+		<Speaker name="Evelyn_Normal">
+			<line1>A lot of people do say that to me...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED30">
+		<Speaker name="Evelyn_Happy">
+			<line1>But I believe it does no harm...  so I don't pay it much mind.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD58">
+		<Speaker name="Waiter">
+			<line1>That sounds great.</line1>
+			<line2>You're braver than you look, Miss  Hartington.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED31" next="3ED32">
+		<Speaker name="Evelyn_Happy">
+			<line1>Well...</line1>
+			<line2>When it comes to our favorite things,</line2>
+			<line3>a girl must stand up for her own self.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED32">
+		<Speaker name="Evelyn_Happy">
+			<line1>What about you, Mr. Waiter?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3EQ05">
+		<Speaker name="Evelyn_Happy">
+			<line1>What's your favorite type of hat?</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="3WD59">Plain, classic hat</Choice1>
+			<Choice2 next="3WD58" clueID="CABIN21_1">Hat with accessories</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="3WD58" next="3ND89">
+		<Speaker name="Waiter">
+			<line1>I like ones with accessories.</line1>
+			<line2>The fabulous-looking ones.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD59" next="3ND90">
+		<Speaker name="Waiter">
+			<line1>I like plain, classic ones.</line1>
+			<line2>Like the one I'm wearing.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND89">
+		<Speaker name="Nathaniel_Normal">
+			<line1>Eve doesn't not like that kind of hat.</line1>
+			<line2>She's more into the plain ones.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED33" next="3ED35">
+		<Speaker name="Evelyn_Upset">
+			<line1>%T-that's% %not% %right!%</line1>
+			<line2>I like this one...</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND90">
+		<Speaker name="Nathaniel_Normal">
+			<line1>That's also Eve's favorite!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED34" next="3ED35">
+		<Speaker name="Evelyn_Upset">
+			<line1>%N-no!%</line1>
+			<line2>Actually...</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED35">
+		<Speaker name="Evelyn_Normal">
+			<line1>Never mind...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3EQ06">
+		<Speaker name="Waiter">
+			<line1>(She must like fancy hats, like  the ones she has.)</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="3WD61" clueID="CABIN21_5">I can see why you like it</Choice1>
+			<Choice2 next="3WD62" clueID="CABIN21_5">Not my favorite</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="3WD61" next="3ED36">
+		<Speaker name="Waiter">
+			<line1>I can see why you like it.</line1>
+			<line2>They're indeed fancy hats.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED36" next="3ND91">
+		<Speaker name="Evelyn_Happy">
+			<line1>Right?</line1>
+			<line2>My father just bought it for me  recently at %National% %Day% %Ev-%</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD62" next="3ED37">
+		<Speaker name="Waiter">
+			<line1>I afraid I'm not into this kind of hat.</line1>
+			<line2>It's not really my favorite.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED37" next="3ND91">
+		<Speaker name="Evelyn_Happy">
+			<line1>It's one of the kind!</line1>
+			<line2>My father just bought it for me  recently at %National% %Day% %Ev-%</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND91">
+		<Speaker name="Nathaniel_Normal">
+			<line1>Evelyn...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED37_2">
+		<Speaker name="Evelyn_Normal">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND92">
+		<Speaker name="Nathaniel_Happy">
+			<line1>Silly Eve, didn't you get it from  our birthday?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD63">
+		<Speaker name="Waiter">
+			<line1>National Day Event?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED38">
+		<Speaker name="Evelyn_Normal">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND93">
+		<Speaker name="Nathaniel_Normal">
+			<line1>Yeah...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD64">
+		<Speaker name="Waiter">
+			<line1>How was it? I heard there were a lot  of people there.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND94">
+		<Speaker name="Nathaniel_Normal">
+			<line1>It was... nice, I guess?</line1>
+			<line2>It was just an event.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3NQ11">
+		<Speaker name="Nathaniel_Happy">
+			<line1>Anyway, did you hear about the new  amusement park in Westside?</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="3WD66">Change the topic to  amusement park</Choice1>
+			<Choice2 next="3WD65" clueID="CABIN22_2">Keep asking about the  National Day Event</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="3WD65" next="3ND95">
+		<Speaker name="Waiter">
+			<line1>I've never heard of it.</line1>
+			<line2>Is it a major attraction like the  National Day Event?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND94">
+		<Speaker name="Nathaniel_Normal">
+			<line1>I guess so.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND94_2">
+		<Speaker name="Nathaniel_Sad">
+			<line1>But I'm not interested in that kind  of event.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD67" next="3ED39">
+		<Speaker name="Waiter">
+			<line1>How about you, Evelyn?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD66" next="3ND96">
+		<Speaker name="Waiter">
+			<line1>Oh, what's it about?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND96">
+		<Speaker name="Nathaniel_Happy">
+			<line1>There will be the biggest carousel  ever there!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD68">
+		<Speaker name="Waiter">
+			<line1>That sounds fun!</line1>
+			<line2>Does the National Day Event have  similar things?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND97">
+		<Speaker name="Nathaniel_Normal">
+			<line1>I guess so.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND97_2">
+		<Speaker name="Nathaniel_Sad">
+			<line1>But I'm not interested in that  kind of event.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD69" next="3ED98">
+		<Speaker name="Waiter">
+			<line1>What about you, Miss Hartington?</line1>
+			<line2>Is there anything you like in that  event?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED39">
+		<Speaker name="Evelyn_Sad">
+			<line1>I-I don't know...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND98">
+		<Speaker name="Nathaniel_Normal">
+			<line1>....</line1>
+			<line2>In the new amusement park I mentioned,</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND99">
+		<Speaker name="Nathaniel_Happy">
+			<line1>I heard that there will be The! Best!  Rollercoaster! Ever!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND100">
+		<Speaker name="Nathaniel_Happy">
+			<line1>I can't wait to go with you, sis.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND101">
+		<Speaker name="Nathaniel_Normal">
+			<line1>Shall we ask mom to bring us before  school starts?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED40">
+		<Speaker name="Evelyn_Normal">
+			<line1>Yeah...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND102">
+		<Speaker name="Nathaniel_Normal">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

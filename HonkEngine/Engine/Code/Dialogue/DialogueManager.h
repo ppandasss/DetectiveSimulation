@@ -1,14 +1,14 @@
 #pragma once
 
 #include "tinyxml2.h"
-#include "../GameObjects/GameObject.h"
-#include "../UI/UIButton.h"
 #include <string>
 #include <vector>
 #include <memory>
+#include <map>
 #include <iostream>
-#include "../GameObjects/OrderData.h"
-
+#include "../UI/UIButton.h"
+#include "../UI/UIElement.h"
+#include "../Audio/AudioManager.h"
 
 using namespace std;
 
@@ -19,11 +19,23 @@ struct TempOrderData {
     std::string pastryOrder;
 };
 
+struct ClueInfo {
+    Cabin clueID = CABIN_EMPTY; // Default to CABIN_EMPTY assuming it's defined in your enum
+    int clueIndex = -1;
+    bool isValid = false;
+};
+
 
 struct DialogueChoice {
     string text;
     string nextDialogueId;
+    vector<string> clueIDs;  // Store as a vector of strings
+    bool hasClue() const { return !clueIDs.empty(); }
 };
+
+
+
+
 
 struct Dialogue {
     string id;
@@ -34,19 +46,27 @@ struct Dialogue {
     tinyxml2::XMLElement* orderElement = nullptr;
     bool hasOrderData = false;  // Add this line
     TempOrderData* tempOrderData = nullptr;
+    
 };
 
+Cabin GetCabinFromString(const string& cabinStr) {
+    static const map<string, Cabin> cabinMap = {
+        {"CABIN1", CABIN1},
+        {"CABIN21", CABIN21},
+        {"CABIN22", CABIN22},
+        {"CABIN3", CABIN3},
+        {"CABIN4", CABIN4},
+        {"CABIN_EMPTY", CABIN_EMPTY}
+    };
+    auto it = cabinMap.find(cabinStr);
+    return it != cabinMap.end() ? it->second : CABIN_EMPTY;
+}
 
-
-class DialogueManager  {
+class DialogueManager {
 public:
-    DialogueManager(const string& name, UIButton* dialogueBox, const string& filePath, const string& defaultSprite)
-        : currentDialogueIndex(0), currentLineIndex(0), currentDialogueButton(dialogueBox), choiceMade(false), defaultSpriteName(defaultSprite) {
-        LoadDialogues(filePath);
-        if (!dialogues.empty() && !dialogues[0].text.empty()) {
-            currentDialogueButton->SetButtonText(dialogues[0].text[0]);
-            currentDialogueButton->SetTextSize(0.55f); // Set text size if needed
-        }
+
+    DialogueManager(const string& name, UIButton* dialogueBox, const string& defaultSprite, const string& defaultSprite2 = "")
+        : currentDialogueIndex(0), currentLineIndex(0), currentDialogueButton(dialogueBox), choiceMade(false), defaultSpriteName(defaultSprite),defaultSpriteName2(defaultSprite2) {
        
     }
 
@@ -54,72 +74,90 @@ public:
         if (currentDialogueButton) {
             currentDialogueButton->Clear();
         }
-
-        // Free memory allocated for tempOrderData in each Dialogue
         for (auto& dialogue : dialogues) {
-            if (dialogue.tempOrderData) {
-                delete dialogue.tempOrderData;
-                dialogue.tempOrderData = nullptr;
-            }
+            delete dialogue.tempOrderData;
+            dialogue.tempOrderData = nullptr; // Ensure pointer is set to nullptr after deletion
         }
     }
 
 
 
-    void LoadDialogues(const string& filePath) {
+
+    void LoadDialogues(const string& key, const string& filePath) {
         tinyxml2::XMLDocument doc;
-        if (doc.LoadFile(filePath.c_str()) == tinyxml2::XML_SUCCESS) {
-            tinyxml2::XMLElement* root = doc.FirstChildElement("Dialogues");
-            for (tinyxml2::XMLElement* element = root->FirstChildElement("Dialogue"); element != nullptr; element = element->NextSiblingElement("Dialogue")) {
-                Dialogue dialogue;
-                dialogue.id = element->Attribute("id");
+        if (doc.LoadFile(filePath.c_str()) != tinyxml2::XML_SUCCESS) {
+            cerr << "Failed to load dialogue file: " << filePath << endl;
+            return;
+        }
 
-                tinyxml2::XMLElement* speakerElement = element->FirstChildElement("Speaker");
-                if (speakerElement) {
-                    dialogue.speakerName = speakerElement->Attribute("name");
-                    for (tinyxml2::XMLElement* lineElement = speakerElement->FirstChildElement(); lineElement != nullptr; lineElement = lineElement->NextSiblingElement()) {
-                        dialogue.text.push_back(lineElement->GetText());
-                    }
+        tinyxml2::XMLElement* root = doc.FirstChildElement("Dialogues");
+        vector<Dialogue> loadedDialogues;
+        for (tinyxml2::XMLElement* element = root->FirstChildElement("Dialogue"); element != nullptr; element = element->NextSiblingElement("Dialogue")) {
+            Dialogue dialogue;
+            dialogue.id = element->Attribute("id");
+            tinyxml2::XMLElement* speakerElement = element->FirstChildElement("Speaker");
+            if (speakerElement) {
+                dialogue.speakerName = speakerElement->Attribute("name");
+                for (tinyxml2::XMLElement* lineElement = speakerElement->FirstChildElement(); lineElement != nullptr; lineElement = lineElement->NextSiblingElement()) {
+                    dialogue.text.push_back(lineElement->GetText());
                 }
-
-                // Read choices
-                tinyxml2::XMLElement* choicesElement = element->FirstChildElement("Choices");
-                if (choicesElement) {
-                    for (tinyxml2::XMLElement* choiceElement = choicesElement->FirstChildElement(); choiceElement != nullptr; choiceElement = choiceElement->NextSiblingElement()) {
-                        DialogueChoice choice;
-                        choice.text = choiceElement->GetText();
-                        choice.nextDialogueId = choiceElement->Attribute("next");
-                        dialogue.choices.push_back(choice);
-                    }
-                }
-
-                // Read next attribute
-                const char* nextAttr = element->Attribute("next");
-                if (nextAttr) {
-                    dialogue.next = nextAttr;
-                }
-
-                // Read order data
-                tinyxml2::XMLElement* orderElement = element->FirstChildElement("Order");
-                if (orderElement) {
-                    dialogue.orderElement = orderElement;
-                    dialogue.hasOrderData = true;
-
-                    // Allocate memory for tempOrderData
-                    dialogue.tempOrderData = new TempOrderData();
-
-                    // Parse and store the order data
-                    tinyxml2::XMLElement* roomNumberElement = orderElement->FirstChildElement("RoomNumber");
-                    if (roomNumberElement) dialogue.tempOrderData->roomNumber = roomNumberElement->GetText();
-                    tinyxml2::XMLElement* teaElement = orderElement->FirstChildElement("Tea");
-                    if (teaElement) dialogue.tempOrderData->teaOrder = teaElement->GetText();
-                    tinyxml2::XMLElement* sandwichElement = orderElement->FirstChildElement("Sandwich");
-                    if (sandwichElement) dialogue.tempOrderData->sandwichOrder = sandwichElement->GetText();
-                    tinyxml2::XMLElement* pastryElement = orderElement->FirstChildElement("Pastry");
-                    if (pastryElement) dialogue.tempOrderData->pastryOrder = pastryElement->GetText();
-                }
-                dialogues.push_back(dialogue);
             }
+
+            tinyxml2::XMLElement* choicesElement = element->FirstChildElement("Choices");
+            if (choicesElement) {
+                for (tinyxml2::XMLElement* choiceElement = choicesElement->FirstChildElement(); choiceElement != nullptr; choiceElement = choiceElement->NextSiblingElement()) {
+                    DialogueChoice choice;
+                    choice.text = choiceElement->GetText();
+                    choice.nextDialogueId = choiceElement->Attribute("next");
+                    const char* clueIDAttr = choiceElement->Attribute("clueID");
+                    if (clueIDAttr) {
+                        stringstream ss(clueIDAttr);
+                        string clueID;
+                        while (getline(ss, clueID, ',')) {
+                            choice.clueIDs.push_back(clueID);
+                        }
+                    }
+                    dialogue.choices.push_back(choice);
+                }
+            }
+
+            const char* nextAttr = element->Attribute("next");
+            if (nextAttr) {
+                dialogue.next = nextAttr;
+            }
+
+            tinyxml2::XMLElement* orderElement = element->FirstChildElement("Order");
+            if (orderElement) {
+                dialogue.orderElement = orderElement;
+                dialogue.hasOrderData = true;
+                dialogue.tempOrderData = new TempOrderData();
+                tinyxml2::XMLElement* roomNumberElement = orderElement->FirstChildElement("RoomNumber");
+                if (roomNumberElement) dialogue.tempOrderData->roomNumber = roomNumberElement->GetText();
+                tinyxml2::XMLElement* teaElement = orderElement->FirstChildElement("Tea");
+                if (teaElement) dialogue.tempOrderData->teaOrder = teaElement->GetText();
+                tinyxml2::XMLElement* sandwichElement = orderElement->FirstChildElement("Sandwich");
+                if (sandwichElement) dialogue.tempOrderData->sandwichOrder = sandwichElement->GetText();
+                tinyxml2::XMLElement* pastryElement = orderElement->FirstChildElement("Pastry");
+                if (pastryElement) dialogue.tempOrderData->pastryOrder = pastryElement->GetText();
+            }
+            loadedDialogues.push_back(dialogue);
+        }
+
+        dialogueSets[key] = loadedDialogues;  // Store loaded dialogues under the provided key
+    }
+
+    void SetDialogueSet(const string& key) {
+        auto it = dialogueSets.find(key);
+        if (it != dialogueSets.end()) {
+            dialogues = it->second;
+            currentDialogueIndex = 0;  // Reset to start of new dialogue set
+            currentLineIndex = 0;
+            if (!dialogues.empty() && !dialogues[0].text.empty()) {
+                currentDialogueButton->SetButtonText(dialogues[0].text[0]);
+            }
+        }
+        else {
+            cerr << "Dialogue set with key '" << key << "' not found." << endl;
         }
     }
 
@@ -140,10 +178,49 @@ public:
         }
     }
 
+    void AddSpeakerSprite2(const string& speakerCode, UIElement* sprite) {
+        speakerSprites2[speakerCode] = sprite;
+        // Activate the sprite if its name matches the default sprite name
+        if (speakerCode == defaultSpriteName2) {
+            speakerSprites2[speakerCode]->setActiveStatus(true);
+        }
+        else {
+            speakerSprites2[speakerCode]->setActiveStatus(false);
+        }
+    }
+
+    void HandleClue(const string& clueID) {
+        size_t underscorePos = clueID.find('_');
+        if (underscorePos != string::npos) {
+            string cabinStr = clueID.substr(0, underscorePos);
+            int clueIndex = stoi(clueID.substr(underscorePos + 1));
+
+            Cabin cabinEnum = GetCabinFromString(cabinStr);
+            if (cabinEnum != CABIN_EMPTY) {
+                JournalData::GetInstance()->ActivateClue(cabinEnum, clueIndex);
+                cout << "Clue activated: " << clueID << endl;
+            }
+            else {
+                cout << "Invalid cabin ID: " << cabinStr << endl;
+            }
+        }
+        else {
+            cout << "Invalid clue ID format: " << clueID << endl;
+        }
+    }
+
+
+
     void HandleChoice(int choiceIndex) {
         if (choiceIndex >= 0 && choiceIndex < dialogues[currentDialogueIndex].choices.size()) {
             const auto& choice = dialogues[currentDialogueIndex].choices[choiceIndex];
+            audioManager.PlaySound("buttonClick" , false);
             std::cout << "Player has chosen: " << choice.text << std::endl; // Add this line to print the chosen choice
+            // Activating each clue
+            for (const auto& clueID : choice.clueIDs) {
+                HandleClue(clueID);
+            }
+
             // Find the dialogue with the corresponding nextDialogueId
             auto it = std::find_if(dialogues.begin(), dialogues.end(), [&](const Dialogue& d) {
                 return d.id == choice.nextDialogueId;
@@ -173,55 +250,63 @@ public:
     }
 
 
-   string GetSpeakerCodeFromId(const string& id) {
+    string GetSpeakerCodeFromId(const string& id) {
         if (id.size() >= 2) {
             return id.substr(1, 1); // Assuming the speaker code is the second character in the ID
         }
         return ""; // Return empty string if the ID is too short
     }
 
-   void DisplayChoices() {
-       choiceMade = false;
-       std::cout << "Displaying choices for dialogue " << dialogues[currentDialogueIndex].id << std::endl;
 
-       if (IsCurrentDialogueQuestion()) {
-           std::cout << "It's a question dialogue." << std::endl;
-           for (size_t i = 0; i < choiceButtons.size() && i < dialogues[currentDialogueIndex].choices.size(); ++i) {
-               std::cout << "Choice " << i << ": " << dialogues[currentDialogueIndex].choices[i].text << std::endl;
-               choiceButtons[i]->SetButtonText(dialogues[currentDialogueIndex].choices[i].text);
-               choiceButtons[i]->setActiveStatus(true); // Set the button to active
-               std::cout << "Setting choice button " << i << " to active." << std::endl;
-           }
-       }
-       else {
-           std::cout << "It's not a question dialogue." << std::endl;
-       }
-   }
+    void DisplayChoices() {
+        choiceMade = false;
+        std::cout << "Displaying choices for dialogue " << dialogues[currentDialogueIndex].id << std::endl;
 
-   void HideChoices() {
-       //std::cout << "Hiding choices for dialogue " << dialogues[currentDialogueIndex].id << std::endl;
-       for (size_t i = 0; i < choiceButtons.size(); ++i) {
-           choiceButtons[i]->setActiveStatus(false); // Set the button to inactive
-          //std::cout << "Setting choice button " << i << " to inactive." << std::endl;
-       }
-   }
+        if (IsCurrentDialogueQuestion()) {
+            std::cout << "It's a question dialogue." << std::endl;
+            for (size_t i = 0; i < choiceButtons.size() && i < dialogues[currentDialogueIndex].choices.size(); ++i) {
+                std::cout << "Choice " << i << ": " << dialogues[currentDialogueIndex].choices[i].text << std::endl;
+                choiceButtons[i]->SetButtonText(dialogues[currentDialogueIndex].choices[i].text);
+                choiceButtons[i]->setActiveStatus(true); // Set the button to active
+                std::cout << "Setting choice button " << i << " to active." << std::endl;
+            }
+        }
+        else {
+            std::cout << "It's not a question dialogue." << std::endl;
+        }
+    }
+
+    void HideChoices() {
+        //std::cout << "Hiding choices for dialogue " << dialogues[currentDialogueIndex].id << std::endl;
+        for (size_t i = 0; i < choiceButtons.size(); ++i) {
+            choiceButtons[i]->setActiveStatus(false); // Set the button to inactive
+            //std::cout << "Setting choice button " << i << " to inactive." << std::endl;
+        }
+    }
 
     void Update(float dt, long frame) {
         UpdateSpeakerSprite();
-	}
+        UpdateSpeakerSprite2();
+        UpdateSpeakerIcon();
 
-    void Render() {
         if (currentDialogueButton) {
-            currentDialogueButton->Render();
-        } 
+            currentDialogueButton->setActiveStatus(true);
+        }
 
         // Get the speaker code for the current dialogue
         string speakerCode = GetSpeakerCodeFromId(dialogues[currentDialogueIndex].id);
 
         // Render speaker icons
         if (speakerIcons.find(speakerCode) != speakerIcons.end()) {
-            speakerIcons[speakerCode]->Render();
+            speakerIcons[speakerCode]->setActiveStatus(true);
         }
+
+    }
+
+    void Render() {
+
+
+
     }
 
 
@@ -238,6 +323,12 @@ public:
     }
 
     void PlayNextDialogue() {
+
+        if (currentDialogueIndex >= dialogues.size()) {
+            std::cerr << "No more dialogues available at index: " << currentDialogueIndex << std::endl;
+            return; // Safely handle end of dialogues
+        }
+
         // Check if the current dialogue is a question and if a choice has been made
         if (IsCurrentDialogueQuestion() && !choiceMade) {
             std::cout << "Please make a choice before continuing." << std::endl;
@@ -273,9 +364,11 @@ public:
                 currentDialogueIndex = nextDialogueIndex;
                 currentLineIndex = 0;
                 choiceMade = false;
+                
             }
             else {
                 std::cout << "No more dialogues available." << std::endl;
+                
                 return;
             }
         }
@@ -295,8 +388,46 @@ public:
         }
     }
 
-    bool IsDialogueFinished() const {
-        return currentDialogueIndex + 1 >= dialogues.size();
+    bool IsDialogueFinished(const string& key) const {
+        auto it = dialogueSets.find(key);
+        if (it != dialogueSets.end() && !it->second.empty()) {
+            const auto& dialogues = it->second;
+            bool atLastDialogue = currentDialogueIndex >= dialogues.size() - 1;
+            bool atLastLine = currentLineIndex >= dialogues[currentDialogueIndex].text.size() - 1;
+            return atLastDialogue && atLastLine;
+        }
+        return false; // Safely default to false if the dialogue set is not found
+    }
+
+
+
+    bool IsDialogueSequenceFinished(const string& key) {
+        if (waitingForPlayerToAcknowledgeEnd) {
+            return true;
+        }
+        auto it = dialogueSets.find(key);
+        if (it != dialogueSets.end() && !it->second.empty()) {
+            const auto& dialogues = it->second;
+            // Check if we are on the last dialogue and the last line of that dialogue
+            if (currentDialogueIndex == dialogues.size() - 1 &&
+                currentLineIndex == dialogues[currentDialogueIndex].text.size() - 1) {
+                waitingForPlayerToAcknowledgeEnd = true;  // Set the flag when end is reached
+                return false;
+            }
+        }
+        return false;
+    }
+
+    void PlayerAcknowledgedDialogueEnd() {
+        waitingForPlayerToAcknowledgeEnd = false;  // Reset flag when player moves to next dialogue set
+    }
+
+
+
+    void PlayNextDialogueSet(const string& nextSetKey) {
+        if (IsDialogueFinished(nextSetKey)) {
+            SetDialogueSet(nextSetKey);
+        }
     }
 
 
@@ -344,61 +475,126 @@ public:
 
     void SetOrderDataForCurrentDialogue() {
         const Dialogue& currentDialogue = dialogues[currentDialogueIndex];
-        OrderData& orderData = OrderData::GetInstance();
+        if (!currentDialogue.tempOrderData) {
+            std::cerr << "Error: tempOrderData is null for dialogue index " << currentDialogueIndex << std::endl;
+            return;
+        }
 
-        // Set the order data using the temporary structure
+        OrderData& orderData = OrderData::GetInstance();
         if (!currentDialogue.tempOrderData->roomNumber.empty()) {
             orderData.SetRoomNumber(currentDialogue.tempOrderData->roomNumber);
-            std::cout << "Room Number: " << currentDialogue.tempOrderData->roomNumber << std::endl;
+            std::cout << "Room Number set to: " << currentDialogue.tempOrderData->roomNumber << std::endl;
         }
         if (!currentDialogue.tempOrderData->teaOrder.empty()) {
             orderData.SetTeaOrder(currentDialogue.tempOrderData->teaOrder);
-            std::cout << "Tea Order: " << currentDialogue.tempOrderData->teaOrder << std::endl;
+            std::cout << "Tea Order set to: " << currentDialogue.tempOrderData->teaOrder << std::endl;
         }
         if (!currentDialogue.tempOrderData->sandwichOrder.empty()) {
             orderData.SetSandwichOrder(currentDialogue.tempOrderData->sandwichOrder);
-            std::cout << "Sandwich Order: " << currentDialogue.tempOrderData->sandwichOrder << std::endl;
+            std::cout << "Sandwich Order set to: " << currentDialogue.tempOrderData->sandwichOrder << std::endl;
         }
         if (!currentDialogue.tempOrderData->pastryOrder.empty()) {
             orderData.SetPastryOrder(currentDialogue.tempOrderData->pastryOrder);
-            std::cout << "Pastry Order: " << currentDialogue.tempOrderData->pastryOrder << std::endl;
+            std::cout << "Pastry Order set to: " << currentDialogue.tempOrderData->pastryOrder << std::endl;
+        }
+    }
+
+    void HideAllDialogueUI() {
+        if (currentDialogueButton) {
+            currentDialogueButton->setActiveStatus(false);  // Hide the main dialogue box
+        }
+        for (auto& choiceButton : choiceButtons) {
+            choiceButton->setActiveStatus(false);  // Hide all choice buttons
+        }
+        for (auto& pair : speakerIcons) {
+            pair.second->setActiveStatus(false);  // Hide all speaker icons
+        }
+
+    }
+
+
+private:
+
+
+    void UpdateSpeakerIcon() {
+        string speakerCode = GetSpeakerCodeFromId(dialogues[currentDialogueIndex].id);
+
+        // Deactivate all speaker icons first
+        for (auto& pair : speakerIcons) {
+            pair.second->setActiveStatus(false); // Set all to inactive
+        }
+
+        // Then activate only the current speaker's icon
+        if (speakerIcons.find(speakerCode) != speakerIcons.end()) {
+            speakerIcons[speakerCode]->setActiveStatus(true);
+        }
+    }
+
+    void UpdateSpeakerSprite() {
+        if (dialogues.empty() || currentDialogueIndex >= dialogues.size()) return; // Safeguard against empty dialogues or invalid index
+
+        const string& currentSpeaker = dialogues[currentDialogueIndex].speakerName;
+
+
+        // Check if the current speaker has a specific sprite
+        auto spriteIt = speakerSprites.find(currentSpeaker);
+
+        if (spriteIt != speakerSprites.end()) {
+            // Deactivate all sprites first
+            for (auto& pair : speakerSprites) {
+                pair.second->setActiveStatus(false); // Set all to inactive
+            }
+            // If found, activate the sprite for the current speaker
+            spriteIt->second->setActiveStatus(true);
+            lastActiveSpeakerSprite = spriteIt->second; // Update last active sprite
+        }
+        else if (lastActiveSpeakerSprite) {
+            // If no new speaker sprite is found, continue using the last active sprite
+            lastActiveSpeakerSprite->setActiveStatus(true);
+        }
+    }
+
+    void UpdateSpeakerSprite2() {
+        if (dialogues.empty() || currentDialogueIndex >= dialogues.size()) return; // Safeguard against empty dialogues or invalid index
+
+        const string& currentSpeaker = dialogues[currentDialogueIndex].speakerName;
+
+
+        // Check if the current speaker has a specific sprite
+        auto spriteIt = speakerSprites2.find(currentSpeaker);
+
+        if (spriteIt != speakerSprites2.end()) {
+            // Deactivate all sprites first
+            for (auto& pair : speakerSprites2) {
+                pair.second->setActiveStatus(false); // Set all to inactive
+            }
+            // If found, activate the sprite for the current speaker
+            spriteIt->second->setActiveStatus(true);
+            lastActiveSpeakerSprite = spriteIt->second; // Update last active sprite
+        }
+        else if (lastActiveSpeakerSprite) {
+            // If no new speaker sprite is found, continue using the last active sprite
+            lastActiveSpeakerSprite->setActiveStatus(true);
         }
     }
 
 
 
-   private:
-   
 
-       void UpdateSpeakerSprite() {
-           string speakerName = dialogues[currentDialogueIndex].speakerName;
-           string speakerCode = GetSpeakerCodeFromId(dialogues[currentDialogueIndex].id);
-
-           // If the speaker code is "W", keep the previous sprite active
-           if (speakerCode == "W") {
-               return;
-           }
-
-           // Deactivate all sprites
-           for (auto& pair : speakerSprites) {
-               pair.second->setActiveStatus(false);
-           }
-
-           // Activate the sprite for the current speaker
-           if (speakerSprites.find(speakerName) != speakerSprites.end()) {
-               speakerSprites[speakerName]->setActiveStatus(true);
-           }
-       }
-
-       string defaultSpriteName;
-       vector<Dialogue> dialogues;
-       UIButton* currentDialogueButton;
-       map<string, UIElement*> speakerIcons;
-       map<string, UIElement*> speakerSprites;
-       vector<UIButton*> choiceButtons;
-       bool choiceMade;
-       size_t currentDialogueIndex;
-       size_t currentLineIndex;
-       string fontPath;
-
+    UIElement* lastActiveSpeakerSprite = nullptr; // Pointer to the last active speaker sprite
+    map<string, vector<Dialogue>> dialogueSets;
+    string defaultSpriteName;
+    string defaultSpriteName2;
+    vector<Dialogue> dialogues;
+    UIButton* currentDialogueButton;
+    map<string, UIElement*> speakerIcons;
+    map<string, UIElement*> speakerSprites;
+    map<string, UIElement*> speakerSprites2;
+    vector<UIButton*> choiceButtons;
+    bool choiceMade;
+    size_t currentDialogueIndex;
+    size_t currentLineIndex;
+    string fontPath;
+    bool waitingForPlayerToAcknowledgeEnd = false;
+    AudioManager& audioManager = AudioManager::GetInstance();
 };

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="4OD35">
+		<Speaker name="Octavia_Surprise">
+			<line1>Is that green tea?</line1>
+			<line2>Such a refreshing aroma.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD36">
+		<Speaker name="Octavia_Happy">
+			<line1>This is exactly what I want.</line1>
+			<line2>Perfect choice, dear waiter.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD37">
+		<Speaker name="Octavia_Normal">
+			<line1>I have high hopes for the sandwich,  then.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

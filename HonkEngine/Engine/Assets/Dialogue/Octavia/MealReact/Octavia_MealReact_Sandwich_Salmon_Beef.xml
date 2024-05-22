@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="4OD65">
+		<Speaker name="Octavia_Surprise">
+			<line1>Oh, my...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD65_2">
+		<Speaker name="Octavia_Sad">
+			<line1>This is not what I expected.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OQ07">
+		<Speaker name="Octavia_Sad">
+			<line1>Does the Express not have any lighter  options?</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="4WD26">Lie that they don't have</Choice1>
+			<Choice2 next="4WD27">Admit that there're more  suitable choices</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="4WD26">
+		<Speaker name="Waiter">
+			<line1>I'm afraid there are none, ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD66">
+		<Speaker name="Octavia_Upset">
+			<line1>....</line1>
+			<line2>Do not try to deceive me, waiter.</line2>
+			<line3>I don't appreciate dishonesty.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD67" next="4OD69">
+		<Speaker name="Octavia_Sad">
+			<line1>But I'll give you the benefit of the  doubt this time.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD27">
+		<Speaker name="Waiter">
+			<line1>I must admit,</line1>
+			<line2>there are indeed more suitable  options, ma'am.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD68" next="4OD69">
+		<Speaker name="Octavia_Sad">
+			<line1>Well, then...</line1>
+			<line2>You've made a poor choice, dear.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD69">
+		<Speaker name="Octavia_Disappoint">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD69_2">
+		<Speaker name="Octavia_Normal">
+			<line1>Let's move on to the pastry and  see what you got for me.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

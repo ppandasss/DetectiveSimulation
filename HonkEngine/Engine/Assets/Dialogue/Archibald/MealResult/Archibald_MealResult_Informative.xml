@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="2AD117">
+		<Speaker name="Archibald_Normal">
+			<line1>I must say I'm surprised.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD117_2">
+		<Speaker name="Archibald_Happy">
+			<line1>The meal overall looks quite good.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD118">
+		<Speaker name="Archibald_Normal">
+			<line1>Not a lot of people managed to satisfy  me this much on their first chance.</line1>
+			<line2>As a reward,</line2>
+			<line3>I'll let you off the hook for your  unprofessional behavior earlier.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

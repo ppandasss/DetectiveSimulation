@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="3ND45">
+		<Speaker name="Nathaniel_Normal">
+			<line1>Well, I like you, Mr. Waiter.</line1>
+			<line2>You really understand what a child  wants.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND46">
+		<Speaker name="Nathaniel_Happy">
+			<line1>My sister and I would enjoy this  meal a lot!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND47">
+		<Speaker name="Nathaniel_Happy">
+			<line1>If you were my age, I bet we would  be really good friends.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

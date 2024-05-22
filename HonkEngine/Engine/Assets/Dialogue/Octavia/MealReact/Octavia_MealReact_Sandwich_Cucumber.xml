@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="4OD59">
+		<Speaker name="Octavia_Surprise">
+			<line1>Cucumber sandwich? Oh, my.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD60">
+		<Speaker name="Octavia_Happy">
+			<line1>I do fancy this.</line1>
+			<line2>It's one of my favorites, such a  refreshing treat.</line2>
+			<line3>Great job with this one.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD61">
+		<Speaker name="Octavia_Happy">
+			<line1>Now, let's move on to the pastry.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD61_2">
+		<Speaker name="Octavia_Normal">
+			<line1>I wonder what did you get for me.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

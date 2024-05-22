@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="2AD95">
+		<Speaker name="Archibald_Normal">
+			<line1>What is this?</line1>
+			<line2>Milk?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD96">
+		<Speaker name="Archibald_Upset">
+			<line1>I remember clearly that I didn't  order that with my tea.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AQ04">
+		<Speaker name="Archibald_Upset">
+			<line1>Why did you serve this to me?</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="2WD67">You didn't tell you want one either</Choice1>
+			<Choice2 next="2WD68">In case you want some milk tea</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="2WD67" next="2AD97">
+		<Speaker name="Waiter">
+			<line1>You didn’t specify your milk choice  to me, sir.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD68" next="2AD98">
+		<Speaker name="Waiter">
+			<line1>In case you wish to have some milk  tea instead, sir.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD97">
+		<Speaker name="Archibald_Upset">
+			<line1>Which means I didn’t want one!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD98">
+		<Speaker name="Archibald_Upset">
+			<line1>I. SAID. BLACK. TEA.</line1>
+			<line2>It’s just black tea! No milk!</line2>
+			<line3>How on earth could you mess up a  simple two-word order?</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD99">
+		<Speaker name="Archibald_Upset">
+			<line1>I expect a more professional service  from this Express, unlike this!</line1>
+			<line2>....</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

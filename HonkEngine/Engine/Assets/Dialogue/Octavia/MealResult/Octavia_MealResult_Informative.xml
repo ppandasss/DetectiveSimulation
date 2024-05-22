@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="4OD79">
+		<Speaker name="Octavia_Happy">
+			<line1>You brought me such a wonderful meal.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD80">
+		<Speaker name="Octavia_Happy2">
+			<line1>It's as if you can read my mind.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD81">
+		<Speaker name="Octavia_Happy2">
+			<line1>Would you like to become my own  personal waiter?</line1>
+			<line2>I've been trying to find someone  like you for a long time.</line2>
+			<line3>....</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD81_2">
+		<Speaker name="Octavia_Normal">
+			<line1>I’m just teasing you, dear.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD82">
+		<Speaker name="Octavia_Normal">
+			<line1>Your work here is done.</line1>
+			<line2>You may leave now.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD28">
+		<Speaker name="Waiter">
+			<line1>I'm afraid I have to stay until  the tea is ready, ma'am.</line1>
+			<line2>It's the Express's policy.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD83">
+		<Speaker name="Octavia_Surprise">
+			<line1>Oh, really?</line1>
+			<line2>I wasn't aware of that policy.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD84">
+		<Speaker name="Octavia_Normal">
+			<line1>In that case, I have a thing or  two to discuss with you.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

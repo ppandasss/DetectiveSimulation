@@ -1,13 +1,22 @@
 #pragma once
 
 #include "Page.h"
+#include"../Audio/AudioManager.h"	
 
 class MainPage : public Page {
 
+private:
+
+	AudioManager& audioManager;
+
 public:
 
-	MainPage() :Page() {
+	MainPage() :Page(), audioManager(AudioManager::GetInstance())
+	{
 
+		audioManager.LoadSound("EvidenceWrite", "Assets/Sounds/Journal/SFX_EvidenceWrite1.mp3", SFX, 2.0f);
+		audioManager.LoadSound("BombUnderline", "Assets/Sounds/Journal/SFX_BombUnderline3.mp3", SFX, 4.0f);
+		audioManager.LoadSound("SpyCircle", "Assets/Sounds/Journal/SFX_SpyCircle.mp3", SFX, 2.0f);
 
 		// DRAGGABLE PAPERS
 		UIDraggable* CaseNews = new UIDraggable("CaseNews", "Assets/Images/Journal/CaseSummary_News.png", glm::vec3(-3.2f, 0.0f, 0.0f), glm::vec3(5.34f, 6.85f, 0.0f), true);
@@ -89,24 +98,29 @@ public:
 		RedCircle->SetScale(glm::vec3(1.44f, 0.44f, 0.0f));
 		RedCircle->SetPosition(glm::vec3(1.15f, 1.55f, 0.0f));
 
+		redCircle = new DeferredRenderObject();
+		redCircle->showObject = false;
+		redCircle->gameObj = RedCircle;
+
+
 		// BOMB LOCATIONS
 
-		UIButtonEmpty* TownSquare = new UIButtonEmpty("TownSquare", glm::vec3(1.4f, -2.25f, 0.0f), glm::vec3(1.4f, 0.4f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
+		UIButtonEmpty* TownSquare = new UIButtonEmpty("TownSquare", glm::vec3(1.57f, -2.25f, 0.0f), glm::vec3(1.4f, 0.4f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
 		TownSquare->SetButtonText("Town Square");
 		TownSquare->SetTextSize(0.6f);
 		TownSquare->SetOnClickAction([this]() { setLocationTownSquare(); });
 
-		UIButtonEmpty* TheHolyChurch = new UIButtonEmpty("TheHolyChurch", glm::vec3(3.5f, -2.25f, 0.0f), glm::vec3(1.4f, 0.4f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
+		UIButtonEmpty* TheHolyChurch = new UIButtonEmpty("TheHolyChurch", glm::vec3(3.6f, -2.25f, 0.0f), glm::vec3(1.4f, 0.4f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
 		TheHolyChurch->SetButtonText("The Holy Church");
 		TheHolyChurch->SetTextSize(0.6f);
 		TheHolyChurch->SetOnClickAction([this]() { setLocationHolyChurch(); });
 
-		UIButtonEmpty* TheCouncil = new UIButtonEmpty("TheCouncil", glm::vec3(1.4f, -2.75f, 0.0f), glm::vec3(1.4f, 0.4f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
+		UIButtonEmpty* TheCouncil = new UIButtonEmpty("TheCouncil", glm::vec3(1.48f, -2.75f, 0.0f), glm::vec3(1.4f, 0.4f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
 		TheCouncil->SetButtonText("The Council");
 		TheCouncil->SetTextSize(0.6f);
 		TheCouncil->SetOnClickAction([this]() { setLocationCouncil(); });
 
-		UIButtonEmpty* SupremeCourt = new UIButtonEmpty("SupremeCourt", glm::vec3(3.5f, -2.75f, 0.0f), glm::vec3(1.4f, 0.4f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
+		UIButtonEmpty* SupremeCourt = new UIButtonEmpty("SupremeCourt", glm::vec3(3.6f, -2.75f, 0.0f), glm::vec3(1.4f, 0.4f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
 		SupremeCourt->SetButtonText("Supreme Court");
 		SupremeCourt->SetTextSize(0.6f);
 		SupremeCourt->SetOnClickAction([this]() { setLocationSupremeCourt(); });
@@ -115,18 +129,20 @@ public:
 		RedUnderline->setActiveStatus(false);
 		RedUnderline->SetScale(glm::vec3(1.7f, 0.1f, 0.0f));
 		RedUnderline->SetPosition(glm::vec3(1.1f, -2.0f, 0.0f));
+
+		redUnderline = new DeferredRenderObject();
+		redUnderline->showObject = false;
+		redUnderline->gameObj = RedUnderline;
+
 		// EVIDENCE TEXT
 
 		EvidenceButton = new UIButtonEmpty("EvidenceText", glm::vec3(3.2f, -1.0f, 0.0f), glm::vec3(5.0f, 0.5f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
-		EvidenceButton->SetButtonText(JournalData::GetInstance()->getEvidenceText());
 		EvidenceButton->SetTextSize(0.6f);
-		EvidenceButton->SetOnClickAction([this]() { updateEvidence(); });
+		EvidenceButton->SetOnClickAction([this]() { clickEvidenceButton(); });
 
-
-		/*UIObject* testBox = new UIObject("testBox", "Assets/Images/Square_Border.png", true);
-		testBox->SetScale(glm::vec3(5.0f, 0.5f, 0.0f));
-		testBox->SetPosition(glm::vec3(3.2f, -1.0f, 0.0f));*/
-
+		evidenceButtonDeferred = new DeferredRenderObject();
+		evidenceButtonDeferred->showObject = false;
+		evidenceButtonDeferred->gameObj = EvidenceButton;
 
 		m_gameObjects.push_back(TheSpy);
 
@@ -145,130 +161,183 @@ public:
 		m_gameObjects.push_back(Cabin4);
 		m_gameObjects.push_back(Suspect5);
 
-		m_gameObjects.push_back(RedCircle);
-
 		m_gameObjects.push_back(Evidence);
-		m_gameObjects.push_back(EvidenceButton);
 
 		m_gameObjects.push_back(BombLocation);
-
-		//m_gameObjects.push_back(testBox);
 
 		m_gameObjects.push_back(TownSquare);
 		m_gameObjects.push_back(TheHolyChurch);
 		m_gameObjects.push_back(TheCouncil);
 		m_gameObjects.push_back(SupremeCourt);
 
-		m_gameObjects.push_back(RedUnderline);
-
-
 		m_gameObjects.push_back(CaseNews);
-
 		m_gameObjects.push_back(Ticket);
-
 		m_gameObjects.push_back(JournalSleeve);
 
+
+		//push back deferred rendering
+
+		deffered_m_gameObjects.push_back(redUnderline);
+		deffered_m_gameObjects.push_back(redCircle);
+		deffered_m_gameObjects.push_back(evidenceButtonDeferred);
+
+		//make evidence button deffered and set active with evidence no.
 
 	}
 
 	//--------------------- SUSPECT BUTTON FUNCTIONS -----------------------
 
-	void setSpy1() {
-		m_journalData->SetPlayerSpyChoice(SPY1);
+	void updateEvidenceButtonText() {
 
-		if (!RedCircle->getActiveStatus()) {RedCircle->setActiveStatus(true);}
-		
-		RedCircle->SetPosition(glm::vec3(1.15f, 1.55f, 0.0f));
+		//every time spy is rechosen
+		//reset the options
+		//reset button text
+
+		m_journalData->resetCurrentEvidenceOptions(evidenceButtonDeferred);
+		m_journalData->setCurrentEvidencetext(EvidenceButton);
+
+	}
+
+	void setSpy1() {
+
+		m_journalData->SetPlayerSpyChoice(CABIN1);
+
+		updateEvidenceButtonText();
+
+		if (redCircle->showObject == false) {
+			redCircle->showObject = true;
+		}
+		redCircle->gameObj->SetPosition(glm::vec3(1.15f, 1.55f, 0.0f));
+		audioManager.PlaySound("SpyCircle");
 	};
 
 	void setSpy21() {
-		m_journalData->SetPlayerSpyChoice(SPY21);
-		if (!RedCircle->getActiveStatus()) { RedCircle->setActiveStatus(true); }
-		RedCircle->SetPosition(glm::vec3(2.65f, 1.55f, 0.0f));
-		
+		m_journalData->SetPlayerSpyChoice(CABIN21);
+
+		updateEvidenceButtonText();
+
+		if (redCircle->showObject == false) {
+			redCircle->showObject = true;
+		}
+		redCircle->gameObj->SetPosition(glm::vec3(2.65f, 1.55f, 0.0f));
+			audioManager.PlaySound("SpyCircle");
+
 	};
 
 	void setSpy22() {
-		m_journalData->SetPlayerSpyChoice(SPY22);
-		if (!RedCircle->getActiveStatus()) { RedCircle->setActiveStatus(true); }
-		RedCircle->SetPosition(glm::vec3(4.15f, 1.55f, 0.0f));
+
+		m_journalData->SetPlayerSpyChoice(CABIN22);
+
+		updateEvidenceButtonText();
+
+		if (redCircle->showObject == false) {
+			redCircle->showObject = true;
+		}
+		redCircle->gameObj->SetPosition(glm::vec3(4.15f, 1.55f, 0.0f));
+			audioManager.PlaySound("SpyCircle");
+
 	};
 
 	void setSpy3() {
-		m_journalData->SetPlayerSpyChoice(SPY3);
-		if (!RedCircle->getActiveStatus()) { RedCircle->setActiveStatus(true); }
-		RedCircle->SetPosition(glm::vec3(1.15f, 0.25f, 0.0f));
+
+		m_journalData->SetPlayerSpyChoice(CABIN3);
+
+		updateEvidenceButtonText();
+
+		if (redCircle->showObject == false) {
+			redCircle->showObject = true;
+		}
+		redCircle->gameObj->SetPosition(glm::vec3(1.15f, 0.25f, 0.0f));
+			audioManager.PlaySound("SpyCircle");
+
 	};
 
 	void setSpy4() {
-		m_journalData->SetPlayerSpyChoice(SPY4);
-		if (!RedCircle->getActiveStatus()) { RedCircle->setActiveStatus(true); }
-		RedCircle->SetPosition(glm::vec3(2.65f, 0.25f, 0.0f));
+
+		m_journalData->SetPlayerSpyChoice(CABIN4);
+
+		//sets button text to current spys evidence
+		updateEvidenceButtonText();
+
+		if (redCircle->showObject == false) {
+			redCircle->showObject = true;
+		}
+		redCircle->gameObj->SetPosition(glm::vec3(2.65f, 0.25f, 0.0f));
 	};
+
+	void clickEvidenceButton() {
+
+		//increment choice
+		//set new text for button
+
+		std::cout << "CLICKING BUTTON" << std::endl;
+
+		m_journalData->incrementEvidence();
+		m_journalData->setCurrentEvidencetext(EvidenceButton);
+		audioManager.PlaySound("EvidenceWrite");
+
+	}
 
 	////--------------------- BOMB LOCATION FUNCTIONS ------------------------
 
 	void setLocationTownSquare() {
 		m_journalData->SetPlayerBombLocation(TOWNSQUARE);
-		if (!RedUnderline->getActiveStatus()) { RedUnderline->setActiveStatus(true); }
-		RedUnderline->SetPosition(glm::vec3(1.4f, -2.45f, 0.0f));
-		
+
+		if (redUnderline->showObject == false) {
+			redUnderline->showObject = true;
+		}
+		redUnderline->gameObj->SetPosition(glm::vec3(1.65f, -2.3f, 0.0f));
+			audioManager.PlaySound("BombUnderline");
 	};
 
 	void setLocationHolyChurch() {
 		m_journalData->SetPlayerBombLocation(HOLYCHURCH);
-		if (!RedUnderline->getActiveStatus()) { RedUnderline->setActiveStatus(true); }
-		RedUnderline->SetPosition(glm::vec3(3.5f, -2.45f, 0.0f));
-		
+
+		if (redUnderline->showObject == false) {
+			redUnderline->showObject = true; 
+		}
+		redUnderline->gameObj->SetPosition(glm::vec3(3.6f, -2.36f, 0.0f));
+			audioManager.PlaySound("BombUnderline");
 	};
 
 	void setLocationCouncil() {
+
 		m_journalData->SetPlayerBombLocation(COUNCIL);
-		if (!RedUnderline->getActiveStatus()) { RedUnderline->setActiveStatus(true); }
-		RedUnderline->SetPosition(glm::vec3(1.4f, -2.95f, 0.0f));
-		
+
+		if (redUnderline->showObject == false) {
+			redUnderline->showObject = true; 
+		}
+		redUnderline->gameObj->SetPosition(glm::vec3(1.64f, -2.83f, 0.0f));
+			audioManager.PlaySound("BombUnderline");
 	};
 
 	void setLocationSupremeCourt() {
 		m_journalData->SetPlayerBombLocation(SUPREMECOURT);
-		if (!RedUnderline->getActiveStatus()) { RedUnderline->setActiveStatus(true); }
-		RedUnderline->SetPosition(glm::vec3(3.5f, -2.95f, 0.0f));
-		
+
+		if (redUnderline->showObject == false) {
+			redUnderline->showObject = true; 
+		}
+		redUnderline->gameObj->SetPosition(glm::vec3(3.62f, -2.85f, 0.0f));
+			audioManager.PlaySound("BombUnderline");
 	};
-	
-	//------------------------EVIDENCE FUNCTIONS--------------------
 
-	void updateEvidence() {
-
-		m_journalData->incrementEvidence();
-
-		EvidenceButton->SetButtonText(m_journalData->getEvidenceText());
-
-	}
 
 
 	virtual void Update(float dt, long frame) override {
-
 		Page::Update(dt, frame);
 
-		MainPageData main = m_journalData->GetMainPageData();
-
-		if (main.player_Spy == SPY_EMPTY) {
-			RedCircle->setActiveStatus(false);
-		}	
-
-		if (main.player_BombLocation == LOCATION_EMPTY) {
-			RedUnderline->setActiveStatus(false);
-		}
-		
 	}
-
 
 
 private:
 
 	UIObject* RedCircle;
 	UIObject* RedUnderline;
+
+	DeferredRenderObject* redUnderline;
+	DeferredRenderObject* redCircle;
+	DeferredRenderObject* evidenceButtonDeferred;
+
 	UIButtonEmpty* EvidenceButton;
 
 };

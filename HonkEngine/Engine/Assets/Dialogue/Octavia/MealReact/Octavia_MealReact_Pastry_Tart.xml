@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="4OD70">
+		<Speaker name="Octavia_Happy">
+			<line1>Such a good-looking lemon tart!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD71">
+		<Speaker name="Octavia_Normal">
+			<line1>This matches my appetite perfectly.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD72">
+		<Speaker name="Octavia_Happy">
+			<line1>Good one, my waiter.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

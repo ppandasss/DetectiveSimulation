@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="3WD34">
+		<Speaker name="Waiter">
+			<line1>(That bag looks too small for two  passengers.)</line1>
+			<line2>(Especially for a cross-country trip.)</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WQ02">
+		<Speaker name="Waiter">
+			<line1>(Where are their parents? Letting their  kids travel alone in times like these?)</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="3WD35" clueID="CABIN21_0">Ask if their parents come along</Choice1>
+			<Choice2 next="3WD36" clueID="CABIN21_0">Ask if they're on a short vacation</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="3WD35" next="3ND78">
+		<Speaker name="Waiter">
+			<line1>My guess is that you two are traveling  alone.</line1>
+			<line2>Or did your parents come with you?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD36" next="3ND79">
+		<Speaker name="Waiter">
+			<line1>Judging from your belongings,</line1>
+			<line2>Are you two on a short vacation?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND78">
+		<Speaker name="Nathaniel_Sad">
+			<line1>They're not here...</line1>
+			<line2>It's just two of us.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD37">
+		<Speaker name="Waiter">
+			<line1>Is that so?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WQ04">
+		<Speaker name="Waiter">
+			<line1>You two are quite brave for children  your age.</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="3WD38" clueID="CABIN21_4">Are you going to see your parent?</Choice1>
+			<Choice2 next="3WD39" clueID="CABIN21_4">It must be challenging to  travel alone</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="3ND79">
+		<Speaker name="Nathaniel_Sad">
+			<line1>I wish this was a real vacation...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3NQ06">
+		<Speaker name="Nathaniel_Sad">
+			<line1>I've always wanted to travel with my  entire family.</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="3WD38" clueID="CABIN21_4">Are you going to see your parent?</Choice1>
+			<Choice2 next="3WD39" clueID="CABIN21_4">It must be challenging to travel alone</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="3WD38" next="3ED15">
+		<Speaker name="Waiter">
+			<line1>Are your parents waiting over at  the Westside?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD39" next="3ED16">
+		<Speaker name="Waiter">
+			<line1>It must be challenging to travel  alone without adults.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED15">
+		<Speaker name="Evelyn_Normal">
+			<line1>Actually...</line1>
+			<line2>We are %going% %to% %stay% %with% %mom.%</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD40">
+		<Speaker name="Waiter">
+			<line1>That sounds like a great time.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND80">
+		<Speaker name="Nathaniel_Normal">
+			<line1>Yes, it is!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3EQ04">
+		<Speaker name="Evelyn_Happy">
+			<line1>And mother is going to get me  a lot of pretty hats!</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="3WD42" clueID="CABIN22_1">Good luck on your adventure</Choice1>
+			<Choice2 next="3WD43" clueID="CABIN22_1">Have a great time over there</Choice2>
+			<Choice3 next="3WD41" clueID="CABIN22_1">Are you excited?</Choice3>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="3ED16">
+		<Speaker name="Evelyn_Normal">
+			<line1>It is.</line1>
+			<line2>But we also have fun...</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND80">
+		<Speaker name="Nathaniel_Happy">
+			<line1>And so much freedom!</line1>
+			<line2>I can order anything I want  without Mom complaining.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WQ05">
+		<Speaker name="Waiter">
+			<line1>You did take the opportunity, indeed.</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="3WD42" clueID="CABIN22_1">Good luck on your adventure</Choice1>
+			<Choice2 next="3WD43" clueID="CABIN22_1">Have a great time over there</Choice2>
+			<Choice3 next="3WD41" clueID="CABIN22_1">Are you excited?</Choice3>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="3WD41" next="3ED17">
+		<Speaker name="Waiter">
+			<line1>Are you excited to stay with  your mother?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD42" next="3ED18">
+		<Speaker name="Waiter">
+			<line1>Good luck on your adventure!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD43" next="3ED18">
+		<Speaker name="Waiter">
+			<line1>I hope you two have a great time  over there!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED17">
+		<Speaker name="Evelyn_Happy">
+			<line1>Of course!</line1>
+			<line2>I miss my mother a lot.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND80_2">
+		<Speaker name="Nathaniel_Normal">
+			<line1>Both of us are very excited,</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3NQ07">
+		<Speaker name="Nathaniel_Sad">
+			<line1>even though this time...</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="3WD44" clueID="CABIN22_4">Is something wrong?</Choice1>
+			<Choice2 next="3WD45" clueID="CABIN22_4">This time?</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="3ED18">
+		<Speaker name="Evelyn_Happy">
+			<line1>Thank you.</line1>
+			<line2>I can't wait to see my mom.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND80_3">
+		<Speaker name="Nathaniel_Sad">
+			<line1>We could really use your blessing,</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3NQ08">
+		<Speaker name="Nathaniel_Sad">
+			<line1>especially during this time...</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="3WD44" clueID="CABIN21_4">Is something wrong?</Choice1>
+			<Choice2 next="3WD45" clueID="CABIN21_4">This time?</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="3WD44" next="3ED18_2">
+		<Speaker name="Waiter">
+			<line1>Is there something wrong?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD45" next="3ED18_2">
+		<Speaker name="Waiter">
+			<line1>This time?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED18_2">
+		<Speaker name="Evelyn_Sad">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND81">
+		<Speaker name="Nathaniel_Sad">
+			<line1>This time...</line1>
+			<line2>We can't be with both of our parents.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3NQ09">
+		<Speaker name="Nathaniel_Sad">
+			<line1>They are.... separated.</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="3WD47" clueID="CABIN21_6">Is that why you are moving  to Westside?</Choice1>
+			<Choice2 next="3WD46" clueID="CABIN21_6">I'm so sorry to hear that</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="3WD46" next="3ED19">
+		<Speaker name="Waiter">
+			<line1>Oh...</line1>
+			<line2>I'm so sorry to hear that.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD47" next="3ND82">
+		<Speaker name="Waiter">
+			<line1>Oh...</line1>
+			<line2>Is that why you're moving to Westside?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND82">
+		<Speaker name="Nathaniel_Normal">
+			<line1>Yes, we are going to live with our  mother.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED19">
+		<Speaker name="Evelyn_Sad">
+			<line1>I still can't believe this...</line1>
+			<line2>It was... all so sudden.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND83">
+		<Speaker name="Nathaniel_Sad">
+			<line1>The %court% %verdict% came just before  we got on this ride.</line1>
+			<line2>I thought father would change his  mind...</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED20">
+		<Speaker name="Evelyn_Normal">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3NQ10">
+		<Speaker name="Nathaniel_Sad">
+			<line1>I wonder if we will ever see him  again.</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="3WD48" clueID="CABIN22_6">Cheer them up</Choice1>
+			<Choice2 next="3WD49" clueID="CABIN22_6">Comfort them</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="3WD48" next="3ND84">
+		<Speaker name="Waiter">
+			<line1>Of course you will!</line1>
+			<line2>There are plenty of opportunities  in the future.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD49" next="3ND84">
+		<Speaker name="Waiter">
+			<line1>I believe he will always be with you,</line1>
+			<line2>even from afar.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND84">
+		<Speaker name="Nathaniel_Normal">
+			<line1>Really?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND84_2">
+		<Speaker name="Nathaniel_Happy">
+			<line1>I'll believe you then.</line1>
+			<line2>Thank you, Mr. Waiter.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND85">
+		<Speaker name="Nathaniel_Normal">
+			<line1>By the way...</line1>
+			<line2>Could you sneak us some more snacks?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND85_2">
+		<Speaker name="Nathaniel_Happy">
+			<line1>It would make us feel a lot better!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD50">
+		<Speaker name="Waiter">
+			<line1>Well...</line1>
+			<line2>Perhaps I can try.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND86">
+		<Speaker name="Nathaniel_Happy">
+			<line1>Yay!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND86_2">
+		<Speaker name="Nathaniel_Normal">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

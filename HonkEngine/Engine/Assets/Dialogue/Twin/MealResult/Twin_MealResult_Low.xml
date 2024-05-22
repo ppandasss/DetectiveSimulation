@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="3ND51">
+		<Speaker name="Nathaniel_Sad">
+			<line1>I don't think we want to have  this meal anymore.</line1>
+			<line2>Why couldn't you understand my order?</line2>
+			<line2>At least for the pastry and sandwich...</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND52">
+		<Speaker name="Nathaniel_Disappoint">
+			<line1>You were really once a child, right?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND53">
+		<Speaker name="Nathaniel_Sad">
+			<line1>Or were you born as a boring adult  since birth?</line1>
+			<line2>I feel pity for you, then.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

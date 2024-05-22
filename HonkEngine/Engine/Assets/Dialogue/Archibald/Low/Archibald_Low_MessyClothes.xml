@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="2WD18">
+		<Speaker name="Waiter">
+			<line1>(For someone who always boasts  about his high-class status.)</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WQ01">
+		<Speaker name="Waiter">
+			<line1>(His clothes are very %messy% .)</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="2WD19" clueID="CABIN3_2">Ask what happened to his clothes</Choice1>
+			<Choice2 next="2WD21" clueID="CABIN3_2">Decide not to ask</Choice2>
+			<Choice3 next="2WD20" clueID="CABIN3_2">Ask if he's feeling uncomfortable</Choice3>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="2WD19" next="2AD20">
+		<Speaker name="Waiter">
+			<line1>Sir, may I ask?</line1>
+			<line2>Did anything happened to your  clothes?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD20" next="2AD22">
+		<Speaker name="Waiter">
+			<line1>Sir, are you feeling uncomfortable  at the moment?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD21" next="2AD24">
+		<Speaker name="Waiter">
+			<line1>(It might be risky to ask.)</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD20" next="2AQ07">
+		<Speaker name="Archibald_Normal">
+			<line1>Huh?</line1>
+			<line2>....</line2>
+			<line3>You do know what?</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD22">
+		<Speaker name="Archibald_Normal">
+			<line1>What on earth are you talking about?</line1>
+			<line2>....</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD23" next="2AQ07">
+		<Speaker name="Archibald_Normal">
+			<line1>Ohh, are you referring to my outfit?</line1>
+			<line2>You do know what?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD24">
+		<Speaker name="Archibald_Normal">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD24_2">
+		<Speaker name="Archibald_Upset">
+			<line1>What's with the staring, huh?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD24">
+		<Speaker name="Archibald_Upset">
+			<line1>.....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD25">
+		<Speaker name="Archibald_Happy">
+			<line1>Ohh, I get it.</line1>
+			<line2>It must be my outfit.</line2>
+			<line3>You do know what?</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AQ07">
+		<Speaker name="Archibald_Upset">
+			<line1>It's none of your business!</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="2WD24">Apologize</Choice1>
+			<Choice2 next="2WD25">Remain silent</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="2WD24" next="2AD26">
+		<Speaker name="Waiter">
+			<line1>Then I must apologize, sir.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD25" next="2AD27">
+		<Speaker name="Waiter">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD26">
+		<Speaker name="Archibald_Upset">
+			<line1>It's because I'm working a ‘real job’.</line1>
+			<line2>Unlike someone who always sticking  their nose in my business.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD27">
+		<Speaker name="Archibald_Upset">
+			<line1>I do not give a single care about  my clothes.</line1>
+			<line2>And neither should you!</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD28">
+		<Speaker name="Archibald_Normal">
+			<line1>Once I arrive home, I'll simply toss  this mess of a suit to my maid,</line1>
+			<line2>and they'll take care of everything.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD29">
+		<Speaker name="Archibald_Upset">
+			<line1>So keep that stare to your own self!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD99">
+		<Speaker name="Archibald_Upset">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

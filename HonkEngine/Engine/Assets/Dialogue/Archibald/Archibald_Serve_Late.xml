@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="2AD12_1">
+		<Speaker name="Archibald_Normal">
+			<line1>Come in.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD12_2">
+		<Speaker name="Archibald_Upset">
+			<line1>I've been sitting here for ages.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AQ04">
+		<Speaker name="Archibald_Upset">
+			<line1>Do you commoner even understand  the concept of punctuality?</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="2WD13">Apologize for the delay</Choice1>
+			<Choice2 next="2WD14">I was preparing the best for you</Choice2>
+			<Choice3 next="2WD15">Remain silent</Choice3>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="2WD13" next="2AD13">
+		<Speaker name="Waiter">
+			<line1>I apologize for the delay, sir.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD14" next="2AD14">
+		<Speaker name="Waiter">
+			<line1>I was taking my time to prepare  the best for you, sir.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD15" next="2AD16">
+		<Speaker name="Waiter">
+			<line1>.....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD13" next="2AD15">
+		<Speaker name="Archibald_Upset">
+			<line1>Don't you dare mess up again.</line1>
+			<line2>Or I shall be reporting you to  the highest manager.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD14" next="2AD15_2">
+		<Speaker name="Archibald_Normal">
+			<line1>Huh.</line1>
+			<line2>Thanks, I supposed?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD15_2" next="2AD16_3">
+		<Speaker name="Archibald_Upset" next="2AD16_3">
+			<line1>But enough rambling. Put my meal  down already.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD15" next="2AD16_3">
+		<Speaker name="Archibald_Upset" next="2AD16_3">
+			<line1>Hurry up and put my meal down  already!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD16">
+		<Speaker name="Archibald_Upset">
+			<line1>What are you waiting for? Another  moment to slack off?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD16_2">
+		<Speaker name="Archibald_Upset">
+			<line1>Do your job, put my meal down already!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD16_3">
+		<Speaker name="Archibald_Upset">
+			<line1>I can't believe how poor the  service is here.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD11_2">
+		<Speaker name="Waiter">
+			<line1>[You serve the meal to Sir Archibald  and start brewing the tea.]</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

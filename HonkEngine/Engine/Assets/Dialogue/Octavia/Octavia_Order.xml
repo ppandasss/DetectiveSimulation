@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="4WD01">
+		<Speaker name="Waiter">
+			<line1>Good afternoon and welcome to  Hesperia Express.</line1>
+			<line2>Mrs. Montgomery.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD01_2">
+		<Speaker name="Waiter">
+			<line1>My name is Victor.</line1>
+			<line2>I will be taking care of your afternoon  tea service for this trip.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD01">
+		<Speaker name="Octavia_Normal">
+			<line1>Oh, greetings, good sir.</line1>
+			<line2>It's a pleasure to have some company  here.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OQ01">
+		<Speaker name="Octavia_Normal">
+			<line1>However... I'm afraid I didn't ring  the bell for afternoon tea.</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="4WD02">Recommend her to have  afternoon tea</Choice1>
+			<Choice2 next="4WD03">Ask what she want instead</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="4WD02" next="4OD02">
+		<Speaker name="Waiter">
+			<line1>Oh, indeed?</line1>
+			<line2>But ma'am, if I may suggest, you  should not miss it.</line2>
+			<line3>Our afternoon tea meal is qualified  as one of the best in Thespia.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD03" next="4OD03">
+		<Speaker name="Waiter">
+			<line1>Oh, indeed?</line1>
+			<line2>If so, how may I assist you instead,  ma'am?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD02">
+		<Speaker name="Octavia_Normal">
+			<line1>Well, I appreciate your thoughtful  intention.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD02_2" next="4OD04">
+		<Speaker name="Octavia_Sad">
+			<line1>But there's no need to be so pressing.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD03">
+		<Speaker name="Octavia_Happy">
+			<line1>That's lovely to hear.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD03_2" next="4OD04">
+		<Speaker name="Octavia_Normal">
+			<line1>You're such a dedicated employee.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD04">
+		<Speaker name="Octavia_Normal">
+			<line1>Actually...</line1>
+			<line2>I'm just messing with you.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD04_2">
+		<Speaker name="Octavia_Normal">
+			<line1>It has been such a long flight.</line1>
+			<line2>I couldn't resist to entertain myself  somehow.</line2>
+			<line3>I believe you wouldn't mind a bit of  humor, would you?</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD05">
+		<Speaker name="Octavia_Normal">
+			<line1>....</line1>
+			<line2>And yes, I did call you to take my  order.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD04">
+		<Speaker name="Waiter">
+			<line1>Understood.</line1>
+			<line2>If that's the case.</line2>
+			<line3>What would you like for your afternoon  tea, ma'am?</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD06">
+		<Speaker name="Octavia_Normal">
+			<line1>After such a busy trip like this,</line1>
+			<line2>I'm in the mood for some light tea.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD07">
+		<Speaker name="Octavia_Normal">
+			<line1>With no milk, dear sir.</line1>
+			<line2>Just the way I like it.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD05">
+		<Speaker name="Waiter">
+			<line1>Understood. ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD08">
+		<Speaker name="Octavia_Normal">
+			<line1>What else do you serve in the set?</line1>
+			<line2>Is there dessert included?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD06">
+		<Speaker name="Waiter">
+			<line1>Indeed.</line1>
+			<line2>It's pastry and sandwich, ma'am.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD09">
+		<Speaker name="Octavia_Normal">
+			<line1>Pastry and sandwich...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD09_2">
+		<Speaker name="Octavia_Happy">
+			<line1>Could you please select some light  and refreshing options for me?</line1>
+		</Speaker>
+		<Choices/>
+		<Order>
+			<RoomNumber>4</RoomNumber>
+			<Tea>Light tea</Tea>
+			<Sandwich>A set of light and</Sandwich>
+			<Pastry>refreshing meal</Pastry>
+		</Order>
+	</Dialogue>
+	<Dialogue id="4OQ02">
+		<Speaker name="Octavia_Happy">
+			<line1>Ones that I would enjoy.</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="4WD07">Certainly</Choice1>
+			<Choice2 next="4WD08">Not entriely sure</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="4WD07" next="4OD10">
+		<Speaker name="Waiter">
+			<line1>Certainly, ma'am.</line1>
+			<line2>I'll manage that for you.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD08" next="4OD11">
+		<Speaker name="Waiter">
+			<line1>I'm afraid I'm not entirely sure, ma'am.</line1>
+			<line2>I may need to apologize in advance.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD10" next="4WD09">
+		<Speaker name="Octavia_Normal">
+			<line1>That's wonderful, dear waiter.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD11">
+		<Speaker name="Octavia_Normal">
+			<line1>Oh, there is no need for that.</line1>
+			<line2>Be good and try your best. That’s enough.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD09">
+		<Speaker name="Waiter">
+			<line1>Thank you, ma'am.</line1>
+			<line2>Your meal will arrive shortly.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD11_2">
+		<Speaker name="Octavia_Happy2">
+			<line1>[Octavia is glaring at you.]</line1>
+			<line2>....</line2>
+			<line3>.....</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OQ02">
+		<Speaker name="Octavia_Happy2">
+			<line1>[Octavia continues to glare silently.]</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="4WD10">Ask if there's anything else</Choice1>
+			<Choice2 next="4WD11">Excuse self to prepare order</Choice2>
+			<Choice3 next="4WD12">Remain silent</Choice3>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="4WD10" next="4OD13">
+		<Speaker name="Waiter">
+			<line1>Do you have anything else to request,  ma’am?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD11" next="4OD14">
+		<Speaker name="Waiter">
+			<line1>Then, I must excuse myself, ma'am.</line1>
+			<line2>I will be off preparing your order.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD12" next="4OD15">
+		<Speaker name="Waiter">
+			<line1>.....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD13" next="4OD16">
+		<Speaker name="Octavia_Normal">
+			<line1>No more request, dear waiter.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD14" next="4OD16">
+		<Speaker name="Octavia_Normal">
+			<line1>You may go, dear waiter.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD15" next="4OD16">
+		<Speaker name="Octavia_Normal">
+			<line1>Did I catch you by surprise, dear  waiter?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD16">
+		<Speaker name="Octavia_Normal">
+			<line1>I'm just wondering what you're going  to choose for me.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD16_2">
+		<Speaker name="Octavia_Happy2">
+			<line1>I'm looking forward to seeing it soon.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

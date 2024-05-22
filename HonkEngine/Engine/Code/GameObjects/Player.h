@@ -11,28 +11,39 @@
 #include "../Animation/Animator.h" 
 #include "../Audio/AudioManager.h"
 #include "../Scene/Hallway.h"
-#include "../GameObjects/DoorsManager.h"
 #include "../GameObjects/Book.h"
 
+#include "../PopupWidget/InterfaceManager.h"
 
 class Player : public AnimateGameObject
 {
+    bool canMove = true;
     Book* m_journal;
 public:
     Player(const std::string& name, const std::string& texturePath, int p_row, int p_col, Book* journal)
         : AnimateGameObject(name, texturePath, p_row, p_col), m_journal(journal), audioManager(AudioManager::GetInstance())
     {
-        m_scale = glm::vec3(6.5f, 6.125f, 0.0f);
-        m_position = glm::vec3(0.0f, -1.0f, 0.0f);
-        m_animator.AddAnimation("walk_left", 1, 8, 7.5f, Animator::LoopType::Loop, []() {});
-        m_animator.AddAnimation("walk_right", 2, 8, 7.5f, Animator::LoopType::Loop, []() {});
-        audioManager.LoadSound("Player_footsteps", "Assets/Sounds/footstep.mp3", 3.0f);
+        m_scale = glm::vec3(6.1f, 6.1f, 0.0f);
+        m_position = glm::vec3(0.0f, -0.9f, 0.0f);
+        m_animator.AddAnimation("walk_left", 2, 8, 8.0f, Animator::LoopType::Loop, []() {});
+        m_animator.AddAnimation("walk_right", 1, 8, 8.0f, Animator::LoopType::Loop, []() {});
+        audioManager.LoadSound("Player_footsteps", "Assets/Sounds/footstep.mp3",SFX, 0.65f);
+    }
+
+    void StopMovement() {
+        canMove = false;
+        audioManager.StopSound("Player_footsteps");
+    }
+
+    void ResumeMovement() {
+        canMove = true;
     }
 
     void Update(float dt, long frame) override
     {
         Input& input = Application::GetInput();
         AnimateGameObject::Update(dt, frame);
+         
 
         // Initialize to a default or idle animation
         std::string currentAnimation = "idle";
@@ -41,14 +52,14 @@ public:
         const float leftBound = -20.52f;
         const float rightBound = 21.0f;
 
-        if (input.Get().GetKey(GLFW_KEY_A))
+        if (input.Get().GetKey(GLFW_KEY_A) && canMove)
         {
             isWalking = true;
             float newPos = m_position.x - speed * dt;
             m_position.x = std::max(newPos, leftBound); // Ensure player doesn't move past left bound
             currentAnimation = "walk_left";
         }
-        if (input.Get().GetKey(GLFW_KEY_D))
+        if (input.Get().GetKey(GLFW_KEY_D) && canMove)
         {
             isWalking = true;
             float newPos = m_position.x + speed * dt;
@@ -58,32 +69,18 @@ public:
         if (input.Get().GetKeyDown(GLFW_KEY_TAB)) {
 
             if (m_journal->isOpen()) {
-                m_journal->closeBook();
+                if (!JournalData::GetInstance()->GetBookState()) { //If book is not locked
+                    m_journal->closeBook();
+                }
             }
             else {
                 m_journal->drawBook();
             }
-
         }
 
-       
-        bool collidedWithDoor = false;
-        DoorManager& doorManager = DoorManager::GetInstance();
-
-        // Check for collisions with doors
-        doorManager.CheckDoorCollisions(GetPosition(), GetScale(), [this, &collidedWithDoor, &input](const std::string& sceneName) {
-            if (!inDoorCollision && input.Get().GetKeyDown(GLFW_KEY_E)) {
-                Application::Get().SetScene(sceneName);
-                inDoorCollision = true;
-                collidedWithDoor = true;
-            }
-            });
-
-        // If the player is not colliding with any door, clear the inDoorCollision flag
-        if (!collidedWithDoor) {
-            inDoorCollision = false;
-        }
-
+       /* if (input.Get().GetKeyDown(GLFW_KEY_J)) {
+            Application::Get().SetScene("JournalEntry");
+        }*/
 
         // Set the animation
         m_animator.SetAnimation(currentAnimation);
@@ -99,11 +96,16 @@ public:
         animY = static_cast<float>(currentRow);
         animX = static_cast<float>(currentFrame);
 
-        if (isWalking && !audioManager.IsSoundPlaying("Player_footsteps")) {
-            audioManager.PlaySound("Player_footsteps", true);
+        if (isWalking && Application::Get().GetCurrentSceneName() == ("Hallway")) {
+            if (!audioManager.IsSoundPlaying("Player_footsteps")) {
+                audioManager.PlaySound("Player_footsteps", true);
+                //std::cout << "Playing sound" << std::endl;
+            }
         }
-        else if (!isWalking && audioManager.IsSoundPlaying("Player_footsteps")) {
-            audioManager.StopSound("Player_footsteps");
+        else {
+            if (audioManager.IsSoundPlaying("Player_footsteps")) {
+                audioManager.StopSound("Player_footsteps");
+            }
         }
 
 
@@ -115,10 +117,10 @@ public:
 
 private:
 
-    float speed = 5.0f;
+    float speed = 6.0f;
     glm::vec2 mousePos;
     Animator m_animator;
     AudioManager& audioManager;
-    bool inDoorCollision = false;
+    
 
 };

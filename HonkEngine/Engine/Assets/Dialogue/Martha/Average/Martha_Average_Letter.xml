@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="1WD14_0">
+		<Speaker name="Waiter">
+			<line1>(A letter on the floor. It must be  falling from her bag.)</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1WQ01">
+		<Speaker name="Waiter">
+			<line2>(Perhaps I can pick it up for her.)</line2>
+		</Speaker>
+		<Choices>
+			<Choice1 next="1WD14" clueID="CABIN1_4">Pick the letter up</Choice1>
+			<Choice2 next="1WD14_1" clueID="CABIN1_4">Inform Matha</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="1WD14" next="1WD16">
+		<Speaker name="Waiter">
+			<line1>[You reach to pick up the red letter.]</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1WD14_1" next="1MD17_1">
+		<Speaker name="Waiter">
+			<line1>Ma'am, I believe you dropped your  letter over here.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1WD16">
+		<Speaker name="Waiter">
+			<line1>(A letter from Westside?)</line1>
+			<line2>(The envelope also doesn't look  like a typical letter.)</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD17">
+		<Speaker name="Martha_Upset">
+			<line1>Do not prying!</line1>
+			<line2>[Martha interrupts before you could  reach the letter.]</line2>
+			<line3>....</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MQ05">
+		<Speaker name="Martha_Disappoint">
+			<line1>Sorry for the sudden yelling...</line1>
+			<line2>But young man, it is not proper to  be poking around in others belongings.</line2>
+			<line3>Let's remember our manners and give  each other some privacy, shall we?</line3>
+		</Speaker>
+		<Choices>
+			<Choice1 next="1WD15_1">Apologize</Choice1>
+			<Choice2 next="1WD15_2">Say nothing</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="1WD15_1" next="1MD18">
+		<Speaker name="Waiter">
+			<line1>I apologize for my rudeness, ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1WD15_2" next="1MD18">
+		<Speaker name="Waiter">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD18" next="1MD18_3">
+		<Speaker name="Martha_Disappoint">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD18_2" next="1MD19">
+		<Speaker name="Martha_Normal">
+			<line1>Let's put that behind us.</line1>
+			<line2>I'm sure you have no ill intention,</line2>
+			<line3>and I wouldn't want any hard feelings  between us.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD18_3" next="1MD25">
+		<Speaker name="Martha_Normal">
+			<line1>Let's put that behind us.</line1>
+			<line2>I'm sure you have no ill intention,</line2>
+			<line3>and I wouldn't want any hard feelings  between us.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD17_1" next="1MD17_2">
+		<Speaker name="Martha_Normal">
+			<line1>Oh dear, really? Where is it?</line1>
+			<line2>It must have slipped out of my bag.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD17_2" next="1WD17_3">
+		<Speaker name="Martha_Normal">
+			<line1>Could you... Oh, never mind.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD17_3" next="1WD16_1">
+		<Speaker name="Martha_Happy">
+			<line1>I already have the letter inside.</line1>
+			<line2>You can leave the envelope there  for now.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1WD16_1" next="1MD19_22">
+		<Speaker name="Waiter">
+			<line1>Understood, ma'am.</line1>
+			<line2>Please let me know if you need any  assistance.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD19" next="1MD19_3">
+		<Speaker name="Martha_Sad">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD19_22" next="1MD19_3">
+		<Speaker name="Martha_Sad">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD19_2" next="1MD20">
+		<Speaker name="Martha_Sad">
+			<line1>The letter you glimpsed... is from  my %important% %one% %on% %Westside.%</line1>
+			<line2>This is why I am very protective  of it.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	
+	<Dialogue id="1MD20">
+		<Speaker name="Martha_Normal">
+			<line1>I was at Townsquare earlier, you know,  to send a letter back for it.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	
+	<Dialogue id="1WQ02">
+		<Speaker name="Waiter">
+			<line1>(Nice story to come up with, Townsquare  doesn't have any post office.)</line1>
+			<line2>(I wonder what she is up to)</line2>
+		</Speaker>
+		<Choices>
+			<Choice1 next="1WD17"  clueID="CABIN1_5">Ask about Townsquare</Choice1>
+			<Choice2 next="1WD18">Decide not to ask</Choice2>
+			<Choice3 next="1WD19"  clueID="CABIN1_5">The post office is very  far from there</Choice3>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="1WD17" next="1MD22">
+		<Speaker name="Waiter">
+			<line1>How was Townsquare, ma'am?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1WD18" next="1MD25">
+		<Speaker name="Waiter">
+			<line1>(Well, it might be safer not to ask.)</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1WD19" next="1MD21">
+		<Speaker name="Waiter">
+			<line1>That sounds really nice, ma'am.</line1>
+			<line2>But as I recall,</line2>
+			<line3>isn't the post office quite far  from Townsquare?</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD21">
+		<Speaker name="Martha_Happy">
+			<line1>Well, I'll be darned!</line1>
+			<line2>It seems you've got a keen sense of  the lay of the land, young man.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD22">
+		<Speaker name="Martha_Normal">
+			<line1>Well, I've learned that Townsquare  doesn't have a post office,</line1>
+			<line2>but there are %faster% %means% %and% %methods.%</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD25">
+		<Speaker name="Martha_Normal">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD26">
+		<Speaker name="Martha_Normal">
+			<line1>By the way, the pastry you brought  looks absolutely wonderful.</line1>
+			<line2>Reminds me of the treats I once  baked with my daughter.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD26_2">
+		<Speaker name="Martha_Happy">
+			<line1>I shall write that down to her, once  I arrive in Westside.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD99">
+		<Speaker name="Martha_Happy">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

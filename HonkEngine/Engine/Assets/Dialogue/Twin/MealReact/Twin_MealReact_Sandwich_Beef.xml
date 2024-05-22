@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="3ND29">
+		<Speaker name="Nathaniel_Normal">
+			<line1>What about the sandwich!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND32">
+		<Speaker name="Nathaniel_Happy">
+			<line1>Yay, no green on the plate at all!</line1>
+			<line2>Thank you, Mr. Waiter!</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND33">
+		<Speaker name="Nathaniel_Happy">
+			<line1>It's been so long since I had a meal  without bitter vegetables.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

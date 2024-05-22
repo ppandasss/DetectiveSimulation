@@ -96,6 +96,10 @@ public:
         return pastryOrder;
     }
 
+    const bool GetOrderPaperVisibility() const {
+		return orderPaper->getActiveStatus();
+	}
+
 
     bool IsValidOrder() const {
         return !roomNumber.empty() && !teaOrder.empty() && !sandwichOrder.empty() && !pastryOrder.empty();
@@ -107,10 +111,13 @@ public:
         sandwichOrder.clear();
         pastryOrder.clear();
 
-        orderNoText->SetContent("");
-        teaOrderText->SetContent("");
-        sandwichOrderText->SetContent("");
-        pastryOrderText->SetContent("");
+        if (orderNoText) orderNoText->SetContent("");
+        if (teaOrderText) teaOrderText->SetContent("");
+        if (sandwichOrderText) sandwichOrderText->SetContent("");
+        if (pastryOrderText) pastryOrderText->SetContent("");
+
+        UpdateOrderPaperVisibility();
+        NotifyObservers();
     }
 
 private:

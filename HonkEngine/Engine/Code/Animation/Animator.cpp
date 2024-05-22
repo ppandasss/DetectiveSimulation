@@ -35,22 +35,27 @@ void Animator::Update(float dt) {
     if (anim.loopType == LoopType::PingPong) {
         if (m_pingPongForward) {
             m_currentFrame += frameIncrement;
+            if (m_currentFrame >= anim.maxFrames) {
+                m_currentFrame = anim.maxFrames - 1; // Prevent going out of bounds
+                m_pingPongForward = false; // Switch direction
+            }
         }
         else {
             m_currentFrame -= frameIncrement;
-        }
-
-        if (m_currentFrame >= anim.maxFrames || m_currentFrame <= 0) {
-            m_pingPongForward = !m_pingPongForward;
-            if (anim.onComplete) {
-                anim.onComplete();
+            if (m_currentFrame <= 0) {
+                m_currentFrame = 0;
+                m_pingPongForward = true; // Switch direction to forward for next usage
+                if (anim.onComplete) {
+                    anim.onComplete();
+                }
+                m_currentAnimation = ""; // Stop the animation if needed or set to another state
             }
         }
     }
     else {
         m_currentFrame += frameIncrement;
         if (m_currentFrame >= anim.maxFrames) {
-            std::cout << "Updating Animator. Current Frame: " << m_currentFrame << std::endl;
+            //std::cout << "Updating Animator. Current Frame: " << m_currentFrame << std::endl;
             if (anim.loopType == LoopType::Loop) {
                 m_currentFrame = 0;
             }

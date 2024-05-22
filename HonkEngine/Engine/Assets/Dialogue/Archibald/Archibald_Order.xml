@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="2WD01">
+		<Speaker name="Waiter">
+			<line1>Good afternoon and welcome to  Hesperia Express. Mr. Pompington.</line1>
+			<line2>My name is Victor.</line2>
+			<line3>I will be taking care of your  afternoon tea for this trip.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AQ01">
+		<Speaker name="Archibald_Normal">
+			<line1>Take you forever to show up.</line1>
+			<line2>Even a snail would be faster  than you.</line2>
+		</Speaker>
+		<Choices>
+			<Choice1 next="2WD03">Make up an excuse</Choice1>
+			<Choice2 next="2WD04">Remain silent</Choice2>
+			<Choice3 next="2WD02">Apologize politely</Choice3>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="2WD02" next="2AD01">
+		<Speaker name="Waiter">
+			<line1>My sincerest apologies, sir.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD03" next="2AD02">
+		<Speaker name="Waiter">
+			<line1>Apologies, sir, I has been stalled  by the previous passenger.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD04" next="2AD03">
+		<Speaker name="Waiter">
+			<line1>...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD01" next="2AD04">
+		<Speaker name="Archibald_Normal">
+			<line1>As you should be.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD02" next="2WD05">
+		<Speaker name="Archibald_Normal">
+			<line1>Whatever the fuss may be, I , do,  not, care.</line1>
+			<line2>Just get on with it, take my order,  and leave.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD03">
+		<Speaker name="Archibald_Upset">
+			<line1>I can't believe this Express hire  such an imbecilic waiter like you.</line1>
+			<line2>I shall have a word with the  management about this.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD04">
+		<Speaker name="Archibald_Normal">
+			<line1>Take my order, and leave.</line1>
+			<line2>Unlike you, I don’t have all day  to be slacking off.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD05">
+		<Speaker name="Waiter">
+			<line1>What would you like for your  afternoon tea, sir?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD05">
+		<Speaker name="Archibald_Normal">
+			<line1>Bring me a cup of %black% %tea.%</line1>
+			<line2>....</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD06">
+		<Speaker name="Waiter">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD05_2">
+		<Speaker name="Archibald_Normal">
+			<line3>......</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AQ02">
+		<Speaker name="Archibald_Normal">
+			<line1>Why are you still slacking around?  I said hurry up!</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="2WD07">You haven't told me the rest  of your order</Choice1>
+			<Choice2 next="2WD08">Just waiting for you to continue</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="2WD07" next="2AD07">
+		<Speaker name="Waiter">
+			<line1>You haven't told me your sandwich  and pastry choices yet, sir.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD08" next="2AD06">
+		<Speaker name="Waiter">
+			<line1>Just wait for you to continue, sir.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD06">
+		<Speaker name="Archibald_Normal">
+			<line1>Continue what?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD09">
+		<Speaker name="Waiter">
+			<line1>Your sandwich and pastry choices, sir.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD07">
+		<Speaker name="Archibald_Upset">
+			<line1>How on earth I could know you  also serve that?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD08">
+		<Speaker name="Archibald_Upset">
+			<line1>Ugh, that wind again!</line1>
+			<line2>If only there were something to drown  out the rank smell of grass outside.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD09">
+		<Speaker name="Archibald_Normal">
+			<line1>Speaking of which, bring me something  exactly as I just said.</line1>
+			<line2>For those- sandwich and pastry  choices of yours.</line2>
+		</Speaker>
+		<Choices/>
+		<Order>
+			<RoomNumber>3</RoomNumber>
+			<Tea>Black Tea</Tea>
+			<Sandwich>A set of meal to  relieve discomfort</Sandwich>
+			<Pastry>from the smell of grass</Pastry>
+		</Order>
+	</Dialogue>
+	<Dialogue id="2WD10">
+		<Speaker name="Waiter">
+			<line1>Thank you. The meal will arrive shor-</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD10">
+		<Speaker name="Archibald_Normal">
+			<line1>Get lost, I don't want to breathe  the same air as you for too long.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

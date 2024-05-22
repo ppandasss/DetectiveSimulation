@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="2AD109">
+		<Speaker name="Archibald_Normal">
+			<line1>....</line1>
+			<line2>Oh, nice.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD110">
+		<Speaker name="Archibald_Normal">
+			<line1>A lemon tart.</line1>
+			<line2>Haven't seen one for long.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD111">
+		<Speaker name="Archibald_Happy">
+			<line1>Hm... the smell is indeed refreshing.</line1>
+			<line2>I didn't realize lemon scent could be  this good during a time like this.</line2>
+			<line3>Perhaps it has become my new favorite.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD112">
+		<Speaker name="Archibald_Normal">
+			<line1>Good job with the pastry.</line1>
+			<line2>AT LEAST, as expected standard.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="2AD16">
+		<Speaker name="Archibald_Normal">
+			<line1>....</line1>
+			<line2>Well, get out already.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AQ05">
+		<Speaker name="Archibald_Upset">
+			<line1>Don't you have something better  to do rather than staring at me?</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="2WD16">Insist that you must stay to  ensure the tea quality</Choice1>
+			<Choice2 next="2WD17">Insist that you must stay as  ordered, but have no clue why.</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="2WD16" next="2AD17">
+		<Speaker name="Waiter">
+			<line1>I'm afraid I have to stay, sir.</line1>
+			<line2>It's our duty to ensure the quality  of tea for every passenger.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD17" next="2AD18">
+		<Speaker name="Waiter">
+			<line1>I'm afraid no can do, sir.</line1>
+			<line2>We've been instructed to take care  of the tea until it's ready.</line2>
+			<line3>To be frank, I'm not sure why either.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD17" next="2AD19">
+		<Speaker name="Archibald_Upset">
+			<line1>Yeah, right...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD18">
+		<Speaker name="Archibald_Upset">
+			<line1>HA.</line1>
+			<line2>Following orders blindly.</line2>
+			<line3>Suitable for a middle-class like you.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD19">
+		<Speaker name="Archibald_Upset">
+			<line1>It's apparently helpless, judging  from the meal you've brought me.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD20">
+		<Speaker name="Archibald_Upset">
+			<line1>I just hope that damn tea of yours  will be ready soon.</line1>
+			<line2>I can't wait to enjoy my meal 'alone'.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD99">
+		<Speaker name="Archibald_Upset">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

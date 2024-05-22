@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="4OD42">
+		<Speaker name="Octavia_Happy">
+			<line1>Such a delightful smell...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD43">
+		<Speaker name="Octavia_Surprise">
+			<line1>Oh, wait a second.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD44">
+		<Speaker name="Octavia_Surprise">
+			<line1>There is milk included...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OQ05">
+		<Speaker name="Octavia_Disappoint">
+			<line1>Didn't I ask for no milk, dear  waiter?</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="4WD21">Apologize for misunderstanding</Choice1>
+			<Choice2 next="4WD22">Present as personal recommendation</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="4WD21">
+		<Speaker name="Waiter">
+			<line1>I misunderstood your order, ma'am.</line1>
+			<line2>I must apologize.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD45">
+		<Speaker name="Octavia_Sad">
+			<line1>Well, this is indeed a misunderstanding.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD46" next="4OD49">
+		<Speaker name="Octavia_Sad">
+			<line1>I did not expect this from you.  What a pity.</line1>
+			<line2>....</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD22">
+		<Speaker name="Waiter">
+			<line1>This is my personal recommendation  for you, ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD47">
+		<Speaker name="Octavia_Normal">
+			<line1>I appreciate your recommendation.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD48" next="4OD49">
+		<Speaker name="Octavia_Sad">
+			<line1>But I did remind you that I want  no milk in my tea.</line1>
+			<line2>You should follow my instructions, dear.</line2>
+			<line3>....</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD49">
+		<Speaker name="Octavia_Disappoint">
+			<line1>Well, let's see the sandwich.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="4OD62">
+		<Speaker name="Octavia_Surprise">
+			<line1>Oh, this looks nice.</line1>
+			<line2>It's a light one indeed...</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD62_2">
+		<Speaker name="Octavia_Disappoint">
+			<line1>but don't think it will be very  refreshing.</line1>
+			<line2>....</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD63">
+		<Speaker name="Octavia_Normal">
+			<line1>But anyway, this will do.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD64">
+		<Speaker name="Octavia_Normal">
+			<line1>Let's move on to the pastry and  see what you got for me.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

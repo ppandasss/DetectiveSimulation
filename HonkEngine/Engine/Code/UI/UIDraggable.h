@@ -19,7 +19,7 @@ public:
 
         //DRAG OBJECT HERE 
 
-        std::cout << "Draggable Clicked" << std::endl;
+        //std::cout << "Draggable Clicked" << std::endl;
         isDragging = true;
 
 
@@ -30,10 +30,20 @@ public:
         onReleaseAction = action;
     }
 
+    virtual void SetOnDragAction(const std::function<void()>& action) {
+        onDragAction = action;
+    }
+
 
     void onRelease() {
         if (onReleaseAction) {
             onReleaseAction();
+        }
+    }
+
+    void onDrag() {
+        if (onDragAction) {
+            onDragAction();
         }
     }
 
@@ -92,8 +102,33 @@ public:
     }
 
 
+    void SetHoverTexture(const std::string& texturePath) {
+
+        textureHoverID = TextureLoad(texturePath);
+        textureNormalID = GetTextureID();
+
+    }
+
+
     void snapBack() {
         m_position = originalPosition;
+    }
+
+    void Render() override {
+
+        if (textureHoverID != -1) {
+
+            if (isHover) {
+                SetTextureID(textureHoverID);
+            }
+            else {
+                SetTextureID(textureNormalID);
+            }
+
+        }
+
+        UIElement::Render();
+
     }
 
 
@@ -103,29 +138,32 @@ public:
         Input& input = Application::GetInput();
         UIElement::Update(dt, frame);
 
-        //mousePos = Application::Get().CursorPos();
         mouseWorldPos = Application::Get().MousetoWorld();
 
-        if (IsClickable()) {
+        if (IsClickable() && IsPointInside(mouseWorldPos.x, mouseWorldPos.y)) {
 
-            //std::cout << "DRAGGABLE CLICK" << std::endl;
+            if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1)) {
 
-            if (IsPointInside(mouseWorldPos.x, mouseWorldPos.y)) {
-
-                if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1)) {
-
-                    OnClick();
-                    isDragging = true;
-                    dragStartPos = mouseWorldPos; // Capture the starting point of the drag
-                    dragOffset = glm::vec2(m_position.x, m_position.y) - mouseWorldPos; // Offset between mouse and object position
-
-                }
+                OnClick();
+                isDragging = true;
+                dragStartPos = mouseWorldPos; // Capture the starting point of the drag
+                dragOffset = glm::vec2(m_position.x, m_position.y) - mouseWorldPos; // Offset between mouse and object position
 
             }
+
+            isHover = true;
+
+        }
+        else {
+
+            isHover = false;
+
         }
 
 
         if (isDragging) {
+
+            isHover = false;
 
             glm::vec2 mouseDelta = mouseWorldPos - dragStartPos;
             glm::vec3 newPosition = glm::vec3(dragStartPos, 0.0f) + glm::vec3(mouseDelta, 0.0f) + glm::vec3(dragOffset, 0.0f);
@@ -133,21 +171,21 @@ public:
             // Check if the new position is within the boundaries
             if (isWithinDragBounds(newPosition)) {
                 m_position = newPosition;
-            } else {
+            }
+            else {
                 // If the new position is outside the boundaries, snap it back
                 m_position = snapToBoundaries(newPosition);
             }
 
+            onDrag();
 
             //Mouse click released
             if (input.Get().GetMouseButtonUp(GLFW_MOUSE_BUTTON_1)) {
 
                 isDragging = false;
-                std::cout << "DRAGGABLE RELEASED" << std::endl;
+                //std::cout << "DRAGGABLE RELEASED" << std::endl;
 
-                //snapUIPosition(m_position);
                 snapBack();
-
                 onRelease();
 
             }
@@ -163,6 +201,7 @@ private:
 
     glm::vec2 dragStartPos;
     bool isDragging;
+    bool isHover = false;
     glm::vec2 dragOffset; // Offset between
 
     //snap to position variables
@@ -171,8 +210,12 @@ private:
     float snapThreshold = 8.0f;
 
     std::function<void()> onReleaseAction;
+    std::function<void()> onDragAction;
 
     glm::vec2 minBound = glm::vec2(-10.0f, -6.0f); //top - left corner
     glm::vec2 maxBound = glm::vec2(10.0f, 6.0f); //bottom - right corner
+
+    Tex textureHoverID = -1;
+    Tex textureNormalID = -1;
 
 };

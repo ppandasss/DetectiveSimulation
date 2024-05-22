@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="2WD39">
+		<Speaker name="Waiter">
+			<line1>(I've been through several newspapers  before the mission.)</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WQ02">
+		<Speaker name="Waiter">
+			<line1>(How could I never see this one?)</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="2WD40" clueID="CABIN3_0">Ask how is the news</Choice1>
+			<Choice2 next="2WD41" clueID="CABIN3_0">Ask which newspaper he's reading</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="2WD40" next="2AD50">
+		<Speaker name="Waiter">
+			<line1>Sir, the newspaper you're reading.</line1>
+			<line2>Is there any good news?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD41" next="2AD51">
+		<Speaker name="Waiter">
+			<line1>I've never seen this kind of  newspaper before.</line1>
+			<line2>May I ask which newspaper you're  reading?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD50" next="2AD51_2">
+		<Speaker name="Archibald_Upset">
+			<line1>Not at all!</line1>
+			<line2>What a hectic day it has been.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD51" next="2AQ13">
+		<Speaker name="Archibald_Normal">
+			<line1>This? This one is not for sale.</line1>
+			<line2>It's a special, reserved for special  people, like ME.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD51_2" next="2AQ12">
+		<Speaker name="Archibald_Normal">
+			<line1>But being a special elite like me,</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AQ12">
+		<Speaker name="Archibald_Normal">
+			<line1>I need to keep up with these boring  news.</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="2WD43">Ask for an example of news</Choice1>
+			<Choice2 next="2WD44">Ask if there's anything  about the bomb</Choice2>
+			<Choice3 next="2WD42">Understand plainly</Choice3>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="2AQ13">
+		<Speaker name="Archibald_Upset">
+			<line1>And also none of your concern!</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="2WD43">Ask for an example of news</Choice1>
+			<Choice2 next="2WD44">Ask if there's anything  about the bomb</Choice2>
+			<Choice3 next="2WD42">Understand plainly</Choice3>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="2WD42" next="2AQ14">
+		<Speaker name="Waiter">
+			<line1>Understood, sir.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD43" next="2AD52">
+		<Speaker name="Waiter">
+			<line1>Oh, indeed?</line1>
+			<line2>Could you give me one example?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD44" next="2AD53">
+		<Speaker name="Waiter">
+			<line1>Oh, indeed?</line1>
+			<line2>Is there any article about the bomb  threat, sir?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AQ14">
+		<Speaker name="Archibald_Normal">
+			<line1>Really? You're not interested at all?</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="2WD45" clueID="CABIN3_3">Yes, because you said so</Choice1>
+			<Choice2 next="2WD46" clueID="CABIN3_3">I do, but it's not my business  to ask</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="2WD45" next="2AD54">
+		<Speaker name="Waiter">
+			<line1>Yes, sir.</line1>
+			<line2>As you said, there is nothing  interesting in there for me.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD46" next="2AD54">
+		<Speaker name="Waiter">
+			<line1>I do, sir.</line1>
+			<line2>But I prefer not to pry too much into  a passenger's business.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD54">
+		<Speaker name="Archibald_Normal">
+			<line1>Good, you're starting to become a  decent servant.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD55" next="2AQ15">
+		<Speaker name="Archibald_Normal">
+			<line1>I'll share something with you as  a reward.</line1>
+			<line2>But first, I need to know...</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD52" next="2AQ15">
+		<Speaker name="Archibald_Normal">
+			<line1>Huh.</line1>
+			<line2>...</line2>
+			<line3>You need to answer me first.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD53" next="2AQ15">
+		<Speaker name="Archibald_Normal">
+			<line1>...</line1>
+			<line2>Well, that depends on you.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AQ15">
+		<Speaker name="Archibald_Normal">
+			<line1>Where do you come from?</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="2WD48" clueID="CABIN3_6">Westside</Choice1>
+			<Choice2 next="2WD49" clueID="CABIN3_6">Same as you</Choice2>
+			<Choice3 next="2WD47" clueID="CABIN3_6">Eastside</Choice3>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="2WD47" next="2AD55_2">
+		<Speaker name="Waiter">
+			<line1>Eastside, sir.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD48" next="2AD66">
+		<Speaker name="Waiter">
+			<line1>Westside, sir.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD49" next="2AD66">
+		<Speaker name="Waiter">
+			<line1>The same as you, sir</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD55_2">
+		<Speaker name="Archibald_Normal">
+			<line1>Really? I can't tell you much then.</line1>
+			<line2>Hmm, or maybe I should spare you hopeless a little.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD56">
+		<Speaker name="Archibald_Normal">
+			<line1>Well, it should be fine.</line1>
+			<line2>It's not like you are a detective in  disguise anyway.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD56_2">
+		<Speaker name="Archibald_Normal">
+			<line1>It is the bomb news in your country.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AQ16">
+		<Speaker name="Archibald_Upset">
+			<line1>Taking over like half of today's  newspaper!</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="2WD50">Ask what does the news say</Choice1>
+			<Choice2 next="2WD51">Ask if it's indeed the work  of the spy</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="2WD50" next="2AD57">
+		<Speaker name="Waiter">
+			<line1>Oh.</line1>
+			<line2>What does it say?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD51" next="2AD58">
+		<Speaker name="Waiter">
+			<line1>Oh.</line1>
+			<line2>Is it really the spy's doing?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD57" next="2WD52">
+		<Speaker name="Archibald_Upset">
+			<line1>I thought it was just a rumor.</line1>
+			<line2>But darn it! It's actually the spy!</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD58" next="2WD52">
+		<Speaker name="Archibald_Upset">
+			<line1>Of course, they even got the name.</line1>
+			<line2>Darn it!</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD52">
+		<Speaker name="Waiter">
+			<line1>(That newspaper is quite something.)</line1>
+			<line2>(But he seems to have lost his cool.)</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WQ03">
+		<Speaker name="Waiter">
+			<line1>(If he's a Westsider, why does the bomb  news make him so irritated?)</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="2WD53">Try to calm him down</Choice1>
+			<Choice2 next="2WD54">Ask if anything concern him</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="2WD53" next="2AD59">
+		<Speaker name="Waiter">
+			<line1>Are you alright, sir?</line1>
+			<line2>I believe this is far from your concern.  No need to worry.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD54" next="2AD59">
+		<Speaker name="Waiter">
+			<line1>Is there anything concerning you, sir?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD59">
+		<Speaker name="Archibald_Upset">
+			<line1>WELL, I AM CONCERNED.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD60">
+		<Speaker name="Archibald_Upset">
+			<line1>The %kind% %of% %explosive% that damn spy  use is really gigantic!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AQ17">
+		<Speaker name="Archibald_Upset">
+			<line1>You can't even comprehend how much  damage it will cause!</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="2WD55">Question more about the bomb</Choice1>
+			<Choice2 next="2WD56">Pretend to be sad</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="2WD55" next="2AD61">
+		<Speaker name="Waiter">
+			<line1>Oh, does the news mention the kind  of explosive?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD56" next="2AD62">
+		<Speaker name="Waiter">
+			<line1>That sounds absolutely horrible...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD61">
+		<Speaker name="Archibald_Upset">
+			<line1>No, it-</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD61_2" next="2AQ18">
+		<Speaker name="Archibald_Normal">
+			<line1>doesn't...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD62" next="2AQ18">
+		<Speaker name="Archibald_Normal">
+			<line1>Well, you people still have hope.</line1>
+			<line2>A bomb of that kind can still be defused-</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AQ18">
+		<Speaker name="Archibald_Normal">
+			<line1>.....</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="2WD58" clueID="CABIN3_1">Play along with him</Choice1>
+			<Choice2 next="2WD57" clueID="CABIN3_1">Ask how he know about the bomb</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="2WD57" next="2AD63">
+		<Speaker name="Waiter">
+			<line1>Oh, how do you happen to know about  that, sir?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD58" next="2AD64">
+		<Speaker name="Waiter">
+			<line1>Oh.</line1>
+			<line2>I suppose you must be quite an expert  about explosives, then.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD63" next="2AD65">
+		<Speaker name="Archibald_Upset">
+			<line1>I... I just happen to be an %expert%  %in% %this% %field!%</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD64">
+		<Speaker name="Archibald_Upset">
+			<line1>D-darn right!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD64_2" next="2AD65">
+		<Speaker name="Archibald_Happy">
+			<line1>I, Sir Archibald Pompington III,</line1>
+			<line2>is the most valuable %explosive% %expert%  the Westside can find!</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD65" next="2AD80">
+		<Speaker name="Archibald_Upset">
+			<line1>How else would I know the name of  that bomb?</line1>
+			<line2>Use your head, waiter!</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD66">
+		<Speaker name="Archibald_Happy">
+			<line1>Good, then I can tell you some.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD67">
+		<Speaker name="Archibald_Normal">
+			<line1>It's the bomb news from Eastside.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AQ18">
+		<Speaker name="Archibald_Upset">
+			<line1>Taking over like half of today's  newspaper!</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="2WD60">Ask what does the news say</Choice1>
+			<Choice2 next="2WD59">Ask if it's indeed the work  of the spy</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="2WD59" next="2AD68">
+		<Speaker name="Waiter">
+			<line1>May I ask, sir.</line1>
+			<line2>Could it really be the work of our spy?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD60" next="2AD69">
+		<Speaker name="Waiter">
+			<line1>What does it say, sir?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD68">
+		<Speaker name="Archibald_Normal">
+			<line1>Of course, they even got the name.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD68_2" next="2WD61">
+		<Speaker name="Archibald_Upset">
+			<line1>Darn it!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD69">
+		<Speaker name="Archibald_Upset">
+			<line1>As the rumors from Eastside said,  it is our spy.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD69_2" next="2WD61">
+		<Speaker name="Archibald_Upset">
+			<line1>Darn it!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD61">
+		<Speaker name="Waiter">
+			<line1>(That newspaper is quite something.)</line1>
+			<line2>(But he seems to have lost his cool.)</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WQ04">
+		<Speaker name="Waiter">
+			<line1>(If he's a Westsider, why does the bomb  news make him so irritated?)</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="2WD62">Try to calm him down</Choice1>
+			<Choice2 next="2WD63">Ask if anything concern him</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="2WD62" next="2AD70">
+		<Speaker name="Waiter">
+			<line1>Are you alright, sir?</line1>
+			<line2>I believe this is far from your concern.  No need to worry.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD63" next="2AD70">
+		<Speaker name="Waiter">
+			<line1>Is there anything concerning you, sir?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD70">
+		<Speaker name="Archibald_Upset">
+			<line1>WELL, I AM CONCERNED.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD71">
+		<Speaker name="Archibald_Upset">
+			<line1>The %kind% %of% %explosive% that damn spy  use is really gigantic!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AQ20">
+		<Speaker name="Archibald_Upset">
+			<line1>You can't even comprehend how much  damage it will cause!</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="2WD66">Talk down to the Eastside</Choice1>
+			<Choice2 next="2WD65">Assure him it's a good news</Choice2>
+			<Choice3 next="2WD64">Question more about the bomb</Choice3>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="2WD64" next="2AD72">
+		<Speaker name="Waiter">
+			<line1>Oh, does the news mention the kind of  explosive?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD65" next="2AD74">
+		<Speaker name="Waiter">
+			<line1>Oh, but sir, it's not in our country.</line1>
+			<line2>It's in theirs. So, isn't this good  news indeed?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD66" next="2AD74">
+		<Speaker name="Waiter">
+			<line1>Then Eastside will finally witness  what we're truly capable of, sir.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD72">
+		<Speaker name="Archibald_Upset">
+			<line1>No, it-</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD72_2">
+		<Speaker name="Archibald_Normal">
+			<line1>doesn't...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD73" next="2AD79">
+		<Speaker name="Archibald_Upset">
+			<line1>But I must know!</line1>
+			<line2>I am an %expert% %in% %this% %field% myself!</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD74">
+		<Speaker name="Archibald_Normal">
+			<line1>This is right...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AQ21">
+		<Speaker name="Archibald_Upset">
+			<line1>BUT THE BOMB- THAT BOMB.</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="2WD67" clueID="CABIN3_1">Ask if he knows anything more</Choice1>
+			<Choice2 next="2WD68" clueID="CABIN3_1">Remain silent</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="2WD67" next="2AD75">
+		<Speaker name="Waiter">
+			<line1>Oh, did you also--</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD68" next="2AD77">
+		<Speaker name="Waiter">
+			<line1>....</line1>
+			<line2>(Let's not interrupt him.)</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD75">
+		<Speaker name="Archibald_Upset">
+			<line1>Stop what you are thinking right now!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD76" next="2AD79">
+		<Speaker name="Archibald_Upset">
+			<line1>I-I just happen to be an expert in  this field!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD77">
+		<Speaker name="Archibald_Normal">
+			<line1>What's with the sudden silence?</line1>
+			<line2>There's nothing odd about it!</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD78" next="2AD79">
+		<Speaker name="Archibald_Upset">
+			<line1>I just happen to know because I'm an  expert in this field.</line1>
+			<line2>Nothing more!</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD79">
+		<Speaker name="Archibald_Upset">
+			<line1>How else would I know the name of  that bomb?</line1>
+			<line2>Use your head, waiter!</line2>
+			<line3>....</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD80">
+		<Speaker name="Archibald_Upset">
+			<line1>Enough for the chat!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD81">
+		<Speaker name="Archibald_Normal">
+			<line1>I need a moment to concentrate.</line1>
+			<line2>At least this dessert should help me  forget all about your questionnaires.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD99">
+		<Speaker name="Archibald_Normal">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

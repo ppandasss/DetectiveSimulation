@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="1MD57">
+		<Speaker name="Martha_Happy">
+			<line1>This is exactly the one I mentioned!</line1>
+			<line2>Well done for managing to find it.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD58" next="1WD36">
+		<Speaker name="Martha_Normal">
+			<line1>May I ask the name of it? I want  to order this properly next time.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1WD36" next="1MD59">
+		<Speaker name="Waiter">
+			<line1>The name is scones, ma'am. Served  with cream and jam.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1MD59">
+		<Speaker name="Martha_Happy">
+			<line1>So that's the name!</line1>
+			<line2>Thank you, dear. I shall remember it.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

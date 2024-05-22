@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="2AD11">
+		<Speaker name="Archibald_Normal">
+			<line1>Come in.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD11_2">
+		<Speaker name="Archibald_Normal">
+			<line1>Well, I did not expect you to  return this soon.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AQ03">
+		<Speaker name="Archibald_Normal">
+			<line1>Seems even a simpleton like you  can manage not to mess things up.</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="2WD11">Thank you politely</Choice1>
+			<Choice2 next="2WD12">Ensure that he can trust in  your service</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="2WD11" next="2AD12_2">
+		<Speaker name="Waiter">
+			<line1>Thank you very much, sir.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD12">
+		<Speaker name="Waiter">
+			<line1>You can always trust in my service.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD12">
+		<Speaker name="Archibald_Happy">
+			<line1>Huh.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD12_2">
+		<Speaker name="Archibald_Normal">
+			<line1>Enough rambling. Just put my meal  down already.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD11_2">
+		<Speaker name="Waiter">
+			<line1>[You serve the meal to Sir Archibald  and start brewing the tea.]</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

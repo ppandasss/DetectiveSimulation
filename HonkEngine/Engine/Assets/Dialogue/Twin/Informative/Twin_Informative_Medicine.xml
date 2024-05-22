@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="3WD24_2">
+		<Speaker name="Waiter">
+			<line1>(That's a lot of medicine.)</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WQ02">
+		<Speaker name="Waiter">
+			<line1>(Why would a child need that much?)</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="3WD24" clueID="CABIN21_3">Ask if he needs assistance</Choice1>
+			<Choice2 next="3WD25" clueID="CABIN21_3">Ask if he takes them regularly?</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="3WD24" next="3ND61">
+		<Speaker name="Waiter">
+			<line1>Mr. Hartington.</line1>
+			<line2>Do you need help with... that?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD25" next="3ND62">
+		<Speaker name="Waiter">
+			<line1>May I ask, Mr. Hartington?</line1>
+			<line2>Do you need to take these every day?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND61" next="3ND63">
+		<Speaker name="Nathaniel_Normal">
+			<line1>Oh, don't worry!</line1>
+			<line2>This is just my %daily% %medicines.%</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND62">
+		<Speaker name="Nathaniel_Normal">
+			<line1>Yes, %every% %day% before a meal.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND63">
+		<Speaker name="Nathaniel_Normal">
+			<line1>Thanks for asking me. I almost forgot.</line1>
+			<line2>Usually, it's Eve who reminds me.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND64">
+		<Speaker name="Nathaniel_Sad">
+			<line1>Why didn't you tell me, sis?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED10">
+		<Speaker name="Evelyn_Normal">
+			<line1>S-sorry...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND65">
+		<Speaker name="Nathaniel_Disappoint">
+			<line1>Ugh, I'm tired of these medicines.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3NQ03">
+		<Speaker name="Nathaniel_Disappoint">
+			<line1>I don't want to take them anymore!</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="3WD27" clueID="CABIN22_0">Skipping a day might be fine</Choice1>
+			<Choice2 next="3WD28" clueID="CABIN22_0">Express understanding</Choice2>
+			<Choice3 next="3WD26" clueID="CABIN22_0">Encourage him to take medicine</Choice3>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="3WD26" next="3ND66">
+		<Speaker name="Waiter">
+			<line1>It will good for your body.</line1>
+			<line2>I believe you can do it.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD27" next="3ND68">
+		<Speaker name="Waiter">
+			<line1>Just one day might be fine.</line1>
+			<line2>I won't tell your parents.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD28" next="3ND69">
+		<Speaker name="Waiter">
+			<line1>I understand how you feel.</line1>
+			<line2>I hate taking medicine too.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND66">
+		<Speaker name="Nathaniel_Sad">
+			<line1>I know!</line1>
+			<line2>I guess I must take these anyway...</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND67">
+		<Speaker name="Nathaniel_Sad">
+			<line1>But it's so boring, though!</line1>
+			<line2>I've had to eat these since I was  a toddler.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD29" next="3EQ02">
+		<Speaker name="Waiter">
+			<line1>And that will help you get better.</line1>
+			<line2>I hope you recover soon.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND68">
+		<Speaker name="Nathaniel_Disappoint">
+			<line1>I wish I could!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND68_2" next="3ND71">
+		<Speaker name="Nathaniel_Sad">
+			<line1>I forgot to eat them once when I was  about five,</line1>
+			<line2>and my mother freaked out!</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND69">
+		<Speaker name="Nathaniel_Disappoint">
+			<line1>Right? And I've had to eat these  since I was a toddler.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND70" next="3ND71">
+		<Speaker name="Nathaniel_Sad">
+			<line1>It's so boring that some days I  almost forgot.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND71">
+		<Speaker name="Nathaniel_Normal">
+			<line1>So Eve needs to remind me every day,  right sis?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED10_2">
+		<Speaker name="Evelyn_Normal">
+			<line1>[Evelyn nods.]</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3EQ02">
+		<Speaker name="Evelyn_Normal">
+			<line1>.....</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="3WD32">Ask if she ever get  this sick</Choice1>
+			<Choice2 next="3WD31">Ask about taking care  of her brother</Choice2>
+			<Choice3 next="3WD30">Ask if she also need  to take these</Choice3>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="3WD30" next="3ED11">
+		<Speaker name="Waiter">
+			<line1>Do you also need to take these, Miss  Hartington?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD31" next="3ED12">
+		<Speaker name="Waiter">
+			<line1>You must have taken care a lot of Mr.  Hartington when you were younger.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD32" next="3ED13">
+		<Speaker name="Waiter">
+			<line1>Have you ever been this sick, Miss  Hartington?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED11">
+		<Speaker name="Evelyn_Sad">
+			<line1>I... Um...</line1>
+			<line2>I...</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND72">
+		<Speaker name="Nathaniel_Normal">
+			<line1>Oh, she doesn't.</line1>
+			<line2>Just me is enough.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND73" next="3ND74">
+		<Speaker name="Nathaniel_Sad">
+			<line1>I don't want her to become ill like me.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED12" next="3ND74">
+		<Speaker name="Evelyn_Sad">
+			<line1>Um... Sometimes, I guess.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED13" next="3ND74">
+		<Speaker name="Evelyn_Sad">
+			<line1>Ah... I guess... never?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND74">
+		<Speaker name="Nathaniel_Sad">
+			<line1>[After a long whine, Nathaniel  finally takes his medicines.]</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND75">
+		<Speaker name="Nathaniel_Disappoint">
+			<line1>Yuck!</line1>
+			<line2>I eat these every day, and I  still hate it to my gut.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND75_2">
+		<Speaker name="Nathaniel_Sad">
+			<line1>Mr. Waiter.</line1>
+			<line2>Could you... leave early, please?</line2>
+			<line3>I want to eat that sweet pastry  right now.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD33">
+		<Speaker name="Waiter">
+			<line1>Of course I can.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD34">
+		<Speaker name="Waiter">
+			<line1>But if I leave, the tea will also  turn bitter.</line1>
+			<line2>You wouldn't want bitter tea, right?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND76">
+		<Speaker name="Nathaniel_Disappoint">
+			<line1>Of course not!</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND76_2">
+		<Speaker name="Nathaniel_Happy">
+			<line1>I was only joking.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND77">
+		<Speaker name="Nathaniel_Normal">
+			<line1>But seriously, I think Eve must  be hungry by now.</line1>
+			<line2>It would be nice if she gets to  eat soon!</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ED14">
+		<Speaker name="Evelyn_Normal">
+			<line1>.....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>
