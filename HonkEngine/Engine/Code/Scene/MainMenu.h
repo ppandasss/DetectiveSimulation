@@ -114,9 +114,17 @@ private:
 
 	void clickPlay() { Application::Get().SetScene("Hallway"); }
 
-	void clickOptions() { Interface_Manager.ActivateInterface(OPTIONS);	}
+	void clickOptions() { 
+		//Interface_Manager.ActivateInterface(OPTIONS);	
+	}
 
-	void clickExit() { Interface_Manager.ActivateInterface(EXIT); }
+	void clickExit() { 
+
+		//Interface_Manager.ActivateInterface(EXIT); 
+
+		Application::Get().exitGame();
+	
+	}
 
 
 	bool startOfGame = true;

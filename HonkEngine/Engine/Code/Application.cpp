@@ -1,6 +1,5 @@
 #include "Application.h"
 
-
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes
 // ---------------------------------------------------------------------------------------------
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
@@ -37,7 +36,7 @@ void Application::ToggleFullscreen(GLFWwindow* window) {
 void processInput(GLFWwindow* window)
 {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-        Application::Get().exitGame();
+       Application::Get().exitGame();
         //glfwSetWindowShouldClose(window, true);
 
     static bool fsTogglePressedLastFrame = false;

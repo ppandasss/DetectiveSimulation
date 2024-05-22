@@ -25,6 +25,10 @@
 #include "../GameStateManager.h"
 #include "KitchenData.h"
 
+#include "../PopupWidget/PauseInterface.h"
+#include "../PopupWidget/OptionsTwoInterface.h"
+#include "../PopupWidget/InterfaceManager.h"
+
 
 
 class Hallway : public Scene
@@ -138,7 +142,6 @@ public:
 		Journal = new Book();
 		// Inside the Hallway constructor
 	
-
 		//activate clue in journal
 		/*JournalData::GetInstance()->ActivateClue(CABIN1, 0);
 		JournalData::GetInstance()->ActivateClue(CABIN1, 1);*/
@@ -197,8 +200,6 @@ public:
 		journalButton->SetOnClickAction([this]() { Journal->drawBook(); });
 		//journalButton->SetHoverTexture("Assets/Images/Timer.png");
 
-
-		
 
 		//TO TEST DRAW EMPTY UI
 		/*GameObject* box = new RenderGameObject("textbox", "Assets/Images/Square_Border.png");
@@ -274,6 +275,14 @@ public:
 		//Journal
 		m_gameObjects.push_back(Journal);
 
+		PauseInterface* pauseInterface = new PauseInterface();
+		InterfaceManager::getInstance().AddInterface(PAUSE, pauseInterface);
+
+		OptionsTwoInterface* optionsTwoInterface = new OptionsTwoInterface();
+		InterfaceManager::getInstance().AddInterface(OPTIONSTWO, optionsTwoInterface);
+
+		m_gameObjects.push_back(pauseInterface);
+		m_gameObjects.push_back(optionsTwoInterface);
 		
 
 	}

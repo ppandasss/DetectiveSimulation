@@ -8,7 +8,9 @@
 
 enum InterfaceType {
     OPTIONS,
-    EXIT
+    OPTIONSTWO,
+    EXIT,
+    PAUSE
 };
 
 class InterfaceManager {
@@ -29,11 +31,9 @@ public:
 
         if (it != interfaces.end()) {
             if (!activeInterfaces.empty()) {
-                // Optionally deactivate the top interface
-                activeInterfaces.top()->setActiveStatus(false);
-
+                // Deactivate the current top interface
+                 activeInterfaces.top()->setActiveStatus(false);
             }
-
             activeInterfaces.push(it->second);
             it->second->setActiveStatus(true);
 
@@ -75,15 +75,21 @@ public:
 
     }
 
+    Interface* GetInterface(InterfaceType type) {
+        auto it = interfaces.find(type);
+        if (it != interfaces.end()) {
+            return it->second.get(); // get() returns the raw pointer from a shared_ptr
+        }
+        return nullptr;
+    }
+
 
 private:
 
     InterfaceManager() {}
 
-
     //store all interfaces in the game
     std::map<InterfaceType, std::shared_ptr<Interface>> interfaces;
-
 
     //store active interfaces
     std::stack<std::shared_ptr<Interface>> activeInterfaces;

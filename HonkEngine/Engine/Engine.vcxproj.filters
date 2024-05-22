@@ -230,6 +230,18 @@
     <ClInclude Include="Code\PopupWidget\ExitInterface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Code\PopupWidget\PauseInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\PopupWidget\OptionsTwoInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Scene\JournalEntry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Scene\EndingScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\text.vs" />

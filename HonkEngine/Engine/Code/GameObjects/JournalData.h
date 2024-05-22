@@ -248,11 +248,18 @@ public:
 		return BookClueState[index];
 	}
 
+	//Use for ending scene to prevent closing book
+	bool GetBookState() {
+		return LockBook;
+	}
+	
+	void SetBookState(bool status) {
+		LockBook = status;
+	}
 
 private:
 
 	static JournalData* instance;
-
 
 	JournalData() {
 
@@ -274,6 +281,8 @@ private:
 	//BOOK CLUE (NOT THE SAME AS PAGE CLUEs
 	//STATE OF 2 DRAGGABLE OBJECTS IN BOOK
 	bool BookClueState[2] = { false, false };
+
+	bool LockBook = false; //Set as true so player can't close journal
 
 };
 
