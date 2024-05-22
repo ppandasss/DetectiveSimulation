@@ -19,7 +19,7 @@ public:
 
 		GameObject* PaperClip = new UIObject("PaperClip", "Assets/Images/Journal/Journal_Paperclip04.png", true);
 		PaperClip->SetScale(glm::vec3(0.51f, 0.92f, 0.0f));
-		PaperClip->SetPosition(glm::vec3(-5.0f, 3.01f, 0.0f));
+		PaperClip->SetPosition(glm::vec3(-5.0f, 3.46f, 0.0f));
 
 		GameObject* InfoPaper = new UIObject("InfoPaper", "Assets/Images/Journal/Passenger_InfoPaper.png", true);
 		InfoPaper->SetScale(glm::vec3(5.41f, 3.30f, 0.0f));
@@ -53,7 +53,7 @@ public:
 		// RIGHT PAGE
 		// CLUES	[N = Nathaniel, C = Clue]
 		Text* N_Clue1 = new Text("N_Clue1", "Moving to Westside to stay with his mother", "Assets/Fonts/ESA-smb.ttf");
-		N_Clue1->SetPosition(glm::vec3(0.87f, 2.7f, 0.0f));
+		N_Clue1->SetPosition(glm::vec3(0.87f, 2.65f, 0.0f));
 		N_Clue1->SetColor(glm::vec3(0.5, 0, 0));
 		N_Clue1->SetScale(0.55f);
 
@@ -63,12 +63,12 @@ public:
 		N_Clue2->SetScale(0.58f);
 
 		Text* N_Clue3 = new Text("N_Clue3", "Doesn't care about the bomb situation", "Assets/Fonts/ESA-m.ttf");
-		N_Clue3->SetPosition(glm::vec3(0.87f, 1.7f, 0.0f));
+		N_Clue3->SetPosition(glm::vec3(0.87f, 1.75f, 0.0f));
 		N_Clue3->SetColor(glm::vec3(0, 0, 0));
 		N_Clue3->SetScale(0.58f);
 
 		Text* N_Clue4 = new Text("N_Clue4", "Take medicine daily Chronic illness?", "Assets/Fonts/ESA-smb.ttf");
-		N_Clue4->SetPosition(glm::vec3(0.85f, 1.2f, 0.0f));
+		N_Clue4->SetPosition(glm::vec3(0.85f, 1.27f, 0.0f));
 		N_Clue4->SetColor(glm::vec3(0, 0, 0));
 		N_Clue4->SetScale(0.62f);
 
@@ -162,7 +162,7 @@ public:
 		RedUnderline_Cabin2 = new UIObject("UnderlineCabin2", "Assets/Images/Journal/CaseSummary_Icon_Red_Underline.png", true);
 		RedUnderline_Cabin2->setActiveStatus(false);
 		RedUnderline_Cabin2->SetScale(glm::vec3(1.7f, 0.1f, 0.0f));
-		RedUnderline_Cabin2->SetPosition(glm::vec3(1.1f, -2.0f, 0.0f));
+		RedUnderline_Cabin2->SetPosition(glm::vec3(3.72f, -3.05f, 0.0f));
 
 
 		ClueData* cabin21_clue7 = new ClueData();

@@ -19,7 +19,7 @@ public:
 
 		GameObject* PaperClip = new UIObject("PaperClip", "Assets/Images/Journal/Journal_Paperclip04.png", true);
 		PaperClip->SetScale(glm::vec3(0.51f, 0.92f, 0.0f));
-		PaperClip->SetPosition(glm::vec3(-4.85f, 3.0f, 0.0f));
+		PaperClip->SetPosition(glm::vec3(-4.85f, 3.46f, 0.0f));
 
 		GameObject* InfoPaper = new UIObject("InfoPaper", "Assets/Images/Journal/Passenger_InfoPaper.png", true);
 		InfoPaper->SetScale(glm::vec3(5.41f, 3.30f, 0.0f));
@@ -53,7 +53,7 @@ public:
 		// RIGHT PAGE
 		// CLUES	[A = Archibald, C = Clue]
 		Text* A_Clue1 = new Text("A_Clue1", "Wealthy background with a large business", "Assets/Fonts/ESA-m.ttf");
-		A_Clue1->SetPosition(glm::vec3(0.9f, 2.7f, 0.0f));
+		A_Clue1->SetPosition(glm::vec3(0.9f, 2.65f, 0.0f));
 		A_Clue1->SetColor(glm::vec3(0, 0, 0));
 		A_Clue1->SetScale(0.56f);
 
@@ -63,17 +63,17 @@ public:
 		A_Clue2->SetScale(0.64f);
 
 		Text* A_Clue3 = new Text("A_Clue3", "Messy attire", "Assets/Fonts/ESA-smb.ttf");
-		A_Clue3->SetPosition(glm::vec3(0.9f, 1.7f, 0.0f));
+		A_Clue3->SetPosition(glm::vec3(0.9f, 1.75f, 0.0f));
 		A_Clue3->SetColor(glm::vec3(0, 0, 0));
 		A_Clue3->SetScale(0.6f);
 
 		Text* A_Clue4 = new Text("A_Clue4", "Politic insider newspapers", "Assets/Fonts/ESA-m.ttf");
-		A_Clue4->SetPosition(glm::vec3(3.1f, 1.7f, 0.0f));
+		A_Clue4->SetPosition(glm::vec3(3.1f, 1.76f, 0.0f));
 		A_Clue4->SetColor(glm::vec3(0, 0, 0));
 		A_Clue4->SetScale(0.53f);
 
 		Text* A_Clue5 = new Text("A_Clue5", "Carrying a strange gadget with his luggage", "Assets/Fonts/ESA-smb.ttf");
-		A_Clue5->SetPosition(glm::vec3(0.88f, 1.2f, 0.0f));
+		A_Clue5->SetPosition(glm::vec3(0.88f, 1.27f, 0.0f));
 		A_Clue5->SetColor(glm::vec3(0, 0, 0));
 		A_Clue5->SetScale(0.6f);
 
@@ -196,7 +196,7 @@ public:
 		RedUnderline_Cabin4 = new UIObject("UnderlineCabin4", "Assets/Images/Journal/CaseSummary_Icon_Red_Underline.png", true);
 		RedUnderline_Cabin4->setActiveStatus(false);
 		RedUnderline_Cabin4->SetScale(glm::vec3(1.7f, 0.1f, 0.0f));
-		RedUnderline_Cabin4->SetPosition(glm::vec3(1.1f, -2.0f, 0.0f));
+		RedUnderline_Cabin4->SetPosition(glm::vec3(1.66f, -3.05f, 0.0f));
 
 		ClueData* cabin3_clue10 = new ClueData();
 		cabin3_clue10->showClue = false;

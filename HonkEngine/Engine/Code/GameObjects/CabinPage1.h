@@ -19,7 +19,7 @@ public:
 
 		GameObject* PaperClip = new UIObject("PaperClip", "Assets/Images/Journal/Journal_Paperclip04.png", true);
 		PaperClip->SetScale(glm::vec3(0.49f, 0.91f, 0.0f));
-		PaperClip->SetPosition(glm::vec3(-4.0f, 3.01f, 0.0f));
+		PaperClip->SetPosition(glm::vec3(-4.0f, 3.47f, 0.0f));
 
 		GameObject* InfoPaper = new UIObject("InfoPaper", "Assets/Images/Journal/Passenger_InfoPaper.png", true);
 		InfoPaper->SetScale(glm::vec3(5.41f, 3.30f, 0.0f));
@@ -54,7 +54,7 @@ public:
 		// CLUES	[M = Martha, C = Clue]	
 
 		Text* M_C1 = new Text("M_C1", "First time visiting Westside", "Assets/Fonts/ESA-m.ttf");
-		M_C1->SetPosition(glm::vec3(0.9f, 2.7f, 0.0f));
+		M_C1->SetPosition(glm::vec3(0.9f, 2.65f, 0.0f));
 		M_C1->SetColor(glm::vec3(0, 0, 0));
 		M_C1->SetScale(0.6f);
 
@@ -64,12 +64,12 @@ public:
 		M_C2->SetScale(0.6f);
 
 		Text* M_C3 = new Text("M_C3", "Severe domestic violence accident", "Assets/Fonts/ESA-m.ttf");
-		M_C3->SetPosition(glm::vec3(0.9f, 1.7f, 0.0f));
+		M_C3->SetPosition(glm::vec3(0.9f, 1.75f, 0.0f));
 		M_C3->SetColor(glm::vec3(0, 0, 0));
 		M_C3->SetScale(0.6f);
 
 		Text* M_C4 = new Text("M_C4", "Westside pen-pal friend", "Assets/Fonts/ESA-m.ttf");
-		M_C4->SetPosition(glm::vec3(0.9f, 1.2f, 0.0f));
+		M_C4->SetPosition(glm::vec3(0.9f, 1.27f, 0.0f));
 		M_C4->SetColor(glm::vec3(0.5, 0, 0));
 		M_C4->SetScale(0.65f);
 
@@ -112,7 +112,7 @@ public:
 		ClueData* cabin1_clue5 = new ClueData();
 		cabin1_clue5->showClue = false;
 		cabin1_clue5->clueObject = M_LA1;
-		cabin1_clue5->isEvidence = true;
+		cabin1_clue5->isEvidence = false;
 
 		ClueData* cabin1_clue6 = new ClueData();
 		cabin1_clue6->showClue = false;
@@ -164,7 +164,7 @@ public:
 		RedUnderline_Cabin1 = new UIObject("UnderlineCabin1", "Assets/Images/Journal/CaseSummary_Icon_Red_Underline.png", true);
 		RedUnderline_Cabin1->setActiveStatus(false);
 		RedUnderline_Cabin1->SetScale(glm::vec3(1.7f, 0.1f, 0.0f));
-		RedUnderline_Cabin1->SetPosition(glm::vec3(1.1f, -2.0f, 0.0f));
+		RedUnderline_Cabin1->SetPosition(glm::vec3(1.66f, -2.53f, 0.0f));
 
 		ClueData* cabin1_clue7 = new ClueData();
 		cabin1_clue7->showClue = false;

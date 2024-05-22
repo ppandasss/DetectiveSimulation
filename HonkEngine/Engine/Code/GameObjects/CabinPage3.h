@@ -19,7 +19,7 @@ public:
 
 		GameObject* PaperClip = new UIObject("PaperClip", "Assets/Images/Journal/Journal_Paperclip04.png", true);
 		PaperClip->SetScale(glm::vec3(0.51f, 0.92f, 0.0f));
-		PaperClip->SetPosition(glm::vec3(-4.35f, 3.01f, 0.0f));
+		PaperClip->SetPosition(glm::vec3(-4.35f, 3.46f, 0.0f));
 
 		GameObject* InfoPaper = new UIObject("InfoPaper", "Assets/Images/Journal/Passenger_InfoPaper.png", true);
 		InfoPaper->SetScale(glm::vec3(5.41f, 3.30f, 0.0f));
@@ -53,7 +53,7 @@ public:
 		// RIGHT PAGE
 		// CLUES	[E = Evelyn, C = Clue]
 		Text* E_Clue1 = new Text("E_Clue1", "Moving to Westside to stay with her mother", "Assets/Fonts/ESA-smb.ttf");
-		E_Clue1->SetPosition(glm::vec3(0.87f, 2.7f, 0.0f));
+		E_Clue1->SetPosition(glm::vec3(0.87f, 2.65f, 0.0f));
 		E_Clue1->SetColor(glm::vec3(0.5, 0, 0));
 		E_Clue1->SetScale(0.55f);
 
@@ -63,19 +63,19 @@ public:
 		E_Clue2->SetScale(0.58f);
 
 		Text* E_Clue3 = new Text("E_Clue3", "Afraid to talk about National Day event", "Assets/Fonts/ESA-m.ttf");
-		E_Clue3->SetPosition(glm::vec3(0.87f, 1.7f, 0.0f));
+		E_Clue3->SetPosition(glm::vec3(0.87f, 1.75f, 0.0f));
 		E_Clue3->SetColor(glm::vec3(0, 0, 0));
 		E_Clue3->SetScale(0.58f);
 
 		Text* E_Clue4 = new Text("E_Clue4", "Strangely scared of the bomb situation", "Assets/Fonts/ESA-smb.ttf");
-		E_Clue4->SetPosition(glm::vec3(0.85f, 1.2f, 0.0f));
+		E_Clue4->SetPosition(glm::vec3(0.85f, 1.27f, 0.0f));
 		E_Clue4->SetColor(glm::vec3(0, 0, 0));
 		E_Clue4->SetScale(0.62f);
 
 		ClueData* cabin22_clue1 = new ClueData();
 		cabin22_clue1->showClue = false;
 		cabin22_clue1->clueObject = E_Clue1;
-		cabin22_clue1->isEvidence = false;
+		cabin22_clue1->isEvidence = true;
 
 		ClueData* cabin22_clue2 = new ClueData();
 		cabin22_clue2->showClue = false;
@@ -113,7 +113,7 @@ public:
 		ClueData* cabin22_clue6 = new ClueData();
 		cabin22_clue6->showClue = false;
 		cabin22_clue6->clueObject = E_LA2;
-		cabin22_clue6->isEvidence = false;
+		cabin22_clue6->isEvidence = true;
 
 		textClues.push_back(cabin22_clue1);
 		textClues.push_back(cabin22_clue2);
@@ -161,7 +161,7 @@ public:
 		RedUnderline_Cabin3 = new UIObject("UnderlineCabin3", "Assets/Images/Journal/CaseSummary_Icon_Red_Underline.png", true);
 		RedUnderline_Cabin3->setActiveStatus(false);
 		RedUnderline_Cabin3->SetScale(glm::vec3(1.7f, 0.1f, 0.0f));
-		RedUnderline_Cabin3->SetPosition(glm::vec3(1.1f, -2.0f, 0.0f));
+		RedUnderline_Cabin3->SetPosition(glm::vec3(3.72f, -3.05f, 0.0f));
 
 		ClueData* cabin22_clue7 = new ClueData();
 		cabin22_clue7->showClue = false;

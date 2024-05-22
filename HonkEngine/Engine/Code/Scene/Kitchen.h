@@ -553,6 +553,7 @@ public:
 		if (AssamBlackTea->withinRage(teaDropArea->GetOnscreenPosition(), snapThreshold)) {
 			Kitchen_Data->setTea(ASSAMTEA);
 			updateTeaObjects();
+			audioManager.PlaySound("plateSound3");
 		}
 
 	}
@@ -565,6 +566,7 @@ public:
 		if (EarlGreyTea->withinRage(teaDropArea->GetOnscreenPosition(), snapThreshold)) {
 			Kitchen_Data->setTea(EARLGREYTEA);
 			updateTeaObjects();
+			audioManager.PlaySound("plateSound3");
 		}
 
 	}
@@ -577,6 +579,7 @@ public:
 		if (GreenTea->withinRage(teaDropArea->GetOnscreenPosition(), snapThreshold)) {
 			Kitchen_Data->setTea(GREENTEA);
 			updateTeaObjects();
+			audioManager.PlaySound("plateSound3");
 		}
 	}
 
@@ -587,6 +590,7 @@ public:
 		if (ChamomileTea->withinRage(teaDropArea->GetOnscreenPosition(), snapThreshold)) {
 			Kitchen_Data->setTea(CHAMOMILETEA);
 			updateTeaObjects();
+			audioManager.PlaySound("plateSound3");
 		}
 	}
 
@@ -597,6 +601,7 @@ public:
 		if (SalmonSandwich->withinRage(sandwichDropArea->GetOnscreenPosition(), snapThreshold)) {
 			Kitchen_Data->setSandwich(SALMON);
 			updateSandwichObjects();
+			audioManager.PlaySound("plateSound2");
 		}
 	}
 
@@ -607,6 +612,7 @@ public:
 		if (EggSandwich->withinRage(sandwichDropArea->GetOnscreenPosition(), snapThreshold)) {
 			Kitchen_Data->setSandwich(EGG);
 			updateSandwichObjects();
+			audioManager.PlaySound("plateSound2");
 		}
 	}
 
@@ -617,6 +623,7 @@ public:
 		if (CucumberSandwich->withinRage(sandwichDropArea->GetOnscreenPosition(), snapThreshold)) {
 			Kitchen_Data->setSandwich(CUCUMBER);
 			updateSandwichObjects();
+			audioManager.PlaySound("plateSound2");
 		}
 	}
 
@@ -627,6 +634,7 @@ public:
 		if (BeefSandwich->withinRage(sandwichDropArea->GetOnscreenPosition(), snapThreshold)) {
 			Kitchen_Data->setSandwich(BEEF);
 			updateSandwichObjects();
+			audioManager.PlaySound("plateSound2");
 		}
 	}
 
@@ -638,6 +646,7 @@ public:
 		if (Eclair->withinRage(dessertDropArea->GetOnscreenPosition(), snapThreshold)) {
 			Kitchen_Data->setDessert(ECLAIR);
 			updateDessertObjects();
+			audioManager.PlaySound("plateSound4");
 		}
 	}
 
@@ -648,6 +657,7 @@ public:
 		if (LemonTart->withinRage(dessertDropArea->GetOnscreenPosition(), snapThreshold)) {
 			Kitchen_Data->setDessert(TART);
 			updateDessertObjects();
+			audioManager.PlaySound("plateSound4");
 		}
 	}
 
@@ -658,6 +668,7 @@ public:
 		if (Scone->withinRage(dessertDropArea->GetOnscreenPosition(), snapThreshold)) {
 			Kitchen_Data->setDessert(SCONE);
 			updateDessertObjects();
+			audioManager.PlaySound("plateSound4");
 		}
 	}
 
@@ -668,6 +679,7 @@ public:
 		if (Macaron->withinRage(dessertDropArea->GetOnscreenPosition(), snapThreshold)) {
 			Kitchen_Data->setDessert(MACARON);
 			updateDessertObjects();
+			audioManager.PlaySound("plateSound4");
 		}
 	}
 
@@ -678,6 +690,7 @@ public:
 		if (Milk->withinRage(dessertDropArea->GetOnscreenPosition(), snapThreshold)) {
 			Kitchen_Data->setOptional(MILK);
 			updateOptionalObjects();
+			audioManager.PlaySound("plateSound1");
 		}
 
 	}

@@ -19,7 +19,7 @@ public:
 
 		GameObject* PaperClip = new UIObject("PaperClip", "Assets/Images/Journal/Journal_Paperclip04.png", true);
 		PaperClip->SetScale(glm::vec3(0.51f, 0.92f, 0.0f));
-		PaperClip->SetPosition(glm::vec3(-3.75f, 3.01f, 0.0f));
+		PaperClip->SetPosition(glm::vec3(-3.75f, 3.47f, 0.0f));
 
 		GameObject* InfoPaper = new UIObject("InfoPaper", "Assets/Images/Journal/Passenger_InfoPaper.png", true);
 		InfoPaper->SetScale(glm::vec3(5.41f, 3.30f, 0.0f));
@@ -53,7 +53,7 @@ public:
 		// RIGHT PAGE
 		// CLUES	[O = Octavia, C = Clue]
 		Text* O_Clue1 = new Text("O_Clue1", "Westside's Minister ex-wife", "Assets/Fonts/ESA-smb.ttf");
-		O_Clue1->SetPosition(glm::vec3(0.9f, 2.7f, 0.0f));
+		O_Clue1->SetPosition(glm::vec3(0.9f, 2.65f, 0.0f));
 		O_Clue1->SetColor(glm::vec3(0, 0, 0));
 		O_Clue1->SetScale(0.53f);
 
@@ -63,12 +63,12 @@ public:
 		O_Clue2->SetScale(0.54f);
 
 		Text* O_Clue3 = new Text("O_Clue3", "High cult missionary", "Assets/Fonts/ESA-m.ttf");
-		O_Clue3->SetPosition(glm::vec3(0.9f, 1.7f, 0.0f));
+		O_Clue3->SetPosition(glm::vec3(0.9f, 1.75f, 0.0f));
 		O_Clue3->SetColor(glm::vec3(0, 0, 0));
 		O_Clue3->SetScale(0.58f);
 
 		Text* O_Clue4 = new Text("O_Clue4", "The cult obsessively dedicated to Westside", "Assets/Fonts/ESA-smb.ttf");
-		O_Clue4->SetPosition(glm::vec3(0.88f, 1.2f, 0.0f));
+		O_Clue4->SetPosition(glm::vec3(0.88f, 1.27f, 0.0f));
 		O_Clue4->SetColor(glm::vec3(0.5, 0, 0));
 		O_Clue4->SetScale(0.58f);
 
@@ -163,7 +163,7 @@ public:
 		RedUnderline_Cabin5 = new UIObject("UnderlineCabin5", "Assets/Images/Journal/CaseSummary_Icon_Red_Underline.png", true);
 		RedUnderline_Cabin5->setActiveStatus(false);
 		RedUnderline_Cabin5->SetScale(glm::vec3(1.7f, 0.1f, 0.0f));
-		RedUnderline_Cabin5->SetPosition(glm::vec3(1.1f, -2.0f, 0.0f));
+		RedUnderline_Cabin5->SetPosition(glm::vec3(3.72f, -2.535f, 0.0f));
 
 		ClueData* cabin4_clue7 = new ClueData();
 		cabin4_clue7->showClue = false;
