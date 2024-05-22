@@ -72,7 +72,6 @@ private:
 	bool firstEntry = true;
 	bool inDoorCollision = false;
 	bool entering = false;
-
 	
 public:
 	Hallway() :audioManager(AudioManager::GetInstance())
@@ -112,7 +111,7 @@ public:
 		GameObject* hallway = new RenderGameObject("Cabin", "Assets/Images/Corridor/Corridor_Background.png");
 		GameObject* hallwaylights = new RenderGameObject("CabinLights", "Assets/Images/Corridor/Corridor_Light.png");
 		
-		transitionObject = new UINormal("Transition", "Assets/Images/black.png", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.0f, 10.0f, 0.0f), true);
+		transitionObject = new UINormal("Transition", "Assets/Images/black.png", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(25.0f, 20.0f, 0.0f), true);
 		transitionEffects = std::make_unique<TransitionEffects>(transitionObject);
 		
 		/*-------------------------------------------------------------🚪CREATE DOORS🚪------------------------------------------------------------------------------------------------------- */
@@ -358,14 +357,13 @@ public:
 					bellCabin4->startRinging();
 					room4Door->setPermission(true);
 					}, false);
-			}
-			else if(currentGameState == GameState::END_STATE && currentRoomState == RoomState::End) {
+			}else if (currentGameState == GameState::END_STATE && currentRoomState == RoomState::End) {
 				player->StopMovement();
-				transitionEffects->FadeOut(2.0f, "JournalEntry", [this]() {
-					std::cout << "Fade out complete" << std::endl;
-					});
-			}
-
+				transitionEffects->FadeOut(2.0f, [this]() {
+					std::cout << "Fade Out complete" << std::endl;
+					Application::Get().SetScene("JournalEntry");
+				});
+		}
 		
 
 		entering = false;
@@ -386,6 +384,8 @@ public:
 		bellManager.Update(dt, frame);
 
 		KitchenData* foodData = KitchenData::GetInstance();
+
+		transitionEffects->Update(dt);
 
 		if (player) {
 			glm::vec3 playerPos = player->GetPosition();
@@ -435,10 +435,9 @@ public:
 			instructionText->setActiveStatus(isNearDoor);
 		}
 
-
-		
-
 	}
+
+	
 
 
 	void OnExit() override {

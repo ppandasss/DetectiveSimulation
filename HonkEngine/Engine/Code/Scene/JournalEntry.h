@@ -5,6 +5,8 @@
 #include "../GameObjects/RenderGameObject.h"
 #include"../GameObjects/AnimateGameObject.h"	
 #include "../Text/Text.h"
+#include "../Effects/TransitionEffects.h"
+#include "../UI/UIElement.h"
 
 #include "../UI/UIButton.h"
 
@@ -15,7 +17,10 @@ class JournalEntry : public Scene {
 
 public:
 
-	JournalEntry() {
+	JournalEntry() :audioManager(AudioManager::GetInstance()) {
+
+		audioManager.LoadSound("cabinMusic", "Assets/Sounds/Music/BGmusic_Cabin.mp3", Music,4.0f);
+		audioManager.LoadSound("CaseCloseStamp", "Assets/Sounds/SFX_CaseCloseStamp.mp3",SFX, 1.0f);
 
 		GameObject* EntrySceneBackground = new UIObject("EntrySceneBackground", "Assets/Images/Ending/EndingSelect_Background.png", true);
 		EntrySceneBackground->SetScale(glm::vec3(19.2f, 10.8f, 0.0f));
@@ -25,45 +30,64 @@ public:
 		CloseCaseButton->SetHoverTexture("Assets/Images/Ending/EndingSelect_StampBorCut.png");
 		CloseCaseButton->SetOnClickAction([this]() { SubmitEvidence(); });
 
+		transitionObject = new UINormal("Transition", "Assets/Images/black.png", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(25.0f, 20.0f, 0.0f), true);
+		transitionEffects = std::make_unique<TransitionEffects>(transitionObject);
+
+		instructionText = new Text("instruction", "Please Submit your final choice.", "Assets/Fonts/mvboli.ttf", true);
+		instructionText->SetScale(0.6f);
+		instructionText->SetPosition(glm::vec3(7.30f, -4.5f, 0.0f));
+		instructionText->SetColor(glm::vec3(1, 1, 1));
+
 		Journal = new Book();
-		
-		m_gameObjects.push_back(EntrySceneBackground); 
+
+		m_gameObjects.push_back(EntrySceneBackground);
 		m_gameObjects.push_back(Journal);
 
 		Journal->drawBook();
-
 		m_gameObjects.push_back(CloseCaseButton);
+		m_gameObjects.push_back(instructionText);
+		m_gameObjects.push_back(transitionObject);
 
 	}
 
-	void Update(float dt, long frame)
-	{
+	void Update(float dt, long frame) {
 		Scene::Update(dt, frame);
-
-		Input& input = Application::GetInput();
-	
-		if (input.Get().GetKeyDown(GLFW_KEY_J)) {
-			Application::Get().SetScene("Hallway");
-		}	
-
+		transitionEffects->Update(dt);
 	}
-
-
 	void OnEnter() override {
-		JournalData::GetInstance()->SetBookState(true); //Lock book
+		audioManager.PlaySound("cabinMusic", true);
+		JournalData::GetInstance()->SetBookState(true); //Lock book	
+		transitionEffects->FadeIn(2.0f, [this]() {
+			std::cout << "Fade in complete" << std::endl;
+			});
+		audioManager.StopSound("trainAmbience");
 	}
+
+
 
 	void SubmitEvidence() {
 		std::cout << "Submit Evidence" << std::endl;
-		Application::Get().SetScene("EndingScene");
+		audioManager.PlaySound("CaseCloseStamp");
+		transitionEffects->FadeOut(2.0f, [this]() {
+			std::cout << "Fade Out complete" << std::endl;
+			Application::Get().SetScene("EndScene");
+			});
 		return;
+	}
+
+	void OnExit() override {
+
+		audioManager.StopSound("cabinMusic");
+
 	}
 
 
 private:
 
+	UIElement* transitionObject;
+	std::unique_ptr<TransitionEffects> transitionEffects;
+	AudioManager& audioManager;
 	Book* Journal;
+	Text* instructionText;
 
 };
-
-

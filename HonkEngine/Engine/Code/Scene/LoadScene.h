@@ -99,6 +99,12 @@ public:
         }
     }
 
+    void OnExit() override
+	{
+		// Ensure cursor is visible when exiting the scene
+		Application::Get().ToggleCursorSetting(true);
+	}
+
 
 
 };

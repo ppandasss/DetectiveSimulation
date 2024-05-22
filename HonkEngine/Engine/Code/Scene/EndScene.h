@@ -14,12 +14,15 @@ class EndScene : public Scene {
 
 public:
 
-	EndScene() {
+	EndScene() :audioManager(AudioManager::GetInstance())
+	{
 
+		audioManager.LoadSound("EndSceneBGMusic", "Assets/Sounds//Music/BGmusic_EndingCutscene.mp3",Music, 1.0f);
+		audioManager.LoadSound("NewspaperSlam", "Assets/Sounds/SFX_EndingNewspaperSlam.mp3",SFX, 1.0f);
 
-		GameObject* EndingSceneBackground = new UIObject("EndingSceneBackground", "Assets/Images/Ending/EndingSelect_Background.png", true);
-		EndingSceneBackground->SetScale(glm::vec3(19.2f, 10.8f, 0.0f));
-		EndingSceneBackground->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
+		GameObject* EndSceneBackground = new UIObject("EndSceneBackground", "Assets/Images/Ending/EndingSelect_Background.png", true);
+		EndSceneBackground->SetScale(glm::vec3(19.2f, 10.8f, 0.0f));
+		EndSceneBackground->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
 		MissingPoster = new UIObject("MissingPoster", "Assets/Images/Ending/MissingPoster.png", true);
 		MissingPoster->SetScale(glm::vec3(6.24f, 10.24f, 0.0f));
@@ -56,7 +59,7 @@ public:
 		Endings[END5] = Ending5;
 		Endings[END6] = Ending6;
 
-		m_gameObjects.push_back(EndingSceneBackground);
+		m_gameObjects.push_back(EndSceneBackground);
 		m_gameObjects.push_back(MissingPoster);
 		m_gameObjects.push_back(Ending1);
 		m_gameObjects.push_back(Ending2);
@@ -69,9 +72,18 @@ public:
 
 	void OnEnter() override {
 
+		audioManager.PlaySound("NewspaperSlam");
+		audioManager.PlaySound("EndSceneBGMusic", true);
 		final_ending = journal_data->checkMainPageEntry();
 		SetFinalScene(final_ending);
 		currentTime = 0.0f;
+
+	}
+
+
+	void OnExit() override {
+
+		audioManager.StopSound("EndSceneBGMusic");
 
 	}
 
@@ -102,9 +114,10 @@ public:
 
 		Scene::Update(dt, frame);
 
-		currentTime += dt;
 
-		if (ChosenEndingPoster && currentTime <= zoomInDuration) { // Adjust the duration to 1.5 seconds
+		if (ChosenEndingPoster && currentTime <= zoomInDuration) {
+
+			currentTime += dt;
 			float progress = currentTime / zoomInDuration;
 			// Interpolating from 180% to 100%
 			float targetScaleX = 25.848f - (11.488f * progress); // Decreasing from 25.848 to 14.36
@@ -112,11 +125,25 @@ public:
 			ChosenEndingPoster->SetScale(glm::vec3(targetScaleX, targetScaleY, 0.0f));
 		}
 
+		Input& input = Application::GetInput();
+
+		if (input.Get().GetKey(GLFW_KEY_SPACE))
+		{
+			Application::Get().SetScene("MainMenu");
+		}
+
+		if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1))
+		{
+			Application::Get().SetScene("MainMenu");
+		}
+
 
 	}
 
 
 private:
+
+	AudioManager& audioManager;
 
 	JournalData* journal_data = JournalData::GetInstance();
 

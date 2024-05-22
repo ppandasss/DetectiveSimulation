@@ -170,10 +170,6 @@ private:
         // END
         stateActions[std::make_pair(GameState::END_STATE, RoomState::End)] = []() {
             // End cutscene
-            Application::Get().SetTimer(3000, []() {
-
-                Application::Get().SetScene("JournalEntry");
-                },false);
             };
     }
 

@@ -6,7 +6,7 @@
 class TransitionEffects {
 public:
     TransitionEffects(UIElement* uiElement)
-        : uiElement(uiElement), isActive(false) {
+        : uiElement(uiElement), isActive(false), elapsedTime(0.0f), duration(0.0f), initialAlpha(0.0f), targetAlpha(0.0f), onComplete(nullptr) {
         if (uiElement) {
             uiElement->setActiveStatus(false);
             uiElement->SetAlpha(0.0f);  // Ensure it's initially transparent
@@ -19,54 +19,52 @@ public:
         uiElement->setActiveStatus(true);
         isActive = true;
 
-        // Initialize alpha to transparent
-        float initialAlpha = 0.0f;
-        float targetAlpha = 1.0f;
-        float elapsedTime = 0.0f;
-
-        Application::Get().SetTimer(static_cast<int>(duration * 1000), [this, initialAlpha, targetAlpha, duration, &elapsedTime, onComplete]() mutable {
-            double deltaTime = Application::Get().GetDeltaTime();
-            elapsedTime += deltaTime;
-            float alpha = initialAlpha + (targetAlpha - initialAlpha) * (elapsedTime / duration);
-            uiElement->SetAlpha(alpha);
-
-            if (elapsedTime >= duration) {
-                uiElement->SetAlpha(targetAlpha);
-                uiElement->setActiveStatus(false);
-                isActive = false;
-                if (onComplete) onComplete();
-            }
-            }, true);
+        // Initialize alpha to fully opaque
+        this->duration = duration;
+        this->initialAlpha = 1.0f;
+        this->targetAlpha = 0.0f;
+        this->elapsedTime = 0.0f;
+        this->onComplete = onComplete;
     }
 
-    void FadeOut(float duration, const std::string& nextScene, std::function<void()> onComplete = nullptr) {
+    void FadeOut(float duration, std::function<void()> onComplete = nullptr) {
         if (!uiElement) return;
 
         uiElement->setActiveStatus(true);
         isActive = true;
 
-        // Initialize alpha to opaque
-        float initialAlpha = 1.0f;
-        float targetAlpha = 0.0f;
-        float elapsedTime = 0.0f;
+        // Initialize alpha to fully transparent
+        this->duration = duration;
+        this->initialAlpha = 0.0f;
+        this->targetAlpha = 1.0f;
+        this->elapsedTime = 0.0f;
+        this->onComplete = onComplete;
+    }
 
-        Application::Get().SetTimer(static_cast<int>(duration * 1000), [this, initialAlpha, targetAlpha, duration, &elapsedTime, nextScene, onComplete]() mutable {
-            double deltaTime = Application::Get().GetDeltaTime();
-            elapsedTime += deltaTime;
-            float alpha = initialAlpha + (targetAlpha - initialAlpha) * (elapsedTime / duration);
-            uiElement->SetAlpha(alpha);
+    void Update(float dt) {
+        if (!isActive || !uiElement) return;
 
-            if (elapsedTime >= duration) {
-                uiElement->SetAlpha(targetAlpha);
+        elapsedTime += dt;
+        float alpha = initialAlpha + (targetAlpha - initialAlpha) * (elapsedTime / duration);
+        uiElement->SetAlpha(alpha);
+
+        if (elapsedTime >= duration) {
+            uiElement->SetAlpha(targetAlpha);
+            isActive = false;
+            if (onComplete) onComplete();
+            // Deactivate UIElement after FadeIn is complete
+            if (targetAlpha == 0.0f) {
                 uiElement->setActiveStatus(false);
-                isActive = false;
-                Application::Get().SetScene(nextScene);
-                if (onComplete) onComplete();
             }
-            }, true);
+        }
     }
 
 private:
     UIElement* uiElement;
     bool isActive;
+    float elapsedTime;
+    float duration;
+    float initialAlpha;
+    float targetAlpha;
+    std::function<void()> onComplete;
 };
