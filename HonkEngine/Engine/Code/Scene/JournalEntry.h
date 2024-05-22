@@ -30,6 +30,7 @@ public:
 		CloseCaseButton->SetHoverTexture("Assets/Images/Ending/EndingSelect_StampBorCut.png");
 		CloseCaseButton->SetOnClickAction([this]() { SubmitEvidence(); });
 
+
 		transitionObject = new UINormal("Transition", "Assets/Images/black.png", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(25.0f, 20.0f, 0.0f), true);
 		transitionEffects = std::make_unique<TransitionEffects>(transitionObject);
 

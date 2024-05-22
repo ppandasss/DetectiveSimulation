@@ -25,7 +25,7 @@
 #include "../GameStateManager.h"
 #include "KitchenData.h"
 
-#define ORDER_DURATION 1000 //in milliseconds
+#define ORDER_DURATION 10000 //in milliseconds
 #include "../PopupWidget/PauseInterface.h"
 #include "../PopupWidget/OptionsTwoInterface.h"
 #include "../PopupWidget/InterfaceManager.h"
