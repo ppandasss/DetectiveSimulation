@@ -254,7 +254,7 @@ public:
 
 	void setSpy4() {
 
-		m_journalData->SetPlayerSpyChoice(CABIN3);
+		m_journalData->SetPlayerSpyChoice(CABIN4);
 
 		//sets button text to current spys evidence
 		updateEvidenceButtonText();
@@ -263,7 +263,6 @@ public:
 			redCircle->showObject = true;
 		}
 		redCircle->gameObj->SetPosition(glm::vec3(2.65f, 0.25f, 0.0f));
-			audioManager.PlaySound("SpyCircle");
 	};
 
 	void clickEvidenceButton() {

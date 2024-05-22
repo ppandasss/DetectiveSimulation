@@ -378,7 +378,7 @@ public:
 		audioManager.PlaySound("kitchenAmbience", true);
 		audioManager.PlaySound("slideDoor");
 
-		if (GameStateManager::GetInstance().getRoomState() == RoomState::Order)
+		if (GameStateManager::GetInstance().getRoomState() != RoomState::Prepare)
 		{
 			clearPlate();
 		}
