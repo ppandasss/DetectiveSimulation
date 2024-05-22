@@ -30,8 +30,8 @@ private:
     Door* kichenDoor = DoorManager::GetInstance().GetDoorByName("KitchenDoor");
 
 
-    UIElement* pamphlet;
-    UIButton* pamphletInspect;
+    UIElement* poster;
+    UIButton* posterInspect;
     UIElement* dagger;
     UIButton* daggerInspect;
     UIElement* bag;
@@ -42,9 +42,6 @@ public:
 
         timer = &Timer::GetInstance();
 
-        audioManager.LoadSound("cabinMusic", "Assets/Sounds/Music/BGmusic_Cabin.mp3", 5.0f);
-        audioManager.LoadSound("knockDoor", "Assets/Sounds/SFX_KnockDoor.mp3", 2.0f);
-        audioManager.LoadSound("slideDoor", "Assets/Sounds/SFX_SlideDoor.mp3", 2.5f);
 
         GameObject* background1a = new RenderGameObject("BG1", "Assets/Images/BG/Cabin_Background_01.png");
         GameObject* background2a = new RenderGameObject("BG2", "Assets/Images/BG/Cabin_Background_02.png");
@@ -84,16 +81,16 @@ public:
 
 
         //Inspection Items
-        pamphlet = new UINormal("OperaPamphlet", "Assets/Images/Octavia/Octavia_Inspection_Pamphlet.png",    glm::vec3(0.42f, 1.9f, 0.0f),   glm::vec3(5.88f / 4 * sm, 7.4f / 4 * sm, 0.0f), true);
+        poster = new UINormal("OperaPoster", "Assets/Images/Octavia/Octavia_Inspection_Poster.png",    glm::vec3(0.42f, 1.9f, 0.0f),   glm::vec3(5.88f / 4 * sm, 7.4f / 4 * sm, 0.0f), true);
         dagger = new UINormal("Dagger", "Assets/Images/Octavia/Octavia_Inspection_Dagger.png",               glm::vec3(-5.925f, 2.95f, 0.0f),   glm::vec3(2.72f / 4 * sm, 4.44f / 4 * sm, 0.0f), true);
 
 
         //Inspection Item Buttons
-        pamphletInspect = new UIButton("OperaPamphlet", "Assets/Images/Octavia/Octavia_Inspection_Pamphlet.png", glm::vec3(0.42f, 1.9f, 0.0f), glm::vec3(5.88f / 4 * sm, 7.4f / 4 * sm, 0.0f), true, false, "");
-        pamphletInspect->SetHoverTexture("Assets/Images/Octavia/Octavia_Inspection_Pamphlet_Highlight.png");
-        pamphletInspect->SetOnClickAction([this]() {
-            std::cout << "OperaPamphlet button clicked." << std::endl;
-            inspectingObject = "Pamphlet";
+        posterInspect = new UIButton("OperaPoster", "Assets/Images/Octavia/Octavia_Inspection_Poster.png", glm::vec3(0.42f, 1.9f, 0.0f), glm::vec3(5.88f / 4 * sm, 7.4f / 4 * sm, 0.0f), true, false, "");
+        posterInspect->SetHoverTexture("Assets/Images/Octavia/Octavia_Inspection_Poster_Highlight.png");
+        posterInspect->SetOnClickAction([this]() {
+            std::cout << "OperaPoster button clicked." << std::endl;
+            inspectingObject = "Poster";
             });
         daggerInspect = new UIButton("HatInspect", "Assets/Images/Octavia/Octavia_Inspection_Dagger.png", glm::vec3(-5.925f, 2.95f, 0.0f), glm::vec3(2.72f / 4 * sm, 4.44f / 4 * sm, 0.0f), true, false, "");
         daggerInspect->SetHoverTexture("Assets/Images/Octavia/Octavia_Inspection_Dagger_Highlight.png");
@@ -102,7 +99,7 @@ public:
             inspectingObject = "Dagger";
             });
 
-        pamphletInspect->setActiveStatus(false);
+        posterInspect->setActiveStatus(false);
         daggerInspect->setActiveStatus(false);
 
         //UIs
@@ -196,8 +193,8 @@ public:
         m_gameObjects.push_back(dagger);
         m_gameObjects.push_back(daggerInspect);
 
-        m_gameObjects.push_back(pamphlet);
-        m_gameObjects.push_back(pamphletInspect);
+        m_gameObjects.push_back(poster);
+        m_gameObjects.push_back(posterInspect);
 
         m_gameObjects.push_back(octaviaNormal);
         m_gameObjects.push_back(octaviaHappy);
@@ -226,8 +223,10 @@ public:
         // Add objects to different layers
         ObjectsparallaxManager->AddObjectToLayer(room, defaultLayer);   // Layer 1
         ObjectsparallaxManager->AddObjectToLayer(dagger, objectLayerOne);    // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(daggerInspect, objectLayerOne);    // Layer 2
         ObjectsparallaxManager->AddObjectToLayer(bag, objectLayerOne);    // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(pamphlet, objectLayerOne);   // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(poster, objectLayerOne);   // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(posterInspect, objectLayerOne);   // Layer 2
         ObjectsparallaxManager->AddObjectToLayer(octaviaNormal, objectLayerOne); // Layer 2
         ObjectsparallaxManager->AddObjectToLayer(octaviaHappy, objectLayerOne); // Layer 2
         ObjectsparallaxManager->AddObjectToLayer(octaviaHappy2, objectLayerOne); // Layer 2
@@ -299,7 +298,7 @@ public:
 
         case EARLGREYTEA:
             dialogueManager->LoadDialogues("MealReact_Tea_EarlGrey", "Assets/Dialogue/Octavia/MealReact/Octavia_MealReact_Tea_EarlGrey_Assam.xml");
-            teaDialogueKey = "MealReact_Tea_EarlGray";
+            teaDialogueKey = "MealReact_Tea_EarlGrey";
             break;
         case ASSAMTEA:
             dialogueManager->LoadDialogues("MealReact_Tea_Assam", "Assets/Dialogue/Octavia/MealReact/Octavia_MealReact_Tea_EarlGrey_Assam.xml");
@@ -342,11 +341,11 @@ public:
 
         switch (kitchen->getDessert()) {
         case ECLAIR:
-            dialogueManager->LoadDialogues("MealReact_Dessert_Eclair", "Assets/Dialogue/Octavia/MealReact/Octavia_MealReact_Pastry_Macaron_Eclair_.xml");
+            dialogueManager->LoadDialogues("MealReact_Dessert_Eclair", "Assets/Dialogue/Octavia/MealReact/Octavia_MealReact_Pastry_Macaron_Eclair.xml");
             dessertDialogueKey = "MealReact_Dessert_Eclair";
             break;
         case MACARON:
-            dialogueManager->LoadDialogues("MealReact_Dessert_Macaron", "Assets/Dialogue/Octavia/MealReact/Octavia_MealReact_Pastry_Macaron_Eclair_.xml");
+            dialogueManager->LoadDialogues("MealReact_Dessert_Macaron", "Assets/Dialogue/Octavia/MealReact/Octavia_MealReact_Pastry_Macaron_Eclair.xml");
             dessertDialogueKey = "MealReact_Dessert_Macaron";
             break;
         case TART:
@@ -399,11 +398,11 @@ public:
             std::cout << "Interaction level is LOW." << std::endl;
             dialogueManager->LoadDialogues("Inspect_Low_Start", "Assets/Dialogue/Octavia/Average/Octavia_Average_Start.xml");
             dialogueManager->LoadDialogues("Inspect_Low_Dagger", "Assets/Dialogue/Octavia/Average/Octavia_Average_Dagger.xml");
-            dialogueManager->LoadDialogues("Inspect_Low_Pamphlet", "Assets/Dialogue/Octavia/Average/Octavia_Average_Poster.xml");
+            dialogueManager->LoadDialogues("Inspect_Low_Poster", "Assets/Dialogue/Octavia/Average/Octavia_Average_Poster.xml");
             dialogueManager->LoadDialogues("Inspect_Low_End", "Assets/Dialogue/Octavia/Average/Octavia_Average_End.xml");
             inspectStartDialogueKey = "Inspect_Low_Start";
             inspectDaggerDialogueKey = "Inspect_Low_Dagger";
-            inspectPamphletDialogueKey = "Inspect_Low_Pamphlet";
+            inspectPosterDialogueKey = "Inspect_Low_Poster";
             inspectEndDialogueKey = "Inspect_Low_End";
 
             cout << "Interaction Low" << endl;
@@ -412,11 +411,11 @@ public:
             std::cout << "Interaction level is AVERAGE." << std::endl;
             dialogueManager->LoadDialogues("Inspect_Average_Start", "Assets/Dialogue/Octavia/Average/Octavia_Average_Start.xml");
             dialogueManager->LoadDialogues("Inspect_Average_Dagger", "Assets/Dialogue/Octavia/Average/Octavia_Average_Dagger.xml");
-            dialogueManager->LoadDialogues("Inspect_Average_Pamphlet", "Assets/Dialogue/Octavia/Average/Octavia_Average_Poster.xml");
+            dialogueManager->LoadDialogues("Inspect_Average_Poster", "Assets/Dialogue/Octavia/Average/Octavia_Average_Poster.xml");
             dialogueManager->LoadDialogues("Inspect_Average_End", "Assets/Dialogue/Octavia/Average/Octavia_Average_End.xml");
             inspectStartDialogueKey = "Inspect_Average_Start";
             inspectDaggerDialogueKey = "Inspect_Average_Dagger";
-            inspectPamphletDialogueKey = "Inspect_Average_Pamphlet";
+            inspectPosterDialogueKey = "Inspect_Average_Poster";
             inspectEndDialogueKey = "Inspect_Average_End";
 
             cout << "Interaction Average" << endl;
@@ -425,11 +424,11 @@ public:
             std::cout << "Interaction level is INFORMATIVE." << std::endl;
             dialogueManager->LoadDialogues("Inspect_Informative_Start", "Assets/Dialogue/Octavia/Informative/Octavia_Informative_Start.xml");
             dialogueManager->LoadDialogues("Inspect_Informative_Dagger", "Assets/Dialogue/Octavia/Informative/Octavia_Informative_Dagger.xml");
-            dialogueManager->LoadDialogues("Inspect_Informative_Pamphlet", "Assets/Dialogue/Octavia/Informative/Octavia_Informative_Poster.xml");
+            dialogueManager->LoadDialogues("Inspect_Informative_Poster", "Assets/Dialogue/Octavia/Informative/Octavia_Informative_Poster.xml");
             dialogueManager->LoadDialogues("Inspect_Informative_End", "Assets/Dialogue/Octavia/Informative/Octavia_Informative_End.xml");
             inspectStartDialogueKey = "Inspect_Informative_Start";
             inspectDaggerDialogueKey = "Inspect_Informative_Dagger";
-            inspectPamphletDialogueKey = "Inspect_Informative_Pamphlet";
+            inspectPosterDialogueKey = "Inspect_Informative_Poster";
             inspectEndDialogueKey = "Inspect_Informative_End";
 
             cout << "Interaction Informative" << endl;
@@ -546,8 +545,8 @@ public:
     void ManageInspectionState()
     {
         // Check if both objects have been inspected
-        if (!isPamphletInspected || !isDaggerInspected) {
-            InspectPamphletDialogue();
+        if (!isPosterInspected || !isDaggerInspected) {
+            InspectPosterDialogue();
             InspectDaggerDialogue();
             NormalObjectToggle();
             SetInspectionObject();
@@ -557,7 +556,7 @@ public:
 
 
     void NormalObjectToggle() {
-        pamphlet->setActiveStatus(!pamphletInspect->getActiveStatus());
+        poster->setActiveStatus(!posterInspect->getActiveStatus());
         dagger->setActiveStatus(!daggerInspect->getActiveStatus());
     }
 
@@ -566,29 +565,29 @@ public:
         if (inspectingObject != "")
         {
 
-            pamphletInspect->setActiveStatus(false);
+            posterInspect->setActiveStatus(false);
             daggerInspect->setActiveStatus(false);
             ObjectsparallaxManager->DisableParallaxEffect();
         }
         else
         {
-            pamphletInspect->setActiveStatus(!isPamphletInspected);
+            posterInspect->setActiveStatus(!isPosterInspected);
             daggerInspect->setActiveStatus(!isDaggerInspected);
             ObjectsparallaxManager->EnableParallaxEffect();
         }
 
     }
 
-    void InspectPamphletDialogue() {
-        if (!inspectPamphletDialogueSet && inspectingObject == "Pamphlet") {
-            dialogueManager->SetDialogueSet(inspectPamphletDialogueKey);
-            inspectPamphletDialogueSet = true;
+    void InspectPosterDialogue() {
+        if (!inspectPosterDialogueSet && inspectingObject == "Poster") {
+            dialogueManager->SetDialogueSet(inspectPosterDialogueKey);
+            inspectPosterDialogueSet = true;
         }
-        if (inspectPamphletDialogueSet && dialogueManager->IsDialogueFinished(inspectPamphletDialogueKey)) {
-            std::cout << "Pamphlet Inspection Completed" << std::endl;
-            inspectPamphletDialogueSet = false; // Reset the flag
+        if (inspectPosterDialogueSet && dialogueManager->IsDialogueFinished(inspectPosterDialogueKey)) {
+            std::cout << "Poster Inspection Completed" << std::endl;
+            inspectPosterDialogueSet = false; // Reset the flag
             inspectingObject = ""; // Correct the assignment
-            isPamphletInspected = true; // Mark the Pamphlet as inspected
+            isPosterInspected = true; // Mark the Poster as inspected
             CheckForEndDialogue();
         }
 
@@ -610,7 +609,7 @@ public:
     }
 
     void CheckForEndDialogue() {
-        if (isPamphletInspected && isDaggerInspected && !inspectEndDialogueSet) {
+        if (isPosterInspected && isDaggerInspected && !inspectEndDialogueSet) {
             std::cout << "Both items inspected, moving to final dialogue." << std::endl;
             gameStateManager.SetRoomState(RoomState::InspectionEnd);
 
@@ -671,7 +670,7 @@ private:
     string dessertDialogueKey;
     string scoreDialogueKey;
     string inspectStartDialogueKey;
-    string inspectPamphletDialogueKey;
+    string inspectPosterDialogueKey;
     string inspectDaggerDialogueKey;
     string inspectEndDialogueKey;
 
@@ -683,11 +682,11 @@ private:
     bool scoreDialogueSet = false;
     bool inspectStartDialogueSet = false;
     bool inspectEndDialogueSet = false;
-    bool inspectPamphletDialogueSet = false;
+    bool inspectPosterDialogueSet = false;
     bool inspectDaggerDialogueSet = false;
 
 
-    bool isPamphletInspected = false;
+    bool isPosterInspected = false;
     bool isDaggerInspected = false;
 
 

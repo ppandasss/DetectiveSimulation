@@ -25,7 +25,7 @@
 #include "../GameStateManager.h"
 #include "KitchenData.h"
 
-
+#define ORDER_DURATION 1000 //in milliseconds
 
 class Hallway : public Scene
 {
@@ -190,7 +190,7 @@ public:
 		timerUI = new UINormal("TimerUI", "Assets/Images/UI/Timer.png", glm::vec3(7.3f, 5.22f, 0.0f), glm::vec3(4.37f, 3.13f, 0.0f), true);
 		timer.SetTimerUI(this->timerUI);
 
-		UIElement* screenUI = new UINormal("ScreenUI", "Assets/Images/ScreenUI.png", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(16.0f * 1.19f, 9.0f * 1.19f, 0.0f), true);
+		//UIElement* screenUI = new UINormal("ScreenUI", "Assets/Images/ScreenUI.png", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(16.0f * 1.19f, 9.0f * 1.19f, 0.0f), true);
 		UIButton* journalButton = new UIButton("JournalButton", "Assets/Images/UI/JournalButton.png", glm::vec3(-8.32f, -4.8f, 0.0f), glm::vec3(3.0f, 3.0f, 0.0f), true, false, "");
 		journalButton->SetHoverTexture("Assets/Images/UI/JournalButton_Highlight.png");
 		journalButton->SetOnClickAction([this]() { Journal->drawBook(); });
@@ -277,7 +277,7 @@ public:
 
 	}
 
- #define ORDER_DURATION 1000 //in milliseconds
+
 
 	void OnEnter() override {
 		//Scene::OnEnter();

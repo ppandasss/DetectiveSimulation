@@ -60,16 +60,14 @@ void processInput(GLFWwindow* window)
 
     Camera& camera = Application::GetCamera();
 
-    if (glfwGetKey(window, GLFW_KEY_PAGE_UP) == GLFW_PRESS)
-    {
-        // Assuming you have a static GetCamera method in Application
-        camera.ZoomIn(0.01f);  // Zoom in by 0.1 units
-    }
-    if (glfwGetKey(window, GLFW_KEY_PAGE_DOWN) == GLFW_PRESS)
-    {
-        // Assuming you have a static GetCamera method in Application
-        camera.ZoomOut(0.01f);  // Zoom in by 0.1 units
-    }
+    //if (glfwGetKey(window, GLFW_KEY_PAGE_UP) == GLFW_PRESS)
+    //{
+    //    camera.ZoomIn(0.01f);  
+    //}
+    //if (glfwGetKey(window, GLFW_KEY_PAGE_DOWN) == GLFW_PRESS)
+    //{
+    //    camera.ZoomOut(0.01f);
+    //}
 
     static bool mousePressed = false;
 
@@ -197,7 +195,7 @@ Application::Application(int win_width, int win_height, const char* title)
         std::cout << "Failed to initialize GLAD" << std::endl;
     }
 
-
+    glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
     //Initialize(SCR_WIDTH, SCR_HEIGHT);
 
     m_input.Initialize(m_window);
@@ -211,9 +209,6 @@ void Application::Run()
 {
 
     std::cout << "Application Run\n";
-
-
-
 
     double lastFrameTime = glfwGetTime();
     double frameRateUpdateInterval = 1.0; // Update frame rate every 1 second

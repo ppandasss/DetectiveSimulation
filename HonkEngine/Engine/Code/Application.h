@@ -156,14 +156,32 @@ public:
 		normalCursor = LoadCursor("Assets/Images/normal_cursor.png", 8, 8);
 		clickedCursor = LoadCursor("Assets/Images/clicked_cursor.png", 8, 8); 
 
-		if (normalCursor) {
-			glfwSetCursor(m_window, normalCursor);  // Set the normal cursor as default
-		}
-
 	}
 
-	void SetNormalCursor() { glfwSetCursor(m_window, normalCursor); }
-	void SetClickedCursor() { glfwSetCursor(m_window, clickedCursor); }
+	void SetClickedCursor() {
+		if (m_isCursorSettingEnabled) {
+			glfwSetCursor(m_window, clickedCursor);
+		}
+	}
+
+	void SetNormalCursor() {
+		if (m_isCursorSettingEnabled) {
+			glfwSetCursor(m_window, normalCursor);
+		}
+	}
+
+	void ToggleCursorSetting(bool enabled) {
+		m_isCursorSettingEnabled = enabled;
+		if (m_isCursorSettingEnabled) {
+			if (normalCursor) {
+				glfwSetCursor(m_window, normalCursor);
+			}
+			glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+		}
+		else {
+			glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+		}
+	}
 
 
 private:
@@ -179,6 +197,7 @@ private:
 	static Application* s_instance;
 	GLFWwindow* m_window;
 	Input m_input;
+	bool m_isCursorSettingEnabled = false;
 	Scene* m_currentScene = nullptr;
 	std::map<std::string, Scene*> m_sceneMap;
 

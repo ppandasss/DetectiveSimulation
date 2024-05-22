@@ -26,7 +26,6 @@ public:
 		//platePositionArea->SetButtonText("Drop Area");
 
 		/*--------------------------------------------------------------LOAD AUDDIO------------------------------------------------------------------------------------------------------- */
-		audioManager.LoadSound("hallwayMusic", "Assets/Sounds/Music/BGmusic_Corridor_NoTimer.mp3", 0.1f);
 		audioManager.LoadSound("kitchenAmbience", "Assets/Sounds/Ambience/Ambience_Kitchen.mp3", 0.5f);
 
 		audioManager.LoadSound("plateSound1", "Assets/Sounds/Kitchen/SFX_MealSelect1.mp3", 1.0f);

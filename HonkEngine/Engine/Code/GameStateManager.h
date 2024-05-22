@@ -11,7 +11,8 @@
 #include "GameObjects/BellManager.h"
 #include "GameObjects/OrderData.h"
 
-#define PREPARE_DURATION 5  //in seconds
+#define PREPARE_DURATION 120  //in seconds
+#define INITIAL_ROOM GameState::ROOM1_STATE //start room
 
 
 enum GameState {
@@ -53,7 +54,7 @@ class GameStateManager {
 
 private:
     static GameStateManager* instance;
-    GameState currentGameState = GameState::ROOM3_STATE;
+    GameState currentGameState = INITIAL_ROOM;
     RoomState currentRoomState = RoomState::Order;
 
     std::map<std::pair<GameState, RoomState>, std::function<void()>> stateActions;

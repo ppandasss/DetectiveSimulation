@@ -40,7 +40,12 @@ public:
         sounds[soundName] = sound;
         soundVolumes[soundName] = volume;
         soundSpeeds[soundName] = speed;
+
+        std::cout << "Sound loaded: " << soundName << std::endl;
+
     }
+
+   
 
 
     void PlaySound(const std::string& soundName, bool loop = false) {

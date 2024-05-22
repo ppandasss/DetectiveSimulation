@@ -53,7 +53,7 @@ Tex TextureLoad(const std::string path)
     unsigned char* pData = stbi_load(path.c_str(), &texWidth, &texHeight, &channels, 0);
     if (!pData)
     {
-        std::cerr << "Failed to load texture. Reason: " << stbi_failure_reason() << std::endl;
+        std::cerr << "Failed to load texture from path: " << path << ". Reason: " << stbi_failure_reason() << std::endl;
         return 0;
     }
 
@@ -71,7 +71,7 @@ Tex TextureLoad(const std::string path)
 
     if (texture == 0)
     {
-        std::cerr << "Failed to load texture from path: " << path << std::endl;
+        std::cerr << "Failed to create texture from path: " << path << std::endl;
         return 0;
     }
 
