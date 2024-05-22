@@ -56,7 +56,6 @@ public:
 		Endings[END5] = Ending5;
 		Endings[END6] = Ending6;
 
-
 		m_gameObjects.push_back(EndingSceneBackground);
 		m_gameObjects.push_back(MissingPoster);
 		m_gameObjects.push_back(Ending1);
@@ -72,6 +71,7 @@ public:
 
 		final_ending = journal_data->checkMainPageEntry();
 		SetFinalScene(final_ending);
+		currentTime = 0.0f;
 
 	}
 
@@ -80,6 +80,8 @@ public:
 		for (int i = 0; i < 6; i++) {
 			if (ending == i) {
 				Endings[i]->setActiveStatus(true);
+				ChosenEndingPoster = Endings[i];
+				ChosenEndingPoster->SetScale(glm::vec3(14.36f * 1.8f, 8.24f * 1.8f, 0.0f)); // 180% of the original scale
 			}
 			else {
 				Endings[i]->setActiveStatus(false);
@@ -92,6 +94,37 @@ public:
 		else {
 			MissingPoster->setActiveStatus(false);
 		}
+
+	}
+
+	void Update(float dt, long frame)
+	{
+
+		Scene::Update(dt, frame);
+
+
+		if (ChosenEndingPoster && currentTime <= zoomInDuration) { // Adjust the duration to 1.5 seconds
+
+			currentTime += dt;
+			float progress = currentTime / zoomInDuration;
+			// Interpolating from 180% to 100%
+			float targetScaleX = 25.848f - (11.488f * progress); // Decreasing from 25.848 to 14.36
+			float targetScaleY = 14.832f - (6.592f * progress); // Decreasing from 14.832 to 8.24
+			ChosenEndingPoster->SetScale(glm::vec3(targetScaleX, targetScaleY, 0.0f));
+		}
+
+		Input& input = Application::GetInput();
+
+		if (input.Get().GetKey(GLFW_KEY_SPACE))
+		{
+			Application::Get().SetScene("MainMenu");
+		}
+
+		if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1))
+		{
+			Application::Get().SetScene("MainMenu");
+		}
+		
 
 	}
 
@@ -111,6 +144,11 @@ private:
 	GameObject* MissingPoster;
 
 	GameObject* Endings[6];
+
+	GameObject* ChosenEndingPoster;
+
+	float zoomInDuration = 0.5f;  // Duration for zoom in effect in seconds
+	float currentTime = 0.0f;     // Current time elapsed
 
 };
 

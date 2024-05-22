@@ -79,6 +79,10 @@ public:
 
         }
 
+         if (input.Get().GetKey(GLFW_KEY_J)) {
+              Application::Get().SetScene("JournalEntry");
+         }
+
 
         // Set the animation
         m_animator.SetAnimation(currentAnimation);
