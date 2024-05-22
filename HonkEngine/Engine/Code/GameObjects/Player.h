@@ -117,7 +117,7 @@ public:
 
 private:
 
-    float speed = 20.0f;
+    float speed = 6.0f;
     glm::vec2 mousePos;
     Animator m_animator;
     AudioManager& audioManager;

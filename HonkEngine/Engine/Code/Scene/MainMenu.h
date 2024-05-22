@@ -47,8 +47,8 @@ public:
 		QuitButton->SetTextPosition(glm::vec3(-6.9f, -2.63f, 0.0f));
 		QuitButton->SetOnClickAction([this]() { clickExit(); });
 		
-		clickToBegin = new Text("clickToBegin", "Click to begin", "Assets/Fonts/mvboli.ttf");
-		clickToBegin->SetPosition(glm::vec3(-8.0f, -2.9f, 0.0f));
+		clickToBegin = new Text("clickToBegin", "Click anywhere to begin", "Assets/Fonts/mvboli.ttf");
+		clickToBegin->SetPosition(glm::vec3(-8.42f, -3.6f, 0.0f));
 		clickToBegin->SetColor(glm::vec3(1, 1, 1));
 		clickToBegin->SetScale(0.7f);
 

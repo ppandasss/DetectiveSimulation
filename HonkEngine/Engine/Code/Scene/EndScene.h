@@ -24,33 +24,33 @@ public:
 		EndingSceneBackground->SetScale(glm::vec3(19.2f, 10.8f, 0.0f));
 		EndingSceneBackground->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
-		MissingPoster = new UIObject("MissingPoster", "Assets/Images/Ending/MissingPoster.png", true);
-		MissingPoster->SetScale(glm::vec3(6.24f, 10.24f, 0.0f));
-		MissingPoster->SetPosition(glm::vec3(-7.0f, -3.1f, 0.0f));
+		MissingPoster = new UIObject("MissingPoster", "Assets/Images/Ending/MissingPoster_Rotate.png", true);
+		MissingPoster->SetScale(glm::vec3(8.82f, 9.58f, 0.0f));
+		MissingPoster->SetPosition(glm::vec3(-4.5f, -3.1f, 0.0f));
 
-		Ending1 = new UIObject("Ending1", "Assets/Images/Ending/Ending1.png", true);
-		Ending1->SetScale(glm::vec3(14.36f, 8.24f, 0.0f));
-		Ending1->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
+		Ending1 = new UIObject("Ending1", "Assets/Images/Ending/Ending1_Rotate.png", true);
+		Ending1->SetScale(glm::vec3(12.85f, 8.85f, 0.0f));
+		Ending1->SetPosition(glm::vec3(0.5f, 0.0f, 0.0f));
 
-		Ending2 = new UIObject("Ending2", "Assets/Images/Ending/Ending1.png", true);
-		Ending2->SetScale(glm::vec3(14.36f, 8.24f, 0.0f));
-		Ending2->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
+		Ending2 = new UIObject("Ending2", "Assets/Images/Ending/Ending2_Rotate.png", true);
+		Ending2->SetScale(glm::vec3(12.85f, 8.85f, 0.0f));
+		Ending2->SetPosition(glm::vec3(0.5f, 0.0f, 0.0f));
 
-		Ending3 = new UIObject("Ending3", "Assets/Images/Ending/Ending1.png", true);
-		Ending3->SetScale(glm::vec3(14.36f, 8.24f, 0.0f));
-		Ending3->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
+		Ending3 = new UIObject("Ending3", "Assets/Images/Ending/Ending3_Rotate.png", true);
+		Ending3->SetScale(glm::vec3(12.85f, 8.85f, 0.0f));
+		Ending3->SetPosition(glm::vec3(0.5f, 0.0f, 0.0f));
 
-		Ending4 = new UIObject("Ending4", "Assets/Images/Ending/Ending1.png", true);
-		Ending4->SetScale(glm::vec3(14.36f, 8.24f, 0.0f));
-		Ending4->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
+		Ending4 = new UIObject("Ending4", "Assets/Images/Ending/Ending4_Rotate.png", true);
+		Ending4->SetScale(glm::vec3(12.85f, 8.85f, 0.0f));
+		Ending4->SetPosition(glm::vec3(0.5f, 0.0f, 0.0f));
 
-		Ending5 = new UIObject("Ending5", "Assets/Images/Ending/Ending1.png", true);
-		Ending5->SetScale(glm::vec3(14.36f, 8.24f, 0.0f));
-		Ending5->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
+		Ending5 = new UIObject("Ending5", "Assets/Images/Ending/Ending5_Rotate.png", true);
+		Ending5->SetScale(glm::vec3(12.85f, 8.56f, 0.0f));
+		Ending5->SetPosition(glm::vec3(0.5f, 0.0f, 0.0f));
 
-		Ending6 = new UIObject("Ending6", "Assets/Images/Ending/Ending1.png", true);
-		Ending6->SetScale(glm::vec3(14.36f, 8.24f, 0.0f));
-		Ending6->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
+		Ending6 = new UIObject("Ending6", "Assets/Images/Ending/Ending6_Rotate.png", true);
+		Ending6->SetScale(glm::vec3(12.85f, 8.56f, 0.0f));
+		Ending6->SetPosition(glm::vec3(0.5f, 0.0f, 0.0f));
 
 		Endings[END1] = Ending1;
 		Endings[END2] = Ending2;
@@ -93,7 +93,7 @@ public:
 			if (ending == i) {
 				Endings[i]->setActiveStatus(true);
 				ChosenEndingPoster = Endings[i];
-				ChosenEndingPoster->SetScale(glm::vec3(14.36f * 1.8f, 8.24f * 1.8f, 0.0f)); // 180% of the original scale
+				ChosenEndingPoster->SetScale(glm::vec3(13.15f * 2.0f, 8.56f * 2.0f, 0.0f)); // 200% of the original scale
 			}
 			else {
 				Endings[i]->setActiveStatus(false);
