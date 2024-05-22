@@ -36,18 +36,6 @@ public:
 
 	}
 
-	void Update(float dt, long frame)
-	{
-		Scene::Update(dt, frame);
-
-		Input& input = Application::GetInput();
-	
-		if (input.Get().GetKeyDown(GLFW_KEY_J)) {
-			Application::Get().SetScene("Hallway");
-		}	
-
-	}
-
 
 	void OnEnter() override {
 		JournalData::GetInstance()->SetBookState(true); //Lock book
