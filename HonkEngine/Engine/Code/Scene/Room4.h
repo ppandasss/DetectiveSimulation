@@ -399,7 +399,7 @@ public:
             std::cout << "Interaction level is LOW." << std::endl;
             dialogueManager->LoadDialogues("Inspect_Low_Start", "Assets/Dialogue/Octavia/Average/Octavia_Average_Start.xml");
             dialogueManager->LoadDialogues("Inspect_Low_Dagger", "Assets/Dialogue/Octavia/Average/Octavia_Average_Dagger.xml");
-            dialogueManager->LoadDialogues("Inspect_Low_Pamphlet", "Assets/Dialogue/Octavia/Average/Octavia_Average_Pamphlet.xml");
+            dialogueManager->LoadDialogues("Inspect_Low_Pamphlet", "Assets/Dialogue/Octavia/Average/Octavia_Average_Poster.xml");
             dialogueManager->LoadDialogues("Inspect_Low_End", "Assets/Dialogue/Octavia/Average/Octavia_Average_End.xml");
             inspectStartDialogueKey = "Inspect_Low_Start";
             inspectDaggerDialogueKey = "Inspect_Low_Dagger";
@@ -412,7 +412,7 @@ public:
             std::cout << "Interaction level is AVERAGE." << std::endl;
             dialogueManager->LoadDialogues("Inspect_Average_Start", "Assets/Dialogue/Octavia/Average/Octavia_Average_Start.xml");
             dialogueManager->LoadDialogues("Inspect_Average_Dagger", "Assets/Dialogue/Octavia/Average/Octavia_Average_Dagger.xml");
-            dialogueManager->LoadDialogues("Inspect_Average_Pamphlet", "Assets/Dialogue/Octavia/Average/Octavia_Average_Pamphlet.xml");
+            dialogueManager->LoadDialogues("Inspect_Average_Pamphlet", "Assets/Dialogue/Octavia/Average/Octavia_Average_Poster.xml");
             dialogueManager->LoadDialogues("Inspect_Average_End", "Assets/Dialogue/Octavia/Average/Octavia_Average_End.xml");
             inspectStartDialogueKey = "Inspect_Average_Start";
             inspectDaggerDialogueKey = "Inspect_Average_Dagger";
@@ -425,7 +425,7 @@ public:
             std::cout << "Interaction level is INFORMATIVE." << std::endl;
             dialogueManager->LoadDialogues("Inspect_Informative_Start", "Assets/Dialogue/Octavia/Informative/Octavia_Informative_Start.xml");
             dialogueManager->LoadDialogues("Inspect_Informative_Dagger", "Assets/Dialogue/Octavia/Informative/Octavia_Informative_Dagger.xml");
-            dialogueManager->LoadDialogues("Inspect_Informative_Pamphlet", "Assets/Dialogue/Octavia/Informative/Octavia_Informative_Pamphlet.xml");
+            dialogueManager->LoadDialogues("Inspect_Informative_Pamphlet", "Assets/Dialogue/Octavia/Informative/Octavia_Informative_Poster.xml");
             dialogueManager->LoadDialogues("Inspect_Informative_End", "Assets/Dialogue/Octavia/Informative/Octavia_Informative_End.xml");
             inspectStartDialogueKey = "Inspect_Informative_Start";
             inspectDaggerDialogueKey = "Inspect_Informative_Dagger";
