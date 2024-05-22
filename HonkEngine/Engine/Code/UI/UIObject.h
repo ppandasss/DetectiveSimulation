@@ -111,7 +111,7 @@ public:
 	{
 		UIObject::Update(0, 0);
 
-		renderer.SetRenderMode(CDT_TEXTURE, 1.0f);
+		renderer.SetRenderMode(CDT_TEXTURE, m_alpha);
 		renderer.SetTexture(texture_Id, 0.0f, 0.0f);
 		renderer.SetTransform(model);
 		renderer.DrawMesh(meshVert);
@@ -141,10 +141,16 @@ public:
 
 	}
 
+	void SetAlpha(float alpha)
+	{
+		m_alpha = alpha;
+	}
+
+
 	
 
 private:
-
+	float m_alpha = 1.0f;
 	glm::vec3 m_transformedPosition;
 	bool isOnScreen;
 	Renderer& renderer = Application::GetRenderer();

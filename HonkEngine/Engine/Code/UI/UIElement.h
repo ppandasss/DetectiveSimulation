@@ -60,6 +60,11 @@ public:
 
     }
 
+    void SetAlpha(float alpha) {
+
+	     UIObject::SetAlpha(alpha);
+	}
+
 
     void setActiveStatus(bool status) override {
         active = status;

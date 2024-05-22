@@ -11,7 +11,7 @@
 #include "Scene/KitchenData.h"
 
 #define PREPARE_DURATION 120  // in seconds
-#define INITIAL_ROOM GameState::ROOM1_STATE // start room
+#define INITIAL_ROOM GameState::ROOM4_STATE // start room
 
 enum GameState {
     ROOM1_STATE,
@@ -161,15 +161,19 @@ private:
             AudioManager::GetInstance().PlaySound("slideDoor");
             KitchenData::GetInstance()->clearPlate();
             Application::Get().SetTimer(3000, []() {
-                Application::Get().SetScene("Hallway");
                 GameStateManager::GetInstance().SetGameState(GameState::END_STATE);
                 GameStateManager::GetInstance().SetRoomState(RoomState::End);
+                Application::Get().SetScene("Hallway");
                 }, false);
             };
 
         // END
         stateActions[std::make_pair(GameState::END_STATE, RoomState::End)] = []() {
             // End cutscene
+            Application::Get().SetTimer(3000, []() {
+
+                Application::Get().SetScene("JournalEntry");
+                },false);
             };
     }
 

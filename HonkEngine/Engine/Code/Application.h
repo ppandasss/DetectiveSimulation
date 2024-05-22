@@ -130,6 +130,11 @@ public:
 	static Input& GetInput() { return s_instance->m_input; }
 	static Camera& GetCamera() { return s_instance->m_camera; }
 
+	double GetDeltaTime() const {
+		return deltaTime;
+	}
+
+
 	void ToggleFullscreen(GLFWwindow* window);
 
 	//CURSOR FUNCTIONS
@@ -202,6 +207,7 @@ private:
 	bool m_isCursorSettingEnabled = false;
 	Scene* m_currentScene = nullptr;
 	std::map<std::string, Scene*> m_sceneMap;
+	double deltaTime = 0.0;
 
 	GLFWcursor* normalCursor = nullptr;
 	GLFWcursor* clickedCursor = nullptr;

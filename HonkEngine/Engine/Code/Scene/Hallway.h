@@ -29,6 +29,7 @@
 #include "../PopupWidget/PauseInterface.h"
 #include "../PopupWidget/OptionsTwoInterface.h"
 #include "../PopupWidget/InterfaceManager.h"
+#include "../Effects/TransitionEffects.h"
 
 
 
@@ -55,7 +56,6 @@ private:
     UIElement* timerUI;
 	Text* instructionText;
 
-
 	Door* room1Door;
 	Door* room2Door;
 	Door* room3Door;
@@ -67,6 +67,8 @@ private:
 	Bell* bellCabin3;
 	Bell* bellCabin4;
 
+	UIElement* transitionObject;
+	std::unique_ptr<TransitionEffects> transitionEffects;
 	bool firstEntry = true;
 	bool inDoorCollision = false;
 	bool entering = false;
@@ -90,6 +92,8 @@ public:
 		GameObject* background1b = new RenderGameObject("BG1B", "Assets/Images/BG/Cabin_Background_01.png");
 		GameObject* background2b = new RenderGameObject("BG2B", "Assets/Images/BG/Cabin_Background_02.png");
 		GameObject* background3b = new RenderGameObject("BG3B", "Assets/Images/BG/Cabin_Background_03.png");
+		
+		
 
 		background1a->SetScale(glm::vec3(76.6f, 10.8f, 0.0f));background1a->SetPosition(glm::vec3(0.0f, 3.0f, 0.0f)); 
 		background2a->SetScale(glm::vec3(76.6f, 10.8f, 0.0f)); background2a->SetPosition(glm::vec3(0.0f, 3.0f, 0.0f));
@@ -107,7 +111,10 @@ public:
 
 		GameObject* hallway = new RenderGameObject("Cabin", "Assets/Images/Corridor/Corridor_Background.png");
 		GameObject* hallwaylights = new RenderGameObject("CabinLights", "Assets/Images/Corridor/Corridor_Light.png");
-
+		
+		transitionObject = new UINormal("Transition", "Assets/Images/black.png", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(10.0f, 10.0f, 0.0f), true);
+		transitionEffects = std::make_unique<TransitionEffects>(transitionObject);
+		
 		/*-------------------------------------------------------------🚪CREATE DOORS🚪------------------------------------------------------------------------------------------------------- */
 		GameObject* roomdoor1Highlight = new RenderGameObject("RoomdoorHighlight1", "Assets/Images/Corridor/PassengerDoor_Highlight.png");
 		GameObject* roomdoor2Highlight = new RenderGameObject("RoomdoorHighlight1", "Assets/Images/Corridor/PassengerDoor_Highlight.png");
@@ -295,6 +302,9 @@ public:
 
 		m_gameObjects.push_back(pauseInterface);
 		m_gameObjects.push_back(optionsTwoInterface);
+
+		//Transition
+		m_gameObjects.push_back(transitionObject);
 		
 
 	}
@@ -315,6 +325,14 @@ public:
 
 		// Stop any previous timers to avoid overlapping actions
 		//Application::Get().ClearAllTimers();
+
+		if (firstEntry) {
+			std::cout << "First entry - Fading in" << std::endl;
+			transitionEffects->FadeIn(2.0f, [this]() {
+				std::cout << "Fade in complete" << std::endl;
+				});
+			firstEntry = false;
+		}
 
 		
 			if (currentGameState == GameState::ROOM1_STATE && currentRoomState == RoomState::Order) {
@@ -341,6 +359,13 @@ public:
 					room4Door->setPermission(true);
 					}, false);
 			}
+			else if(currentGameState == GameState::END_STATE && currentRoomState == RoomState::End) {
+				player->StopMovement();
+				transitionEffects->FadeOut(2.0f, "JournalEntry", [this]() {
+					std::cout << "Fade out complete" << std::endl;
+					});
+			}
+
 		
 
 		entering = false;

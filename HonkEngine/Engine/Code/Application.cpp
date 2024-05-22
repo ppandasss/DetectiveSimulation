@@ -207,9 +207,7 @@ Application::Application(int win_width, int win_height, const char* title)
 
 }
 
-void Application::Run()
-{
-
+void Application::Run() {
     std::cout << "Application Run\n";
 
     double lastFrameTime = glfwGetTime();
@@ -217,10 +215,9 @@ void Application::Run()
     double frameRateTimer = 0.0;
     int frameCount = 0;
 
-
     while (!glfwWindowShouldClose(m_window)) {
         double currentTime = glfwGetTime();
-        double dt = currentTime - lastFrameTime;
+        deltaTime = currentTime - lastFrameTime;  // Update deltaTime
         lastFrameTime = currentTime;
 
         // Input handling
@@ -229,7 +226,7 @@ void Application::Run()
 
         // Scene management
         if (m_currentScene) {
-            m_currentScene->Update(dt, frameCount);
+            m_currentScene->Update(deltaTime, frameCount);
             m_currentScene->Render();
         }
 
@@ -237,22 +234,20 @@ void Application::Run()
         glfwSwapBuffers(m_window);
         glfwPollEvents();
 
-        if (frameRateTimer >= frameRateUpdateInterval)
-        {
-            double frameRate = frameCount / frameRateTimer; //fps == frame per sec
+        frameRateTimer += deltaTime;  // Use updated deltaTime
+        frameCount++;
 
+        if (frameRateTimer >= frameRateUpdateInterval) {
+            double frameRate = frameCount / frameRateTimer;
             std::string newTitle = std::string(baseTitle) + " - FPS: " + std::to_string(static_cast<int>(frameRate));
-            // Set the new window title
             glfwSetWindowTitle(m_window, newTitle.c_str());
 
             frameRateTimer = 0.0;
             frameCount = 0;
         }
-        
     }
 
     if (m_currentScene) {
         m_currentScene->OnExit();
     }
-
 }
