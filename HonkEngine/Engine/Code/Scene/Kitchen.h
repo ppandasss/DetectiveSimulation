@@ -10,6 +10,7 @@
 #include "../UI/UIButtonEmpty.h"
 
 #include "KitchenData.h"
+#include "../GameStateManager.h"
 
 class Kitchen : public Scene {
 
@@ -20,7 +21,7 @@ public:
 	UIButtonEmpty* teaDropArea = new UIButtonEmpty("teaDropArea", glm::vec3(-3.4f, -0.5f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, false, "");
 	UIButtonEmpty* sandwichDropArea = new UIButtonEmpty("sandwichDropArea", glm::vec3(-6.35f, -0.6f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, false, "");
 	UIButtonEmpty* dessertDropArea = new UIButtonEmpty("dessertDropArea", glm::vec3(-4.85f, 1.57f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, false, "");
-	UIButtonEmpty* optionalDropArea = new UIButtonEmpty("optionalDropArea", glm::vec3(-4.5f, -0.87f, 0.0f), glm::vec3(0.5f, 0.5f, 0.0f), true, false, "");
+	UIButtonEmpty* optionalDropArea = new UIButtonEmpty("optionalDropArea", glm::vec3(-4.5f, -0.4f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, false, "");
 
 	Kitchen() :audioManager(AudioManager::GetInstance()) {
 		//platePositionArea->SetButtonText("Drop Area");
@@ -371,6 +372,11 @@ public:
 		audioManager.PlaySound("hallwayMusic", true);
 		audioManager.PlaySound("kitchenAmbience", true);
 		audioManager.PlaySound("slideDoor");
+
+		if (GameStateManager::GetInstance().getRoomState() == RoomState::Order)
+		{
+			clearPlate();
+		}
 	}
 
 	void Update(float dt, long frame) override {
@@ -398,6 +404,7 @@ public:
 			}
 		}
 
+		
 		updateServeButton();
 		UpdateOrderDisplay();
 
@@ -459,6 +466,7 @@ public:
 		Kitchen_Data->clearPlate();
 
 	}
+
 
 	//UPDATE FOOD ON TRAY
 

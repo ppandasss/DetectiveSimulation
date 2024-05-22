@@ -71,6 +71,8 @@ public:
 
 	int ResetTimer(int timerId, long long duration, std::function<void()> callback, bool repeat);
 
+	void ClearAllTimers();
+
 	void Run();
 
 	static Application& Get() { return *s_instance; }

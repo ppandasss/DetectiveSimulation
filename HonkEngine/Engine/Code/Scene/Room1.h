@@ -296,7 +296,7 @@ public:
 
         case EARLGREYTEA:
             dialogueManager->LoadDialogues("MealReact_Tea_EarlGrey", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Tea_Assam_EarlGrey.xml");
-            teaDialogueKey = "MealReact_Tea_EarlGray";
+            teaDialogueKey = "MealReact_Tea_EarlGrey";
             break;
         case ASSAMTEA:
             dialogueManager->LoadDialogues("MealReact_Tea_Assam", "Assets/Dialogue/Martha/MealReact/Martha_MealReact_Tea_Assam_EarlGrey.xml");

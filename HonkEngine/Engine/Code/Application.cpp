@@ -60,14 +60,14 @@ void processInput(GLFWwindow* window)
 
     Camera& camera = Application::GetCamera();
 
-    //if (glfwGetKey(window, GLFW_KEY_PAGE_UP) == GLFW_PRESS)
-    //{
-    //    camera.ZoomIn(0.01f);  
-    //}
-    //if (glfwGetKey(window, GLFW_KEY_PAGE_DOWN) == GLFW_PRESS)
-    //{
-    //    camera.ZoomOut(0.01f);
-    //}
+    if (glfwGetKey(window, GLFW_KEY_PAGE_UP) == GLFW_PRESS)
+    {
+        camera.ZoomIn(0.01f);  
+    }
+    if (glfwGetKey(window, GLFW_KEY_PAGE_DOWN) == GLFW_PRESS)
+    {
+        camera.ZoomOut(0.01f);
+    }
 
     static bool mousePressed = false;
 
@@ -127,6 +127,9 @@ int Application::ResetTimer(int timerId, long long duration, std::function<void(
     return SetTimer(duration, callback, repeat); // Set a new timer and return the new timer ID
 }
 
+void Application::ClearAllTimers() {
+	activeTimers.clear();
+}
 
 void Application::processTimers() {
     auto now = std::chrono::steady_clock::now();

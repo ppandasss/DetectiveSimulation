@@ -79,20 +79,25 @@ public:
 
 		/*--------------------------------------------------------------📦CREATE GAMEOBJECT📦------------------------------------------------------------------------------------------------------- */
 		/*-------------------------------------------------------------🌲CREATE ENVIRONMENT🌲------------------------------------------------------------------------------------------------------- */
-		GameObject* background1a = new RenderGameObject("BG1", "Assets/Images/BG/Cabin_Background_01.png");
-		GameObject* background2a = new RenderGameObject("BG2", "Assets/Images/BG/Cabin_Background_02.png");
-		GameObject* background1b = new RenderGameObject("BG3", "Assets/Images/BG/Cabin_Background_01.png");
-		GameObject* background2b = new RenderGameObject("BG4", "Assets/Images/BG/Cabin_Background_02.png");
+		GameObject* background1a = new RenderGameObject("BG1A", "Assets/Images/BG/Cabin_Background_01.png");
+		GameObject* background2a = new RenderGameObject("BG2A", "Assets/Images/BG/Cabin_Background_02.png");
+		GameObject* background3a = new RenderGameObject("BG3A", "Assets/Images/BG/Cabin_Background_03.png");
+		GameObject* background1b = new RenderGameObject("BG1B", "Assets/Images/BG/Cabin_Background_01.png");
+		GameObject* background2b = new RenderGameObject("BG2B", "Assets/Images/BG/Cabin_Background_02.png");
+		GameObject* background3b = new RenderGameObject("BG3B", "Assets/Images/BG/Cabin_Background_03.png");
 
 		background1a->SetScale(glm::vec3(76.6f, 10.8f, 0.0f));background1a->SetPosition(glm::vec3(0.0f, 3.0f, 0.0f)); 
 		background2a->SetScale(glm::vec3(76.6f, 10.8f, 0.0f)); background2a->SetPosition(glm::vec3(0.0f, 3.0f, 0.0f));
+		background3a->SetScale(glm::vec3(76.6f, 10.8f, 0.0f)); background3a->SetPosition(glm::vec3(0.0f, 3.0f, 0.0f));
 		background1b->SetScale(glm::vec3(76.6f, 10.8f, 0.0f)); background1b->SetPosition(glm::vec3(76.6f, 3.0f, 0.0f));
 		background2b->SetScale(glm::vec3(76.6f, 10.8f, 0.0f)); background2b->SetPosition(glm::vec3(76.6f, 3.0f, 0.0f));
+		background3b->SetScale(glm::vec3(76.6f, 10.8f, 0.0f)); background3b->SetPosition(glm::vec3(76.6f, 3.0f, 0.0f));
 
 		BackgroundparallaxManager = std::make_unique<BackgroundParallax>();
 
 		BackgroundparallaxManager->AddBackgroundPair(0, background1a, background1b, 0.5f);
 		BackgroundparallaxManager->AddBackgroundPair(1, background2a, background2b, 1.0f);
+		BackgroundparallaxManager->AddBackgroundPair(2, background3a, background3b, 1.5f);
 
 
 		GameObject* hallway = new RenderGameObject("Cabin", "Assets/Images/Corridor/Corridor_Background.png");
@@ -233,6 +238,9 @@ public:
 		m_gameObjects.push_back(background1b);
 		m_gameObjects.push_back(background2a);
 		m_gameObjects.push_back(background2b);
+		m_gameObjects.push_back(background3a);
+		m_gameObjects.push_back(background3b);
+
 		m_gameObjects.push_back(hallway);
 
 		//Doors
@@ -284,36 +292,46 @@ public:
 		audioManager.PlaySound("hallwayMusic", true);
 		audioManager.PlaySound("trainAmbience", true);
 
-		//room3Door->setPermission(true);
-		//room4Door->setPermission(true);
+		// Ensure kitchen door is always accessible
 		kitchenDoor->setPermission(true);
 
-		//Set each state's order phrase behavior
+		// Set each state's order phrase behavior
+		GameState currentGameState = gameStateManager.getGameState();
+		RoomState currentRoomState = gameStateManager.getRoomState();
 
-		if (gameStateManager.getRoomState() == RoomState::Order)
-		{
-			if (gameStateManager.getGameState() == GameState::ROOM1_STATE)
-			{
-				Application::Get().SetTimer(ORDER_DURATION, [this]() { bellCabin1->startRinging(); room1Door->setPermission(true); }, false);
+		// Stop any previous timers to avoid overlapping actions
+		//Application::Get().ClearAllTimers();
+
+		
+			if (currentGameState == GameState::ROOM1_STATE && currentRoomState == RoomState::Order) {
+				Application::Get().SetTimer(ORDER_DURATION, [this]() {
+					bellCabin1->startRinging();
+					room1Door->setPermission(true);
+					}, false);
 			}
-			else if(gameStateManager.getGameState() == GameState::ROOM2_STATE)
-			{
-				Application::Get().SetTimer(ORDER_DURATION, [this]() { bellCabin2->startRinging(); room2Door->setPermission(true); }, false);
+			else if (currentGameState == GameState::ROOM3_STATE && currentRoomState == RoomState::Order) {
+				Application::Get().SetTimer(ORDER_DURATION, [this]() {
+					bellCabin3->startRinging();
+					room3Door->setPermission(true);
+					}, false);
 			}
-			else if (gameStateManager.getGameState() == GameState::ROOM3_STATE)
-			{
-				Application::Get().SetTimer(ORDER_DURATION, [this]() { bellCabin3->startRinging(); room3Door->setPermission(true); }, false);
+			else if (currentGameState == GameState::ROOM2_STATE && currentRoomState == RoomState::Order) {
+				Application::Get().SetTimer(ORDER_DURATION, [this]() {
+					bellCabin2->startRinging();
+					room2Door->setPermission(true);
+					}, false);
 			}
-			else if (gameStateManager.getGameState() == GameState::ROOM4_STATE)
-			{
-				Application::Get().SetTimer(ORDER_DURATION, [this]() { bellCabin4->startRinging(); room4Door->setPermission(true); }, false);
+			else if (currentGameState == GameState::ROOM4_STATE && currentRoomState == RoomState::Order) {
+				Application::Get().SetTimer(ORDER_DURATION, [this]() {
+					bellCabin4->startRinging();
+					room4Door->setPermission(true);
+					}, false);
 			}
-			
-		}
+		
 
 		entering = false;
-
 	}
+
 
 	void Update(float dt, long frame) {
 
