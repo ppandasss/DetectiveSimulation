@@ -92,6 +92,11 @@ public:
             Application::Get().ToggleCursorSetting(true);
             Application::Get().SetScene("MainMenu");
         }
+
+        if(input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1))
+        {
+            Application::Get().SetScene("MainMenu");
+        }
     }
 
 

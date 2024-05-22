@@ -4,8 +4,13 @@
 
 #include "../GameObjects/RenderGameObject.h"
 #include"../GameObjects/AnimateGameObject.h"	
+#include "../Text/Text.h"
 
 #include "../UI/UIButton.h"
+#include "../PopupWidget/InterfaceManager.h"
+#include "../PopupWidget/OptionsInterface.h"
+#include "../PopupWidget/ExitInterface.h"
+
 
 #include "../Application.h"
 
@@ -42,12 +47,65 @@ public:
 		QuitButton->SetTextPosition(glm::vec3(-6.9f, -2.63f, 0.0f));
 		QuitButton->SetOnClickAction([this]() { clickExit(); });
 		
+		clickToBegin = new Text("clickToBegin", "Click to begin", "Assets/Fonts/mvboli.ttf");
+		clickToBegin->SetPosition(glm::vec3(-8.0f, -2.9f, 0.0f));
+		clickToBegin->SetColor(glm::vec3(1, 1, 1));
+		clickToBegin->SetScale(0.7f);
 
 		m_gameObjects.push_back(MainMenuBackground);
 		m_gameObjects.push_back(PlayButton);
 		m_gameObjects.push_back(OptionsButton);
 		m_gameObjects.push_back(QuitButton);
+		m_gameObjects.push_back(clickToBegin);
 
+		//INTERFACES IN MAIN MENU
+
+		OptionsInterface* optionsInterface = new OptionsInterface();
+		Interface_Manager.AddInterface(OPTIONS, optionsInterface);
+
+		ExitInterface* exitInterface = new ExitInterface();
+		Interface_Manager.AddInterface(EXIT, exitInterface);
+		
+		m_gameObjects.push_back(optionsInterface);
+		m_gameObjects.push_back(exitInterface);
+
+		setMainMenuState();
+
+	}
+
+	void Update(float dt, long frame)
+	{
+		Scene::Update(dt, frame);
+
+		Input& input = Application::GetInput();
+
+		if (startOfGame) {
+			
+			if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1))
+			{
+				startOfGame = false;
+				setMainMenuState();
+			}
+		}		
+
+	}
+
+	void setMainMenuState() {
+
+		if (startOfGame) {
+
+			PlayButton->setActiveStatus(false);
+			QuitButton->setActiveStatus(false);
+			OptionsButton->setActiveStatus(false); 
+			clickToBegin->setActiveStatus(true);
+
+		}
+		else {
+			PlayButton->setActiveStatus(true);
+			QuitButton->setActiveStatus(true);
+			OptionsButton->setActiveStatus(true);
+			clickToBegin->setActiveStatus(false);
+		}
 
 	}
 
@@ -65,18 +123,22 @@ private:
 
 	//BUTTON FUNCTIONS
 
-	void clickPlay() {
-		Application::Get().SetScene("Hallway");
-	}
+	void clickPlay() { Application::Get().SetScene("Hallway"); }
 
-	void clickOptions() {
+	void clickOptions() { Interface_Manager.ActivateInterface(OPTIONS);	}
 
-	}
+	void clickExit() { Interface_Manager.ActivateInterface(EXIT); }
 
-	void clickExit() {
-		Application::Get().exitGame();
-	}
 
+	bool startOfGame = true;
+
+	UIButton* PlayButton;
+	UIButton* OptionsButton; 
+	UIButton* QuitButton;
+
+	Text* clickToBegin;
+
+	InterfaceManager& Interface_Manager = InterfaceManager::getInstance();
 
 
 };

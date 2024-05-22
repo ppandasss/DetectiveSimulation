@@ -91,6 +91,12 @@ public:
 		CloseJournalButton->SetHoverTexture("Assets/Images/Journal/Journal_CloseButton_Highlight.png");
 
 
+		UIDraggable* Cabin3Newspaper = new UIDraggable("Cabin3Newspaper", "Assets/Images/PaperClues/Archibald_Cabin3_Newspaper.png", glm::vec3(11.7f, 2.2f, 0.0f), glm::vec3(7.31f, 10.12f, 0.0f), true);
+		Cabin3Newspaper->setDragBoundsByObject(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(30.0f, 20.0f, 0.0f));
+
+		UIDraggable* Cabin4Pamphlet = new UIDraggable("Cabin4Pamphlet", "Assets/Images/PaperClues/Octavia_Cabin4_Pamphlet.png", glm::vec3(-10.2f, -3.5f, 0.0f), glm::vec3(5.34f, 7.37f, 0.0f), true);
+		Cabin4Pamphlet->setDragBoundsByObject(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(30.0f, 20.0f, 0.0f));
+
 		m_gameObjects.push_back(BackGround);
 		m_gameObjects.push_back(JournalCover);
 		m_gameObjects.push_back(Tab1);
@@ -122,7 +128,6 @@ public:
 		draggableClues.push_back(Cabin3Newspaper);
 		draggableClues.push_back(Cabin4Pamphlet);
 
-
 	}
 
 	//----------------------------------- OPEN & CLOSE ------------------------------------
@@ -144,8 +149,14 @@ public:
 		}
 
 		for (auto& object : allPages) {
-
 			object->setActiveStatus(true);
+		}
+
+		for (int i = 0; i < 2; i++) {
+
+			if (m_journal->getBookClueState(i)) {
+				draggableClues[i]->setActiveStatus(true);
+			}
 
 		}
 
@@ -162,17 +173,17 @@ public:
 		activePage = currentPage::MAIN_PAGE;
 
 		for (auto& object : m_gameObjects) {
-
 			if (object->getActiveStatus()) { //IF ACTIVE SET AS INACTIVE
-
 				object->setActiveStatus(false);
-
 			}
-
 		}
 
-
 		for (auto& object : allPages)
+		{
+			object->setActiveStatus(false);
+		}
+
+		for (auto& object : draggableClues)
 		{
 			object->setActiveStatus(false);
 		}
@@ -237,7 +248,7 @@ public:
 					draggableClues[i]->Update(dt, frame);
 
 				}
-
+				
 			}
 
 		}
@@ -262,12 +273,6 @@ public:
 		if (openStatus == true) {
 			closeBook();
 		}
-	}
-
-	void activateDeferredClue() {
-
-		std::cout << "Activate Deferred general clue\n";
-
 	}
 
 

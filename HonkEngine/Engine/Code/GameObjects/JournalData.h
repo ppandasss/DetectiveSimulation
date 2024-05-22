@@ -282,8 +282,6 @@ private:
 	//STATE OF 2 DRAGGABLE OBJECTS IN BOOK
 	bool BookClueState[2] = { false, false };
 
-	bool LockBook = false; //Set as true so player can't close journal
-
 };
 
 

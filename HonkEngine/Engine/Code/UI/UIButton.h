@@ -144,8 +144,6 @@ public:
         buttonTextObj->SetColor(colour);
     }
 
-    //void setActiveStatus(bool status) override { active = status; }
-
     void SetHoverTexture(const std::string& texturePath) {
 
         textureHoverID = TextureLoad(texturePath);
