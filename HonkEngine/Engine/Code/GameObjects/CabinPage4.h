@@ -82,7 +82,7 @@ public:
 		cabin3_clue1->clueObject = A_Clue1;
 
 		ClueData* cabin3_clue2 = new ClueData();
-		cabin3_clue2->showClue = true;
+		cabin3_clue2->showClue = false;
 		cabin3_clue2->clueObject = A_Clue2;
 		cabin3_clue2->isEvidence = true;
 

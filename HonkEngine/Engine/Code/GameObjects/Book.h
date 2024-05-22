@@ -101,9 +101,6 @@ public:
 		m_gameObjects.push_back(CloseJournalButton);
 		m_gameObjects.push_back(BlankPage);
 
-		m_gameObjects.push_back(Cabin3Newspaper);
-		m_gameObjects.push_back(Cabin4Pamphlet);
-
 		Page* mainPage = new MainPage();
 		Page* cabinPage1 = new CabinPage1();
 		Page* cabinPage2 = new CabinPage2();
@@ -119,6 +116,9 @@ public:
 		allPages.push_back(cabinPage4);
 		allPages.push_back(cabinPage5);
 		allPages.push_back(foodGuide);
+
+		m_gameObjects.push_back(Cabin3Newspaper);
+		m_gameObjects.push_back(Cabin4Pamphlet);
 
 
 	}

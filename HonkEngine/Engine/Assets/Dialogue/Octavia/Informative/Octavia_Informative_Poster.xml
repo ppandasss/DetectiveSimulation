@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="4WD56">
+		<Speaker name="Waiter">
+			<line1>(An opera poster.)</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WQ03">
+		<Speaker name="Waiter">
+			<line1>(It must be related to her career  in some way.)</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="4WD58" clueID="CABIN4_1">Ask if that's her on the poster</Choice1>
+			<Choice2 next="4WD57" clueID="CABIN4_1">Ask if she's an opera singer</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="4WD57">
+		<Speaker name="Waiter">
+			<line1>Ma'am, I noticed the poster on  your window.</line1>
+			<line2>Any chance you're an opera singer?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD152">
+		<Speaker name="Octavia_Disappoint">
+			<line1>Oh, dear, how I wish that were  true.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD153" next="4OD156">
+		<Speaker name="Octavia_Normal">
+			<line1>I was merely a model for them.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD58">
+		<Speaker name="Waiter">
+			<line1>Ma'am, I noticed from the poster.</line1>
+			<line2>Is that a picture of you?</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD154">
+		<Speaker name="Octavia_Happy">
+			<line1>You have sharp eyes.</line1>
+			<line2>It is indeed me.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD155" next="4OD156">
+		<Speaker name="Octavia_Normal">
+			<line1>I was a model for them.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD156">
+		<Speaker name="Octavia_Normal">
+			<line1>I have a strong fondness for the  opera from this theater.</line1>
+			<line2>After visiting their show multiple  times,</line2>
+			<line3>I had the opportunity to establish  contact with them.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD157">
+		<Speaker name="Octavia_Normal">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD158">
+		<Speaker name="Octavia_Happy">
+			<line1>[Octavia giggles slightly.]</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OQ16">
+		<Speaker name="Octavia_Happy2">
+			<line1>Do you find yourself believing me?</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="4WD60">Believe what she said</Choice1>
+			<Choice2 next="4WD61">Up to her if she want so</Choice2>
+			<Choice3 next="4WD59">Do not believe</Choice3>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="4WD59">
+		<Speaker name="Waiter">
+			<line1>I don't, ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD159">
+		<Speaker name="Octavia_Sad">
+			<line1>Come on, dear waiter.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OQ17">
+		<Speaker name="Octavia_Sad">
+			<line1>You really don't believe what I've  said?</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="4WD62">Still not believe</Choice1>
+			<Choice2 next="4WD63">Believe her</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="4WD62">
+		<Speaker name="Waiter">
+			<line1>It was hard to believe, ma'am.</line1>
+			<line2>Especially when you're putting it  this way.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD159_2" next="4OD163">
+		<Speaker name="Octavia_Normal">
+			<line1>You are very loyal to your answer.</line1>
+			<line2>I like that about you.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD63">
+		<Speaker name="Waiter">
+			<line1>Actually... I do now.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD160" next="4OD163">
+		<Speaker name="Octavia_Normal">
+			<line1>Well, I'm delighted to hear that.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD60">
+		<Speaker name="Waiter">
+			<line1>I believe what you said, ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD161" next="4OD163">
+		<Speaker name="Octavia_Happy">
+			<line1>Ha, you must be a quite good  follower, then.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD61">
+		<Speaker name="Waiter">
+			<line1>Do you want me to do so, ma'am?</line1>
+			<line2>If that's the case, I believe you.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD162" next="4OD163">
+		<Speaker name="Octavia_Surprise">
+			<line1>Oh?</line1>
+			<line2>You're such a obedient man!</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD163">
+		<Speaker name="Octavia_Happy2">
+			<line1>I was only joking, actually.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD164">
+		<Speaker name="Octavia_Normal">
+			<line1>It is indeed my picture,</line1>
+			<line2>as I am the main %opera% %singer% of  the show.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD165">
+		<Speaker name="Octavia_Normal">
+			<line1>I came to the Eastside for a special  performance at my favorite theater,</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD166">
+		<Speaker name="Octavia_Disappoint">
+			<line1>where I met him for the first time...</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD167">
+		<Speaker name="Octavia_Normal">
+			<line1>....</line1>
+			<line2>This time, answer with your heart,  dear.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OQ18">
+		<Speaker name="Octavia_Normal">
+			<line1>Do you enjoy opera performances?</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="4WD65" clueID="CABIN4_0">Disagree</Choice1>
+			<Choice2 next="4WD66" clueID="CABIN4_0">Ask who is 'him'</Choice2>
+			<Choice3 next="4WD64" clueID="CABIN4_0">Agree</Choice3>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="4WD64" next="4OD169">
+		<Speaker name="Waiter">
+			<line1>I do, ma'am.</line1>
+			<line2>I appreciate the art of it.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD65" next="4OD170">
+		<Speaker name="Waiter">
+			<line1>I'm afraid I don't, ma'am.</line1>
+			<line2>They're not my cup of tea.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD66">
+		<Speaker name="Waiter">
+			<line1>May I ask who is him that you mentioned?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD168">
+		<Speaker name="Octavia_Surprise">
+			<line1>Oh.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD168_2">
+		<Speaker name="Octavia_Normal">
+			<line1>I understand that you must be quite  curious.</line1>
+			<line2>But I wasn't referring to that  particular matter.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OQ19">
+		<Speaker name="Octavia_Normal">
+			<line1>I will tell after you've answered  my question.</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="4WD67">Agree to like opera</Choice1>
+			<Choice2 next="4WD68">Disagree to like opera</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="4WD67" next="4OD169">
+		<Speaker name="Waiter">
+			<line1>I do like opera, ma'am.</line1>
+			<line2>I appreciate the art of it.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD68" next="4OD170">
+		<Speaker name="Waiter">
+			<line1>I'm afraid I don't like opera, ma'am.</line1>
+			<line2>It's not my cup of tea.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD169" next="4OD171">
+		<Speaker name="Octavia_Happy">
+			<line1>Well, you're just like him, indeed.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD170" next="4OD171">
+		<Speaker name="Octavia_Normal">
+			<line1>Oh, you are quite the opposite of him.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD171">
+		<Speaker name="Octavia_Disappoint">
+			<line1>He was Mr. Edward Montgomery.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD69">
+		<Speaker name="Waiter">
+			<line1>(That was the name of the former  Westside's minister,)</line1>
+			<line2>(who mysteriously passed away a  few years ago.)</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD172">
+		<Speaker name="Octavia_Normal">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OQ20">
+		<Speaker name="Octavia_Normal">
+			<line1>Do you know who he was?</line1>
+		</Speaker>
+		<Choices>
+			<Choice1 next="4WD70">Ask if it's the former minister</Choice1>
+			<Choice2 next="4WD71">Play along to not know him</Choice2>
+		</Choices>
+	</Dialogue>
+	<Dialogue id="4WD70">
+		<Speaker name="Waiter">
+			<line1>Yes, ma'am.</line1>
+			<line2>He was the former minister of  Westside.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD173" next="4OD175">
+		<Speaker name="Octavia_Happy">
+			<line1>So you do know him.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4WD71">
+		<Speaker name="Waiter">
+			<line1>I have no clue, ma'am.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD174">
+		<Speaker name="Octavia_Surprise">
+			<line1>You don't?</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD174_2" next="4OD175">
+		<Speaker name="Octavia_Happy">
+			<line1>He was a quite big deal around Thespia,</line1>
+			<line2>as the former minister of Westside.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD175">
+		<Speaker name="Octavia_Normal">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD176">
+		<Speaker name="Octavia_Normal">
+			<line1>He was, in fact, my %former% %husband%  as well.</line1>
+			<line2>He used to accompany me,</line2>
+			<line3>when I needed to %travel% %between% %East%  %and% %West% like this to perform.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD176_2">
+		<Speaker name="Octavia_Disappoint">
+			<line1>This is the first time I've requested  afternoon tea when traveling alone.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD177">
+		<Speaker name="Octavia_Normal">
+			<line1>....</line1>
+			<line2>Speaking of which, I'm delighted.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD178">
+		<Speaker name="Octavia_Happy">
+			<line1>You've managed to provide me with  such a splendid meal.</line1>
+			<line2>You bring back memories of that  moment, my dear waiter.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD179">
+		<Speaker name="Octavia_Normal">
+			<line1>It would end my long and bustling trip,</line1>
+			<line2>with the comforting familiarity of  my hometown.</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="4OD180">
+		<Speaker name="Octavia_Normal">
+			<line1>....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>
