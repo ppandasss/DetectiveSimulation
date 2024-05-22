@@ -31,7 +31,7 @@
 	</Dialogue>
 	<Dialogue id="1WD29" next="1MD39">
 		<Speaker name="Waiter">
-			<line1>May I ask which specific news you're  referring to?</line1>
+			<line1>May I ask which news you're  referring to?</line1>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
@@ -88,13 +88,13 @@
 	<Dialogue id="1MD42">
 		<Speaker name="Martha_Normal">
 			<line1>Oh, I should've let you go to rest  by now.</line1>
-			<line2>It has been a pleasure chatting  with you.</line2>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
 	<Dialogue id="1MD42_2">
 		<Speaker name="Martha_Happy">
-			<line1>Thank you, dear, for your service.</line1>
+			<line1>It has been a pleasure chatting  with you.</line1>
+			<line2>Thank you, dear, for your service.</line2>
 		</Speaker>
 		<Choices/>
 	</Dialogue>

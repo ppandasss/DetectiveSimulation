@@ -47,7 +47,7 @@
 	<Dialogue id="1WD13" next="1MD15">
 		<Speaker name="Waiter">
 			<line1>What a lovely tradition.</line1>
-			<line2>We don’t have such thing on Westside.</line2>
+			<line2>We don't have such thing on Westside.</line2>
 		</Speaker>
 		<Choices/>
 	</Dialogue>

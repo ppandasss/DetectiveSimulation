@@ -40,8 +40,10 @@ public:
 
 		// DRAGGABLE CLUES
 		UIDraggable* Cabin3Newspaper = new UIDraggable("Cabin3Newspaper", "Assets/Images/PaperClues/Archibald_Cabin3_Newspaper.png", glm::vec3(11.7f, 2.2f, 0.0f), glm::vec3(7.31f, 10.12f, 0.0f), true);
-		UIDraggable* Cabin4Pamphlet = new UIDraggable("Cabin4Pamphlet", "Assets/Images/PaperClues/Octavia_Cabin4_Pamphlet.png", glm::vec3(-10.2f, -3.5f, 0.0f), glm::vec3(5.34f, 7.37f, 0.0f), true);
+		Cabin3Newspaper->setDragBoundsByObject(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(30.0f, 20.0f, 0.0f));
 
+		UIDraggable* Cabin4Pamphlet = new UIDraggable("Cabin4Pamphlet", "Assets/Images/PaperClues/Octavia_Cabin4_Pamphlet.png", glm::vec3(-10.2f, -3.5f, 0.0f), glm::vec3(5.34f, 7.37f, 0.0f), true);
+		Cabin4Pamphlet->setDragBoundsByObject(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(30.0f, 20.0f, 0.0f));
 
 		JournalCover = new UIObject("JournalCover", "Assets/Images/Journal/Cover.png", true);
 		JournalCover->SetScale(glm::vec3(14.36f, 8.24f, 0.0f));
@@ -117,8 +119,8 @@ public:
 		allPages.push_back(cabinPage5);
 		allPages.push_back(foodGuide);
 
-		m_gameObjects.push_back(Cabin3Newspaper);
-		m_gameObjects.push_back(Cabin4Pamphlet);
+		draggableClues.push_back(Cabin3Newspaper);
+		draggableClues.push_back(Cabin4Pamphlet);
 
 
 	}
@@ -127,7 +129,7 @@ public:
 
 	void drawBook() {
 
-		audioManager.PlaySound("openJournal", false);
+		audioManager.PlaySound("openJournal");
 
 		openStatus = true;
 
@@ -154,7 +156,7 @@ public:
 
 		//make all gameobjects in book inactive
 
-		audioManager.PlaySound("openJournal", false);
+		audioManager.PlaySound("openJournal");
 
 		openStatus = false;
 		activePage = currentPage::MAIN_PAGE;
@@ -195,16 +197,21 @@ public:
 		}
 
 		for (auto& object : m_gameObjects) {
-
 			if (object->getActiveStatus()) { //CHECK ACTIVE STATUS
-
 				object->Render();
+			}
+		}
 
+
+		allPages[activePage]->Render();
+
+		for (int i = 0; i < 2; i++) {
+
+			if (m_journal->getBookClueState(i)) {
+				draggableClues[i]->Render();
 			}
 
 		}
-
-		allPages[activePage]->Render();
 
 	}
 
@@ -220,6 +227,22 @@ public:
 				object->Update(dt, frame);
 			}
 		}
+
+		for (int i = 0; i < 2; i++) {
+
+			if (m_journal->getBookClueState(i)) {
+
+				if (draggableClues[i]->getActiveStatus()) { //CHECK ACTIVE STATUS
+
+					draggableClues[i]->Update(dt, frame);
+
+				}
+
+			}
+
+		}
+
+
 
 		allPages[activePage]->Update(dt, frame);
 
@@ -251,12 +274,16 @@ public:
 protected:
 
 	std::vector<GameObject*> m_gameObjects;
+	std::vector<GameObject*> draggableClues;
+
 	std::vector<Page*> allPages;
 
 	currentPage activePage = currentPage::MAIN_PAGE;
 
-	bool openStatus = false; //true - open, false - closed
+	bool openStatus = false; //true - open, false - closed 
 
 	glm::vec2 mousePos;
+
+	JournalData* m_journal = JournalData::GetInstance();
 
 };

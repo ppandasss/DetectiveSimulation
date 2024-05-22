@@ -10,14 +10,14 @@
 	<Dialogue id="1MD44">
 		<Speaker name="Martha_Normal">
 			<line1>The scent is so claming in such  a bustling day like this.</line1>
-			<line2>It makes me feel as if home,</line2>
-			<line3>surrounded by my noisy beloved ones,</line3>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
 	<Dialogue id="1MD45">
 		<Speaker name="Martha_Happy">
-			<line1>yet my heart feels so peaceful.</line1>
+			<line1>It makes me feel as if home,</line1>
+			<line2>surrounded by my noisy beloved ones,</line2>
+			<line3>yet my heart feels so peaceful.</line3>
 		</Speaker>
 		<Choices/>
 	</Dialogue>

@@ -46,7 +46,7 @@ public:
             m_animator.SetAnimation(currentAnimation);
             AudioManager::GetInstance().PlaySound("bellRing", false);
             isRinging = true;
-            timerID = Application::Get().SetTimer(2000, [this]() { this->onTimerComplete(); }, false);
+            timerID = Application::Get().SetTimer(2500, [this]() { this->onTimerComplete(); }, false);
             timerActive = true;
         }
     }

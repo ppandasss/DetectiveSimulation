@@ -7,8 +7,13 @@ enum FoodGuide {PAGE1, PAGE2, PAGE3};
 class FoodGuidePage : public Page {
 
 public:
+	AudioManager& audioManager;
 
-	FoodGuidePage() :Page() {
+public:
+
+	FoodGuidePage() :Page(), audioManager(AudioManager::GetInstance()) {
+
+		audioManager.LoadSound("pageSwitch", "Assets/Sounds/Journal/SFX_PageSwitch.mp3", 0.2f);
 
 		TeaGuidePage1 = new UIObject("TeaGuidePage1", "Assets/Images/Journal/TeaGuide_Page1.png", true);
 		TeaGuidePage1->SetScale(glm::vec3(12.27f, 7.48f, 0.0f));
@@ -89,6 +94,8 @@ public:
 			leftButton->showObject = true;
 			leftButton->gameObj->setActiveStatus(true);
 		}
+
+		audioManager.PlaySound("pageSwitch");
 	}
 
 private:

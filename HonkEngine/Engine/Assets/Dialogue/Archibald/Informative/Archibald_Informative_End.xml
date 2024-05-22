@@ -19,8 +19,8 @@
 			<line1>I'm surprised you still managed to do  your job right.</line1>
 		</Speaker>
 		<Choices>
-			<Choice1 next="2WD69" clueID="CABIN3_8">Thank him for acknowledging  your effort</Choice1>
-			<Choice2 next="2WD70" clueID="CABIN3_8">Accept and amplify the praise</Choice2>
+			<Choice1 next="2WD69" clueID="CABIN3_8,CABIN3_10">Thank him for acknowledging  your effort</Choice1>
+			<Choice2 next="2WD70" clueID="CABIN3_8,CABIN3_10">Accept and amplify the praise</Choice2>
 		</Choices>
 	</Dialogue>
 	<Dialogue id="2WD69" next="2AD86">

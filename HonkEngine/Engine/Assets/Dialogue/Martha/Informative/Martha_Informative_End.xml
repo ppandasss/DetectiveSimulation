@@ -31,7 +31,7 @@
 	</Dialogue>
 	<Dialogue id="1WD29" next="1MD39">
 		<Speaker name="Waiter">
-			<line1>May I ask which specific news you're  referring to?</line1>
+			<line1>May I ask which news you're  referring to?</line1>
 		</Speaker>
 		<Choices/>
 	</Dialogue>

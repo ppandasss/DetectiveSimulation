@@ -3,7 +3,7 @@
 	<Dialogue id="1WD20">
 		<Speaker name="Waiter">
 			<line1>(Nice cane.)</line1>
-			<line2>(Hope I don’t need one after this  mission.)</line2>
+			<line2>(Hope I don't need one after this  mission.)</line2>
 			<line3>(Wonder what caused her to use it.  Age? Injury?)</line3>
 		</Speaker>
 		<Choices/>
@@ -90,7 +90,7 @@
 	</Dialogue>
 	<Dialogue id="1MD17_2">
 		<Speaker name="Martha_Sad">
-			<line1>It was... a %tragic% %accident% ,  you know.</line1>
+			<line1>It was... a %tragic% %accident,%  you know.</line1>
 			<line2>I managed to survive fortunately.</line2>
 		</Speaker>
 		<Choices/>
@@ -135,6 +135,7 @@
 		<Speaker name="Martha_Normal">
 			<line1>Thank you, dear.</line1>
 			<line2>It means a lot to me. More than you  will ever know.</line2>
+			<line3>....</line3>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
@@ -201,7 +202,7 @@
 	</Dialogue>
 	<Dialogue id="1MD35">
 		<Speaker name="Martha_Happy">
-			<line1>I couldn’t buy it as it sold out,  but I bet yours will taste as good.</line1>
+			<line1>I couldn't buy it as it sold out,  but I bet yours will taste as good.</line1>
 		</Speaker>
 		<Choices/>
 	</Dialogue>

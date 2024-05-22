@@ -160,7 +160,15 @@ public:
 			}
 
 		}
+		else {
+			if (cabin == CABIN3 && index == 10) {
+				BookClueState[0] = true;
+			}
 
+			if (cabin == CABIN4 && index == 7) {
+				BookClueState[1] = true;
+			}
+		}
 
 	}
 
@@ -236,12 +244,22 @@ public:
 
 	}
 
+	bool getBookClueState(int index) {
+		return BookClueState[index];
+	}
 
+	//Use for ending scene to prevent closing book
+	bool GetBookState() {
+		return LockBook;
+	}
+
+	void SetBookState(bool status) {
+		LockBook = status;
+	}
 
 private:
 
 	static JournalData* instance;
-
 
 	JournalData() {
 
@@ -251,15 +269,20 @@ private:
 
 	}
 
+	//PAGE DATA
 	MainPageData main_page;
-
 	std::map<Cabin, CabinPageData> allCabinData;
 
+	//MAIN PAGE EVIDENCE STORE
 	std::map<Cabin, std::vector<std::string>> allCabinEvidenceChoices;
-
 	std::string mainPageEvidence[2] = { " - ", " - " };
-
 	int no_of_Evidence = 0;
+
+	//BOOK CLUE (NOT THE SAME AS PAGE CLUEs
+	//STATE OF 2 DRAGGABLE OBJECTS IN BOOK
+	bool BookClueState[2] = { false, false };
+
+	bool LockBook = false; //Set as true so player can't close journal
 
 };
 
