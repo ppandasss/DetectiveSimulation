@@ -178,7 +178,7 @@
     <ClInclude Include="Code\PopupWidget\Interface.h" />
     <ClInclude Include="Code\PopupWidget\OptionsTwoInterface.h" />
     <ClInclude Include="Code\PopupWidget\PauseInterface.h" />
-    <ClInclude Include="Code\Scene\EndingScene.h" />
+    <ClInclude Include="Code\Scene\EndScene.h" />
     <ClInclude Include="Code\Scene\Hallway.h" />
     <ClInclude Include="Code\Scene\JournalEntry.h" />
     <ClInclude Include="Code\Scene\Kitchen.h" />

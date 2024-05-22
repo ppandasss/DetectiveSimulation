@@ -19,7 +19,7 @@
 #include "Scene/LoadScene.h"
 #include "Scene/MainMenu.h"
 #include "Scene/JournalEntry.h"
-#include "Scene/EndingScene.h"
+#include "Scene/EndScene.h"
 #include <iostream>
 
 

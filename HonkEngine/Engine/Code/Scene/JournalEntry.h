@@ -15,7 +15,10 @@ class JournalEntry : public Scene {
 
 public:
 
-	JournalEntry() {
+	JournalEntry() :audioManager(AudioManager::GetInstance()) {
+
+		audioManager.LoadSound("cabinMusic", "Assets/Sounds/Music/BGmusic_Cabin.mp3", 4.0f);
+		audioManager.LoadSound("CaseCloseStamp", "Assets/Sounds/SFX_CaseCloseStamp.mp3", 1.0f);
 
 		GameObject* EntrySceneBackground = new UIObject("EntrySceneBackground", "Assets/Images/Ending/EndingSelect_Background.png", true);
 		EntrySceneBackground->SetScale(glm::vec3(19.2f, 10.8f, 0.0f));
@@ -38,18 +41,30 @@ public:
 
 
 	void OnEnter() override {
-		JournalData::GetInstance()->SetBookState(true); //Lock book
+		audioManager.PlaySound("cabinMusic", true);
+		JournalData::GetInstance()->SetBookState(true); //Lock book	
+
 	}
+
+
 
 	void SubmitEvidence() {
 		std::cout << "Submit Evidence" << std::endl;
+		audioManager.PlaySound("CaseCloseStamp");
 		Application::Get().SetScene("EndingScene");
 		return;
+	}
+
+	void OnExit() override{
+
+		audioManager.StopSound("cabinMusic");
+
 	}
 
 
 private:
 
+	AudioManager& audioManager;
 	Book* Journal;
 
 };
