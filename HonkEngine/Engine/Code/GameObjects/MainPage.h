@@ -42,7 +42,6 @@ public:
 
 		UIButton* Suspect1 = new UIButton("Suspect1", "Assets/Images/Journal/CaseSummary_Icon_Martha.png", glm::vec3(1.25f, 2.15f, 0.0f), glm::vec3(0.864f, 0.81f, 0.0f), true, false, "");
 		Suspect1->SetOnClickAction([this]() { setSpy1(); });
-		Suspect1->SetHoverTexture("Assets/Images/Journal/CaseSummary_Icon_Nathaniel.png");
 
 		Text* Cabin1 = new Text("Cabin1", "Cabin 1", "Assets/Fonts/ESA-m.ttf");
 		Cabin1->SetPosition(glm::vec3(0.85f, 1.5f, 0.0f));

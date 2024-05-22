@@ -271,9 +271,12 @@ public:
 
 	void closeJournal() {
 		if (openStatus == true) {
-			closeBook();
+			if (!m_journal->GetBookState()) { //If book is not locked
+				closeBook();
+			}		
 		}
 	}
+
 
 
 protected:

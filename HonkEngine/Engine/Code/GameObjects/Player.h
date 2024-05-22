@@ -13,6 +13,7 @@
 #include "../Scene/Hallway.h"
 #include "../GameObjects/Book.h"
 
+#include "../PopupWidget/InterfaceManager.h"
 
 class Player : public AnimateGameObject
 {
@@ -68,11 +69,17 @@ public:
         if (input.Get().GetKeyDown(GLFW_KEY_TAB)) {
 
             if (m_journal->isOpen()) {
-                m_journal->closeBook();
+                if (!JournalData::GetInstance()->GetBookState()) { //If book is not locked
+                    m_journal->closeBook();
+                }
             }
             else {
                 m_journal->drawBook();
             }
+        }
+
+        if (input.Get().GetKeyDown(GLFW_KEY_J)) {
+            Application::Get().SetScene("JournalEntry");
         }
 
         // Set the animation
