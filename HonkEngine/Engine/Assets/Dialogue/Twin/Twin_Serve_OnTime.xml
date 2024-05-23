@@ -29,8 +29,8 @@
 			<line1>Mother was right, this train really  has the best service.</line1>
 		</Speaker>
 		<Choices>
-			<Choice1 next="3WD10">Thank you Nathaniel</Choice1>
-			<Choice2 next="3WD11">Ask if he want to become a waiter</Choice2>
+			<Choice1 next="3WD10">Thanks for his compliment</Choice1>
+			<Choice2 next="3WD11">Ask if he's interested in  being a waiter</Choice2>
 		</Choices>
 	</Dialogue>
 	<Dialogue id="3WD10" next="3ND15">

@@ -92,9 +92,9 @@
 			<line1>You have a very interesting hobby.</line1>
 		</Speaker>
 		<Choices>
-			<Choice1 next="3WD54" clueID="CABIN22_5">Why are you interested in hats?</Choice1>
-			<Choice2 next="3WD55" clueID="CABIN22_5">Can you try one on?</Choice2>
-			<Choice3 next="3WD56" clueID="CABIN22_5">And also uncommon one</Choice3>
+			<Choice1 next="3WD54" clueID="CABIN21_5,CABIN22_5">Why are you interested in hats?</Choice1>
+			<Choice2 next="3WD55" clueID="CABIN21_5,CABIN22_5">Can you try one on?</Choice2>
+			<Choice3 next="3WD56" clueID="CABIN21_5,CABIN22_5">And also uncommon one</Choice3>
 		</Choices>
 	</Dialogue>
 	<Dialogue id="3WD54" next="3ED24">

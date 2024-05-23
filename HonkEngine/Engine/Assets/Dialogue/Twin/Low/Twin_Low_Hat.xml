@@ -92,8 +92,8 @@
 			<line1>You have a very interesting hobby.</line1>
 		</Speaker>
 		<Choices>
-			<Choice1 next="3WD54" clueID="CABIN21_5">Why are you interested in hats?</Choice1>
-			<Choice2 next="3WD55">Can you try one on?</Choice2>
+			<Choice1 next="3WD54" clueID="CABIN21_5,CABIN22_5">Why are you interested in hats?</Choice1>
+			<Choice2 next="3WD55" clueID="CABIN21_5,CABIN22_5">Can you try one on?</Choice2>
 			<Choice3 next="3WD56">And also uncommon one</Choice3>
 		</Choices>
 	</Dialogue>
@@ -154,7 +154,7 @@
 		</Speaker>
 		<Choices/>
 	</Dialogue>
-	<Dialogue id="3WD57" next="3ND102">
+	<Dialogue id="3WD57" next="3ED36">
 		<Speaker name="Waiter">
 			<line1>(Is she... attacking me too?)</line1>
 		</Speaker>
@@ -196,7 +196,7 @@
 	
 	<Dialogue id="3ED36" next="3ND91">
 		<Speaker name="Evelyn_Happy">
-			<line1>Like this one.</line1>
+			<line1>Like this hat.</line1>
 			<line2>My father just bought it for me  recently at %National% %Day% %Ev-%</line2>
 		</Speaker>
 		<Choices/>

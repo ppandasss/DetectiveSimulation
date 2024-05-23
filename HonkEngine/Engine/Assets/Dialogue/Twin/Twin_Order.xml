@@ -43,7 +43,7 @@
 		</Speaker>
 		<Choices/>
 	</Dialogue>
-	<Dialogue id="3ND03_2">
+	<Dialogue id="3ND03_2" next="3WD03">
 		<Speaker name="Nathaniel_Normal">
 			<line1>But I'm not very surprised, though.</line1>
 			<line2>Coming from someone with such  an unlively face.</line2>
@@ -65,8 +65,9 @@
 	</Dialogue>
 	<Dialogue id="3WD03">
 		<Speaker name="Waiter">
-			<line1>My name is Victor.</line1>
-			<line2>I will be taking care of you  for this trip.</line2>
+			<line1>....</line1>
+			<line2>My name is Victor.</line2>
+			<line3>I will be taking care of you  for this trip.</line3>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
@@ -160,7 +161,7 @@
 	</Dialogue>
 	<Dialogue id="3WD08">
 		<Speaker name="Waiter">
-			<line1>That’s correct, Mr.</line1>
+			<line1>That's correct, Mr.</line1>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
