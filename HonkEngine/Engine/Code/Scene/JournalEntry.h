@@ -24,24 +24,28 @@ public:
 		EntrySceneBackground->SetScale(glm::vec3(19.2f, 10.8f, 0.0f));
 		EntrySceneBackground->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
-		UIButton* CloseCaseButton = new UIButton("CloseCaseButton", "Assets/Images/Ending/EndingSelect_StampCut.png", glm::vec3(-7.0f, -3.1f, 0.0f), glm::vec3(2.5f, 4.06f, 0.0f), true, false, "");
+		CloseCaseButton = new UIButton("CloseCaseButton", "Assets/Images/Ending/EndingSelect_StampCut.png", glm::vec3(-7.0f, -3.1f, 0.0f), glm::vec3(2.5f, 4.06f, 0.0f), true, false, "");
 		CloseCaseButton->SetHoverTexture("Assets/Images/Ending/EndingSelect_StampBorCut.png");
 		CloseCaseButton->SetOnClickAction([this]() { SubmitEvidence(); });
 
 		Journal = new Book();
-		
+
+
 		m_gameObjects.push_back(EntrySceneBackground); 
-		m_gameObjects.push_back(Journal);
 
-		Journal->drawBook();
 
-		m_gameObjects.push_back(CloseCaseButton);
 
 	}
 
 
 	void OnEnter() override {
-		audioManager.PlaySound("cabinMusic", true);
+
+		m_gameObjects.push_back(Journal);
+		Journal->drawBook();
+
+		m_gameObjects.push_back(CloseCaseButton);
+
+		audioManager.PlaySound("cabinMusic", true);	
 		JournalData::GetInstance()->SetBookState(true); //Lock book	
 
 	}
@@ -66,6 +70,7 @@ private:
 
 	AudioManager& audioManager;
 	Book* Journal;
+	UIButton* CloseCaseButton;
 
 };
 

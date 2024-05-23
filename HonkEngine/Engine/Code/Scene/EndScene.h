@@ -75,6 +75,9 @@ public:
 		audioManager.PlaySound("NewspaperSlam");
 		audioManager.PlaySound("EndingSceneBGMusic", true);
 		final_ending = journal_data->checkMainPageEntry();
+
+		std::cout << "ENDING " << final_ending + 1 << std::endl;
+
 		SetFinalScene(final_ending);
 		currentTime = 0.0f;
 
