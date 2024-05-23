@@ -519,7 +519,7 @@
 	</Dialogue>
 	<Dialogue id="2WD67" next="2AD75">
 		<Speaker name="Waiter">
-			<line1>Oh, did you also--</line1>
+			<line1>Oh, did you also-</line1>
 		</Speaker>
 		<Choices/>
 	</Dialogue>

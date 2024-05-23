@@ -254,30 +254,30 @@ public:
         backgroundParallaxManager = std::make_unique<BackgroundParallax>();
 
         float defaultLayer = 0.8f;
-        float objectLayerOne = 0.85f;
+        float objectLayer = 0.85f;
 
         // Add objects to different layers
         ObjectsparallaxManager->AddObjectToLayer(room, defaultLayer);   // Layer 1
-        ObjectsparallaxManager->AddObjectToLayer(hat, objectLayerOne);    // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(hatInspect, objectLayerOne);    // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(bag, objectLayerOne);    // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(bagInspect, objectLayerOne);    // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(medicineBack, objectLayerOne);   // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(medicineFront, objectLayerOne);   // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(medicineFrontInspect, objectLayerOne);   // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(nathanielNormal, objectLayerOne); // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(nathanielHappy, objectLayerOne); // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(nathanielDisappoint, objectLayerOne); // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(nathanielUpset, objectLayerOne); // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(nathanielSad, objectLayerOne); // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(nathanielShy, objectLayerOne); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(hat, objectLayer);    // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(hatInspect, objectLayer);    // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(bag, objectLayer);    // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(bagInspect, objectLayer);    // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(medicineBack, objectLayer);   // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(medicineFront, objectLayer);   // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(medicineFrontInspect, objectLayer);   // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(nathanielNormal, objectLayer); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(nathanielHappy, objectLayer); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(nathanielDisappoint, objectLayer); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(nathanielUpset, objectLayer); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(nathanielSad, objectLayer); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(nathanielShy, objectLayer); // Layer 2
 
-        ObjectsparallaxManager->AddObjectToLayer(evelynNormal, objectLayerOne); // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(evelynHappy, objectLayerOne); // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(evelynDisappoint, objectLayerOne); // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(evelynUpset, objectLayerOne); // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(evelynShy, objectLayerOne); // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(evelynSad, objectLayerOne); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(evelynNormal, objectLayer); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(evelynHappy, objectLayer); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(evelynDisappoint, objectLayer); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(evelynUpset, objectLayer); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(evelynShy, objectLayer); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(evelynSad, objectLayer); // Layer 2
 
         //Scrolling effect for Background
         backgroundParallaxManager->AddBackgroundPair(0, background1a, background1b, 0.5f); // Layer 0, slower

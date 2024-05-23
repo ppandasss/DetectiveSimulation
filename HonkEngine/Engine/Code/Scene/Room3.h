@@ -262,7 +262,7 @@ public:
         backgroundParallaxManager->AddBackgroundPair(4, background5a, background5b, 2.5f); // Layer 4, fastest
         backgroundParallaxManager->AddBackgroundPair(5, background6a, background6b, 3.0f); // Layer 5, fastest
 
-        shakingEffect = std::make_unique<ShakingEffect>(0.05f, 100, 400, 6500);
+        shakingEffect = std::make_unique<ShakingEffect>(0.05f, 100, 220, 6500);
 
         shakingEffect->AddObject(movingLuggage);
         shakingEffect->AddObject(movingLuggageInspect);

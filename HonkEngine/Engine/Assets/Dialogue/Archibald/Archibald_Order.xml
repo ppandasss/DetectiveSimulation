@@ -27,7 +27,8 @@
 	</Dialogue>
 	<Dialogue id="2WD03" next="2AD02">
 		<Speaker name="Waiter">
-			<line1>Apologies, sir, I has been stalled  by the previous passenger.</line1>
+			<line1>Apologies, sir.</line1>
+			<line2>I has been stalled by the  previous passenger.</line2>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
@@ -46,7 +47,8 @@
 	<Dialogue id="2AD02" next="2WD05">
 		<Speaker name="Archibald_Normal">
 			<line1>Whatever the fuss may be, I , do,  not, care.</line1>
-			<line2>Just get on with it, take my order,  and leave.</line2>
+			<line2>Just get on with it,</line2>a
+			<line2>take my order, and leave.</line2>
 		</Speaker>
 		<Choices/>
 	</Dialogue>

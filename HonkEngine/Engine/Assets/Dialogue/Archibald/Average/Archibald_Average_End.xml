@@ -20,7 +20,7 @@
 			<line1>Despite how annoying you've been.</line1>
 		</Speaker>
 		<Choices>
-			<Choice1 next="2WD69">Thank him for acknowledging  your effort</Choice1>
+			<Choice1 next="2WD69">Thanks him for acknowledging  your effort</Choice1>
 			<Choice2 next="2WD70">Apologize and promise to improve</Choice2>
 		</Choices>
 	</Dialogue>

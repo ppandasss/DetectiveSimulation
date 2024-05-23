@@ -29,13 +29,13 @@
 #include "../PopupWidget/InterfaceManager.h"
 #include "../Effects/TransitionEffects.h"
 
-//set each cbin time before order (in milliseconds)
-#define ORDER_DURATION1 1000 
-#define ORDER_DURATION2 2000  //for room 2
-#define ORDER_DURATION3 1000  //for room 3
-#define ORDER_DURATION4 1000
+//set each cbin time before order (in milliseconds) // Remove . to use the correct number
+#define ORDER_DURATION1 60.000 
+#define ORDER_DURATION2 90.000  //for room 2
+#define ORDER_DURATION3 90.000  //for room 3
+#define ORDER_DURATION4 120.000
 
-#define PLAYER_SPEED 20.0f
+#define PLAYER_SPEED 5.5f
 
 
 
@@ -91,6 +91,8 @@ public:
 		audioManager.LoadSound("bellRing", "Assets/Sounds/SFX_CallingBell.mp3",SFX ,0.25f);
 		audioManager.LoadSound("buttonClick", "Assets/Sounds/SFX_DialogueChoice.mp3", SFX, 0.45f);
 		audioManager.LoadSound("dialoguePlay", "Assets/Sounds/SFX_DialoguePlay.mp3", SFX, 0.45f);
+		audioManager.LoadSound("doorSlide", "Assets/Sounds/SFX_SlideDoor.mp3", SFX, 0.7f);
+
 		/*--------------------------------------------------------------📦CREATE GAMEOBJECT📦------------------------------------------------------------------------------------------------------- */
 		/*-------------------------------------------------------------🌲CREATE ENVIRONMENT🌲------------------------------------------------------------------------------------------------------- */
 		GameObject* background1a = new RenderGameObject("BG1A", "Assets/Images/BG/Cabin_Background_01.png");
@@ -384,11 +386,15 @@ public:
 		JournalData::GetInstance()->ActivateClue(CABIN1, 2);
 		JournalData::GetInstance()->ActivateClue(CABIN1, 3);
 		JournalData::GetInstance()->ActivateClue(CABIN1, 4);
+		JournalData::GetInstance()->ActivateClue(CABIN1, 6);
 
 		JournalData::GetInstance()->ActivateClue(CABIN21, 0);
 		JournalData::GetInstance()->ActivateClue(CABIN21, 5);
+		JournalData::GetInstance()->ActivateClue(CABIN21, 6);
 
-		JournalData::GetInstance()->ActivateClue(CABIN22, 0);
+		// Draggable paper clues test
+		JournalData::GetInstance()->ActivateClue(CABIN3, 10);
+		JournalData::GetInstance()->ActivateClue(CABIN4, 7);
 
 	}
 
@@ -453,7 +459,7 @@ public:
 
 							// Check if the room state is Prepare and if the current door matches the game state room
 							if (currentRoomState == RoomState::Prepare && door->GetName() == gameStateNameToDoorName(currentGameState) ) {
-								instructionText->SetContent("A set of meal is required before serving.");
+								instructionText->SetContent("Meal is required before serving.");
 							}
 							else {
 								instructionText->SetContent("Locked. Permission required.");
@@ -474,6 +480,7 @@ public:
 		//Scene::OnExit(); 
 		//audioManager.PauseSound("hallwayMusic");
 		audioManager.StopSound("Player_footsteps");
+		audioManager.PlaySound("doorSlide");
 		
 	}
 

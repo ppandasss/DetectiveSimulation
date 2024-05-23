@@ -224,23 +224,23 @@ public:
         backgroundParallaxManager = std::make_unique<BackgroundParallax>();
 
         float defaultLayer = 0.8f;
-        float objectLayerOne = 0.83f;
+        float objectLayer = 0.85f;
 
         // Add objects to different layers
         ObjectsparallaxManager->AddObjectToLayer(room, defaultLayer);   // Layer 1
-        ObjectsparallaxManager->AddObjectToLayer(lamp, defaultLayer);   // Layer 1.5
-        ObjectsparallaxManager->AddObjectToLayer(hat, objectLayerOne);    // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(bag, objectLayerOne);    // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(caneInspect, objectLayerOne);   // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(letterInspect, objectLayerOne); // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(cane, objectLayerOne);   // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(letter, objectLayerOne); // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(marthaNormal, objectLayerOne); // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(marthaHappy, objectLayerOne); // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(marthaDisappoint, objectLayerOne); // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(marthaUpset, objectLayerOne); // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(marthaSad, objectLayerOne); // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(marthaShy, objectLayerOne); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(lamp, objectLayer);   // Layer 1.5
+        ObjectsparallaxManager->AddObjectToLayer(hat, objectLayer);    // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(bag, objectLayer);    // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(caneInspect, objectLayer);   // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(letterInspect, objectLayer); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(cane, objectLayer);   // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(letter, objectLayer); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(marthaNormal, objectLayer); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(marthaHappy, objectLayer); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(marthaDisappoint, objectLayer); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(marthaUpset, objectLayer); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(marthaSad, objectLayer); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(marthaShy, objectLayer); // Layer 2
 
         //Scrolling effect for Background
         backgroundParallaxManager->AddBackgroundPair(0, background1a, background1b, 0.5f); // Layer 0, slower
