@@ -8,14 +8,18 @@ public:
 
 	CabinPage2() :Page(CABIN21) {
 
+		GameObject* BlankPage2 = new UIObject("BlankPage2", "Assets/Images/Journal/Journal_BlankPage2.png", true);
+		BlankPage2->SetScale(glm::vec3(12.68f, 7.45f, 1.0f));
+		BlankPage2->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
+
 		// LEFT PAGE
 		GameObject* P1Picture = new UIObject("P1Picture", "Assets/Images/Journal/PassengerPicture_Nathaniel.png", true);
 		P1Picture->SetScale(glm::vec3(5.50f, 3.19f, 0.0f));
 		P1Picture->SetPosition(glm::vec3(-3.1f, 1.65f, 0.0f));
 
-		GameObject* PaperClip = new UIObject("PaperClip", "Assets/Images/Journal/PaperClip.png", true);
-		PaperClip->SetScale(glm::vec3(0.51f, 0.92f, 0.0f));
-		PaperClip->SetPosition(glm::vec3(-5.0f, 3.31f, 0.0f));
+		GameObject* PaperClip = new UIObject("PaperClip", "Assets/Images/Journal/Journal_Paperclip04.png", true);
+		PaperClip->SetScale(glm::vec3(0.49f, 0.91f, 0.0f));
+		PaperClip->SetPosition(glm::vec3(-5.0f, 3.46f, 0.0f));
 
 		GameObject* InfoPaper = new UIObject("InfoPaper", "Assets/Images/Journal/Passenger_InfoPaper.png", true);
 		InfoPaper->SetScale(glm::vec3(5.41f, 3.30f, 0.0f));
@@ -49,8 +53,8 @@ public:
 		// RIGHT PAGE
 		// CLUES	[N = Nathaniel, C = Clue]
 		Text* N_Clue1 = new Text("N_Clue1", "Moving to Westside to stay with his mother", "Assets/Fonts/ESA-smb.ttf");
-		N_Clue1->SetPosition(glm::vec3(0.87f, 2.7f, 0.0f));
-		N_Clue1->SetColor(glm::vec3(0.5, 0, 0));
+		N_Clue1->SetPosition(glm::vec3(0.87f, 2.65f, 0.0f));
+		N_Clue1->SetColor(glm::vec3(0.58, 0.04, 0.00));
 		N_Clue1->SetScale(0.55f);
 
 		Text* N_Clue2 = new Text("N_Clue2", "Not very close with his sister as seemed", "Assets/Fonts/ESA-m.ttf");
@@ -59,12 +63,12 @@ public:
 		N_Clue2->SetScale(0.58f);
 
 		Text* N_Clue3 = new Text("N_Clue3", "Doesn't care about the bomb situation", "Assets/Fonts/ESA-m.ttf");
-		N_Clue3->SetPosition(glm::vec3(0.87f, 1.7f, 0.0f));
+		N_Clue3->SetPosition(glm::vec3(0.87f, 1.75f, 0.0f));
 		N_Clue3->SetColor(glm::vec3(0, 0, 0));
 		N_Clue3->SetScale(0.58f);
 
 		Text* N_Clue4 = new Text("N_Clue4", "Take medicine daily Chronic illness?", "Assets/Fonts/ESA-smb.ttf");
-		N_Clue4->SetPosition(glm::vec3(0.85f, 1.2f, 0.0f));
+		N_Clue4->SetPosition(glm::vec3(0.85f, 1.27f, 0.0f));
 		N_Clue4->SetColor(glm::vec3(0, 0, 0));
 		N_Clue4->SetScale(0.62f);
 
@@ -74,11 +78,6 @@ public:
 		textClues.push_back(N_Clue4);
 
 		m_journalData->addEvidenceToJournal(CABIN21, 0, N_Clue1->GetContent());
-
-		// DIVIDER 1
-		GameObject* Divider1 = new UIObject("Divider1", "Assets/Images/Journal/Line_1.png", true);
-		Divider1->SetScale(glm::vec3(4.78f, 0.08f, 0.0f));
-		Divider1->SetPosition(glm::vec3(3.2f, 0.7f, 0.0f));
 
 
 		// LAST ACTIVITY	[N = Nathaniel, LA = Last Activity]
@@ -94,19 +93,13 @@ public:
 
 		Text* N_LA2 = new Text("N_LA2", "After visiting National Day Event with his sister", "Assets/Fonts/ESA-smb.ttf");
 		N_LA2->SetPosition(glm::vec3(1.15f, -0.8f, 0.0f));
-		N_LA2->SetColor(glm::vec3(0.5, 0, 0));
+		N_LA2->SetColor(glm::vec3(0.58, 0.04, 0.00));
 		N_LA2->SetScale(0.5f);
 
 		textClues.push_back(N_LA1);
 		textClues.push_back(N_LA2);
 
 		m_journalData->addEvidenceToJournal(CABIN21, 5, N_LA2->GetContent());
-
-
-		// DIVIDER 2
-		GameObject* Divider2 = new UIObject("Divider2", "Assets/Images/Journal/Line_2.png", true);
-		Divider2->SetScale(glm::vec3(4.8f, 0.06f, 0.0f));
-		Divider2->SetPosition(glm::vec3(3.2f, -1.25f, 0.0f));
 
 
 		// LAST VISIT
@@ -137,11 +130,12 @@ public:
 
 		RedUnderline_Cabin2 = new UIObject("UnderlineCabin2", "Assets/Images/Journal/CaseSummary_Icon_Red_Underline.png", true);
 		RedUnderline_Cabin2->setActiveStatus(false);
-		RedUnderline_Cabin2->SetScale(glm::vec3(1.7f, 0.1f, 0.0f));
-		RedUnderline_Cabin2->SetPosition(glm::vec3(1.1f, -2.0f, 0.0f));
+		RedUnderline_Cabin2->SetScale(glm::vec3(1.77f, 0.13f, 0.0f));
+		RedUnderline_Cabin2->SetPosition(glm::vec3(3.72f, -3.05f, 0.0f));
 
 		textClues.push_back(RedUnderline_Cabin2);
 
+		m_gameObjects.push_back(BlankPage2);
 		m_gameObjects.push_back(P1Picture);
 		m_gameObjects.push_back(PaperClip);
 		m_gameObjects.push_back(InfoPaper);
@@ -152,11 +146,7 @@ public:
 		m_gameObjects.push_back(Occupation);
 		m_gameObjects.push_back(CabinStamp);
 
-		m_gameObjects.push_back(Divider1);
-
 		m_gameObjects.push_back(LastActivity);
-
-		m_gameObjects.push_back(Divider2);
 		m_gameObjects.push_back(LastVisit);
 
 		m_gameObjects.push_back(TownSquare);

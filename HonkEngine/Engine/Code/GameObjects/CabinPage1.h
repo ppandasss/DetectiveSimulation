@@ -8,14 +8,18 @@ public:
 
 	CabinPage1() : Page(CABIN1) {
 
+		GameObject* BlankPage2 = new UIObject("BlankPage2", "Assets/Images/Journal/Journal_BlankPage2.png", true);
+		BlankPage2->SetScale(glm::vec3(12.68f, 7.45f, 1.0f));
+		BlankPage2->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
+
 		// LEFT PAGE
 		GameObject* P1Picture = new UIObject("P1Picture", "Assets/Images/Journal/Passenger_Picture_Martha.png", true);
 		P1Picture->SetScale(glm::vec3(5.50f, 3.19f, 0.0f));
 		P1Picture->SetPosition(glm::vec3(-3.1f, 1.65f, 0.0f));
 
-		GameObject* PaperClip = new UIObject("PaperClip", "Assets/Images/Journal/PaperClip.png", true);
-		PaperClip->SetScale(glm::vec3(0.51f, 0.92f, 0.0f));
-		PaperClip->SetPosition(glm::vec3(-4.0f, 3.31f, 0.0f));
+		GameObject* PaperClip = new UIObject("PaperClip", "Assets/Images/Journal/Journal_Paperclip04.png", true);
+		PaperClip->SetScale(glm::vec3(0.49f, 0.91f, 0.0f));
+		PaperClip->SetPosition(glm::vec3(-4.0f, 3.47f, 0.0f));
 
 		GameObject* InfoPaper = new UIObject("InfoPaper", "Assets/Images/Journal/Passenger_InfoPaper.png", true);
 		InfoPaper->SetScale(glm::vec3(5.41f, 3.30f, 0.0f));
@@ -50,7 +54,7 @@ public:
 		// CLUES	[M = Martha, C = Clue]	
 
 		Text* M_C1 = new Text("M_C1", "First time visiting Westside", "Assets/Fonts/ESA-m.ttf");
-		M_C1->SetPosition(glm::vec3(0.9f, 2.7f, 0.0f));
+		M_C1->SetPosition(glm::vec3(0.9f, 2.65f, 0.0f));
 		M_C1->SetColor(glm::vec3(0, 0, 0));
 		M_C1->SetScale(0.6f);
 
@@ -60,13 +64,13 @@ public:
 		M_C2->SetScale(0.6f);
 
 		Text* M_C3 = new Text("M_C3", "Severe domestic violence accident", "Assets/Fonts/ESA-m.ttf");
-		M_C3->SetPosition(glm::vec3(0.9f, 1.7f, 0.0f));
+		M_C3->SetPosition(glm::vec3(0.9f, 1.75f, 0.0f));
 		M_C3->SetColor(glm::vec3(0, 0, 0));
 		M_C3->SetScale(0.6f);
 
 		Text* M_C4 = new Text("M_C4", "Westside pen-pal friend", "Assets/Fonts/ESA-m.ttf");
-		M_C4->SetPosition(glm::vec3(0.9f, 1.2f, 0.0f));
-		M_C4->SetColor(glm::vec3(0.5, 0, 0));
+		M_C4->SetPosition(glm::vec3(0.9f, 1.27f, 0.0f));
+		M_C4->SetColor(glm::vec3(0.58, 0.04, 0.00));
 		M_C4->SetScale(0.65f);
 
 		textClues.push_back(M_C1);
@@ -90,7 +94,7 @@ public:
 		// LAST ACTIVITY 1
 		Text* M_LA1 = new Text("M_LA1", "Exchange letters with someone on Westside", "Assets/Fonts/ESA-smb.ttf");
 		M_LA1->SetPosition(glm::vec3(0.85f, -0.4f, 0.0f));
-		M_LA1->SetColor(glm::vec3(0.5, 0, 0));
+		M_LA1->SetColor(glm::vec3(0.58, 0.04, 0.00));
 		M_LA1->SetScale(0.6f);
 
 		// LAST ACTIVITY 2
@@ -104,10 +108,7 @@ public:
 
 		m_journalData->addEvidenceToJournal(CABIN1, 4, M_LA1->GetContent());
 
-		// DIVIDER 2
-		GameObject* Divider2 = new UIObject("Divider2", "Assets/Images/Journal/Line_2.png", true);
-		Divider2->SetScale(glm::vec3(4.8f, 0.06f, 0.0f));
-		Divider2->SetPosition(glm::vec3(3.2f, -1.25f, 0.0f));
+
 
 
 		// LAST VISIT
@@ -138,11 +139,11 @@ public:
 
 		RedUnderline_Cabin1 = new UIObject("UnderlineCabin1", "Assets/Images/Journal/CaseSummary_Icon_Red_Underline.png", true);
 		RedUnderline_Cabin1->setActiveStatus(false);
-		RedUnderline_Cabin1->SetScale(glm::vec3(1.7f, 0.1f, 0.0f));
-		RedUnderline_Cabin1->SetPosition(glm::vec3(1.1f, -2.0f, 0.0f));
-
+		RedUnderline_Cabin1->SetScale(glm::vec3(1.77f, 0.13f, 0.0f));
+		RedUnderline_Cabin1->SetPosition(glm::vec3(1.66f, -2.53f, 0.0f));
 		textClues.push_back(RedUnderline_Cabin1);
 
+		m_gameObjects.push_back(BlankPage2);
 		m_gameObjects.push_back(P1Picture);
 		m_gameObjects.push_back(PaperClip);
 		m_gameObjects.push_back(InfoPaper);
@@ -153,12 +154,10 @@ public:
 		m_gameObjects.push_back(Occupation);
 		m_gameObjects.push_back(CabinStamp);
 
-		m_gameObjects.push_back(Divider1);
 
 		m_gameObjects.push_back(LastActivity);
 
 		m_gameObjects.push_back(LastVisit);
-		m_gameObjects.push_back(Divider2);
 
 		m_gameObjects.push_back(TownSquare);
 		m_gameObjects.push_back(TheHolyChurch);
