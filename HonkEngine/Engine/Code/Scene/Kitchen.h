@@ -4,6 +4,7 @@
 
 #include "../GameObjects/RenderGameObject.h"
 #include"../GameObjects/AnimateGameObject.h"	
+#include "../Effects/TransitionEffects.h"
 
 #include "../UI/UIButton.h"
 #include "../UI/UIDraggable.h"
@@ -134,6 +135,9 @@ public:
 
 		orderData.AddObserver([this]() { this->UpdateOrderDisplay(); });
 
+
+		transitionObject = new UINormal("Transition", "Assets/Images/black.png", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(25.0f, 20.0f, 0.0f), true);
+		transitionEffects = std::make_unique<TransitionEffects>(transitionObject);
 
 		/*--------------------------------------------------------------CREATE BUTTONS------------------------------------------------------------------------------------------------------- */
 
@@ -367,6 +371,8 @@ public:
 		m_gameObjects.push_back(journalButton);
 		m_gameObjects.push_back(Journal);
 
+		m_gameObjects.push_back(transitionObject);
+
 		//set all plate gameobjects as inactive
 		clearPlate();
 
@@ -375,6 +381,7 @@ public:
 	void OnEnter() override {
 		Scene::OnEnter();  // Call base class if there's relevant logic
 		//audioManager.PlaySound("hallwayMusic", true);
+		transitionEffects->FadeIn(1.0f, [this]() {});
 		audioManager.PlaySound("kitchenAmbience", true);
 		audioManager.PlaySound("slideDoor");
 
@@ -394,6 +401,8 @@ public:
 
 		BellManager& bellManager = BellManager::GetInstance();
 		bellManager.Update(dt, frame);
+
+		transitionEffects->Update(dt);
 
 		if (input.Get().GetKeyDown(GLFW_KEY_R)) { 
 			clearPlate();
@@ -701,8 +710,8 @@ public:
 		std::cout << "SERVE FOOD" << std::endl;
 		audioManager.PlaySound("servingBellRing");
 
-
-		Application::Get().SetTimer(2000, []() {Application::Get().SetScene("Hallway"); }, false);
+		transitionEffects->FadeOut(1.0f, [this]() {});
+		Application::Get().SetTimer(1000, []() {Application::Get().SetScene("Hallway"); }, false);
 		// Assuming GameStateManager and DoorManager are accessible globally or passed to this scene.
 		GameState currentGameState = gameStateManager.getGameState();
 		RoomState currentRoomState = gameStateManager.getRoomState();
@@ -808,4 +817,7 @@ private:
 	GameObject* TeaArrow;
 	GameObject* OptionalArrow;
 	GameObject* DessertArrow;
+
+	UIElement* transitionObject;
+	std::unique_ptr<TransitionEffects> transitionEffects;
 };

@@ -24,6 +24,10 @@
 #include "../GameObjects/Bell.h"
 #include "../GameStateManager.h"
 #include "KitchenData.h"
+#include "../PopupWidget/PauseInterface.h"
+#include "../PopupWidget/OptionsTwoInterface.h"
+#include "../PopupWidget/InterfaceManager.h"
+#include "../Effects/TransitionEffects.h"
 
 //set each cbin time before order (in milliseconds)
 #define ORDER_DURATION1 1000 
@@ -33,10 +37,7 @@
 
 #define PLAYER_SPEED 20.0f
 
-#include "../PopupWidget/PauseInterface.h"
-#include "../PopupWidget/OptionsTwoInterface.h"
-#include "../PopupWidget/InterfaceManager.h"
-#include "../Effects/TransitionEffects.h"
+
 
 
 
@@ -335,13 +336,10 @@ public:
 		// Stop any previous timers to avoid overlapping actions
 		//Application::Get().ClearAllTimers();
 
-		if (firstEntry) {
-			std::cout << "First entry - Fading in" << std::endl;
-			transitionEffects->FadeIn(3.0f, [this]() {
-				std::cout << "Fade in complete" << std::endl;
-				});
-			firstEntry = false;
-		}
+		
+			
+			transitionEffects->FadeIn(2.0f, [this]() {});
+		
 
 		
 			if (currentGameState == GameState::ROOM1_STATE && currentRoomState == RoomState::Order) {
@@ -416,7 +414,7 @@ public:
 							{
 								if (door->GetName() == "KitchenDoor")
 								{
-									Application::Get().SetScene(door->GetSceneName());
+									transitionEffects->FadeOut(1.0f, [this]() {Application::Get().SetScene("Kitchen"); });
 									entering = true;
 								}
 								else
@@ -425,6 +423,7 @@ public:
 									bellManager.StopAllRinging();
 									audioManager.PlaySound("knockDoor");
 									player->StopMovement();
+									transitionEffects->FadeOut(1.0f, [this]() {});
 									Application::Get().SetTimer(2000, [this, door]() {Application::Get().SetScene(door->GetSceneName()); player->ResumeMovement(); }, false);
 									entering = true;
 								}

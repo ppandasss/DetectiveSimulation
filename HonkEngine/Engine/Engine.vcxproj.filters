@@ -73,6 +73,8 @@
     <ClInclude Include="External\Include\stb_image.h" />
     <ClInclude Include="Code\Effects\ObjectsParallax.h" />
     <ClInclude Include="Code\Effects\ShakingEffect.h" />
+    <ClInclude Include="Code\Scene\EndScene.h" />
+    <ClInclude Include="Code\Scene\JournalEntry.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="External\Library\freetype.lib" />
@@ -130,6 +132,36 @@
     <Xml Include="Assets\Dialogue\Martha\MealResult\Martha_MealResult_Informative.xml" />
     <Xml Include="Assets\Dialogue\Martha\MealResult\Martha_MealResult_Low.xml" />
     <Xml Include="Assets\Dialogue\Twin\Twin_Order.xml" />
+    <Xml Include="Assets\Dialogue\Twin\Twin_Serve_Late.xml" />
+    <Xml Include="Assets\Dialogue\Twin\Twin_Serve_OnTime.xml" />
+    <Xml Include="Assets\Dialogue\Twin\MealResult\Twin_MealResult_Average.xml" />
+    <Xml Include="Assets\Dialogue\Twin\MealResult\Twin_MealResult_Informative.xml" />
+    <Xml Include="Assets\Dialogue\Twin\MealResult\Twin_MealResult_Low.xml" />
+    <Xml Include="Assets\Dialogue\Octavia\Octavia_Order.xml" />
+    <Xml Include="Assets\Dialogue\Octavia\Octavia_Serve_Late.xml" />
+    <Xml Include="Assets\Dialogue\Octavia\Octavia_Serve_OnTime.xml" />
+    <Xml Include="Assets\Dialogue\Octavia\MealReact\Octavia_MealReact_Pastry_Macaron_Eclair.xml" />
+    <Xml Include="Assets\Dialogue\Octavia\MealReact\Octavia_MealReact_Tea_GreenTea_Chamomile_WithMilk.xml" />
+    <Xml Include="Assets\Dialogue\Octavia\MealReact\Octavia_MealReact_Pastry_Scone.xml" />
+    <Xml Include="Assets\Dialogue\Octavia\MealReact\Octavia_MealReact_Tea_EarlGrey_Assam.xml" />
+    <Xml Include="Assets\Dialogue\Octavia\MealReact\Octavia_MealReact_Tea_GreenTea.xml" />
+    <Xml Include="Assets\Dialogue\Octavia\MealReact\Octavia_MealReact_Tea_Chamomile.xml" />
+    <Xml Include="Assets\Dialogue\Octavia\MealReact\Octavia_MealReact_Sandwich_Salmon_Beef.xml" />
+    <Xml Include="Assets\Dialogue\Octavia\MealReact\Octavia_MealReact_Sandwich_Egg.xml" />
+    <Xml Include="Assets\Dialogue\Octavia\MealReact\Octavia_MealReact_Sandwich_Cucumber.xml" />
+    <Xml Include="Assets\Dialogue\Octavia\MealReact\Octavia_MealReact_Pastry_Tart.xml" />
+    <Xml Include="Assets\Dialogue\Octavia\Low\Octavia_Low_Dagger.xml" />
+    <Xml Include="Assets\Dialogue\Octavia\Low\Octavia_Low_End.xml" />
+    <Xml Include="Assets\Dialogue\Octavia\Low\Octavia_Low_Poster.xml" />
+    <Xml Include="Assets\Dialogue\Octavia\Low\Octavia_Low_Start.xml" />
+    <Xml Include="Assets\Dialogue\Octavia\Informative\Octavia_Informative_Dagger.xml" />
+    <Xml Include="Assets\Dialogue\Octavia\Informative\Octavia_Informative_End.xml" />
+    <Xml Include="Assets\Dialogue\Octavia\Informative\Octavia_Informative_Poster.xml" />
+    <Xml Include="Assets\Dialogue\Octavia\Informative\Octavia_Informative_Start.xml" />
+    <Xml Include="Assets\Dialogue\Octavia\Average\Octavia_Average_Dagger.xml" />
+    <Xml Include="Assets\Dialogue\Octavia\Average\Octavia_Average_End.xml" />
+    <Xml Include="Assets\Dialogue\Octavia\Average\Octavia_Average_Poster.xml" />
+    <Xml Include="Assets\Dialogue\Octavia\Average\Octavia_Average_Start.xml" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Assets\Sounds\footstep.mp3" />

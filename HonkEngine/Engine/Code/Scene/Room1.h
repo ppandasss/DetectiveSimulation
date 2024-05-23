@@ -15,6 +15,7 @@
 #include "../GameStateManager.h"
 #include <memory>
 #include "../GameObjects/CharacterData.h"
+#include "../Effects/TransitionEffects.h"
 
 using namespace std;
 
@@ -29,7 +30,9 @@ private:
     GameStateManager& gameStateManager = GameStateManager::GetInstance();
     Door* door = DoorManager::GetInstance().GetDoorByName("Room1Door");
     Door* kichenDoor = DoorManager::GetInstance().GetDoorByName("KitchenDoor");
-
+   
+    UIElement* transitionObject;
+    std::unique_ptr<TransitionEffects> transitionEffects;
 
     //Inspect beject with highlight and no
     UIElement* cane;
@@ -76,6 +79,9 @@ public:
         background5b->SetScale(glm::vec3(76.6f, 10.8f, 0.0f));  background5b->SetPosition(glm::vec3(76.6f, 2.0f, 0.0f));
         background6b->SetScale(glm::vec3(76.6f, 10.8f, 0.0f));  background6b->SetPosition(glm::vec3(76.6f, 1.0f, 0.0f));
 
+
+        transitionObject = new UINormal("Transition", "Assets/Images/black.png", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(25.0f, 20.0f, 0.0f), true);
+        transitionEffects = std::make_unique<TransitionEffects>(transitionObject);
 
         // Scale Multiplier to fit asset scale with screensize
         float sm = 1.23f;
@@ -211,6 +217,7 @@ public:
         m_gameObjects.push_back(marthaIcon);
         m_gameObjects.push_back(waiterIcon);
         m_gameObjects.push_back(instructionText);
+        m_gameObjects.push_back(transitionObject);
 
         //add Parallax Effects
         ObjectsparallaxManager = make_unique<ObjectsParallax>();
@@ -247,7 +254,9 @@ public:
     }
 
     void OnEnter() override {
-        //Scene::OnEnter();  // Call base class if there's relevant logic  
+
+        transitionEffects->FadeIn(1.0f, [this]() {});
+
         audioManager.PlaySound("cabinMusic", true);
         if (gameStateManager.getRoomState() == RoomState::Prepare && KitchenData::GetInstance()->checkCompletePlate())
         {
@@ -436,6 +445,7 @@ public:
         backgroundParallaxManager->Update(dt);
         ObjectsparallaxManager->UpdateLayers();
         dialogueManager->Update(dt, frame);
+        transitionEffects->Update(dt);
 
         UpdateDialogueProgress();
         HandleKeyInputs();
@@ -447,7 +457,7 @@ public:
 
         switch (gameStateManager.getRoomState()) {
         case RoomState::Order:
-            UpdateRoomState("Order", RoomState::Prepare);
+            ManageOrderState();
             break;
         case RoomState::Serve:
             ManageServeState();
@@ -471,11 +481,12 @@ public:
         }
     }
 
-    void UpdateRoomState(const string& currentDialogueKey, RoomState nextState) {
-        if (dialogueManager->IsDialogueFinished(currentDialogueKey)) {
+    void ManageOrderState() {
+        if (dialogueManager->IsDialogueFinished("Order")) {
             SetInstruction("Press [E] to leave");
             if (input.Get().GetKeyDown(GLFW_KEY_E)) {
-                gameStateManager.SetRoomState(nextState);
+                transitionEffects->FadeOut(1.0f, [this]() { gameStateManager.SetRoomState(Prepare); });
+                
             }
         }
     }
@@ -606,6 +617,7 @@ public:
         if (isCaneInspected && isLetterInspected && !inspectEndDialogueSet) {
             std::cout << "Both items inspected, moving to final dialogue." << std::endl;
             gameStateManager.SetRoomState(RoomState::InspectionEnd);
+            transitionEffects->FadeOut(3.0f, [this]() {});
             
         }
     }
