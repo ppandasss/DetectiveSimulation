@@ -6,20 +6,16 @@ class CabinPage1 : public Page {
 
 public:
 
-	CabinPage1() :Page() {
-
-		GameObject* BlankPage2 = new UIObject("BlankPage2", "Assets/Images/Journal/Journal_BlankPage2.png", true);
-		BlankPage2->SetScale(glm::vec3(12.68f, 7.45f, 1.0f));
-		BlankPage2->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
+	CabinPage1() : Page(CABIN1) {
 
 		// LEFT PAGE
 		GameObject* P1Picture = new UIObject("P1Picture", "Assets/Images/Journal/Passenger_Picture_Martha.png", true);
 		P1Picture->SetScale(glm::vec3(5.50f, 3.19f, 0.0f));
 		P1Picture->SetPosition(glm::vec3(-3.1f, 1.65f, 0.0f));
 
-		GameObject* PaperClip = new UIObject("PaperClip", "Assets/Images/Journal/Journal_Paperclip04.png", true);
-		PaperClip->SetScale(glm::vec3(0.49f, 0.91f, 0.0f));
-		PaperClip->SetPosition(glm::vec3(-4.0f, 3.47f, 0.0f));
+		GameObject* PaperClip = new UIObject("PaperClip", "Assets/Images/Journal/PaperClip.png", true);
+		PaperClip->SetScale(glm::vec3(0.51f, 0.92f, 0.0f));
+		PaperClip->SetPosition(glm::vec3(-4.0f, 3.31f, 0.0f));
 
 		GameObject* InfoPaper = new UIObject("InfoPaper", "Assets/Images/Journal/Passenger_InfoPaper.png", true);
 		InfoPaper->SetScale(glm::vec3(5.41f, 3.30f, 0.0f));
@@ -54,7 +50,7 @@ public:
 		// CLUES	[M = Martha, C = Clue]	
 
 		Text* M_C1 = new Text("M_C1", "First time visiting Westside", "Assets/Fonts/ESA-m.ttf");
-		M_C1->SetPosition(glm::vec3(0.9f, 2.65f, 0.0f));
+		M_C1->SetPosition(glm::vec3(0.9f, 2.7f, 0.0f));
 		M_C1->SetColor(glm::vec3(0, 0, 0));
 		M_C1->SetScale(0.6f);
 
@@ -64,31 +60,25 @@ public:
 		M_C2->SetScale(0.6f);
 
 		Text* M_C3 = new Text("M_C3", "Severe domestic violence accident", "Assets/Fonts/ESA-m.ttf");
-		M_C3->SetPosition(glm::vec3(0.9f, 1.75f, 0.0f));
+		M_C3->SetPosition(glm::vec3(0.9f, 1.7f, 0.0f));
 		M_C3->SetColor(glm::vec3(0, 0, 0));
 		M_C3->SetScale(0.6f);
 
 		Text* M_C4 = new Text("M_C4", "Westside pen-pal friend", "Assets/Fonts/ESA-m.ttf");
-		M_C4->SetPosition(glm::vec3(0.9f, 1.27f, 0.0f));
+		M_C4->SetPosition(glm::vec3(0.9f, 1.2f, 0.0f));
 		M_C4->SetColor(glm::vec3(0.5, 0, 0));
 		M_C4->SetScale(0.65f);
 
-		ClueData* cabin1_clue1 = new ClueData();
-		cabin1_clue1->showClue = false;
-		cabin1_clue1->clueObject = M_C1;
+		textClues.push_back(M_C1);
+		textClues.push_back(M_C2);
+		textClues.push_back(M_C3);
+		textClues.push_back(M_C4);
 
-		ClueData* cabin1_clue2 = new ClueData();
-		cabin1_clue2->showClue = false;
-		cabin1_clue2->clueObject = M_C2;
+		m_journalData->addEvidenceToJournal(CABIN1, 3, M_C4->GetContent());
 
-		ClueData* cabin1_clue3 = new ClueData();
-		cabin1_clue3->showClue = false;
-		cabin1_clue3->clueObject = M_C3;
-
-		ClueData* cabin1_clue4 = new ClueData();
-		cabin1_clue4->showClue = false;
-		cabin1_clue4->clueObject = M_C4;
-		cabin1_clue4->isEvidence = true;
+		GameObject* Divider1 = new UIObject("Divider1", "Assets/Images/Journal/Line_1.png", true);
+		Divider1->SetScale(glm::vec3(4.71f, 0.15f, 0.0f));
+		Divider1->SetPosition(glm::vec3(3.2f, 1.0f, 0.0f));
 
 
 		// LAST ACTIVITY	[M = Martha, LA = Last Activity]
@@ -109,30 +99,15 @@ public:
 		M_LA2->SetColor(glm::vec3(0, 0, 0));
 		M_LA2->SetScale(0.54f);
 
-		ClueData* cabin1_clue5 = new ClueData();
-		cabin1_clue5->showClue = false;
-		cabin1_clue5->clueObject = M_LA1;
-		cabin1_clue5->isEvidence = false;
+		textClues.push_back(M_LA1);
+		textClues.push_back(M_LA2);
 
-		ClueData* cabin1_clue6 = new ClueData();
-		cabin1_clue6->showClue = false;
-		cabin1_clue6->clueObject = M_LA2;
+		m_journalData->addEvidenceToJournal(CABIN1, 4, M_LA1->GetContent());
 
-		textClues.push_back(cabin1_clue1);
-		textClues.push_back(cabin1_clue2);
-		textClues.push_back(cabin1_clue3);
-		textClues.push_back(cabin1_clue4);
-
-		textClues.push_back(cabin1_clue5);
-		textClues.push_back(cabin1_clue6);
-
-		m_journalData->addClueToJournalData(CABIN1, cabin1_clue1);
-		m_journalData->addClueToJournalData(CABIN1, cabin1_clue2);
-		m_journalData->addClueToJournalData(CABIN1, cabin1_clue3);
-		m_journalData->addClueToJournalData(CABIN1, cabin1_clue4);
-
-		m_journalData->addClueToJournalData(CABIN1, cabin1_clue5);
-		m_journalData->addClueToJournalData(CABIN1, cabin1_clue6);
+		// DIVIDER 2
+		GameObject* Divider2 = new UIObject("Divider2", "Assets/Images/Journal/Line_2.png", true);
+		Divider2->SetScale(glm::vec3(4.8f, 0.06f, 0.0f));
+		Divider2->SetPosition(glm::vec3(3.2f, -1.25f, 0.0f));
 
 
 		// LAST VISIT
@@ -164,16 +139,9 @@ public:
 		RedUnderline_Cabin1 = new UIObject("UnderlineCabin1", "Assets/Images/Journal/CaseSummary_Icon_Red_Underline.png", true);
 		RedUnderline_Cabin1->setActiveStatus(false);
 		RedUnderline_Cabin1->SetScale(glm::vec3(1.7f, 0.1f, 0.0f));
-		RedUnderline_Cabin1->SetPosition(glm::vec3(1.66f, -2.53f, 0.0f));
+		RedUnderline_Cabin1->SetPosition(glm::vec3(1.1f, -2.0f, 0.0f));
 
-		ClueData* cabin1_clue7 = new ClueData();
-		cabin1_clue7->showClue = false;
-		cabin1_clue7->clueObject = RedUnderline_Cabin1;
-
-		textClues.push_back(cabin1_clue7);
-		m_journalData->addClueToJournalData(CABIN1, cabin1_clue7);
-
-		m_gameObjects.push_back(BlankPage2);
+		textClues.push_back(RedUnderline_Cabin1);
 
 		m_gameObjects.push_back(P1Picture);
 		m_gameObjects.push_back(PaperClip);
@@ -185,9 +153,12 @@ public:
 		m_gameObjects.push_back(Occupation);
 		m_gameObjects.push_back(CabinStamp);
 
+		m_gameObjects.push_back(Divider1);
 
 		m_gameObjects.push_back(LastActivity);
+
 		m_gameObjects.push_back(LastVisit);
+		m_gameObjects.push_back(Divider2);
 
 		m_gameObjects.push_back(TownSquare);
 		m_gameObjects.push_back(TheHolyChurch);
@@ -202,6 +173,7 @@ public:
 		Page::Update(dt, frame);
 
 	}
+
 
 
 private:

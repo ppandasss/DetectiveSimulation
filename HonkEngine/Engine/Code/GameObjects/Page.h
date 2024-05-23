@@ -19,7 +19,7 @@ class Page : public GameObject {
 public:
 
 
-	Page() : GameObject("page") {}
+	Page(Cabin cabinType) : GameObject("page"), cabinType(cabinType) {}
 
 
 	virtual void Render() override
@@ -35,14 +35,13 @@ public:
 
 		}
 
-		for (auto& object : textClues) {
+		for (size_t i = 0; i < textClues.size(); ++i) {
 
-			if (object->showClue) { //CHECK ACTIVE STATUS
+			if (m_journalData->GetClueState(cabinType, i)) {
 
-				object->clueObject->Render();
+				textClues[i]->Render();
 
 			}
-
 		}
 
 		for (auto& object : deffered_m_gameObjects) {
@@ -74,7 +73,7 @@ public:
 
 		for (auto& object : textClues) {
 
-			object->clueObject->Update(dt, frame);
+			object->Update(dt, frame);
 
 		}
 
@@ -91,22 +90,14 @@ public:
 	virtual void setActiveStatus(bool status) {
 
 		for (auto& object : m_gameObjects) {
-
 			object->setActiveStatus(status);
-
 		}
-
 
 		for (auto& object : textClues) {
 
-			if (object->clueObject) { //checks for nullptr
+			if (object) { //checks for nullptr
 
-				if (object->showClue) {
-					object->clueObject->setActiveStatus(status); //sets status accordingly if clue is active
-				}
-				else {
-					object->clueObject->setActiveStatus(false); //if inactive always set as false
-				}
+				
 
 			}
 		}
@@ -132,10 +123,10 @@ public:
 
 protected:
 
+	Cabin cabinType;
+
 	std::vector<GameObject*> m_gameObjects;
-
-	std::vector<ClueData*> textClues;
-
+	std::vector<GameObject*> textClues;
 	std::vector<DeferredRenderObject*> deffered_m_gameObjects;
 
 	JournalData* m_journalData = JournalData::GetInstance();

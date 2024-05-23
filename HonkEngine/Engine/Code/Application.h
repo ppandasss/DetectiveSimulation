@@ -160,8 +160,8 @@ public:
 
 
 	void LoadCursors() {
-		normalCursor = LoadCursor("Assets/Images/normal_cursor.png", 8, 8);
-		clickedCursor = LoadCursor("Assets/Images/clicked_cursor.png", 8, 8); 
+		normalCursor = LoadCursor("Assets/Images/normal_cursor.png", 16, 16);
+		clickedCursor = LoadCursor("Assets/Images/clicked_cursor.png", 16, 16); 
 
 	}
 

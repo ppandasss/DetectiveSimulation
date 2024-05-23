@@ -10,7 +10,7 @@ enum Location { TOWNSQUARE, HOLYCHURCH, COUNCIL, SUPREMECOURT, LOCATION_EMPTY };
 
 //used for clues and character data
 
-enum Cabin { CABIN1, CABIN21, CABIN22, CABIN3, CABIN4, CABIN_EMPTY };
+enum Cabin { CABIN1, CABIN21, CABIN22, CABIN3, CABIN4, CABIN_EMPTY, MAINPAGE, FOODGUIDE };
 
 enum Ending { END1, END2, END3, END4, END5, END6 };
 
@@ -80,20 +80,18 @@ public:
 
 		if (no_of_Evidence == 0) {
 			evidenceButton->SetButtonText("EMPTY");
-			return;
-		}
 
-		if (no_of_Evidence == 1) {
+		} else if (no_of_Evidence == 1){
 			evidenceButton->SetButtonText(mainPageEvidence[0]);
-		}
 
+		}
 		else {
 			evidenceButton->SetButtonText(mainPageEvidence[main_page.player_Evidence]);
 		}
 
 	}
 
-	//SER PLAYER CHOICES
+	//SET PLAYER CHOICES
 
 	void SetPlayerSpyChoice(Cabin spyChoice) {
 
@@ -104,6 +102,9 @@ public:
 	void resetCurrentEvidenceOptions(DeferredRenderObject* buttonObj) {
 
 		Cabin spy_choice = main_page.player_Spy;
+
+		std::cout << "RESET SPY - RESET EVIDENCE \n";
+
 		no_of_Evidence = allCabinData[spy_choice].activeEvidence.size();
 
 		if (no_of_Evidence == 0) {
@@ -142,53 +143,52 @@ public:
 
 	//------------------CABIN PAGE FUNCTIONS--------------------------
 
+	bool GetClueState(Cabin cabin, int clueIndex) const {
+
+		auto cabinIt = clueStates.find(cabin);
+
+		if (cabinIt != clueStates.end()) {
+			auto clueIt = cabinIt->second.find(clueIndex);
+
+			if (clueIt != cabinIt->second.end()) {
+
+				return clueIt->second;
+
+			}
+		}
+
+		return false;
+	}
 
 	// Function to activate a clue for a specific page
 	void ActivateClue(Cabin cabin, int index) {
 
-		if (index >= 0 && index < allCabinData[cabin].textClues.size()) {
+		clueStates[cabin][index] = true;
 
-			ClueData* activatedClue = allCabinData[cabin].textClues[index];
-			activatedClue->showClue = true;
+		if (evidenceMap.find(cabin) != evidenceMap.end() &&
+			evidenceMap[cabin].find(index) != evidenceMap[cabin].end()) {
 
-			if (activatedClue->isEvidence) {
-
-				Text* textObject = dynamic_cast<Text*>(activatedClue->clueObject);
-				std::string evidencetext = textObject->GetContent();
-				allCabinData[cabin].activeEvidence.push_back(evidencetext);
-
-			}
+			std::string evidenceText = evidenceMap[cabin][index];
+			allCabinData[cabin].activeEvidence.push_back(evidenceText);
 
 		}
-		else {
-			if (cabin == CABIN3 && index == 10) {
-				BookClueState[0] = true;
-			}
-
-			if (cabin == CABIN4 && index == 7) {
-				BookClueState[1] = true;
-			}
+		
+		if (cabin == CABIN3 && index == 10) {
+			BookClueState[0] = true;
 		}
+
+		if (cabin == CABIN4 && index == 7) {
+			BookClueState[1] = true;
+		}	
 
 	}
 
-	// Function to deactivate a clue for a specific page
-	void DeactivateClue(Cabin cabin, int index) {
+	// Function to add evidence to the journal data
+	void addEvidenceToJournal(Cabin cabin, int index, const std::string& evidenceText) {
 
-		if (index >= 0 && index < allCabinData[cabin].textClues.size()) {
-
-			allCabinData[cabin].textClues[index]->showClue = false;
-
-		}
+		evidenceMap[cabin][index] = evidenceText;
 
 	}
-
-	void addClueToJournalData(Cabin cabin, ClueData* newClue) {
-
-		allCabinData[cabin].textClues.push_back(newClue);
-
-	}
-
 
 	//GET PAGE INFO FUNCTIONS
 
@@ -217,29 +217,13 @@ public:
 		if (mainPageEvidence[evidence_choice] == "After visiting National Day Event with his sister") evidenceCorrect = true;
 
 		if (spyCorrect) {
-
-			if (evidenceCorrect && locationCorrect)
-				return END1;
-
-			if (evidenceCorrect && !locationCorrect)
-				return END2;
-
-			if (!evidenceCorrect && locationCorrect)
-				return END3;
-
-			if (!evidenceCorrect && !locationCorrect)
-				return END4;
-
+			if (evidenceCorrect && locationCorrect) return END1;
+			if (evidenceCorrect && !locationCorrect) return END2;
+			if (!evidenceCorrect && locationCorrect) return END3;
+			return END4;
 		}
 		else {
-
-			if (locationCorrect) {
-				return END5;
-			}
-			else {
-				return END6;
-			}
-
+			return locationCorrect ? END5 : END6;
 		}
 
 	}
@@ -257,6 +241,7 @@ public:
 		LockBook = status;
 	}
 
+
 private:
 
 	static JournalData* instance;
@@ -273,8 +258,14 @@ private:
 	MainPageData main_page;
 	std::map<Cabin, CabinPageData> allCabinData;
 
+	std::map<Cabin, std::map<int, bool>> clueStates;
+
+
+	// Map to store evidence information
+	std::map<Cabin, std::map<int, std::string>> evidenceMap;
+
 	//MAIN PAGE EVIDENCE STORE
-	std::map<Cabin, std::vector<std::string>> allCabinEvidenceChoices;
+	//std::map<Cabin, std::vector<std::string>> allCabinEvidenceChoices;
 	std::string mainPageEvidence[2] = { " - ", " - " };
 	int no_of_Evidence = 0;
 

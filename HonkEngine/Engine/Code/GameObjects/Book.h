@@ -224,12 +224,6 @@ public:
 		}
 
 
-		//for (auto& object : m_gameObjects) {
-		//	if (object->getActiveStatus()) { //CHECK ACTIVE STATUS
-		//		object->Update(dt, frame);
-		//	}
-		//}
-
 		for (auto it = m_gameObjects.rbegin(); it != m_gameObjects.rend(); ++it) {
 			GameObject* object = *it;
 			if (object->getActiveStatus()) { //CHECK ACTIVE STATUS
