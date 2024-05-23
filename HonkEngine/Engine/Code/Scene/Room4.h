@@ -84,6 +84,7 @@ public:
         //Objects     
         UIElement* room = new UINormal("Cabin4", "Assets/Images/Octavia/Octavia_Cabin.png", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(19.0f * sm, 10.55f * sm, 0.0f), true);
         UIElement* bag = new UINormal("Bag", "Assets/Images/Octavia/Octavia_Bag.png", glm::vec3(-1.7f, -4.85f, 0.0f), glm::vec3(3.75f * sm, 2.7f * sm, 0.0f), true);
+        UIElement* lamp = new UINormal("Lamp", "Assets/Images/Octavia/Octavia_Lamp.png", glm::vec3(-1.65f, -0.335f, 0.0f), glm::vec3(1.25f * sm, 2.22f * sm, 0.0f), true);
 
 
         //Inspection Items
@@ -202,6 +203,8 @@ public:
         m_gameObjects.push_back(poster);
         m_gameObjects.push_back(posterInspect);
 
+        m_gameObjects.push_back(lamp);
+
         m_gameObjects.push_back(octaviaNormal);
         m_gameObjects.push_back(octaviaHappy);
         m_gameObjects.push_back(octaviaHappy2);
@@ -209,7 +212,6 @@ public:
         m_gameObjects.push_back(octaviaUpset);
         m_gameObjects.push_back(octaviaSad);
         m_gameObjects.push_back(octaviaSurprise);
-
 
         m_gameObjects.push_back(dialogueBox);
         m_gameObjects.push_back(dialogueChoice1);
@@ -224,22 +226,23 @@ public:
         backgroundParallaxManager = std::make_unique<BackgroundParallax>();
 
         float defaultLayer = 0.8f;
-        float objectLayerOne = 0.83f;
+        float objectLayer = 0.85f;
 
         // Add objects to different layers
         ObjectsparallaxManager->AddObjectToLayer(room, defaultLayer);   // Layer 1
-        ObjectsparallaxManager->AddObjectToLayer(dagger, objectLayerOne);    // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(daggerInspect, objectLayerOne);    // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(bag, objectLayerOne);    // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(poster, objectLayerOne);   // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(posterInspect, objectLayerOne);   // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(octaviaNormal, objectLayerOne); // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(octaviaHappy, objectLayerOne); // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(octaviaHappy2, objectLayerOne); // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(octaviaDisappoint, objectLayerOne); // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(octaviaUpset, objectLayerOne); // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(octaviaSad, objectLayerOne); // Layer 2
-        ObjectsparallaxManager->AddObjectToLayer(octaviaSurprise, objectLayerOne); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(dagger, objectLayer);    // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(daggerInspect, objectLayer);    // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(bag, objectLayer);    // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(lamp, objectLayer);    // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(poster, objectLayer);   // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(posterInspect, objectLayer);   // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(octaviaNormal, objectLayer); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(octaviaHappy, objectLayer); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(octaviaHappy2, objectLayer); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(octaviaDisappoint, objectLayer); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(octaviaUpset, objectLayer); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(octaviaSad, objectLayer); // Layer 2
+        ObjectsparallaxManager->AddObjectToLayer(octaviaSurprise, objectLayer); // Layer 2
 
 
         //Scrolling effect for Background

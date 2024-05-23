@@ -144,9 +144,9 @@
 			<line1>Any kind at all.</line1>
 		</Speaker>
 		<Choices>
-			<Choice1 next="4WD37">I do</Choice1>
+			<Choice1 next="4WD36">I don't</Choice1>
 			<Choice2 next="4WD42">Depends on what kind of god</Choice2>
-			<Choice3 next="4WD36">I don't</Choice3>
+			<Choice3 next="4WD37">I do</Choice3>
 		</Choices>
 	</Dialogue>
 	<Dialogue id="4WD36">
@@ -249,7 +249,7 @@
 		</Speaker>
 		<Choices/>
 	</Dialogue>
-	<Dialogue id="4WD37">
+	<Dialogue id="4WD42">
 		<Speaker name="Waiter">
 			<line1>For me, it depends on what kind of god.</line1>
 		</Speaker>
