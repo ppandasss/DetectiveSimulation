@@ -6,7 +6,7 @@ class MainPage : public Page {
 
 public:
 
-	MainPage() :Page() {
+	MainPage() :Page(MAINPAGE) {
 
 
 		// DRAGGABLE PAPERS
@@ -241,7 +241,7 @@ public:
 
 	void setSpy4() {
 
-		m_journalData->SetPlayerSpyChoice(CABIN3);
+		m_journalData->SetPlayerSpyChoice(CABIN4);
 
 		//sets button text to current spys evidence
 		updateEvidenceButtonText();

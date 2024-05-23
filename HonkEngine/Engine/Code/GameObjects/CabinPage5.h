@@ -6,7 +6,7 @@ class CabinPage5 : public Page {
 
 public:
 
-	CabinPage5() :Page() {
+	CabinPage5() :Page(CABIN4) {
 
 		// LEFT PAGE
 		GameObject* P1Picture = new UIObject("P1Picture", "Assets/Images/Journal/PassengerPicture_Octavia.png", true);
@@ -68,41 +68,18 @@ public:
 		O_Clue4->SetColor(glm::vec3(0.5, 0, 0));
 		O_Clue4->SetScale(0.58f);
 
-		ClueData* cabin4_clue1 = new ClueData();
-		cabin4_clue1->showClue = true;
-		cabin4_clue1->clueObject = O_Clue1;
+		textClues.push_back(O_Clue1);
+		textClues.push_back(O_Clue2);
+		textClues.push_back(O_Clue3);
+		textClues.push_back(O_Clue4);
 
-		ClueData* cabin4_clue2 = new ClueData();
-		cabin4_clue2->showClue = true;
-		cabin4_clue2->clueObject = O_Clue2;
-		cabin4_clue2->isEvidence = true;
-
-		ClueData* cabin4_clue3 = new ClueData();
-		cabin4_clue3->showClue = true;
-		cabin4_clue3->clueObject = O_Clue3;
-
-		ClueData* cabin4_clue4 = new ClueData();
-		cabin4_clue4->showClue = true;
-		cabin4_clue4->clueObject = O_Clue4;
-		cabin4_clue4->isEvidence = true;
-
-		textClues.push_back(cabin4_clue1);
-		textClues.push_back(cabin4_clue2);
-		textClues.push_back(cabin4_clue3);
-		textClues.push_back(cabin4_clue4);
-
-		m_journalData->addClueToJournalData(CABIN4, cabin4_clue1);
-		m_journalData->addClueToJournalData(CABIN4, cabin4_clue2);
-		m_journalData->addClueToJournalData(CABIN4, cabin4_clue3);
-		m_journalData->addClueToJournalData(CABIN4, cabin4_clue4);
-
-
+		m_journalData->addEvidenceToJournal(CABIN4, 1, O_Clue2->GetContent());
+		m_journalData->addEvidenceToJournal(CABIN4, 3, O_Clue4->GetContent());
 
 		// DIVIDER 1
 		GameObject* Divider1 = new UIObject("Divider1", "Assets/Images/Journal/Line_1.png", true);
 		Divider1->SetScale(glm::vec3(4.78f, 0.08f, 0.0f));
 		Divider1->SetPosition(glm::vec3(3.2f, 0.7f, 0.0f));
-
 
 		// LAST ACTIVITY	[O = Octavia, LA = Last Activity]
 		Text* LastActivity = new Text("LastActivity", "Last Activity", "Assets/Fonts/mvboli.ttf");
@@ -120,19 +97,9 @@ public:
 		O_LA2->SetColor(glm::vec3(0, 0, 0));
 		O_LA2->SetScale(0.52f);
 
-		ClueData* cabin4_clue5 = new ClueData();
-		cabin4_clue5->showClue = true;
-		cabin4_clue5->clueObject = O_LA1;
+		textClues.push_back(O_LA1);
+		textClues.push_back(O_LA2);
 
-		ClueData* cabin4_clue6 = new ClueData();
-		cabin4_clue6->showClue = true;
-		cabin4_clue6->clueObject = O_LA2;
-
-		textClues.push_back(cabin4_clue5);
-		textClues.push_back(cabin4_clue6);
-
-		m_journalData->addClueToJournalData(CABIN4, cabin4_clue5);
-		m_journalData->addClueToJournalData(CABIN4, cabin4_clue6);
 
 
 		// DIVIDER 2
@@ -172,12 +139,7 @@ public:
 		RedUnderline_Cabin5->SetScale(glm::vec3(1.7f, 0.1f, 0.0f));
 		RedUnderline_Cabin5->SetPosition(glm::vec3(1.1f, -2.0f, 0.0f));
 
-		ClueData* cabin4_clue7 = new ClueData();
-		cabin4_clue7->showClue = false;
-		cabin4_clue7->clueObject = RedUnderline_Cabin5;
-
-		textClues.push_back(cabin4_clue7);
-		m_journalData->addClueToJournalData(CABIN4, cabin4_clue7);
+		textClues.push_back(RedUnderline_Cabin5);
 
 		m_gameObjects.push_back(P1Picture);
 		m_gameObjects.push_back(PaperClip);

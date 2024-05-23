@@ -8,7 +8,7 @@ class FoodGuidePage : public Page {
 
 public:
 
-	FoodGuidePage() :Page() {
+	FoodGuidePage() :Page(MAINPAGE) {
 
 		TeaGuidePage1 = new UIObject("TeaGuidePage1", "Assets/Images/Journal/TeaGuide_Page1.png", true);
 		TeaGuidePage1->SetScale(glm::vec3(12.27f, 7.48f, 0.0f));

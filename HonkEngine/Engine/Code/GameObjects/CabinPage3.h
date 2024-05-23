@@ -6,7 +6,7 @@ class CabinPage3 : public Page {
 
 public:
 
-	CabinPage3() :Page() {
+	CabinPage3() :Page(CABIN22) {
 
 		// LEFT PAGE
 		GameObject* P1Picture = new UIObject("P1Picture", "Assets/Images/Journal/PassengerPicture_Evelyn.png", true);
@@ -68,22 +68,13 @@ public:
 		E_Clue4->SetColor(glm::vec3(0, 0, 0));
 		E_Clue4->SetScale(0.62f);
 
-		ClueData* cabin22_clue1 = new ClueData();
-		cabin22_clue1->showClue = true;
-		cabin22_clue1->clueObject = E_Clue1;
-		cabin22_clue1->isEvidence = true;
 
-		ClueData* cabin22_clue2 = new ClueData();
-		cabin22_clue2->showClue = true;
-		cabin22_clue2->clueObject = E_Clue2;
+		textClues.push_back(E_Clue1);
+		textClues.push_back(E_Clue2);
+		textClues.push_back(E_Clue3);
+		textClues.push_back(E_Clue4);
 
-		ClueData* cabin22_clue3 = new ClueData();
-		cabin22_clue3->showClue = true;
-		cabin22_clue3->clueObject = E_Clue3;
-
-		ClueData* cabin22_clue4 = new ClueData();
-		cabin22_clue4->showClue = true;
-		cabin22_clue4->clueObject = E_Clue4;
+		m_journalData->addEvidenceToJournal(CABIN22, 0, E_Clue1->GetContent());
 
 		// DIVIDER 1
 		GameObject* Divider1 = new UIObject("Divider1", "Assets/Images/Journal/Line_1.png", true);
@@ -107,31 +98,10 @@ public:
 		E_LA2->SetColor(glm::vec3(0.5, 0, 0));
 		E_LA2->SetScale(0.48f);
 
-		ClueData* cabin22_clue5 = new ClueData();
-		cabin22_clue5->showClue = true;
-		cabin22_clue5->clueObject = E_LA1;
+		textClues.push_back(E_LA1);
+		textClues.push_back(E_LA2);
 
-		ClueData* cabin22_clue6 = new ClueData();
-		cabin22_clue6->showClue = true;
-		cabin22_clue6->clueObject = E_LA2;
-		cabin22_clue6->isEvidence = true;
-
-		textClues.push_back(cabin22_clue1);
-		textClues.push_back(cabin22_clue2);
-		textClues.push_back(cabin22_clue3);
-		textClues.push_back(cabin22_clue4);
-
-		textClues.push_back(cabin22_clue5);
-		textClues.push_back(cabin22_clue6);
-
-		m_journalData->addClueToJournalData(CABIN22, cabin22_clue1);
-		m_journalData->addClueToJournalData(CABIN22, cabin22_clue2);
-		m_journalData->addClueToJournalData(CABIN22, cabin22_clue3);
-		m_journalData->addClueToJournalData(CABIN22, cabin22_clue4);
-
-		m_journalData->addClueToJournalData(CABIN22, cabin22_clue5);
-		m_journalData->addClueToJournalData(CABIN22, cabin22_clue6);
-
+		m_journalData->addEvidenceToJournal(CABIN22, 5, E_LA2->GetContent());
 
 		// DIVIDER 2
 		GameObject* Divider2 = new UIObject("Divider2", "Assets/Images/Journal/Line_2.png", true);
@@ -170,13 +140,7 @@ public:
 		RedUnderline_Cabin3->SetScale(glm::vec3(1.7f, 0.1f, 0.0f));
 		RedUnderline_Cabin3->SetPosition(glm::vec3(1.1f, -2.0f, 0.0f));
 
-		ClueData* cabin22_clue7 = new ClueData();
-		cabin22_clue7->showClue = false;
-		cabin22_clue7->clueObject = RedUnderline_Cabin3;
-
-		textClues.push_back(cabin22_clue7);
-		m_journalData->addClueToJournalData(CABIN22, cabin22_clue7);
-
+		textClues.push_back(RedUnderline_Cabin3);
 
 		m_gameObjects.push_back(P1Picture);
 		m_gameObjects.push_back(PaperClip);
@@ -188,17 +152,8 @@ public:
 		m_gameObjects.push_back(Occupation);
 		m_gameObjects.push_back(CabinStamp);
 
-		m_gameObjects.push_back(E_Clue1);
-		m_gameObjects.push_back(E_Clue2);
-		m_gameObjects.push_back(E_Clue3);
-		m_gameObjects.push_back(E_Clue4);
 		m_gameObjects.push_back(Divider1);
-
-
 		m_gameObjects.push_back(LastActivity);
-		m_gameObjects.push_back(E_LA1);
-		m_gameObjects.push_back(E_LA2);
-
 		m_gameObjects.push_back(Divider2);
 		m_gameObjects.push_back(LastVisit);
 
