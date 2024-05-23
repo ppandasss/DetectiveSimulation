@@ -50,6 +50,8 @@ class JournalData {
 
 public:
 
+	using JournalObserver = std::function<void()>;
+
 	static JournalData* GetInstance() {
 
 		if (instance == nullptr) {
@@ -58,25 +60,38 @@ public:
 		return instance;
 	}
 
+	void AddObserver(JournalObserver observer) {
+		observers.push_back(observer);
+	}
+
+	void NotifyObservers() {
+		for (auto& observer : observers) {
+			observer();
+		}
+	}
+
 	//------------------MAIN PAGE FUNCTIONS--------------------------
 
 
 	void incrementEvidence() {
 		//Increment index and wrap around if needed
 
-		//std::cout << "INCREMENT CALLED" << std::endl;
-		no_of_Evidence = allCabinData[main_page.player_Spy].activeEvidence.size();
+		std::cout << "INCREMENT CALLED" << std::endl;
+		//no_of_Evidence = allCabinData[main_page.player_Spy].activeEvidence.size();
 
-		if (no_of_Evidence == 2) {
+		//if (no_of_Evidence == 2) {
 			//std::cout << "INDEX INCREMENTED" << std::endl;
 			main_page.player_Evidence = (main_page.player_Evidence + 1) % 2;
 			//std::cout << main_page.player_Evidence << std::endl;
 
-		}
+		//}
+
 
 	}
 
 	void setCurrentEvidencetext(UIButtonEmpty* evidenceButton) {
+
+		no_of_Evidence = allCabinData[main_page.player_Spy].activeEvidence.size();
 
 		if (no_of_Evidence == 0) {
 			evidenceButton->SetButtonText("EMPTY");
@@ -91,12 +106,27 @@ public:
 
 	}
 
-	//SET PLAYER CHOICES
 
-	void SetPlayerSpyChoice(Cabin spyChoice) {
-
+	// Add a method to set the spy choice without notifying observers
+	void SetPlayerSpyChoiceInternal(Cabin spyChoice) {
 		main_page.player_Spy = spyChoice;
+	}
 
+	// Modified SetPlayerSpyChoice method to notify observers
+	void SetPlayerSpyChoice(Cabin spyChoice) {
+		SetPlayerSpyChoiceInternal(spyChoice);
+		NotifyObservers();
+	}
+
+	// Add a similar method for bomb location
+	void SetPlayerBombLocationInternal(Location bombLocation) {
+		main_page.player_BombLocation = bombLocation;
+	}
+
+	// Modified SetPlayerBombLocation method to notify observers
+	void SetPlayerBombLocation(Location bombLocation) {
+		SetPlayerBombLocationInternal(bombLocation);
+		NotifyObservers();
 	}
 
 	void resetCurrentEvidenceOptions(DeferredRenderObject* buttonObj) {
@@ -134,11 +164,10 @@ public:
 
 		}
 
+		main_page.player_Evidence = 0;
+
 	}
 
-	void SetPlayerBombLocation(Location bombLocation) {
-		main_page.player_BombLocation = bombLocation;
-	}
 
 
 	//------------------CABIN PAGE FUNCTIONS--------------------------
@@ -185,9 +214,7 @@ public:
 
 	// Function to add evidence to the journal data
 	void addEvidenceToJournal(Cabin cabin, int index, const std::string& evidenceText) {
-
 		evidenceMap[cabin][index] = evidenceText;
-
 	}
 
 	//GET PAGE INFO FUNCTIONS
@@ -213,8 +240,23 @@ public:
 		bool evidenceCorrect = false;
 
 		if (spy_choice == CABIN21) spyCorrect = true;
+		
+
+		if (spyCorrect) {
+
+			string evidenceChoice = "";
+			if (mainPageEvidence->size() > 1) {
+				evidenceChoice = mainPageEvidence[evidence_choice];
+			}
+			else if (mainPageEvidence->size() == 1) {
+				evidenceChoice = mainPageEvidence[0];
+			}
+
+			if (evidenceChoice == "After visiting National Day Event with his sister") evidenceCorrect = true;
+
+		}
+
 		if (location_choice == TOWNSQUARE) locationCorrect = true;
-		if (mainPageEvidence[evidence_choice] == "After visiting National Day Event with his sister") evidenceCorrect = true;
 
 		if (spyCorrect) {
 			if (evidenceCorrect && locationCorrect) return END1;
@@ -274,6 +316,8 @@ private:
 	bool BookClueState[2] = { false, false };
 
 	bool LockBook = false; //Set as true so player can't close journal
+
+	std::vector<JournalObserver> observers;
 
 };
 

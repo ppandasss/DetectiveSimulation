@@ -171,6 +171,8 @@ public:
 		/*JournalData::GetInstance()->ActivateClue(CABIN3, 10); 
 		JournalData::GetInstance()->ActivateClue(CABIN4, 7);*/
 
+
+
 		/*-------------------------------------------------------------🎮CREATE PLAYER🎮------------------------------------------------------------------------------------------------------- */
 
 		player = new Player("waiter", "Assets/Images/Waiter_Sprite_Walk.png", 2, 8, Journal,PLAYER_SPEED);
@@ -376,6 +378,18 @@ public:
 		
 
 		entering = false;
+
+		JournalData::GetInstance()->ActivateClue(CABIN1, 0);
+		JournalData::GetInstance()->ActivateClue(CABIN1, 1);
+		JournalData::GetInstance()->ActivateClue(CABIN1, 2);
+		JournalData::GetInstance()->ActivateClue(CABIN1, 3);
+		JournalData::GetInstance()->ActivateClue(CABIN1, 4);
+
+		JournalData::GetInstance()->ActivateClue(CABIN21, 0);
+		JournalData::GetInstance()->ActivateClue(CABIN21, 5);
+
+		JournalData::GetInstance()->ActivateClue(CABIN22, 0);
+
 	}
 
 
@@ -391,6 +405,10 @@ public:
 
 		BellManager& bellManager = BellManager::GetInstance();
 		bellManager.Update(dt, frame);
+
+		if (Journal->isOpen()) {
+			Journal->Update(dt, frame);
+		}
 
 		KitchenData* foodData = KitchenData::GetInstance();
 
@@ -443,6 +461,7 @@ public:
 						}
 					}
 				});
+
 			instructionText->setActiveStatus(isNearDoor);
 		}
 

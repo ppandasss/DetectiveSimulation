@@ -376,6 +376,7 @@ public:
 		//set all plate gameobjects as inactive
 		clearPlate();
 
+
 	}
 
 	void OnEnter() override {

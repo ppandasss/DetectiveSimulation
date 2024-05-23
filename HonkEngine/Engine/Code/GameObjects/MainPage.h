@@ -172,8 +172,121 @@ public:
 		deffered_m_gameObjects.push_back(redCircle);
 		deffered_m_gameObjects.push_back(evidenceButtonDeferred);
 
-		//make evidence button deffered and set active with evidence no.
+		JournalData::GetInstance()->AddObserver([this]() { UpdateFromJournalData(); });
 
+		updateEvidenceButtonText();
+
+	}
+
+
+	void UpdateFromJournalData() {
+
+		MainPageData& data = m_journalData->GetMainPageData();
+
+		// Update spy choice UI
+		UpdateSpyChoice(data.player_Spy);
+
+		// Update bomb location UI
+		UpdateBombLocation(data.player_BombLocation);
+
+	}
+
+	void UpdateSpyChoice(Cabin cabin) {
+		switch (cabin) {
+		case CABIN1:
+			SetSpyChoiceUI(CABIN1, glm::vec3(1.15f, 1.55f, 0.0f));
+			break;
+		case CABIN21:
+			SetSpyChoiceUI(CABIN21, glm::vec3(2.65f, 1.55f, 0.0f));
+			break;
+		case CABIN22:
+			SetSpyChoiceUI(CABIN22, glm::vec3(4.15f, 1.55f, 0.0f));
+			break;
+		case CABIN3:
+			SetSpyChoiceUI(CABIN3, glm::vec3(1.15f, 0.25f, 0.0f));
+			break;
+		case CABIN4:
+			SetSpyChoiceUI(CABIN4, glm::vec3(2.65f, 0.25f, 0.0f));
+			break;
+		default:
+			break;
+		}
+	}
+
+	void UpdateBombLocation(Location location) {
+		switch (location) {
+		case TOWNSQUARE:
+			SetBombLocationUI(TOWNSQUARE, glm::vec3(1.4f, -2.45f, 0.0f));
+			break;
+		case HOLYCHURCH:
+			SetBombLocationUI(HOLYCHURCH, glm::vec3(3.5f, -2.45f, 0.0f));
+			break;
+		case COUNCIL:
+			SetBombLocationUI(COUNCIL, glm::vec3(1.4f, -2.95f, 0.0f));
+			break;
+		case SUPREMECOURT:
+			SetBombLocationUI(SUPREMECOURT, glm::vec3(3.5f, -2.95f, 0.0f));
+			break;
+		default:
+			break;
+		}
+	}
+
+	// Separate functions to update the UI without causing recursion
+	void SetSpyChoiceUI(Cabin spyChoice, glm::vec3 position) {
+		if (redCircle->showObject == false) {
+			redCircle->showObject = true;
+		}
+		redCircle->gameObj->SetPosition(position);
+	}
+
+	void SetBombLocationUI(Location bombLocation, glm::vec3 position) {
+		if (redUnderline->showObject == false) {
+			redUnderline->showObject = true;
+		}
+		redUnderline->gameObj->SetPosition(position);
+	}
+
+	// In your button click functions, just set the state
+	void setSpy1() {
+		m_journalData->SetPlayerSpyChoice(CABIN1);
+		updateEvidenceButtonText();
+	}
+
+	void setSpy21() {
+		m_journalData->SetPlayerSpyChoice(CABIN21);
+		updateEvidenceButtonText();
+	}
+
+	void setSpy22() {
+		m_journalData->SetPlayerSpyChoice(CABIN22);
+		updateEvidenceButtonText();
+	}
+
+	void setSpy3() {
+		m_journalData->SetPlayerSpyChoice(CABIN3);
+		updateEvidenceButtonText();
+	}
+
+	void setSpy4() {
+		m_journalData->SetPlayerSpyChoice(CABIN4);
+		updateEvidenceButtonText();
+	}
+
+	void setLocationTownSquare() {
+		m_journalData->SetPlayerBombLocation(TOWNSQUARE);
+	}
+
+	void setLocationHolyChurch() {
+		m_journalData->SetPlayerBombLocation(HOLYCHURCH);
+	}
+
+	void setLocationCouncil() {
+		m_journalData->SetPlayerBombLocation(COUNCIL);
+	}
+
+	void setLocationSupremeCourt() {
+		m_journalData->SetPlayerBombLocation(SUPREMECOURT);
 	}
 
 	//--------------------- SUSPECT BUTTON FUNCTIONS -----------------------
@@ -189,69 +302,6 @@ public:
 
 	}
 
-	void setSpy1() {
-
-		m_journalData->SetPlayerSpyChoice(CABIN1);
-
-		updateEvidenceButtonText();
-
-		if (redCircle->showObject == false) {
-			redCircle->showObject = true;
-		}
-		redCircle->gameObj->SetPosition(glm::vec3(1.15f, 1.55f, 0.0f));
-	};
-
-	void setSpy21() {
-		m_journalData->SetPlayerSpyChoice(CABIN21);
-
-		updateEvidenceButtonText();
-
-		if (redCircle->showObject == false) {
-			redCircle->showObject = true;
-		}
-		redCircle->gameObj->SetPosition(glm::vec3(2.65f, 1.55f, 0.0f));
-
-	};
-
-	void setSpy22() {
-
-		m_journalData->SetPlayerSpyChoice(CABIN22);
-
-		updateEvidenceButtonText();
-
-		if (redCircle->showObject == false) {
-			redCircle->showObject = true;
-		}
-		redCircle->gameObj->SetPosition(glm::vec3(4.15f, 1.55f, 0.0f));
-
-	};
-
-	void setSpy3() {
-
-		m_journalData->SetPlayerSpyChoice(CABIN3);
-
-		updateEvidenceButtonText();
-
-		if (redCircle->showObject == false) {
-			redCircle->showObject = true;
-		}
-		redCircle->gameObj->SetPosition(glm::vec3(1.15f, 0.25f, 0.0f));
-
-	};
-
-	void setSpy4() {
-
-		m_journalData->SetPlayerSpyChoice(CABIN4);
-
-		//sets button text to current spys evidence
-		updateEvidenceButtonText();
-
-		if (redCircle->showObject == false) {
-			redCircle->showObject = true;
-		}
-		redCircle->gameObj->SetPosition(glm::vec3(2.65f, 0.25f, 0.0f));
-	};
-
 	void clickEvidenceButton() {
 
 		//increment choice
@@ -264,45 +314,6 @@ public:
 
 
 	}
-
-	////--------------------- BOMB LOCATION FUNCTIONS ------------------------
-
-	void setLocationTownSquare() {
-		m_journalData->SetPlayerBombLocation(TOWNSQUARE);
-
-		if (redUnderline->showObject == false) {
-			redUnderline->showObject = true;
-		}
-		redUnderline->gameObj->SetPosition(glm::vec3(1.4f, -2.45f, 0.0f));
-	};
-
-	void setLocationHolyChurch() {
-		m_journalData->SetPlayerBombLocation(HOLYCHURCH);
-
-		if (redUnderline->showObject == false) {
-			redUnderline->showObject = true;
-		}
-		redUnderline->gameObj->SetPosition(glm::vec3(3.5f, -2.45f, 0.0f));
-	};
-
-	void setLocationCouncil() {
-
-		m_journalData->SetPlayerBombLocation(COUNCIL);
-
-		if (redUnderline->showObject == false) {
-			redUnderline->showObject = true;
-		}
-		redUnderline->gameObj->SetPosition(glm::vec3(1.4f, -2.95f, 0.0f));
-	};
-
-	void setLocationSupremeCourt() {
-		m_journalData->SetPlayerBombLocation(SUPREMECOURT);
-
-		if (redUnderline->showObject == false) {
-			redUnderline->showObject = true;
-		}
-		redUnderline->gameObj->SetPosition(glm::vec3(3.5f, -2.95f, 0.0f));
-	};
 
 
 

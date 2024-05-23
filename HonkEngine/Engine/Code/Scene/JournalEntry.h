@@ -56,7 +56,13 @@ public:
 		transitionEffects->Update(dt);
 	}
 	void OnEnter() override {
-		audioManager.PlaySound("cabinMusic", true);
+
+		m_gameObjects.push_back(Journal);
+		Journal->drawBook();
+
+		m_gameObjects.push_back(CloseCaseButton);
+
+		audioManager.PlaySound("cabinMusic", true);	
 		JournalData::GetInstance()->SetBookState(true); //Lock book	
 		transitionEffects->FadeIn(2.0f, [this]() {
 			std::cout << "Fade in complete" << std::endl;
@@ -90,5 +96,6 @@ private:
 	AudioManager& audioManager;
 	Book* Journal;
 	Text* instructionText;
+	UIButton* CloseCaseButton;
 
 };

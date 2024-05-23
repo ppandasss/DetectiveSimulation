@@ -34,9 +34,6 @@ struct DialogueChoice {
 };
 
 
-
-
-
 struct Dialogue {
     string id;
     string speakerName;

@@ -18,6 +18,7 @@ public:
 			instance = new KitchenData();
 		}
 		return instance;
+
 	}
 
 	void clearPlate() {
