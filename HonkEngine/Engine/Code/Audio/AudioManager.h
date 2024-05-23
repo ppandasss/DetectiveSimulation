@@ -229,6 +229,8 @@ public:
         }
     }
 
+
+
     bool IsSoundPlaying(const std::string& soundName) {
         if (!engine) {
             std::cerr << "Audio engine not initialized. Cannot check if sound is playing: " << soundName << std::endl;
@@ -238,7 +240,7 @@ public:
         auto it = playingSounds.find(soundName);
         if (it != playingSounds.end()) {
             for (auto& sound : it->second) {
-                if (sound && !sound->isFinished()) {
+                if (sound && !sound->isFinished() && !sound->getIsPaused()) {
                     return true; // Sound is currently playing
                 }
             }

@@ -11,7 +11,7 @@
 #include "Scene/KitchenData.h"
 
 #define PREPARE_DURATION 210   // in seconds
-#define INITIAL_ROOM GameState::ROOM1_STATE // start room
+#define INITIAL_ROOM GameState::ROOM4_STATE // start room
 
 enum GameState {
     ROOM1_STATE,
@@ -104,6 +104,7 @@ private:
 
         stateActions[std::make_pair(GameState::ROOM2_STATE, RoomState::End)] = []() {
             DoorManager::GetInstance().GetDoorByName("Room2Door")->setPermission(false);
+            DoorManager::GetInstance().GetDoorByName("KitchenDoor")->setPermission(false);
             AudioManager::GetInstance().PlaySound("slideDoor");
             KitchenData::GetInstance()->clearPlate();
             Application::Get().SetTimer(3000, []() {
@@ -131,6 +132,7 @@ private:
 
         stateActions[std::make_pair(GameState::ROOM3_STATE, RoomState::End)] = []() {
             DoorManager::GetInstance().GetDoorByName("Room3Door")->setPermission(false);
+            DoorManager::GetInstance().GetDoorByName("KitchenDoor")->setPermission(false);
             AudioManager::GetInstance().PlaySound("slideDoor");
             KitchenData::GetInstance()->clearPlate();
             Application::Get().SetTimer(3000, []() {
@@ -158,6 +160,7 @@ private:
 
         stateActions[std::make_pair(GameState::ROOM4_STATE, RoomState::End)] = []() {
             DoorManager::GetInstance().GetDoorByName("Room4Door")->setPermission(false);
+            DoorManager::GetInstance().GetDoorByName("KitchenDoor")->setPermission(false);
             AudioManager::GetInstance().PlaySound("slideDoor");
             KitchenData::GetInstance()->clearPlate();
             Application::Get().SetTimer(3000, []() {

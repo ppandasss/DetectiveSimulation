@@ -8,8 +8,8 @@ public:
     TransitionEffects(UIElement* uiElement)
         : uiElement(uiElement), isActive(false), elapsedTime(0.0f), duration(0.0f), initialAlpha(0.0f), targetAlpha(0.0f), onComplete(nullptr) {
         if (uiElement) {
-            uiElement->setActiveStatus(false);
-            uiElement->SetAlpha(0.0f);  // Ensure it's initially transparent
+            uiElement->setActiveStatus(true);
+            uiElement->SetAlpha(1.0f);  // Ensure it's initially transparent
         }
     }
 

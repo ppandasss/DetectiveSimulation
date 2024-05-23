@@ -338,6 +338,7 @@ public:
         // Advance to the next line or dialogue
         if (currentLineIndex + 1 < dialogues[currentDialogueIndex].text.size()) {
             currentLineIndex++;
+            audioManager.PlaySound("dialoguePlay");
         }
         else {
             // Find the next dialogue based on the 'next' attribute or skip to the next non-consequence dialogue
@@ -371,6 +372,7 @@ public:
                 
                 return;
             }
+            audioManager.PlaySound("dialoguePlay");
         }
 
         // Update the dialogue button text

@@ -622,6 +622,7 @@ public:
             NormalObjectToggle();
             SetInspectionObject();
         }
+
        
     }
 
@@ -636,7 +637,7 @@ public:
 
         if (inspectingObject != "")
         {
-           
+            SetInstruction("Press [Space] or [Mouse] to continue.");
             bagInspect->setActiveStatus(false);
             medicineFrontInspect->setActiveStatus(false);  
             hatInspect->setActiveStatus(false);
@@ -644,6 +645,7 @@ public:
         }
         else
         {
+            SetInstruction("Select an object to inspect");
             bagInspect->setActiveStatus(!isBagInspected);
             medicineFrontInspect->setActiveStatus(!isMedicineInspected);
             hatInspect->setActiveStatus(!isHatInspected);

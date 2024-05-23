@@ -52,6 +52,9 @@ public:
 		clickToBegin->SetColor(glm::vec3(1, 1, 1));
 		clickToBegin->SetScale(0.7f);
 
+		transitionObject = new UINormal("Transition", "Assets/Images/black.png", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(25.0f, 20.0f, 0.0f), true);
+		transitionEffects = std::make_unique<TransitionEffects>(transitionObject);
+
 		m_gameObjects.push_back(MainMenuBackground);
 		m_gameObjects.push_back(PlayButton);
 		m_gameObjects.push_back(OptionsButton);
@@ -68,6 +71,7 @@ public:
 		
 		m_gameObjects.push_back(optionsInterface);
 		m_gameObjects.push_back(exitInterface);
+		m_gameObjects.push_back(transitionObject);
 
 		setMainMenuState();
 
@@ -76,6 +80,8 @@ public:
 	void Update(float dt, long frame)
 	{
 		Scene::Update(dt, frame);
+
+		transitionEffects->Update(dt);
 
 		Input& input = Application::GetInput();
 
@@ -111,10 +117,14 @@ public:
 
 	void OnEnter() override {
 		audioManager.PlaySound("menuMusic", true);
+		transitionEffects->FadeIn(3.0f, [this]() {
+			std::cout << "Fade in complete" << std::endl;
+			});
 	}
 
     void OnExit() override {
 		audioManager.StopSound("menuMusic");
+
 	}
 
 private:
@@ -123,17 +133,28 @@ private:
 
 	//BUTTON FUNCTIONS
 
-	void clickPlay() { Application::Get().SetScene("Hallway"); }
+	void clickPlay() { 
+		AudioManager::GetInstance().PlaySound("buttonClick");
+		
+
+		transitionEffects->FadeOut(3.0f, [this]() {
+			Application::Get().SetScene("Hallway");
+			});
+	}
 
 	void clickOptions() { 
+		AudioManager::GetInstance().PlaySound("buttonClick");
 		//Interface_Manager.ActivateInterface(OPTIONS);	
 	}
 
 	void clickExit() { 
-
+		AudioManager::GetInstance().PlaySound("buttonClick");
 		//Interface_Manager.ActivateInterface(EXIT); 
 
-		Application::Get().exitGame();
+		transitionEffects->FadeOut(3.0f, [this]() {
+			Application::Get().exitGame();
+			});
+		
 	
 	}
 
@@ -145,6 +166,9 @@ private:
 	UIButton* QuitButton;
 
 	Text* clickToBegin;
+
+	UIElement* transitionObject;
+	std::unique_ptr<TransitionEffects> transitionEffects;
 
 	InterfaceManager& Interface_Manager = InterfaceManager::getInstance();
 

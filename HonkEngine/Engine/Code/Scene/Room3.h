@@ -593,7 +593,7 @@ public:
 
         if (inspectingObject != "")
         {
-
+            SetInstruction("Press [Space] or [Mouse] to continue.");
             movingLuggageInspect->setActiveStatus(false);
             newspaperInspect->setActiveStatus(false);
             messyClothesInspect->setActiveStatus(false);
@@ -601,6 +601,7 @@ public:
         }
         else
         {
+            SetInstruction("Select an object to inspect");
             movingLuggageInspect->setActiveStatus(!isMovingLuggageInspected);
             newspaperInspect->setActiveStatus(!isNewspaperInspected);
             messyClothesInspect->setActiveStatus(!isMessyClothesInspected);

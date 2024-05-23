@@ -25,7 +25,14 @@
 #include "../GameStateManager.h"
 #include "KitchenData.h"
 
-#define ORDER_DURATION 30000 //in milliseconds
+//set each cbin time before order (in milliseconds)
+#define ORDER_DURATION1 1000 
+#define ORDER_DURATION2 2000  //for room 2
+#define ORDER_DURATION3 1000  //for room 3
+#define ORDER_DURATION4 1000
+
+#define PLAYER_SPEED 20.0f
+
 #include "../PopupWidget/PauseInterface.h"
 #include "../PopupWidget/OptionsTwoInterface.h"
 #include "../PopupWidget/InterfaceManager.h"
@@ -82,7 +89,7 @@ public:
 		audioManager.LoadSound("trainAmbience", "Assets/Sounds/Ambience/Ambience_Train.mp3", SFX, 0.12f);
 		audioManager.LoadSound("bellRing", "Assets/Sounds/SFX_CallingBell.mp3",SFX ,0.25f);
 		audioManager.LoadSound("buttonClick", "Assets/Sounds/SFX_DialogueChoice.mp3", SFX, 0.45f);
-
+		audioManager.LoadSound("dialoguePlay", "Assets/Sounds/SFX_DialoguePlay.mp3", SFX, 0.45f);
 		/*--------------------------------------------------------------📦CREATE GAMEOBJECT📦------------------------------------------------------------------------------------------------------- */
 		/*-------------------------------------------------------------🌲CREATE ENVIRONMENT🌲------------------------------------------------------------------------------------------------------- */
 		GameObject* background1a = new RenderGameObject("BG1A", "Assets/Images/BG/Cabin_Background_01.png");
@@ -165,7 +172,7 @@ public:
 
 		/*-------------------------------------------------------------🎮CREATE PLAYER🎮------------------------------------------------------------------------------------------------------- */
 
-		player = new Player("waiter", "Assets/Images/Waiter_Sprite_Walk.png", 2, 8, Journal);
+		player = new Player("waiter", "Assets/Images/Waiter_Sprite_Walk.png", 2, 8, Journal,PLAYER_SPEED);
 
 		/*-------------------------------------------------------------💬CREATE TEXT💬------------------------------------------------------------------------------------------------------- */
 
@@ -312,11 +319,14 @@ public:
 
 	void OnEnter() override {
 		//Scene::OnEnter();
+
+		if(!audioManager.IsSoundPlaying("hallwayMusic"))
 		audioManager.PlaySound("hallwayMusic", true);
+	    if (!audioManager.IsSoundPlaying("trainAmbience"))
 		audioManager.PlaySound("trainAmbience", true);
 
 		// Ensure kitchen door is always accessible
-		kitchenDoor->setPermission(true);
+		//kitchenDoor->setPermission(true);
 
 		// Set each state's order phrase behavior
 		GameState currentGameState = gameStateManager.getGameState();
@@ -327,7 +337,7 @@ public:
 
 		if (firstEntry) {
 			std::cout << "First entry - Fading in" << std::endl;
-			transitionEffects->FadeIn(2.0f, [this]() {
+			transitionEffects->FadeIn(3.0f, [this]() {
 				std::cout << "Fade in complete" << std::endl;
 				});
 			firstEntry = false;
@@ -335,32 +345,33 @@ public:
 
 		
 			if (currentGameState == GameState::ROOM1_STATE && currentRoomState == RoomState::Order) {
-				Application::Get().SetTimer(ORDER_DURATION, [this]() {
+				Application::Get().SetTimer(ORDER_DURATION1, [this]() {
 					bellCabin1->startRinging();
 					room1Door->setPermission(true);
 					}, false);
 			}
 			else if (currentGameState == GameState::ROOM3_STATE && currentRoomState == RoomState::Order) {
-				Application::Get().SetTimer(ORDER_DURATION, [this]() {
+				Application::Get().SetTimer(ORDER_DURATION3, [this]() {
 					bellCabin3->startRinging();
 					room3Door->setPermission(true);
 					}, false);
 			}
 			else if (currentGameState == GameState::ROOM2_STATE && currentRoomState == RoomState::Order) {
-				Application::Get().SetTimer(ORDER_DURATION, [this]() {
+				Application::Get().SetTimer(ORDER_DURATION2, [this]() {
 					bellCabin2->startRinging();
 					room2Door->setPermission(true);
 					}, false);
 			}
 			else if (currentGameState == GameState::ROOM4_STATE && currentRoomState == RoomState::Order) {
-				Application::Get().SetTimer(ORDER_DURATION, [this]() {
+				Application::Get().SetTimer(ORDER_DURATION4, [this]() {
 					bellCabin4->startRinging();
 					room4Door->setPermission(true);
 					}, false);
 			}else if (currentGameState == GameState::END_STATE && currentRoomState == RoomState::End) {
 				player->StopMovement();
-				transitionEffects->FadeOut(2.0f, [this]() {
+				transitionEffects->FadeOut(3.0f, [this]() {
 					std::cout << "Fade Out complete" << std::endl;
+					audioManager.StopSound("hallwayMusic");
 					Application::Get().SetScene("JournalEntry");
 				});
 		}
@@ -410,6 +421,7 @@ public:
 								}
 								else
 								{
+									audioManager.PauseSound("hallwayMusic");
 									bellManager.StopAllRinging();
 									audioManager.PlaySound("knockDoor");
 									player->StopMovement();
@@ -442,7 +454,7 @@ public:
 
 	void OnExit() override {
 		//Scene::OnExit(); 
-		audioManager.PauseSound("hallwayMusic");
+		//audioManager.PauseSound("hallwayMusic");
 		audioManager.StopSound("Player_footsteps");
 		
 	}

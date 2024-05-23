@@ -564,13 +564,14 @@ public:
 
         if (inspectingObject != "")
         {
-
+            SetInstruction("Press [Space] or [Mouse] to continue.");
             posterInspect->setActiveStatus(false);
             daggerInspect->setActiveStatus(false);
             ObjectsparallaxManager->DisableParallaxEffect();
         }
         else
         {
+            SetInstruction("Select an object to inspect");
             posterInspect->setActiveStatus(!isPosterInspected);
             daggerInspect->setActiveStatus(!isDaggerInspected);
             ObjectsparallaxManager->EnableParallaxEffect();

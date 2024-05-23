@@ -20,8 +20,8 @@ class Player : public AnimateGameObject
     bool canMove = true;
     Book* m_journal;
 public:
-    Player(const std::string& name, const std::string& texturePath, int p_row, int p_col, Book* journal)
-        : AnimateGameObject(name, texturePath, p_row, p_col), m_journal(journal), audioManager(AudioManager::GetInstance())
+    Player(const std::string& name, const std::string& texturePath, int p_row, int p_col, Book* journal,float speed)
+        : AnimateGameObject(name, texturePath, p_row, p_col), m_journal(journal),speed(speed), audioManager(AudioManager::GetInstance())
     {
         m_scale = glm::vec3(6.1f, 6.1f, 0.0f);
         m_position = glm::vec3(0.0f, -0.9f, 0.0f);

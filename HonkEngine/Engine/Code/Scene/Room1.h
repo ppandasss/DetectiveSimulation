@@ -538,6 +538,7 @@ public:
     {
         // Check if both objects have been inspected
         if (!isCaneInspected || !isLetterInspected) {
+            
             InspectCaneDialogue();
             InspectLetterDialogue();
             NormalObjectToggle();
@@ -556,13 +557,14 @@ public:
 
         if (inspectingObject != "")
         {
-           
+            SetInstruction("Press [Space] or [Mouse] to continue.");
             caneInspect->setActiveStatus(false);
             letterInspect->setActiveStatus(false);  
             ObjectsparallaxManager->DisableParallaxEffect();
         }
         else
         {
+            SetInstruction("Select an object to inspect");
             caneInspect->setActiveStatus(!isCaneInspected);
 			letterInspect->setActiveStatus(!isLetterInspected);
 			ObjectsparallaxManager->EnableParallaxEffect();
@@ -633,6 +635,7 @@ public:
 
     void HandleKeyInputs() {
         if (input.Get().GetKeyDown(GLFW_KEY_SPACE) || input.Get().GetMouseButtonDown(0)) {
+            
             dialogueManager->PlayNextDialogue();
         }
     }
