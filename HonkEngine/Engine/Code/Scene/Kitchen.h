@@ -142,6 +142,7 @@ public:
 		/*--------------------------------------------------------------CREATE BUTTONS------------------------------------------------------------------------------------------------------- */
 
 		ServeBellButton = new UIButton("ServeBellButton", "Assets/Images/Kitchen/ServeButton_servable_default.png", glm::vec3(-4.9f, -2.6f, 0.0f), glm::vec3(2.02f * 0.85f, 1.45f * 0.85f, 0.0f), true, false);
+		ServeBellButton->SetHoverTexture("Assets/Images/Kitchen/ServeButton_servable_Highlight.png");
 		ServeBellButton->setActiveStatus(false);
 		ServeBellButton->SetOnClickAction([this]() { Serve(); });
 

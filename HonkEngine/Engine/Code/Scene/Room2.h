@@ -648,7 +648,7 @@ public:
 
         if (inspectingObject != "")
         {
-            SetInstruction("Press [Space] or [Mouse] to continue.");
+            SetInstruction("Press [Space] or [Mouse] to continue");
             bagInspect->setActiveStatus(false);
             medicineFrontInspect->setActiveStatus(false);  
             hatInspect->setActiveStatus(false);
@@ -728,7 +728,7 @@ public:
 	}
 
     void PromptForNextDialogue(const string& nextKey, bool& flag) {
-        SetInstruction("Press [Space] or [Mouse] to continue.");
+        SetInstruction("Press [Space] or [Mouse] to continue");
         if (!flag && (input.Get().GetKeyDown(GLFW_KEY_SPACE) || input.Get().GetMouseButtonDown(0))) {
             dialogueManager->SetDialogueSet(nextKey);
             flag = true;
