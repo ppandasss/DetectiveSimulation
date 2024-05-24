@@ -76,16 +76,9 @@ public:
 	void incrementEvidence() {
 		//Increment index and wrap around if needed
 
-		std::cout << "INCREMENT CALLED" << std::endl;
-		//no_of_Evidence = allCabinData[main_page.player_Spy].activeEvidence.size();
+		//std::cout << "INCREMENT CALLED" << std::endl;
 
-		//if (no_of_Evidence == 2) {
-			//std::cout << "INDEX INCREMENTED" << std::endl;
-			main_page.player_Evidence = (main_page.player_Evidence + 1) % 2;
-			//std::cout << main_page.player_Evidence << std::endl;
-
-		//}
-
+		main_page.player_Evidence = (main_page.player_Evidence + 1) % 2;
 
 	}
 
@@ -133,7 +126,7 @@ public:
 
 		Cabin spy_choice = main_page.player_Spy;
 
-		std::cout << "RESET SPY - RESET EVIDENCE \n";
+		//std::cout << "RESET SPY - RESET EVIDENCE \n";
 
 		no_of_Evidence = allCabinData[spy_choice].activeEvidence.size();
 
@@ -192,6 +185,17 @@ public:
 	// Function to activate a clue for a specific page
 	void ActivateClue(Cabin cabin, int index) {
 
+
+		if (cabin == CABIN3 && index == 10) {
+			BookClueState[0] = true;
+			return;
+		}
+
+		if (cabin == CABIN4 && index == 7) {
+			BookClueState[1] = true;
+			return;
+		}
+
 		clueStates[cabin][index] = true;
 
 		if (evidenceMap.find(cabin) != evidenceMap.end() &&
@@ -201,14 +205,7 @@ public:
 			allCabinData[cabin].activeEvidence.push_back(evidenceText);
 
 		}
-		
-		if (cabin == CABIN3 && index == 10) {
-			BookClueState[0] = true;
-		}
-
-		if (cabin == CABIN4 && index == 7) {
-			BookClueState[1] = true;
-		}	
+	
 
 	}
 

@@ -5,8 +5,8 @@ C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Engine
 C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): message : see declaration of 'Mesh'
 C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Text\TextRenderer.h(12,11): warning C4099: 'Mesh': type name first seen using 'struct' now seen using 'class'
 C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): message : see declaration of 'Mesh'
-C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\JournalData.h(94,1): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\JournalData.h(138,1): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\JournalData.h(87,1): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\JournalData.h(131,1): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Page.h(40,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Player.h(24,55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Player.h(24,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
