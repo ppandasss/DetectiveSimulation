@@ -153,6 +153,10 @@ public:
 
 		}
 
+		if (lastScene) {
+			BackGround->setActiveStatus(false);
+		}
+
 		//std::cout << "OPEN BOOKK" << std::endl;
 	}
 
@@ -193,6 +197,10 @@ public:
 	void EmptyFunction() {
 		return;
 	}
+	
+	void ActivateLastScene() {
+		lastScene = true;
+	}
 
 
 	//--------------------------------UPDATE & RENDER-----------------------------------------------------
@@ -220,6 +228,7 @@ public:
 			}
 
 		}
+
 
 	}
 

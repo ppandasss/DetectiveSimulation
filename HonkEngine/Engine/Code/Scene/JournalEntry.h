@@ -46,6 +46,8 @@ public:
 		m_gameObjects.push_back(instructionText);
 		m_gameObjects.push_back(transitionObject);
 
+		Journal->ActivateLastScene();
+
 	}
 
 	void Update(float dt, long frame) {
@@ -57,7 +59,6 @@ public:
 
 		m_gameObjects.push_back(Journal);
 		Journal->drawBook();
-
 		m_gameObjects.push_back(CloseCaseButton);
 
 		audioManager.PlaySound("cabinMusic", true);	
