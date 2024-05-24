@@ -52,7 +52,7 @@ public:
 
 		// RIGHT PAGE
 		// CLUES	[E = Evelyn, C = Clue]
-		Text* E_Clue1 = new Text("E_Clue1", "Moving to Westside to stay with her mother", "Assets/Fonts/ESA-smb.ttf");
+		Text* E_Clue1 = new Text("E_Clue1", "Moving to Westside withb only one small luggage", "Assets/Fonts/ESA-smb.ttf");
 		E_Clue1->SetPosition(glm::vec3(0.87f, 2.65f, 0.0f));
 		E_Clue1->SetColor(glm::vec3(0.58, 0.04, 0.00));
 		E_Clue1->SetScale(0.55f);

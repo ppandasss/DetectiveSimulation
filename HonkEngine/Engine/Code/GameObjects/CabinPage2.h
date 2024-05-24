@@ -52,7 +52,7 @@ public:
 
 		// RIGHT PAGE
 		// CLUES	[N = Nathaniel, C = Clue]
-		Text* N_Clue1 = new Text("N_Clue1", "Moving to Westside to stay with his mother", "Assets/Fonts/ESA-smb.ttf");
+		Text* N_Clue1 = new Text("N_Clue1", "Moving to Westside but possess no luggage", "Assets/Fonts/ESA-smb.ttf");
 		N_Clue1->SetPosition(glm::vec3(0.87f, 2.65f, 0.0f));
 		N_Clue1->SetColor(glm::vec3(0.58, 0.04, 0.00));
 		N_Clue1->SetScale(0.55f);

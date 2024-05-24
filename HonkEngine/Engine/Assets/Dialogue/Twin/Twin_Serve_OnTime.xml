@@ -30,31 +30,39 @@
 		</Speaker>
 		<Choices>
 			<Choice1 next="3WD10">Thanks for his compliment</Choice1>
-			<Choice2 next="3WD11">Ask if he's interested in  being a waiter</Choice2>
+			<Choice2 next="3WD11">Tease if he's interested to  become a waiter</Choice2>
 		</Choices>
 	</Dialogue>
 	<Dialogue id="3WD10" next="3ND15">
 		<Speaker name="Waiter">
-			<line1>Thank you! Mr. Hartington.</line1>
+			<line1>Thank you, Mr. Hartington.</line1>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
 	<Dialogue id="3WD11" next="3ND14">
 		<Speaker name="Waiter">
 			<line1>If that so,</line1>
-			<line2>Would you also like to become a  professional waiter, like me?</line2>
+			<line2>Would you like to become a professional  waiter like me?</line2>
+			<line3>We might have a spot available.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3ND14">
+		<Speaker name="Nathaniel_Happy">
+			<line1>You're funny! Mr. Waiter.</line1>
+			<line2>I like you!</line2>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
 	<Dialogue id="3ND14">
 		<Speaker name="Nathaniel_Disappoint">
-			<line1>That sounds boring.</line1>
+			<line1>But being a waiter sounds boring.</line1>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
 	<Dialogue id="3ND14_2">
 		<Speaker name="Nathaniel_Happy">
-			<line1>I want to do something exciting,  like an athlete!</line1>
+			<line1>I want to do something more exciting,  like an athlete!</line1>
 		</Speaker>
 		<Choices/>
 	</Dialogue>

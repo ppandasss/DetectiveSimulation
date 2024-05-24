@@ -48,8 +48,8 @@
 			<line1>You two are quite brave for children  your age.</line1>
 		</Speaker>
 		<Choices>
-			<Choice1 next="3WD38" clueID="CABIN21_4">Are you going to see your parent?</Choice1>
-			<Choice2 next="3WD39" clueID="CABIN21_4">It must be challenging to  travel alone</Choice2>
+			<Choice1 next="3WD38">Are you going to see your parent?</Choice1>
+			<Choice2 next="3WD39">It must be challenging to  travel alone</Choice2>
 		</Choices>
 	</Dialogue>
 	<Dialogue id="3ND79">
@@ -63,8 +63,8 @@
 			<line1>I've always wanted to travel with my  entire family.</line1>
 		</Speaker>
 		<Choices>
-			<Choice1 next="3WD38" clueID="CABIN21_4">Are you going to see your parent?</Choice1>
-			<Choice2 next="3WD39" clueID="CABIN21_4">It must be challenging to travel alone</Choice2>
+			<Choice1 next="3WD38">Are you going to see your parent?</Choice1>
+			<Choice2 next="3WD39">It must be challenging to travel alone</Choice2>
 		</Choices>
 	</Dialogue>
 	<Dialogue id="3WD38" next="3ED15">
@@ -111,7 +111,7 @@
 	<Dialogue id="3ED16">
 		<Speaker name="Evelyn_Normal">
 			<line1>It is.</line1>
-			<line2>But we also have fun...</line2>
+			<line2>....</line2>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
@@ -168,8 +168,8 @@
 			<line1>even though this time...</line1>
 		</Speaker>
 		<Choices>
-			<Choice1 next="3WD44" clueID="CABIN22_4">Is something wrong?</Choice1>
-			<Choice2 next="3WD45" clueID="CABIN22_4">This time?</Choice2>
+			<Choice1 next="3WD44" clueID="CABIN21_4,CABIN22_4">Is something wrong?</Choice1>
+			<Choice2 next="3WD45" clueID="CABIN21_4,CABIN22_4">This time?</Choice2>
 		</Choices>
 	</Dialogue>
 	<Dialogue id="3ED18">
@@ -190,8 +190,8 @@
 			<line1>especially during this time...</line1>
 		</Speaker>
 		<Choices>
-			<Choice1 next="3WD44" clueID="CABIN21_4">Is something wrong?</Choice1>
-			<Choice2 next="3WD45" clueID="CABIN21_4">This time?</Choice2>
+			<Choice1 next="3WD44" clueID="CABIN21_4,CABIN22_4">Is something wrong?</Choice1>
+			<Choice2 next="3WD45" clueID="CABIN21_4,CABIN22_4">This time?</Choice2>
 		</Choices>
 	</Dialogue>
 	<Dialogue id="3WD44" next="3ED18_2">

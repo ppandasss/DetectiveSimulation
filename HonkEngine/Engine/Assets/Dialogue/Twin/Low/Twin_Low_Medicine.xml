@@ -12,20 +12,20 @@
 		</Speaker>
 		<Choices>
 			<Choice1 next="3WD24" clueID="CABIN21_3">Ask if he needs assistance</Choice1>
-			<Choice2 next="3WD25" clueID="CABIN21_3">Ask if he takes them regularly?</Choice2>
+			<Choice2 next="3WD25" clueID="CABIN21_3">Ask if he takes them regularly</Choice2>
 		</Choices>
 	</Dialogue>
 	<Dialogue id="3WD24" next="3ND61">
 		<Speaker name="Waiter">
 			<line1>Mr. Hartington.</line1>
-			<line2>Do you need help with... that?</line2>
+			<line2>Do you need any help with your medicine?</line2>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
 	<Dialogue id="3WD25" next="3ND62">
 		<Speaker name="Waiter">
 			<line1>May I ask, Mr. Hartington?</line1>
-			<line2>Do you need to take these every day?</line2>
+			<line2>Do you need to take your medicine  every day?</line2>
 		</Speaker>
 		<Choices/>
 	</Dialogue>

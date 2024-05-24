@@ -102,13 +102,13 @@
 	<Dialogue id="4OD06">
 		<Speaker name="Octavia_Normal">
 			<line1>After such a busy trip like this,</line1>
-			<line2>I'm in the mood for some light tea.</line2>
+			<line2>I'm in the mood for some %light% %tea.%</line2>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
 	<Dialogue id="4OD07">
 		<Speaker name="Octavia_Normal">
-			<line1>With no milk, dear sir.</line1>
+			<line1>With %no% %milk,% dear sir.</line1>
 			<line2>Just the way I like it.</line2>
 		</Speaker>
 		<Choices/>
@@ -141,14 +141,14 @@
 	</Dialogue>
 	<Dialogue id="4OD09_2">
 		<Speaker name="Octavia_Happy">
-			<line1>Could you please select some light  and refreshing options for me?</line1>
+			<line1>Could you please select some %light%  %and% %refreshing% options for me?</line1>
 		</Speaker>
 		<Choices/>
 		<Order>
 			<RoomNumber>4</RoomNumber>
 			<Tea>Light tea</Tea>
-			<Sandwich>A set of light and</Sandwich>
-			<Pastry>refreshing meal</Pastry>
+			<Sandwich>A set of light and  refreshing meal</Sandwich>
+			<Pastry>No milk</Pastry>
 		</Order>
 	</Dialogue>
 	<Dialogue id="4OQ02">
