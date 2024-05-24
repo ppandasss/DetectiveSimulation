@@ -24,7 +24,7 @@ public:
 
     OpenScene() :audioManager(AudioManager::GetInstance())
     {
-        audioManager.LoadSound("OpenSceneBGMusic", "Assets/Sounds/Music/BGmusic_EndingCutscene.mp3", Music, 1.0f);
+        audioManager.LoadSound("OpenSceneBGMusic", "Assets/Sounds/Music/BGmusic_Cutscene.mp3", Music, 1.0f);
 
         // Load scenes
         GameObject* OpenScene1 = new UIObject("OpenScene1", "Assets/Images/Ending/EndingSelect_Background.png", true);

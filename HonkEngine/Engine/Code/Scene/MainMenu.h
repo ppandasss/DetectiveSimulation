@@ -21,7 +21,7 @@ public:
 
 	MainMenu() :audioManager(AudioManager::GetInstance()) {
 
-		audioManager.LoadSound("menuMusic", "Assets/Sounds/Music/BGmusic_Cabin2.mp3",Music, 0.6f);
+		audioManager.LoadSound("menuMusic", "Assets/Sounds/Music/BGmusic_Cutscene.mp3", Music, 1.0f);
 
 		GameObject* MainMenuBackground = new UIObject("MainMenuBackground", "Assets/Images/MainMenu/MainMenu_BG.jpg", true);
 		MainMenuBackground->SetScale(glm::vec3(19.2f, 10.8f, 0.0f));

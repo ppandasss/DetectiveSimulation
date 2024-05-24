@@ -17,7 +17,7 @@ public:
 	EndScene() :audioManager(AudioManager::GetInstance())
 	{
 
-		audioManager.LoadSound("EndSceneBGMusic", "Assets/Sounds//Music/BGmusic_EndingCutscene.mp3",Music, 1.0f);
+		audioManager.LoadSound("EndSceneBGMusic", "Assets/Sounds//Music/BGmusic_Cutscene.mp3",Music, 1.0f);
 		audioManager.LoadSound("NewspaperSlam", "Assets/Sounds/SFX_EndingNewspaperSlam.mp3",SFX, 1.5f);
 
 		GameObject* EndingSceneBackground = new UIObject("EndingSceneBackground", "Assets/Images/Ending/EndingSelect_Background.png", true);
