@@ -182,6 +182,7 @@
     <ClInclude Include="Code\Scene\KitchenData.h" />
     <ClInclude Include="Code\Scene\LoadScene.h" />
     <ClInclude Include="Code\Scene\MainMenu.h" />
+    <ClInclude Include="Code\Scene\OpenScene.h" />
     <ClInclude Include="Code\Scene\Room1.h" />
     <ClInclude Include="Code\Input\Input.h" />
     <ClInclude Include="Code\GameObjects\Player.h" />
@@ -355,6 +356,10 @@
     <Xml Include="Assets\Dialogue\Octavia\Octavia_Order.xml" />
     <Xml Include="Assets\Dialogue\Octavia\Octavia_Serve_Late.xml" />
     <Xml Include="Assets\Dialogue\Octavia\Octavia_Serve_OnTime.xml" />
+    <Xml Include="Assets\Dialogue\Opening\Scene4.xml" />
+    <Xml Include="Assets\Dialogue\Opening\Scene3.xml" />
+    <Xml Include="Assets\Dialogue\Opening\Scene2.xml" />
+    <Xml Include="Assets\Dialogue\Opening\Scene1.xml" />
     <Xml Include="Assets\Dialogue\Twin\MealResult\Twin_MealResult_Average.xml" />
     <Xml Include="Assets\Dialogue\Twin\MealResult\Twin_MealResult_Informative.xml" />
     <Xml Include="Assets\Dialogue\Twin\MealResult\Twin_MealResult_Low.xml" />

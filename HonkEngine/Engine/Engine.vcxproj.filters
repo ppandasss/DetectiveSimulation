@@ -76,6 +76,7 @@
     <ClInclude Include="Code\Scene\EndScene.h" />
     <ClInclude Include="Code\Scene\JournalEntry.h" />
     <ClInclude Include="Code\Effects\TransitionEffects.h" />
+    <ClInclude Include="Code\Scene\OpenScene.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="External\Library\freetype.lib" />
@@ -163,6 +164,10 @@
     <Xml Include="Assets\Dialogue\Octavia\Average\Octavia_Average_End.xml" />
     <Xml Include="Assets\Dialogue\Octavia\Average\Octavia_Average_Poster.xml" />
     <Xml Include="Assets\Dialogue\Octavia\Average\Octavia_Average_Start.xml" />
+    <Xml Include="Assets\Dialogue\Opening\Scene1.xml" />
+    <Xml Include="Assets\Dialogue\Opening\Scene2.xml" />
+    <Xml Include="Assets\Dialogue\Opening\Scene3.xml" />
+    <Xml Include="Assets\Dialogue\Opening\Scene4.xml" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Assets\Sounds\footstep.mp3" />

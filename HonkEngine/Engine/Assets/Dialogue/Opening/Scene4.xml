@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Dialogue id="1WD01">
+    <Speaker name="Waiter">
+      <line1>Good afternoon and welcome to  Hesperia Express. Mrs. Longbow.</line1>
+      <line2>My name is Victor. I will be  taking care of you for this trip.</line2>
+    </Speaker>
+    <Choices/>
+  </Dialogue>
+  <Dialogue id="1MD01" next="1MD0102">
+    <Speaker name="Martha_Normal">
+      <line1>Oh, thank you, dear.</line1>
+    </Speaker>
+    <Choices/>
+  </Dialogue>
+  <Dialogue id="1MD0102" next="1MQ01">
+    <Speaker name="Martha_Happy">
+      <line1>What a lovely introduction!</line1>
+    </Speaker>
+    <Choices/>
+  </Dialogue>
+  <Dialogue id="1MQ01">
+    <Speaker name="Martha_Normal">
+      <line1>May I ask how long have you  been working here?</line1>
+    </Speaker>
+  </Dialogue>
+  <Dialogue id="1WD02">
+    <Speaker name="Waiter">
+      <line1>This is my very first trip.</line1>
+    </Speaker>
+    <Choices/>
+  </Dialogue>
+  <Dialogue id="1WD03">
+    <Speaker name="Waiter">
+      <line1>It has been my five years  aboard this express.</line1>
+    </Speaker>
+    <Choices/>
+  </Dialogue>
+  <Dialogue id="1MD02">
+    <Speaker name="Martha_Happy">
+      <line1>Such a splendid job for your  first time! Impressive -</line1>
+      <line2>you seem like a pro already.</line2>
+    </Speaker>
+    <Choices/>
+  </Dialogue>
+  <Dialogue id="1MD03">
+    <Speaker name="Martha_Happy">
+      <line1>Absolutely no surprise that  you're excelling at your job.</line1>
+    </Speaker>
+    <Choices/>
+  </Dialogue>
+  <Dialogue id="1WD04">
+    <Speaker name="Waiter">
+      <line1>I'm flattered, ma'am.</line1>
+      <line2>I appreciate that.</line2>
+    </Speaker>
+    <Choices/>
+  </Dialogue>
+  <Dialogue id="1WD05">
+    <Speaker name="Waiter">
+      <line1>What would you like for your  afternoon tea today?</line1>
+    </Speaker>
+    <Choices/>
+  </Dialogue>
+  <Dialogue id="1MD04">
+    <Speaker name="Martha_Normal">
+      <line1>May I please have a comforting  cup of %floral% %tea%,</line1>
+      <line2>a %soft% %and% %effortlessly% %enjoyable%  %sandwich% you may have,</line2>
+    </Speaker>
+    <Choices/>
+  </Dialogue>
+	<Dialogue id="1MD04_2">
+		<Speaker name="Martha_Normal">
+			<line1>and that delicious pastry -</line1>
+			<line2>I do apologize, the name escapes me,</line2>
+		</Speaker>
+		<Choices/>
+	</Dialogue>	
+  <Dialogue id="1MD04_3">
+    <Speaker name="Martha_Happy">
+      <line1>but it’s ever so %crumbly% %and%  %buttery% with a spoonful of %jam.%</line1>
+    </Speaker>
+    <Choices/>
+  </Dialogue>
+  <Dialogue id="1WD06">
+    <Speaker name="Waiter">
+      <line1>Understood. Thank you, ma'am.</line1>
+      <line2>Your order will arrive shortly.</line2>
+    </Speaker>
+    <Choices/>
+  </Dialogue>
+</Dialogues>

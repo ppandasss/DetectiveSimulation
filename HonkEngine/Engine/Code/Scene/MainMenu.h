@@ -138,7 +138,7 @@ private:
 		
 
 		transitionEffects->FadeOut(3.0f, [this]() {
-			Application::Get().SetScene("Hallway");
+			Application::Get().SetScene("OpenScene");
 			});
 	}
 

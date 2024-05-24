@@ -21,6 +21,7 @@
 #include "Scene/MainMenu.h"
 #include "Scene/JournalEntry.h"
 #include "Scene/EndScene.h"
+#include "Scene/OpenScene.h"
 #include <iostream>
 
 
@@ -46,6 +47,7 @@ int main()
     game.AddScene("Room4", new Room4());
     game.AddScene("Kitchen", new Kitchen());
     game.AddScene("MainMenu", new MainMenu()); 
+    game.AddScene("OpenScene", new OpenScene());
     game.AddScene("JournalEntry", new JournalEntry());
     game.AddScene("EndScene", new EndScene());
     game.SetScene("LoadScene");

@@ -1,12 +1,10 @@
 #pragma once
 
 #include "../UI/UIElement.h"
-
-#include "../Scene/Hallway.h"
-
-#include <glm/gtx/string_cast.hpp>
-
-
+#include "../Text/Text.h"
+#include "../Application.h"
+#include <functional>
+#include <sstream>
 
 class UIButton : public UIElement {
 
@@ -22,6 +20,7 @@ public:
         }
 
         containsText = containText;
+        hasTexture = !texturePath.empty();
     }
 
     //Method to set the click action
@@ -29,13 +28,10 @@ public:
         onClickAction = action;
     }
 
-
     void OnClick() override {
-
         if (onClickAction) {
             onClickAction();
         }
-
     }
 
     std::string matrixToString(const glm::mat4& matrix) {
@@ -48,8 +44,6 @@ public:
         }
         return ss.str();
     }
-
-
 
     void Update(float dt, long frame) override {
         Input& input = Application::GetInput();
@@ -70,62 +64,44 @@ public:
                 }
 
                 //HOVER STATE
-                
                 isHover = true;
-
             }
             else {
-
                 isHover = false;
-
             }
-
-
         }
-
     }
 
-
     void RenderText() {
-
         if (containsText) {
             buttonTextObj->Render(); // Render the button text
         }
-
     }
 
     void Render() override {
-
-        if (textureHoverID != -1) {
-
-            if (isHover) {
-                SetTextureID(textureHoverID);
+        if (hasTexture) {
+            if (textureHoverID != -1) {
+                if (isHover) {
+                    SetTextureID(textureHoverID);
+                }
+                else {
+                    SetTextureID(textureNormalID);
+                }
             }
-            else {
-                SetTextureID(textureNormalID);
-            }
-
+            UIElement::Render(); // Render the button texture using the transformation matrix from UIObject
         }
-        
-        UIElement::Render(); // Render the button texture using the transformation matrix from UIObject
+
         if (containsText) {
             buttonTextObj->Render(); // Render the button text
         }
-
     }
 
     void SetButtonPosition(const glm::vec3& position) {
-
-        //std::cout << "SetButtonPosition - Position: " << position.x << ", " << position.y << ", " << position.z << std::endl;
         UIElement::SetPosition(position); // Update the position in UIObject
-
     }
 
     void SetButtonScale(const glm::vec3& scale) {
-
-        // std::cout << "SetButtonScale - Scale: " << scale.x << ", " << scale.y << ", " << scale.z << std::endl;
         UIElement::SetScale(scale); // Update the scale in UIObject
-        // Optionally, you can also scale the text here if needed
     }
 
     void SetButtonText(const std::string& buttonText) {
@@ -145,12 +121,9 @@ public:
     }
 
     void SetHoverTexture(const std::string& texturePath) {
-
         textureHoverID = TextureLoad(texturePath);
         textureNormalID = GetTextureID();
-
     }
-
 
 private:
     glm::vec3 buttonPosition;
@@ -164,6 +137,5 @@ private:
 
     Tex textureHoverID = -1;
     Tex textureNormalID = -1;
-
-
+    bool hasTexture = true;
 };
