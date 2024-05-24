@@ -26,7 +26,7 @@ public:
 		EntrySceneBackground->SetScale(glm::vec3(19.2f, 10.8f, 0.0f));
 		EntrySceneBackground->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
-		UIButton* CloseCaseButton = new UIButton("CloseCaseButton", "Assets/Images/Ending/EndingSelect_StampCut_Rotate.png", glm::vec3(9.0f, -3.2f, 0.0f), glm::vec3(3.63f, 4.71f, 0.0f), true, false, "");
+		CloseCaseButton = new UIButton("CloseCaseButton", "Assets/Images/Ending/EndingSelect_StampCut_Rotate.png", glm::vec3(9.0f, -3.2f, 0.0f), glm::vec3(3.63f, 4.71f, 0.0f), true, false, "");
 		CloseCaseButton->SetHoverTexture("Assets/Images/Ending/EndingSelect_StampBorCut_Rotate.png");
 		CloseCaseButton->SetOnClickAction([this]() { SubmitEvidence(); });
 
@@ -42,10 +42,7 @@ public:
 		Journal = new Book();
 
 		m_gameObjects.push_back(EntrySceneBackground);
-		m_gameObjects.push_back(Journal);
 
-		Journal->drawBook();
-		m_gameObjects.push_back(CloseCaseButton);
 		m_gameObjects.push_back(instructionText);
 		m_gameObjects.push_back(transitionObject);
 
@@ -54,6 +51,7 @@ public:
 	void Update(float dt, long frame) {
 		Scene::Update(dt, frame);
 		transitionEffects->Update(dt);
+
 	}
 	void OnEnter() override {
 

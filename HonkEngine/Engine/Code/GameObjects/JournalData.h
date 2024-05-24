@@ -280,6 +280,38 @@ public:
 		LockBook = status;
 	}
 
+	void ResetJournalData() {
+
+		// Reset main page data
+		main_page.player_Spy = CABIN_EMPTY;
+		main_page.player_BombLocation = LOCATION_EMPTY;
+		main_page.player_Evidence = 0;
+
+		// Clear all cabin data
+		allCabinData.clear();
+
+		// Clear clue states
+		clueStates.clear();
+
+		// Clear evidence map
+		evidenceMap.clear();
+
+		// Reset main page evidence
+		mainPageEvidence[0] = " - ";
+		mainPageEvidence[1] = " - ";
+		no_of_Evidence = 0;
+
+		// Reset book clue states
+		BookClueState[0] = false;
+		BookClueState[1] = false;
+
+		// Reset lock book state
+		LockBook = false;
+
+		NotifyObservers();
+
+	}
+
 
 private:
 

@@ -120,6 +120,17 @@ public:
 
 	}
 
+	void ResetPage() {
+
+		for (auto& object : deffered_m_gameObjects) {
+			if (object->gameObj) { //checks for nullptr
+				object->showObject = false;
+				object->gameObj->setActiveStatus(false);
+			}
+		}
+
+	}
+
 
 protected:
 

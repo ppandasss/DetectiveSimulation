@@ -103,7 +103,6 @@ public:
 		redCircle->showObject = false;
 		redCircle->gameObj = RedCircle;
 
-
 		// BOMB LOCATIONS
 
 		UIButtonEmpty* TownSquare = new UIButtonEmpty("TownSquare", glm::vec3(1.57f, -2.25f, 0.0f), glm::vec3(1.4f, 0.4f, 0.0f), true, true, "Assets/Fonts/ESA-m.ttf");
