@@ -78,6 +78,13 @@ public:
             }
         }
 
+        if (input.Get().GetKeyDown(GLFW_KEY_J)) {
+            //JournalData::GetInstance()->ResetJournalData();
+
+            Application::Get().SetScene("JournalEntry");
+
+        }
+
         // Set the animation
         m_animator.SetAnimation(currentAnimation);
 

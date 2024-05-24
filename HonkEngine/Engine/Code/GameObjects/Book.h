@@ -153,7 +153,7 @@ public:
 
 		}
 
-		if (lastScene) {
+		if (m_journal->GetSceneState()) {
 			BackGround->setActiveStatus(false);
 		}
 
@@ -198,10 +198,6 @@ public:
 		return;
 	}
 	
-	void ActivateLastScene() {
-		lastScene = true;
-	}
-
 
 	//--------------------------------UPDATE & RENDER-----------------------------------------------------
 

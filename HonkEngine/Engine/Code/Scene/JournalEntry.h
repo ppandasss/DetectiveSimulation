@@ -39,14 +39,13 @@ public:
 		instructionText->SetPosition(glm::vec3(0.0f, 4.5f, 0.0f));
 		instructionText->SetColor(glm::vec3(1, 1, 1));
 
+
 		Journal = new Book();
 
 		m_gameObjects.push_back(EntrySceneBackground);
 
 		m_gameObjects.push_back(instructionText);
 		m_gameObjects.push_back(transitionObject);
-
-		Journal->ActivateLastScene();
 
 	}
 
@@ -57,12 +56,14 @@ public:
 	}
 	void OnEnter() override {
 
+		JournalData::GetInstance()->ActivateLastScene();
 		m_gameObjects.push_back(Journal);
 		Journal->drawBook();
 		m_gameObjects.push_back(CloseCaseButton);
-
 		audioManager.PlaySound("cabinMusic", true);	
-		JournalData::GetInstance()->SetBookState(true); //Lock book	
+		//JournalData::GetInstance()->SetBookState(true); //Lock book	
+
+
 		transitionEffects->FadeIn(2.0f, [this]() {
 			std::cout << "Fade in complete" << std::endl;
 			});

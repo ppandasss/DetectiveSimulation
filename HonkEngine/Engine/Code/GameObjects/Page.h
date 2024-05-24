@@ -95,9 +95,7 @@ public:
 
 		for (auto& object : textClues) {
 
-			if (object) { //checks for nullptr
-
-				
+			if (object) { //checks for nullptr		
 
 			}
 		}

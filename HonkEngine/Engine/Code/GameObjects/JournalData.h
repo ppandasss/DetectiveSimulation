@@ -272,12 +272,21 @@ public:
 	}
 
 	//Use for ending scene to prevent closing book
+	bool GetSceneState() {
+		return LastScene;
+	}
+
 	bool GetBookState() {
 		return LockBook;
 	}
 	
 	void SetBookState(bool status) {
 		LockBook = status;
+	}
+
+	void ActivateLastScene() {
+		SetBookState(true);
+		LastScene = true;
 	}
 
 	void ResetJournalData() {
@@ -344,6 +353,7 @@ private:
 	//STATE OF 2 DRAGGABLE OBJECTS IN BOOK
 	bool BookClueState[2] = { false, false };
 
+	bool LastScene = false;
 	bool LockBook = false; //Set as true so player can't close journal
 
 	std::vector<JournalObserver> observers;
