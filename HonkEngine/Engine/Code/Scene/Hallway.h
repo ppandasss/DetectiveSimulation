@@ -35,7 +35,7 @@
 #define ORDER_DURATION3 90.000  //for room 3
 #define ORDER_DURATION4 120.000
 
-#define PLAYER_SPEED 5.5f
+#define PLAYER_SPEED 15.5f
 
 
 
@@ -438,17 +438,20 @@ public:
 							{
 								if (door->GetName() == "KitchenDoor")
 								{
-									transitionEffects->FadeOut(1.0f, [this]() {Application::Get().SetScene("Kitchen"); });
+									player->StopMovement();
+									transitionEffects->FadeOut(1.0f, [this]() { player->ResumeMovement(); Application::Get().SetScene("Kitchen"); });
 									entering = true;
 								}
 								else
 								{
-									audioManager.PauseSound("hallwayMusic");
-									bellManager.StopAllRinging();
-									audioManager.PlaySound("knockDoor");
 									player->StopMovement();
-									transitionEffects->FadeOut(1.0f, [this]() {});
-									Application::Get().SetTimer(2000, [this, door]() {Application::Get().SetScene(door->GetSceneName()); player->ResumeMovement(); }, false);
+									bellManager.StopAllRinging();
+
+									audioManager.PlaySound("knockDoor");
+									Application::Get().SetTimer(1000, [this]() { transitionEffects->FadeOut(1.0f, [this]() {}); }, false);
+								    
+									audioManager.PauseSound("hallwayMusic");
+									Application::Get().SetTimer(3000, [this, door]() {Application::Get().SetScene(door->GetSceneName()); player->ResumeMovement(); }, false);
 									entering = true;
 								}
 							}

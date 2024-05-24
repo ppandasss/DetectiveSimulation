@@ -75,6 +75,7 @@
     <ClInclude Include="Code\Effects\ShakingEffect.h" />
     <ClInclude Include="Code\Scene\EndScene.h" />
     <ClInclude Include="Code\Scene\JournalEntry.h" />
+    <ClInclude Include="Code\Effects\TransitionEffects.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="External\Library\freetype.lib" />

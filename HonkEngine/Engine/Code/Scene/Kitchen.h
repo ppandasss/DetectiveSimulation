@@ -424,9 +424,37 @@ public:
 		
 		updateServeButton();
 		UpdateOrderDisplay();
+		UpdatePlateDisplay();
 
 	}
 
+	void UpdatePlateDisplay() {
+		if (Kitchen_Data->getTea() == TEA_EMPTY)
+		{
+			for (int i = 0; i < 4; i++) {
+				platedTea[i]->setActiveStatus(false);
+			}
+		}
+
+		if(Kitchen_Data->getSandwich() == SANDWICH_EMPTY)
+		{
+			for (int i = 0; i < 4; i++) {
+				platedSandwich[i]->setActiveStatus(false);
+			}
+		}
+
+		if (Kitchen_Data->getDessert() == DESSERT_EMPTY)
+		{
+			for (int i = 0; i < 4; i++) {
+				platedDessert[i]->setActiveStatus(false);
+			}
+		}
+
+		if (Kitchen_Data->getOptional() == OPTIONAL_EMPTY)
+		{
+			platedMilk->setActiveStatus(false);
+		}
+	}
 	void UpdateOrderDisplay() {
 
 		OrderData& orderData = OrderData::GetInstance();
@@ -464,23 +492,7 @@ public:
 
 
 	void clearPlate() {
-
-		//set all as inactive
-
-		for (int i = 0; i < 4; i++) {
-			platedTea[i]->setActiveStatus(false);
-		}
-		for (int i = 0; i < 4; i++) {
-			platedSandwich[i]->setActiveStatus(false);
-		}
-		for (int i = 0; i < 4; i++) {
-			platedDessert[i]->setActiveStatus(false);
-		}
-
-		platedMilk->setActiveStatus(false);
-
 		Kitchen_Data->clearPlate();
-
 	}
 
 
@@ -712,9 +724,7 @@ public:
 	void Serve() {
 		std::cout << "SERVE FOOD" << std::endl;
 		audioManager.PlaySound("servingBellRing");
-
-		transitionEffects->FadeOut(1.0f, [this]() {});
-		Application::Get().SetTimer(1000, []() {Application::Get().SetScene("Hallway"); }, false);
+		Application::Get().SetTimer(1000, [this]() {transitionEffects->FadeOut(1.0f, [this]() {Application::Get().SetScene("Hallway"); }); }, false);
 		// Assuming GameStateManager and DoorManager are accessible globally or passed to this scene.
 		GameState currentGameState = gameStateManager.getGameState();
 		RoomState currentRoomState = gameStateManager.getRoomState();

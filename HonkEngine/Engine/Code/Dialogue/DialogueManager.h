@@ -508,8 +508,10 @@ public:
         for (auto& pair : speakerIcons) {
             pair.second->setActiveStatus(false);  // Hide all speaker icons
         }
-
     }
+
+
+
 
 
 private:

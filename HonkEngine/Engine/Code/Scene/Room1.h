@@ -451,9 +451,24 @@ public:
         HandleKeyInputs();
     }
 
+    bool IsChoiceDialogue() {
+        if (dialogueManager->IsCurrentDialogueQuestion()) {
+            return true;
+        }
+        return false;
+    }
+
+
     void UpdateDialogueProgress() {
         // Manage different room states
         if (gameStateManager.getGameState() != GameState::ROOM1_STATE) return;
+
+        if (IsChoiceDialogue()) {
+            SetInstruction("Select a choice to continue");
+        }
+        else {
+            SetInstruction("Press [Space] or [Mouse] to continue");
+        }
 
         switch (gameStateManager.getRoomState()) {
         case RoomState::Order:
@@ -617,7 +632,7 @@ public:
         if (isCaneInspected && isLetterInspected && !inspectEndDialogueSet) {
             std::cout << "Both items inspected, moving to final dialogue." << std::endl;
             gameStateManager.SetRoomState(RoomState::InspectionEnd);
-            transitionEffects->FadeOut(3.0f, [this]() {});
+            
             
         }
     }
@@ -629,6 +644,7 @@ public:
 		}
 		else if (inspectEndDialogueSet && dialogueManager->IsDialogueFinished(inspectEndDialogueKey)) {
 			gameStateManager.SetRoomState(RoomState::End);
+            Application::Get().SetTimer(2000, [this]() { transitionEffects->FadeOut(1.0f, [this]() {}); }, false);
 		}
 	}
   

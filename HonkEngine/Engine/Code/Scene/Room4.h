@@ -461,9 +461,24 @@ public:
         HandleKeyInputs();
     }
 
+    bool IsChoiceDialogue() {
+        if (dialogueManager->IsCurrentDialogueQuestion()) {
+            return true;
+        }
+        return false;
+    }
+
+
     void UpdateDialogueProgress() {
         // Manage different room states
         if (gameStateManager.getGameState() != GameState::ROOM4_STATE) return;
+
+        if (IsChoiceDialogue()) {
+            SetInstruction("Select a choice to continue");
+        }
+        else {
+            SetInstruction("Press [Space] or [Mouse] to continue");
+        }
 
         switch (gameStateManager.getRoomState()) {
         case RoomState::Order:
@@ -626,7 +641,7 @@ public:
         if (isPosterInspected && isDaggerInspected && !inspectEndDialogueSet) {
             std::cout << "Both items inspected, moving to final dialogue." << std::endl;
             gameStateManager.SetRoomState(RoomState::InspectionEnd);
-            transitionEffects->FadeOut(3.0f, [this]() {});
+            Application::Get().SetTimer(2000, [this]() { transitionEffects->FadeOut(1.0f, [this]() {}); }, false);
         }
     }
 

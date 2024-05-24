@@ -278,7 +278,7 @@ public:
             GameStateManager::GetInstance().SetRoomState(RoomState::Serve);
         }
         SetSequencesDialogue();
-        shakingEffect->StartShaking();
+       
 
        
     }
@@ -488,9 +488,23 @@ public:
         HandleKeyInputs();
     }
 
+    bool IsChoiceDialogue() {
+        if (dialogueManager->IsCurrentDialogueQuestion()) {
+            return true;
+        }
+        return false;
+    }
+
     void UpdateDialogueProgress() {
         // Manage different room states
         if (gameStateManager.getGameState() != GameState::ROOM3_STATE) return;
+
+        if (IsChoiceDialogue()) {
+            SetInstruction("Select a choice to continue");
+        }
+        else {
+            SetInstruction("Press [Space] or [Mouse] to continue");
+        }
 
         switch (gameStateManager.getRoomState()) {
         case RoomState::Order:
@@ -577,6 +591,7 @@ public:
         }
         else if (inspectStartDialogueSet && dialogueManager->IsDialogueFinished(inspectStartDialogueKey)) {
             gameStateManager.SetRoomState(RoomState::Inspection);
+            shakingEffect->StartShaking();
         }
     }
 
@@ -670,7 +685,7 @@ public:
         if (isMovingLuggageInspected && isNewspaperInspected && isMessyClothesInspected  && !inspectEndDialogueSet) {
             std::cout << "All items inspected, moving to final dialogue." << std::endl;
             gameStateManager.SetRoomState(RoomState::InspectionEnd);
-            transitionEffects->FadeOut(3.0f, [this]() {});
+           
         }
     }
 
@@ -681,6 +696,7 @@ public:
         }
         else if (inspectEndDialogueSet && dialogueManager->IsDialogueFinished(inspectEndDialogueKey)) {
             gameStateManager.SetRoomState(RoomState::End);
+            Application::Get().SetTimer(2000, [this]() { transitionEffects->FadeOut(1.0f, [this]() {}); }, false);
         }
     }
 
