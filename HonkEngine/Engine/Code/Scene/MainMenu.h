@@ -7,10 +7,10 @@
 #include "../Text/Text.h"
 
 #include "../UI/UIButton.h"
-#include "../PopupWidget/InterfaceManager.h"
-#include "../PopupWidget/OptionsInterface.h"
-#include "../PopupWidget/ExitInterface.h"
 
+#include "../PopupWidget/OptionsMenu.h"
+#include "../PopupWidget/ExitMenu.h"
+#include "../PopupWidget/PauseMenu.h"
 
 #include "../Application.h"
 
@@ -34,11 +34,12 @@ public:
 		PlayButton->SetTextPosition(glm::vec3(-6.9f, -0.2f, 0.0f));
 		PlayButton->SetOnClickAction([this]() { clickPlay(); });
 
-		 OptionsButton = new UIButton("OptionsButton", "Assets/Images/MainMenu/MainMenu_Button_Setting.png", glm::vec3(-6.9f, -1.3f, 0.0f), glm::vec3(3.78f, 1.06f, 0.0f), true, true, "Assets/Fonts/Jibril.ttf");
+		OptionsButton = new UIButton("OptionsButton", "Assets/Images/MainMenu/MainMenu_Button_Setting.png", glm::vec3(-6.9f, -1.3f, 0.0f), glm::vec3(3.78f, 1.06f, 0.0f), true, true, "Assets/Fonts/Jibril.ttf");
 		OptionsButton->SetHoverTexture("Assets/Images/MainMenu/MainMenu_Button_Setting_Hover.png");
 		OptionsButton->SetButtonText("Options");
 		OptionsButton->SetTextSize(0.7);
 		OptionsButton->SetTextPosition(glm::vec3(-6.9f, -1.42f, 0.0f));
+		OptionsButton->SetOnClickAction([this]() { clickOptions(); });
 
 		QuitButton = new UIButton("QuitButton", "Assets/Images/MainMenu/MainMenu_Button_Play.png", glm::vec3(-6.9f, -2.5f, 0.0f), glm::vec3(3.78f, 1.06f, 0.0f), true, true, "Assets/Fonts/Jibril.ttf");
 		QuitButton->SetHoverTexture("Assets/Images/MainMenu/MainMenu_Button_Exit_Hover.png");
@@ -63,15 +64,10 @@ public:
 
 		//INTERFACES IN MAIN MENU
 
-		OptionsInterface* optionsInterface = new OptionsInterface();
-		Interface_Manager.AddInterface(OPTIONS, optionsInterface);
-
-		ExitInterface* exitInterface = new ExitInterface();
-		Interface_Manager.AddInterface(EXIT, exitInterface);
-		
-		m_gameObjects.push_back(optionsInterface);
-		m_gameObjects.push_back(exitInterface);
 		m_gameObjects.push_back(transitionObject);
+
+		m_gameObjects.push_back(&optionsMenu);
+		m_gameObjects.push_back(&exitMenu);
 
 		setMainMenuState();
 
@@ -144,17 +140,20 @@ private:
 
 	void clickOptions() { 
 		AudioManager::GetInstance().PlaySound("buttonClick");
-		//Interface_Manager.ActivateInterface(OPTIONS);	
+;		optionsMenu.Show();
+		//ACTIVATE OPTIONS MENU
 	}
 
 	void clickExit() { 
 		AudioManager::GetInstance().PlaySound("buttonClick");
-		//Interface_Manager.ActivateInterface(EXIT); 
 
-		transitionEffects->FadeOut(3.0f, [this]() {
+		exitMenu.Show();
+
+		/*transitionEffects->FadeOut(3.0f, [this]() {
 			Application::Get().exitGame();
-			});
-		
+		});*/
+
+		//ACTIVATE EXIT MENU
 	
 	}
 
@@ -170,8 +169,8 @@ private:
 	UIElement* transitionObject;
 	std::unique_ptr<TransitionEffects> transitionEffects;
 
-	InterfaceManager& Interface_Manager = InterfaceManager::getInstance();
-
+	OptionsMenu optionsMenu;
+	ExitMenu exitMenu;
 
 };
 

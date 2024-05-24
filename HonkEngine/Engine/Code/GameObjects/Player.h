@@ -13,7 +13,6 @@
 #include "../Scene/Hallway.h"
 #include "../GameObjects/Book.h"
 
-#include "../PopupWidget/InterfaceManager.h"
 
 class Player : public AnimateGameObject
 {
