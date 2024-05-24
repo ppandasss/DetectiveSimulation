@@ -95,9 +95,7 @@ public:
 
 		for (auto& object : textClues) {
 
-			if (object) { //checks for nullptr
-
-				
+			if (object) { //checks for nullptr		
 
 			}
 		}
@@ -117,6 +115,17 @@ public:
 		}
 
 		active = status;
+
+	}
+
+	void ResetPage() {
+
+		for (auto& object : deffered_m_gameObjects) {
+			if (object->gameObj) { //checks for nullptr
+				object->showObject = false;
+				object->gameObj->setActiveStatus(false);
+			}
+		}
 
 	}
 

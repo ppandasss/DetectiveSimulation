@@ -89,7 +89,8 @@ public:
 		if (no_of_Evidence == 0) {
 			evidenceButton->SetButtonText("EMPTY");
 
-		} else if (no_of_Evidence == 1){
+		}
+		else if (no_of_Evidence == 1) {
 			evidenceButton->SetButtonText(mainPageEvidence[0]);
 
 		}
@@ -205,7 +206,7 @@ public:
 			allCabinData[cabin].activeEvidence.push_back(evidenceText);
 
 		}
-	
+
 
 	}
 
@@ -237,7 +238,7 @@ public:
 		bool evidenceCorrect = false;
 
 		if (spy_choice == CABIN21) spyCorrect = true;
-		
+
 
 		if (spyCorrect) {
 
@@ -272,12 +273,53 @@ public:
 	}
 
 	//Use for ending scene to prevent closing book
+	bool GetSceneState() {
+		return LastScene;
+	}
+
 	bool GetBookState() {
 		return LockBook;
 	}
-	
+
 	void SetBookState(bool status) {
 		LockBook = status;
+	}
+
+	void ActivateLastScene() {
+		SetBookState(true);
+		LastScene = true;
+	}
+
+	void ResetJournalData() {
+
+		// Reset main page data
+		main_page.player_Spy = CABIN_EMPTY;
+		main_page.player_BombLocation = LOCATION_EMPTY;
+		main_page.player_Evidence = 0;
+
+		// Clear all cabin data
+		allCabinData.clear();
+
+		// Clear clue states
+		clueStates.clear();
+
+		// Clear evidence map
+		evidenceMap.clear();
+
+		// Reset main page evidence
+		mainPageEvidence[0] = " - ";
+		mainPageEvidence[1] = " - ";
+		no_of_Evidence = 0;
+
+		// Reset book clue states
+		BookClueState[0] = false;
+		BookClueState[1] = false;
+
+		// Reset lock book state
+		LockBook = false;
+
+		NotifyObservers();
+
 	}
 
 
@@ -312,6 +354,7 @@ private:
 	//STATE OF 2 DRAGGABLE OBJECTS IN BOOK
 	bool BookClueState[2] = { false, false };
 
+	bool LastScene = false;
 	bool LockBook = false; //Set as true so player can't close journal
 
 	std::vector<JournalObserver> observers;

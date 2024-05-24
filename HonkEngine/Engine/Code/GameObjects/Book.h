@@ -35,8 +35,8 @@ public:
 
 	Book() : GameObject("Book"), audioManager(AudioManager::GetInstance()) {
 
-		audioManager.LoadSound("openJournal", "Assets/Sounds/Journal/SFX_OpenJournal.mp3",SFX, 0.3f);
-		audioManager.LoadSound("pageSwitch", "Assets/Sounds/Journal/SFX_PageSwitch.mp3",SFX, 0.2f);
+		audioManager.LoadSound("openJournal", "Assets/Sounds/Journal/SFX_OpenJournal.mp3", SFX, 0.3f);
+		audioManager.LoadSound("pageSwitch", "Assets/Sounds/Journal/SFX_PageSwitch.mp3", SFX, 0.2f);
 
 		JournalCover = new UIObject("JournalCover", "Assets/Images/Journal/Cover.png", true);
 		JournalCover->SetScale(glm::vec3(14.36f, 8.24f, 0.0f));
@@ -71,7 +71,7 @@ public:
 		Tab6->SetOnClickAction([this]() { setActiveTab6(); });
 		Tab7->SetOnClickAction([this]() { setActiveTab7(); });
 
-		GameObject* BackGround = new UIObject("JournalBG", "Assets/Images/Journal/BlackAlpha.png", true);
+		BackGround = new UIObject("JournalBG", "Assets/Images/Journal/BlackAlpha.png", true);
 		BackGround->SetScale(glm::vec3(19.2f, 10.8f, 0.0f));
 		BackGround->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
@@ -153,6 +153,10 @@ public:
 
 		}
 
+		if (m_journal->GetSceneState()) {
+			BackGround->setActiveStatus(false);
+		}
+
 		//std::cout << "OPEN BOOKK" << std::endl;
 	}
 
@@ -221,6 +225,7 @@ public:
 
 		}
 
+
 	}
 
 	virtual void Update(float dt, long frame) override {
@@ -252,7 +257,6 @@ public:
 		}
 
 
-
 		allPages[activePage]->Update(dt, frame);
 
 	}
@@ -276,6 +280,17 @@ public:
 	}
 
 
+	void ResetJournal() {
+
+		m_journal->ResetJournalData();
+
+		for (auto& page : allPages) {
+			page->ResetPage();
+		}
+
+	}
+
+
 
 protected:
 
@@ -291,5 +306,8 @@ protected:
 	glm::vec2 mousePos;
 
 	JournalData* m_journal = JournalData::GetInstance();
+
+	GameObject* BackGround;
+	bool lastScene = false;
 
 };

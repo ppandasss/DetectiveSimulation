@@ -78,9 +78,11 @@ public:
             }
         }
 
-       /* if (input.Get().GetKeyDown(GLFW_KEY_J)) {
+
+        //test journal entry scene
+       /*if (input.Get().GetKeyDown(GLFW_KEY_J)) {
             Application::Get().SetScene("JournalEntry");
-        }*/
+       }*/
 
         // Set the animation
         m_animator.SetAnimation(currentAnimation);
