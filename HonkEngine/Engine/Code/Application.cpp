@@ -42,8 +42,8 @@ void Application::ToggleFullscreen(GLFWwindow* window) {
 // ---------------------------------------------------------------------------------------------------------
 void processInput(GLFWwindow* window)
 {
-    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-       Application::Get().exitGame();
+    //if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+       //Application::Get().exitGame();
         //glfwSetWindowShouldClose(window, true);
 
     static bool fsTogglePressedLastFrame = true;

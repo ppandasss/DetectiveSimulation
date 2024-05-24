@@ -140,7 +140,6 @@ public:
 			Application::Get().SetScene("MainMenu");
 		}
 
-
 	}
 
 

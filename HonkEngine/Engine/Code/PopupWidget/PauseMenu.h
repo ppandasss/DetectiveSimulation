@@ -2,6 +2,7 @@
 
 #include "Interface.h"
 #include "OptionsMenu.h"
+#include "ExitMenu.h"
 
 class PauseMenu : public Interface {
 public:
@@ -13,12 +14,12 @@ public:
         PauseBackground->SetScale(glm::vec3(8.0f, 8.0f, 0.0f));
         PauseBackground->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
-        UIButton* ContinueButton = new UIButton("ContinueButton", "Assets/Images/MainMenu/MainMenu_Button_Play.png", glm::vec3(0.0f, 0.5f, 0.0f), glm::vec3(2.78f, 0.86f, 0.0f), true, true, "Assets/Fonts/Jibril.ttf");
+        UIButton* ContinueButton = new UIButton("ContinueButton", "Assets/Images/MainMenu/MainMenu_Button_Play.png", glm::vec3(0.0f, 1.5f, 0.0f), glm::vec3(2.78f, 0.86f, 0.0f), true, true, "Assets/Fonts/Jibril.ttf");
         ContinueButton->SetHoverTexture("Assets/Images/MainMenu/MainMenu_Button_Start_Hover.png");
         ContinueButton->SetButtonText("Continue Game");
         ContinueButton->SetOnClickAction([this]() { ClickContinue(); });
 
-        UIButton* OptionsButton = new UIButton("OptionsButton", "Assets/Images/MainMenu/MainMenu_Button_Play.png", glm::vec3(0.0f, -0.5f, 0.0f), glm::vec3(2.78f, 0.86f, 0.0f), true, true, "Assets/Fonts/Jibril.ttf");
+        UIButton* OptionsButton = new UIButton("OptionsButton", "Assets/Images/MainMenu/MainMenu_Button_Play.png", glm::vec3(0.0f, 0.5f, 0.0f), glm::vec3(2.78f, 0.86f, 0.0f), true, true, "Assets/Fonts/Jibril.ttf");
         OptionsButton->SetHoverTexture("Assets/Images/MainMenu/MainMenu_Button_Start_Hover.png");
         OptionsButton->SetButtonText("Options");
         OptionsButton->SetOnClickAction([this]() { ShowOptions(); });
@@ -28,11 +29,18 @@ public:
         MainMenuButton->SetButtonText("Main Menu");
         MainMenuButton->SetOnClickAction([this]() { Application::Get().SetScene("MainMenu"); });
 
+        UIButton* ExitGameButton = new UIButton("MainMenuButton", "Assets/Images/MainMenu/MainMenu_Button_Play.png", glm::vec3(0.0f, -2.5f, 0.0f), glm::vec3(2.78f, 0.86f, 0.0f), true, true, "Assets/Fonts/Jibril.ttf");
+        ExitGameButton->SetHoverTexture("Assets/Images/MainMenu/MainMenu_Button_Start_Hover.png");
+        ExitGameButton->SetButtonText("Exit Game");
+        ExitGameButton->SetOnClickAction([this]() { ShowExitConfirmation(); });
+
         m_gameObjects.push_back(GreyBackground);
         m_gameObjects.push_back(PauseBackground);
         m_gameObjects.push_back(ContinueButton);
         m_gameObjects.push_back(OptionsButton);
         m_gameObjects.push_back(MainMenuButton);
+        m_gameObjects.push_back(ExitGameButton);
+
     }
 
     void EmptyFunction() {
