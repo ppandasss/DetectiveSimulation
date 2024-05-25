@@ -100,4 +100,5 @@ private:
     std::unique_ptr<OptionsMenu> optionsMenu;
     std::unique_ptr<ExitMenu> exitConfirmation;
     bool shouldReopenPauseMenu;
+    bool isPaused;
 };

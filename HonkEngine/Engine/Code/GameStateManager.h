@@ -11,7 +11,7 @@
 #include "Scene/KitchenData.h"
 
 #define PREPARE_DURATION 210   // in seconds
-#define INITIAL_ROOM GameState::ROOM4_STATE // start room
+#define INITIAL_ROOM GameState::ROOM1_STATE // start room
 
 enum GameState {
     ROOM1_STATE,

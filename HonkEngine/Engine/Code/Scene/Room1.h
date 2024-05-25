@@ -505,7 +505,7 @@ public:
     void ManageOrderState() {
         if (dialogueManager->IsDialogueFinished("Order")) {
             SetInstruction("Press [E] to leave");
-            if (input.Get().GetKeyDown(GLFW_KEY_E)) {
+            if (input.Get().GetKeyDown(GLFW_KEY_E)  &&!pauseMenu.IsVisible()) {
                 transitionEffects->FadeOut(1.0f, [this]() { gameStateManager.SetRoomState(Prepare); });
                 
             }
@@ -656,7 +656,7 @@ public:
   
     void PromptForNextDialogue(const string& nextKey, bool& flag) {
         SetInstruction("Press [Space] or [Mouse] to continue");
-        if (!flag && (input.Get().GetKeyDown(GLFW_KEY_SPACE) || input.Get().GetMouseButtonDown(0))) {
+        if ((!flag && (input.Get().GetKeyDown(GLFW_KEY_SPACE) || input.Get().GetMouseButtonDown(0))) && !pauseMenu.IsVisible()) {
             dialogueManager->SetDialogueSet(nextKey);
             flag = true;
         }
@@ -668,7 +668,7 @@ public:
     }
 
     void HandleKeyInputs() {
-        if (input.Get().GetKeyDown(GLFW_KEY_SPACE) || input.Get().GetMouseButtonDown(0)) {
+        if ((input.Get().GetKeyDown(GLFW_KEY_SPACE) || input.Get().GetMouseButtonDown(0) ) && !pauseMenu.IsVisible()) {
             
             dialogueManager->PlayNextDialogue();
         }

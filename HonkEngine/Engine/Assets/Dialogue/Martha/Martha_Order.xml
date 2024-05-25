@@ -68,7 +68,7 @@
   </Dialogue>
   <Dialogue id="1MD04">
     <Speaker name="Martha_Normal">
-      <line1>May I please have a comforting  cup of %floral% %tea%,</line1>
+      <line1>May I please have a comforting  cup of %floral% %tea,%</line1>
       <line2>a %soft% %and% %effortlessly% %enjoyable%  %sandwich% you may have,</line2>
     </Speaker>
     <Choices/>
