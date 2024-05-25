@@ -181,7 +181,7 @@ public:
         dialogueManager->SetDialogueScale(0.55f);
         dialogueManager->SetChoiceScale(0.56f);
 
-        //Push GamePbjects
+        //Push GamePbjects  
         m_gameObjects.push_back(background1a);
         m_gameObjects.push_back(background1b);
         m_gameObjects.push_back(background2a);

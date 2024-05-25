@@ -23,7 +23,7 @@ C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Dialogue\Dialoguemanager.h(23
 C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Room3.h(50,19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
 C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Kitchen.h(168,13): warning C4305: 'initializing': truncation from 'double' to 'float'
 C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Kitchen.h(406,26): warning C4244: 'argument': conversion from 'long' to 'float', possible loss of data
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\MainMenu.h(33,27): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\MainMenu.h(40,30): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\MainMenu.h(46,27): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\MainMenu.h(28,33): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\MainMenu.h(35,36): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\MainMenu.h(42,33): warning C4305: 'argument': truncation from 'double' to 'float'
   Engine.vcxproj -> C:\Capt\DetectiveSimulation\HonkEngine\x64\Debug\Engine.exe

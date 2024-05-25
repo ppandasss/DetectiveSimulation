@@ -164,10 +164,13 @@
     <Xml Include="Assets\Dialogue\Octavia\Average\Octavia_Average_End.xml" />
     <Xml Include="Assets\Dialogue\Octavia\Average\Octavia_Average_Poster.xml" />
     <Xml Include="Assets\Dialogue\Octavia\Average\Octavia_Average_Start.xml" />
-    <Xml Include="Assets\Dialogue\Opening\Scene1.xml" />
-    <Xml Include="Assets\Dialogue\Opening\Scene2.xml" />
-    <Xml Include="Assets\Dialogue\Opening\Scene3.xml" />
-    <Xml Include="Assets\Dialogue\Opening\Scene4.xml" />
+    <Xml Include="Assets\Dialogue\Opening\OpenCutscene7.xml" />
+    <Xml Include="Assets\Dialogue\Opening\OpenCutscene2.xml" />
+    <Xml Include="Assets\Dialogue\Opening\OpenCutscene3.xml" />
+    <Xml Include="Assets\Dialogue\Opening\OpenCutscene4.xml" />
+    <Xml Include="Assets\Dialogue\Opening\OpenCutscene5.xml" />
+    <Xml Include="Assets\Dialogue\Opening\OpenCutscene6.xml" />
+    <Xml Include="Assets\Dialogue\Opening\OpenCutscene1.xml" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Assets\Sounds\footstep.mp3" />

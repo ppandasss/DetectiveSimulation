@@ -356,10 +356,13 @@
     <Xml Include="Assets\Dialogue\Octavia\Octavia_Order.xml" />
     <Xml Include="Assets\Dialogue\Octavia\Octavia_Serve_Late.xml" />
     <Xml Include="Assets\Dialogue\Octavia\Octavia_Serve_OnTime.xml" />
-    <Xml Include="Assets\Dialogue\Opening\Scene4.xml" />
-    <Xml Include="Assets\Dialogue\Opening\Scene3.xml" />
-    <Xml Include="Assets\Dialogue\Opening\Scene2.xml" />
-    <Xml Include="Assets\Dialogue\Opening\Scene1.xml" />
+    <Xml Include="Assets\Dialogue\Opening\OpenCutscene1.xml" />
+    <Xml Include="Assets\Dialogue\Opening\OpenCutscene2.xml" />
+    <Xml Include="Assets\Dialogue\Opening\OpenCutscene3.xml" />
+    <Xml Include="Assets\Dialogue\Opening\OpenCutscene4.xml" />
+    <Xml Include="Assets\Dialogue\Opening\OpenCutscene5.xml" />
+    <Xml Include="Assets\Dialogue\Opening\OpenCutscene6.xml" />
+    <Xml Include="Assets\Dialogue\Opening\OpenCutscene7.xml" />
     <Xml Include="Assets\Dialogue\Twin\MealResult\Twin_MealResult_Average.xml" />
     <Xml Include="Assets\Dialogue\Twin\MealResult\Twin_MealResult_Informative.xml" />
     <Xml Include="Assets\Dialogue\Twin\MealResult\Twin_MealResult_Low.xml" />

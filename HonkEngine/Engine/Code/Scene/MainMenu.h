@@ -1,178 +1,168 @@
 #pragma once
 
 #include "Scene.h"
-
 #include "../GameObjects/RenderGameObject.h"
-#include"../GameObjects/AnimateGameObject.h"	
+#include "../GameObjects/AnimateGameObject.h"
 #include "../Text/Text.h"
-
 #include "../UI/UIButton.h"
 #include "../PopupWidget/InterfaceManager.h"
 #include "../PopupWidget/OptionsInterface.h"
 #include "../PopupWidget/ExitInterface.h"
-
-
 #include "../Application.h"
-
 
 class MainMenu : public Scene {
 
 public:
 
-	MainMenu() :audioManager(AudioManager::GetInstance()) {
+    MainMenu() : audioManager(AudioManager::GetInstance()) {
 
-		audioManager.LoadSound("menuMusic", "Assets/Sounds/Music/BGmusic_Cutscene.mp3", Music, 1.0f);
+        audioManager.LoadSound("menuMusic", "Assets/Sounds/Music/BGmusic_Cabin2.mp3", Music, 0.6f);
 
-		GameObject* MainMenuBackground = new UIObject("MainMenuBackground", "Assets/Images/MainMenu/MainMenu_BG.jpg", true);
-		MainMenuBackground->SetScale(glm::vec3(19.2f, 10.8f, 0.0f));
-		MainMenuBackground->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
+        GameObject* MainMenuBackground = new UIObject("MainMenuBackground", "Assets/Images/MainMenu/MainMenu_BG.jpg", true);
+        MainMenuBackground->SetScale(glm::vec3(19.2f, 10.8f, 0.0f));
+        MainMenuBackground->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
-		PlayButton = new UIButton("PlayButton", "Assets/Images/MainMenu/MainMenu_Button_Play.png", glm::vec3(-6.9f, -0.1f, 0.0f), glm::vec3(3.78f, 1.06f, 0.0f), true, true, "Assets/Fonts/Jibril.ttf");
-		PlayButton->SetHoverTexture("Assets/Images/MainMenu/MainMenu_Button_Start_Hover.png");
-		PlayButton->SetButtonText("Start");
-		PlayButton->SetTextSize(0.7);
-		PlayButton->SetTextPosition(glm::vec3(-6.9f, -0.2f, 0.0f));
-		PlayButton->SetOnClickAction([this]() { clickPlay(); });
+        PlayButton = new UIButton("PlayButton", "Assets/Images/MainMenu/MainMenu_Button_Play.png", glm::vec3(-6.9f, -0.1f, 0.0f), glm::vec3(3.78f, 1.06f, 0.0f), true, true, "Assets/Fonts/Jibril.ttf");
+        PlayButton->SetHoverTexture("Assets/Images/MainMenu/MainMenu_Button_Start_Hover.png");
+        PlayButton->SetButtonText("Start");
+        PlayButton->SetTextSize(0.7);
+        PlayButton->SetTextPosition(glm::vec3(-6.9f, -0.2f, 0.0f));
+        PlayButton->SetOnClickAction([this]() { clickPlay(); });
 
-		 OptionsButton = new UIButton("OptionsButton", "Assets/Images/MainMenu/MainMenu_Button_Setting.png", glm::vec3(-6.9f, -1.3f, 0.0f), glm::vec3(3.78f, 1.06f, 0.0f), true, true, "Assets/Fonts/Jibril.ttf");
-		OptionsButton->SetHoverTexture("Assets/Images/MainMenu/MainMenu_Button_Setting_Hover.png");
-		OptionsButton->SetButtonText("Options");
-		OptionsButton->SetTextSize(0.7);
-		OptionsButton->SetTextPosition(glm::vec3(-6.9f, -1.42f, 0.0f));
+        OptionsButton = new UIButton("OptionsButton", "Assets/Images/MainMenu/MainMenu_Button_Setting.png", glm::vec3(-6.9f, -1.3f, 0.0f), glm::vec3(3.78f, 1.06f, 0.0f), true, true, "Assets/Fonts/Jibril.ttf");
+        OptionsButton->SetHoverTexture("Assets/Images/MainMenu/MainMenu_Button_Setting_Hover.png");
+        OptionsButton->SetButtonText("Options");
+        OptionsButton->SetTextSize(0.7);
+        OptionsButton->SetTextPosition(glm::vec3(-6.9f, -1.42f, 0.0f));
+        OptionsButton->SetOnClickAction([this]() { clickOptions(); });
 
-		QuitButton = new UIButton("QuitButton", "Assets/Images/MainMenu/MainMenu_Button_Play.png", glm::vec3(-6.9f, -2.5f, 0.0f), glm::vec3(3.78f, 1.06f, 0.0f), true, true, "Assets/Fonts/Jibril.ttf");
-		QuitButton->SetHoverTexture("Assets/Images/MainMenu/MainMenu_Button_Exit_Hover.png");
-		QuitButton->SetButtonText("Quit");
-		QuitButton->SetTextSize(0.7);
-		QuitButton->SetTextPosition(glm::vec3(-6.9f, -2.63f, 0.0f));
-		QuitButton->SetOnClickAction([this]() { clickExit(); });
-		
-		clickToBegin = new Text("clickToBegin", "Click anywhere to begin", "Assets/Fonts/mvboli.ttf");
-		clickToBegin->SetPosition(glm::vec3(-8.42f, -3.6f, 0.0f));
-		clickToBegin->SetColor(glm::vec3(1, 1, 1));
-		clickToBegin->SetScale(0.7f);
+        QuitButton = new UIButton("QuitButton", "Assets/Images/MainMenu/MainMenu_Button_Play.png", glm::vec3(-6.9f, -2.5f, 0.0f), glm::vec3(3.78f, 1.06f, 0.0f), true, true, "Assets/Fonts/Jibril.ttf");
+        QuitButton->SetHoverTexture("Assets/Images/MainMenu/MainMenu_Button_Exit_Hover.png");
+        QuitButton->SetButtonText("Quit");
+        QuitButton->SetTextSize(0.7);
+        QuitButton->SetTextPosition(glm::vec3(-6.9f, -2.63f, 0.0f));
+        QuitButton->SetOnClickAction([this]() { clickExit(); });
 
-		transitionObject = new UINormal("Transition", "Assets/Images/black.png", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(25.0f, 20.0f, 0.0f), true);
-		transitionEffects = std::make_unique<TransitionEffects>(transitionObject);
+        clickToBegin = new Text("clickToBegin", "Click anywhere to begin", "Assets/Fonts/mvboli.ttf");
+        clickToBegin->SetPosition(glm::vec3(-8.42f, -3.6f, 0.0f));
+        clickToBegin->SetColor(glm::vec3(1, 1, 1));
+        clickToBegin->SetScale(0.7f);
 
-		m_gameObjects.push_back(MainMenuBackground);
-		m_gameObjects.push_back(PlayButton);
-		m_gameObjects.push_back(OptionsButton);
-		m_gameObjects.push_back(QuitButton);
-		m_gameObjects.push_back(clickToBegin);
+        transitionObject = new UINormal("Transition", "Assets/Images/black.png", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(25.0f, 20.0f, 0.0f), true);
+        transitionEffects = std::make_unique<TransitionEffects>(transitionObject);
 
-		//INTERFACES IN MAIN MENU
+        m_gameObjects.push_back(MainMenuBackground);
+        m_gameObjects.push_back(PlayButton);
+        m_gameObjects.push_back(OptionsButton);
+        m_gameObjects.push_back(QuitButton);
+        m_gameObjects.push_back(clickToBegin);
 
-		OptionsInterface* optionsInterface = new OptionsInterface();
-		Interface_Manager.AddInterface(OPTIONS, optionsInterface);
+        //INTERFACES IN MAIN MENU
 
-		ExitInterface* exitInterface = new ExitInterface();
-		Interface_Manager.AddInterface(EXIT, exitInterface);
-		
-		m_gameObjects.push_back(optionsInterface);
-		m_gameObjects.push_back(exitInterface);
-		m_gameObjects.push_back(transitionObject);
+        OptionsInterface* optionsInterface = new OptionsInterface();
+        Interface_Manager.AddInterface(OPTIONS, optionsInterface);
 
-		setMainMenuState();
+        ExitInterface* exitInterface = new ExitInterface();
+        Interface_Manager.AddInterface(EXIT, exitInterface);
 
-	}
+        m_gameObjects.push_back(optionsInterface);
+        m_gameObjects.push_back(exitInterface);
+        m_gameObjects.push_back(transitionObject);
 
-	void Update(float dt, long frame)
-	{
-		Scene::Update(dt, frame);
+        setMainMenuState();
 
-		transitionEffects->Update(dt);
+    }
 
-		Input& input = Application::GetInput();
+    void Update(float dt, long frame) override
+    {
+        Scene::Update(dt, frame);
 
-		if (startOfGame) {
-			
-			if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1))
-			{
-				startOfGame = false;
-				setMainMenuState();
-			}
-		}		
+        transitionEffects->Update(dt);
 
-	}
+        Input& input = Application::GetInput();
 
-	void setMainMenuState() {
+        if (startOfGame) {
+            if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1))
+            {
+                startOfGame = false;
+                setMainMenuState();
+            }
+        }
+    }
 
-		if (startOfGame) {
+    void setMainMenuState() {
 
-			PlayButton->setActiveStatus(false);
-			QuitButton->setActiveStatus(false);
-			OptionsButton->setActiveStatus(false); 
-			clickToBegin->setActiveStatus(true);
+        if (startOfGame) {
+            PlayButton->setActiveStatus(false);
+            QuitButton->setActiveStatus(false);
+            OptionsButton->setActiveStatus(false);
+            clickToBegin->setActiveStatus(true);
+        }
+        else {
+            PlayButton->setActiveStatus(true);
+            QuitButton->setActiveStatus(true);
+            OptionsButton->setActiveStatus(true);
+            clickToBegin->setActiveStatus(false);
+        }
+    }
 
-		}
-		else {
-			PlayButton->setActiveStatus(true);
-			QuitButton->setActiveStatus(true);
-			OptionsButton->setActiveStatus(true);
-			clickToBegin->setActiveStatus(false);
-		}
-
-	}
-
-	void OnEnter() override {
-		audioManager.PlaySound("menuMusic", true);
-		transitionEffects->FadeIn(3.0f, [this]() {
-			std::cout << "Fade in complete" << std::endl;
-			});
-	}
+    void OnEnter() override {
+        audioManager.PlaySound("menuMusic", true);
+        transitioning = true;
+        transitionEffects->FadeIn(3.0f, [this]() {
+            std::cout << "Fade in complete" << std::endl;
+            transitioning = false;
+            });
+    }
 
     void OnExit() override {
-		audioManager.StopSound("menuMusic");
-
-	}
+        audioManager.StopSound("menuMusic");
+    }
 
 private:
 
-	AudioManager& audioManager;
+    AudioManager& audioManager;
+    bool startOfGame = true;
+    bool transitioning = false; // Flag to track transition state
 
-	//BUTTON FUNCTIONS
+    UIButton* PlayButton;
+    UIButton* OptionsButton;
+    UIButton* QuitButton;
 
-	void clickPlay() { 
-		AudioManager::GetInstance().PlaySound("buttonClick");
-		
+    Text* clickToBegin;
 
-		transitionEffects->FadeOut(3.0f, [this]() {
-			Application::Get().SetScene("OpenScene");
-			});
-	}
+    UIElement* transitionObject;
+    std::unique_ptr<TransitionEffects> transitionEffects;
 
-	void clickOptions() { 
-		AudioManager::GetInstance().PlaySound("buttonClick");
-		//Interface_Manager.ActivateInterface(OPTIONS);	
-	}
+    InterfaceManager& Interface_Manager = InterfaceManager::getInstance();
 
-	void clickExit() { 
-		AudioManager::GetInstance().PlaySound("buttonClick");
-		//Interface_Manager.ActivateInterface(EXIT); 
+    //BUTTON FUNCTIONS
 
-		transitionEffects->FadeOut(3.0f, [this]() {
-			Application::Get().exitGame();
-			});
-		
-	
-	}
+    void clickPlay() {
+        if (!transitioning) {
+            transitioning = true;
+            AudioManager::GetInstance().PlaySound("buttonClick");
+            transitionEffects->FadeOut(3.0f, [this]() {
+                Application::Get().SetScene("OpenScene");
+                });
+        }
+    }
 
+    void clickOptions() {
+        if (!transitioning) {
+            transitioning = true;
+            AudioManager::GetInstance().PlaySound("buttonClick");
+            //Interface_Manager.ActivateInterface(OPTIONS);
+        }
+    }
 
-	bool startOfGame = true;
-
-	UIButton* PlayButton;
-	UIButton* OptionsButton; 
-	UIButton* QuitButton;
-
-	Text* clickToBegin;
-
-	UIElement* transitionObject;
-	std::unique_ptr<TransitionEffects> transitionEffects;
-
-	InterfaceManager& Interface_Manager = InterfaceManager::getInstance();
-
-
+    void clickExit() {
+        if (!transitioning) {
+            transitioning = true;
+            AudioManager::GetInstance().PlaySound("buttonClick");
+            transitionEffects->FadeOut(3.0f, [this]() {
+                Application::Get().exitGame();
+                });
+        }
+    }
 };
-
-

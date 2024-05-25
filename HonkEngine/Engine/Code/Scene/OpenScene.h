@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Scene.h"
+#include <memory>
 #include "../GameObjects/RenderGameObject.h"
 #include "../GameObjects/AnimateGameObject.h"
 #include "../Dialogue/Dialoguemanager.h"
@@ -19,6 +20,9 @@ private:
     UIElement* transitionObject;
     std::unique_ptr<TransitionEffects> transitionEffects;
     int currentSceneIndex = 0;
+    bool isTransitioning = false;
+    float transitionProgress = 0.0f;
+    const float transitionDuration = 0.5f;
 
 public:
 
@@ -45,15 +49,16 @@ public:
 
         // Create dialogue manager
         UIButton* dialogueBox = new UIButton("DialogueBox", "", glm::vec3(0.0f, 3.5f, 0.0f), glm::vec3(10.96f, 2.05f, 0.0f), true, true, "Assets/Fonts/OverpassMono.ttf");
+        dialogueBox->SetTextSize(0.5f);
         dialogueManager = unique_ptr<DialogueManager>(new DialogueManager("OpenDialogue", dialogueBox, ""));
-        dialogueManager->LoadDialogues("scene1", "Assets/Dialogue/Opening/Scene1.xml");
-        dialogueManager->LoadDialogues("scene2", "Assets/Dialogue/Opening/Scene2.xml");
-        dialogueManager->LoadDialogues("scene3", "Assets/Dialogue/Opening/Scene3.xml");
-        dialogueManager->LoadDialogues("scene4", "Assets/Dialogue/Opening/Scene4.xml");
+        dialogueManager->LoadDialogues("scene1", "Assets/Dialogue/Opening/OpenCutscene1.xml");
+        dialogueManager->LoadDialogues("scene2", "Assets/Dialogue/Opening/OpenCutscene2.xml");
+        dialogueManager->LoadDialogues("scene3", "Assets/Dialogue/Opening/OpenCutscene3.xml");
+        dialogueManager->LoadDialogues("scene4", "Assets/Dialogue/Opening/OpenCutscene4.xml");
 
         transitionObject = new UINormal("Transition", "Assets/Images/black.png", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(25.0f, 20.0f, 0.0f), true);
         transitionEffects = std::unique_ptr<TransitionEffects>(new TransitionEffects(transitionObject));
-        
+
         m_gameObjects.push_back(OpenScene1);
         m_gameObjects.push_back(OpenScene2);
         m_gameObjects.push_back(OpenScene3);
@@ -75,18 +80,36 @@ public:
     void Update(float dt, long frame) override {
         Scene::Update(dt, frame);
         transitionEffects->Update(dt);
-        if (input.Get().GetKeyDown(GLFW_KEY_SPACE) || input.Get().GetMouseButtonDown(0)) {
-            if (dialogueManager->IsDialogueFinished(dialogueKeys[currentSceneIndex])) {
-                currentSceneIndex++;
-                if (currentSceneIndex < scenes.size()) {
-                    ChangeScene(currentSceneIndex);
+        if (isTransitioning) {
+            transitionProgress += dt / transitionDuration;
+            if (transitionProgress >= 1.0f) {
+                transitionProgress = 1.0f;
+                isTransitioning = false;
+                scenes[currentSceneIndex]->setActiveStatus(true);
+                dialogueManager->SetDialogueSet(dialogueKeys[currentSceneIndex]);
+            }
+
+            float prevY = glm::mix(0.0f, -10.8f, transitionProgress);
+            float nextY = glm::mix(10.8f, 0.0f, transitionProgress);
+
+            if (currentSceneIndex > 0) {
+                scenes[currentSceneIndex - 1]->SetPosition(glm::vec3(0.0f, prevY, 0.0f));
+            }
+            scenes[currentSceneIndex]->SetPosition(glm::vec3(0.0f, nextY, 0.0f));
+        }
+        else {
+            if (input.Get().GetKeyDown(GLFW_KEY_SPACE) || input.Get().GetMouseButtonDown(0)) {
+                if (dialogueManager->IsDialogueFinished(dialogueKeys[currentSceneIndex])) {
+                    if (currentSceneIndex + 1 < scenes.size()) {
+                        StartSceneTransition(currentSceneIndex + 1);
+                    }
+                    else {
+                        transitionEffects->FadeOut(2.0f, [this]() { Application::Get().SetScene("Hallway"); });
+                    }
                 }
                 else {
-                    transitionEffects->FadeOut(2.0f, [this]() { Application::Get().SetScene("Hallway"); });
+                    dialogueManager->PlayNextDialogue();
                 }
-            }
-            else {
-                dialogueManager->PlayNextDialogue();
             }
         }
 
@@ -105,5 +128,12 @@ private:
         }
         scenes[index]->setActiveStatus(true);
         dialogueManager->SetDialogueSet(dialogueKeys[index]);
+    }
+
+    void StartSceneTransition(int nextSceneIndex) {
+        isTransitioning = true;
+        transitionProgress = 0.0f;
+        scenes[nextSceneIndex]->setActiveStatus(true);
+        currentSceneIndex = nextSceneIndex;
     }
 };
