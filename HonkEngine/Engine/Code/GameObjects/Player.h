@@ -13,7 +13,6 @@
 #include "../Scene/Hallway.h"
 #include "../GameObjects/Book.h"
 
-#include "../PopupWidget/InterfaceManager.h"
 
 class Player : public AnimateGameObject
 {
@@ -78,11 +77,12 @@ public:
             }
         }
 
+        if (input.Get().GetKeyDown(GLFW_KEY_J)) {
+            //JournalData::GetInstance()->ResetJournalData();
 
-        //test journal entry scene
-       /*if (input.Get().GetKeyDown(GLFW_KEY_J)) {
             Application::Get().SetScene("JournalEntry");
-       }*/
+
+        }
 
         // Set the animation
         m_animator.SetAnimation(currentAnimation);

@@ -122,6 +122,25 @@ public:
 		}
 	}
 
+	void SetFullScreen() {
+		if (isFullscreen) {
+			return;
+		}
+
+		isFullscreen = true;
+		ToggleFullscreen(m_window);
+	}
+
+	void SetWindowedMode() {
+		if (!isFullscreen) {
+			return;
+		}
+		
+		isFullscreen = false;
+		ToggleFullscreen(m_window);
+	}
+
+
 	static Renderer& GetRenderer() { return s_instance->m_renderer; }
 	static Input& GetInput() { return s_instance->m_input; }
 	static Camera& GetCamera() { return s_instance->m_camera; }
@@ -207,5 +226,7 @@ private:
 
 	GLFWcursor* normalCursor = nullptr;
 	GLFWcursor* clickedCursor = nullptr;
+
+	bool isFullscreen = true;
 
 };

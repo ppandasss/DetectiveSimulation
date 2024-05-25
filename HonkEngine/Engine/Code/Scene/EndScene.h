@@ -17,8 +17,8 @@ public:
 	EndScene() :audioManager(AudioManager::GetInstance())
 	{
 
-		audioManager.LoadSound("EndSceneBGMusic", "Assets/Sounds//Music/BGmusic_Cutscene.mp3",Music, 1.0f);
-		audioManager.LoadSound("NewspaperSlam", "Assets/Sounds/SFX_EndingNewspaperSlam.mp3",SFX, 1.5f);
+		audioManager.LoadSound("EndSceneBGMusic", "Assets/Sounds//Music/BGmusic_EndingCutscene.mp3",Music, 1.0f);
+		audioManager.LoadSound("NewspaperSlam", "Assets/Sounds/SFX_EndingNewspaperSlam.mp3",SFX, 1.0f);
 
 		GameObject* EndingSceneBackground = new UIObject("EndingSceneBackground", "Assets/Images/Ending/EndingSelect_Background.png", true);
 		EndingSceneBackground->SetScale(glm::vec3(19.2f, 10.8f, 0.0f));
@@ -26,30 +26,30 @@ public:
 
 		MissingPoster = new UIObject("MissingPoster", "Assets/Images/Ending/MissingPoster_Rotate.png", true);
 		MissingPoster->SetScale(glm::vec3(8.82f, 9.58f, 0.0f));
-		MissingPoster->SetPosition(glm::vec3(-4.5f, -2.8f, 0.0f));
+		MissingPoster->SetPosition(glm::vec3(-4.5f, -3.1f, 0.0f));
 
 		Ending1 = new UIObject("Ending1", "Assets/Images/Ending/Ending1_Rotate.png", true);
-		Ending1->SetScale(glm::vec3(13.15f, 8.56f, 0.0f));
+		Ending1->SetScale(glm::vec3(12.85f, 8.85f, 0.0f));
 		Ending1->SetPosition(glm::vec3(0.5f, 0.0f, 0.0f));
 
 		Ending2 = new UIObject("Ending2", "Assets/Images/Ending/Ending2_Rotate.png", true);
-		Ending2->SetScale(glm::vec3(13.15f, 8.56f, 0.0f));
+		Ending2->SetScale(glm::vec3(12.85f, 8.85f, 0.0f));
 		Ending2->SetPosition(glm::vec3(0.5f, 0.0f, 0.0f));
 
 		Ending3 = new UIObject("Ending3", "Assets/Images/Ending/Ending3_Rotate.png", true);
-		Ending3->SetScale(glm::vec3(13.15f, 8.56f, 0.0f));
+		Ending3->SetScale(glm::vec3(12.85f, 8.85f, 0.0f));
 		Ending3->SetPosition(glm::vec3(0.5f, 0.0f, 0.0f));
 
 		Ending4 = new UIObject("Ending4", "Assets/Images/Ending/Ending4_Rotate.png", true);
-		Ending4->SetScale(glm::vec3(13.15f, 8.56f, 0.0f));
+		Ending4->SetScale(glm::vec3(12.85f, 8.85f, 0.0f));
 		Ending4->SetPosition(glm::vec3(0.5f, 0.0f, 0.0f));
 
 		Ending5 = new UIObject("Ending5", "Assets/Images/Ending/Ending5_Rotate.png", true);
-		Ending5->SetScale(glm::vec3(13.15f, 8.56f, 0.0f));
+		Ending5->SetScale(glm::vec3(12.85f, 8.56f, 0.0f));
 		Ending5->SetPosition(glm::vec3(0.5f, 0.0f, 0.0f));
 
 		Ending6 = new UIObject("Ending6", "Assets/Images/Ending/Ending6_Rotate.png", true);
-		Ending6->SetScale(glm::vec3(13.15f, 8.56f, 0.0f));
+		Ending6->SetScale(glm::vec3(12.85f, 8.56f, 0.0f));
 		Ending6->SetPosition(glm::vec3(0.5f, 0.0f, 0.0f));
 
 		Endings[END1] = Ending1;
@@ -122,9 +122,9 @@ public:
 
 			currentTime += dt;
 			float progress = currentTime / zoomInDuration;
-			// Interpolating from 200% to 100%
-			float targetScaleX = 26.3f - (13.15f * progress); // Decreasing from 26.3 to 13.15
-			float targetScaleY = 17.12f - (8.56f * progress); // Decreasing from 17.12 to 8.56
+			// Interpolating from 180% to 100%
+			float targetScaleX = 25.848f - (11.488f * progress); // Decreasing from 25.848 to 14.36
+			float targetScaleY = 14.832f - (6.592f * progress); // Decreasing from 14.832 to 8.24
 			ChosenEndingPoster->SetScale(glm::vec3(targetScaleX, targetScaleY, 0.0f));
 		}
 
@@ -133,15 +133,13 @@ public:
 		if (input.Get().GetKey(GLFW_KEY_SPACE))
 		{
 			Application::Get().SetScene("MainMenu");
-			gameStateManager.Reset();
 		}
 
 		if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1))
 		{
 			Application::Get().SetScene("MainMenu");
-			gameStateManager.Reset();
-
 		}
+
 	}
 
 
@@ -150,7 +148,6 @@ private:
 	AudioManager& audioManager;
 
 	JournalData* journal_data = JournalData::GetInstance();
-	GameStateManager& gameStateManager = GameStateManager::GetInstance();
 
 	int final_ending;
 

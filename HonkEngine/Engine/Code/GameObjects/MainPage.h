@@ -344,7 +344,7 @@ public:
 		if (JournalData::GetInstance()->GetSceneState()) {
 			PlayerGuide->setActiveStatus(false);
 		}
-
+		
 
 	}
 

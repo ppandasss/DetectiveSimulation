@@ -148,7 +148,6 @@
     <ClInclude Include="Code\Dialogue\tinyxml2.h" />
     <ClInclude Include="Code\Effects\BackgroundParallax.h" />
     <ClInclude Include="Code\Effects\ShakingEffect.h" />
-    <ClInclude Include="Code\Effects\TransitionEffects.h" />
     <ClInclude Include="Code\EventManager.h" />
     <ClInclude Include="Code\GameObjects\AnimateGameObject.h" />
     <ClInclude Include="Code\Animation\Animator.h" />
@@ -174,12 +173,10 @@
     <ClInclude Include="Code\GameObjects\OrderData.h" />
     <ClInclude Include="Code\GameObjects\Page.h" />
     <ClInclude Include="Code\GameObjects\Timer.h" />
-    <ClInclude Include="Code\PopupWidget\ExitInterface.h" />
+    <ClInclude Include="Code\PopupWidget\ExitMenu.h" />
     <ClInclude Include="Code\PopupWidget\Interface.h" />
-    <ClInclude Include="Code\PopupWidget\InterfaceManager.h" />
-    <ClInclude Include="Code\PopupWidget\OptionsInterface.h" />
-    <ClInclude Include="Code\PopupWidget\OptionsTwoInterface.h" />
-    <ClInclude Include="Code\PopupWidget\PauseInterface.h" />
+    <ClInclude Include="Code\PopupWidget\OptionsMenu.h" />
+    <ClInclude Include="Code\PopupWidget\PauseMenu.h" />
     <ClInclude Include="Code\PopupWidget\PopUp.h" />
     <ClInclude Include="Code\Scene\EndScene.h" />
     <ClInclude Include="Code\Scene\Hallway.h" />
@@ -188,7 +185,6 @@
     <ClInclude Include="Code\Scene\KitchenData.h" />
     <ClInclude Include="Code\Scene\LoadScene.h" />
     <ClInclude Include="Code\Scene\MainMenu.h" />
-    <ClInclude Include="Code\Scene\OpenScene.h" />
     <ClInclude Include="Code\Scene\Room1.h" />
     <ClInclude Include="Code\Input\Input.h" />
     <ClInclude Include="Code\GameObjects\Player.h" />
@@ -209,6 +205,7 @@
     <ClInclude Include="Code\UI\UIElement.h" />
     <ClInclude Include="Code\UI\UINormal.h" />
     <ClInclude Include="Code\UI\UIObject.h" />
+    <ClInclude Include="Code\UI\UISlider.h" />
     <ClInclude Include="External\Include\GLFW\glfw3.h" />
     <ClInclude Include="External\Include\GLFW\glfw3native.h" />
     <ClInclude Include="External\Include\stb_image.h" />
@@ -362,13 +359,6 @@
     <Xml Include="Assets\Dialogue\Octavia\Octavia_Order.xml" />
     <Xml Include="Assets\Dialogue\Octavia\Octavia_Serve_Late.xml" />
     <Xml Include="Assets\Dialogue\Octavia\Octavia_Serve_OnTime.xml" />
-    <Xml Include="Assets\Dialogue\Opening\OpenCutscene1.xml" />
-    <Xml Include="Assets\Dialogue\Opening\OpenCutscene2.xml" />
-    <Xml Include="Assets\Dialogue\Opening\OpenCutscene3.xml" />
-    <Xml Include="Assets\Dialogue\Opening\OpenCutscene4.xml" />
-    <Xml Include="Assets\Dialogue\Opening\OpenCutscene5.xml" />
-    <Xml Include="Assets\Dialogue\Opening\OpenCutscene6.xml" />
-    <Xml Include="Assets\Dialogue\Opening\OpenCutscene7.xml" />
     <Xml Include="Assets\Dialogue\Twin\MealResult\Twin_MealResult_Average.xml" />
     <Xml Include="Assets\Dialogue\Twin\MealResult\Twin_MealResult_Informative.xml" />
     <Xml Include="Assets\Dialogue\Twin\MealResult\Twin_MealResult_Low.xml" />

@@ -18,6 +18,7 @@
 #include "../Engine.h"
 #include "../Effects/ShakingEffect.h"
 #include "../Effects/TransitionEffects.h"
+#include "../PopupWidget/PauseMenu.h"
 
 using namespace std;
 
@@ -43,6 +44,8 @@ class Room3 : public Scene {
     UIButton* messyClothesInspect;
 
     unique_ptr<ShakingEffect> shakingEffect;
+
+    PauseMenu pauseMenu;
 
 public:
     Room3() :audioManager(AudioManager::GetInstance()) {
@@ -229,6 +232,8 @@ public:
         m_gameObjects.push_back(archibaldIcon);
         m_gameObjects.push_back(waiterIcon);
         m_gameObjects.push_back(instructionText);
+        m_gameObjects.push_back(&pauseMenu);
+
         m_gameObjects.push_back(transitionObject);
 
         //add Parallax Effects
@@ -716,6 +721,11 @@ public:
         if (input.Get().GetKeyDown(GLFW_KEY_SPACE) || input.Get().GetMouseButtonDown(0)) {
             dialogueManager->PlayNextDialogue();
         }
+
+        if (input.Get().GetKeyDown(GLFW_KEY_ESCAPE)) {
+            pauseMenu.Show();
+        }
+
     }
 
     void Render() override {
