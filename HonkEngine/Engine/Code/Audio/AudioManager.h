@@ -167,6 +167,11 @@ public:
 
         // Set the master volume (0.0 to 1.0)
         engine->setSoundVolume(volume);
+        masterVolume = volume;
+    }
+
+    float GetMasterVolume() const {
+        return masterVolume;
     }
 
     void SetPlaybackSpeed(const std::string& soundName, float speed) {
@@ -229,8 +234,6 @@ public:
         }
     }
 
-
-
     bool IsSoundPlaying(const std::string& soundName) {
         if (!engine) {
             std::cerr << "Audio engine not initialized. Cannot check if sound is playing: " << soundName << std::endl;
@@ -253,9 +256,17 @@ public:
         ApplyVolumeMultiplier(SFX, multiplier);
     }
 
+    float GetSFXVolumeMultiplier() const {
+        return sfxVolumeMultiplier;
+    }
+
     void SetMusicVolumeMultiplier(float multiplier) {
         musicVolumeMultiplier = multiplier;
         ApplyVolumeMultiplier(Music, multiplier);
+    }
+
+    float GetMusicVolumeMultiplier() const {
+        return musicVolumeMultiplier;
     }
 
 private:
@@ -291,4 +302,5 @@ private:
     std::unordered_map<std::string, SoundType> soundTypes;
     float sfxVolumeMultiplier = 1.0f;
     float musicVolumeMultiplier = 1.0f;
+    float masterVolume = 1.0f;
 };
