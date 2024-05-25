@@ -24,7 +24,7 @@ public:
 	UIButtonEmpty* teaDropArea = new UIButtonEmpty("teaDropArea", glm::vec3(-3.4f, -0.5f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, false, "");
 	UIButtonEmpty* sandwichDropArea = new UIButtonEmpty("sandwichDropArea", glm::vec3(-6.35f, -0.6f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, false, "");
 	UIButtonEmpty* dessertDropArea = new UIButtonEmpty("dessertDropArea", glm::vec3(-4.85f, 1.57f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, false, "");
-	UIButtonEmpty* optionalDropArea = new UIButtonEmpty("optionalDropArea", glm::vec3(-4.6f, -0.87f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, false, "");
+	UIButtonEmpty* optionalDropArea = new UIButtonEmpty("optionalDropArea", glm::vec3(-4.6f, -1.0f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), true, false, "");
 
 	Kitchen() :audioManager(AudioManager::GetInstance()) {
 
@@ -717,7 +717,7 @@ public:
 
 		OptionalArrow->setActiveStatus(false);
 
-		if (Milk->withinRage(dessertDropArea->GetOnscreenPosition(), snapThreshold)) {
+		if (Milk->withinRage(optionalDropArea->GetOnscreenPosition(), snapThreshold)) {
 			Kitchen_Data->setOptional(MILK);
 			updateOptionalObjects();
 			audioManager.PlaySound("plateSound1");
