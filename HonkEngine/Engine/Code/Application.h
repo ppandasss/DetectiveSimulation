@@ -105,10 +105,6 @@ public:
 		return "";
 	}
 
-
-
-
-
 	static glm::vec2 MousetoWorld() {
 		Camera& camera = Application::GetCamera();
 		float zoom = camera.GetZoom() - 0.155f;

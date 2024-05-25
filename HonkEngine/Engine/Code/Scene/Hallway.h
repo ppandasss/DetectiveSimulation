@@ -374,6 +374,7 @@ public:
 				transitionEffects->FadeOut(3.0f, [this]() {
 					std::cout << "Fade Out complete" << std::endl;
 					audioManager.StopSound("hallwayMusic");
+					player->ResumeMovement();
 					Application::Get().SetScene("JournalEntry");
 				});
 		}

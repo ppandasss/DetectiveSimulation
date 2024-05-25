@@ -70,8 +70,8 @@ public:
 
     void OnEnter() override {
         audioManager.PlaySound("OpenSceneBGMusic", true);
+        ResetScene(); // Reset the scene state on entry
         transitionEffects->FadeIn(2.0f);
-        ChangeScene(0); // Start with the first scene
     }
 
     void OnExit() override {
@@ -81,6 +81,7 @@ public:
     void Update(float dt, long frame) override {
         Scene::Update(dt, frame);
         transitionEffects->Update(dt);
+
         if (isTransitioning) {
             transitionProgress += dt / transitionDuration;
             if (transitionProgress >= 1.0f) {
@@ -121,6 +122,21 @@ public:
     void Render() override {
         Scene::Render(); // Renders GameObjects
         dialogueManager->Render();
+    }
+
+    void ResetScene() {
+        currentSceneIndex = 0;
+        isTransitioning = false;
+        isFadingOut = false;
+        transitionProgress = 0.0f;
+        ChangeScene(0);
+
+        // Reset transition object
+        transitionObject->setActiveStatus(true);
+        transitionObject->SetAlpha(1.0f);  // Ensure it's initially opaque for fade-in
+
+        // Reset dialogue manager state
+        dialogueManager->Reset();  // Ensure this method resets the state of the dialogue manager
     }
 
 private:

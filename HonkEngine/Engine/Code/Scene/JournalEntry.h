@@ -45,7 +45,7 @@ public:
 		m_gameObjects.push_back(EntrySceneBackground);
 
 		m_gameObjects.push_back(instructionText);
-		m_gameObjects.push_back(transitionObject);
+		
 
 	}
 
@@ -60,6 +60,8 @@ public:
 		m_gameObjects.push_back(Journal);
 		Journal->drawBook();
 		m_gameObjects.push_back(CloseCaseButton);
+		m_gameObjects.push_back(transitionObject);
+
 		audioManager.PlaySound("cabinMusic", true);
 		//JournalData::GetInstance()->SetBookState(true); //Lock book	
 

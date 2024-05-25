@@ -510,7 +510,10 @@ public:
         }
     }
 
-
+    void Reset() {
+        currentDialogueIndex = 0;
+        // Reset other state variables if needed...
+    }
 
 
 

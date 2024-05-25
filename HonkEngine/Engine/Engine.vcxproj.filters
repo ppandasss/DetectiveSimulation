@@ -77,6 +77,12 @@
     <ClInclude Include="Code\Scene\JournalEntry.h" />
     <ClInclude Include="Code\Effects\TransitionEffects.h" />
     <ClInclude Include="Code\Scene\OpenScene.h" />
+    <ClInclude Include="Code\PopupWidget\ExitInterface.h" />
+    <ClInclude Include="Code\PopupWidget\Interface.h" />
+    <ClInclude Include="Code\PopupWidget\InterfaceManager.h" />
+    <ClInclude Include="Code\PopupWidget\OptionsInterface.h" />
+    <ClInclude Include="Code\PopupWidget\OptionsTwoInterface.h" />
+    <ClInclude Include="Code\PopupWidget\PauseInterface.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="External\Library\freetype.lib" />

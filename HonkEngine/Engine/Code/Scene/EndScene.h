@@ -133,14 +133,15 @@ public:
 		if (input.Get().GetKey(GLFW_KEY_SPACE))
 		{
 			Application::Get().SetScene("MainMenu");
+			gameStateManager.Reset();
 		}
 
 		if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1))
 		{
 			Application::Get().SetScene("MainMenu");
+			gameStateManager.Reset();
+
 		}
-
-
 	}
 
 
@@ -149,6 +150,7 @@ private:
 	AudioManager& audioManager;
 
 	JournalData* journal_data = JournalData::GetInstance();
+	GameStateManager& gameStateManager = GameStateManager::GetInstance();
 
 	int final_ending;
 
