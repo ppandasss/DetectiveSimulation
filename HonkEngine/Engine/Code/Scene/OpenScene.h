@@ -21,6 +21,7 @@ private:
     std::unique_ptr<TransitionEffects> transitionEffects;
     int currentSceneIndex = 0;
     bool isTransitioning = false;
+    bool isFadingOut = false;
     float transitionProgress = 0.0f;
     const float transitionDuration = 0.5f;
 
@@ -97,13 +98,14 @@ public:
             }
             scenes[currentSceneIndex]->SetPosition(glm::vec3(0.0f, nextY, 0.0f));
         }
-        else {
+        else if (!isFadingOut) { // Prevent actions during fade-out
             if (input.Get().GetKeyDown(GLFW_KEY_SPACE) || input.Get().GetMouseButtonDown(0)) {
                 if (dialogueManager->IsDialogueFinished(dialogueKeys[currentSceneIndex])) {
                     if (currentSceneIndex + 1 < scenes.size()) {
                         StartSceneTransition(currentSceneIndex + 1);
                     }
                     else {
+                        isFadingOut = true; // Set flag to true during fade-out
                         transitionEffects->FadeOut(2.0f, [this]() { Application::Get().SetScene("Hallway"); });
                     }
                 }

@@ -26,4 +26,5 @@ C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Kitchen.h(406,26): warn
 C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\MainMenu.h(28,33): warning C4305: 'argument': truncation from 'double' to 'float'
 C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\MainMenu.h(35,36): warning C4305: 'argument': truncation from 'double' to 'float'
 C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\MainMenu.h(42,33): warning C4305: 'argument': truncation from 'double' to 'float'
+LINK : warning LNK4004: unable to shrink ilk file, 'x64\Debug\Engine.ilk', it may be larger than it needs to be, but is still valid; error code: 1224
   Engine.vcxproj -> C:\Capt\DetectiveSimulation\HonkEngine\x64\Debug\Engine.exe

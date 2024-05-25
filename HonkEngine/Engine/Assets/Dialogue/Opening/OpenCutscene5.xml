@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="5WD01">
+		<Speaker name="Waiter">
+			<line1>To save Eastside from the TICKING bomb,</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="5WD02">
+		<Speaker name="Waiter">
+			<line1>You, as the government's top detective,</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="5WD03">
+		<Speaker name="Waiter">
+			<line1>Must disguise yourself as a train waiter to conduct a secret investigation.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

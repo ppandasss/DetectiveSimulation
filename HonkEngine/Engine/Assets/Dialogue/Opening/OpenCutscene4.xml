@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="4WD02">
+		<Speaker name="Waiter">
+			<line1>And new leads point to five potential suspects of the first-class passengers.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

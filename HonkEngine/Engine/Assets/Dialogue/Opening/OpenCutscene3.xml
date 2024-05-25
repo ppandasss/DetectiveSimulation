@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="3WD01">
+		<Speaker name="Waiter">
+			<line1>The suspect was last seen fleeing to a cabin on the Hesperia Express.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dialogue id="1WD01">
+		<Speaker name="Waiter">
+			<line1>In the country of Thespia, where the land is divided into two,</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="1WD02">
+		<Speaker name="Waiter">
+			<line1>Eastside and Westside has been locked in territorial conflicts for over a decade.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+</Dialogues>
