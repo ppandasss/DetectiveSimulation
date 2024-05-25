@@ -34,8 +34,8 @@ public:
 		transitionObject = new UINormal("Transition", "Assets/Images/black.png", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(25.0f, 20.0f, 0.0f), true);
 		transitionEffects = std::make_unique<TransitionEffects>(transitionObject);
 
-		instructionText = new Text("instruction", "Please select your final choices and submit as your case summary.", "Assets/Fonts/mvboli.ttf", true);
-		instructionText->SetScale(0.6f);
+		instructionText = new Text("instruction", "Submit your Final Case Summary", "Assets/Fonts/mvboli.ttf", true);
+		instructionText->SetScale(0.7f);
 		instructionText->SetPosition(glm::vec3(0.0f, 4.5f, 0.0f));
 		instructionText->SetColor(glm::vec3(1, 1, 1));
 

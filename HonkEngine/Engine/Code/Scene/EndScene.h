@@ -26,7 +26,7 @@ public:
 
 		MissingPoster = new UIObject("MissingPoster", "Assets/Images/Ending/MissingPoster_Rotate.png", true);
 		MissingPoster->SetScale(glm::vec3(8.82f, 9.58f, 0.0f));
-		MissingPoster->SetPosition(glm::vec3(-4.5f, -3.1f, 0.0f));
+		MissingPoster->SetPosition(glm::vec3(-4.5f, -2.8f, 0.0f));
 
 		Ending1 = new UIObject("Ending1", "Assets/Images/Ending/Ending1_Rotate.png", true);
 		Ending1->SetScale(glm::vec3(13.15f, 8.56f, 0.0f));

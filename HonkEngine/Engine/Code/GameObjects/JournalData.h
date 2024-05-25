@@ -250,7 +250,7 @@ public:
 				evidenceChoice = mainPageEvidence[0];
 			}
 
-			if (evidenceChoice == "After visiting National Day Event with his sister") evidenceCorrect = true;
+			if (evidenceChoice == "Met his sister at National Day Event") evidenceCorrect = true;
 
 		}
 
