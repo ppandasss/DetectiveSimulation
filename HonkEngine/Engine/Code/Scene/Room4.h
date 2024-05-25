@@ -641,7 +641,6 @@ public:
         if (isPosterInspected && isDaggerInspected && !inspectEndDialogueSet) {
             std::cout << "Both items inspected, moving to final dialogue." << std::endl;
             gameStateManager.SetRoomState(RoomState::InspectionEnd);
-            Application::Get().SetTimer(2000, [this]() { transitionEffects->FadeOut(1.0f, [this]() {}); }, false);
         }
     }
 
@@ -652,6 +651,7 @@ public:
         }
         else if (inspectEndDialogueSet && dialogueManager->IsDialogueFinished(inspectEndDialogueKey)) {
             gameStateManager.SetRoomState(RoomState::End);
+            Application::Get().SetTimer(2000, [this]() { transitionEffects->FadeOut(1.0f, [this]() {}); }, false);
         }
     }
 
