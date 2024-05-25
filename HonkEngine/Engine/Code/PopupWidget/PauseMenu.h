@@ -7,35 +7,49 @@
 class PauseMenu : public Interface {
 public:
     PauseMenu() : Interface("PauseMenu"), shouldReopenPauseMenu(false), optionsMenu(new OptionsMenu()), exitConfirmation(new ExitMenu()) {
-        UIButton* GreyBackground = new UIButton("GreyBackground2", "Assets/Images/Interface/Grey_Background.png", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(19.2f, 10.8f, 0.0f), true, false, "");
+        UIButton* GreyBackground = new UIButton("GreyBackground2", "Assets/Images/Journal/BlackAlpha.png", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(19.2f, 10.8f, 0.0f), true, false, "");
         GreyBackground->SetOnClickAction([this]() { EmptyFunction(); });
 
         GameObject* PauseBackground = new UIObject("ExitBackground", "Assets/Images/Interface/Interface_Background_PopUp.png", true);
-        PauseBackground->SetScale(glm::vec3(8.0f, 8.0f, 0.0f));
+        PauseBackground->SetScale(glm::vec3(9.08f * 0.8f, 8.24f * 0.8f, 0.0f));
         PauseBackground->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
-        UIButton* ContinueButton = new UIButton("ContinueButton", "Assets/Images/MainMenu/MainMenu_Button_Play.png", glm::vec3(0.0f, 1.5f, 0.0f), glm::vec3(2.78f, 0.86f, 0.0f), true, true, "Assets/Fonts/Jibril.ttf");
+        Text* PauseText = new Text("PauseText", "Paused", "Assets/Fonts/jibril.ttf", true);
+        PauseText->SetPosition(glm::vec3(0.0f, 1.7f, 0.0f));
+        PauseText->SetColor(glm::vec3(0, 0, 0));
+        PauseText->SetScale(1.0f);
+
+        UIButton* ContinueButton = new UIButton("ContinueButton", "Assets/Images/MainMenu/MainMenu_Button_Play.png", glm::vec3(-0.1f, 0.9f, 0.0f), glm::vec3(3.15f * 0.9f, 0.88f * 0.9f, 0.0f), true, true, "Assets/Fonts/OverpassMono-SemiBold.ttf");
         ContinueButton->SetHoverTexture("Assets/Images/MainMenu/MainMenu_Button_Start_Hover.png");
-        ContinueButton->SetButtonText("Continue Game");
+        ContinueButton->SetButtonText("Continue");
+        ContinueButton->SetTextSize(0.55);
+        ContinueButton->SetTextPosition(glm::vec3(-0.05f, 0.82f, 0.0f));
         ContinueButton->SetOnClickAction([this]() { ClickContinue(); });
 
-        UIButton* OptionsButton = new UIButton("OptionsButton", "Assets/Images/MainMenu/MainMenu_Button_Play.png", glm::vec3(0.0f, 0.5f, 0.0f), glm::vec3(2.78f, 0.86f, 0.0f), true, true, "Assets/Fonts/Jibril.ttf");
-        OptionsButton->SetHoverTexture("Assets/Images/MainMenu/MainMenu_Button_Start_Hover.png");
+        UIButton* OptionsButton = new UIButton("OptionsButton", "Assets/Images/MainMenu/MainMenu_Button_Setting.png", glm::vec3(-0.1f, 0.0f, 0.0f), glm::vec3(3.15f * 0.9f, 0.88f * 0.9f, 0.0f), true, true, "Assets/Fonts/OverpassMono-SemiBold.ttf");
+        OptionsButton->SetHoverTexture("Assets/Images/MainMenu/MainMenu_Button_Setting_Hover.png");
         OptionsButton->SetButtonText("Options");
+        OptionsButton->SetTextSize(0.55);
+        OptionsButton->SetTextPosition(glm::vec3(-0.05f, -0.08f, 0.0f));
         OptionsButton->SetOnClickAction([this]() { ShowOptions(); });
 
-        UIButton* MainMenuButton = new UIButton("MainMenuButton", "Assets/Images/MainMenu/MainMenu_Button_Play.png", glm::vec3(0.0f, -1.5f, 0.0f), glm::vec3(2.78f, 0.86f, 0.0f), true, true, "Assets/Fonts/Jibril.ttf");
-        MainMenuButton->SetHoverTexture("Assets/Images/MainMenu/MainMenu_Button_Start_Hover.png");
+        UIButton* MainMenuButton = new UIButton("MainMenuButton", "Assets/Images/MainMenu/MainMenu_Button_Exit.png", glm::vec3(-0.1f, -0.9f, 0.0f), glm::vec3(3.15f * 0.9f, 0.88f * 0.9f, 0.0f), true, true, "Assets/Fonts/OverpassMono-SemiBold.ttf");
+        MainMenuButton->SetHoverTexture("Assets/Images/MainMenu/MainMenu_Button_Exit_Hover.png");
         MainMenuButton->SetButtonText("Main Menu");
+        MainMenuButton->SetTextSize(0.55);
+        MainMenuButton->SetTextPosition(glm::vec3(-0.05f, -0.97f, 0.0f));
         MainMenuButton->SetOnClickAction([this]() { Application::Get().SetScene("MainMenu"); });
 
-        UIButton* ExitGameButton = new UIButton("MainMenuButton", "Assets/Images/MainMenu/MainMenu_Button_Play.png", glm::vec3(0.0f, -2.5f, 0.0f), glm::vec3(2.78f, 0.86f, 0.0f), true, true, "Assets/Fonts/Jibril.ttf");
+        UIButton* ExitGameButton = new UIButton("MainMenuButton", "Assets/Images/MainMenu/MainMenu_Button_Play.png", glm::vec3(-0.1f, -1.8f, 0.0f), glm::vec3(3.15f * 0.9f, 0.88f * 0.9f, 0.0f), true, true, "Assets/Fonts/OverpassMono-SemiBold.ttf");
         ExitGameButton->SetHoverTexture("Assets/Images/MainMenu/MainMenu_Button_Start_Hover.png");
         ExitGameButton->SetButtonText("Exit Game");
+        ExitGameButton->SetTextSize(0.55);
+        ExitGameButton->SetTextPosition(glm::vec3(-0.05f, -1.88f, 0.0f));
         ExitGameButton->SetOnClickAction([this]() { ShowExitConfirmation(); });
 
         m_gameObjects.push_back(GreyBackground);
         m_gameObjects.push_back(PauseBackground);
+        m_gameObjects.push_back(PauseText);
         m_gameObjects.push_back(ContinueButton);
         m_gameObjects.push_back(OptionsButton);
         m_gameObjects.push_back(MainMenuButton);

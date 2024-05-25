@@ -17,7 +17,7 @@ public:
 
         // Instantiate the background and fill bar
         background = new UIObject("SliderBackground", "Assets/Images/Interface/Slider_Background.png", position, isOnScreen);
-        background->SetScale(glm::vec3(3.0f, 0.3f, 0.0f));
+        background->SetScale(glm::vec3(3.0f, 0.1f, 0.0f));
 
         // Calculate min and max values based on the fill bar's position and scale
         minValue = position.x - background->GetScale().x / 2.0f;

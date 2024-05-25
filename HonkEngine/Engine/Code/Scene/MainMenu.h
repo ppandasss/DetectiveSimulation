@@ -30,21 +30,21 @@ public:
 		PlayButton = new UIButton("PlayButton", "Assets/Images/MainMenu/MainMenu_Button_Play.png", glm::vec3(-6.9f, -0.1f, 0.0f), glm::vec3(3.78f, 1.06f, 0.0f), true, true, "Assets/Fonts/Jibril.ttf");
 		PlayButton->SetHoverTexture("Assets/Images/MainMenu/MainMenu_Button_Start_Hover.png");
 		PlayButton->SetButtonText("Start");
-		PlayButton->SetTextSize(0.7);
+		PlayButton->SetTextSize(0.65);
 		PlayButton->SetTextPosition(glm::vec3(-6.9f, -0.2f, 0.0f));
 		PlayButton->SetOnClickAction([this]() { clickPlay(); });
 
 		OptionsButton = new UIButton("OptionsButton", "Assets/Images/MainMenu/MainMenu_Button_Setting.png", glm::vec3(-6.9f, -1.3f, 0.0f), glm::vec3(3.78f, 1.06f, 0.0f), true, true, "Assets/Fonts/Jibril.ttf");
 		OptionsButton->SetHoverTexture("Assets/Images/MainMenu/MainMenu_Button_Setting_Hover.png");
 		OptionsButton->SetButtonText("Options");
-		OptionsButton->SetTextSize(0.7);
+		OptionsButton->SetTextSize(0.65);
 		OptionsButton->SetTextPosition(glm::vec3(-6.9f, -1.42f, 0.0f));
 		OptionsButton->SetOnClickAction([this]() { clickOptions(); });
 
 		QuitButton = new UIButton("QuitButton", "Assets/Images/MainMenu/MainMenu_Button_Play.png", glm::vec3(-6.9f, -2.5f, 0.0f), glm::vec3(3.78f, 1.06f, 0.0f), true, true, "Assets/Fonts/Jibril.ttf");
 		QuitButton->SetHoverTexture("Assets/Images/MainMenu/MainMenu_Button_Exit_Hover.png");
 		QuitButton->SetButtonText("Quit");
-		QuitButton->SetTextSize(0.7);
+		QuitButton->SetTextSize(0.65);
 		QuitButton->SetTextPosition(glm::vec3(-6.9f, -2.63f, 0.0f));
 		QuitButton->SetOnClickAction([this]() { clickExit(); });
 		
