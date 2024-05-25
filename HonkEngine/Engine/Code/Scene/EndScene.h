@@ -134,12 +134,14 @@ public:
 		{
 			Application::Get().SetScene("MainMenu");
 			gameStateManager.Reset();
+			journal_data->ResetJournalData();	
 		}
 
 		if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1))
 		{
 			Application::Get().SetScene("MainMenu");
 			gameStateManager.Reset();
+			journal_data->ResetJournalData();
 		}
 
 	}

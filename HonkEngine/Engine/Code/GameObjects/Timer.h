@@ -10,10 +10,9 @@ class Timer {
 public:
     using TimerObserver = std::function<void()>;
 
-    // Correct constructor definition without the class name prefix
-    Timer() : isRunning(false), audioManager(AudioManager::GetInstance()) {
+    Timer() : isRunning(false), isPaused(false), audioManager(AudioManager::GetInstance()) {
         UpdateTimerUIVisibility();  // Update UI visibility at initialization
-        audioManager.LoadSound("timerTicking", "Assets/Sounds/SFX_TimerTicking.mp3", SFX,0.75f);
+        audioManager.LoadSound("timerTicking", "Assets/Sounds/SFX_TimerTicking.mp3", SFX, 0.75f);
     }
 
     static Timer& GetInstance() {
@@ -38,37 +37,50 @@ public:
     void UpdateTimerUIVisibility() {
         if (timerUI) {
             timerUI->setActiveStatus(isRunning);
-            //std::cout << "Timer UI visibility updated: " << isRunning << std::endl;
         }
-        else {
-            //std::cout << "Timer UI is not set." << std::endl;
-        }
-
         if (countdownText) {
-            countdownText->setActiveStatus(isRunning); // This line assumes that setActiveStatus method correctly sets the visibility
-            //std::cout << "Timer Text visibility updated: " << isRunning << std::endl;
-        }
-        else {
-            //std::cout << "Countdown text is not set." << std::endl;
+            countdownText->setActiveStatus(isRunning);
         }
     }
-
 
     void start(int durationInSeconds) {
         if (!isRunning) {
             endTime = std::chrono::steady_clock::now() + std::chrono::seconds(durationInSeconds);
             lastUpdateTime = std::chrono::steady_clock::now();
             isRunning = true;
+            isPaused = false;
             UpdateTimerUIVisibility(); // Update UI visibility when starting
             NotifyObservers();
             audioManager.PlaySound("timerTicking", true);
         }
     }
 
+    void pause() {
+        if (isRunning && !isPaused) {
+            remainingTimeOnStop = getRemainingTime();
+            pauseTime = std::chrono::steady_clock::now();
+            isPaused = true;
+            audioManager.PauseSound("timerTicking");
+        }
+    }
+
+    void resume() {
+        if (isRunning && isPaused) {
+            auto now = std::chrono::steady_clock::now();
+            auto pauseDuration = std::chrono::duration_cast<std::chrono::seconds>(now - pauseTime).count();
+            endTime += std::chrono::seconds(pauseDuration);
+            lastUpdateTime = std::chrono::steady_clock::now();
+            isPaused = false;
+            audioManager.PlaySound("timerTicking", true);
+        }
+    }
+
+
     void stop() {
         if (isRunning) {
             remainingTimeOnStop = getRemainingTime(); // Save the remaining time before stopping
             isRunning = false;
+            isPaused = false;
             UpdateTimerUIVisibility(); // Update UI visibility when stopping
             NotifyObservers();
             audioManager.StopSound("timerTicking");
@@ -76,7 +88,7 @@ public:
     }
 
     void Update(float dt) {
-        if (isRunning) {
+        if (isRunning && !isPaused) {
             auto now = std::chrono::steady_clock::now();
             if (std::chrono::duration_cast<std::chrono::seconds>(now - lastUpdateTime).count() > 0) {
                 lastUpdateTime = now;
@@ -88,14 +100,12 @@ public:
                 }
             }
         }
-        else {
-            UpdateTimerUIVisibility(); // Ensure visibility is correct even when not running
-        }
+        UpdateTimerUIVisibility(); // Ensure visibility is correct even when not running
     }
 
     bool isTimesUp() {
-		return getRemainingTime() == 0;
-	}
+        return getRemainingTime() == 0;
+    }
 
     int getRemainingTime() const {
         if (isRunning) {
@@ -134,16 +144,11 @@ public:
         updateCountdownDisplay();
     }
 
-   
-
-    bool GetTimerUIVisibility() {
-        return this->timerUI->getActiveStatus();
-    }
-
 private:
     std::vector<TimerObserver> observers;
-    std::chrono::time_point<std::chrono::steady_clock> endTime, lastUpdateTime;
+    std::chrono::time_point<std::chrono::steady_clock> endTime, lastUpdateTime, pauseTime;
     bool isRunning = false;
+    bool isPaused = false;
     int remainingTimeOnStop = 0;
     Text* countdownText = nullptr;
     UIElement* timerUI = nullptr; // UI Element to show/hide based on the timer status

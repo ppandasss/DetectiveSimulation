@@ -488,7 +488,7 @@ public:
 		Timer& timer = Timer::GetInstance();
 		if (timerText && timerUI) {
 			timerText->SetContent(timer.GetTime());
-			timerUI->setActiveStatus(timer.GetTimerUIVisibility());
+			timerUI->setActiveStatus(timer.isTimerRunning());
 		}
 		else {
 			std::cout << "One or more text objects are null." << std::endl;

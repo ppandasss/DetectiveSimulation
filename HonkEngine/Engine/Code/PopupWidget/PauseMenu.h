@@ -3,6 +3,7 @@
 #include "Interface.h"
 #include "OptionsMenu.h"
 #include "ExitMenu.h"
+#include "../GameObjects/Timer.h"
 
 class PauseMenu : public Interface {
 public:
@@ -57,13 +58,31 @@ public:
 
     }
 
+    virtual void Show() override {
+
+        if (!optionsMenu->IsVisible() && !exitConfirmation->IsVisible()) {
+            isVisible = true;
+            setActiveStatus(true);
+
+            Timer& timer = Timer::GetInstance();
+
+            timer.pause();
+        }
+
+    }
+
+
+
     void EmptyFunction() {
         return;
     }
 
     void ClickContinue() {
         Hide();
+        Timer& timer = Timer::GetInstance();
+        timer.resume();
         shouldReopenPauseMenu = false;
+
     }
 
     void ShowOptions() {
