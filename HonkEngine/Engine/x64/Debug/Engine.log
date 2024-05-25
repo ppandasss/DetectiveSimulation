@@ -1,4 +1,8 @@
-﻿  Main.cpp
+﻿  Application.cpp
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(117,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(118,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Application.cpp(232,36): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Main.cpp
 C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(117,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(118,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,13): warning C4099: 'Mesh': type name first seen using 'class' now seen using 'struct'
@@ -28,4 +32,5 @@ C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Scene\
 C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Scene\MainMenu.h(33,1): warning C4305: 'argument': truncation from 'double' to 'float'
 C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Scene\MainMenu.h(40,1): warning C4305: 'argument': truncation from 'double' to 'float'
 C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Scene\MainMenu.h(47,1): warning C4305: 'argument': truncation from 'double' to 'float'
+  Generating Code...
   Engine.vcxproj -> C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\x64\Debug\Engine.exe

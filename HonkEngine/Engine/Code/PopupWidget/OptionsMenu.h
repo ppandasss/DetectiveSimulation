@@ -104,11 +104,12 @@ public:
 	}
 
 	void FullScreen() {
-
+		Application::Get().SetFullScreen();
 		return;
 	}
 
 	void Windowed() {
+		Application::Get().SetWindowedMode();
 		return;
 	}
 
