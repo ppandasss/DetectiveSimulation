@@ -3,7 +3,7 @@
 #define NAME    "Ticking Tea Pang Cha"
 
 
-
+#include <windows.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -34,6 +34,14 @@ void processInput(GLFWwindow* window);
 
 int main()
 {
+
+    HANDLE hMutex = CreateMutex(NULL, TRUE, L"Global\\TickingTeaTime");
+
+    if (hMutex == NULL || GetLastError() == ERROR_ALREADY_EXISTS) {
+        std::cerr << "Another instance of the application is already running." << std::endl;
+        return 1; 
+    }
+
     Application game(WIN_WIDTH, WIN_HEIGHT, NAME);
 
     //Add scene
@@ -52,10 +60,14 @@ int main()
     game.AddScene("EndScene", new EndScene());
     game.SetScene("LoadScene");
 
-
-
     //Run game
     game.Run();
+
+
+    if (hMutex) {
+        ReleaseMutex(hMutex);
+        CloseHandle(hMutex);
+    }
 
     return 0;
 

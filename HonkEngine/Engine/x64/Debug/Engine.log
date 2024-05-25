@@ -1,4 +1,12 @@
-﻿  Main.cpp
+﻿  Application.cpp
+C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(113,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(114,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Application.cpp(232,36): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Engine.cpp
+C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(113,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(114,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): warning C4099: 'Mesh': type name first seen using 'class' now seen using 'struct'
+  Main.cpp
 C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(113,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(114,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): warning C4099: 'Mesh': type name first seen using 'class' now seen using 'struct'
@@ -36,8 +44,28 @@ C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Kitchen.h(409,26): warn
 C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\MainMenu.h(33,27): warning C4305: 'argument': truncation from 'double' to 'float'
 C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\MainMenu.h(40,30): warning C4305: 'argument': truncation from 'double' to 'float'
 C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\MainMenu.h(47,27): warning C4305: 'argument': truncation from 'double' to 'float'
-glfw3.lib(input.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(input.obj)' or at ''; linking object as if no debug info
+  Renderer.cpp
+C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(113,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(114,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): warning C4099: 'Mesh': type name first seen using 'class' now seen using 'struct'
+C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Renderer\Renderer.cpp(63,51): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  TextRenderer.cpp
+C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(113,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(114,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
+glfw3.lib(init.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(init.obj)' or at ''; linking object as if no debug info
 glfw3.lib(monitor.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(monitor.obj)' or at ''; linking object as if no debug info
 glfw3.lib(window.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(window.obj)' or at ''; linking object as if no debug info
+glfw3.lib(input.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(input.obj)' or at ''; linking object as if no debug info
+glfw3.lib(context.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(context.obj)' or at ''; linking object as if no debug info
+glfw3.lib(win32_init.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(win32_init.obj)' or at ''; linking object as if no debug info
+glfw3.lib(win32_monitor.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(win32_monitor.obj)' or at ''; linking object as if no debug info
+glfw3.lib(win32_time.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(win32_time.obj)' or at ''; linking object as if no debug info
+glfw3.lib(win32_thread.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(win32_thread.obj)' or at ''; linking object as if no debug info
+glfw3.lib(vulkan.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(vulkan.obj)' or at ''; linking object as if no debug info
 glfw3.lib(win32_window.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(win32_window.obj)' or at ''; linking object as if no debug info
+glfw3.lib(win32_joystick.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(win32_joystick.obj)' or at ''; linking object as if no debug info
+glfw3.lib(wgl_context.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(wgl_context.obj)' or at ''; linking object as if no debug info
+glfw3.lib(egl_context.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(egl_context.obj)' or at ''; linking object as if no debug info
+glfw3.lib(osmesa_context.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(osmesa_context.obj)' or at ''; linking object as if no debug info
   Engine.vcxproj -> C:\Capt\DetectiveSimulation\HonkEngine\x64\Debug\Engine.exe
