@@ -20,13 +20,13 @@ public:
 		audioManager.LoadSound("EndSceneBGMusic", "Assets/Sounds//Music/BGmusic_EndingCutscene.mp3",Music, 1.0f);
 		audioManager.LoadSound("NewspaperSlam", "Assets/Sounds/SFX_EndingNewspaperSlam.mp3",SFX, 1.0f);
 
-		GameObject* EndingSceneBackground = new UIObject("EndingSceneBackground", "Assets/Images/Ending/EndingSelect_Background.png", true);
+		GameObject* EndingSceneBackground = new UIObject("EndingSceneBackground", "Assets/Images/Ending/Ending_Background.png", true);
 		EndingSceneBackground->SetScale(glm::vec3(19.2f, 10.8f, 0.0f));
 		EndingSceneBackground->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
 		MissingPoster = new UIObject("MissingPoster", "Assets/Images/Ending/MissingPoster_Rotate.png", true);
 		MissingPoster->SetScale(glm::vec3(8.82f, 9.58f, 0.0f));
-		MissingPoster->SetPosition(glm::vec3(-4.5f, -3.1f, 0.0f));
+		MissingPoster->SetPosition(glm::vec3(-4.5f, -2.2f, 0.0f));
 
 		Ending1 = new UIObject("Ending1", "Assets/Images/Ending/Ending1_Rotate.png", true);
 		Ending1->SetScale(glm::vec3(12.85f, 8.85f, 0.0f));
@@ -133,17 +133,21 @@ public:
 		if (input.Get().GetKey(GLFW_KEY_SPACE))
 		{
 			Application::Get().SetScene("MainMenu");
+			gameStateManager.Reset();
 		}
 
 		if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1))
 		{
 			Application::Get().SetScene("MainMenu");
+			gameStateManager.Reset();
 		}
 
 	}
 
 
 private:
+
+	GameStateManager& gameStateManager = GameStateManager::GetInstance();
 
 	AudioManager& audioManager;
 

@@ -381,6 +381,7 @@ public:
 				transitionEffects->FadeOut(3.0f, [this]() {
 					std::cout << "Fade Out complete" << std::endl;
 					audioManager.StopSound("hallwayMusic");
+					player->ResumeMovement();
 					Application::Get().SetScene("JournalEntry");
 				});
 		}
@@ -430,7 +431,8 @@ public:
 					{
 						if (door->GetName() == "KitchenDoor")
 						{
-							transitionEffects->FadeOut(1.0f, [this]() {Application::Get().SetScene("Kitchen"); });
+							player->StopMovement();
+							transitionEffects->FadeOut(1.0f, [this]() {Application::Get().SetScene("Kitchen"); player->ResumeMovement(); });
 							entering = true;
 						}
 						else

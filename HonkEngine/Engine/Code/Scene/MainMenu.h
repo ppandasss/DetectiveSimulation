@@ -113,8 +113,10 @@ public:
 
 	void OnEnter() override {
 		audioManager.PlaySound("menuMusic", true);
+		transitioning = true;
 		transitionEffects->FadeIn(3.0f, [this]() {
 			std::cout << "Fade in complete" << std::endl;
+			transitioning = false;
 			});
 	}
 
@@ -129,13 +131,14 @@ private:
 
 	//BUTTON FUNCTIONS
 
-	void clickPlay() { 
-		AudioManager::GetInstance().PlaySound("buttonClick");
-		
-
-		transitionEffects->FadeOut(3.0f, [this]() {
-			Application::Get().SetScene("Hallway");
-			});
+	void clickPlay() {
+		if (!transitioning) {
+			transitioning = true;
+			AudioManager::GetInstance().PlaySound("buttonClick");
+			transitionEffects->FadeOut(3.0f, [this]() {
+				Application::Get().SetScene("OpenScene");
+				});
+		}
 	}
 
 	void clickOptions() { 
@@ -159,6 +162,7 @@ private:
 
 
 	bool startOfGame = true;
+	bool transitioning = false;
 
 	UIButton* PlayButton;
 	UIButton* OptionsButton; 
