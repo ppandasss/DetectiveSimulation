@@ -15,7 +15,7 @@ public:
 		ExitBackground->SetScale(glm::vec3(8.0f, 8.0f, 0.0f));
 		ExitBackground->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
-		Text* QuestionText = new Text("QuestionText", "Are you sure you want to quit?", "Assets/Fonts/mvboli.ttf");
+		Text* QuestionText = new Text("QuestionText", "Are you sure you want to quit?", "Assets/Fonts/mvboli.ttf", true);
 		QuestionText->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 		QuestionText->SetColor(glm::vec3(0, 0, 0));
 		QuestionText->SetScale(0.7f);

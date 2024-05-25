@@ -79,6 +79,7 @@
     <ClInclude Include="Code\PopupWidget\Interface.h" />
     <ClInclude Include="Code\PopupWidget\OptionsMenu.h" />
     <ClInclude Include="Code\PopupWidget\PauseMenu.h" />
+    <ClInclude Include="Code\UI\UISlider.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="External\Library\freetype.lib" />
