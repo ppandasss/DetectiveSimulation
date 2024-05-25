@@ -219,8 +219,8 @@ public:
 		//journalButton->SetHoverTexture("Assets/Images/Timer.png");
 
 		 journalArrow = new UIObject("JournalArrow", "Assets/Images/Kitchen/Kitchen_Arrow_Tea.png", true);
-		 journalArrow->SetScale(glm::vec3(1.58f / 2, 1.35f / 2, 0.0f));
-		 journalArrow->SetPosition(glm::vec3(-2.1f, 0.9f, 0.0f));
+		 journalArrow->SetScale(glm::vec3(1.58f * 0.9f, 1.35f * 0.9f, 0.0f));
+		 journalArrow->SetPosition(glm::vec3(-5.9f, -3.2f, 0.0f));
 
 		//TO TEST DRAW EMPTY UI
 		/*GameObject* box = new RenderGameObject("textbox", "Assets/Images/Square_Border.png");

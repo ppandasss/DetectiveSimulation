@@ -1,8 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+		<Dialogue id="2WD04">
+		<Speaker name="Waiter">
+			<line1>Early this morning, the government of Eastside</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2WD05">
+		<Speaker name="Waiter">
+			<line1>received shocking news from their insider source.</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
 	<Dialogue id="3WD01">
 		<Speaker name="Waiter">
-			<line1>The suspect was last seen fleeing to a cabin on the Hesperia Express.</line1>
+			<line1>A spy from Westside</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD01">
+		<Speaker name="Waiter">
+			<line1>has secretly planted a catastrophic explosive</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="3WD01">
+		<Speaker name="Waiter">
+			<line1>right in the East capital.</line1>
 		</Speaker>
 		<Choices/>
 	</Dialogue>

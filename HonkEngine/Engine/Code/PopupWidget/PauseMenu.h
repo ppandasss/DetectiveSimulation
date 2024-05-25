@@ -81,6 +81,7 @@ public:
         Hide();
         Timer& timer = Timer::GetInstance();
         timer.resume();
+        AudioManager::GetInstance().PlaySound("buttonClick2");
         shouldReopenPauseMenu = false;
 
     }
@@ -89,6 +90,7 @@ public:
         optionsMenu->Show();
         if (IsVisible()) {
             shouldReopenPauseMenu = true;
+            AudioManager::GetInstance().PlaySound("buttonClick2");
             Hide();
         }
     }
@@ -97,6 +99,7 @@ public:
         exitConfirmation->Show();
         if (IsVisible()) {
             shouldReopenPauseMenu = true;
+            AudioManager::GetInstance().PlaySound("buttonClick2");
             Hide();
         }
     }

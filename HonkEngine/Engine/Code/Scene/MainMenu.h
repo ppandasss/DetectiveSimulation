@@ -21,7 +21,8 @@ public:
 
 	MainMenu() :audioManager(AudioManager::GetInstance()) {
 
-		audioManager.LoadSound("menuMusic", "Assets/Sounds/Music/BGmusic_Cabin2.mp3",Music, 0.6f);
+		audioManager.LoadSound("menuMusic", "Assets/Sounds/Music/BGmusic_Cabin2.mp3", Music, 0.6f);
+		audioManager.LoadSound("buttonClick2", "Assets/Sounds/SFX_ButtonClick.mp3", SFX, 10.0f);
 
 		GameObject* MainMenuBackground = new UIObject("MainMenuBackground", "Assets/Images/MainMenu/MainMenu_BG.jpg", true);
 		MainMenuBackground->SetScale(glm::vec3(19.2f, 10.8f, 0.0f));
@@ -135,7 +136,7 @@ private:
 		if (!transitioning) {
 			transitioning = true;
 			//transitioning = true;
-			AudioManager::GetInstance().PlaySound("buttonClick");
+			AudioManager::GetInstance().PlaySound("buttonClick2");
 			transitionEffects->FadeOut(2.0f, [this]() {
 				Application::Get().SetScene("OpenScene");
 				});
@@ -143,13 +144,13 @@ private:
 	}
 
 	void clickOptions() { 
-		AudioManager::GetInstance().PlaySound("buttonClick");
+		AudioManager::GetInstance().PlaySound("buttonClick2");
 ;		optionsMenu.Show();
 		//ACTIVATE OPTIONS MENU
 	}
 
 	void clickExit() { 
-		AudioManager::GetInstance().PlaySound("buttonClick");
+		AudioManager::GetInstance().PlaySound("buttonClick2");
 
 		exitMenu.Show();
 

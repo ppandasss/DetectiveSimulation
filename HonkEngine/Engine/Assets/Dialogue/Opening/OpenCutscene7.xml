@@ -2,13 +2,7 @@
 <Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<Dialogue id="7WD01">
 		<Speaker name="Waiter">
-			<line1>Best of luck on your journey aboard the Hesperia Express.</line1>
-		</Speaker>
-		<Choices/>
-	</Dialogue>
-	<Dialogue id="7WD02">
-		<Speaker name="Waiter">
-			<line1>The fate of Eastside is now in your hands.</line1>
+			<line1>To save Eastside from the TICKING bomb</line1>
 		</Speaker>
 		<Choices/>
 	</Dialogue>

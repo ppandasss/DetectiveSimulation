@@ -122,11 +122,13 @@ public:
 
 	void FullScreen() {
 		Application::Get().SetFullScreen();
+		AudioManager::GetInstance().PlaySound("buttonClick2");
 		return;
 	}
 
 	void Windowed() {
 		Application::Get().SetWindowedMode();
+		AudioManager::GetInstance().PlaySound("buttonClick2");
 		return;
 	}
 

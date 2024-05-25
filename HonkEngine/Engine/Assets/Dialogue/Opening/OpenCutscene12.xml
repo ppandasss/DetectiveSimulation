@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Dialogues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<Dialogue id="1WD01">
+	<Dialogue id="12WD01">
 		<Speaker name="Waiter">
-			<line1>Operation Intel</line1>
+			<line1>and increase the chance to unmask their secrets.</line1>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
