@@ -26,7 +26,7 @@ public:
         : AnimateGameObject(name, texturePath, p_row, p_col), m_journal(journal),speed(speed), audioManager(AudioManager::GetInstance())
     {
         m_scale = glm::vec3(6.1f, 6.1f, 0.0f);
-        m_position = glm::vec3(0.0f, -0.9f, 0.0f);
+        m_position = glm::vec3(0.0f, -0.8f, 0.0f);
         m_animator.AddAnimation("walk_left",4, 8, 8.0f, Animator::LoopType::Loop, []() {});
         m_animator.AddAnimation("walk_right",3, 8, 8.0f, Animator::LoopType::Loop, []() {});
         m_animator.AddAnimation("idle_left",2, 1, 8.0f, Animator::LoopType::Loop, []() {});
