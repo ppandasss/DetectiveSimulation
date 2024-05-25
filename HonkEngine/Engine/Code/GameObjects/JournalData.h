@@ -162,6 +162,10 @@ public:
 
 	}
 
+	bool AllChoicesPicked() {
+		return (main_page.player_Spy != CABIN_EMPTY && main_page.player_BombLocation != LOCATION_EMPTY);
+	}
+
 
 
 	//------------------CABIN PAGE FUNCTIONS--------------------------
