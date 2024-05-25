@@ -6,23 +6,22 @@
 class TransitionEffects {
 public:
     TransitionEffects(UIElement* uiElement)
-        : uiElement(uiElement), isActive(false), elapsedTime(0.0f), duration(0.0f), initialAlpha(0.0f), targetAlpha(0.0f), onComplete(nullptr) {
+        : uiElement(uiElement), isActive(false), elapsedTime(0.0f), duration(0.0f), initialAlpha(0.0f), targetAlpha(0.0f), currentAlpha(0.0f), onComplete(nullptr) {
         if (uiElement) {
             uiElement->setActiveStatus(true);
-            uiElement->SetAlpha(1.0f);  // Ensure it's initially transparent
+            uiElement->SetAlpha(currentAlpha);  // Ensure it's initially set to current alpha
         }
     }
 
     void FadeIn(float duration, std::function<void()> onComplete = nullptr) {
         if (!uiElement) return;
 
-        uiElement->setActiveStatus(true);
         isActive = true;
 
-        // Initialize alpha to fully opaque
+        // Initialize alpha based on current state
         this->duration = duration;
-        this->initialAlpha = 1.0f;
-        this->targetAlpha = 0.0f;
+        this->initialAlpha = currentAlpha;
+        this->targetAlpha = 0.0f;  // Fade to transparent
         this->elapsedTime = 0.0f;
         this->onComplete = onComplete;
     }
@@ -30,13 +29,12 @@ public:
     void FadeOut(float duration, std::function<void()> onComplete = nullptr) {
         if (!uiElement) return;
 
-        uiElement->setActiveStatus(true);
         isActive = true;
 
-        // Initialize alpha to fully transparent
+        // Initialize alpha based on current state
         this->duration = duration;
-        this->initialAlpha = 0.0f;
-        this->targetAlpha = 1.0f;
+        this->initialAlpha = currentAlpha;
+        this->targetAlpha = 1.0f;  // Fade to opaque
         this->elapsedTime = 0.0f;
         this->onComplete = onComplete;
     }
@@ -45,10 +43,12 @@ public:
         if (!isActive || !uiElement) return;
 
         elapsedTime += dt;
-        float alpha = initialAlpha + (targetAlpha - initialAlpha) * (elapsedTime / duration);
-        uiElement->SetAlpha(alpha);
+        float progress = elapsedTime / duration;
+        currentAlpha = initialAlpha + (targetAlpha - initialAlpha) * progress;
+        uiElement->SetAlpha(currentAlpha);
 
         if (elapsedTime >= duration) {
+            currentAlpha = targetAlpha;
             uiElement->SetAlpha(targetAlpha);
             isActive = false;
             if (onComplete) onComplete();
@@ -66,5 +66,6 @@ private:
     float duration;
     float initialAlpha;
     float targetAlpha;
+    float currentAlpha;  // Track current alpha state
     std::function<void()> onComplete;
 };

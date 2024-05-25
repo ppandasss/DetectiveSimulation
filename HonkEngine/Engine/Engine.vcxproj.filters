@@ -81,6 +81,7 @@
     <ClInclude Include="Code\PopupWidget\PauseMenu.h" />
     <ClInclude Include="Code\UI\UISlider.h" />
     <ClInclude Include="Code\Scene\OpenScene.h" />
+    <ClInclude Include="Code\Effects\TransitionEffects.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="External\Library\freetype.lib" />

@@ -113,11 +113,7 @@ public:
 
 	void OnEnter() override {
 		audioManager.PlaySound("menuMusic", true);
-		transitioning = true;
-		transitionEffects->FadeIn(3.0f, [this]() {
-			std::cout << "Fade in complete" << std::endl;
-			transitioning = false;
-			});
+		transitionEffects->FadeIn(3.0f);
 	}
 
     void OnExit() override {
@@ -132,13 +128,12 @@ private:
 	//BUTTON FUNCTIONS
 
 	void clickPlay() {
-		if (!transitioning) {
-			transitioning = true;
+		
+			//transitioning = true;
 			AudioManager::GetInstance().PlaySound("buttonClick");
 			transitionEffects->FadeOut(3.0f, [this]() {
 				Application::Get().SetScene("OpenScene");
 				});
-		}
 	}
 
 	void clickOptions() { 
