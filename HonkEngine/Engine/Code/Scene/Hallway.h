@@ -58,6 +58,7 @@ private:
 	Text* sandwichOrderText;
 	Text* pastryOrderText;
 	UIElement* orderPaper;
+	GameObject* journalArrow;
 
 	Text* timerText;
     UIElement* timerUI;
@@ -163,19 +164,6 @@ public:
 		bellManager.AddBell(bellCabin4, room4Door);
 
 
-		Journal = new Book();
-		// Inside the Hallway constructor
-	
-		//activate clue in journal
-		/*JournalData::GetInstance()->ActivateClue(CABIN1, 0);
-		JournalData::GetInstance()->ActivateClue(CABIN1, 1);*/
-
-		//test draggable clues
-		/*JournalData::GetInstance()->ActivateClue(CABIN3, 10); 
-		JournalData::GetInstance()->ActivateClue(CABIN4, 7);*/
-
-
-
 		/*-------------------------------------------------------------🎮CREATE PLAYER🎮------------------------------------------------------------------------------------------------------- */
 
 		player = new Player("waiter", "Assets/Images/Waiter_Sprite_Walk.png", 4, 8, Journal,PLAYER_SPEED);
@@ -215,7 +203,9 @@ public:
 		
 
 		/*-------------------------------------------------------------💬CREATE UI💬------------------------------------------------------------------------------------------------------- */
-		
+
+		Journal = new Book();
+
 		orderPaper = new UINormal("OrderPaper", "Assets/Images/UI/OrderPaper.png", glm::vec3(-7.72f, 4.1f, 0.0f), glm::vec3(3.55f, 2.54f, 0.0f), true); // Start inactive
 		orderData.SetOrderPaper(orderPaper);
 		
@@ -228,6 +218,9 @@ public:
 		journalButton->SetOnClickAction([this]() { Journal->drawBook(); });
 		//journalButton->SetHoverTexture("Assets/Images/Timer.png");
 
+		 journalArrow = new UIObject("JournalArrow", "Assets/Images/Kitchen/Kitchen_Arrow_Tea.png", true);
+		 journalArrow->SetScale(glm::vec3(1.58f / 2, 1.35f / 2, 0.0f));
+		 journalArrow->SetPosition(glm::vec3(-2.1f, 0.9f, 0.0f));
 
 		//TO TEST DRAW EMPTY UI
 		/*GameObject* box = new RenderGameObject("textbox", "Assets/Images/Square_Border.png");
@@ -291,6 +284,7 @@ public:
 
 		//UIs
 		m_gameObjects.push_back(journalButton);
+		m_gameObjects.push_back(journalArrow);
 		m_gameObjects.push_back(timerUI);
 		m_gameObjects.push_back(orderPaper);
 
@@ -338,6 +332,13 @@ public:
 		audioManager.PlaySound("hallwayMusic", true);
 	    if (!audioManager.IsSoundPlaying("trainAmbience"))
 		audioManager.PlaySound("trainAmbience", true);
+
+		if (firstEntry) {
+			journalArrow->setActiveStatus(true);
+		}
+		else {
+			journalArrow->setActiveStatus(false);
+		}
 
 		// Ensure kitchen door is always accessible
 		//kitchenDoor->setPermission(true);
@@ -407,6 +408,10 @@ public:
 
 		if (Journal->isOpen()) {
 			Journal->Update(dt, frame);
+			if (firstEntry) {
+				journalArrow->setActiveStatus(false);
+				firstEntry = false;
+			}
 		}
 
 		KitchenData* foodData = KitchenData::GetInstance();
