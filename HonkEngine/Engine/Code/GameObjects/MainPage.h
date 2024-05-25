@@ -189,6 +189,46 @@ public:
 
 	}
 
+	virtual void Render() override
+	{
+
+		// Render the first 17 objects
+		for (size_t i = 0; i < 17 && i < m_gameObjects.size(); ++i) {
+			if (m_gameObjects[i]->getActiveStatus()) {
+				m_gameObjects[i]->Render();
+			}
+		}
+
+		for (size_t i = 0; i < textClues.size(); ++i) {
+
+			if (m_journalData->GetClueState(cabinType, i)) {
+
+				textClues[i]->Render();
+
+			}
+		}
+
+		for (auto& object : deffered_m_gameObjects) {
+
+			if (object->showObject) { //CHECK ACTIVE STATUS
+
+				object->gameObj->Render();
+
+			}
+
+		}
+
+		// Render the last 4 objects
+		size_t startIdx = m_gameObjects.size() > 4 ? m_gameObjects.size() - 4 : 0;
+		for (size_t i = startIdx; i < m_gameObjects.size(); ++i) {
+			if (m_gameObjects[i]->getActiveStatus()) {
+				m_gameObjects[i]->Render();
+			}
+		}
+
+
+	}
+
 
 	void UpdateFromJournalData() {
 
@@ -344,7 +384,7 @@ public:
 		if (JournalData::GetInstance()->GetSceneState()) {
 			PlayerGuide->setActiveStatus(false);
 		}
-		
+
 
 	}
 

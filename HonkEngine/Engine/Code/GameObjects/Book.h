@@ -121,6 +121,12 @@ public:
 		draggableClues.push_back(Cabin3Newspaper);
 		draggableClues.push_back(Cabin4Pamphlet);
 
+		RegisterInstance(this);
+
+	}
+
+	~Book() {
+		UnregisterInstance(this);
 	}
 
 	//----------------------------------- OPEN & CLOSE ------------------------------------
@@ -197,7 +203,7 @@ public:
 	void EmptyFunction() {
 		return;
 	}
-	
+
 
 	//--------------------------------UPDATE & RENDER-----------------------------------------------------
 
@@ -290,9 +296,18 @@ public:
 
 	}
 
+	static void ResetAllJournals() {
+
+		for (auto* book : allBooks) {
+			book->ResetJournal();
+		}
+	}
+
 
 
 protected:
+
+	static std::vector<Book*> allBooks;
 
 	std::vector<GameObject*> m_gameObjects;
 	std::vector<GameObject*> draggableClues;
@@ -310,4 +325,14 @@ protected:
 	GameObject* BackGround;
 	bool lastScene = false;
 
+	static void RegisterInstance(Book* instance) {
+		allBooks.push_back(instance);
+	}
+
+	static void UnregisterInstance(Book* instance) {
+		allBooks.erase(std::remove(allBooks.begin(), allBooks.end(), instance), allBooks.end());
+	}
+
 };
+
+std::vector<Book*> Book::allBooks;
