@@ -71,6 +71,7 @@ private:
         stateActions[std::make_pair(GameState::ROOM1_STATE, RoomState::Serve)] = []() {
             Timer::GetInstance().stop();
             OrderData::GetInstance().ClearOrder();
+            DoorManager::GetInstance().GetDoorByName("KitchenDoor")->setPermission(false);
             std::cout << "Transition to Room1 Serve state." << std::endl;
             };
 
@@ -99,6 +100,7 @@ private:
         stateActions[std::make_pair(GameState::ROOM2_STATE, RoomState::Serve)] = []() {
             Timer::GetInstance().stop();
             OrderData::GetInstance().ClearOrder();
+            DoorManager::GetInstance().GetDoorByName("KitchenDoor")->setPermission(false);
             std::cout << "Transition to Room2 Serve state." << std::endl;
             };
 
@@ -127,6 +129,7 @@ private:
         stateActions[std::make_pair(GameState::ROOM3_STATE, RoomState::Serve)] = []() {
             Timer::GetInstance().stop();
             OrderData::GetInstance().ClearOrder();
+            DoorManager::GetInstance().GetDoorByName("KitchenDoor")->setPermission(false);
             std::cout << "Transition to Room3 Serve state." << std::endl;
             };
 
@@ -155,6 +158,7 @@ private:
         stateActions[std::make_pair(GameState::ROOM4_STATE, RoomState::Serve)] = []() {
             Timer::GetInstance().stop();
             OrderData::GetInstance().ClearOrder();
+            DoorManager::GetInstance().GetDoorByName("KitchenDoor")->setPermission(false);
             std::cout << "Transition to Room4 Serve state." << std::endl;
             };
 

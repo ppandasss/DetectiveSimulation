@@ -1,39 +1,41 @@
 ﻿  Main.cpp
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(113,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(114,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): warning C4099: 'Mesh': type name first seen using 'class' now seen using 'struct'
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Text\TextRenderer.h(12,7): warning C4099: 'Mesh': type name first seen using 'struct' now seen using 'class'
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\JournalData.h(87,74): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\JournalData.h(132,64): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Page.h(40,47): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\MainPage.h(204,47): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Player.h(26,55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Player.h(26,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\BellManager.h(44,30): warning C4244: 'argument': conversion from 'float' to 'long', possible loss of data
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Timer.h(114,20): warning C4244: 'return': conversion from '_Rep' to 'int', possible loss of data
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Timer.h(114,20): warning C4244:         with
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Timer.h(114,20): warning C4244:         [
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Timer.h(114,20): warning C4244:             _Rep=__int64
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Timer.h(114,20): warning C4244:         ]
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\PopupWidget\OptionsMenu.h(23,27): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\PopupWidget\OptionsMenu.h(78,33): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\PopupWidget\OptionsMenu.h(85,31): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\PopupWidget\ExitMenu.h(26,34): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\PopupWidget\ExitMenu.h(33,29): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\PopupWidget\PauseMenu.h(26,37): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\PopupWidget\PauseMenu.h(33,36): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\PopupWidget\PauseMenu.h(40,37): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\PopupWidget\PauseMenu.h(49,37): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Hallway.h(358,33): warning C4244: 'argument': conversion from 'double' to '__int64', possible loss of data
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Hallway.h(364,33): warning C4244: 'argument': conversion from 'double' to '__int64', possible loss of data
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Hallway.h(370,33): warning C4244: 'argument': conversion from 'double' to '__int64', possible loss of data
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Hallway.h(376,33): warning C4244: 'argument': conversion from 'double' to '__int64', possible loss of data
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Hallway.h(408,26): warning C4244: 'argument': conversion from 'long' to 'float', possible loss of data
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Dialogue\Dialoguemanager.h(237,25): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Room3.h(53,19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Kitchen.h(170,13): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Kitchen.h(409,26): warning C4244: 'argument': conversion from 'long' to 'float', possible loss of data
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\MainMenu.h(34,27): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\MainMenu.h(41,30): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Capt\DetectiveSimulation\HonkEngine\Engine\Code\Scene\MainMenu.h(48,27): warning C4305: 'argument': truncation from 'double' to 'float'
-  Engine.vcxproj -> C:\Capt\DetectiveSimulation\HonkEngine\x64\Debug\Engine.exe
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(113,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Application.h(114,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,13): warning C4099: 'Mesh': type name first seen using 'class' now seen using 'struct'
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): message : see declaration of 'Mesh'
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Text\TextRenderer.h(12,11): warning C4099: 'Mesh': type name first seen using 'struct' now seen using 'class'
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Engine.h(24,8): message : see declaration of 'Mesh'
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\JournalData.h(87,1): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\JournalData.h(132,1): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Page.h(40,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\MainPage.h(204,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Player.h(26,55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Player.h(26,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\BellManager.h(44,30): warning C4244: 'argument': conversion from 'float' to 'long', possible loss of data
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\GameObjects\Timer.h(114,20): warning C4244: 'return': conversion from '_Rep' to 'int', possible loss of data
+          with
+          [
+              _Rep=__int64
+          ]
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\PopupWidget\OptionsMenu.h(23,1): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\PopupWidget\OptionsMenu.h(78,1): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\PopupWidget\OptionsMenu.h(85,1): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\PopupWidget\ExitMenu.h(26,1): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\PopupWidget\ExitMenu.h(33,1): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\PopupWidget\PauseMenu.h(26,1): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\PopupWidget\PauseMenu.h(33,1): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\PopupWidget\PauseMenu.h(40,1): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\PopupWidget\PauseMenu.h(49,1): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Hallway.h(343,33): warning C4244: 'argument': conversion from 'double' to '__int64', possible loss of data
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Hallway.h(349,33): warning C4244: 'argument': conversion from 'double' to '__int64', possible loss of data
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Hallway.h(355,33): warning C4244: 'argument': conversion from 'double' to '__int64', possible loss of data
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Hallway.h(361,33): warning C4244: 'argument': conversion from 'double' to '__int64', possible loss of data
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Hallway.h(393,26): warning C4244: 'argument': conversion from 'long' to 'float', possible loss of data
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Dialogue\Dialoguemanager.h(237,1): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Room3.h(53,19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Kitchen.h(170,1): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Scene\Kitchen.h(409,26): warning C4244: 'argument': conversion from 'long' to 'float', possible loss of data
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Scene\MainMenu.h(34,1): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Scene\MainMenu.h(41,1): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\Engine\Code\Scene\MainMenu.h(48,1): warning C4305: 'argument': truncation from 'double' to 'float'
+  Engine.vcxproj -> C:\Users\user\Documents\GitHub\DetectiveSimulation\HonkEngine\x64\Debug\Engine.exe
