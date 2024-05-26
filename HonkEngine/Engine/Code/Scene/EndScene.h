@@ -103,7 +103,7 @@ public:
 			}
 		}
 
-		if (ending == END1 || ending == END6) {
+		if (ending == END5 || ending == END6) {
 			MissingPoster->setActiveStatus(true);
 		}
 		else {
@@ -122,9 +122,9 @@ public:
 
 			currentTime += dt;
 			float progress = currentTime / zoomInDuration;
-			// Interpolating from 180% to 100%
-			float targetScaleX = 25.848f - (11.488f * progress); // Decreasing from 25.848 to 14.36
-			float targetScaleY = 14.832f - (6.592f * progress); // Decreasing from 14.832 to 8.24
+			// Interpolating from 200% to 100%
+			float targetScaleX = 26.3f - (13.15f * progress); // Decreasing from 26.3f to 13.15f
+			float targetScaleY = 17.12f - (8.56f * progress); // Decreasing from 17.12f to 8.56f
 			ChosenEndingPoster->SetScale(glm::vec3(targetScaleX, targetScaleY, 0.0f));
 		}
 

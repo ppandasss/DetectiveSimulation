@@ -338,7 +338,7 @@
 			<line1>Anyway, did you hear about the new  amusement park in Westside?</line1>
 		</Speaker>
 		<Choices>
-			<Choice1 next="3WD66" clueID="CABIN22_2">Change the topic to  amusement park</Choice1>
+			<Choice1 next="3WD66" clueID="CABIN22_2">Change the topic to play along</Choice1>
 			<Choice2 next="3WD65" clueID="CABIN22_2">Keep asking about the  National Day Event</Choice2>
 		</Choices>
 	</Dialogue>

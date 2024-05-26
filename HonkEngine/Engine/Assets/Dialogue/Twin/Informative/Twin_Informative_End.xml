@@ -80,7 +80,7 @@
 		<Speaker name="Evelyn_Sad">
 			<line1>The- The bomb..?</line1>
 			<line2>I-I... Um...</line2>
-			<line3>[ Evelyn suddenly appears %very% %frightened.% ]</line3>
+			<line3>[Evelyn suddenly appears %very% %frightened.]%</line3>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
