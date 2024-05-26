@@ -158,7 +158,7 @@ public:
 
 
         //Text
-        instructionText = new Text("dialogueinstruction", "Use [Left-click] or [Space] to continue dialogue", "Assets/Fonts/mvboli.ttf", true);
+        instructionText = new Text("dialogueinstruction", "Use [Left-click] or [Space] to continue", "Assets/Fonts/mvboli.ttf", true);
         instructionText->SetScale(0.6f);
         instructionText->SetPosition(glm::vec3(5.9f, -4.8f, 0.0f));
         instructionText->SetColor(glm::vec3(1, 1, 1));

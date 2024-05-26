@@ -382,6 +382,7 @@ public:
 				transitionEffects->FadeOut(3.0f, [this]() {
 					std::cout << "Fade Out complete" << std::endl;
 					audioManager.StopSound("hallwayMusic");
+
 					player->ResumeMovement();
 					Application::Get().SetScene("JournalEntry");
 				});
@@ -476,6 +477,14 @@ public:
 
 		if (input.Get().GetKeyDown(GLFW_KEY_ESCAPE)) {
 			pauseMenu.Show();
+		}
+		if (input.Get().GetKeyDown(GLFW_KEY_TAB)) {
+			if (Journal->isOpen()) {
+				Journal->closeBook();
+			}
+			else if ( !Journal->isOpen()) {
+				Journal->drawBook();
+			}
 		}
 	}
 

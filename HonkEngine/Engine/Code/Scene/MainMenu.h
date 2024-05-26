@@ -84,7 +84,7 @@ public:
 
 		if (startOfGame) {
 			
-			if (input.Get().GetMouseButtonDown(GLFW_MOUSE_BUTTON_1))
+			if (input.Get().GetKeyDown(GLFW_KEY_SPACE) || input.Get().GetMouseButtonDown(0))
 			{
 				startOfGame = false;
 				setMainMenuState();

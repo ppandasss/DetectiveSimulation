@@ -19,6 +19,7 @@ private:
     std::vector<std::string> dialogueKeys = { "scene1", "scene2", "scene3", "scene4", "scene5", "scene6", "scene7", "scene8", "scene9", "scene10", "scene11", "scene12", "scene13" };
     UIElement* transitionObject;
     std::unique_ptr<TransitionEffects> transitionEffects;
+    Text* instructionText;
     int currentSceneIndex = 0;
     bool isTransitioning = false;
     bool isFadingOut = false;
@@ -30,6 +31,7 @@ public:
     OpenScene() :audioManager(AudioManager::GetInstance())
     {
         audioManager.LoadSound("OpenSceneBGMusic", "Assets/Sounds/Music/BGmusic_Cutscene.mp3", Music, 1.0f);
+        audioManager.LoadSound("ProjectorSFX", "Assets/Sounds/SFX_Projector.mp3", SFX, 1.0f);
 
         // Load scenes
         GameObject* OpenScene1 = new UIObject("OpenScene1", "Assets/Images/Opening/Opening_Cutscene_1.jpg", true);
@@ -84,6 +86,21 @@ public:
         OpenScene13->SetScale(glm::vec3(19.2f, 10.8f, 0.0f));
         scenes.push_back(static_cast<UIObject*>(OpenScene13));
 
+        OpenScene1->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
+        OpenScene2->SetPosition(glm::vec3(0.0f, 10.8f, 0.0f));
+        OpenScene3->SetPosition(glm::vec3(0.0f, 21.6f, 0.0f));
+        OpenScene4->SetPosition(glm::vec3(0.0f, 32.4f, 0.0f));
+        OpenScene5->SetPosition(glm::vec3(0.0f, 43.2f, 0.0f));
+        OpenScene6->SetPosition(glm::vec3(0.0f, 54.0f, 0.0f));
+        OpenScene7->SetPosition(glm::vec3(0.0f, 64.8f, 0.0f));
+        OpenScene8->SetPosition(glm::vec3(0.0f, 75.6f, 0.0f));
+        OpenScene9->SetPosition(glm::vec3(0.0f, 86.4f, 0.0f));
+        OpenScene10->SetPosition(glm::vec3(0.0f, 97.2f, 0.0f));
+        OpenScene11->SetPosition(glm::vec3(0.0f, 108.0f, 0.0f));
+        OpenScene12->SetPosition(glm::vec3(0.0f, 118.8f, 0.0f));
+        OpenScene13->SetPosition(glm::vec3(0.0f, 129.6f, 0.0f));
+   
+
         // Create dialogue manager
         UIButton* dialogueBox = new UIButton("DialogueBox", "", glm::vec3(0.0f, -4.5f, 0.0f), glm::vec3(10.96f, 2.05f, 0.0f), true, true, "Assets/Fonts/OverpassMono-SemiBold.ttf");
         dialogueBox->SetTextSize(0.55f);
@@ -104,6 +121,11 @@ public:
         dialogueManager->LoadDialogues("scene12", "Assets/Dialogue/Opening/OpenCutscene12.xml");
         dialogueManager->LoadDialogues("scene13", "Assets/Dialogue/Opening/OpenCutscene13.xml");
 
+        instructionText = new Text("dialogueinstruction", "Use [Left-click] or [Space] to continue", "Assets/Fonts/mvboli.ttf", true);
+        instructionText->SetScale(0.4f);
+        instructionText->SetPosition(glm::vec3(7.0f, -5.0f, 0.0f));
+        instructionText->SetColor(glm::vec3(1, 1, 1));
+
         transitionObject = new UINormal("Transition", "Assets/Images/black.png", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(25.0f, 20.0f, 0.0f), true);
         transitionEffects = std::unique_ptr<TransitionEffects>(new TransitionEffects(transitionObject));
 
@@ -121,6 +143,7 @@ public:
         m_gameObjects.push_back(OpenScene12);
         m_gameObjects.push_back(OpenScene13);
         m_gameObjects.push_back(dialogueBox);
+        m_gameObjects.push_back(instructionText);
         m_gameObjects.push_back(transitionObject);
     }
 
@@ -157,6 +180,10 @@ public:
         }
         else if (!isFadingOut) { // Prevent actions during fade-out
             if (input.Get().GetKeyDown(GLFW_KEY_SPACE) || input.Get().GetMouseButtonDown(0)) {
+                if (instructionText->getActiveStatus())
+                {
+                   instructionText->setActiveStatus(false);
+                }
                 if (dialogueManager->IsDialogueFinished(dialogueKeys[currentSceneIndex])) {
                     if (currentSceneIndex + 1 < scenes.size()) {
                         StartSceneTransition(currentSceneIndex + 1);
@@ -209,5 +236,6 @@ private:
         transitionProgress = 0.0f;
         scenes[nextSceneIndex]->setActiveStatus(true);
         currentSceneIndex = nextSceneIndex;
+        audioManager.PlaySound("ProjectorSFX");
     }
 };

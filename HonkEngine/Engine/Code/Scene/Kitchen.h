@@ -410,28 +410,30 @@ public:
 
 		transitionEffects->Update(dt);
 
-		if (input.Get().GetKeyDown(GLFW_KEY_R)) { 
-			clearPlate();
-		}
 
-		if (input.Get().GetKeyDown(GLFW_KEY_TAB)) {
-
-			if (Journal->isOpen()) {
-				Journal->closeBook();
-			}
-			else {
-				Journal->drawBook();
-			}
-		}
-
-		if (input.Get().GetKeyDown(GLFW_KEY_ESCAPE)) {
-			pauseMenu.Show();
-		}
-		
+		processInput();
 		updateServeButton();
 		UpdateOrderDisplay();
 		UpdatePlateDisplay();
 
+	}
+
+	void processInput()
+	{
+		if (input.Get().GetKeyDown(GLFW_KEY_R)) {
+			clearPlate();
+		}
+		if (input.Get().GetKeyDown(GLFW_KEY_TAB)) {
+			if (Journal->isOpen()) {
+				Journal->closeBook();
+			}
+			else if (!Journal->isOpen()) {
+				Journal->drawBook();
+			}
+		}
+		if (input.Get().GetKeyDown(GLFW_KEY_ESCAPE)) {
+			pauseMenu.Show();
+		}
 	}
 
 	void UpdatePlateDisplay() {

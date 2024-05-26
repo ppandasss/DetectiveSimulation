@@ -197,7 +197,7 @@ public:
 
 	bool isOpen()
 	{
-		return openStatus;
+			return openStatus;
 	}
 
 	void EmptyFunction() {

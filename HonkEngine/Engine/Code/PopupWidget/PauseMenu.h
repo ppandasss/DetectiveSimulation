@@ -39,7 +39,9 @@ public:
         MainMenuButton->SetButtonText("Main Menu");
         MainMenuButton->SetTextSize(0.55);
         MainMenuButton->SetTextPosition(glm::vec3(-0.05f, -0.97f, 0.0f));
-        MainMenuButton->SetOnClickAction([this]() { Application::Get().SetScene("MainMenu"); });
+        MainMenuButton->SetOnClickAction([this]() { Application::Get().SetScene("MainMenu");
+        AudioManager::GetInstance().StopSound("hallwayMusic"); 
+        AudioManager::GetInstance().StopSound("trainAmbience"); });
 
         UIButton* ExitGameButton = new UIButton("MainMenuButton", "Assets/Images/MainMenu/MainMenu_Button_Play.png", glm::vec3(-0.1f, -1.8f, 0.0f), glm::vec3(3.15f * 0.9f, 0.88f * 0.9f, 0.0f), true, true, "Assets/Fonts/OverpassMono-SemiBold.ttf");
         ExitGameButton->SetHoverTexture("Assets/Images/MainMenu/MainMenu_Button_Start_Hover.png");

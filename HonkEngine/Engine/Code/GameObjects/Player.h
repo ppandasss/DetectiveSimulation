@@ -68,16 +68,7 @@ public:
             currentAnimation = "walk_right";
             lastDirection = Direction::Right;
         }
-        if (input.Get().GetKeyDown(GLFW_KEY_TAB)) {
-            if (m_journal->isOpen()) {
-                if (!JournalData::GetInstance()->GetBookState()) { //If book is not locked
-                    m_journal->closeBook();
-                }
-            }
-            else {
-                m_journal->drawBook();
-            }
-        }
+       
 
         if (input.Get().GetKeyDown(GLFW_KEY_J)) {
             Application::Get().SetScene("JournalEntry");

@@ -88,3 +88,4 @@ ScaffoldingReadMe.txt
 *.vbproj.user
 HonkEngine/.vs/HonkEngine/v17/ipch/AutoPCH/1c639d328ca56915/LOADSCENE.ipch
 *.ipch
+HonkEngine/Engine/x64/Debug/Engine.ilk
