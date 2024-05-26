@@ -304,22 +304,7 @@ public:
 
 		//Transition
 		m_gameObjects.push_back(transitionObject);
-
-		//JournalData::GetInstance()->ActivateClue(CABIN1, 0);
-		//JournalData::GetInstance()->ActivateClue(CABIN1, 1);
-		//JournalData::GetInstance()->ActivateClue(CABIN1, 2);
-		//JournalData::GetInstance()->ActivateClue(CABIN1, 3);
-		//JournalData::GetInstance()->ActivateClue(CABIN1, 4);
-		//JournalData::GetInstance()->ActivateClue(CABIN1, 6);
-
-		//JournalData::GetInstance()->ActivateClue(CABIN21, 0);
-		//JournalData::GetInstance()->ActivateClue(CABIN21, 5);
-		//JournalData::GetInstance()->ActivateClue(CABIN21, 6);
-
-		//// Draggable paper clues test
-		//JournalData::GetInstance()->ActivateClue(CABIN3, 10);
-		//JournalData::GetInstance()->ActivateClue(CABIN4, 7);
-		
+	
 
 	}
 
