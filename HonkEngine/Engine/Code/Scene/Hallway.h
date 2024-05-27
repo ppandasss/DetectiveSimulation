@@ -29,12 +29,12 @@
 #include "../PopupWidget/PauseMenu.h"
 
 //set each cbin time before order (in milliseconds) // Remove . to use the correct number
-#define ORDER_DURATION1 90000 
-#define ORDER_DURATION2 90000  //for room 2
-#define ORDER_DURATION3 90000  //for room 3
-#define ORDER_DURATION4 100000
+#define ORDER_DURATION1 30000 
+#define ORDER_DURATION2 40000 //for room 2
+#define ORDER_DURATION3 50000  //for room 3
+#define ORDER_DURATION4 50000
 
-#define PLAYER_SPEED 5.5f
+#define PLAYER_SPEED 5.75f
 
 
 
@@ -86,6 +86,19 @@ private:
 public:
 	Hallway() :audioManager(AudioManager::GetInstance())
 	{
+		/// Test clue activation
+		/*JournalData::GetInstance()->ActivateClue(CABIN3, 0);
+		JournalData::GetInstance()->ActivateClue(CABIN3, 1);
+		JournalData::GetInstance()->ActivateClue(CABIN3, 2);
+		JournalData::GetInstance()->ActivateClue(CABIN3, 3);
+		JournalData::GetInstance()->ActivateClue(CABIN3, 4);
+		JournalData::GetInstance()->ActivateClue(CABIN3, 5);
+		JournalData::GetInstance()->ActivateClue(CABIN3, 6);
+		JournalData::GetInstance()->ActivateClue(CABIN3, 7);*/
+
+		/// Draggable paper clues test
+		//JournalData::GetInstance()->ActivateClue(CABIN3, 10);
+		//JournalData::GetInstance()->ActivateClue(CABIN4, 7);
 
 		/*--------------------------------------------------------------🔊LOAD AUDDIO🔊------------------------------------------------------------------------------------------------------- */
 		audioManager.LoadSound("hallwayMusic", "Assets/Sounds/Music/BGmusic_Corridor_NoTimer.mp3", Music, 0.1f);

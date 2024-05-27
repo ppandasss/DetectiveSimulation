@@ -91,32 +91,21 @@ public:
 		LastActivity->SetColor(glm::vec3(0, 0, 0));
 		LastActivity->SetScale(0.85f);
 
-		Text* A_LA1_1 = new Text("A_LA1_1", "Business meeting", "Assets/Fonts/ESA-smb.ttf");
-		A_LA1_1->SetPosition(glm::vec3(0.82f, -0.4f, 0.0f));
-		A_LA1_1->SetColor(glm::vec3(0, 0, 0));
-		A_LA1_1->SetScale(0.58f);
+		Text* A_LA1 = new Text("A_LA1_1", "Business meeting with senior officials", "Assets/Fonts/ESA-smb.ttf");
+		A_LA1->SetPosition(glm::vec3(0.82f, -0.4f, 0.0f));
+		A_LA1->SetColor(glm::vec3(0, 0, 0));
+		A_LA1->SetScale(0.58f);
 
-		Text* A_LA1_2 = new Text("A_LA1_2", "with senior officials", "Assets/Fonts/ESA-smb.ttf");
-		A_LA1_2->SetPosition(glm::vec3(0.82f, -0.72f, 0.0f));
-		A_LA1_2->SetColor(glm::vec3(0, 0, 0));
-		A_LA1_2->SetScale(0.58f);
+		Text* A_LA2 = new Text("A_LA2_1", "Deliver a product to Westside client", "Assets/Fonts/ESA-smb.ttf");
+		A_LA2->SetPosition(glm::vec3(0.82f, -0.82f, 0.0f));
+		A_LA2->SetColor(glm::vec3(0.58, 0.04, 0.00));
+		A_LA2->SetScale(0.62f);
 
-		Text* A_LA2_1 = new Text("A_LA2_1", "Deliver a product", "Assets/Fonts/ESA-smb.ttf");
-		A_LA2_1->SetPosition(glm::vec3(3.4f, -0.47, 0.0f));
-		A_LA2_1->SetColor(glm::vec3(0.58, 0.04, 0.00));
-		A_LA2_1->SetScale(0.62f);
 
-		Text* A_LA2_2 = new Text("A_LA2_2", "to Westside client", "Assets/Fonts/ESA-smb.ttf");
-		A_LA2_2->SetPosition(glm::vec3(3.4f, -0.8f, 0.0f));
-		A_LA2_2->SetColor(glm::vec3(0.58, 0.04, 0.00));
-		A_LA2_2->SetScale(0.62f);
+		textClues.push_back(A_LA1);
+		textClues.push_back(A_LA2);
 
-		textClues.push_back(A_LA1_1);
-		textClues.push_back(A_LA1_2);
-		textClues.push_back(A_LA2_1);
-		textClues.push_back(A_LA2_2);
-
-		m_journalData->addEvidenceToJournal(CABIN3, 7, A_LA2_1->GetContent());
+		m_journalData->addEvidenceToJournal(CABIN3, 6, A_LA2->GetContent());
 
 
 		// LAST VISIT

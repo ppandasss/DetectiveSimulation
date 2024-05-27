@@ -106,9 +106,9 @@
 			<line1>Have you ever been to the Council?</line1>
 		</Speaker>
 		<Choices>
-			<Choice1 next="2WD33" clueID="CABIN3_9">I have</Choice1>
-			<Choice2 next="2WD34" clueID="CABIN3_9">I used to work there</Choice2>
-			<Choice3 next="2WD32" clueID="CABIN3_9">Never</Choice3>
+			<Choice1 next="2WD33" clueID="CABIN3_7">I have</Choice1>
+			<Choice2 next="2WD34" clueID="CABIN3_7">I used to work there</Choice2>
+			<Choice3 next="2WD32" clueID="CABIN3_7">Never</Choice3>
 		</Choices>
 	</Dialogue>
 	<Dialogue id="2WD32" next="2AD37">
@@ -240,8 +240,8 @@
 	<Dialogue id="2AD92">
 		<Speaker name="Archibald_Upset">
 			<line1>I've already told you too much,  stop prying for more!</line1>
-			<line2>You are a waiter, do your job.  Don’t play detective with me.</line2>
-			<line3>Especially when you couldn’t  even do your job right!</line3>
+			<line2>You are a waiter, do your job.  Don't play detective on me.</line2>
+			<line3>Especially when you couldn't  even do your job right!</line3>
 		</Speaker>
 		<Choices/>
 	</Dialogue>

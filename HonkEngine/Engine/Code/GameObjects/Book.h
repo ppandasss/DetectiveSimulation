@@ -60,7 +60,7 @@ public:
 		UIButton* Tab6 = new UIButton("Tab6", "Assets/Images/Journal/Bookmark_P4.png", glm::vec3(6.55f, -1.85f, 0.0f), glm::vec3(2.13f, 0.91f, 0.0f), true, false, "");
 		Tab6->SetHoverTexture("Assets/Images/Journal/Bookmark_P4_Highlight.png");
 
-		UIButton* Tab7 = new UIButton("Tab6", "Assets/Images/Journal/Bookmark_TeaGuide.png", glm::vec3(6.49f, -2.8f, 0.0f), glm::vec3(2.13f, 0.91f, 0.0f), true, false, "");
+		UIButton* Tab7 = new UIButton("Tab6", "Assets/Images/Journal/Bookmark_TeaGuide.png", glm::vec3(6.75f, -2.8f, 0.0f), glm::vec3(1.78f, 0.91f, 0.0f), true, false, "");
 		Tab7->SetHoverTexture("Assets/Images/Journal/Bookmark_TeaGuide_Highlight.png");
 
 		Tab1->SetOnClickAction([this]() { setActiveTab1(); });

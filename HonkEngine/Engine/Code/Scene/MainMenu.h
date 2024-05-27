@@ -22,7 +22,7 @@ public:
 	MainMenu() :audioManager(AudioManager::GetInstance()) {
 
 		audioManager.LoadSound("menuMusic", "Assets/Sounds/Music/BGmusic_Cabin2.mp3", Music, 0.6f);
-		audioManager.LoadSound("buttonClick2", "Assets/Sounds/SFX_ButtonClick.mp3", SFX, 10.0f);
+		audioManager.LoadSound("buttonClick2", "Assets/Sounds/SFX_ButtonClick.mp3", SFX, 9.0f);
 
 		GameObject* MainMenuBackground = new UIObject("MainMenuBackground", "Assets/Images/MainMenu/MainMenu_BG.jpg", true);
 		MainMenuBackground->SetScale(glm::vec3(19.2f, 10.8f, 0.0f));
@@ -88,6 +88,7 @@ public:
 			{
 				startOfGame = false;
 				setMainMenuState();
+				AudioManager::GetInstance().PlaySound("buttonClick2");
 			}
 		}		
 

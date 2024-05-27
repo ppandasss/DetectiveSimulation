@@ -31,7 +31,7 @@ public:
         m_animator.AddAnimation("walk_right",3, 8, 8.0f, Animator::LoopType::Loop, []() {});
         m_animator.AddAnimation("idle_left",2, 1, 8.0f, Animator::LoopType::Loop, []() {});
         m_animator.AddAnimation("idle_right",1, 1, 8.0f, Animator::LoopType::Loop, []() {});
-        audioManager.LoadSound("Player_footsteps", "Assets/Sounds/footstep.mp3",SFX, 0.65f);
+        audioManager.LoadSound("Player_footsteps", "Assets/Sounds/footstep.mp3",SFX, 0.5f);
     }
 
     void StopMovement() {

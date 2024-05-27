@@ -112,9 +112,9 @@
 			<line1>Have you ever been to the Council?</line1>
 		</Speaker>
 		<Choices>
-			<Choice1 next="2WD33" clueID="CABIN3_9">I have</Choice1>
-			<Choice2 next="2WD34" clueID="CABIN3_9">I used to work there</Choice2>
-			<Choice3 next="2WD32" clueID="CABIN3_9">Never</Choice3>
+			<Choice1 next="2WD33" clueID="CABIN3_7">I have</Choice1>
+			<Choice2 next="2WD34" clueID="CABIN3_7">I used to work there</Choice2>
+			<Choice3 next="2WD32" clueID="CABIN3_7">Never</Choice3>
 		</Choices>
 	</Dialogue>
 	<Dialogue id="2WD32" next="2AD37">
@@ -243,22 +243,24 @@
 	<Dialogue id="2AD48">
 		<Speaker name="Archibald_Normal">
 			<line1>And what an odd client, though.</line1>
-			<line2>Brought their entire family to  a bustling event-</line2>
+			<line2>Bringing their %entire% %family% there  was another thing.</line2>
+			<line2>But why bothering to come over here  just to %receive% %the% %product.%</line2>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
 	<Dialogue id="2AQ11">
-		<Speaker name="Archibald_Normal">
-			<line1>just to %receive% %the% %product% with  them.</line1>
+		<Speaker name="Archibald_Upset">
+			<line1>They could have just made an appointment  at the West.</line1>
+			<line1>What a pointless lost to my precious  time!</line1>
 		</Speaker>
 		<Choices>
-			<Choice1 next="2WD37" clueID="CABIN3_7">Ask if it the same product  in his luggage</Choice1>
-			<Choice2 next="2WD38" clueID="CABIN3_7">Ask what kind of product  did they buy</Choice2>
+			<Choice1 next="2WD37" clueID="CABIN3_6">Ask about the client identity</Choice1>
+			<Choice2 next="2WD38" clueID="CABIN3_6">Ask what kind of product  did they buy</Choice2>
 		</Choices>
 	</Dialogue>
-	<Dialogue id="2WD37" next="2AD49">
+	<Dialogue id="2WD37" next="2AD49_1">
 		<Speaker name="Waiter">
-			<line1>Oh, is it the same one as in  your luggage?</line1>
+			<line1>Oh, are they family or politicians  traveling from the West?</line1>
 			<line2>Perhaps that explains their reason.</line2>
 		</Speaker>
 		<Choices/>
@@ -270,9 +272,15 @@
 		</Speaker>
 		<Choices/>
 	</Dialogue>
-	<Dialogue id="2AD49">
+	<Dialogue id="2AD49" next="2AD49_2">
 		<Speaker name="Archibald_Normal">
-			<line1>Well, it’s....</line1>
+			<line1>Well, it's....</line1>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
+	<Dialogue id="2AD49_1">
+		<Speaker name="Archibald_Normal">
+			<line1>Well, they're....</line1>
 		</Speaker>
 		<Choices/>
 	</Dialogue>

@@ -267,7 +267,8 @@
 	<Dialogue id="3ED36" next="3ND91">
 		<Speaker name="Evelyn_Happy">
 			<line1>Right?</line1>
-			<line2>My father just bought it for me  recently at %National% %Day% %Ev-%</line2>
+			<line2>My father just bought it for me  recently.</line2>
+			<line3>Where I %met% %Nathaniel% %at%  %National% %Day% %Ev-%</line3>
 		</Speaker>
 		<Choices/>
 	</Dialogue>
@@ -281,7 +282,8 @@
 	<Dialogue id="3ED37" next="3ND91">
 		<Speaker name="Evelyn_Happy">
 			<line1>It's one of the kind!</line1>
-			<line2>My father just bought it for me  recently at %National% %Day% %Ev-%</line2>
+			<line2>My father just bought it for me  recently.</line2>
+			<line3>Where I %met% %Nathaniel% %at%  %National% %Day% %Ev-%</line3>
 		</Speaker>
 		<Choices/>
 	</Dialogue>

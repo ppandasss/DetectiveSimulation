@@ -249,7 +249,7 @@ public:
 
 		GameObject* EggDish = new UIObject("EggDish", "Assets/Images/Kitchen/Food/Sandwich/Sandwich_Egg.png", true);
 		EggDish->SetPosition(SandwichDishPosition);
-		EggDish->SetScale(glm::vec3(1.672f * 1.6f, 0.67f * 1.6f, 0.0f));
+		EggDish->SetScale(glm::vec3(1.672f * 1.6f, 0.826f * 1.6f, 0.0f));
 
 		GameObject* CucumberDish = new UIObject("CucumberDish", "Assets/Images/Kitchen/Food/Sandwich/Sandwich_Cucumber.png", true);
 		CucumberDish->SetPosition(SandwichDishPosition);
@@ -257,7 +257,7 @@ public:
 
 		GameObject* BeefDish = new UIObject("BeefDish", "Assets/Images/Kitchen/Food/Sandwich/Sandwich_Beef.png", true);
 		BeefDish->SetPosition(SandwichDishPosition);
-		BeefDish->SetScale(glm::vec3(2.21f * sm, 1.02f * sm, 0.0f));
+		BeefDish->SetScale(glm::vec3(1.437 * 1.6f, 0.826f * 1.6f, 0.0f));
 
 		GameObject* EclairDish = new UIObject("EclairDish", "Assets/Images/Kitchen/Food/Dessert/Dessert_Eclair.png", true);
 		EclairDish->SetPosition(DessertDishPosition);
