@@ -120,10 +120,10 @@ public:
 		
 
 		background1a->SetScale(glm::vec3(76.6f, 10.8f, 0.0f));background1a->SetPosition(glm::vec3(0.0f, 3.0f, 0.0f)); 
-		background2a->SetScale(glm::vec3(76.6f, 10.8f, 0.0f)); background2a->SetPosition(glm::vec3(0.0f, 3.0f, 0.0f));
+		background2a->SetScale(glm::vec3(76.6f, 10.8f, 0.0f)); background2a->SetPosition(glm::vec3(0.0f, 5.0f, 0.0f));
 		background3a->SetScale(glm::vec3(76.6f, 10.8f, 0.0f)); background3a->SetPosition(glm::vec3(0.0f, 3.0f, 0.0f));
 		background1b->SetScale(glm::vec3(76.6f, 10.8f, 0.0f)); background1b->SetPosition(glm::vec3(76.6f, 3.0f, 0.0f));
-		background2b->SetScale(glm::vec3(76.6f, 10.8f, 0.0f)); background2b->SetPosition(glm::vec3(76.6f, 3.0f, 0.0f));
+		background2b->SetScale(glm::vec3(76.6f, 10.8f, 0.0f)); background2b->SetPosition(glm::vec3(76.6f, 5.0f, 0.0f));
 		background3b->SetScale(glm::vec3(76.6f, 10.8f, 0.0f)); background3b->SetPosition(glm::vec3(76.6f, 3.0f, 0.0f));
 
 		BackgroundparallaxManager = std::make_unique<BackgroundParallax>();

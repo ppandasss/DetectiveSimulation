@@ -198,10 +198,10 @@
 		</Speaker>
 		<Choices>
 			<Choice1 next="3WD59" clueID="CABIN21_1">Plain, classic hat</Choice1>
-			<Choice2 next="3WD58" clueID="CABIN21_1">Hat with accessories</Choice2>
+			<Choice2 next="3WD58_1" clueID="CABIN21_1">Hat with accessories</Choice2>
 		</Choices>
 	</Dialogue>
-	<Dialogue id="3WD58" next="3ND89">
+	<Dialogue id="3WD58_1" next="3ND89">
 		<Speaker name="Waiter">
 			<line1>I like ones with accessories.</line1>
 			<line2>The fabulous-looking ones.</line2>
