@@ -777,7 +777,7 @@ public:
 
     void OnExit() override {
 
-        audioManager.PlaySound("slideDoor");
+        AudioManager::GetInstance().PlaySound("doorSlide");
         audioManager.PauseSound("cabinMusic");
         BellManager::GetInstance().StopAllRinging();
     }

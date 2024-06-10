@@ -29,10 +29,10 @@
 #include "../PopupWidget/PauseMenu.h"
 
 //set each cbin time before order (in milliseconds) // Remove . to use the correct number
-#define ORDER_DURATION1 30000 
-#define ORDER_DURATION2 40000 //for room 2
-#define ORDER_DURATION3 50000  //for room 3
-#define ORDER_DURATION4 50000
+#define ORDER_DURATION1 300.00 
+#define ORDER_DURATION2 400.00 //for room 2
+#define ORDER_DURATION3 500.00  //for room 3
+#define ORDER_DURATION4 500.00
 
 #define PLAYER_SPEED 5.75f
 
@@ -106,7 +106,7 @@ public:
 		audioManager.LoadSound("bellRing", "Assets/Sounds/SFX_CallingBell.mp3",SFX ,0.25f);
 		audioManager.LoadSound("buttonClick", "Assets/Sounds/SFX_DialogueChoice.mp3", SFX, 0.45f);
 		audioManager.LoadSound("dialoguePlay", "Assets/Sounds/SFX_DialoguePlay.mp3", SFX, 0.45f);
-		audioManager.LoadSound("doorSlide", "Assets/Sounds/SFX_SlideDoor.mp3", SFX, 0.7f);
+		audioManager.LoadSound("doorSlide", "Assets/Sounds/SFX_SlideDoor.mp3", SFX, 3.0f);
 
 		/*--------------------------------------------------------------📦CREATE GAMEOBJECT📦------------------------------------------------------------------------------------------------------- */
 		/*-------------------------------------------------------------🌲CREATE ENVIRONMENT🌲------------------------------------------------------------------------------------------------------- */
@@ -493,8 +493,8 @@ public:
 		//Scene::OnExit(); 
 		//audioManager.PauseSound("hallwayMusic");
 		audioManager.StopSound("Player_footsteps");
-		audioManager.PlaySound("doorSlide");
-		
+		AudioManager::GetInstance().PlaySound("doorSlide");
+
 	}
 
 };

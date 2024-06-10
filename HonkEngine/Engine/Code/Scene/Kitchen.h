@@ -36,7 +36,7 @@ public:
 		audioManager.LoadSound("plateSound3", "Assets/Sounds/Kitchen/SFX_MealSelect3.mp3", SFX, 1.0f);
 		audioManager.LoadSound("plateSound4", "Assets/Sounds/Kitchen/SFX_MealSelect4.mp3", SFX, 1.0f);
 
-		audioManager.LoadSound("servingBellRing", "Assets/Sounds/Kitchen/SFX_ServingBell.mp3", SFX, 0.8f);
+		audioManager.LoadSound("servingBellRing", "Assets/Sounds/Kitchen/SFX_ServingBell.mp3", SFX, 0.7f);
 
 		/*--------------------------------------------------------------CREATE GAMEOBJECT------------------------------------------------------------------------------------------------------- */
 
@@ -389,7 +389,6 @@ public:
 		//audioManager.PlaySound("hallwayMusic", true);
 		transitionEffects->FadeIn(1.0f, [this]() {});
 		audioManager.PlaySound("kitchenAmbience", true);
-		audioManager.PlaySound("slideDoor");
 
 		if (GameStateManager::GetInstance().getRoomState() != RoomState::Prepare)
 		{
@@ -769,7 +768,7 @@ public:
 	void OnExit() override {
 		Scene::OnExit();  // Call base class if there's relevant logic
 		//audioManager.PauseSound("hallwayMusic");
-		audioManager.PlaySound("slideDoor");
+		AudioManager::GetInstance().PlaySound("doorSlide");
 		audioManager.StopSound("kitchenAmbience");
 	}
 

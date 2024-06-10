@@ -31,7 +31,7 @@ public:
     OpenScene() :audioManager(AudioManager::GetInstance())
     {
         audioManager.LoadSound("OpenSceneBGMusic", "Assets/Sounds/Music/BGmusic_Cutscene.mp3", Music, 1.0f);
-        audioManager.LoadSound("ProjectorSFX", "Assets/Sounds/SFX_Projector.mp3", SFX, 0.8f);
+        audioManager.LoadSound("ProjectorSFX", "Assets/Sounds/SFX_Projector.mp3", SFX, 0.6f);
 
         // Load scenes
         GameObject* OpenScene1 = new UIObject("OpenScene1", "Assets/Images/Opening/Opening_Cutscene_1.jpg", true);

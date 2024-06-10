@@ -50,7 +50,6 @@ public:
 
         audioManager.LoadSound("cabinMusic", "Assets/Sounds/Music/BGmusic_Cabin.mp3",Music,5.0f);
         audioManager.LoadSound("knockDoor", "Assets/Sounds/SFX_KnockDoor.mp3",SFX, 2.0f);
-        audioManager.LoadSound("slideDoor", "Assets/Sounds/SFX_SlideDoor.mp3",SFX, 2.5f);
       
 
 
@@ -687,7 +686,7 @@ public:
 
     void OnExit() override {
         // Scene::OnExit();  // Call base class if there's relevant logic
-        audioManager.PlaySound("slideDoor");
+        AudioManager::GetInstance().PlaySound("doorSlide");
         audioManager.PauseSound("cabinMusic");
         BellManager::GetInstance().StopAllRinging();
     }
