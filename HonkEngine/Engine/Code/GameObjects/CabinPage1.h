@@ -68,7 +68,7 @@ public:
 		M_C3->SetColor(glm::vec3(0, 0, 0));
 		M_C3->SetScale(0.6f);
 
-		Text* M_C4 = new Text("M_C4", "Westside pen-pal friend", "Assets/Fonts/ESA-m.ttf");
+		Text* M_C4 = new Text("M_C4", "Significant other is a Westsider", "Assets/Fonts/ESA-m.ttf");
 		M_C4->SetPosition(glm::vec3(0.9f, 1.27f, 0.0f));
 		M_C4->SetColor(glm::vec3(0.58, 0.04, 0.00));
 		M_C4->SetScale(0.65f);

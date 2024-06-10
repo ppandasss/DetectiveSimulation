@@ -141,13 +141,13 @@
 	</Dialogue>
 	<Dialogue id="4OD09_2">
 		<Speaker name="Octavia_Happy">
-			<line1>Could you please select some %light%  %and% %refreshing% options for me?</line1>
+			<line1>Could you please select some  %refreshing% options for me?</line1>
 		</Speaker>
 		<Choices/>
 		<Order>
 			<RoomNumber>4</RoomNumber>
 			<Tea>Light tea</Tea>
-			<Sandwich>A set of light and  refreshing meal</Sandwich>
+			<Sandwich>A set of  refreshing meal</Sandwich>
 			<Pastry>No milk</Pastry>
 		</Order>
 	</Dialogue>

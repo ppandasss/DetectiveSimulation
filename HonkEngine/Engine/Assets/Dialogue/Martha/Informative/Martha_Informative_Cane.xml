@@ -206,6 +206,14 @@
 		</Speaker>
 		<Choices/>
 	</Dialogue>
+	<Dialogue id="1MD34">
+		<Speaker name="Martha_Normal">
+			<line1>Talking about Nation Day Event, I saw  a weird cult praising some Westside god.</line1>
+			<line2>It seems like one of their leading  lady is on this train.</line2>
+			<line3>You need to be careful, dear.</line3>
+		</Speaker>
+		<Choices/>
+	</Dialogue>
 	<Dialogue id="1MD99">
 		<Speaker name="Martha_Happy">
 			<line1>....</line1>

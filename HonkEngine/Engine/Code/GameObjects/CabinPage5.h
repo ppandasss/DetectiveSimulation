@@ -93,8 +93,8 @@ public:
 		O_LA1->SetColor(glm::vec3(0, 0, 0));
 		O_LA1->SetScale(0.58f);
 
-		Text* O_LA2 = new Text("O_LA2", "Meet the devotees at Town Square", "Assets/Fonts/ESA-m.ttf");
-		O_LA2->SetPosition(glm::vec3(2.2f, -0.8f, 0.0f));
+		Text* O_LA2 = new Text("O_LA2", "Meet the devotees at Town Square afterward", "Assets/Fonts/ESA-m.ttf");
+		O_LA2->SetPosition(glm::vec3(1.8f, -0.8f, 0.0f));
 		O_LA2->SetColor(glm::vec3(0, 0, 0));
 		O_LA2->SetScale(0.52f);
 

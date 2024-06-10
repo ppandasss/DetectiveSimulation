@@ -82,7 +82,7 @@
 	</Dialogue>	
   <Dialogue id="1MD04_3" next="1WD06">
     <Speaker name="Martha_Happy">
-      <line1>but it’s ever so %crumbly% %and%  %buttery% with a spoonful of %jam.%</line1>
+      <line1>but it's ever so %crumbly% %and%  %buttery% with a spoonful of %jam.%</line1>
     </Speaker>
     <Choices/>
     <Order>

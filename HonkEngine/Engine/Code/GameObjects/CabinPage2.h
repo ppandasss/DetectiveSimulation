@@ -91,7 +91,7 @@ public:
 		N_LA1->SetColor(glm::vec3(0, 0, 0));
 		N_LA1->SetScale(0.58f);
 
-		Text* N_LA2 = new Text("N_LA2", "Met his sister at National Day Event", "Assets/Fonts/ESA-smb.ttf");
+		Text* N_LA2 = new Text("N_LA2", "Visiting National Day Event with Evelyn afterward", "Assets/Fonts/ESA-smb.ttf");
 		N_LA2->SetPosition(glm::vec3(1.15f, -0.8f, 0.0f));
 		N_LA2->SetColor(glm::vec3(0.58, 0.04, 0.00));
 		N_LA2->SetScale(0.5f);
